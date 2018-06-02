@@ -1,32 +1,21 @@
 <template>
   <div id="app">
     <div class="left-panel">
-      <chart></chart>
-    </div>
-    <div class="right-panel">
-      <div class="number-block">
-        <div class="number-block-title"></div>
-        <div class="number-block-number">8.9</div>
-      </div>
-      <div class="number-block">
-        <div class="number-block-title"></div>
-        <div class="number-block-number">1715</div>
-      </div>
-      <div class="number-block">
-        <div class="number-block-title"></div>
-        <div class="number-block-number">213</div>
-      </div>
+      <rank></rank>
+      <score></score>
     </div>
   </div>
 </template>
 
 <script>
-import chart from "./components/chart.vue";
+import rank from "./components/rank.vue";
+import score from "./components/score.vue";
 
 export default {
   name: "app",
   components: {
-    chart
+    rank,
+    score,
   }
 };
 </script>
@@ -73,9 +62,9 @@ img {
 }
 
 .left-panel {
-  height: 100vh;
+  height: 40vh;
   position: relative;
-  width: 50vw;
+  width: 80vw;
 }
 .right-panel {
   height: 100vh;
