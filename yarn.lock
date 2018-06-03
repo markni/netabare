@@ -1101,6 +1101,10 @@ autoprefixer@^8.3.0:
     postcss "^6.0.22"
     postcss-value-parser "^3.2.3"
 
+axios-cache-plugin@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/axios-cache-plugin/-/axios-cache-plugin-0.1.0.tgz#e84f4902029f2e0323bbae739d6a1d0ba5551e89"
+
 axios@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"

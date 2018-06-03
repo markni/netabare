@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <overlay></overlay>
-    <rank :raw="raw"></rank>
-    <score :raw="raw"></score>
+    <overlay text="捏它芭蕾 马上回来"></overlay>
+    <rank bgm-id="218711"></rank>
+    <score bgm-id="218711"></score>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import Rank from "./components/rank.vue";
 import Score from "./components/score.vue";
 import Overlay from "./components/overlay";
@@ -25,9 +24,7 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://api.netaba.re/rank/218711").then(res => {
-      this.raw = res.data;
-    });
+
   }
 };
 </script>
@@ -73,5 +70,4 @@ img {
   display: flex;
   flex-wrap: wrap;
 }
-
 </style>

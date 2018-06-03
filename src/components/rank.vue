@@ -6,6 +6,9 @@
 </template>
 <script>
 import Chart from "chart.js";
+import axios from "../untils/axios";
+
+
 const options = {
   legend: {
     display: false
@@ -16,7 +19,12 @@ const options = {
       {
         type: "time"
       }
-    ]
+    ],
+    yAxes: [{
+      ticks: {
+        reverse: true,
+      },
+    }]
   }
 };
 
@@ -50,29 +58,27 @@ export default {
       chart: null
     };
   },
-  props: ["raw"],
-  watch: {
-    raw: function(newVal, oldVal) {
-      // watch it
-      console.log("!Prop changed: ", newVal.length, " | was: ", oldVal.length);
-      console.log(this.raw);
-      if (this.raw.length && this.chart) {
-        let ranks = this.raw.map(r => {
-          let y = r.rank;
-          let x = new Date(r.recordedAt);
-          return { x, y };
-        });
-        this.chart.data.datasets[0].data = ranks;
-        this.chart.update();
-      }
-    }
-  },
+  props: ["bgmId"],
   mounted() {
     console.log("mounted");
     this.$nextTick(function() {
       const ctx = this.$refs.rank.getContext("2d");
       this.chart = new Chart(ctx, { type: "line", data: chartData, options });
     });
+    if (this.bgmId) {
+      axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
+        this.raw = res.data;
+        if (this.raw.length && this.chart) {
+          let ranks = this.raw.map(r => {
+            let y = r.rank;
+            let x = new Date(r.recordedAt);
+            return { x, y };
+          });
+          this.chart.data.datasets[0].data = ranks;
+          this.chart.update();
+        }
+      });
+    }
   },
   updated() {
     console.log("updated");
@@ -81,8 +87,8 @@ export default {
 </script>
 
 <style scoped>
-    .chart-container {
-        width: 100vw;
-        height: 50vh;
-    }
+.chart-container {
+  width: 100vw;
+  height: 50vh;
+}
 </style>
