@@ -1,73 +1,32 @@
 <template>
   <div id="app">
-    <overlay text="捏它芭蕾 马上回来"></overlay>
-    <rank bgm-id="218711"></rank>
-    <score bgm-id="218711"></score>
+    <!--<div id="nav">-->
+      <!--<router-link to="/">Home</router-link> |-->
+      <!--<router-link to="/about">About</router-link>-->
+    <!--</div>-->
+    <router-view/>
   </div>
 </template>
 
-<script>
-import Rank from "./components/rank.vue";
-import Score from "./components/score.vue";
-import Overlay from "./components/overlay";
-
-export default {
-  name: "app",
-  components: {
-    Overlay,
-    Rank,
-    Score
-  },
-  data() {
-    return {
-      raw: []
-    };
-  },
-  mounted() {
-
-  }
-};
-</script>
-
-<style>
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul {
+<style lang="scss">
+body {
   margin: 0;
-  padding: 0;
-  font-weight: normal;
 }
-
-ol,
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 #app {
-  display: flex;
-  flex-wrap: wrap;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>

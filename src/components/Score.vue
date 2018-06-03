@@ -1,13 +1,11 @@
 <template>
     <div class="chart-container">
-
-    <canvas ref="rank"></canvas>
+        <canvas ref="score"></canvas>
     </div>
 </template>
 <script>
 import Chart from "chart.js";
 import axios from "../untils/axios";
-
 
 const options = {
   legend: {
@@ -19,12 +17,7 @@ const options = {
       {
         type: "time"
       }
-    ],
-    yAxes: [{
-      ticks: {
-        reverse: true,
-      },
-    }]
+    ]
   }
 };
 
@@ -32,8 +25,7 @@ const chartData = {
   datasets: [
     {
       label: false,
-      borderColor: "#EF476F",
-
+      borderColor: "#118AB2",
       fill: false,
       backgroundColor: [
         "#EF476F",
@@ -55,30 +47,31 @@ const chartData = {
 export default {
   data() {
     return {
-      chart: null
+      chart: null,
+      raw: []
     };
   },
   props: ["bgmId"],
   mounted() {
     console.log("mounted");
     this.$nextTick(function() {
-      const ctx = this.$refs.rank.getContext("2d");
+      const ctx = this.$refs.score.getContext("2d");
       this.chart = new Chart(ctx, { type: "line", data: chartData, options });
+      if (this.bgmId) {
+        axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
+          this.raw = res.data;
+          if (this.raw.length && this.chart) {
+            let scores = this.raw.map(r => {
+              let y = r.rating.score;
+              let x = new Date(r.recordedAt);
+              return { x, y };
+            });
+            this.chart.data.datasets[0].data = scores;
+            this.chart.update();
+          }
+        });
+      }
     });
-    if (this.bgmId) {
-      axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
-        this.raw = res.data;
-        if (this.raw.length && this.chart) {
-          let ranks = this.raw.map(r => {
-            let y = r.rank;
-            let x = new Date(r.recordedAt);
-            return { x, y };
-          });
-          this.chart.data.datasets[0].data = ranks;
-          this.chart.update();
-        }
-      });
-    }
   },
   updated() {
     console.log("updated");
