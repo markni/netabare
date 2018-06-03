@@ -1,21 +1,33 @@
 <template>
   <div id="app">
-    <div class="left-panel">
-      <rank></rank>
-      <score></score>
-    </div>
+    <overlay></overlay>
+    <rank :raw="raw"></rank>
+    <score :raw="raw"></score>
   </div>
 </template>
 
 <script>
-import rank from "./components/rank.vue";
-import score from "./components/score.vue";
+import axios from "axios";
+import Rank from "./components/rank.vue";
+import Score from "./components/score.vue";
+import Overlay from "./components/overlay";
 
 export default {
   name: "app",
   components: {
-    rank,
-    score,
+    Overlay,
+    Rank,
+    Score
+  },
+  data() {
+    return {
+      raw: []
+    };
+  },
+  mounted() {
+    axios.get("http://api.netaba.re/rank/218711").then(res => {
+      this.raw = res.data;
+    });
   }
 };
 </script>
@@ -59,27 +71,7 @@ img {
 
 #app {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.left-panel {
-  height: 40vh;
-  position: relative;
-  width: 80vw;
-}
-.right-panel {
-  height: 100vh;
-  position: relative;
-  width: 50vw;
-}
-.number-block {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.number-block-number {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 20vh;
-}
 </style>

@@ -2,12 +2,15 @@
   "name": "netabare",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
     "vue": "^2.5.16"
   },
   "devDependencies": {
