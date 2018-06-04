@@ -6,6 +6,7 @@
 <script>
 import Chart from 'chart.js';
 import axios from '../untils/axios';
+import { BLUE } from '@/constants/colors';
 
 const options = {
   legend: {
@@ -25,20 +26,8 @@ const chartData = {
   datasets: [
     {
       label: false,
-      borderColor: '#118AB2',
+      borderColor: BLUE,
       fill: false,
-      backgroundColor: [
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C',
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C'
-      ],
       data: []
     }
   ]

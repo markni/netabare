@@ -6,9 +6,9 @@ console.log(path.join(__dirname, 'dist'));
 app.use('/', express.static(path.join(__dirname, 'dist')));
 
 app.use('/*', (req, res) => {
-  res.sendfile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.listen(8777, () =>
-  console.log('Netaba.re server is up at port http://localhost:8777/')
+  console.log('http://netaba.re server is up at http://localhost:8777')
 );

@@ -7,6 +7,7 @@
 <script>
 import Chart from 'chart.js';
 import axios from '../untils/axios';
+import { PINK } from '@/constants/colors';
 
 const options = {
   legend: {
@@ -33,7 +34,7 @@ const chartData = {
   datasets: [
     {
       label: false,
-      borderColor: '#EF476F',
+      borderColor: PINK,
 
       fill: false,
       backgroundColor: [
