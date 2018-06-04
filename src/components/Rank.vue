@@ -67,7 +67,7 @@ export default {
       this.chart = new Chart(ctx, { type: "line", data: chartData, options });
     });
     if (this.bgmId) {
-      axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
+      axios.get(`${window.location.protocol}//api.netaba.re/rank/${this.bgmId}`).then(res => {
         this.raw = res.data;
         if (this.raw.length && this.chart) {
           let ranks = this.raw.map(r => {
