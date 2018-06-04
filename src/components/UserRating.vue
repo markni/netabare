@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="chart-container">
             <transition name="fade">
-                <overlay v-if="!raw" text="读取中"></overlay>
+                <overlay v-if="!raw" text="读取中" float="true"></overlay>
             </transition>
             <canvas ref="bar"></canvas>
         </div>
@@ -55,16 +55,16 @@ const chartData = {
   datasets: [
     {
       backgroundColor: [
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C',
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C'
+        '#3094FF',
+        '#4683EE',
+        '#5B73DE',
+        '#7162CE',
+        '#8652BE',
+        '#9C41AE',
+        '#B1319E',
+        '#C7208E',
+        '#DC107E',
+        '#F2006E'
       ],
       data: []
     }
@@ -83,29 +83,43 @@ export default {
     Avatar
   },
   props: ['bgmUserId'],
-  mounted() {
-    this.$nextTick(function() {
-      const ctx = this.$refs.bar.getContext('2d');
-      this.chart = new Chart(ctx, { type: 'bar', data: chartData, options });
+  methods: {
+    _getRaw: function() {
       if (this.bgmUserId) {
         fetchUser(this.bgmUserId).then(res => {
           setTimeout(() => {
-            this.raw = res.data;
-            if (this.raw['user'] && this.chart) {
-              console.log(this.raw);
-              let r = [];
-              for (let key in this.raw.count) {
-                if (key !== '-1') {
-                  r.push({ x: key, y: this.raw.count[key] });
+            if (res.data['error']) {
+              this.$router.replace('/404');
+            } else {
+              this.raw = res.data;
+              if (this.raw['user'] && this.chart) {
+                let r = [];
+                for (let key in this.raw.count) {
+                  if (key !== '-1') {
+                    r.push({ x: key, y: this.raw.count[key] });
+                  }
                 }
-              }
 
-              this.chart.data.datasets[0].data = r;
-              this.chart.update();
+                this.chart.data.datasets[0].data = r;
+                this.chart.update();
+              }
             }
           }, 1000);
         });
       }
+    }
+  },
+  watch: {
+    bgmUserId: function() {
+      this.raw = null;
+      this._getRaw();
+    }
+  },
+  mounted() {
+    this.$nextTick(function() {
+      const ctx = this.$refs.bar.getContext('2d');
+      this.chart = new Chart(ctx, { type: 'bar', data: chartData, options });
+      this._getRaw();
     });
   },
   updated() {

@@ -62,7 +62,6 @@ export default {
   },
   props: ['bgmId'],
   mounted() {
-    console.log('mounted');
     this.$nextTick(function() {
       const ctx = this.$refs.rank.getContext('2d');
       this.chart = new Chart(ctx, { type: 'line', data: chartData, options });

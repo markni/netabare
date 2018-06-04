@@ -1,17 +1,33 @@
 <template>
     <div class="overlay">
-        <div class="typekit-text">{{ text }}</div>
+        <div class="typekit-text"  v-bind:class="{ float: float }">{{ text }}</div>
     </div>
 </template>
 
 <script>
 export default {
   name: 'overlay',
-  props: ['text']
+  props: ['text', 'float']
 };
 </script>
 
 <style scoped>
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.float {
+  transform: translateY(0px);
+
+  animation: float 6s ease-in-out infinite;
+}
 .typekit-text {
   /*visibility: hidden;*/
 }
@@ -29,5 +45,6 @@ export default {
   font-size: 7vh;
   writing-mode: vertical-rl;
   letter-spacing: 1.05vh;
+  z-index: 10;
 }
 </style>
