@@ -8,12 +8,12 @@
 
 <script>
 // @ is an alias to /src
-import Overlay from "@/components/Overlay";
-import Rank from "@/components/Rank";
-import Score from "@/components/Score";
+import Overlay from '@/components/Overlay';
+import Rank from '@/components/Rank';
+import Score from '@/components/Score';
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     Overlay,
     Rank,

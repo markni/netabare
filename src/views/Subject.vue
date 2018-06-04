@@ -3,11 +3,10 @@
 </template>
 
 <script>
-  export default {
-    name: "Subject"
-  }
+export default {
+  name: 'Subject'
+};
 </script>
 
 <style scoped>
-
 </style>

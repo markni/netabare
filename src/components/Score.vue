@@ -4,8 +4,8 @@
     </div>
 </template>
 <script>
-import Chart from "chart.js";
-import axios from "../untils/axios";
+import Chart from 'chart.js';
+import axios from '../untils/axios';
 
 const options = {
   legend: {
@@ -15,7 +15,7 @@ const options = {
   scales: {
     xAxes: [
       {
-        type: "time"
+        type: 'time'
       }
     ]
   }
@@ -25,19 +25,19 @@ const chartData = {
   datasets: [
     {
       label: false,
-      borderColor: "#118AB2",
+      borderColor: '#118AB2',
       fill: false,
       backgroundColor: [
-        "#EF476F",
-        "#FFD166",
-        "#06D6A0",
-        "#118AB2",
-        "#073B4C",
-        "#EF476F",
-        "#FFD166",
-        "#06D6A0",
-        "#118AB2",
-        "#073B4C"
+        '#EF476F',
+        '#FFD166',
+        '#06D6A0',
+        '#118AB2',
+        '#073B4C',
+        '#EF476F',
+        '#FFD166',
+        '#06D6A0',
+        '#118AB2',
+        '#073B4C'
       ],
       data: []
     }
@@ -51,12 +51,12 @@ export default {
       raw: []
     };
   },
-  props: ["bgmId"],
+  props: ['bgmId'],
   mounted() {
-    console.log("mounted");
+    console.log('mounted');
     this.$nextTick(function() {
-      const ctx = this.$refs.score.getContext("2d");
-      this.chart = new Chart(ctx, { type: "line", data: chartData, options });
+      const ctx = this.$refs.score.getContext('2d');
+      this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
       if (this.bgmId) {
         axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
           this.raw = res.data;
@@ -74,7 +74,7 @@ export default {
     });
   },
   updated() {
-    console.log("updated");
+    console.log('updated');
   }
 };
 </script>

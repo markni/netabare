@@ -4,14 +4,14 @@
 
 <script>
 export default {
-  name: "overlay",
-  props: ["text"]
+  name: 'overlay',
+  props: ['text']
 };
 </script>
 
 <style scoped>
 .overlay {
-  font-family: "source-han-serif-sc", serif;
+  font-family: 'source-han-serif-sc', serif;
   position: fixed;
   top: 0;
   left: 0;

@@ -1,5 +1,5 @@
-import axios from "axios";
-import wrapper from "axios-cache-plugin";
+import axios from 'axios';
+import wrapper from 'axios-cache-plugin';
 
 let http = axios.create({
   withCredentials: false

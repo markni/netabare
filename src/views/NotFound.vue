@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Overlay from "@/components/Overlay.vue";
-import Rank from "@/components/Rank";
-import Score from "@/components/Score";
+import Overlay from '@/components/Overlay.vue';
+import Rank from '@/components/Rank';
+import Score from '@/components/Score';
 
 export default {
-  name: "NotFound",
+  name: 'NotFound',
   components: {
     Overlay,
     Rank,
-    Score,
+    Score
   }
 };
 </script>

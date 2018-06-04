@@ -3,11 +3,10 @@
 </template>
 
 <script>
-  export default {
-    name: "User"
-  }
+export default {
+  name: 'User'
+};
 </script>
 
 <style scoped>
-
 </style>
