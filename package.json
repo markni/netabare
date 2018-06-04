@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "axios-cache-plugin": "^0.1.0",
     "chart.js": "^2.7.2",
+    "express": "^4.16.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
