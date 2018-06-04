@@ -1,5 +1,7 @@
 <template>
-    <div class="overlay">{{ text }}</div>
+    <div class="overlay">
+        <div class="typekit-text">{{ text }}</div>
+    </div>
 </template>
 
 <script>
@@ -10,6 +12,9 @@ export default {
 </script>
 
 <style scoped>
+.typekit-text {
+  /*visibility: hidden;*/
+}
 .overlay {
   font-family: 'source-han-serif-sc', serif;
   position: fixed;

@@ -5,8 +5,8 @@
 </template>
 <script>
 import Chart from 'chart.js';
-import axios from '../untils/axios';
 import { BLUE } from '@/constants/colors';
+import { fetchRank } from '@/untils/api';
 
 const options = {
   legend: {
@@ -42,12 +42,11 @@ export default {
   },
   props: ['bgmId'],
   mounted() {
-    console.log('mounted');
     this.$nextTick(function() {
       const ctx = this.$refs.score.getContext('2d');
       this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
       if (this.bgmId) {
-        axios.get(`http://api.netaba.re/rank/${this.bgmId}`).then(res => {
+        fetchRank(this.bgmId).then(res => {
           this.raw = res.data;
           if (this.raw.length && this.chart) {
             let scores = this.raw.map(r => {

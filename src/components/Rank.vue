@@ -6,8 +6,8 @@
 </template>
 <script>
 import Chart from 'chart.js';
-import axios from '../untils/axios';
 import { PINK } from '@/constants/colors';
+import { fetchRank } from '@/untils/api';
 
 const options = {
   legend: {
@@ -68,20 +68,18 @@ export default {
       this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
     });
     if (this.bgmId) {
-      axios
-        .get(`${window.location.protocol}//api.netaba.re/rank/${this.bgmId}`)
-        .then(res => {
-          this.raw = res.data;
-          if (this.raw.length && this.chart) {
-            let ranks = this.raw.map(r => {
-              let y = r.rank;
-              let x = new Date(r.recordedAt);
-              return { x, y };
-            });
-            this.chart.data.datasets[0].data = ranks;
-            this.chart.update();
-          }
-        });
+      fetchRank(this.bgmId).then(res => {
+        this.raw = res.data;
+        if (this.raw.length && this.chart) {
+          let ranks = this.raw.map(r => {
+            let y = r.rank;
+            let x = new Date(r.recordedAt);
+            return { x, y };
+          });
+          this.chart.data.datasets[0].data = ranks;
+          this.chart.update();
+        }
+      });
     }
   },
   updated() {

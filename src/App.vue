@@ -12,6 +12,14 @@
 body {
   margin: 0;
 }
+
+.typekit-text {
+  font-family: 'source-han-serif-sc', serif;
+}
+
+.wf-source-han-serif-sc-n4-active .typekit-text {
+  visibility: visible !important;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
