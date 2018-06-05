@@ -12,7 +12,7 @@
             <div v-if="raw" class="subtitle typekit-text">看过</div>
             <div v-if="raw" class="score typekit-text">{{raw.total}}</div>
             <div v-if="raw" class="subtitle typekit-text">已评</div>
-            <div v-if="raw" class="score typekit-text"><span class="percent">%</span>{{((raw.total - raw.count[-1])/raw.total*100).toFixed(0)}}</div>
+            <div v-if="raw" class="score typekit-text">{{((raw.total - raw.count[-1])/raw.total*100).toFixed(0)}}<span class="percent">%</span></div>
             <div v-if="raw" class="subtitle typekit-text">均值</div>
             <div v-if="raw" class="score typekit-text">{{raw.avg}}</div>
             <div v-if="raw" class="subtitle typekit-text">中值</div>
