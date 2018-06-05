@@ -36,5 +36,6 @@ export default {
   align-items: flex-end;
   justify-content: flex-end;
   z-index: 100;
+    pointer-events: none;
 }
 </style>

@@ -20,6 +20,11 @@ export default new Router({
       component: User
     },
     {
+      path: '/profile/:id',
+      name: 'user',
+      component: User
+    },
+    {
       path: '*',
       name: 'notfound',
       component: NotFound

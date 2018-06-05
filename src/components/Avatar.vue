@@ -1,7 +1,7 @@
 <template>
     <div class="avatar">
-        <a v-bind:href="user.url" :alt="user.nickname" target="_blank">
-        <img :src="user.avatar.large" />
+        <a v-bind:href="user.url.replace('http:','https:')" :alt="user.nickname" target="_blank">
+        <img :src="user.avatar.large.replace('http:','https:')" />
         </a>
     </div>
 </template>
