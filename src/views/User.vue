@@ -1,7 +1,11 @@
 <template>
     <div class="wrapper">
-        <user-rating :bgm-user-id="$route.params.id" />
-        <div class="search">
+        <transition name="fade">
+            <overlay v-if="loading" text="读取中" float="true"></overlay>
+        </transition>
+        <user-rating :UIData="UIData" />
+        <div class="user-panel">
+            <user-stats :UIData="UIData" />
             <search font-size="2vh"/>
         </div>
     </div>
@@ -9,13 +13,64 @@
 
 <script>
 import UserRating from '@/components/UserRating';
+import UserStats from '@/components/UserStats';
 import Search from '@/components/Search';
+import Overlay from '@/components/Overlay';
+import { fetchUser } from '@/untils/api';
+
+let loadingTimer;
 
 export default {
   name: 'User',
+  props: ['id'],
   components: {
+    UserStats,
     UserRating,
-    Search
+    Search,
+    Overlay
+  },
+  data: function() {
+    return {
+      UIData: [],
+      loading: false
+    };
+  },
+  mounted: function() {
+    this._getData();
+  },
+  methods: {
+    _getData: function() {
+      if (this.id) {
+        loadingTimer = setTimeout(() => {
+          this.loading = true;
+        }, 300);
+        fetchUser(this.id).then(res => {
+          if (res.data['error']) {
+            this.$router.replace('/404');
+          } else {
+            this.UIData = res.data;
+            if (this.UIData['user']) {
+              let r = [];
+              for (let key in this.UIData.count) {
+                if (key !== '-1') {
+                  r.push({ x: key, y: this.UIData.count[key] });
+                }
+              }
+              console.log('setting UIData...');
+              this.UIData.data = r;
+              if (loadingTimer) clearTimeout(loadingTimer);
+              this.loading = false;
+            }
+          }
+        });
+      }
+    }
+  },
+  watch: {
+    id: function() {
+      console.log('route updated');
+      this._getData();
+    }
   }
 };
 </script>
@@ -24,17 +79,19 @@ export default {
 .wrapper {
   display: flex;
 }
-.search {
-  padding-bottom: 1vh;
-  padding-right: 1vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.user-panel {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  z-index: 100;
+  width: 20vw;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

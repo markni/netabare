@@ -17,11 +17,12 @@ export default new Router({
     {
       path: '/user/:id',
       name: 'user',
-      component: User
+      component: User,
+      props: true
     },
     {
       path: '/profile/:id',
-      name: 'user',
+      name: 'profile',
       component: User
     },
     {

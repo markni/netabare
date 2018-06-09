@@ -29,6 +29,7 @@ export default {
 
 <style scoped>
 .search {
+  padding-top: 37vh;
   position: fixed;
   top: 0;
   left: 0;
