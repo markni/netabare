@@ -23,7 +23,14 @@ export default new Router({
     {
       path: '/profile/:id',
       name: 'profile',
-      component: User
+      component: User,
+      props: true
+    },
+    {
+      path: '/subject/:id',
+      name: 'profile',
+      component: User,
+      props: true
     },
     {
       path: '*',

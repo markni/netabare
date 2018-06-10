@@ -1,13 +1,17 @@
 import axios from '@/untils/axios';
 
-const api_root = 'api.netaba.re';
+let api_root = `${window.location.protocol}//api.netaba.re`;
+if (
+  window.location.host.startsWith('192.168.0.14') ||
+  window.location.host.startsWith('localhost')
+) {
+  api_root = 'http://45.33.57.234:8888';
+}
 
 export const fetchRank = bgmId => {
-  return axios.get(`${window.location.protocol}//${api_root}/rank/${bgmId}`);
+  return axios.get(`${api_root}/rank/${bgmId}`);
 };
 
 export const fetchUser = bgmUserId => {
-  return axios.get(
-    `${window.location.protocol}//${api_root}/user/${bgmUserId}`
-  );
+  return axios.get(`${api_root}/user/${bgmUserId}`);
 };
