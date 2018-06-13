@@ -6,7 +6,7 @@
         <user-rating :UIData="UIData" />
         <div class="user-panel">
             <user-stats :UIData="UIData" />
-            <search font-size="2vh"/>
+            <user-search font-size="2vh"/>
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import UserRating from '@/components/UserRating';
 import UserStats from '@/components/UserStats';
-import Search from '@/components/Search';
+import UserSearch from '@/components/UserSearch';
 import Overlay from '@/components/Overlay';
 import { fetchUser } from '@/untils/api';
 
@@ -26,7 +26,7 @@ export default {
   components: {
     UserStats,
     UserRating,
-    Search,
+    UserSearch,
     Overlay
   },
   data: function() {

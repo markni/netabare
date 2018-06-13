@@ -35,20 +35,7 @@ const chartData = {
     {
       label: false,
       borderColor: PINK,
-
       fill: false,
-      backgroundColor: [
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C',
-        '#EF476F',
-        '#FFD166',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C'
-      ],
       data: []
     }
   ]
@@ -60,7 +47,22 @@ export default {
       chart: null
     };
   },
-  props: ['bgmId'],
+  methods: {
+    _refresh: function() {
+      if (this.chart && this.UIData) {
+        console.log('refreshing...', this.UIData);
+        this.chart.data.datasets[0].data = this.UIData;
+        this.chart.update();
+      }
+    }
+  },
+  watch: {
+    UIData: function() {
+      console.log('UIData updated');
+      this._refresh();
+    }
+  },
+  props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function() {
       const ctx = this.$refs.rank.getContext('2d');
@@ -68,7 +70,7 @@ export default {
     });
     if (this.bgmId) {
       fetchRank(this.bgmId).then(res => {
-        this.raw = res.data;
+        this.raw = res.data.history;
         if (this.raw.length && this.chart) {
           let ranks = this.raw.map(r => {
             let y = r.rank;
@@ -83,13 +85,14 @@ export default {
   },
   updated() {
     console.log('updated');
+    this._refresh();
   }
 };
 </script>
 
 <style scoped>
 .chart-container {
-  width: 100vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
 }
 </style>

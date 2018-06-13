@@ -1,44 +1,31 @@
 <template>
   <div class="home">
-    <div class="search">
-      <search />
-    </div>
-    <overlay />
-    <rank bgm-id="218711"></rank>
-    <score bgm-id="218711"></score>
+    <user-search />
+    <subject-search />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Search from '@/components/Search';
-import Rank from '@/components/Rank';
-import Score from '@/components/Score';
-import Overlay from '@/components/Overlay';
+import UserSearch from '@/components/UserSearch';
+import SubjectSearch from '@/components/SubjectSearch';
 
 export default {
   name: 'home',
   components: {
-    Search,
-    Rank,
-    Score,
-    Overlay
+    UserSearch,
+    SubjectSearch
   }
 };
 </script>
 
 <style scoped>
-.search {
-  padding-top: 37vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.home {
   display: flex;
-  /*align-items: center;*/
-  justify-content: center;
-
-  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 </style>

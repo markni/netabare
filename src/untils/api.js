@@ -9,7 +9,7 @@ if (
 }
 
 export const fetchRank = bgmId => {
-  return axios.get(`${api_root}/rank/${bgmId}`);
+  return axios.get(`${api_root}/archive/${bgmId}`);
 };
 
 export const fetchUser = bgmUserId => {

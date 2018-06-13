@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import NotFound from './views/NotFound.vue';
 import User from '@/views/User';
+import Subject from '@/views/Subject';
 
 Vue.use(Router);
 
@@ -28,8 +29,8 @@ export default new Router({
     },
     {
       path: '/subject/:id',
-      name: 'profile',
-      component: User,
+      name: 'subject',
+      component: Subject,
       props: true
     },
     {

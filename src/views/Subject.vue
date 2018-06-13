@@ -1,12 +1,198 @@
 <template>
-    <div></div>
+    <div class="container">
+        <!--<subject-stats :UIData="subjectData" />-->
+        <h1 class="typekit-text title">{{subjectData.name}}</h1>
+        <h2 class="typekit-text subtitle">{{subjectData.name_cn}}</h2>
+
+        <div class="score-chart">
+            <div class="typekit-text minititle">评分 <span class="delta" title="一周之内的变化">{{subjectData.deltaScore}}</span></div>
+            <div class="typekit-text em">{{subjectData.score}}</div>
+
+            <score :UIData="scoreData"></score>
+
+        </div>
+        <div class="rank-chart">
+            <div class="typekit-text minititle">排名 <span class="delta" title="一周之内的变化">{{subjectData.deltaRank}}</span></div>
+            <div class="typekit-text em">{{subjectData.rank}}</div>
+
+            <rank :UIData="rankData"></rank>
+        </div>
+        <transition name="fade">
+            <overlay v-if="loading" text="读取中" float="true"></overlay>
+        </transition>
+    </div>
 </template>
 
 <script>
+import _ from 'lodash';
+import { fetchRank } from '@/untils/api';
+import Overlay from '@/components/Overlay';
+import Rank from '@/components/Rank';
+import Score from '@/components/Score';
+import SubjectStats from '@/components/SubjectStats';
+let loadingTimer;
+
 export default {
-  name: 'Subject'
+  data: function() {
+    return {
+      loading: false,
+      scoreData: [],
+      rankData: [],
+      subjectData: {}
+    };
+  },
+  props: ['id'],
+  name: 'Subject',
+  components: {
+    Overlay,
+    Rank,
+    Score,
+    SubjectStats
+  },
+  mounted: function() {
+    this._getData();
+  },
+  watch: {
+    id: function() {
+      console.log('route updated');
+      this._getData();
+    }
+  },
+  methods: {
+    _getData: function() {
+      loadingTimer = setTimeout(() => {
+        this.loading = true;
+      }, 600);
+      if (this.id) {
+        fetchRank(this.id).then(res => {
+          console.log(res.data);
+          if (
+            res.data['error'] ||
+            res.data.length === 0 ||
+            res.data.history.length === 0
+          ) {
+            this.$router.replace('/404');
+          } else {
+            let data = res.data;
+            if (data.history) {
+              this.rankData = data.history.map(r => {
+                let y = r.rank;
+                let x = new Date(r.recordedAt);
+                return { x, y };
+              });
+              this.scoreData = data.history.map(r => {
+                let y = r.rating.score;
+                let x = new Date(r.recordedAt);
+                return { x, y };
+              });
+              console.log('setting UIData...');
+            }
+            if (data.subject) {
+              let { subject } = data;
+              this.subjectData = {
+                name: subject.name,
+                name_cn: subject.name_cn,
+                score: subject.rating.score,
+                rank: subject.rank
+              };
+              if (data.history.length >= 7) {
+                let current = _.first(data.history);
+                let before = _.nth(data.history, 6);
+                console.log(current, before);
+                this.subjectData.deltaScore = (
+                  current.rating.score - before.rating.score
+                ).toFixed(2);
+                if (this.subjectData.deltaScore >= 0)
+                  this.subjectData.deltaScore =
+                    '+' + this.subjectData.deltaScore;
+                this.subjectData.deltaRank = current.rank - before.rank;
+                if (this.subjectData.deltaRank >= 0)
+                  this.subjectData.deltaRank = '+' + this.subjectData.deltaRank;
+              }
+            }
+            if (loadingTimer) clearTimeout(loadingTimer);
+            this.loading = false;
+          }
+        });
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80vw;
+  margin: auto;
+  padding-top: 2vh;
+}
+.score-chart {
+  margin-left: -8vw;
+  height: 30vw;
+  margin-bottom: 5vh;
+}
+
+.rank-chart {
+  margin-right: -8vw;
+  height: 30vw;
+  margin-bottom: 5vh;
+  margin-top: 10vh;
+}
+.title {
+  font-size: 4vmax;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+.subtitle {
+  font-size: 2vmax;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+  padding-left: 5px;
+  text-align: left;
+}
+.score-chart > .minititle {
+  font-size: 1.2vmax;
+  line-height: 1.2;
+  text-align: right;
+  padding-right: 0.2vmax;
+}
+.rank-chart > .minititle {
+  font-size: 1.2vmax;
+  line-height: 1.2;
+  text-align: left;
+}
+.em {
+  font-weight: bold;
+  font-size: 3vmax;
+}
+.rank-chart > .em {
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 2vh;
+}
+.score-chart > .em {
+  text-align: right;
+  line-height: 1;
+  margin-bottom: 2vh;
+}
+.delta {
+  font-size: 1.1vmax;
+}
+.delta:hover {
+  text-decoration: underline;
+  cursor: help;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

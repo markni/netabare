@@ -9,6 +9,14 @@ import { BLUE } from '@/constants/colors';
 import { fetchRank } from '@/untils/api';
 
 const options = {
+  layout: {
+    padding: {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0
+    }
+  },
   legend: {
     display: false
   },
@@ -18,19 +26,15 @@ const options = {
       {
         type: 'time'
       }
+    ],
+    yAxes: [
+      {
+        ticks: {
+          display: true
+        }
+      }
     ]
   }
-};
-
-const chartData = {
-  datasets: [
-    {
-      label: false,
-      borderColor: BLUE,
-      fill: false,
-      data: []
-    }
-  ]
 };
 
 export default {
@@ -40,14 +44,40 @@ export default {
       raw: []
     };
   },
-  props: ['bgmId'],
+  watch: {
+    UIData: function() {
+      console.log('UIData updated');
+      this._refresh();
+    }
+  },
+  methods: {
+    _refresh: function() {
+      if (this.chart && this.UIData) {
+        console.log('refreshing...', this.UIData);
+        this.chart.data.datasets[0].data = this.UIData;
+        this.chart.update();
+      }
+    }
+  },
+  props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function() {
       const ctx = this.$refs.score.getContext('2d');
+      const chartData = {
+        datasets: [
+          {
+            label: false,
+            borderColor: BLUE,
+            backgroundColor: BLUE,
+            fill: false,
+            data: []
+          }
+        ]
+      };
       this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
       if (this.bgmId) {
         fetchRank(this.bgmId).then(res => {
-          this.raw = res.data;
+          this.raw = res.data.history;
           if (this.raw.length && this.chart) {
             let scores = this.raw.map(r => {
               let y = r.rating.score;
@@ -63,13 +93,15 @@ export default {
   },
   updated() {
     console.log('updated');
+    this._refresh();
   }
 };
 </script>
 
 <style scoped>
 .chart-container {
-  width: 100vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 </style>

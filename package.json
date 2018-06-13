@@ -1,6 +1,6 @@
 {
-  "name": "cli-test2",
-  "version": "0.1.0",
+  "name": "netabare",
+  "version": "0.1.1",
   "private": true,
   "main": "server.js",
   "scripts": {
