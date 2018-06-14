@@ -21,5 +21,8 @@ export default {
   border-radius: 50%;
   width: 8vh;
   height: 8vh;
+  box-sizing: border-box;
+}
+.avatar img:hover {
 }
 </style>

@@ -1,25 +1,28 @@
 <template>
-    <div class="container">
-        <!--<subject-stats :UIData="subjectData" />-->
+    <div>
+    <transition name="fade">
+    <div class="container" v-show="subjectData.name">
         <h1 class="typekit-text title">{{subjectData.name}}</h1>
         <h2 class="typekit-text subtitle">{{subjectData.name_cn}}</h2>
 
         <div class="score-chart">
-            <div class="typekit-text minititle">评分 <span class="delta" title="一周之内的变化">{{subjectData.deltaScore}}</span></div>
+            <div class="typekit-text minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="一周之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
             <div class="typekit-text em">{{subjectData.score}}</div>
 
             <score :UIData="scoreData"></score>
 
         </div>
         <div class="rank-chart">
-            <div class="typekit-text minititle">排名 <span class="delta" title="一周之内的变化">{{subjectData.deltaRank}}</span></div>
+            <div class="typekit-text minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="一周之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
             <div class="typekit-text em">{{subjectData.rank}}</div>
 
             <rank :UIData="rankData"></rank>
         </div>
-        <transition name="fade">
-            <overlay v-if="loading" text="读取中" float="true"></overlay>
-        </transition>
+    </div>
+    </transition>
+    <transition name="fade">
+        <overlay v-if="loading" text="读取中" float="true"></overlay>
+    </transition>
     </div>
 </template>
 
@@ -99,15 +102,23 @@ export default {
                 let current = _.first(data.history);
                 let before = _.nth(data.history, 6);
                 console.log(current, before);
-                this.subjectData.deltaScore = (
-                  current.rating.score - before.rating.score
-                ).toFixed(2);
+                this.subjectData.deltaScore =
+                  current.rating.score - before.rating.score;
                 if (this.subjectData.deltaScore >= 0)
-                  this.subjectData.deltaScore =
-                    '+' + this.subjectData.deltaScore;
+                  this.subjectData.deltaScoreStr =
+                    '▴' + this.subjectData.deltaScore.toFixed(2);
+                else {
+                  this.subjectData.deltaScoreStr =
+                    '▾' + Math.abs(this.subjectData.deltaScore.toFixed(2));
+                }
                 this.subjectData.deltaRank = current.rank - before.rank;
-                if (this.subjectData.deltaRank >= 0)
-                  this.subjectData.deltaRank = '+' + this.subjectData.deltaRank;
+                if (this.subjectData.deltaRank > 0)
+                  this.subjectData.deltaRankStr =
+                    '▾' + this.subjectData.deltaRank;
+                else {
+                  this.subjectData.deltaRankStr =
+                    '▴' + Math.abs(this.subjectData.deltaRank);
+                }
               }
             }
             if (loadingTimer) clearTimeout(loadingTimer);
@@ -170,6 +181,7 @@ export default {
 .em {
   font-weight: bold;
   font-size: 3vmax;
+  overflow: hidden;
 }
 .rank-chart > .em {
   text-align: left;
@@ -194,5 +206,11 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.pink {
+  color: #f2006e;
+}
+.blue {
+  color: #3194ff;
 }
 </style>

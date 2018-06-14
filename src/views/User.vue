@@ -3,10 +3,12 @@
         <transition name="fade">
             <overlay v-if="loading" text="读取中" float="true"></overlay>
         </transition>
-        <user-rating :UIData="UIData" />
+        <div class="user-rating">
+            <user-rating :UIData="UIData" />
+        </div>
         <div class="user-panel">
             <user-stats :UIData="UIData" />
-            <user-search font-size="2vh"/>
+            <user-search font-size="2vh" />
         </div>
     </div>
 </template>
@@ -78,13 +80,21 @@ export default {
 <style scoped>
 .wrapper {
   display: flex;
+  height: 100vh;
+  width: 100vw;
 }
 .user-panel {
   display: flex;
   width: 20vw;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 2vh;
+  padding-bottom: 26px;
+}
+.user-rating {
+  display: flex;
+  width: 80vw;
+  height: 95vh;
+  align-self: flex-end;
 }
 
 .fade-enter-active,

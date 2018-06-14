@@ -1,7 +1,12 @@
 <template>
-    <div class="info-card">
+    <transition name="fade-slidein-left">
+
+    <div class="info-card" v-if="UIData.user">
+
         <avatar :user="UIData.user" v-if="UIData.user" />
+
         <div v-if="UIData.user" class="nickname typekit-text">{{UIData.user.nickname}}</div>
+
         <div v-if="UIData.user" class="subtitle typekit-text">看过</div>
         <div v-if="UIData.user" class="score typekit-text">{{UIData.total}}</div>
         <div v-if="UIData.user" class="subtitle typekit-text">已评</div>
@@ -12,7 +17,9 @@
         <div v-if="UIData.user" class="score typekit-text">{{UIData.median}}</div>
         <div v-if="UIData.user" class="subtitle typekit-text">标准差</div>
         <div v-if="UIData.user" class="score typekit-text">{{UIData.stdev}}</div>
+
     </div>
+    </transition>
 
 </template>
 <script>
@@ -29,12 +36,14 @@ export default {
 <style scoped>
 .info-card {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 5vh;
-  padding-right: 5vw;
+  padding-right: 3vw;
   box-sizing: border-box;
   text-align: right;
+  transform: translateX(0px);
 }
 
 .nickname {
@@ -54,5 +63,13 @@ export default {
 
 .percent {
   font-size: 2vh;
+}
+.fade-slidein-left-enter-active,
+.fade-slidein-left-leave-active {
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-slidein-left-enter, .fade-slidein-left-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 </style>
