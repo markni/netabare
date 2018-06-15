@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" v-bind:class="{ready: !loading}">
       <h1 class="tk-myriad-pro title">netabare.</h1>
     <div class="inputs">
       <div class="typekit-text input-label">查看个人评分分布:</div>
@@ -23,6 +23,16 @@ import SubjectSearch from '@/components/SubjectSearch';
 
 export default {
   name: 'home',
+  data: function() {
+    return {
+      loading: true
+    };
+  },
+  mounted: function() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+  },
   components: {
     UserSearch,
     SubjectSearch
@@ -50,10 +60,10 @@ export default {
 }
 .title {
   font-size: 10vmax;
+  height: 12vmax;
 }
 .title {
   transition: opacity 2s, text-shadow 1s;
-  opacity: 0;
   position: relative;
   text-shadow: 0.5vmax 0 rgba(49, 148, 255, 0.3),
     -0.2vmax -0.5vmax rgba(242, 0, 110, 0.3);
@@ -64,16 +74,16 @@ export default {
   text-shadow: 0.3vmax 0 rgba(242, 0, 110, 0.4),
     -0.3vmax -0.4vmax rgba(49, 148, 255, 0.5);
 }
-.wf-loading .title {
-  opacity: 0;
-}
-.wf-active .title {
+
+.wf-active .home {
   opacity: 1;
 }
-.wf-inactive .title {
-  opacity: 1;
+.home.ready {
+  opacity: 1 !important;
 }
 .home {
+  opacity: 0;
+  transition: opacity 1s ease-out;
   padding-left: 10vw;
   display: flex;
   width: 100%;
