@@ -1,6 +1,6 @@
 <template>
     <form @submit="submit">
-        <input :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
+        <input class="typekit-text" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
     </form>
 </template>
 
@@ -27,14 +27,14 @@ input {
   width: 90%;
   background: none;
   font-size: 4vh;
-  line-height: 2;
+  line-height: 1;
   border: none;
   outline: none;
   border-bottom: 2px solid;
   border-color: #3194ff;
-  font-family: 'source-han-serif-sc', serif;
   color: #2c3e50;
   transition: border 0.5s;
+  opacity: 0.5;
 }
 input:focus {
   border-color: #f2006e;

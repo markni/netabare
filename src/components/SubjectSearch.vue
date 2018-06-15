@@ -1,6 +1,6 @@
 <template>
     <form @submit="submit">
-        <input :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmSubjectId" placeholder="anime id"/>
+        <input type="number" :style="{ fontSize: fontSize}" class="typekit-text" maxlength="7"  v-model="bgmSubjectId" placeholder="anime id"/>
     </form>
 </template>
 
@@ -27,14 +27,14 @@ input {
   width: 90%;
   background: none;
   font-size: 4vh;
-  line-height: 2;
+  line-height: 1;
   border: none;
   outline: none;
   border-bottom: 2px solid;
   border-color: #f2006e;
-  font-family: 'source-han-serif-sc', serif;
   color: #2c3e50;
   transition: border 0.5s;
+  opacity: 0.5;
 }
 input:focus {
   border-color: #3194ff;
