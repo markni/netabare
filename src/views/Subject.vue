@@ -78,13 +78,13 @@ export default {
           } else {
             let data = res.data;
             if (data.history) {
-              this.rankData = data.history.map(r => {
+              this.rankData = data.history.filter(r => !!r.rank).map(r => {
                 let y = r.rank;
                 let x = new Date(r.recordedAt);
                 return { x, y };
               });
-              this.scoreData = data.history.map(r => {
-                let y = r.rating.score;
+              this.scoreData = data.history.filter(r => !!r.score).map(r => {
+                let y = r.score;
                 let x = new Date(r.recordedAt);
                 return { x, y };
               });
@@ -95,15 +95,15 @@ export default {
               this.subjectData = {
                 name: subject.name,
                 name_cn: subject.name_cn,
-                score: subject.rating.score,
+                score: subject.score,
                 rank: subject.rank
               };
-              if (data.history.length >= 7) {
+              if (data.history.length >= 14) {
                 let current = _.first(data.history);
-                let before = _.nth(data.history, 6);
+                let before = _.nth(data.history, 13);
                 console.log(current, before);
                 this.subjectData.deltaScore =
-                  current.rating.score - before.rating.score;
+                  current.score - before.score;
                 if (this.subjectData.deltaScore >= 0)
                   this.subjectData.deltaScoreStr =
                     '▴' + this.subjectData.deltaScore.toFixed(2);

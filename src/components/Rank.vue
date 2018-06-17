@@ -72,7 +72,7 @@ export default {
       fetchRank(this.bgmId).then(res => {
         this.raw = res.data.history;
         if (this.raw.length && this.chart) {
-          let ranks = this.raw.map(r => {
+          let ranks = this.raw.filter(r => !!r.rank).map(r => {
             let y = r.rank;
             let x = new Date(r.recordedAt);
             return { x, y };
