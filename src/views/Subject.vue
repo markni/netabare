@@ -102,8 +102,7 @@ export default {
                 let current = _.first(data.history);
                 let before = _.nth(data.history, 13);
                 console.log(current, before);
-                this.subjectData.deltaScore =
-                  current.score - before.score;
+                this.subjectData.deltaScore = current.score - before.score;
                 if (this.subjectData.deltaScore >= 0)
                   this.subjectData.deltaScoreStr =
                     '▴' + this.subjectData.deltaScore.toFixed(2);
