@@ -17,7 +17,20 @@ const options = {
   scales: {
     xAxes: [
       {
-        type: 'time'
+        type: 'time',
+        time: {
+          displayFormats: {
+            // 'millisecond': ' DD',
+            // 'second': ' DD',
+            // 'minute': ' DD',
+            // 'hour': ' DD',
+            day: 'M-DD'
+            // 'week': ' DD',
+            // 'month': ' DD',
+            // 'quarter': ' DD',
+            // 'year': ' DD',
+          }
+        }
       }
     ],
     yAxes: [
