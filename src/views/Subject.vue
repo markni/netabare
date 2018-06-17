@@ -6,17 +6,22 @@
         <h2 class="typekit-text subtitle">{{subjectData.name_cn}}</h2>
 
         <div class="score-chart">
-            <div class="typekit-text minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="一周之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
+            <div class="typekit-text minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="2周之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
             <div class="typekit-text em">{{subjectData.score}}</div>
 
             <score :UIData="scoreData"></score>
 
         </div>
         <div class="rank-chart">
-            <div class="typekit-text minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="一周之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
+            <div class="typekit-text minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="2周之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
             <div class="typekit-text em">{{subjectData.rank}}</div>
 
             <rank :UIData="rankData"></rank>
+        </div>
+        <div class="collection-chart">
+            <div class="typekit-text minititle">在看 <span class="delta" :class="{pink: (subjectData.deltaWatching >=0), blue: subjectData.deltaWatching < 0}" title="2周之内的变化">{{subjectData.deltaWatchingStr}}</span></div>
+            <div class="typekit-text em">{{subjectData.watching}}</div>
+            <collection :UIData="collectionData"></collection>
         </div>
     </div>
     </transition>
@@ -32,6 +37,7 @@ import { fetchRank } from '@/untils/api';
 import Overlay from '@/components/Overlay';
 import Rank from '@/components/Rank';
 import Score from '@/components/Score';
+import Collection from '@/components/Collection';
 import SubjectStats from '@/components/SubjectStats';
 let loadingTimer;
 
@@ -41,7 +47,14 @@ export default {
       loading: false,
       scoreData: [],
       rankData: [],
-      subjectData: {}
+      subjectData: {},
+      collectionData: {
+        wish: [],
+        collect: [],
+        doing: [],
+        on_hold: [],
+        dropped: []
+      }
     };
   },
   props: ['id'],
@@ -50,7 +63,8 @@ export default {
     Overlay,
     Rank,
     Score,
-    SubjectStats
+    SubjectStats,
+    Collection
   },
   mounted: function() {
     this._getData();
@@ -88,6 +102,15 @@ export default {
                 let x = new Date(r.recordedAt);
                 return { x, y };
               });
+              data.history.forEach(h => {
+                if (h.collect) {
+                  for (let key in h.collect) {
+                    let y = h.collect[key];
+                    let x = new Date(h.recordedAt);
+                    this.collectionData[key].push({ x, y });
+                  }
+                }
+              });
               console.log('setting UIData...');
             }
             if (data.subject) {
@@ -95,8 +118,9 @@ export default {
               this.subjectData = {
                 name: subject.name,
                 name_cn: subject.name_cn,
-                score: subject.score,
-                rank: subject.rank
+                score: subject.rating.score,
+                rank: subject.rank,
+                watching: subject.collection.doing
               };
               if (data.history.length >= 14) {
                 let current = _.first(data.history);
@@ -117,6 +141,15 @@ export default {
                 else {
                   this.subjectData.deltaRankStr =
                     '▴' + Math.abs(this.subjectData.deltaRank);
+                }
+                this.subjectData.deltaWatching =
+                  current.collect.doing - before.collect.doing;
+                if (this.subjectData.deltaWatching > 0)
+                  this.subjectData.deltaWatchingStr =
+                    '▴' + this.subjectData.deltaWatching;
+                else {
+                  this.subjectData.deltaWatchingStr =
+                    '▾' + Math.abs(this.subjectData.deltaWatching);
                 }
               }
             }
@@ -151,6 +184,13 @@ export default {
   margin-bottom: 5vh;
   margin-top: 10vh;
 }
+.collection-chart {
+  margin-left: -8vw;
+
+  height: 30vw;
+  margin-bottom: 5vh;
+  margin-top: 10vh;
+}
 .title {
   font-size: 4vmax;
   line-height: 1.2;
@@ -166,31 +206,36 @@ export default {
   padding-left: 5px;
   text-align: left;
 }
-.score-chart > .minititle {
+.minititle {
   font-size: 1.2vmax;
   line-height: 1.2;
+}
+.score-chart > .minititle {
+  text-align: right;
+  padding-right: 0.2vmax;
+}
+.collection-chart > .minititle {
   text-align: right;
   padding-right: 0.2vmax;
 }
 .rank-chart > .minititle {
-  font-size: 1.2vmax;
-  line-height: 1.2;
   text-align: left;
 }
 .em {
   font-weight: bold;
   font-size: 3vmax;
   overflow: hidden;
+  line-height: 1;
+  margin-bottom: 2vh;
 }
 .rank-chart > .em {
   text-align: left;
-  line-height: 1;
-  margin-bottom: 2vh;
 }
 .score-chart > .em {
   text-align: right;
-  line-height: 1;
-  margin-bottom: 2vh;
+}
+.collection-chart > .em {
+  text-align: right;
 }
 .delta {
   font-size: 1.1vmax;
