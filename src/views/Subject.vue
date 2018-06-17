@@ -173,19 +173,19 @@ export default {
   padding-top: 2vh;
 }
 .score-chart {
-  margin-left: -8vw;
+  /*margin-left: -8vw;*/
   height: 30vw;
   margin-bottom: 5vh;
 }
 
 .rank-chart {
-  margin-right: -8vw;
+  /*margin-right: -8vw;*/
   height: 30vw;
   margin-bottom: 5vh;
   margin-top: 10vh;
 }
 .collection-chart {
-  margin-left: -8vw;
+  /*margin-left: -8vw;*/
 
   height: 30vw;
   margin-bottom: 5vh;
