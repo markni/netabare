@@ -13,9 +13,11 @@ const options = {
     intersect: false,
 
     callbacks: {
-      title: function(tooltipItems) {
+      title: function(tooltipItems, data) {
         //Return value for title
-        return moment(tooltipItems[0].xLabel).format('M月DD日');
+        return moment(data.datasets[0].data[tooltipItems[0].index].x).format(
+          'M月DD日'
+        );
       }
     }
   },
