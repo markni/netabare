@@ -51,7 +51,7 @@ const options = {
       {
         ticks: {
           display: false,
-          stepSize: 0.25
+          stepSize: 0.1
         }
       }
     ]
