@@ -4,9 +4,10 @@
     </div>
 </template>
 <script>
-import Chart from 'chart.js';
+import Chart from '@/utils/chartjs';
 import { BLUE } from '@/constants/colors';
-import { fetchRank } from '@/untils/api';
+import { fetchRank } from '@/utils/api';
+import moment from 'moment';
 
 const options = {
   layout: {
@@ -21,9 +22,12 @@ const options = {
     display: false
   },
   tooltips: {
+    intersect: false,
+
     callbacks: {
-      title: function() {
-        return '';
+      title: function(tooltipItems) {
+        //Return value for title
+        return moment(tooltipItems[0].xLabel).format('M月DD日');
       }
     }
   },
@@ -92,7 +96,11 @@ export default {
           }
         ]
       };
-      this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
+      this.chart = new Chart(ctx, {
+        type: 'LineWithLine',
+        data: chartData,
+        options
+      });
       if (this.bgmId) {
         fetchRank(this.bgmId).then(res => {
           this.raw = res.data.history;

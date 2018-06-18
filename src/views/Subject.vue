@@ -35,7 +35,7 @@
 
 <script>
 import _ from 'lodash';
-import { fetchRank } from '@/untils/api';
+import { fetchRank } from '@/utils/api';
 import Overlay from '@/components/Overlay';
 import Rank from '@/components/Rank';
 import Score from '@/components/Score';

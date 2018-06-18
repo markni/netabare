@@ -4,8 +4,9 @@
     </div>
 </template>
 <script>
-import Chart from 'chart.js';
+import Chart from '@/utils/chartjs';
 import { COLORS } from '@/constants/colors';
+import moment from 'moment';
 
 const options = {
   layout: {
@@ -22,9 +23,11 @@ const options = {
   },
   maintainAspectRatio: false,
   tooltips: {
+    intersect: false,
     callbacks: {
-      title: function() {
-        return '';
+      title: function(tooltipItems) {
+        //Return value for title
+        return moment(tooltipItems[0].xLabel).format('M月DD日');
       }
     }
   },
@@ -129,7 +132,11 @@ export default {
           }
         ]
       };
-      this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
+      this.chart = new Chart(ctx, {
+        type: 'LineWithLine',
+        data: chartData,
+        options
+      });
       // this._refresh();
     });
   },

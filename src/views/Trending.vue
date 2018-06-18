@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { fetchTrending } from '@/untils/api';
+import { fetchTrending } from '@/utils/api';
 import MiniScore from '@/components/MiniScore';
 import Back from '@/components/Back';
 import { PINK } from '@/constants/colors';

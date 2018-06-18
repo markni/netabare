@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import Chart from 'chart.js';
+import Chart from '@/utils/chartjs';
 import Overlay from '@/components/Overlay';
 import Avatar from '@/components/Avatar';
 
@@ -13,6 +13,9 @@ const options = {
     display: false
   },
   maintainAspectRatio: false,
+  tooltip: {
+    intersect: false
+  },
   scales: {
     xAxes: [
       {

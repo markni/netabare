@@ -1,4 +1,4 @@
-import axios from '@/untils/axios';
+import axios from '@/utils/axios';
 
 let api_root = `${window.location.protocol}//api.netaba.re`;
 if (
