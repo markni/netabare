@@ -5,9 +5,10 @@
     </div>
 </template>
 <script>
-import Chart from 'chart.js';
+import Chart from '@/utils/chartjs';
 import { PINK } from '@/constants/colors';
-import { fetchRank } from '@/untils/api';
+import { fetchRank } from '@/utils/api';
+import moment from 'moment';
 
 const options = {
   legend: {
@@ -15,9 +16,12 @@ const options = {
   },
   maintainAspectRatio: false,
   tooltips: {
+    intersect: false,
+
     callbacks: {
-      title: function() {
-        return '';
+      title: function(tooltipItems) {
+        //Return value for title
+        return moment(tooltipItems[0].xLabel).format('M月DD日');
       }
     }
   },
@@ -84,7 +88,11 @@ export default {
   mounted() {
     this.$nextTick(function() {
       const ctx = this.$refs.rank.getContext('2d');
-      this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
+      this.chart = new Chart(ctx, {
+        type: 'LineWithLine',
+        data: chartData,
+        options
+      });
     });
     if (this.bgmId) {
       fetchRank(this.bgmId).then(res => {

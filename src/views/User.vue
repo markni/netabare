@@ -18,7 +18,7 @@ import UserRating from '@/components/UserRating';
 import UserStats from '@/components/UserStats';
 import UserSearch from '@/components/UserSearch';
 import Overlay from '@/components/Overlay';
-import { fetchUser } from '@/untils/api';
+import { fetchUser } from '@/utils/api';
 
 let loadingTimer;
 

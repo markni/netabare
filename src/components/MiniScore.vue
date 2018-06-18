@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import Chart from 'chart.js';
+import Chart from '@/utils/chartjs';
 import { BLUE } from '@/constants/colors';
 
 const options = {
