@@ -15,6 +15,8 @@ const options = {
     display: false
   },
   maintainAspectRatio: false,
+  elements: { point: { radius: 0 } },
+
   tooltips: {
     intersect: false,
 
