@@ -63,7 +63,6 @@ export default {
   methods: {
     _refresh: function() {
       if (this.chart && this.UIData) {
-        console.log('refreshing...', this.UIData);
         this.chart.data.datasets[0].data = this.UIData;
         this.chart.update();
       }
@@ -71,7 +70,6 @@ export default {
   },
   watch: {
     UIData: function() {
-      console.log('UIData updated');
       this._refresh();
     }
   },
@@ -97,7 +95,6 @@ export default {
     }
   },
   updated() {
-    console.log('updated');
     this._refresh();
   }
 };

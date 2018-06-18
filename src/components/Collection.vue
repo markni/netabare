@@ -60,7 +60,6 @@ export default {
   watch: {
     UIData: {
       handler: function() {
-        console.log('changed');
         this._refresh();
       },
       deep: true
@@ -68,26 +67,20 @@ export default {
   },
   methods: {
     _refresh: function() {
-      console.log('refreshing.??..', this.UIData);
-
       if (this.chart && this.UIData) {
-        console.log('refreshing...', this.UIData);
         this.chart.data.datasets[0].data = this.UIData.dropped || 0;
         this.chart.data.datasets[1].data = this.UIData.wish || 0;
         this.chart.data.datasets[2].data = this.UIData.on_hold || 0;
         this.chart.data.datasets[3].data = this.UIData.collect || 0;
         this.chart.data.datasets[4].data = this.UIData.doing || 0;
-        console.log('update', this.chart.data);
+
         this.chart.update();
       }
     }
   },
   props: ['UIData'],
   mounted() {
-    console.log('mounted');
     this.$nextTick(function() {
-      console.log('mounted2');
-
       const ctx = this.$refs.collection.getContext('2d');
       const chartData = {
         datasets: [
@@ -133,7 +126,6 @@ export default {
     });
   },
   updated() {
-    console.log('updated');
     this._refresh();
   }
 };

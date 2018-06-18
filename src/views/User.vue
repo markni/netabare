@@ -58,7 +58,7 @@ export default {
                   r.push({ x: key, y: this.UIData.count[key] });
                 }
               }
-              console.log('setting UIData...');
+
               this.UIData.data = r;
               if (loadingTimer) clearTimeout(loadingTimer);
               this.loading = false;
@@ -70,7 +70,6 @@ export default {
   },
   watch: {
     id: function() {
-      console.log('route updated');
       this._getData();
     }
   }

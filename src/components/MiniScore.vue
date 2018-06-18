@@ -64,7 +64,6 @@ export default {
   watch: {
     UIData: {
       handler: function() {
-        console.log('changed');
         this._refresh();
       },
       deep: true
@@ -72,9 +71,7 @@ export default {
   },
   methods: {
     _refresh: function() {
-      console.log('???');
       if (this.chart && this.UIData) {
-        console.log('!!!refreshing...', this.UIData);
         // this.chart.data.datasets[0].data = this.UIData;
         let data = [];
         this.UIData.forEach(u => {
@@ -87,10 +84,7 @@ export default {
   },
   props: ['UIData', 'color'],
   mounted() {
-    console.log('?', this.UIData);
     this.$nextTick(function() {
-      console.log('!?', this.UIData);
-
       const ctx = this.$refs.score.getContext('2d');
       const chartData = {
         datasets: [
@@ -107,7 +101,6 @@ export default {
     });
   },
   updated() {
-    console.log('updated');
     this._refresh();
   }
 };

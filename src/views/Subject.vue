@@ -76,7 +76,6 @@ export default {
   },
   watch: {
     id: function() {
-      console.log('route updated');
       this._getData();
     }
   },
@@ -87,7 +86,6 @@ export default {
       }, 600);
       if (this.id) {
         fetchRank(this.id).then(res => {
-          console.log(res.data);
           if (
             res.data['error'] ||
             res.data.length === 0 ||
@@ -116,7 +114,6 @@ export default {
                   }
                 }
               });
-              console.log('setting UIData...');
             }
             if (data.subject) {
               let { subject } = data;
@@ -130,7 +127,7 @@ export default {
               if (data.history.length >= 30) {
                 let current = _.first(data.history);
                 let before = _.nth(data.history, 29);
-                console.log(current, before);
+
                 this.subjectData.deltaScore = current.score - before.score;
                 if (this.subjectData.deltaScore >= 0)
                   this.subjectData.deltaScoreStr =

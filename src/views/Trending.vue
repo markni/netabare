@@ -60,7 +60,6 @@ export default {
         this.loading = true;
       }, 300);
       fetchTrending().then(res => {
-        console.log(res.data);
         if (res.data['error'] || !res.data.up || !res.data.up.length) {
           this.$router.replace('/404');
         } else {
