@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import NotFound from './views/NotFound.vue';
 import User from '@/views/User';
 import Subject from '@/views/Subject';
+import Trending from '@/views/Trending';
 
 Vue.use(Router);
 
@@ -32,6 +33,11 @@ export default new Router({
       name: 'subject',
       component: Subject,
       props: true
+    },
+    {
+      path: '/trending',
+      name: 'trending',
+      component: Trending
     },
     {
       path: '*',

@@ -15,3 +15,7 @@ export const fetchRank = bgmId => {
 export const fetchUser = bgmUserId => {
   return axios.get(`${api_root}/user/${bgmUserId}`);
 };
+
+export const fetchTrending = () => {
+  return axios.get(`${api_root}/trending`);
+};

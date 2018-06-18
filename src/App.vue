@@ -45,4 +45,18 @@ input[type='number']::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+a:active {
+  color: #2c3e50;
+}
+
+a:visited {
+  color: #2c3e50;
+}
+a:hover {
+  color: #3194ff;
+}
 </style>

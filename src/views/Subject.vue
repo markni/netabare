@@ -2,32 +2,34 @@
     <div>
     <transition name="fade">
     <div class="container" v-show="subjectData.name">
-        <h1 class="typekit-text title">{{subjectData.name}}</h1>
+        <h1 class="typekit-text title"><a target="_blank" :href="'https://bgm.tv/subject/' + id ">{{subjectData.name}}</a></h1>
         <h2 class="typekit-text subtitle">{{subjectData.name_cn}}</h2>
 
         <div class="score-chart">
-            <div class="typekit-text minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="2周之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
+            <div class="typekit-text minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="30天之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
             <div class="typekit-text em">{{subjectData.score}}</div>
 
             <score :UIData="scoreData"></score>
 
         </div>
         <div class="rank-chart">
-            <div class="typekit-text minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="2周之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
+            <div class="typekit-text minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="30天之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
             <div class="typekit-text em">{{subjectData.rank}}</div>
 
             <rank :UIData="rankData"></rank>
         </div>
         <div class="collection-chart">
-            <div class="typekit-text minititle">在看 <span class="delta" :class="{pink: (subjectData.deltaWatching >=0), blue: subjectData.deltaWatching < 0}" title="2周之内的变化">{{subjectData.deltaWatchingStr}}</span></div>
+            <div class="typekit-text minititle">在看 <span v-if="subjectData.deltaWatching" class="delta" :class="{pink: (subjectData.deltaWatching >=0), blue: subjectData.deltaWatching < 0}" title="30天之内的变化">{{subjectData.deltaWatchingStr}}</span></div>
             <div class="typekit-text em">{{subjectData.watching}}</div>
             <collection :UIData="collectionData"></collection>
         </div>
     </div>
+
     </transition>
     <transition name="fade">
         <overlay v-if="loading" text="读取中" float="true"></overlay>
     </transition>
+    <back  class="typekit-text" v-if="subjectData.name && !loading" />
     </div>
 </template>
 
@@ -39,6 +41,8 @@ import Rank from '@/components/Rank';
 import Score from '@/components/Score';
 import Collection from '@/components/Collection';
 import SubjectStats from '@/components/SubjectStats';
+import Back from '@/components/Back';
+
 let loadingTimer;
 
 export default {
@@ -64,7 +68,8 @@ export default {
     Rank,
     Score,
     SubjectStats,
-    Collection
+    Collection,
+    Back
   },
   mounted: function() {
     this._getData();
@@ -122,9 +127,9 @@ export default {
                 rank: subject.rank,
                 watching: subject.collection.doing
               };
-              if (data.history.length >= 14) {
+              if (data.history.length >= 30) {
                 let current = _.first(data.history);
-                let before = _.nth(data.history, 13);
+                let before = _.nth(data.history, 29);
                 console.log(current, before);
                 this.subjectData.deltaScore = current.score - before.score;
                 if (this.subjectData.deltaScore >= 0)

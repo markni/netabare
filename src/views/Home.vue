@@ -6,7 +6,7 @@
       <div class="input-box">
         <user-search font-size="1vmax"/>
       </div>
-      <div class="typekit-text input-label">查看动画评分趋势:</div>
+      <div class="typekit-text input-label">查看动画<router-link class="link" to="/trending">评分趋势</router-link>:</div>
       <div class="input-box">
         <subject-search font-size="1vmax" />
       </div>
@@ -47,6 +47,9 @@ export default {
   width: 60vw;
   justify-content: flex-start;
   padding-left: 5px;
+}
+.link {
+  border-bottom: 1px dashed #2c3e50;
 }
 .inputs > div {
   margin-right: 1vmax;
