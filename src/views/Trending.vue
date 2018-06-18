@@ -2,7 +2,7 @@
     <div class="container">
         <div v-show="up.length">
         <h2>评分跌幅榜</h2>
-        <h3>30天内评分下降最多的条目</h3>
+        <h3>30天内评分下降最多的条目 (最后更新：{{lastUpdate}})</h3>
             <div class="row" v-for="(item,index) in down" :key="item.bgmId">
                 <div class="index">{{index+1}}.</div>
                 <div class="title"><router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.subject.name_cn || item.subject.name}}</router-link></div>
@@ -13,7 +13,7 @@
                 <div class="delta blue">▾{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <h2>评分涨幅榜</h2>
-        <h3>30天内评分上升最多的条目, 是时候吹一波了</h3>
+        <h3>30天内评分上升最多的条目, 是时候吹一波了 (最后更新：{{lastUpdate}})</h3>
             <div class="row" v-for="(item,index) in up" :key="item.bgmId">
                 <div class="index">{{index+1}}.</div>
                 <div class="title"><router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.subject.name_cn || item.subject.name}}</router-link></div>
@@ -37,6 +37,7 @@ import MiniScore from '@/components/MiniScore';
 import Back from '@/components/Back';
 import { PINK } from '@/constants/colors';
 import Overlay from '@/components/Overlay';
+import moment from 'moment';
 
 let loadingTimer;
 
@@ -48,7 +49,8 @@ export default {
       up: [],
       down: [],
       loading: false,
-      pink: PINK
+      pink: PINK,
+      lastUpdate: null
     };
   },
   mounted: function() {
@@ -66,6 +68,11 @@ export default {
           let data = res.data;
           this.up = data.up;
           this.down = data.down;
+          if (data.up.length && data.up[0].history.length) {
+            this.lastUpdate = moment(data.up[0].history[0].recordedAt).format(
+              'YYYY-MM-DD'
+            );
+          }
         }
         if (loadingTimer) clearTimeout(loadingTimer);
         this.loading = false;
