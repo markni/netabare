@@ -10,7 +10,7 @@
                     <mini-score :UIData="item.history" />
                 </div>
                 <div class="score">{{item.subject.raw.rating.score}}</div>
-                <div class="delta">▾{{Math.abs(item.score).toFixed(2)}}</div>
+                <div class="delta blue">▾{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <h2>评分涨幅榜</h2>
         <h3>30天内评分上升最多的条目, 是时候吹一波了</h3>
@@ -21,7 +21,7 @@
                     <mini-score :color="pink" :UIData="item.history" />
                 </div>
                 <div class="score">{{item.subject.raw.rating.score}}</div>
-                <div class="delta">▴{{Math.abs(item.score).toFixed(2)}}</div>
+                <div class="delta pink">▴{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <back />
         </div>
@@ -139,7 +139,12 @@ table {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-
+.pink {
+  color: #f2006e;
+}
+.blue {
+  color: #3194ff;
+}
 @media only screen and (max-width: 900px) {
   .row {
     align-items: flex-start;

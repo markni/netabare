@@ -20,6 +20,13 @@ const options = {
   legend: {
     display: false
   },
+  tooltips: {
+    callbacks: {
+      title: function() {
+        return '';
+      }
+    }
+  },
   maintainAspectRatio: false,
   scales: {
     xAxes: [

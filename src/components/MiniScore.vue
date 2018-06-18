@@ -8,6 +8,9 @@ import Chart from 'chart.js';
 import { BLUE } from '@/constants/colors';
 
 const options = {
+  tooltips: {
+    enabled: false
+  },
   layout: {
     padding: {
       left: 0,
@@ -16,6 +19,7 @@ const options = {
       bottom: 0
     }
   },
+
   elements: { point: { radius: 0 } },
   legend: {
     display: false

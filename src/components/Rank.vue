@@ -14,6 +14,13 @@ const options = {
     display: false
   },
   maintainAspectRatio: false,
+  tooltips: {
+    callbacks: {
+      title: function() {
+        return '';
+      }
+    }
+  },
   scales: {
     xAxes: [
       {

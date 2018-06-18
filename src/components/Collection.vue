@@ -21,6 +21,13 @@ const options = {
     position: 'bottom'
   },
   maintainAspectRatio: false,
+  tooltips: {
+    callbacks: {
+      title: function() {
+        return '';
+      }
+    }
+  },
   scales: {
     xAxes: [
       {
@@ -57,6 +64,7 @@ export default {
       raw: []
     };
   },
+
   watch: {
     UIData: {
       handler: function() {
