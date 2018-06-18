@@ -6,10 +6,18 @@
 <script>
 import Chart from '@/utils/chartjs';
 import { BLUE } from '@/constants/colors';
+import moment from 'moment';
 
 const options = {
   tooltips: {
-    enabled: false
+    intersect: false,
+
+    callbacks: {
+      title: function(tooltipItems) {
+        //Return value for title
+        return moment(tooltipItems[0].xLabel).format('M月DD日');
+      }
+    }
   },
   layout: {
     padding: {
@@ -100,7 +108,11 @@ export default {
           }
         ]
       };
-      this.chart = new Chart(ctx, { type: 'line', data: chartData, options });
+      this.chart = new Chart(ctx, {
+        type: 'LineWithLine',
+        data: chartData,
+        options
+      });
       if (this.UIData) this._refresh();
     });
   },

@@ -18,6 +18,8 @@ const options = {
       bottom: 0
     }
   },
+  elements: { point: { radius: 0 } },
+
   legend: {
     display: false
   },
