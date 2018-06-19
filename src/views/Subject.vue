@@ -100,21 +100,29 @@ export default {
             let data = res.data;
             if (data.history) {
               this.rankData = {
-                history: data.history.filter(r => !!r.rank).map(r => {
-                  let y = r.rank;
-                  let x = moment(r.recordedAt).valueOf();
-                  return { x, y };
-                }),
+                history: data.history
+                  .filter(r => !!r.rank)
+                  .map(r => {
+                    let y = r.rank;
+                    let x = moment(r.recordedAt).valueOf();
+                    return { x, y };
+                  })
+                  .reverse(),
                 meta: data.subject
               };
               this.scoreData = {
-                history: data.history.filter(r => !!r.score).map(r => {
-                  let y = r.score;
-                  let x = moment(r.recordedAt).valueOf();
-                  return { x, y };
-                }),
+                history: data.history
+                  .filter(r => !!r.score)
+                  .map(r => {
+                    let y = r.score;
+                    let x = moment(r.recordedAt).valueOf();
+                    return { x, y };
+                  })
+                  .reverse(),
                 meta: data.subject
               };
+              this.scoreData.one = [];
+              this.scoreData.ten = [];
               data.history.forEach(h => {
                 if (h.collect) {
                   for (let key in h.collect) {
@@ -123,7 +131,16 @@ export default {
                     this.collectionData['history'][key].push({ x, y });
                   }
                 }
+                if (h.rating && h.rating.count) {
+                  let ten = h.rating.count[10] || 0;
+                  let one = h.rating.count[1] || 0;
+                  let x = moment(h.recordedAt).valueOf();
+                  this.scoreData.one.push({ x, y: one });
+                  this.scoreData.ten.push({ x, y: ten });
+                }
               });
+              this.scoreData.one.reverse();
+              this.scoreData.ten.reverse();
               for (let key in this.collectionData['history']) {
                 this.collectionData['history'][key] = this.collectionData[
                   'history'

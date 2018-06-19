@@ -91,6 +91,11 @@ export default {
   props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function() {
+      Highcharts.setOptions({
+        lang: {
+          thousandsSep: ''
+        }
+      });
       this.chart = Highcharts.chart(this.$refs.container, {
         title: {
           text: '',
@@ -177,7 +182,10 @@ export default {
             data: []
           }
         ],
-        colors: COLORS2
+        colors: COLORS2,
+        lang: {
+          thousandsSep: ''
+        }
       });
     });
 

@@ -29,7 +29,7 @@ export default {
       if (this.chart && this.UIData && this.UIData.history) {
         this.chart.series[0].update(
           {
-            data: this.UIData.history.reverse()
+            data: this.UIData.history
           },
           true
         );
@@ -65,6 +65,11 @@ export default {
   props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function() {
+      Highcharts.setOptions({
+        lang: {
+          thousandsSep: ''
+        }
+      });
       this.chart = Highcharts.chart(this.$refs.container, {
         title: {
           text: '',

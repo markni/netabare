@@ -27,9 +27,22 @@ export default {
   methods: {
     _refresh: function() {
       if (this.chart && this.UIData && this.UIData.history) {
+        // console.log(JSON.stringify(this.UIData.one, null, '  '));
+        this.chart.series[1].update(
+          {
+            data: this.UIData.one
+          },
+          false
+        );
+        this.chart.series[2].update(
+          {
+            data: this.UIData.ten
+          },
+          false
+        );
         this.chart.series[0].update(
           {
-            data: this.UIData.history.reverse()
+            data: this.UIData.history
           },
           true
         );
@@ -65,6 +78,11 @@ export default {
   props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function() {
+      Highcharts.setOptions({
+        lang: {
+          thousandsSep: ''
+        }
+      });
       this.chart = Highcharts.chart(this.$refs.container, {
         title: {
           text: '',
@@ -90,14 +108,25 @@ export default {
             }
           }
         },
-        yAxis: {
-          title: {
-            enabled: false
+        yAxis: [
+          {
+            title: {
+              enabled: false
+            },
+            labels: {
+              format: '{value:.2f}'
+            }
           },
-          labels: {
-            format: '{value:.2f}'
+          {
+            title: {
+              enabled: false
+            },
+            labels: {
+              format: '{value:.0f}'
+            },
+            opposite: true
           }
-        },
+        ],
         xAxis: {
           type: 'datetime',
           dateTimeLabelFormats: {
@@ -127,7 +156,24 @@ export default {
           {
             type: 'spline',
             name: '评分',
+            yAxis: 0,
             data: []
+          },
+          {
+            type: 'spline',
+            name: '1分',
+            yAxis: 1,
+            data: [],
+            color: 'rgba(0,0,0, 0.1)',
+            dashStyle: 'dot'
+          },
+          {
+            type: 'spline',
+            name: '10分',
+            yAxis: 1,
+            data: [],
+            dashStyle: 'longdashdot',
+            color: 'rgba(0,0,0, 0.1)'
           }
         ],
         colors: COLORS,
