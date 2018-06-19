@@ -1,6 +1,17 @@
 <template>
     <div class="container">
         <div v-show="up.length">
+        <h2>评分涨幅榜</h2>
+        <h3>30天内评分上升最多的条目, 是时候吹一波了 (最后更新：{{lastUpdate}})</h3>
+        <div class="row" v-for="(item,index) in up" :key="item.bgmId">
+            <div class="index">{{index+1}}.</div>
+            <div class="title"><router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.subject.name_cn || item.subject.name}}</router-link></div>
+            <div class="chart-cell">
+                <mini-score :color="pink" :UIData="item.history" />
+            </div>
+            <div class="score">{{item.history[0].score}}</div>
+            <div class="delta pink">▴{{Math.abs(item.score).toFixed(2)}}</div>
+        </div>
         <h2>评分跌幅榜</h2>
         <h3>30天内评分下降最多的条目 (最后更新：{{lastUpdate}})</h3>
             <div class="row" v-for="(item,index) in down" :key="item.bgmId">
@@ -11,17 +22,6 @@
                 </div>
                 <div class="score">{{item.history[0].score}}</div>
                 <div class="delta blue">▾{{Math.abs(item.score).toFixed(2)}}</div>
-            </div>
-        <h2>评分涨幅榜</h2>
-        <h3>30天内评分上升最多的条目, 是时候吹一波了 (最后更新：{{lastUpdate}})</h3>
-            <div class="row" v-for="(item,index) in up" :key="item.bgmId">
-                <div class="index">{{index+1}}.</div>
-                <div class="title"><router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.subject.name_cn || item.subject.name}}</router-link></div>
-                <div class="chart-cell">
-                    <mini-score :color="pink" :UIData="item.history" />
-                </div>
-                <div class="score">{{item.history[0].score}}</div>
-                <div class="delta pink">▴{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <h2>热门条目趋势观察</h2>
         <h3>30天内收藏变化最多的条目 (最后更新：{{lastUpdate}})</h3>
