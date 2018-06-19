@@ -64,7 +64,7 @@
 
 <script>
 import { fetchTrending } from '@/utils/api';
-import MiniScore from '@/components/MiniScore';
+import MiniScore from '@/components/MiniScoreH';
 import Back from '@/components/Back';
 import { PINK } from '@/constants/colors';
 import Overlay from '@/components/Overlay';
