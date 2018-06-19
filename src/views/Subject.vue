@@ -37,7 +37,7 @@
 import _ from 'lodash';
 import { fetchRank } from '@/utils/api';
 import Overlay from '@/components/Overlay';
-import Rank from '@/components/Rank';
+import Rank from '@/components/RankH';
 import Score from '@/components/ScoreH';
 import Collection from '@/components/Collection';
 import SubjectStats from '@/components/SubjectStats';
@@ -96,11 +96,14 @@ export default {
           } else {
             let data = res.data;
             if (data.history) {
-              this.rankData = data.history.filter(r => !!r.rank).map(r => {
-                let y = r.rank;
-                let x = new Date(r.recordedAt);
-                return { x, y };
-              });
+              this.rankData = {
+                history: data.history.filter(r => !!r.rank).map(r => {
+                  let y = r.rank;
+                  let x = moment(r.recordedAt).valueOf();
+                  return { x, y };
+                }),
+                meta: data.subject
+              };
               this.scoreData = {
                 history: data.history.filter(r => !!r.score).map(r => {
                   let y = r.score;
