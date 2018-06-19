@@ -59,4 +59,8 @@ a:visited {
 a:hover {
   color: #3194ff;
 }
+.highcharts-plot-line-label {
+  font-family: 'source-han-serif-sc', serif;
+  opacity: 0.7;
+}
 </style>

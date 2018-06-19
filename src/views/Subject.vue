@@ -38,10 +38,11 @@ import _ from 'lodash';
 import { fetchRank } from '@/utils/api';
 import Overlay from '@/components/Overlay';
 import Rank from '@/components/Rank';
-import Score from '@/components/Score';
+import Score from '@/components/ScoreH';
 import Collection from '@/components/Collection';
 import SubjectStats from '@/components/SubjectStats';
 import Back from '@/components/Back';
+import moment from 'moment';
 
 let loadingTimer;
 
@@ -100,11 +101,14 @@ export default {
                 let x = new Date(r.recordedAt);
                 return { x, y };
               });
-              this.scoreData = data.history.filter(r => !!r.score).map(r => {
-                let y = r.score;
-                let x = new Date(r.recordedAt);
-                return { x, y };
-              });
+              this.scoreData = {
+                history: data.history.filter(r => !!r.score).map(r => {
+                  let y = r.score;
+                  let x = moment(r.recordedAt).valueOf();
+                  return { x, y };
+                }),
+                meta: data.subject
+              };
               data.history.forEach(h => {
                 if (h.collect) {
                   for (let key in h.collect) {

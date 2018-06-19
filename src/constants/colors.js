@@ -12,3 +12,4 @@ export const COLORS = [
   '#DC107E',
   '#F2006E'
 ];
+export const GRAY = '#b9b9b9';

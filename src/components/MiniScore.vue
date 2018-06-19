@@ -92,7 +92,6 @@ export default {
           10,
           _.round(max + 0.1, 1)
         );
-        console.log(min, max);
         this.chart.update();
       }
     }
