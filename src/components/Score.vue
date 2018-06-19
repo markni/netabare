@@ -120,6 +120,8 @@ export default {
         });
       }
     });
+    if (this.UIData && this.UIData.meta && this.UIData.meta.name)
+      this._refresh();
   },
   updated() {
     this._refresh();
