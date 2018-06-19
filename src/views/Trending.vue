@@ -9,7 +9,7 @@
                 <div class="chart-cell">
                     <mini-score :UIData="item.history" />
                 </div>
-                <div class="score">{{item.subject.raw.rating.score}}</div>
+                <div class="score">{{item.history[0].score}}</div>
                 <div class="delta blue">▾{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <h2>评分涨幅榜</h2>
@@ -20,7 +20,7 @@
                 <div class="chart-cell">
                     <mini-score :color="pink" :UIData="item.history" />
                 </div>
-                <div class="score">{{item.subject.raw.rating.score}}</div>
+                <div class="score">{{item.history[0].score}}</div>
                 <div class="delta pink">▴{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
         <back />

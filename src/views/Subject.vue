@@ -120,9 +120,9 @@ export default {
               this.subjectData = {
                 name: subject.name,
                 name_cn: subject.name_cn,
-                score: subject.rating.score,
-                rank: subject.rank,
-                watching: subject.collection.doing
+                score: data.history[0].score,
+                rank: data.history[0].rank,
+                watching: data.history[0].collect.doing
               };
               if (data.history.length >= 30) {
                 let current = _.first(data.history);
