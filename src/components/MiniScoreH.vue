@@ -108,7 +108,8 @@ export default {
             },
             labels: {
               enabled: false
-            }
+            },
+            tickInterval: 0.1
           }
         ],
         xAxis: {
