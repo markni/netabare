@@ -147,10 +147,15 @@ export default {
           enabled: false
         },
         legend: {
-          layout: 'vertical',
+          // layout: 'vertical',
           align: 'right',
-          verticalAlign: 'middle',
-          enabled: false
+          verticalAlign: 'bottom',
+          itemStyle: {
+            color: '#2c3e50',
+            fontWeight: 'normal',
+            fontSize: '1vw',
+            fontFamily: `'source-han-serif-sc', serif`
+          }
         },
         credits: {
           enabled: false
