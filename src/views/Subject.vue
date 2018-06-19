@@ -39,7 +39,7 @@ import { fetchRank } from '@/utils/api';
 import Overlay from '@/components/Overlay';
 import Rank from '@/components/RankH';
 import Score from '@/components/ScoreH';
-import Collection from '@/components/Collection';
+import Collection from '@/components/CollectionH';
 import SubjectStats from '@/components/SubjectStats';
 import Back from '@/components/Back';
 import moment from 'moment';
@@ -54,11 +54,14 @@ export default {
       rankData: [],
       subjectData: {},
       collectionData: {
-        wish: [],
-        collect: [],
-        doing: [],
-        on_hold: [],
-        dropped: []
+        history: {
+          wish: [],
+          collect: [],
+          doing: [],
+          on_hold: [],
+          dropped: []
+        },
+        meta: {}
       }
     };
   },
@@ -116,11 +119,17 @@ export default {
                 if (h.collect) {
                   for (let key in h.collect) {
                     let y = h.collect[key];
-                    let x = new Date(h.recordedAt);
-                    this.collectionData[key].push({ x, y });
+                    let x = moment(h.recordedAt).valueOf();
+                    this.collectionData['history'][key].push({ x, y });
                   }
                 }
               });
+              for (let key in this.collectionData['history']) {
+                this.collectionData['history'][key] = this.collectionData[
+                  'history'
+                ][key].reverse();
+              }
+              this.collectionData.meta = data.subject;
             }
             if (data.subject) {
               let { subject } = data;

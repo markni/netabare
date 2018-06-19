@@ -1,10 +1,9 @@
 <template>
     <div class="chart-container" ref="container">
-        <canvas ref="score"></canvas>
     </div>
 </template>
 <script>
-import { PINK } from '@/constants/colors';
+import { COLORS2 } from '@/constants/colors';
 import _ from 'lodash';
 import moment from 'moment';
 // Load Highcharts
@@ -20,8 +19,11 @@ export default {
     };
   },
   watch: {
-    UIData: function() {
-      this._refresh();
+    UIData: {
+      handler: function() {
+        this._refresh();
+      },
+      deep: true
     }
   },
   methods: {
@@ -29,7 +31,31 @@ export default {
       if (this.chart && this.UIData && this.UIData.history) {
         this.chart.series[0].update(
           {
-            data: this.UIData.history.reverse()
+            data: this.UIData.history['dropped']
+          },
+          false
+        );
+        this.chart.series[1].update(
+          {
+            data: this.UIData.history['wish']
+          },
+          false
+        );
+        this.chart.series[2].update(
+          {
+            data: this.UIData.history['on_hold']
+          },
+          false
+        );
+        this.chart.series[3].update(
+          {
+            data: this.UIData.history['doing']
+          },
+          false
+        );
+        this.chart.series[4].update(
+          {
+            data: this.UIData.history['collect']
           },
           true
         );
@@ -78,20 +104,20 @@ export default {
             color: 'white'
           },
           useHTML: false,
-          xDateFormat: '%Y-%m-%d'
+          xDateFormat: '%Y-%m-%d',
+          shared: true
         },
         subtitle: {
           enabled: false
         },
         plotOptions: {
-          line: {
+          spline: {
             marker: {
               enabled: false
             }
           }
         },
         yAxis: {
-          reversed: true,
           title: {
             enabled: false
           },
@@ -126,32 +152,37 @@ export default {
         },
         series: [
           {
-            step: true,
-            name: '排名',
+            type: 'spline',
+            name: '抛弃',
+            data: this.UIData.history['dropped']
+          },
+          {
+            type: 'spline',
+            name: '想看',
+            data: []
+          },
+          {
+            type: 'spline',
+            name: '搁置',
+            data: []
+          },
+          {
+            type: 'spline',
+            name: '看过',
+            data: []
+          },
+          {
+            type: 'spline',
+            name: '在看',
             data: []
           }
         ],
-        colors: [PINK],
-        responsive: {
-          rules: [
-            {
-              condition: {
-                maxWidth: 500
-              },
-              chartOptions: {
-                legend: {
-                  layout: 'horizontal',
-                  align: 'center',
-                  verticalAlign: 'bottom'
-                }
-              }
-            }
-          ]
-        }
+        colors: COLORS2
       });
-      if (this.UIData && this.UIData.meta && this.UIData.meta.name)
-        this._refresh();
     });
+
+    if (this.UIData && this.UIData.meta && this.UIData.meta.name)
+      this._refresh();
   },
   updated() {
     this._refresh();
