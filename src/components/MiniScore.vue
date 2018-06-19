@@ -7,6 +7,7 @@
 import Chart from '@/utils/chartjs';
 import { BLUE } from '@/constants/colors';
 import moment from 'moment';
+import _ from 'lodash';
 
 const options = {
   tooltips: {
@@ -39,19 +40,7 @@ const options = {
     xAxes: [
       {
         type: 'time',
-        time: {
-          displayFormats: {
-            // 'millisecond': ' DD',
-            // 'second': ' DD',
-            // 'minute': ' DD',
-            // 'hour': ' DD',
-            day: 'M-DD'
-            // 'week': ' DD',
-            // 'month': ' DD',
-            // 'quarter': ' DD',
-            // 'year': ' DD',
-          }
-        },
+
         ticks: {
           display: false
         }
@@ -92,6 +81,18 @@ export default {
           data.push({ x: new Date(u.recordedAt), y: u.score });
         });
         this.chart.data.datasets[0].data = data;
+        let scores = this.UIData.map(u => u.score);
+        let max = Math.max(...scores);
+        let min = Math.min(...scores);
+        this.chart.options.scales.yAxes[0].ticks.min = min = Math.max(
+          0,
+          _.round(min - 0.2, 1)
+        );
+        this.chart.options.scales.yAxes[0].ticks.max = max = Math.min(
+          10,
+          _.round(max + 0.2, 1)
+        );
+        console.log(min, max);
         this.chart.update();
       }
     }
