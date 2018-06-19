@@ -86,11 +86,11 @@ export default {
         let min = Math.min(...scores);
         this.chart.options.scales.yAxes[0].ticks.min = min = Math.max(
           0,
-          _.round(min - 0.2, 1)
+          _.round(min - 0.1, 1)
         );
         this.chart.options.scales.yAxes[0].ticks.max = max = Math.min(
           10,
-          _.round(max + 0.2, 1)
+          _.round(max + 0.1, 1)
         );
         console.log(min, max);
         this.chart.update();
