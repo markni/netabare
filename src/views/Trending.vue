@@ -23,6 +23,17 @@
                 <div class="score">{{item.history[0].score}}</div>
                 <div class="delta pink">▴{{Math.abs(item.score).toFixed(2)}}</div>
             </div>
+        <h2>热门条目趋势观察</h2>
+        <h3>30天内收藏变化最多的条目 (最后更新：{{lastUpdate}})</h3>
+        <div class="row" v-for="(item,index) in done" :key="item.bgmId">
+            <div class="index">{{index+1}}.</div>
+            <div class="title"><router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.subject.name_cn || item.subject.name}}</router-link></div>
+            <div class="chart-cell">
+                <mini-score :color="item.score >= 0 ? pink : blue" :UIData="item.history" />
+            </div>
+            <div class="score">{{item.history[0].score}}</div>
+            <div class="delta" :class="{pink: item.score >= 0, blue: item.score < 0}">{{item.score >= 0 ? '▴' : '▾'}}{{Math.abs(item.score).toFixed(2)}}</div>
+        </div>
         <back />
         </div>
         <transition name="fade">
@@ -48,6 +59,7 @@ export default {
     return {
       up: [],
       down: [],
+      done: [],
       loading: false,
       pink: PINK,
       lastUpdate: null
@@ -68,6 +80,7 @@ export default {
           let data = res.data;
           this.up = data.up;
           this.down = data.down;
+          this.done = data.done;
           if (data.up.length && data.up[0].history.length) {
             this.lastUpdate = moment(data.up[0].history[0].recordedAt).format(
               'YYYY-MM-DD'
