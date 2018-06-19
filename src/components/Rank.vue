@@ -16,8 +16,8 @@ const options = {
   },
   maintainAspectRatio: false,
   elements: {
-    point: { radius: 0 }
-    // line: { stepped: true }
+    point: { radius: 0 },
+    line: { stepped: true }
   },
 
   tooltips: {
