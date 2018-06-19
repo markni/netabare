@@ -49,13 +49,13 @@ export default {
         );
         this.chart.series[3].update(
           {
-            data: this.UIData.history['doing']
+            data: this.UIData.history['collect']
           },
           false
         );
         this.chart.series[4].update(
           {
-            data: this.UIData.history['collect']
+            data: this.UIData.history['doing']
           },
           true
         );
