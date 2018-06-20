@@ -1,6 +1,6 @@
 <template>
     <form @submit="submit">
-        <input class="typekit-text" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
+        <input id="username" data-lpignore="true" required pattern="^\w+$" class="typekit-text" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
     </form>
 </template>
 
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style scoped>
+
 input {
   width: 90%;
   background: none;
