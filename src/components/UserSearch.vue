@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style scoped>
-
 input {
   width: 90%;
   background: none;
