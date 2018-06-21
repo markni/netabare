@@ -63,4 +63,8 @@ a:hover {
   font-family: 'source-han-serif-sc', serif;
   opacity: 0.7;
 }
+.scatter-tp-title {
+  font-weight: bold;
+  font-family: 'source-han-serif-sc', serif;
+}
 </style>
