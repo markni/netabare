@@ -46,17 +46,27 @@ import _ from 'lodash';
 export default {
   components: { Overlay, VueMonthlyPicker },
   data() {
+    let startYear = this.$route.query.start_year;
+    let endYear = this.$route.query.end_year;
+    let startScore = this.$route.query.low;
+    let endScore = this.$route.query.high;
+
+    if(!endScore || endScore > 10) endScore = 10;
+    if(!startScore || startScore < 1) startScore = 1;
+
+    startYear = moment()
+      .year(startYear || 1980)
+      .startOf('year');
+    endYear = moment();
     return {
       chart: null,
       dic: {},
-      startYear: moment()
-        .year(1980)
-        .startOf('year'),
-      endYear: moment(),
+      startYear: startYear,
+      endYear: endYear,
       startRank: 1,
       endRank: 9999,
-      startScore: 1,
-      endScore: 10,
+      startScore: startScore,
+      endScore: endScore,
       matched: 0
     };
   },
