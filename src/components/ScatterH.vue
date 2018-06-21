@@ -79,7 +79,6 @@ export default {
   },
   methods: {
     _refresh: function(from) {
-      console.log('refreshing', from);
       if (this.UIData) {
         this.UIData.forEach(
           ({ rank, air_date, bgmId, name, name_cn, score }) => {
@@ -95,10 +94,12 @@ export default {
             moment(air_date) <= this.endYear &&
             score >= this.startScore &&
             score <= this.endScore
-        ).map(({ air_date, score, rank }) => [
+        ).map(({ air_date, score, rank, name }) => {
+          let s = parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'));
+          return [
           moment(air_date).valueOf(),
-          parseFloat(score.toFixed(4) + '0' + _.padStart(rank, 5, '0'))
-        ]);
+          parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'))
+        ]});
         let yearly = {};
         let yearlyData = [];
         this.UIData.forEach(({ air_date, score }) => {
@@ -175,7 +176,8 @@ export default {
                 2
               )}</b>`;
             }
-            let rank = _.round(((this.y + '').slice(-5)));
+            let rank = _.round((_.padEnd((this.y + '').split('.')[1],8,'0').slice(-4)));
+
             return `<div class="scatter-tp-title"><b>${self.dic[rank].name_cn ||
               self.dic[rank]
                 .name}</b></div><br /><div class="scatter-tp-body">首播：${moment(
