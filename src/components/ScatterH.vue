@@ -175,7 +175,7 @@ export default {
                 2
               )}</b>`;
             }
-            let rank = parseInt((this.y + '').slice(-5), 10);
+            let rank = _.round(((this.y + '').slice(-5)));
             return `<div class="scatter-tp-title"><b>${self.dic[rank].name_cn ||
               self.dic[rank]
                 .name}</b></div><br /><div class="scatter-tp-body">首播：${moment(
