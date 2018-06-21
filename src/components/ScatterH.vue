@@ -158,7 +158,8 @@ console.log(typeof startScore);
     this.$nextTick(function() {
       Highcharts.setOptions({
         lang: {
-          thousandsSep: ''
+          thousandsSep: '',
+          resetZoom: '重置缩放',
         }
       });
       let self = this;
