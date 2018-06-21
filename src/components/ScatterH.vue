@@ -16,12 +16,12 @@
                 </vue-monthly-picker>
             </div>
             <div class="unit">
-                <div class="l">最高排名：</div>
-                <input type="number" v-model="startRank"/>
+                <div class="l">最低评分：</div>
+                <input type="number" v-model="startScore"/>
             </div>
             <div class="unit">
-                <div class="l">最低排名：</div>
-                <input type="number" v-model="endRank"/>
+                <div class="l">最高评分：</div>
+                <input type="number" v-model="endScore"/>
             </div>
             <div class="unit">
                 <div class="l">符合条件：</div>
@@ -50,17 +50,19 @@ export default {
       chart: null,
       dic: {},
       startYear: moment()
-        .year(2008)
+        .year(1980)
         .startOf('year'),
       endYear: moment(),
       startRank: 1,
-      endRank: 1000,
+      endRank: 9999,
+      startScore: 1,
+      endScore: 10,
       matched: 0
     };
   },
   watch: {
     UIData: function() {
-      this._refresh();
+      this._refresh('watch uidata');
     },
     startYear: function() {
       this._refresh();
@@ -68,15 +70,16 @@ export default {
     endYear: function() {
       this._refresh();
     },
-    startRank: function() {
+    startScore: function() {
       this._refresh();
     },
-    endRank: function() {
+    endScore: function() {
       this._refresh();
     }
   },
   methods: {
-    _refresh: function() {
+    _refresh: function(from) {
+      console.log('refreshing', from);
       if (this.UIData) {
         this.UIData.forEach(
           ({ rank, air_date, bgmId, name, name_cn, score }) => {
@@ -86,16 +89,16 @@ export default {
       }
 
       if (this.chart && this.UIData) {
-        let matched = this.UIData.map(({ air_date, rank }) => [
+        let matched = this.UIData.filter(
+          ({ air_date, score }) =>
+            moment(air_date) >= this.startYear &&
+            moment(air_date) <= this.endYear &&
+            score >= this.startScore &&
+            score <= this.endScore
+        ).map(({ air_date, score, rank }) => [
           moment(air_date).valueOf(),
-          rank
-        ]).filter(
-          u =>
-            u[0] >= this.startYear &&
-            u[0] <= this.endYear &&
-            u[1] >= this.startRank &&
-            u[1] <= this.endRank
-        );
+          parseFloat(score.toFixed(4) + '0' + _.padStart(rank, 5, '0'))
+        ]);
         let yearly = {};
         let yearlyData = [];
         this.UIData.forEach(({ air_date, score }) => {
@@ -117,7 +120,6 @@ export default {
             y: _.mean(yearly[key])
           });
         }
-        console.log(yearlyData);
         this.matched = matched.length;
         this.chart.series[0].update(
           {
@@ -173,13 +175,13 @@ export default {
                 2
               )}</b>`;
             }
-            return `<div class="scatter-tp-title"><b>${self.dic[this.y]
-              .name_cn ||
-              self.dic[this.y]
+            let rank = parseInt((this.y + '').slice(-5));
+            return `<div class="scatter-tp-title"><b>${self.dic[rank].name_cn ||
+              self.dic[rank]
                 .name}</b></div><br /><div class="scatter-tp-body">首播：${moment(
               this.x
-            ).format('Y.M.DD')}<br />排名：${this.y}<br />均分：${
-              self.dic[this.y].score
+            ).format('Y.M.DD')}<br />排名：${rank}<br />均分：${
+              self.dic[rank].score
             }</div>`;
           }
         },
@@ -192,7 +194,8 @@ export default {
             point: {
               events: {
                 click: function() {
-                  window.open(`/subject/${self.dic[this.y].bgmId}`);
+                  let rank = parseInt((this.y + '').slice(-5));
+                  window.open(`/subject/${self.dic[rank].bgmId}`);
                 }
               }
             }
@@ -221,12 +224,12 @@ export default {
         yAxis: [
           {
             startOnTick: false,
-            reversed: true,
+            // reversed: true,
             title: {
               enabled: false
             },
             labels: {
-              format: '{value:.0f}'
+              format: '{value:.1f}'
             }
           },
           {
@@ -274,8 +277,7 @@ export default {
             type: 'line',
             color: PINK,
             name: '年度均分',
-            data: [],
-            yAxis: 1
+            data: []
           }
         ],
         colors: COLORS,
@@ -297,11 +299,11 @@ export default {
         }
       });
 
-      this._refresh();
+      this._refresh('finish mount');
     });
   },
   updated() {
-    this._refresh();
+    //this._refresh('updated');
   }
 };
 </script>
