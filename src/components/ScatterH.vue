@@ -196,7 +196,7 @@ export default {
             point: {
               events: {
                 click: function() {
-                  let rank = parseInt((this.y + '').slice(-5));
+                  let rank = _.round((_.padEnd((this.y + '').split('.')[1],8,'0').slice(-4)));
                   window.open(`/subject/${self.dic[rank].bgmId}`);
                 }
               }
