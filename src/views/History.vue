@@ -58,7 +58,6 @@ export default {
           this.$router.replace('/404');
         } else {
           let data = res.data;
-          console.log(data);
           this.UIData = data.map(
             ({ bgmId, name, name_cn, rank, air_date, score }) => {
               return {
