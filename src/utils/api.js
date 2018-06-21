@@ -6,6 +6,7 @@ if (
   window.location.host.startsWith('localhost')
 ) {
   api_root = 'http://45.33.57.234:8888';
+  // api_root = 'http://localhost:8888';
 }
 
 export const fetchRank = bgmId => {
@@ -18,4 +19,12 @@ export const fetchUser = bgmUserId => {
 
 export const fetchTrending = () => {
   return axios.get(`${api_root}/trending`);
+};
+
+export const fetchPopular = () => {
+  return axios.get(`${api_root}/popular`);
+};
+
+export const fetchHistory = () => {
+  return axios.get(`${api_root}/history`);
 };
