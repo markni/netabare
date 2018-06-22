@@ -40,6 +40,7 @@ import moment from 'moment';
 import Highcharts from 'highcharts';
 import Overlay from '@/components/Overlay';
 import _ from 'lodash';
+import stats from 'stats-lite';
 // Alternatively, this is how to load Highstock. Highmaps is similar.
 // import Highcharts from 'highcharts/highstock';
 
@@ -50,15 +51,16 @@ export default {
     let endYear = _.round(this.$route.query.end_year || 0);
     let startScore = _.round(this.$route.query.low || 0);
     let endScore = _.round(this.$route.query.high || 0);
-console.log(typeof startScore);
-    if(!endScore || endScore > 10) endScore = 10;
-    if(!startScore || startScore < 1) startScore = 1;
+    if (!endScore || endScore > 10) endScore = 10;
+    if (!startScore || startScore < 1) startScore = 1;
 
     startYear = moment()
       .year(startYear || 1980)
       .startOf('year');
     if (endYear) {
-      endYear = moment().year(endYear).startOf('year');
+      endYear = moment()
+        .year(endYear)
+        .startOf('year');
     } else {
       endYear = moment();
     }
@@ -92,7 +94,7 @@ console.log(typeof startScore);
     }
   },
   methods: {
-    _refresh: function(from) {
+    _refresh: function() {
       if (this.UIData) {
         this.UIData.forEach(
           ({ rank, air_date, bgmId, name, name_cn, score }) => {
@@ -108,14 +110,16 @@ console.log(typeof startScore);
             moment(air_date) <= this.endYear &&
             score >= this.startScore &&
             score <= this.endScore
-        ).map(({ air_date, score, rank, name }) => {
-          let s = parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'));
+        ).map(({ air_date, score, rank }) => {
           return [
-          moment(air_date).valueOf(),
-          parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'))
-        ]});
+            moment(air_date).valueOf(),
+            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'))
+          ];
+        });
         let yearly = {};
         let yearlyData = [];
+        let std1Data = [];
+        let std1DataNegative = [];
         this.UIData.forEach(({ air_date, score }) => {
           let year = moment(air_date).year();
           if (
@@ -127,18 +131,42 @@ console.log(typeof startScore);
           }
         });
         for (let key in yearly) {
+          let x = moment()
+            .year(key)
+            .startOf('year')
+            .valueOf();
+          let std = stats.stdev(yearly[key]);
           yearlyData.push({
-            x: moment()
-              .year(key)
-              .startOf('year')
-              .valueOf(),
+            x: x,
             y: _.mean(yearly[key])
+          });
+          std1Data.push({
+            x: x,
+            y: _.mean(yearly[key]) + std,
+            std
+          });
+          std1DataNegative.push({
+            x: x,
+            y: _.mean(yearly[key]) - std,
+            std
           });
         }
         this.matched = matched.length;
         this.chart.series[0].update(
           {
             data: matched
+          },
+          false
+        );
+        this.chart.series[2].update(
+          {
+            data: std1Data
+          },
+          false
+        );
+        this.chart.series[3].update(
+          {
+            data: std1DataNegative
           },
           false
         );
@@ -159,7 +187,7 @@ console.log(typeof startScore);
       Highcharts.setOptions({
         lang: {
           thousandsSep: '',
-          resetZoom: '重置缩放',
+          resetZoom: '重置缩放'
         }
       });
       let self = this;
@@ -187,11 +215,39 @@ console.log(typeof startScore);
           // xDateFormat: '%Y-%m-%d',
           formatter: function() {
             if (this.series.name === '年度均分') {
-              return `${moment(this.x).year()}年均分:<b>${this.y.toFixed(
+              return `${moment(this.x).year()}年均分：<b>${this.y.toFixed(
                 2
               )}</b>`;
             }
-            let rank = _.round((_.padEnd((this.y + '').split('.')[1],8,'0').slice(-4)));
+            if (this.series.name === '+1 标准差') {
+              let y = _.round(this.y, 2);
+              let std = _.round(this.point.std, 2);
+
+              return `${moment(
+                this.x
+              ).year()}年标准差：<b>${std}</b><br />68%的作品都在${_.round(
+                y - std * 2,
+                2
+              )} ~ ${y}分之内`;
+            }
+            if (this.series.name === '-1 标准差') {
+              let y = _.round(this.y, 2);
+              let std = _.round(this.point.std, 2);
+
+              return `${moment(
+                this.x
+              ).year()}年标准差：<b>${std}</b><br />68%的作品都在${y} ~ ${_.round(
+                y + std * 2,
+                2
+              )}分之内`;
+            }
+            let rank = _.round(
+              _.padEnd((this.y + '').split('.')[1], 8, '0').slice(-4)
+            );
+
+            if (!self.dic[rank]) {
+              return `Error`;
+            }
 
             return `<div class="scatter-tp-title"><b>${self.dic[rank].name_cn ||
               self.dic[rank]
@@ -206,13 +262,26 @@ console.log(typeof startScore);
           enabled: false
         },
         plotOptions: {
+          spline: {
+            marker: {
+              enabled: false
+            }
+          },
+          line: {
+            marker: {
+              symbol: 'circle'
+            }
+          },
           series: {
             cursor: 'pointer',
             point: {
               events: {
                 click: function() {
-                  let rank = _.round((_.padEnd((this.y + '').split('.')[1],8,'0').slice(-4)));
-                  window.open(`/subject/${self.dic[rank].bgmId}`);
+                  let rank = _.round(
+                    _.padEnd((this.y + '').split('.')[1], 8, '0').slice(-4)
+                  );
+                  if (this.series.name === '评分')
+                    window.open(`/subject/${self.dic[rank].bgmId}`);
                 }
               }
             }
@@ -287,7 +356,7 @@ console.log(typeof startScore);
         series: [
           {
             color: 'rgba(49, 148, 255, 0.4)',
-            name: '排名',
+            name: '评分',
             data: []
           },
           {
@@ -295,6 +364,28 @@ console.log(typeof startScore);
             color: PINK,
             name: '年度均分',
             data: []
+          },
+          {
+            type: 'line',
+            color: 'rgba(0,0,0,0.3)',
+            name: '+1 标准差',
+            data: [],
+            dashStyle: 'longdashdot',
+            step: true,
+            marker: {
+              enabled: false
+            }
+          },
+          {
+            type: 'line',
+            color: 'rgba(0,0,0,0.3)',
+            name: '-1 标准差',
+            data: [],
+            dashStyle: 'longdashdot',
+            step: true,
+            marker: {
+              enabled: false
+            }
           }
         ],
         colors: COLORS,
