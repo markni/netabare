@@ -17,6 +17,7 @@
     "highcharts": "^6.1.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
+    "stats-lite": "^2.1.1",
     "vue": "^2.5.16",
     "vue-monthly-picker": "^0.2.2",
     "vue-router": "^3.0.1"
