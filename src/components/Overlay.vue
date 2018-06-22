@@ -38,7 +38,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
   display: flex;
   align-items: center;
   justify-content: center;
