@@ -84,30 +84,37 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
-.user-panel {
-  display: flex;
-  width: 20vw;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 26px;
-}
-.user-rating {
-  display: flex;
-  width: 80vw;
-  height: 95vh;
-  align-self: flex-end;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+@media only screen and (min-width: 901px) {
+  .wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  .user-panel {
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 26px;
+  }
+  .user-rating {
+    display: flex;
+    width: 80vw;
+    height: 85vh;
+    align-self: flex-end;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 </style>

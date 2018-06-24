@@ -34,36 +34,6 @@ export default {
 </script>
 
 <style scoped>
-.info-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 5vh;
-  padding-right: 3vw;
-  box-sizing: border-box;
-  text-align: right;
-  transform: translateX(0px);
-}
-
-.nickname {
-  font-size: 6vh;
-  font-weight: bold;
-}
-
-.subtitle {
-  font-size: 2vh;
-}
-
-.score {
-  font-size: 4vh;
-  line-height: 1;
-  margin-bottom: 1vh;
-}
-
-.percent {
-  font-size: 2vh;
-}
 .fade-slidein-left-enter-active,
 .fade-slidein-left-leave-active {
   transition: opacity 1s ease-out, transform 1s ease-out;
@@ -71,5 +41,61 @@ export default {
 .fade-slidein-left-enter, .fade-slidein-left-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateX(-20px);
+}
+@media only screen and (min-width: 900px) {
+  .info-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+    padding-right: 3vw;
+    box-sizing: border-box;
+    text-align: right;
+    transform: translateX(0px);
+  }
+
+  .nickname {
+    font-size: 6vh;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 2vh;
+  }
+
+  .score {
+    font-size: 4vh;
+    line-height: 1;
+    margin-bottom: 1vh;
+  }
+
+  .percent {
+    font-size: 2vh;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .info-card {
+    text-align: center;
+  }
+  .nickname {
+    font-size: 6vw;
+    font-weight: bold;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  .subtitle {
+    font-size: 4vw;
+  }
+
+  .score {
+    font-size: 6vw;
+    line-height: 1;
+    margin-bottom: 3vh;
+  }
+
+  .percent {
+    font-size: 2vw;
+  }
 }
 </style>
