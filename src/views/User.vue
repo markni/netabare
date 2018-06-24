@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import UserRating from '@/components/UserRating';
+import UserRating from '@/components/UserRatingH';
 import UserStats from '@/components/UserStats';
 import UserSearch from '@/components/UserSearch';
 import Overlay from '@/components/Overlay';
@@ -53,13 +53,20 @@ export default {
             this.UIData = res.data;
             if (this.UIData['user']) {
               let r = [];
+              let g = [];
               for (let key in this.UIData.count) {
                 if (key !== '-1') {
-                  r.push({ x: key, y: this.UIData.count[key] });
+                  r.push({ x: parseInt(key), y: this.UIData.count[key] });
+                }
+              }
+              for (let key in this.UIData.gCount) {
+                if (key !== '-1') {
+                  g.push({ x: parseInt(key), y: this.UIData.gCount[key] });
                 }
               }
 
               this.UIData.data = r;
+              this.UIData.gData = g;
               if (loadingTimer) clearTimeout(loadingTimer);
               this.loading = false;
             }

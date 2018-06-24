@@ -274,6 +274,11 @@ export default {
           },
           series: {
             cursor: 'pointer',
+            animation: {
+              complete: function() {
+                //console.log('chart.event.load');
+              }
+            },
             point: {
               events: {
                 click: function() {
@@ -374,7 +379,8 @@ export default {
             step: true,
             marker: {
               enabled: false
-            }
+            },
+            visible: false
           },
           {
             type: 'line',
@@ -385,7 +391,8 @@ export default {
             step: true,
             marker: {
               enabled: false
-            }
+            },
+            visible: false
           }
         ],
         colors: COLORS,
@@ -446,5 +453,12 @@ input {
 .l {
   font-weight: bold;
   font-size: larger;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
