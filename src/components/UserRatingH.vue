@@ -3,11 +3,9 @@
     </div>
 </template>
 <script>
-import { PINK, COLORS } from '@/constants/colors';
-import _ from 'lodash';
-import moment from 'moment';
-import Highcharts from 'highcharts';
+import { COLORS } from '@/constants/colors';
 
+import Highcharts from 'highcharts';
 
 export default {
   data() {
@@ -78,9 +76,7 @@ export default {
             format: '{value:.0f}'
           }
         },
-        xAxis: {
-
-        },
+        xAxis: {},
         exporting: {
           enabled: false
         },
@@ -97,13 +93,13 @@ export default {
           {
             name: '个人评分',
             data: [],
-            colors: COLORS,
+            colors: COLORS
           },
           {
             name: '全站评分',
             data: [],
             colors: ['rgba(0, 0, 0, 0.2)'],
-            visible: false,
+            visible: false
           }
         ],
         colors: COLORS,
@@ -124,8 +120,7 @@ export default {
           ]
         }
       });
-      if (this.UIData.data)
-        this._refresh();
+      if (this.UIData.data) this._refresh();
     });
   },
   updated() {
