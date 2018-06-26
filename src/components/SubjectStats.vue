@@ -1,15 +1,15 @@
 <template>
     <div class="stats-container">
-        <h1 class="typekit-text title">{{UIData.name}}</h1>
-        <h2 class="typekit-text subtitle" v-if="UIData.name_cn">{{UIData.name_cn}}</h2>
-        <!--<div class="typekit-text minititle">当前评分</div>-->
-        <!--<div class="typekit-text score">{{UIData.score || "n/a"}}</div>-->
-        <!--<div class="typekit-text minititle">评分变化</div>-->
-        <!--<div class="typekit-text score" v-if="UIData.deltaScore">{{(UIData.deltaScore >= 0 ? '+':'' ) +UIData.deltaScore.toFixed(2)}}</div>-->
-        <!--<div class="typekit-text minititle">当前排名</div>-->
-        <!--<div class="typekit-text score">{{UIData.rank || "n/a"}}</div>-->
-        <!--<div class="typekit-text minititle">排名变化</div>-->
-        <!--<div class="typekit-text score">{{(UIData.deltaRank >= 0 ? '+':'' ) +UIData.deltaRank}}</div>-->
+        <h1 class=" title">{{UIData.name}}</h1>
+        <h2 class=" subtitle" v-if="UIData.name_cn">{{UIData.name_cn}}</h2>
+        <!--<div class=" minititle">当前评分</div>-->
+        <!--<div class=" score">{{UIData.score || "n/a"}}</div>-->
+        <!--<div class=" minititle">评分变化</div>-->
+        <!--<div class=" score" v-if="UIData.deltaScore">{{(UIData.deltaScore >= 0 ? '+':'' ) +UIData.deltaScore.toFixed(2)}}</div>-->
+        <!--<div class=" minititle">当前排名</div>-->
+        <!--<div class=" score">{{UIData.rank || "n/a"}}</div>-->
+        <!--<div class=" minititle">排名变化</div>-->
+        <!--<div class=" score">{{(UIData.deltaRank >= 0 ? '+':'' ) +UIData.deltaRank}}</div>-->
     </div>
 </template>
 

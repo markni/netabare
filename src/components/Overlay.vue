@@ -1,13 +1,13 @@
 <template>
     <div class="overlay">
-        <div class="typekit-text"  v-bind:class="{ float: float }">{{ text }}</div>
+        <div class=""  v-bind:class="{ float: animated }">{{ text }}</div>
     </div>
 </template>
 
 <script>
 export default {
   name: 'overlay',
-  props: ['text', 'float']
+  props: ['text', 'animated']
 };
 </script>
 
@@ -28,11 +28,8 @@ export default {
 
   animation: float 6s ease-in-out infinite;
 }
-.typekit-text {
-  /*visibility: hidden;*/
-}
+
 .overlay {
-  font-family: 'source-han-serif-sc', serif;
   position: fixed;
   top: 0;
   left: 0;

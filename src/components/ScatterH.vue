@@ -1,34 +1,36 @@
 <template>
     <div class="wrapper">
         <div class="control">
-            <div class="unit">
+            <div class="unit ">
                 <div class="l">最早：</div>
                 <vue-monthly-picker
                         dateFormat="YYYY年M月"
                         v-model="startYear">
                 </vue-monthly-picker>
             </div>
-            <div class="unit">
+            <div class="unit ">
                 <div class="l">最晚：</div>
                 <vue-monthly-picker
                         dateFormat="YYYY年M月"
                         v-model="endYear">
                 </vue-monthly-picker>
             </div>
-            <div class="unit">
+            <div class="unit ">
                 <div class="l">最低评分：</div>
                 <input type="number" v-model="startScore"/>
             </div>
-            <div class="unit">
+            <div class="unit ">
                 <div class="l">最高评分：</div>
                 <input type="number" v-model="endScore"/>
             </div>
-            <div class="unit">
+            <div class="unit ">
                 <div class="l">符合条件：</div>
                 <div>{{matched}}</div>
             </div>
         </div>
-        <div class="chart-container" ref="container"></div>
+        <overlay text="渲染中" animated="true" v-if="rendering" />
+        <div class="chart-container" ref="container">
+        </div>
 
     </div>
 </template>
@@ -38,6 +40,8 @@ import VueMonthlyPicker from 'vue-monthly-picker';
 import moment from 'moment';
 // Load Highcharts
 import Highcharts from 'highcharts';
+import Boost from 'highcharts/modules/boost';
+Boost(Highcharts);
 import Overlay from '@/components/Overlay';
 import _ from 'lodash';
 import stats from 'stats-lite';
@@ -55,7 +59,7 @@ export default {
     if (!startScore || startScore < 1) startScore = 1;
 
     startYear = moment()
-      .year(startYear || 1980)
+      .year(startYear || 1988)
       .startOf('year');
     if (endYear) {
       endYear = moment()
@@ -73,7 +77,8 @@ export default {
       endRank: 9999,
       startScore: startScore,
       endScore: endScore,
-      matched: 0
+      matched: 0,
+      rendering: true
     };
   },
   watch: {
@@ -104,6 +109,7 @@ export default {
       }
 
       if (this.chart && this.UIData) {
+        // console.log(`${new Date()} | entered fresh`);
         let matched = this.UIData.filter(
           ({ air_date, score }) =>
             moment(air_date) >= this.startYear &&
@@ -152,30 +158,31 @@ export default {
           });
         }
         this.matched = matched.length;
-        this.chart.series[0].update(
-          {
-            data: matched
-          },
-          false
-        );
-        this.chart.series[2].update(
-          {
-            data: std1Data
-          },
-          false
-        );
-        this.chart.series[3].update(
-          {
-            data: std1DataNegative
-          },
-          false
-        );
-        this.chart.series[1].update(
-          {
-            data: yearlyData
-          },
-          true
-        );
+        this.chart.series[0].setData(matched);
+        // this.chart.series[0].update(
+        //   {
+        //     data: matched
+        //   },
+        //   false
+        // );
+        // this.chart.series[2].update(
+        //   {
+        //     data: std1Data
+        //   },
+        //   false
+        // );
+        // this.chart.series[3].update(
+        //   {
+        //     data: std1DataNegative
+        //   },
+        //   false
+        // );
+        // this.chart.series[1].update(
+        //   {
+        //     data: yearlyData
+        //   },
+        //   true
+        // );
         // this.chart.data.datasets[0].data = this.UIData;
         // this.chart.update();
       }
@@ -196,6 +203,10 @@ export default {
           type: 'scatter',
           zoomType: 'xy',
           backgroundColor: null
+        },
+        boost: {
+          useGPUTranslations: true,
+          usePreAllocated: true
         },
         rangeSelector: {
           verticalAlign: 'top',
@@ -277,7 +288,8 @@ export default {
             cursor: 'pointer',
             animation: {
               complete: function() {
-                //console.log('chart.event.load');
+                // console.log(`${new Date()} | finished update`);
+                self.rendering = false;
               }
             },
             point: {
@@ -337,6 +349,7 @@ export default {
         ],
         xAxis: {
           type: 'datetime',
+
           dateTimeLabelFormats: {
             millisecond: '%m-%d',
             second: '%m-%d',
@@ -354,7 +367,13 @@ export default {
         legend: {
           display: true,
           position: 'bottom',
-          align: 'right'
+          align: 'right',
+          itemStyle: {
+            color: '#2c3e50',
+            fontWeight: 'normal',
+            fontSize: '1rem',
+            fontFamily: `'source-han-serif-sc', serif`
+          }
         },
         credits: {
           enabled: false
@@ -436,7 +455,6 @@ export default {
 }
 
 .control {
-  font-family: 'source-han-serif-sc', serif;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

@@ -2,14 +2,14 @@
   <div class="home" v-bind:class="{ready: !loading}">
     <h1 class="tk-myriad-pro title">netabare.</h1>
     <div class="inputs">
-      <div class="typekit-text input-label">个人
+      <div class=" input-label">个人
         <router-link class="link" to="/history">评分分布</router-link>
         :
       </div>
       <div class="input-box">
         <user-search font-size="1rem"/>
       </div>
-      <div class="typekit-text input-label">动画
+      <div class=" input-label">动画
         <router-link class="link" to="/trending">评分趋势</router-link>
         :
       </div>
