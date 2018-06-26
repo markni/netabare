@@ -446,6 +446,7 @@ input {
   border: 0;
   /*border-bottom: 1px solid; */
   outline: 0;
+  background: transparent;
 }
 .unit {
   min-width: 200px;
