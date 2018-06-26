@@ -1,15 +1,20 @@
 <template>
     <div class="wrapper">
-        <transition name="fade">
-            <overlay v-if="loading" text="读取中" float="true"></overlay>
-        </transition>
-        <div class="user-rating">
-            <user-rating :UIData="UIData" />
+        <div class="inner-wrapper">
+            <transition name="fade">
+                <overlay v-if="loading" text="读取中" float="true"></overlay>
+            </transition>
+            <div class="user-rating">
+                <user-rating :UIData="UIData" />
+            </div>
+            <div class="user-panel">
+                <user-stats :UIData="UIData" />
+                <div class="switch-user">
+                    <user-search font-size="2vh" />
+                </div>
+            </div>
         </div>
-        <div class="user-panel">
-            <user-stats :UIData="UIData" />
-            <!--<user-search font-size="2vh" />-->
-        </div>
+
     </div>
 </template>
 
@@ -96,8 +101,18 @@ export default {
     display: flex;
     height: 100vh;
     width: 100vw;
-    padding: 10px 40px;
+    overflow: hidden;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+  .inner-wrapper {
+    display: flex;
+    width: 80%;
+    height: 90%;
+  }
+  .switch-user {
+    text-align: right;
   }
   .user-panel {
     display: flex;

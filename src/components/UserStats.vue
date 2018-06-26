@@ -49,7 +49,6 @@ export default {
     display: flex;
     flex-direction: column;
     padding-top: 5vh;
-    padding-right: 3vw;
     box-sizing: border-box;
     text-align: right;
     transform: translateX(0px);
