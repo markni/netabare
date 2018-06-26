@@ -11,6 +11,7 @@
 <style lang="scss">
 body {
   margin: 0;
+  background: rgba(244, 244, 244, 1);
 }
 
 .typekit-text {

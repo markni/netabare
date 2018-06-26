@@ -1,5 +1,6 @@
 export const BLUE = '#3194FF';
 export const PINK = '#F2006E';
+export const BLACK = '#2c3e50';
 export const COLORS = [
   '#3094FF',
   '#4683EE',
