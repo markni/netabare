@@ -58,6 +58,8 @@ export default {
   .nickname {
     font-size: 6vh;
     font-weight: bold;
+    margin-bottom: 1vh;
+    line-height: 1;
   }
 
   .subtitle {

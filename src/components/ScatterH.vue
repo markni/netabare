@@ -194,7 +194,8 @@ export default {
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
           type: 'scatter',
-          zoomType: 'xy'
+          zoomType: 'xy',
+          backgroundColor: null
         },
         rangeSelector: {
           verticalAlign: 'top',

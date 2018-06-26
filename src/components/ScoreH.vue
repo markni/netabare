@@ -84,6 +84,9 @@ export default {
         }
       });
       this.chart = Highcharts.chart(this.$refs.container, {
+        chart: {
+          backgroundColor: null
+        },
         title: {
           text: '',
           enabled: false

@@ -8,7 +8,7 @@
         </div>
         <div class="user-panel">
             <user-stats :UIData="UIData" />
-            <user-search font-size="2vh" />
+            <!--<user-search font-size="2vh" />-->
         </div>
     </div>
 </template>
@@ -96,18 +96,20 @@ export default {
     display: flex;
     height: 100vh;
     width: 100vw;
+    padding: 10px 40px;
+    box-sizing: border-box;
   }
   .user-panel {
     display: flex;
-    width: 20vw;
+    width: 20%;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 26px;
   }
   .user-rating {
     display: flex;
-    width: 80vw;
-    height: 85vh;
+    width: 80%;
+    height: 95%;
     align-self: flex-end;
   }
 }

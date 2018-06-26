@@ -40,7 +40,8 @@ export default {
       });
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
-          type: 'column'
+          type: 'column',
+          backgroundColor: null
         },
         title: {
           text: '',
