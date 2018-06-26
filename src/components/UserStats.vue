@@ -5,18 +5,18 @@
 
         <avatar :user="UIData.user" v-if="UIData.user" />
 
-        <div v-if="UIData.user" class="nickname typekit-text">{{UIData.user.nickname}}</div>
+        <div v-if="UIData.user" class="nickname ">{{UIData.user.nickname}}</div>
 
-        <div v-if="UIData.user" class="subtitle typekit-text">看过</div>
-        <div v-if="UIData.user" class="score typekit-text">{{UIData.total}}</div>
-        <div v-if="UIData.user" class="subtitle typekit-text">已评</div>
-        <div v-if="UIData.user" class="score typekit-text">{{(UIData.voted/UIData.total*100).toFixed(0)}}<span class="percent">%</span></div>
-        <div v-if="UIData.user" class="subtitle typekit-text">均值</div>
-        <div v-if="UIData.user" class="score typekit-text">{{UIData.avg}}</div>
-        <div v-if="UIData.user" class="subtitle typekit-text">中值</div>
-        <div v-if="UIData.user" class="score typekit-text">{{UIData.median}}</div>
-        <div v-if="UIData.user" class="subtitle typekit-text">标准差</div>
-        <div v-if="UIData.user" class="score typekit-text">{{UIData.stdev}}</div>
+        <div v-if="UIData.user" class="subtitle ">看过</div>
+        <div v-if="UIData.user" class="score ">{{UIData.total}}</div>
+        <div v-if="UIData.user" class="subtitle ">已评</div>
+        <div v-if="UIData.user" class="score ">{{(UIData.voted/UIData.total*100).toFixed(0)}}<span class="percent">%</span></div>
+        <div v-if="UIData.user" class="subtitle ">均值</div>
+        <div v-if="UIData.user" class="score ">{{UIData.avg}}</div>
+        <div v-if="UIData.user" class="subtitle ">中值</div>
+        <div v-if="UIData.user" class="score ">{{UIData.median}}</div>
+        <div v-if="UIData.user" class="subtitle ">标准差</div>
+        <div v-if="UIData.user" class="score ">{{UIData.stdev}}</div>
 
     </div>
     </transition>

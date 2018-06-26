@@ -57,7 +57,7 @@
             <back/>
         </div>
         <transition name="fade">
-            <overlay v-if="loading" text="读取中" float="true"></overlay>
+            <overlay v-if="loading" text="读取中" animated="true"></overlay>
         </transition>
     </div>
 </template>
@@ -127,7 +127,6 @@ table {
 .container {
   width: 90vw;
   margin: auto;
-  font-family: 'source-han-serif-sc', serif;
 }
 .score {
   font-size: 1.8vw;

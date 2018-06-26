@@ -10,9 +10,9 @@
 
     </transition>
     <transition name="fade">
-        <overlay v-if="loading" text="读取中" float="true"></overlay>
+        <overlay v-if="loading" text="读取中" animated="true"></overlay>
     </transition>
-    <back  class="typekit-text" v-if="UIData && !loading" />
+    <back  class="" v-if="UIData && !loading" />
     </div>
 </template>
 
@@ -53,7 +53,9 @@ export default {
       loadingTimer = setTimeout(() => {
         this.loading = true;
       }, 600);
+      console.log(`${new Date()} | starting loading from api`);
       fetchHistory().then(res => {
+        console.log(`${new Date()} | finished loading api`);
         if (res.data['error']) {
           this.$router.replace('/404');
         } else {

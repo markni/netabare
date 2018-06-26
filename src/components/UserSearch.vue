@@ -1,6 +1,6 @@
 <template>
     <form @submit="submit">
-        <input id="username" autocomplete="off" data-lpignore="true" required pattern="^\w+$" class="typekit-text" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
+        <input id="username" autocomplete="off" data-lpignore="true" required pattern="^\w+$" class="" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
     </form>
 </template>
 

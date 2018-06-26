@@ -14,15 +14,8 @@ body {
   background: rgba(244, 244, 244, 1);
 }
 
-.typekit-text {
-  font-family: 'source-han-serif-sc', serif;
-}
-
-.wf-source-han-serif-sc-n4-active .typekit-text {
-  visibility: visible !important;
-}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'source-han-serif-sc', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
@@ -61,7 +54,6 @@ a:hover {
   color: #3194ff;
 }
 .highcharts-plot-line-label {
-  font-family: 'source-han-serif-sc', serif;
   opacity: 0.7;
 }
 </style>
