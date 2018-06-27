@@ -158,33 +158,30 @@ export default {
           });
         }
         this.matched = matched.length;
-        this.chart.series[0].setData(matched);
-        // this.chart.series[0].update(
-        //   {
-        //     data: matched
-        //   },
-        //   false
-        // );
-        // this.chart.series[2].update(
-        //   {
-        //     data: std1Data
-        //   },
-        //   false
-        // );
-        // this.chart.series[3].update(
-        //   {
-        //     data: std1DataNegative
-        //   },
-        //   false
-        // );
-        // this.chart.series[1].update(
-        //   {
-        //     data: yearlyData
-        //   },
-        //   true
-        // );
-        // this.chart.data.datasets[0].data = this.UIData;
-        // this.chart.update();
+        this.chart.series[0].update(
+          {
+            data: matched
+          },
+          false
+        );
+        this.chart.series[2].update(
+          {
+            data: std1Data
+          },
+          false
+        );
+        this.chart.series[3].update(
+          {
+            data: std1DataNegative
+          },
+          false
+        );
+        this.chart.series[1].update(
+          {
+            data: yearlyData
+          },
+          true
+        );
       }
     }
   },
