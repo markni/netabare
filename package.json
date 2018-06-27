@@ -11,6 +11,7 @@
     "go": "yarn lint && yarn build && git add ."
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "axios": "^0.18.0",
     "axios-cache-plugin": "^0.1.0",
     "chart.js": "^2.7.2",

@@ -20,6 +20,10 @@
 
       </div>
     </div>
+    <div class="line-art">
+      <line-art />
+
+    </div>
 
   </div>
 </template>
@@ -28,6 +32,7 @@
 // @ is an alias to /src
 import UserSearch from '@/components/UserSearch';
 import SubjectSearch from '@/components/SubjectSearch';
+import LineArt from '@/components/LineArt';
 
 export default {
   name: 'home',
@@ -43,7 +48,8 @@ export default {
   },
   components: {
     UserSearch,
-    SubjectSearch
+    SubjectSearch,
+    LineArt
   }
 };
 </script>
@@ -105,6 +111,9 @@ export default {
   background-size: 100%;
   background-position: bottom;
   background-repeat: no-repeat;
-  /*justify-content: space-evenly;*/
+  justify-content: space-between;
+}
+.line-art {
+  width: 100%;
 }
 </style>
