@@ -1,23 +1,26 @@
 <template>
   <div class="home" v-bind:class="{ready: !loading}">
-    <h1 class="tk-myriad-pro title">netabare.</h1>
-    <div class="inputs">
-      <div class=" input-label">个人
-        <router-link class="link" to="/history">评分分布</router-link>
-        :
-      </div>
-      <div class="input-box">
-        <user-search font-size="1rem"/>
-      </div>
-      <div class=" input-label">动画
-        <router-link class="link" to="/trending">评分趋势</router-link>
-        :
-      </div>
-      <div class="input-box">
-        <subject-search font-size="1rem"/>
-      </div>
+    <div>
+      <h1 class="tk-myriad-pro title">netabare.</h1>
+      <div class="inputs">
+        <div class=" input-label">个人
+          <router-link class="link" to="/history">评分分布</router-link>
+          :
+        </div>
+        <div class="input-box">
+          <user-search font-size="1rem"/>
+        </div>
+        <div class=" input-label">动画
+          <router-link class="link" to="/trending">评分趋势</router-link>
+          :
+        </div>
+        <div class="input-box">
+          <subject-search font-size="1rem"/>
+        </div>
 
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -66,7 +69,7 @@ export default {
   width: 10vw;
 }
 .title {
-  font-size: 10rem;
+  font-size: 12rem;
 }
 .title {
   transition: opacity 2s, text-shadow 1s;
@@ -75,6 +78,7 @@ export default {
     -0.2vmax -0.5vmax rgba(242, 0, 110, 0.3);
   cursor: pointer;
   margin-bottom: 1vmax;
+  margin-top: 20vh;
 }
 .title:hover {
   text-shadow: 0.3vmax 0 rgba(242, 0, 110, 0.4),
@@ -90,13 +94,17 @@ export default {
 .home {
   opacity: 0;
   transition: opacity 1s ease-out;
-  padding-left: 10vw;
   display: flex;
   width: 100%;
   height: 100vh;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   box-sizing: border-box;
+
+  background-image: url('../assets/background.svg');
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
   /*justify-content: space-evenly;*/
 }
 </style>
