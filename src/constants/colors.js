@@ -22,3 +22,13 @@ export const COLORS2 = [
   '#F2006E'
 ];
 export const GRAY = '#b9b9b9';
+
+export const GRADIENT1 = {
+  linearGradient: [0, 0, '100%', '100%'],
+  stops: [[0, PINK], [1, BLUE]]
+};
+
+export const GRADIENT2 = {
+  linearGradient: [0, 0, '50%', '100%'],
+  stops: [[0, BLUE], [1, PINK]]
+};
