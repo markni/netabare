@@ -76,8 +76,6 @@ export default {
 }
 .title {
   font-size: 12rem;
-}
-.title {
   transition: opacity 2s, text-shadow 1s;
   position: relative;
   text-shadow: 0.5vmax 0 rgba(49, 148, 255, 0.3),
@@ -85,10 +83,22 @@ export default {
   cursor: pointer;
   margin-bottom: 1vmax;
   margin-top: 20vh;
+  animation: shadow-dance 15s infinite;
 }
-.title:hover {
-  text-shadow: 0.3vmax 0 rgba(242, 0, 110, 0.4),
-    -0.3vmax -0.4vmax rgba(49, 148, 255, 0.5);
+
+@keyframes shadow-dance {
+  0% {
+    text-shadow: 0.5vmax 0 rgba(242, 0, 110, 0.4),
+      -0.3vmax -0.4vmax rgba(49, 148, 255, 0.5);
+  }
+  50% {
+    text-shadow: -0.5vmax -0.5vmax rgba(49, 148, 255, 0.5),
+      0.5vmax 0.5vmax rgba(242, 0, 110, 0.4);
+  }
+  100% {
+    text-shadow: 0.5vmax 0 rgba(242, 0, 110, 0.4),
+      -0.3vmax -0.4vmax rgba(49, 148, 255, 0.5);
+  }
 }
 
 .wf-active .home {
