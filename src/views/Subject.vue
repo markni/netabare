@@ -6,20 +6,20 @@
         <h2 class=" subtitle">{{subjectData.name_cn}}</h2>
 
         <div class="score-chart">
-            <div class=" minititle">评分 <span class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="30天之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
+            <div class=" minititle">评分 <span v-if="!isNaN(subjectData.deltaScore)" class="delta" :class="{pink: (subjectData.deltaScore >=0), blue: subjectData.deltaScore < 0}"  title="30天之内的评分变化">{{subjectData.deltaScoreStr}}</span></div>
             <div class=" em">{{subjectData.score}}</div>
 
             <score :UIData="scoreData"></score>
 
         </div>
         <div class="rank-chart">
-            <div class=" minititle">排名 <span class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="30天之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
+            <div class=" minititle">排名 <span v-if="!isNaN(subjectData.deltaRank)" class="delta" :class="{pink: (subjectData.deltaRank <=0), blue: subjectData.deltaRank > 0}" title="30天之内的排名变化">{{subjectData.deltaRankStr}}</span></div>
             <div class=" em">{{subjectData.rank}}</div>
 
             <rank :UIData="rankData"></rank>
         </div>
         <div class="collection-chart">
-            <div class=" minititle">在看 <span v-if="subjectData.deltaWatching" class="delta" :class="{pink: (subjectData.deltaWatching >=0), blue: subjectData.deltaWatching < 0}" title="30天之内的变化">{{subjectData.deltaWatchingStr}}</span></div>
+            <div class=" minititle">在看 <span v-if="!isNaN(subjectData.deltaWatching)" class="delta" :class="{pink: (subjectData.deltaWatching >=0), blue: subjectData.deltaWatching < 0}" title="30天之内的变化">{{subjectData.deltaWatchingStr}}</span></div>
             <div class=" em">{{subjectData.watching}}</div>
             <collection :UIData="collectionData"></collection>
         </div>
