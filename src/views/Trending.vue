@@ -58,7 +58,7 @@
                         <mini-score :color="item.score >= 0 ? pink : ''" :UIData="item.history"/>
                     </div>
                     <div class="score">{{item.history[0].score}}</div>
-                    <div class="delta" :class="{pink: item.score >= 0, blue: item.score < 0}">{{item.score >= 0 ? '▴' :
+                    <div v-if="!isNaN(item.score)" class="delta" :class="{pink: item.score >= 0, blue: item.score < 0}">{{item.score >= 0 ? '▴' :
                         '▾'}}{{Math.abs(item.score).toFixed(2)}}
                     </div>
                 </div>
