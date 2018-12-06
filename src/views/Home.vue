@@ -108,6 +108,7 @@ export default {
   opacity: 1 !important;
 }
 .home {
+  overflow: hidden;
   opacity: 0;
   transition: opacity 1s ease-out;
   display: flex;
