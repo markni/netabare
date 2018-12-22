@@ -1,5 +1,7 @@
 # Netabare Front-end
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/markni/netabare.svg)](https://greenkeeper.io/)
+
 Simple analytical site with vue.js and Highcharts.  Display back-end data with beautiful charts to show trends in Anime viewership.
 
 ![explorer_2018-12-06_12-27-14](https://user-images.githubusercontent.com/1743179/49610095-5d22db00-f952-11e8-9258-9e25998dcbb2.png)
