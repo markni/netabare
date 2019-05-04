@@ -1,38 +1,32 @@
 <template>
-    <div class="wrapper">
-        <div class="control">
-            <div class="unit ">
-                <div class="l">最早：</div>
-                <vue-monthly-picker
-                        dateFormat="YYYY年M月"
-                        v-model="startYear">
-                </vue-monthly-picker>
-            </div>
-            <div class="unit ">
-                <div class="l">最晚：</div>
-                <vue-monthly-picker
-                        dateFormat="YYYY年M月"
-                        v-model="endYear">
-                </vue-monthly-picker>
-            </div>
-            <div class="unit ">
-                <div class="l">最低评分：</div>
-                <input type="number" v-model="startScore"/>
-            </div>
-            <div class="unit ">
-                <div class="l">最高评分：</div>
-                <input type="number" v-model="endScore"/>
-            </div>
-            <div class="unit ">
-                <div class="l">符合条件：</div>
-                <div>{{matched}}</div>
-            </div>
-        </div>
-        <overlay text="渲染中" animated="true" v-if="rendering" />
-        <div class="chart-container" ref="container">
-        </div>
-
+  <div class="wrapper">
+    <div class="control">
+      <div class="unit ">
+        <div class="l">最早：</div>
+        <vue-monthly-picker dateFormat="YYYY年M月" v-model="startYear">
+        </vue-monthly-picker>
+      </div>
+      <div class="unit ">
+        <div class="l">最晚：</div>
+        <vue-monthly-picker dateFormat="YYYY年M月" v-model="endYear">
+        </vue-monthly-picker>
+      </div>
+      <div class="unit ">
+        <div class="l">最低评分：</div>
+        <input type="number" v-model="startScore" />
+      </div>
+      <div class="unit ">
+        <div class="l">最高评分：</div>
+        <input type="number" v-model="endScore" />
+      </div>
+      <div class="unit ">
+        <div class="l">符合条件：</div>
+        <div>{{ matched }}</div>
+      </div>
     </div>
+    <overlay text="渲染中" animated="true" v-if="rendering" />
+    <div class="chart-container" ref="container"></div>
+  </div>
 </template>
 <script>
 import { COLORS, PINK } from '@/constants/colors';

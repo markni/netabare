@@ -1,26 +1,25 @@
 <template>
-    <transition name="fade-slidein-left">
-
+  <transition name="fade-slidein-left">
     <div class="info-card" v-if="UIData.user">
+      <avatar :user="UIData.user" v-if="UIData.user" />
 
-        <avatar :user="UIData.user" v-if="UIData.user" />
+      <div v-if="UIData.user" class="nickname ">{{ UIData.user.nickname }}</div>
 
-        <div v-if="UIData.user" class="nickname ">{{UIData.user.nickname}}</div>
-
-        <div v-if="UIData.user" class="subtitle ">看过</div>
-        <div v-if="UIData.user" class="score ">{{UIData.total}}</div>
-        <div v-if="UIData.user" class="subtitle ">已评</div>
-        <div v-if="UIData.user" class="score ">{{(UIData.voted/UIData.total*100).toFixed(0)}}<span class="percent">%</span></div>
-        <div v-if="UIData.user" class="subtitle ">均值</div>
-        <div v-if="UIData.user" class="score ">{{UIData.avg}}</div>
-        <div v-if="UIData.user" class="subtitle ">中值</div>
-        <div v-if="UIData.user" class="score ">{{UIData.median}}</div>
-        <div v-if="UIData.user" class="subtitle ">标准差</div>
-        <div v-if="UIData.user" class="score ">{{UIData.stdev}}</div>
-
+      <div v-if="UIData.user" class="subtitle ">看过</div>
+      <div v-if="UIData.user" class="score ">{{ UIData.total }}</div>
+      <div v-if="UIData.user" class="subtitle ">已评</div>
+      <div v-if="UIData.user" class="score ">
+        {{ ((UIData.voted / UIData.total) * 100).toFixed(0)
+        }}<span class="percent">%</span>
+      </div>
+      <div v-if="UIData.user" class="subtitle ">均值</div>
+      <div v-if="UIData.user" class="score ">{{ UIData.avg }}</div>
+      <div v-if="UIData.user" class="subtitle ">中值</div>
+      <div v-if="UIData.user" class="score ">{{ UIData.median }}</div>
+      <div v-if="UIData.user" class="subtitle ">标准差</div>
+      <div v-if="UIData.user" class="score ">{{ UIData.stdev }}</div>
     </div>
-    </transition>
-
+  </transition>
 </template>
 <script>
 import Avatar from '@/components/Avatar';

@@ -1,28 +1,28 @@
 <template>
-    <div class="container">
-        <div v-show="items.length">
-            <h2>热门条目</h2>
-            <h3>在看最多的条目</h3>
-            <div>
-                <div class="row" v-for="(item,index) in items" :key="item.bgmId">
-                    <div class="index">{{index+1}}.</div>
-                    <div class="title">
-                        <router-link :to="{ path: 'subject/'+ item.bgmId}">{{item.name_cn ||
-                            item.name}}
-                        </router-link>
-                    </div>
-                    <div class="chart-cell">
-                        <mini-score :color="pink" :UIData="item.history"/>
-                    </div>
-                    <div class="score">{{item.history[0].score}}</div>
-                </div>
-            </div>
-            <back/>
+  <div class="container">
+    <div v-show="items.length">
+      <h2>热门条目</h2>
+      <h3>在看最多的条目</h3>
+      <div>
+        <div class="row" v-for="(item, index) in items" :key="item.bgmId">
+          <div class="index">{{ index + 1 }}.</div>
+          <div class="title">
+            <router-link :to="{ path: 'subject/' + item.bgmId }"
+              >{{ item.name_cn || item.name }}
+            </router-link>
+          </div>
+          <div class="chart-cell">
+            <mini-score :color="pink" :UIData="item.history" />
+          </div>
+          <div class="score">{{ item.history[0].score }}</div>
         </div>
-        <transition name="fade">
-            <overlay v-if="loading" text="读取中" animated="true"></overlay>
-        </transition>
+      </div>
+      <back />
     </div>
+    <transition name="fade">
+      <overlay v-if="loading" text="读取中" animated="true"></overlay>
+    </transition>
+  </div>
 </template>
 
 <script>

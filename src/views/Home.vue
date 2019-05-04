@@ -1,30 +1,29 @@
 <template>
-  <div class="home" v-bind:class="{ready: !loading}">
+  <div class="home" v-bind:class="{ ready: !loading }">
     <div>
       <h1 class="tk-myriad-pro title">netabare.</h1>
       <div class="inputs">
-        <div class=" input-label">个人
+        <div class=" input-label">
+          个人
           <router-link class="link" to="/history">评分分布</router-link>
           :
         </div>
         <div class="input-box">
-          <user-search font-size="1rem"/>
+          <user-search font-size="1rem" />
         </div>
-        <div class=" input-label">动画
+        <div class=" input-label">
+          动画
           <router-link class="link" to="/trending">评分趋势</router-link>
           :
         </div>
         <div class="input-box">
-          <subject-search font-size="1rem"/>
+          <subject-search font-size="1rem" />
         </div>
-
       </div>
     </div>
     <div class="line-art">
       <line-art />
-
     </div>
-
   </div>
 </template>
 

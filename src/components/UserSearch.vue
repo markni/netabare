@@ -1,7 +1,19 @@
 <template>
-    <form @submit="submit">
-        <input id="username" autocomplete="off" data-lpignore="true" required pattern="^\w+$" class="tk-source-han-serif-sc" :style="{ fontSize: fontSize}" maxlength="15" type="text" v-model="bgmUserId" placeholder="username / id"/>
-    </form>
+  <form @submit="submit">
+    <input
+      id="username"
+      autocomplete="off"
+      data-lpignore="true"
+      required
+      pattern="^\w+$"
+      class="tk-source-han-serif-sc"
+      :style="{ fontSize: fontSize }"
+      maxlength="15"
+      type="text"
+      v-model="bgmUserId"
+      placeholder="username / id"
+    />
+  </form>
 </template>
 
 <script>

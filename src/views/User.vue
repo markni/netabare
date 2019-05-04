@@ -1,21 +1,20 @@
 <template>
-    <div class="wrapper">
-        <div class="inner-wrapper">
-            <transition name="fade">
-                <overlay v-if="loading" text="读取中" animated="true"></overlay>
-            </transition>
-            <div class="user-rating">
-                <user-rating :UIData="UIData" />
-            </div>
-            <div class="user-panel">
-                <user-stats :UIData="UIData" />
-                <div class="switch-user" v-if="UIData.data">
-                    <user-search font-size="2vh" />
-                </div>
-            </div>
+  <div class="wrapper">
+    <div class="inner-wrapper">
+      <transition name="fade">
+        <overlay v-if="loading" text="读取中" animated="true"></overlay>
+      </transition>
+      <div class="user-rating">
+        <user-rating :UIData="UIData" />
+      </div>
+      <div class="user-panel">
+        <user-stats :UIData="UIData" />
+        <div class="switch-user" v-if="UIData.data">
+          <user-search font-size="2vh" />
         </div>
-
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
