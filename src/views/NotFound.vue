@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <Overlay text="四〇四" />
-    </div>
+  <div>
+    <Overlay text="四〇四" />
+  </div>
 </template>
 
 <script>
@@ -15,5 +15,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

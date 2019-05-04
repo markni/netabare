@@ -1,7 +1,7 @@
 <template>
-    <div class="chart-container" ref="container">
-        <canvas ref="score"></canvas>
-    </div>
+  <div class="chart-container" ref="container">
+    <canvas ref="score"></canvas>
+  </div>
 </template>
 <script>
 import { BLUE } from '@/constants/colors';
@@ -53,15 +53,17 @@ export default {
               useHTML: true
             }
           };
-          subject.eps.filter(ep => ep.type === 0 && ep.airdate).forEach(ep => {
-            let epOption = _.cloneDeep(plotOptions);
-            epOption.label.text = `<a target="_blank" href="https://bgm.tv/ep/${
-              ep.id
-            }">ep. ${ep.sort}</a>`;
-            epOption.value = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
-            this.chart.xAxis[0].addPlotLine(epOption);
-            //this.chart.xAxis[0].update();
-          });
+          subject.eps
+            .filter(ep => ep.type === 0 && ep.airdate)
+            .forEach(ep => {
+              let epOption = _.cloneDeep(plotOptions);
+              epOption.label.text = `<a target="_blank" href="https://bgm.tv/ep/${
+                ep.id
+              }">ep. ${ep.sort}</a>`;
+              epOption.value = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
+              this.chart.xAxis[0].addPlotLine(epOption);
+              //this.chart.xAxis[0].update();
+            });
         }
         // this.chart.data.datasets[0].data = this.UIData;
         // this.chart.update();

@@ -1,6 +1,5 @@
 <template>
-    <div class="back"><router-link to="/">← 返回首页看看其他的</router-link></div>
-
+  <div class="back"><router-link to="/">← 返回首页看看其他的</router-link></div>
 </template>
 
 <script>

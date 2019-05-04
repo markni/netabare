@@ -1,9 +1,13 @@
 <template>
-    <div class="avatar">
-        <a v-bind:href="user.url.replace('http:','https:')" :alt="user.nickname" target="_blank">
-        <img :src="user.avatar.large.replace('http:','https:')" />
-        </a>
-    </div>
+  <div class="avatar">
+    <a
+      v-bind:href="user.url.replace('http:', 'https:')"
+      :alt="user.nickname"
+      target="_blank"
+    >
+      <img :src="user.avatar.large.replace('http:', 'https:')" />
+    </a>
+  </div>
 </template>
 
 <script>

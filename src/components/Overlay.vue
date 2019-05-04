@@ -1,7 +1,7 @@
 <template>
-    <div class="overlay">
-        <div class=""  v-bind:class="{ float: animated }">{{ text }}</div>
-    </div>
+  <div class="overlay">
+    <div class="" v-bind:class="{ float: animated }">{{ text }}</div>
+  </div>
 </template>
 
 <script>

@@ -1,6 +1,5 @@
 <template>
-    <div class="chart-container" ref="container">
-    </div>
+  <div class="chart-container" ref="container"></div>
 </template>
 <script>
 import { COLORS } from '@/constants/colors';

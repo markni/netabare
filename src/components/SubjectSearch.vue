@@ -1,7 +1,14 @@
 <template>
-    <form @submit="submit">
-        <input type="number" :style="{ fontSize: fontSize}" class="tk-source-han-serif-sc" maxlength="7"  v-model="bgmSubjectId" placeholder="anime id"/>
-    </form>
+  <form @submit="submit">
+    <input
+      type="number"
+      :style="{ fontSize: fontSize }"
+      class="tk-source-han-serif-sc"
+      maxlength="7"
+      v-model="bgmSubjectId"
+      placeholder="anime id"
+    />
+  </form>
 </template>
 
 <script>

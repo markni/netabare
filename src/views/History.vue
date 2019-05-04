@@ -1,19 +1,17 @@
 <template>
-    <div>
+  <div>
     <transition name="fade">
-    <div class="container" >
-
+      <div class="container">
         <div class="score-chart">
-            <scatter :UIData="UIData"></scatter>
+          <scatter :UIData="UIData"></scatter>
         </div>
-    </div>
-
+      </div>
     </transition>
     <transition name="fade">
-        <overlay v-if="loading" text="读取中" animated="true"></overlay>
+      <overlay v-if="loading" text="读取中" animated="true"></overlay>
     </transition>
-    <back  class="" v-if="UIData && !loading" />
-    </div>
+    <back class="" v-if="UIData && !loading" />
+  </div>
 </template>
 
 <script>
