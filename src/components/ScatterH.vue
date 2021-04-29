@@ -52,8 +52,10 @@ export default {
     if (!endScore || endScore > 10) endScore = 10;
     if (!startScore || startScore < 1) startScore = 1;
 
+    let defaultYear = moment().subtract(20,'year').year();
+
     startYear = moment()
-      .year(startYear || 1988)
+      .year(startYear || defaultYear)
       .startOf('year');
     if (endYear) {
       endYear = moment()
@@ -460,6 +462,7 @@ input {
 .unit {
   min-width: 200px;
   margin-bottom: 10px;
+  margin-right: 30px;
 }
 .l {
   font-weight: bold;
