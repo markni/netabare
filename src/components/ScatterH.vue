@@ -52,7 +52,9 @@ export default {
     if (!endScore || endScore > 10) endScore = 10;
     if (!startScore || startScore < 1) startScore = 1;
 
-    let defaultYear = moment().subtract(20,'year').year();
+    let defaultYear = moment()
+      .subtract(20, 'year')
+      .year();
 
     startYear = moment()
       .year(startYear || defaultYear)
