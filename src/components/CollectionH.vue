@@ -124,6 +124,9 @@ export default {
             marker: {
               enabled: false
             }
+          },
+          series: {
+            turboThreshold: 365*10
           }
         },
         yAxis: {
