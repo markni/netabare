@@ -5,19 +5,24 @@
       :alt="user.nickname"
       target="_blank"
     >
-      <img :src="user.avatar.large.replace('http:', 'https:')" />
+      <img
+        :src="user.avatar.large.replace('http:', 'https:')"
+        alt="user.nickname"
+      />
     </a>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Avatar',
-  props: ['user']
-};
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Avatar",
+  props: ["user"],
+});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .avatar {
   /*display: inline;*/
 }

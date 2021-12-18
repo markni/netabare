@@ -1,44 +1,45 @@
 {
   "name": "netabare",
-  "version": "0.2.1",
+  "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "go": "yarn lint && yarn build && git add ."
+    "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
-    "animejs": "^2.2.0",
-    "axios": "^0.18.0",
-    "axios-cache-plugin": "^0.1.0",
-    "chart.js": "^2.7.2",
-    "express": "^4.16.3",
-    "highcharts": "^6.1.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.2",
-    "stats-lite": "^2.1.1",
-    "vue": "^2.5.16",
-    "vue-monthly-picker": "^0.2.2",
-    "vue-router": "^3.0.1"
+    "axios": "^0.24.0",
+    "core-js": "^3.6.5",
+    "register-service-worker": "^1.7.1",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-plugin-unit-mocha": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.15",
-    "@vue/test-utils": "^1.0.0-beta.16",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^5.2.4",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.1.2",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~4.1.5"
+  }
 }
