@@ -1,24 +1,52 @@
-# Netabare Front-end
+# netabare
 
-Simple analytical site with vue.js and Highcharts.  Display back-end data with beautiful charts to show trends in Anime viewership.
+This template should help get you started developing with Vue 3 in Vite.
 
-![explorer_2018-12-06_12-27-14](https://user-images.githubusercontent.com/1743179/49610095-5d22db00-f952-11e8-9258-9e25998dcbb2.png)
-![webstorm64_2018-12-06_12-24-42](https://user-images.githubusercontent.com/1743179/49610053-3f557600-f952-11e8-86b6-657cebcedbad.png)
-![webstorm64_2018-12-06_12-25-11](https://user-images.githubusercontent.com/1743179/49610054-3f557600-f952-11e8-94df-e34bf560ab90.png)
+## Recommended IDE Setup
 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Install
+## Type Support for `.vue` Imports in TS
 
-```yarn```
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-## Serve
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-```yarn serve```
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-visit testing result at http://localhost:8080/
+## Customize configuration
 
-## Build
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-```yarn build```
+## Project Setup
 
-build in located in `/dist/`, serve `index.html` with your production server.
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```

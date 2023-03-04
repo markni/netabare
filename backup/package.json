@@ -1,0 +1,44 @@
+{
+  "name": "netabare",
+  "version": "0.2.1",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "go": "yarn lint && yarn build && git add ."
+  },
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "axios": "^0.18.0",
+    "axios-cache-plugin": "^0.1.0",
+    "chart.js": "^2.7.2",
+    "express": "^4.16.3",
+    "highcharts": "^6.1.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "sass": "^1.55.0",
+    "stats-lite": "^2.1.1",
+    "vue": "^2.5.16",
+    "vue-monthly-picker": "^0.2.2",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-plugin-unit-mocha": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "@vue/eslint-config-prettier": "^3.0.0-beta.15",
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "chai": "^4.1.2",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
