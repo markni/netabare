@@ -28,8 +28,7 @@ export default {
   transition: opacity 2s, text-shadow 1s;
   text-shadow: 0.5vmax 0 rgb(49 148 255 / 30%), -0.2vmax -0.5vmax rgb(242 0 110 / 30%);
   cursor: pointer;
-  margin-bottom: 1vmax;
-  margin-top: 20vh;
+
   font-family: "myriad-pro", sans-serif;
   animation: shadow-dance 15s infinite;
 }

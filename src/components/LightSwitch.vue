@@ -31,11 +31,12 @@ function playSound() {
         :class="{ 'pull-down': isAnimationRunning }"
         class="light-switch-string h-[400px] w-0.5 bg-gray-900 dark:bg-gray-50 shadow"
     ></div>
-    <div
-        class="rounded-full w-10 h-10 border-gray-900 dark:border-gray-50 border-2 cursor-pointer shadow"
-        @click="pullDown"
-    ></div>
-    <audio ref="audio" :src="`/switch.mp3`"></audio>
+    <button :aria-label="`Toggle light/dark Mode (Current mode: ${themeStore.theme})`"
+            class="rounded-full w-10 h-10 border-gray-900 dark:border-gray-50 border-2 cursor-pointer shadow"
+            type="button"
+            @click="pullDown"
+    ></button>
+    <audio ref="audio" :src="`/switch.mp3`" class="hidden"></audio>
   </div>
 </template>
 
