@@ -9,7 +9,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="flex justify-end h-full flex-col ">
+  <main class="main flex justify-end h-full flex-col ">
     <div class="mb-auto text-4xl flex flex-col gap-8 p-8 tracking-widest" style="writing-mode: vertical-lr">
 
       <RouterLink
@@ -35,3 +35,4 @@ export default defineComponent({
 
   </main>
 </template>
+
