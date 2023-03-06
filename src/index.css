@@ -6,3 +6,11 @@ html, body, #app {
     height: 100%;
 
 }
+
+.outline-11y {
+    outline: transparent solid 2px;
+}
+
+.transition-br {
+    transition-property: bottom, right;
+}

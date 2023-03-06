@@ -35,5 +35,6 @@ export default {
 
 .overlay {
   writing-mode: vertical-rl;
+  pointer-events: none;
 }
 </style>

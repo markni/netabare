@@ -18,9 +18,5 @@ export const useThemeStore = defineStore('theme', {
       localStorage.setItem('theme', this.theme)
     }
   },
-  getters: {
-    isDark(): boolean {
-      return this.theme === 'dark'
-    }
-  }
+  getters: {}
 })
