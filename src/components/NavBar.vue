@@ -17,8 +17,10 @@
 <script lang="ts" setup>
 import {useRoute} from "vue-router";
 import {ref, watch} from "vue";
+import {useUserStore} from "@/stores/user";
 
 const route = useRoute();
+const userStore = useUserStore();
 
 const links = [
   {
@@ -54,6 +56,9 @@ watch(() => route.name, (name) => {
   } else {
     // if at home page, hide the return home link and show the others
     visibleLinks.value = links.filter(link => link.name !== '返回首页');
+    if (userStore.user?.bgmId) {
+      visibleLinks.value[2].to = `/user/${userStore.user.bgmId}`
+    }
   }
 
 });
