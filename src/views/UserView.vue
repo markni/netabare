@@ -52,7 +52,7 @@ import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title,
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-await sleep(1000);
+await sleep(500);
 
 const userStore = useUserStore();
 

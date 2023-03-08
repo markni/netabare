@@ -13,6 +13,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "chartjs-adapter-moment": "^1.0.1",
+    "moment": "^2.29.4",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
     "vue-chartjs": "^5.2.0",
