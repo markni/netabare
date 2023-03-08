@@ -41,6 +41,7 @@ export const useUserStore = defineStore('user', {
       responsive: true,
       maintainAspectRatio: false,
       barThickness: 35,
+
       plugins: {
         legend: {
           display: false
@@ -52,13 +53,12 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     async fetchUser(bgmId: string) {
-      try {
-        const response = await fetch(`https://api.netaba.re/user/${bgmId}`)
-        const data = await response.json()
-        this.user = { bgmId, ...data }
-      } catch (e) {
-        console.error(e)
+      const response = await fetch(`https://api.netaba.re/user/${bgmId}`)
+      if (!response.ok) {
+        throw new Error('Resource not found') // or any other error message
       }
+      const data = await response.json()
+      this.user = { bgmId, ...data }
     }
   },
   getters: {

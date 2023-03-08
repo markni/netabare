@@ -1,5 +1,5 @@
 <template>
-  <nav class="mb-auto text-4xl flex flex-col gap-8 p-8 tracking-widest fixed top-4 left-4"
+  <nav class="mb-auto text-2xl sm:text-4xl flex flex-col gap-8 p-8 tracking-widest fixed top-4 left-4"
        style="writing-mode: vertical-lr">
 
     <RouterLink

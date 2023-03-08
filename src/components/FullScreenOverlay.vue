@@ -1,6 +1,6 @@
 <template>
   <div
-      class="overlay tracking-wide text-8xl fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-10">
+      class="overlay tracking-wide text-4xl sm:text-8xl fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-10">
     <div class="" v-bind:class="{ float: animated }">{{ text }}</div>
   </div>
 </template>

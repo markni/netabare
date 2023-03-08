@@ -1,26 +1,27 @@
 <template>
-  <div class="user-view h-full flex justify-center items-center gap-4">
-    <div v-if="useUserStore().user?.bgmId" class="block w-full ml-[10%] pt-8 pb-8 h-full ">
+  <div class="user-view h-full flex sm:justify-center justify-end items-center gap-4 flex-col-reverse sm:flex-row">
+    <div v-if="useUserStore().user?.bgmId"
+         class="block sm:w-full w-[90%] h-full sm:ml-[10%] ml-0 pt-8 pb-16 sm:pb-8 h-full ">
       <Bar v-if="userStore.barChartData" :data="userStore.barChartData" :options="userStore.chartOptions"/>
     </div>
 
     <div v-if="useUserStore().user?.bgmId"
-         class="flex flex-col shrink-0 gap-4 mb-auto ml-auto mr-[25%] items-end pt-8 w-2/12 overflow-hidden">
+         class="flex flex-col shrink-0 gap-4 sm:mb-auto ml-auto mr-[25%] items-end pt-8 w-auto sm:w-2/12 overflow-hidden">
       <AvatarBlock/>
-      <p class="name text-6xl whitespace-nowrap">{{
+      <p class="name text-3xl sm:text-6xl whitespace-nowrap">{{
           useUserStore().user?.user?.nickname || useUserStore().user?.user?.username
         }}
       </p>
       <div v-for="item in useUserStore().statsArray" :key="item.name" class="flex flex-col items-end gap-0">
-        <p class="text-xl tracking-widest leading-none whitespace-nowrap">{{ item.name }}</p>
-        <p class="text-3xl tracking-widest leading-none whitespace-nowrap">{{ item.value }}</p>
+        <p class="sm:text-xl  tracking-widest leading-none whitespace-nowrap">{{ item.name }}</p>
+        <p class="sm:text-3xl text-xl tracking-widest leading-none whitespace-nowrap">{{ item.value }}</p>
       </div>
 
     </div>
 
 
     <form
-        :class="{ 'fixed bottom-4 right-4': !!useUserStore().user.bgmId, 'bottom-1/2 right-1/2': !useUserStore().user.bgmId }"
+        :class="{ 'fixed bottom-8 right-8': !!useUserStore().user.bgmId, 'bottom-1/2 right-1/2': !useUserStore().user.bgmId }"
         class="duration-1000 transition-br ease-in-out"
         @submit.prevent="submit">
       <!--      <label for="user-id">User ID {{ useUserStore().user.bgmId }}</label>-->
@@ -37,6 +38,11 @@
 
 <script lang="ts" setup>
 console.log('UserView.tsx');
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 import {Bar} from "vue-chartjs";
 import AvatarBlock from "@/components/AvatarBlock.vue";
 import {useRoute, useRouter} from "vue-router";
@@ -45,6 +51,8 @@ import {onMounted, ref, watch} from "vue";
 import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip} from 'chart.js';
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+await sleep(1000);
 
 const userStore = useUserStore();
 
@@ -57,7 +65,12 @@ const router = useRouter();
 //
 //
 if (route?.params?.id && !Array.isArray(route.params.id)) {
-  await useUserStore().fetchUser(route.params.id);
+  try {
+    await useUserStore().fetchUser(route.params.id);
+  } catch (e) {
+    router.replace({name: 'notFound'});
+  }
+
 }
 
 console.log('data loaded');
