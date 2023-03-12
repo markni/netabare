@@ -10,6 +10,10 @@
         class="font-bold hover:mt-2 transition-all">{{ link.name }}
     </RouterLink>
 
+    <div aria-hidden="true" class="invisible pointer-events-none text-xs">
+      {{ textStore.getAltText }}
+    </div>
+
 
   </nav>
 </template>
@@ -18,30 +22,32 @@
 import {useRoute} from "vue-router";
 import {ref, watch} from "vue";
 import {useUserStore} from "@/stores/user";
+import {useTextStore} from "@/stores/text";
 
 const route = useRoute();
 const userStore = useUserStore();
+const textStore = useTextStore();
 
 const links = [
   {
-    name: '评分分布',
+    name: textStore.getText('评分分布'),
     to: '/history',
-    ariaLabel: '评分分布'
+    ariaLabel: textStore.getText('评分分布')
   },
   {
-    name: '条目趋势',
+    name: textStore.getText('条目趋势'),
     to: '/trending',
-    ariaLabel: '条目趋势'
+    ariaLabel: textStore.getText('条目趋势')
   },
   {
-    name: '个人评分',
+    name: textStore.getText('个人评分'),
     to: '/user',
-    ariaLabel: '个人评分'
+    ariaLabel: textStore.getText('个人评分')
   },
   {
-    name: '返回首页',
+    name: textStore.getText('返回首页'),
     to: '/',
-    ariaLabel: '返回首页'
+    ariaLabel: textStore.getText('返回首页')
   },
 ]
 

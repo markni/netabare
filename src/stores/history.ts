@@ -1,4 +1,6 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { useThemeStore } from '@/stores/theme'
+import moment from 'moment'
 
 interface HistoryItem {
   bgmId: string
@@ -10,10 +12,48 @@ interface HistoryItem {
   rank: number
 }
 
+function getAverageScoresByYear<T extends { x: string; y: number }>(data: T[]) {
+  // Initialize an object to store the sum and count of scores for each year
+  const yearStats: {
+    [year: number]: {
+      sum: number
+      count: number
+    }
+  } = {}
+
+  // Loop through the data and update the sum and count of scores for each year
+  for (const obj of data) {
+    const year = moment(obj.x).year()
+    console.log(obj.x, year)
+    if (!yearStats[year]) {
+      yearStats[year] = { sum: 0, count: 0 }
+    }
+    yearStats[year].sum += obj.y
+    yearStats[year].count++
+  }
+
+  // Compute the average score for each year and store the results in an array
+  const result = []
+  console.log(yearStats)
+
+  for (const year in yearStats) {
+    const { sum, count } = yearStats[year]
+    result.push({ x: year, y: sum / count })
+  }
+
+  // Sort the result array by year (x property)
+
+  return result
+}
+
 export const useHistoryStore = defineStore('history', {
   state: () => {
     const history: HistoryItem[] = []
     const chartOptions = {
+      onClick: (event: any, elements: any) => {
+        console.log('hello', event, elements)
+      },
+      spanGaps: true,
       responsive: true,
       maintainAspectRatio: false,
       scales: {
@@ -31,7 +71,17 @@ export const useHistoryStore = defineStore('history', {
         tooltip: {
           callbacks: {
             label: (context: any) => {
-              return `${context.raw.n}: ${context.raw.y}分`
+              console.log(context)
+              if (context.datasetIndex === 0) {
+                return [
+                  context.raw._n,
+                  `首播：${moment(context.raw.x).format('YYYY-MM-DD')}`,
+                  `均分：${context.raw.y}`,
+                  `排名：${context.raw._r}`
+                ]
+              } else if (context.datasetIndex === 1) {
+                return [`年份：${context.raw.x}`, `均分：${context.raw.y.toFixed(2)}`]
+              }
             }
           }
         }
@@ -49,27 +99,44 @@ export const useHistoryStore = defineStore('history', {
     }
   },
   getters: {
-    bubbleChartData(state) {
+    chartData(state) {
+      const themeStore = useThemeStore()
+      const { primary, secondary } = themeStore
       const data = state.history
         .map((item: HistoryItem) => {
           return {
             x: item.air_date,
             y: item.score,
             r: item.total,
-            n: item.name
+            _n: item.name,
+            _id: item.bgmId,
+            _r: item.rank
           }
         })
         .filter(
           (item: any) =>
-            item.r > 50 && new Date(item.x).getTime() > new Date('2015-01-01').getTime()
+            item.r > 100 && new Date(item.x).getTime() > new Date('2015-01-01').getTime()
         )
+      //raw data completed here
+
       console.log(data)
+      const lineData = getAverageScoresByYear(data)
+
       return {
         datasets: [
           {
+            type: 'scatter',
             label: 'Data One',
-            backgroundColor: '#f87979',
+            backgroundColor: [primary],
             data: data
+          },
+          {
+            type: 'line',
+            label: 'Data Two',
+            borderColor: [secondary],
+            fill: true,
+            backgroundColor: [secondary],
+            data: lineData
           }
         ]
       }

@@ -10,7 +10,12 @@ export const useThemeStore = defineStore('theme', {
     if (localSetting) {
       theme = localSetting
     }
-    return { theme }
+    const primary = '#3094ff'
+    const secondary = '#dc107e'
+    // if (theme === 'dark') {
+    //   primary = '#dc107e'
+    // }
+    return { theme, primary, secondary }
   },
   actions: {
     toggleTheme() {
