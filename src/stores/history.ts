@@ -24,7 +24,6 @@ function getAverageScoresByYear<T extends { x: string; y: number }>(data: T[]) {
   // Loop through the data and update the sum and count of scores for each year
   for (const obj of data) {
     const year = moment(obj.x).year()
-    console.log(obj.x, year)
     if (!yearStats[year]) {
       yearStats[year] = { sum: 0, count: 0 }
     }
@@ -34,7 +33,6 @@ function getAverageScoresByYear<T extends { x: string; y: number }>(data: T[]) {
 
   // Compute the average score for each year and store the results in an array
   const result = []
-  console.log(yearStats)
 
   for (const year in yearStats) {
     const { sum, count } = yearStats[year]
@@ -71,7 +69,6 @@ export const useHistoryStore = defineStore('history', {
         tooltip: {
           callbacks: {
             label: (context: any) => {
-              console.log(context)
               if (context.datasetIndex === 0) {
                 return [
                   context.raw._n,
@@ -87,7 +84,13 @@ export const useHistoryStore = defineStore('history', {
         }
       }
     }
-    return { history, chartOptions }
+    return {
+      history,
+      chartOptions,
+      startingYear: 2015,
+      endingYear: moment().year(),
+      minScore: 0
+    }
   },
   actions: {
     async fetchHistory() {
@@ -115,11 +118,12 @@ export const useHistoryStore = defineStore('history', {
         })
         .filter(
           (item: any) =>
-            item.r > 100 && new Date(item.x).getTime() > new Date('2015-01-01').getTime()
+            item.y >= state.minScore &&
+            moment(item.x).valueOf() >= moment(state.startingYear.toString(), 'YYYY').valueOf() &&
+            moment(item.x).valueOf() <= moment((state.endingYear + 1).toString(), 'YYYY').valueOf()
         )
       //raw data completed here
 
-      console.log(data)
       const lineData = getAverageScoresByYear(data)
 
       return {

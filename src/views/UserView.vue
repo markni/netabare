@@ -22,11 +22,11 @@
 
     <form
         :class="{ 'fixed bottom-8 right-8': !!useUserStore().user.bgmId, 'bottom-1/2 right-1/2': !useUserStore().user.bgmId }"
-        class="duration-1000 transition-br ease-in-out"
+        class="duration-1000 transition-br ease-in-out flex justify-center items-center"
         @submit.prevent="submit">
-      <!--      <label for="user-id">User ID {{ useUserStore().user.bgmId }}</label>-->
+      <label class="text-xl" for="user-id">输入：</label>
       <input id="user-id" v-model="bgmId"
-
+             :autofocus="!useUserStore().user.bgmId"
              aria-label="User's bangumi.tv username or uid"
              class="bg-transparent border-b dark:border-b-amber-50 border-gray-900 pl-1 pb-1 outline-11y "
              placeholder="uid / username"

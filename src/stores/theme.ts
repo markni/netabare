@@ -2,10 +2,10 @@ import { defineStore } from 'pinia'
 
 export const useThemeStore = defineStore('theme', {
   state: () => {
-    let theme = 'light'
+    let theme = 'dark'
     const localSetting = localStorage.getItem('theme')
-    if (window.matchMedia('(prefers-color-scheme: dark)')?.matches) {
-      theme = 'dark'
+    if (window.matchMedia('(prefers-color-scheme: light)')?.matches) {
+      theme = 'light'
     }
     if (localSetting) {
       theme = localSetting
