@@ -2,7 +2,7 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 import { useThemeStore } from '@/stores/theme'
 import moment from 'moment'
 
-interface HistoryItem {
+export interface HistoryItem {
   bgmId: string
   name: string
   name_cn: string
@@ -64,14 +64,23 @@ export const useHistoryStore = defineStore('history', {
       },
       plugins: {
         legend: {
-          display: false
+          display: true,
+          position: 'bottom',
+          labels: {
+            font: {
+              size: 24,
+              family: 'source-han-serif-sc'
+            }
+          }
         },
         tooltip: {
           callbacks: {
+            title: () => '',
             label: (context: any) => {
               if (context.datasetIndex === 0) {
                 return [
                   context.raw._n,
+
                   `首播：${moment(context.raw.x).format('YYYY-MM-DD')}`,
                   `均分：${context.raw.y}`,
                   `排名：${context.raw._r}`
@@ -94,6 +103,7 @@ export const useHistoryStore = defineStore('history', {
   },
   actions: {
     async fetchHistory() {
+      if (this.history?.length) return
       const response = await fetch('https://api.netaba.re/history')
       if (!response.ok) {
         throw new Error('Resource not found') // or any other error message
@@ -130,13 +140,13 @@ export const useHistoryStore = defineStore('history', {
         datasets: [
           {
             type: 'scatter',
-            label: 'Data One',
+            label: `${data.length}个作品`,
             backgroundColor: [primary],
             data: data
           },
           {
             type: 'line',
-            label: 'Data Two',
+            label: '年均分走势',
             borderColor: [secondary],
             fill: true,
             backgroundColor: [secondary],

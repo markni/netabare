@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/HistoryView.vue')
     },
     {
+      path: '/trending',
+      name: 'trending',
+      component: () => import('../views/TrendView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')
