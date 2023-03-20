@@ -15,35 +15,9 @@ function sampleData(data: any[], sampleSize: number) {
 export const useArchiveStore = defineStore('archive', {
   state: () => {
     const archives: { [id: number]: Archive } = {}
-    const chartOptions = {
-      spanGaps: true,
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            unit: 'month'
-          }
-        },
-        y: {
-          min: 0,
-          max: 10,
-          ticks: {
-            // This ensures that the min and max values are included in the ticks
-            stepSize: 1,
-            precision: 0,
-            includeBounds: true
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          display: false
-        }
-      }
-    }
-    return { archives, chartOptions }
+    const trend: Trend = {}
+
+    return { archives, trend }
   },
   actions: {
     async fetchArchive(id: number) {
@@ -53,9 +27,60 @@ export const useArchiveStore = defineStore('archive', {
         throw new Error('Resource not found') // or any other error message
       }
       this.archives[id] = await response.json()
+    },
+    async fetchTrend() {
+      const response = await fetch('https://api.netaba.re/trending')
+      if (!response.ok) {
+        throw new Error('Resource not found') // or any other error message
+      }
+      this.trend = await response.json()
     }
   },
   getters: {
+    chartOptions() {
+      return (config: { interactive?: boolean } = {}) => {
+        const { interactive } = config
+        console.log('interactive', interactive)
+        return {
+          spanGaps: true,
+          responsive: true,
+          maintainAspectRatio: false,
+          elements: {
+            point: {
+              radius: interactive ? 5 : 0
+            }
+          },
+          scales: {
+            x: {
+              display: interactive,
+              type: 'time',
+              time: {
+                unit: 'month'
+              }
+            },
+            y: {
+              display: interactive,
+              min: interactive ? 3 : 0,
+              max: interactive ? 9 : 10,
+              ticks: {
+                // This ensures that the min and max values are included in the ticks
+                stepSize: 1,
+                precision: 0,
+                includeBounds: true
+              }
+            }
+          },
+          plugins: {
+            tooltip: {
+              enabled: interactive
+            },
+            legend: {
+              display: false
+            }
+          }
+        }
+      }
+    },
     archiveChartData(state) {
       const themeStore = useThemeStore()
       const { secondary } = themeStore
@@ -88,6 +113,12 @@ export const useArchiveStore = defineStore('archive', {
     }
   }
 })
+
+export interface Trend {
+  done?: any
+  down?: any
+  up?: any
+}
 
 export interface Archive {
   subject: Subject

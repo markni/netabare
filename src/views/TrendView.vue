@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full">
-    <SubjectScore :bgm-id="329014"/>
+  <div class="h-[100px] aspect-video">
+    <SubjectScore :bgm-id="329014" size="mini"/>
   </div>
 </template>
 

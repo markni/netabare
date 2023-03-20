@@ -1,5 +1,5 @@
 <template>
-  <Chart :data="archiveStore.archiveChartData(props.bgmId)" :options="archiveStore.chartOptions"/>
+  <Chart :data="archiveStore.archiveChartData(props.bgmId)" :options="archiveStore.chartOptions({interactive:false})"/>
 </template>
 
 <script lang="ts" setup>
@@ -10,8 +10,15 @@ import {useArchiveStore} from "@/stores/archive";
 
 ChartJS.register(LinearScale, PointElement, Tooltip, TimeScale, Legend, LineElement, Title,);
 
-const props = defineProps({
-  bgmId: Number
+type ChartSize = 'mini' | 'small' | 'medium' | 'large' | 'full';
+
+interface Props {
+  size?: ChartSize
+  bgmId: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  size: 'mini'
 })
 
 
