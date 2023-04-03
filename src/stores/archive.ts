@@ -27,13 +27,6 @@ export const useArchiveStore = defineStore('archive', {
         throw new Error('Resource not found') // or any other error message
       }
       this.archives[id] = await response.json()
-    },
-    async fetchTrend() {
-      const response = await fetch('https://api.netaba.re/trending')
-      if (!response.ok) {
-        throw new Error('Resource not found') // or any other error message
-      }
-      this.trend = await response.json()
     }
   },
   getters: {
@@ -47,7 +40,7 @@ export const useArchiveStore = defineStore('archive', {
           maintainAspectRatio: false,
           elements: {
             point: {
-              radius: interactive ? 5 : 0
+              radius: interactive ? 2 : 0
             }
           },
           scales: {
@@ -60,8 +53,8 @@ export const useArchiveStore = defineStore('archive', {
             },
             y: {
               display: interactive,
-              min: interactive ? 3 : 0,
-              max: interactive ? 9 : 10,
+              min: interactive ? 0 : 3,
+              max: interactive ? 10 : 9,
               ticks: {
                 // This ensures that the min and max values are included in the ticks
                 stepSize: 1,

@@ -33,6 +33,11 @@ const router = createRouter({
       component: () => import('../views/TrendView.vue')
     },
     {
+      path: '/archive/:id',
+      name: 'archive',
+      component: () => import('../views/ArchiveView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')

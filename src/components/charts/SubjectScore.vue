@@ -1,5 +1,5 @@
 <template>
-  <Chart :data="archiveStore.archiveChartData(props.bgmId)" :options="archiveStore.chartOptions({interactive:false})"/>
+  <Chart :data="archiveStore.archiveChartData(props.bgmId)" :options="archiveStore.chartOptions({interactive:true})"/>
 </template>
 
 <script lang="ts" setup>
