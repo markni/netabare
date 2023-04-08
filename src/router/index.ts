@@ -38,6 +38,11 @@ const router = createRouter({
       component: () => import('../views/ArchiveView.vue')
     },
     {
+      path: '/404',
+      name: '404',
+      component: () => import('../views/NotFoundView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { useThemeStore } from '@/stores/theme'
-import moment from 'moment/moment'
+import moment from 'moment'
 
 function sampleData(data: any[], sampleSize: number) {
   const newData = []
@@ -22,11 +22,21 @@ export const useArchiveStore = defineStore('archive', {
   actions: {
     async fetchArchive(id: number) {
       if (this.archives[id]) return
+      console.log('xxx')
       const response = await fetch(`https://api.netaba.re/archive/${id}`)
       if (!response.ok) {
+        console.log('xxxxxxxx')
         throw new Error('Resource not found') // or any other error message
       }
-      this.archives[id] = await response.json()
+      const jsonData = await response.json()
+
+      if (jsonData.error) {
+        console.log('xxx!!!xxxxx')
+
+        throw new Error('Resource not found') // or any other error message
+      }
+
+      this.archives[id] = jsonData
     }
   },
   getters: {
@@ -48,7 +58,10 @@ export const useArchiveStore = defineStore('archive', {
               display: interactive,
               type: 'time',
               time: {
-                unit: 'month'
+                unit: 'month',
+                displayFormats: {
+                  month: 'YYYY-MM'
+                }
               }
             },
             y: {
