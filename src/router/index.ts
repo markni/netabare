@@ -33,9 +33,9 @@ const router = createRouter({
       component: () => import('../views/TrendView.vue')
     },
     {
-      path: '/archive/:id',
-      name: 'archive',
-      component: () => import('../views/ArchiveView.vue')
+      path: '/subject/:id',
+      name: 'subject',
+      component: () => import('../views/SubjectView.vue')
     },
     {
       path: '/404',

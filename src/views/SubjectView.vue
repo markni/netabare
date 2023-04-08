@@ -3,7 +3,7 @@
        class="user-view h-full flex sm:justify-center justify-end items-center gap-4 flex-col-reverse sm:flex-row">
     <div
         class="block sm:w-full w-[90%] h-full sm:ml-[10%] ml-0 pt-8 pb-16 sm:pb-8 h-full ">
-      <SubjectScore :bgm-id="329014" size="large"/>
+      <SubjectScore :bgm-id="subject.id" size="large"/>
     </div>
 
     <div
@@ -36,7 +36,6 @@ import SubjectScore from "@/components/charts/SubjectScore.vue";
 import {useArchiveStore} from "@/stores/archive";
 
 import {useRoute, useRouter} from "vue-router";
-import {onErrorCaptured} from "vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -44,27 +43,9 @@ const router = useRouter();
 const archiveStore = useArchiveStore();
 
 
-if (route?.params?.id && !Array.isArray(route.params.id)) {
-  console.log('fetching archive', route.params.id);
-  const bgmId = parseInt(route.params.id);
-  try {
-    await archiveStore.fetchArchive(bgmId);
-  } catch (e) {
-    console.log(e);
-    router.replace('/404')
-  }
-
-
-} else {
-  router.replace('/404')
-}
-
-let subject;
-
-onErrorCaptured((err, vm, info) => {
-  console.log(err, vm, info);
-  router.replace('/404')
-});
+const bgmId = parseInt(route.params.id as string);
+await archiveStore.fetchArchive(bgmId);
+const subject = archiveStore.archives[bgmId].subject;
 
 </script>
 

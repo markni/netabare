@@ -22,21 +22,12 @@ export const useArchiveStore = defineStore('archive', {
   actions: {
     async fetchArchive(id: number) {
       if (this.archives[id]) return
-      console.log('xxx')
       const response = await fetch(`https://api.netaba.re/archive/${id}`)
       if (!response.ok) {
-        console.log('xxxxxxxx')
-        throw new Error('Resource not found') // or any other error message
-      }
-      const jsonData = await response.json()
-
-      if (jsonData.error) {
-        console.log('xxx!!!xxxxx')
-
         throw new Error('Resource not found') // or any other error message
       }
 
-      this.archives[id] = jsonData
+      this.archives[id] = await response.json()
     }
   },
   getters: {
@@ -48,6 +39,10 @@ export const useArchiveStore = defineStore('archive', {
           spanGaps: true,
           responsive: true,
           maintainAspectRatio: false,
+          interaction: {
+            intersect: false,
+            mode: 'nearest'
+          },
           elements: {
             point: {
               radius: interactive ? 2 : 0
