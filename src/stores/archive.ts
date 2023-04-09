@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useThemeStore } from '@/stores/theme'
 import moment from 'moment'
+import { NotFoundError } from '@/errors/customErrors'
 
 function sampleData(data: any[], sampleSize: number) {
   const newData = []
@@ -24,7 +25,7 @@ export const useArchiveStore = defineStore('archive', {
       if (this.archives[id]) return
       const response = await fetch(`https://api.netaba.re/archive/${id}`)
       if (!response.ok) {
-        throw new Error('Resource not found') // or any other error message
+        throw new NotFoundError('Resource not found') // or any other error message
       }
 
       this.archives[id] = await response.json()

@@ -35,10 +35,9 @@
 import SubjectScore from "@/components/charts/SubjectScore.vue";
 import {useArchiveStore} from "@/stores/archive";
 
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 
 const route = useRoute();
-const router = useRouter();
 
 const archiveStore = useArchiveStore();
 

@@ -47,7 +47,7 @@ import {Bar} from "vue-chartjs";
 import AvatarBlock from "@/components/AvatarBlock.vue";
 import {useRoute, useRouter} from "vue-router";
 import {useUserStore} from "@/stores/user";
-import {onMounted, ref, watch} from "vue";
+import {ref, watch} from "vue";
 import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip} from 'chart.js';
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -73,12 +73,6 @@ if (route?.params?.id && !Array.isArray(route.params.id)) {
 
 }
 
-console.log('data loaded');
-
-onMounted(() => {
-  console.log('mounted', route.params.id);
-});
-
 //
 function submit() {
 
@@ -93,7 +87,6 @@ function submit() {
 
 
 watch(() => route.params.id, (id) => {
-  console.log('watch----', id);
   if (id && !Array.isArray(id)) {
     useUserStore().fetchUser(id);
   } else if (id === '') {

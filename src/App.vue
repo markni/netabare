@@ -1,11 +1,32 @@
 <script lang="ts" setup>
-import {RouterView} from 'vue-router'
+import {RouterView, useRoute} from 'vue-router'
 import LightSwitch from "@/components/LightSwitch.vue";
 import {useThemeStore} from "@/stores/theme";
-import FullScreenOverlay from "@/components/FullScreenOverlay.vue";
+import FullScreenOverlay, {FullScreenText} from "@/components/FullScreenOverlay.vue";
 import NavBar from "@/components/NavBar.vue";
+import {onErrorCaptured, ref, watch} from "vue";
+import {NotFoundError} from "@/errors/customErrors";
 
 const themeStore = useThemeStore();
+
+const route = useRoute();
+
+const text = ref<FullScreenText>('读取中');
+
+const resetError = () => {
+  text.value = '读取中';
+}
+
+watch(() => route.fullPath, () => {
+  resetError();
+});
+
+
+onErrorCaptured((err) => {
+  if (err instanceof NotFoundError) {
+    text.value = '四〇四';
+  }
+});
 
 </script>
 
@@ -25,7 +46,7 @@ const themeStore = useThemeStore();
 
                 <!-- loading state -->
                 <template #fallback>
-                  <FullScreenOverlay animated text="读取中"/>
+                  <FullScreenOverlay :text="text" animated/>
                 </template>
               </Suspense>
             </KeepAlive>
@@ -38,4 +59,3 @@ const themeStore = useThemeStore();
   </div>
 
 </template>
-
