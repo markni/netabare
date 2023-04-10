@@ -3,9 +3,9 @@
     :data="archiveStore.archiveChartData(props.bgmId, { range })"
     :options="archiveStore.chartOptions({ interactive: true })"
   />
-  <div>
-    <div>1月</div>
-    <div>6月</div>
+  <div class="flex gap-4">
+    <div class="cursor-pointer" @click="range = '6M'">6月</div>
+    <div class="cursor-pointer" @click="range = '1Y'">1年</div>
   </div>
 </template>
 
