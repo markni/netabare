@@ -75,7 +75,10 @@ export const useArchiveStore = defineStore('archive', {
           },
           plugins: {
             tooltip: {
-              enabled: interactive
+              enabled: interactive,
+              callbacks: {
+                title: () => ''
+              }
             },
             legend: {
               display: false
