@@ -1,24 +1,23 @@
 <template>
   <div
-      class="overlay tracking-wide text-4xl sm:text-8xl fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-10">
+    class="overlay tracking-wide text-4xl sm:text-8xl fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-10"
+  >
     <div class="" v-bind:class="{ float: props.animated }">{{ props.text }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-
-export type FullScreenText = '读取中' | '四〇四'
+export type FullScreenText = '读取中' | '四〇四';
 
 interface Props {
-  text: FullScreenText
-  animated: boolean
+  text: FullScreenText;
+  animated: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   text: '读取中',
-  animated: false,
-})
-
+  animated: false
+});
 </script>
 
 <style scoped>

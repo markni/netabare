@@ -1,42 +1,42 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
+import { acceptHMRUpdate, defineStore } from 'pinia';
 
 export type User = {
-  bgmId: string
-  avg?: number
+  bgmId: string;
+  avg?: number;
   count?: {
-    [key: string]: number
-  }
+    [key: string]: number;
+  };
   gCount?: {
-    [key: string]: number
-  }
-  median?: number
+    [key: string]: number;
+  };
+  median?: number;
 
-  stdev?: number
+  stdev?: number;
 
-  total?: number
+  total?: number;
 
-  voted?: number
+  voted?: number;
 
   user?: {
     avatar: {
-      large: string
-      medium: string
-      small: string
-    }
-    id: number
-    nickname: string
-    sign: string
-    url: string
-    username: string
-    usergroup: number
-  }
-}
+      large: string;
+      medium: string;
+      small: string;
+    };
+    id: number;
+    nickname: string;
+    sign: string;
+    url: string;
+    username: string;
+    usergroup: number;
+  };
+};
 
 export const useUserStore = defineStore('user', {
   state: () => {
     const user: User = {
       bgmId: ''
-    }
+    };
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
@@ -48,25 +48,25 @@ export const useUserStore = defineStore('user', {
         },
         barThickness: 1
       }
-    }
-    return { user, chartOptions }
+    };
+    return { user, chartOptions };
   },
   actions: {
     async fetchUser(bgmId: string) {
-      const response = await fetch(`https://api.netaba.re/user/${bgmId}`)
+      const response = await fetch(`https://api.netaba.re/user/${bgmId}`);
       if (!response.ok) {
-        throw new Error('Resource not found') // or any other error message
+        throw new Error('Resource not found'); // or any other error message
       }
-      const data = await response.json()
-      this.user = { bgmId, ...data }
+      const data = await response.json();
+      this.user = { bgmId, ...data };
     }
   },
   getters: {
     barChartData(state) {
-      const data = []
+      const data = [];
       for (const key in state.user.count) {
         if (key !== '-1') {
-          data.push({ x: `${key}`, y: state.user.count[key] })
+          data.push({ x: `${key}`, y: state.user.count[key] });
         }
       }
       return {
@@ -87,7 +87,7 @@ export const useUserStore = defineStore('user', {
             data
           }
         ]
-      }
+      };
     },
     statsArray(state) {
       return [
@@ -105,12 +105,12 @@ export const useUserStore = defineStore('user', {
           name: '标准差',
           value: state.user.stdev
         }
-      ]
+      ];
     }
   }
-})
+});
 
 // make sure to pass the right store definition, `useAuth` in this case.
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));
 }

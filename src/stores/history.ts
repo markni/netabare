@@ -1,55 +1,55 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
-import { useThemeStore } from '@/stores/theme'
-import moment from 'moment'
+import { acceptHMRUpdate, defineStore } from 'pinia';
+import { useThemeStore } from '@/stores/theme';
+import moment from 'moment';
 
 export interface HistoryItem {
-  bgmId: string
-  name: string
-  name_cn: string
-  air_date: string
-  score: number
-  total: number
-  rank: number
+  bgmId: string;
+  name: string;
+  name_cn: string;
+  air_date: string;
+  score: number;
+  total: number;
+  rank: number;
 }
 
 function getAverageScoresByYear<T extends { x: string; y: number }>(data: T[]) {
   // Initialize an object to store the sum and count of scores for each year
   const yearStats: {
     [year: number]: {
-      sum: number
-      count: number
-    }
-  } = {}
+      sum: number;
+      count: number;
+    };
+  } = {};
 
   // Loop through the data and update the sum and count of scores for each year
   for (const obj of data) {
-    const year = moment(obj.x).year()
+    const year = moment(obj.x).year();
     if (!yearStats[year]) {
-      yearStats[year] = { sum: 0, count: 0 }
+      yearStats[year] = { sum: 0, count: 0 };
     }
-    yearStats[year].sum += obj.y
-    yearStats[year].count++
+    yearStats[year].sum += obj.y;
+    yearStats[year].count++;
   }
 
   // Compute the average score for each year and store the results in an array
-  const result = []
+  const result = [];
 
   for (const year in yearStats) {
-    const { sum, count } = yearStats[year]
-    result.push({ x: year, y: sum / count })
+    const { sum, count } = yearStats[year];
+    result.push({ x: year, y: sum / count });
   }
 
   // Sort the result array by year (x property)
 
-  return result
+  return result;
 }
 
 export const useHistoryStore = defineStore('history', {
   state: () => {
-    const history: HistoryItem[] = []
+    const history: HistoryItem[] = [];
     const chartOptions = {
       onClick: (event: any, elements: any) => {
-        console.log('hello', event, elements)
+        console.log('hello', event, elements);
       },
       spanGaps: true,
       responsive: true,
@@ -84,37 +84,37 @@ export const useHistoryStore = defineStore('history', {
                   `首播：${moment(context.raw.x).format('YYYY-MM-DD')}`,
                   `均分：${context.raw.y}`,
                   `排名：${context.raw._r}`
-                ]
+                ];
               } else if (context.datasetIndex === 1) {
-                return [`年份：${context.raw.x}`, `均分：${context.raw.y.toFixed(2)}`]
+                return [`年份：${context.raw.x}`, `均分：${context.raw.y.toFixed(2)}`];
               }
             }
           }
         }
       }
-    }
+    };
     return {
       history,
       chartOptions,
       startingYear: 2015,
       endingYear: moment().year(),
       minScore: 0
-    }
+    };
   },
   actions: {
     async fetchHistory() {
-      if (this.history?.length) return
-      const response = await fetch('https://api.netaba.re/history')
+      if (this.history?.length) return;
+      const response = await fetch('https://api.netaba.re/history');
       if (!response.ok) {
-        throw new Error('Resource not found') // or any other error message
+        throw new Error('Resource not found'); // or any other error message
       }
-      this.history = await response.json()
+      this.history = await response.json();
     }
   },
   getters: {
     chartData(state) {
-      const themeStore = useThemeStore()
-      const { primary, secondary } = themeStore
+      const themeStore = useThemeStore();
+      const { primary, secondary } = themeStore;
       const data = state.history
         .map((item: HistoryItem) => {
           return {
@@ -124,17 +124,17 @@ export const useHistoryStore = defineStore('history', {
             _n: item.name,
             _id: item.bgmId,
             _r: item.rank
-          }
+          };
         })
         .filter(
           (item: any) =>
             item.y >= state.minScore &&
             moment(item.x).valueOf() >= moment(state.startingYear.toString(), 'YYYY').valueOf() &&
             moment(item.x).valueOf() <= moment((state.endingYear + 1).toString(), 'YYYY').valueOf()
-        )
+        );
       //raw data completed here
 
-      const lineData = getAverageScoresByYear(data)
+      const lineData = getAverageScoresByYear(data);
 
       return {
         datasets: [
@@ -153,12 +153,12 @@ export const useHistoryStore = defineStore('history', {
             data: lineData
           }
         ]
-      }
+      };
     }
   }
-})
+});
 
 // make sure to pass the right store definition, `useAuth` in this case.
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useHistoryStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useHistoryStore, import.meta.hot));
 }

@@ -2,41 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #app {
-    height: 100%;
-
+html,
+body,
+#app {
+  height: 100%;
 }
 
 .outline-11y {
-    outline: transparent solid 2px;
+  outline: transparent solid 2px;
 }
 
 .transition-br {
-    transition-property: bottom, right;
+  transition-property: bottom, right;
 }
-
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 
 input {
-    outline: transparent solid 2px;
+  outline: transparent solid 2px;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+input[type='number'] {
+  -moz-appearance: textfield;
 }

@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useTextStore = defineStore('text', {
   state: () => {
@@ -8,20 +8,20 @@ export const useTextStore = defineStore('text', {
       { en: 'History', zh: '评分分布' },
       { en: 'Trend', zh: '条目趋势' },
       { en: 'User', zh: '个人评分' }
-    ]
+    ];
 
-    return { texts }
+    return { texts };
   },
   actions: {},
   getters: {
     getText(state) {
       return (key: string) => {
-        const text = state.texts.find((item) => item.zh === key)
-        return text?.zh ?? '' //return zh if found, otherwise return empty string
-      }
+        const text = state.texts.find((item) => item.zh === key);
+        return text?.zh ?? ''; //return zh if found, otherwise return empty string
+      };
     },
     getAltText(state) {
-      return state.texts.map((item) => item.zh).join('')
+      return state.texts.map((item) => item.zh).join('');
     }
   }
-})
+});

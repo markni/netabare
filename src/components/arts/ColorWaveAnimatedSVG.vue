@@ -45,7 +45,7 @@
 <script>
 export default {
   name: 'YellowSplash'
-}
+};
 </script>
 
 <style scoped></style>

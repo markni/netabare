@@ -1,38 +1,38 @@
-import { defineStore } from 'pinia'
-import { useThemeStore } from '@/stores/theme'
-import moment from 'moment/moment'
+import { defineStore } from 'pinia';
+import { useThemeStore } from '@/stores/theme';
+import moment from 'moment/moment';
 
 function sampleData(data: any[], sampleSize: number) {
-  const newData = []
+  const newData = [];
 
   for (let i = 0; i < data.length; i += sampleSize) {
-    newData.push(data[i])
+    newData.push(data[i]);
   }
 
-  return newData
+  return newData;
 }
 
 export const useTrendStore = defineStore('archive', {
   state: () => {
-    const trend: Trend = {}
-    const trendingItems: { [id: number]: TrendingItem } = {}
+    const trend: Trend = {};
+    const trendingItems: { [id: number]: TrendingItem } = {};
 
-    return { trend, trendingItems }
+    return { trend, trendingItems };
   },
   actions: {
     async fetchTrend() {
-      const response = await fetch('https://api.netaba.re/trending')
+      const response = await fetch('https://api.netaba.re/trending');
       if (!response.ok) {
-        throw new Error('Resource not found') // or any other error message
+        throw new Error('Resource not found'); // or any other error message
       }
-      this.trend = await response.json()
+      this.trend = await response.json();
     }
   },
   getters: {
     chartOptions() {
       return (config: { interactive?: boolean } = {}) => {
-        const { interactive } = config
-        console.log('interactive', interactive)
+        const { interactive } = config;
+        console.log('interactive', interactive);
         return {
           spanGaps: true,
           responsive: true,
@@ -70,12 +70,12 @@ export const useTrendStore = defineStore('archive', {
               display: false
             }
           }
-        }
-      }
+        };
+      };
     },
     archiveChartData(state) {
-      const themeStore = useThemeStore()
-      const { secondary } = themeStore
+      const themeStore = useThemeStore();
+      const { secondary } = themeStore;
 
       return (id: number) => {
         const data = state.trendingItems[id].history
@@ -83,11 +83,11 @@ export const useTrendStore = defineStore('archive', {
             return {
               x: item.recordedAt,
               y: item.score
-            }
+            };
           })
           .filter((item: any) => {
-            return moment(item.x).valueOf() >= moment().subtract(6, 'months').valueOf()
-          })
+            return moment(item.x).valueOf() >= moment().subtract(6, 'months').valueOf();
+          });
 
         return {
           datasets: [
@@ -100,59 +100,59 @@ export const useTrendStore = defineStore('archive', {
               data: sampleData(data, 7)
             }
           ]
-        }
-      }
+        };
+      };
     }
   }
-})
+});
 
 export interface Trend {
-  done?: any
-  down?: any
-  up?: any
+  done?: any;
+  down?: any;
+  up?: any;
 }
 
 export interface TrendingItem {
-  bgmId: number
-  dropped: number
-  history: History[]
+  bgmId: number;
+  dropped: number;
+  history: History[];
 
-  recordedAt: string
+  recordedAt: string;
 
-  score: number
+  score: number;
 
-  subject: Subject
+  subject: Subject;
 
-  watching: number
+  watching: number;
 }
 
 export interface Subject {
-  air_weekday: number
-  bgmId: number
-  name: string
-  name_cn: string
-  recordedAt: string
-  type: number
+  air_weekday: number;
+  bgmId: number;
+  name: string;
+  name_cn: string;
+  recordedAt: string;
+  type: number;
 }
 
 export interface History {
-  bgmId: number
-  rank: number
+  bgmId: number;
+  rank: number;
   rating: {
-    total: number
+    total: number;
     count: {
-      1: number
-      2: number
-      3: number
-      4: number
-      5: number
-      6: number
-      7: number
-      8: number
-      9: number
-      10: number
-    }
-  }
-  recordedAt: string
-  score: number
+      1: number;
+      2: number;
+      3: number;
+      4: number;
+      5: number;
+      6: number;
+      7: number;
+      8: number;
+      9: number;
+      10: number;
+    };
+  };
+  recordedAt: string;
+  score: number;
 }

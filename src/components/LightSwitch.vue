@@ -1,40 +1,39 @@
 <script lang="ts" setup>
-import {useThemeStore} from '@/stores/theme'
-import {ref} from 'vue'
+import { useThemeStore } from '@/stores/theme';
+import { ref } from 'vue';
 
-const themeStore = useThemeStore()
+const themeStore = useThemeStore();
 
-const isAnimationRunning = ref<boolean>(false)
-const audio = ref<HTMLAudioElement>()
+const isAnimationRunning = ref<boolean>(false);
+const audio = ref<HTMLAudioElement>();
 
 function pullDown() {
-  if (isAnimationRunning.value) return
+  if (isAnimationRunning.value) return;
 
   playSound();
-  isAnimationRunning.value = true
+  isAnimationRunning.value = true;
   setTimeout(function () {
-    isAnimationRunning.value = false
-    themeStore.toggleTheme()
-  }, 600)
+    isAnimationRunning.value = false;
+    themeStore.toggleTheme();
+  }, 600);
 }
 
 function playSound() {
   audio.value?.play();
 }
-
 </script>
-
 
 <template>
   <div class="light-switch fixed top-0 right-[10%] flex flex-col justify-center items-center z-50">
     <div
-        :class="{ 'pull-down': isAnimationRunning }"
-        class="light-switch-string h-[400px] w-0.5 bg-gray-900 dark:bg-gray-50 shadow"
+      :class="{ 'pull-down': isAnimationRunning }"
+      class="light-switch-string h-[400px] w-0.5 bg-gray-900 dark:bg-gray-50 shadow"
     ></div>
-    <button :aria-label="`Toggle light/dark Mode (Current mode: ${themeStore.theme})`"
-            class="rounded-full w-10 h-10 border-gray-900 dark:border-gray-50 border-2 cursor-pointer shadow"
-            type="button"
-            @click="pullDown"
+    <button
+      :aria-label="`Toggle light/dark Mode (Current mode: ${themeStore.theme})`"
+      class="rounded-full w-10 h-10 border-gray-900 dark:border-gray-50 border-2 cursor-pointer shadow"
+      type="button"
+      @click="pullDown"
     ></button>
     <audio ref="audio" :src="`/switch.mp3`" class="hidden"></audio>
   </div>
