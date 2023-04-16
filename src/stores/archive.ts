@@ -75,6 +75,7 @@ export const useArchiveStore = defineStore('archive', {
           },
           plugins: {
             tooltip: {
+              yAlign: 'bottom',
               enabled: interactive,
               callbacks: {
                 title: () => ''
