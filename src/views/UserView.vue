@@ -38,30 +38,39 @@
         'fixed bottom-8 right-8': !!useUserStore().user.bgmId,
         'bottom-1/2 right-1/2': !useUserStore().user.bgmId
       }"
-      class="duration-1000 transition-br ease-in-out flex justify-center items-center"
+      class="duration-1000 transition-br ease-in-out flex flex-col"
       @submit.prevent="submit"
     >
-      <label class="text-xl" for="user-id">输入：</label>
-      <input
-        id="user-id"
-        v-model="bgmId"
-        :autofocus="!useUserStore().user.bgmId"
-        aria-label="User's bangumi.tv username or uid"
-        class="bg-transparent border-b dark:border-b-amber-50 border-gray-900 pl-1 pb-1 outline-11y"
-        placeholder="uid / username"
-        type="text"
-      />
+      <div class="flex justify-center items-center">
+        <label class="text-xl" for="user-id">输入：</label>
+
+        <input
+          id="user-id"
+          v-model="bgmId"
+          :autofocus="!useUserStore().user.bgmId"
+          :disabled="manualLoading"
+          aria-label="User's bangumi.tv username or uid"
+          class="bg-transparent border-b dark:border-b-amber-50 border-gray-900 pl-1 pb-1 outline-11y"
+          placeholder="uid / username"
+          type="text"
+        />
+      </div>
+
+      <div
+        :class="{ invisible: !manualLoading }"
+        class="flex justify-end items-center text-xs loading pt-3"
+      >
+        <span>数</span>
+        <span>据</span>
+        <span>读</span>
+        <span>取</span>
+        <span>中</span>
+      </div>
     </form>
   </div>
 </template>
 
 <script lang="ts" setup>
-console.log('UserView.tsx');
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 import { Bar } from 'vue-chartjs';
 import AvatarBlock from '@/components/AvatarBlock.vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -77,6 +86,14 @@ import {
   Tooltip
 } from 'chart.js';
 
+console.log('UserView.tsx');
+
+const manualLoading = ref(false);
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 await sleep(500);
@@ -90,6 +107,7 @@ const router = useRouter();
 //
 //
 if (route?.params?.id && !Array.isArray(route.params.id)) {
+  console.log('fetching user');
   try {
     await useUserStore().fetchUser(route.params.id);
   } catch (e) {
@@ -97,8 +115,27 @@ if (route?.params?.id && !Array.isArray(route.params.id)) {
   }
 }
 
-//
+function testInputValue(input: string) {
+  // Trim the input value
+  const trimmedInput = input.trim();
+
+  // Test if the trimmed input is empty
+  if (trimmedInput.length === 0) {
+    return false;
+  }
+
+  // Create a regular expression pattern for letters and numbers
+  const pattern = /^[a-zA-Z0-9]{3,}$/;
+
+  // Test if the input matches the pattern
+  return pattern.test(trimmedInput);
+}
+
 function submit() {
+  if (!testInputValue(bgmId.value)) {
+    console.log('invalid input');
+    return;
+  }
   if (route.params.id) {
     router.push({ name: 'user', params: { id: bgmId.value } });
   } else {
@@ -108,9 +145,15 @@ function submit() {
 
 watch(
   () => route.params.id,
-  (id) => {
+  async (id) => {
     if (id && !Array.isArray(id)) {
-      useUserStore().fetchUser(id);
+      console.log('fetching user in watch');
+      manualLoading.value = true;
+
+      await sleep(500);
+      await useUserStore().fetchUser(id);
+
+      manualLoading.value = false;
     } else if (id === '') {
       useUserStore().$reset();
     }
@@ -118,4 +161,43 @@ watch(
 );
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.loading span {
+  display: inline-block;
+  animation: wave-text 1s ease-in-out infinite;
+}
+
+.loading {
+  span:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+
+  span:nth-of-type(2) {
+    animation-delay: 0.1s;
+  }
+
+  span:nth-of-type(3) {
+    animation-delay: 0.2s;
+  }
+
+  span:nth-of-type(4) {
+    animation-delay: 0.3s;
+  }
+
+  span:nth-of-type(5) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes wave-text {
+  00% {
+    transform: translateY(0em);
+  }
+  60% {
+    transform: translateY(-0.1em);
+  }
+  100% {
+    transform: translateY(0em);
+  }
+}
+</style>
