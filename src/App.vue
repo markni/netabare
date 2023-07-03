@@ -42,7 +42,7 @@ onErrorCaptured((err) => {
         <template v-if="Component">
           <Transition :name="route.meta.transition || 'fade'" mode="out-in">
             <KeepAlive>
-              <Suspense timeout="0">
+              <Suspense timeout="200">
                 <!-- main content -->
                 <component :is="Component"></component>
 
