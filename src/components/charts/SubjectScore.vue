@@ -1,9 +1,9 @@
 <template>
   <Chart
     :data="archiveStore.archiveChartData(props.bgmId, { range })"
-    :options="archiveStore.chartOptions({ interactive: true })"
+    :options="archiveStore.chartOptions({ interactive })"
   />
-  <div class="flex gap-4">
+  <div v-if="interactive" class="flex gap-4">
     <div class="cursor-pointer" @click="range = '6M'">6月</div>
     <div class="cursor-pointer" @click="range = '1Y'">1年</div>
   </div>
@@ -37,6 +37,8 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   size: 'mini'
 });
+
+const interactive = props.size !== 'mini';
 
 const archiveStore = useArchiveStore();
 

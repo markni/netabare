@@ -14,7 +14,7 @@ function sampleData(data: any[], sampleSize: number) {
 
 export const useTrendStore = defineStore('archive', {
   state: () => {
-    const trend: Trend = {};
+    const trend: Trend = { up: [], down: [], done: [] };
     const trendingItems: { [id: number]: TrendingItem } = {};
 
     return { trend, trendingItems };
@@ -107,9 +107,9 @@ export const useTrendStore = defineStore('archive', {
 });
 
 export interface Trend {
-  done?: any;
-  down?: any;
-  up?: any;
+  done: TrendingItem[];
+  down: TrendingItem[];
+  up: TrendingItem[];
 }
 
 export interface TrendingItem {

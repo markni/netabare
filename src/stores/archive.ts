@@ -124,7 +124,7 @@ export const useArchiveStore = defineStore('archive', {
               type: 'line',
               label: '评分',
               borderColor: [secondary],
-              fill: true,
+              fill: false,
               backgroundColor: [secondary],
               data: sampleData(data, 7)
             }
