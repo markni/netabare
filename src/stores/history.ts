@@ -148,7 +148,7 @@ export const useHistoryStore = defineStore('history', {
             type: 'line',
             label: '年均分走势',
             borderColor: [secondary],
-            fill: true,
+            fill: false,
             backgroundColor: [secondary],
             data: lineData
           }

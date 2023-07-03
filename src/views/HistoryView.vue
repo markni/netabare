@@ -1,6 +1,11 @@
 <template>
   <div v-if="loaded" class="h-full sm:pb-32">
-    <Chart ref="chartRef" :data="historyStore.chartData" :options="historyStore.chartOptions" />
+    <Chart
+      ref="chartRef"
+      :data="historyStore.chartData"
+      :options="historyStore.chartOptions"
+      type="scatter"
+    />
     <div class="flex justify-end sm:pr-10 sm:pt-10 text-xl items-center gap-4">
       <span>筛选：从</span>
       <input
@@ -36,6 +41,7 @@ import { useHistoryStore } from '@/stores/history';
 import { Chart, ChartComponentRef } from 'vue-chartjs';
 import {
   Chart as ChartJS,
+  Filler,
   Legend,
   LinearScale,
   LineElement,
@@ -47,7 +53,7 @@ import {
 import 'chartjs-adapter-moment';
 import { computed, ref } from 'vue';
 
-ChartJS.register(LinearScale, PointElement, Tooltip, TimeScale, Legend, LineElement, Title);
+ChartJS.register(LinearScale, PointElement, Tooltip, TimeScale, Legend, LineElement, Title, Filler);
 
 const loaded = ref(false);
 
