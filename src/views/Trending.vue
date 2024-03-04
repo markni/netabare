@@ -140,7 +140,7 @@ export default {
           this.down = data.down;
           this.done = data.done;
           if (data.up.length && data.up[0].history.length) {
-            this.lastUpdate = moment(data.up[0].history[0].recordedAt).format(
+            this.lastUpdate = moment(data.done[0].history[0].recordedAt).format(
               'YYYY-MM-DD'
             );
           }

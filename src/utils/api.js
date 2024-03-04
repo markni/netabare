@@ -5,8 +5,8 @@ if (
   window.location.host.startsWith('192.168.0.14') ||
   window.location.host.startsWith('localhost')
 ) {
-  api_root = 'http://45.33.57.234:8888';
-  // api_root = 'http://localhost:8888';
+  // api_root = 'http://45.33.57.234:8888';
+  api_root = 'http://localhost:8888';
 }
 
 export const fetchRank = bgmId => {
