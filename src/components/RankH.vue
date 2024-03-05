@@ -71,7 +71,7 @@ export default {
             epOption.value = Number(airdateValue);
 
             // Adjust label to list all episodes for this airdate
-            epOption.label.text = episodes.map(ep => `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${ep.sort} ${episodes.length > 1 ? '' : ep.name}</a>`).join(', ');
+            epOption.label.text = episodes.map(ep => `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${ep.sort} ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`).join(', ');
 
             this.chart.xAxis[0].addPlotLine(epOption);
           });
