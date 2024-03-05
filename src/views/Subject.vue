@@ -7,7 +7,12 @@
             subjectData.name
           }}</a>
         </h1>
-        <h2 class=" subtitle">{{ subjectData.name_cn }}</h2>
+        <h2 class="subtitle">{{ subjectData.name_cn }}</h2>
+
+        <div class="rangeBtns">
+          <div :class="{active: !filtered}" @click="_setFiltered(false)">全部</div>
+          <div :class="{active: !!filtered}" @click="_setFiltered(true)">开播以来</div>
+        </div>
 
         <div class="score-chart">
           <div class=" minititle">
@@ -25,7 +30,7 @@
           </div>
           <div class=" em">{{ subjectData.score }}</div>
 
-          <score :UIData="scoreData"></score>
+          <score :UIData="filteredScoreData"></score>
         </div>
         <div class="rank-chart">
           <div class=" minititle">
@@ -43,7 +48,7 @@
           </div>
           <div class=" em">{{ subjectData.rank }}</div>
 
-          <rank :UIData="rankData"></rank>
+          <rank :UIData="filteredRankData"></rank>
         </div>
         <div class="collection-chart">
           <div class=" minititle">
@@ -60,7 +65,7 @@
             >
           </div>
           <div class=" em">{{ subjectData.watching }}</div>
-          <collection :UIData="collectionData"></collection>
+          <collection :UIData="filteredCollectionData"></collection>
         </div>
       </div>
     </transition>
@@ -87,6 +92,8 @@ let loadingTimer;
 export default {
   data: function() {
     return {
+      oneWeekBeforeFirstEpTimestamp: 0, //ms since epoch
+      filtered: false,
       loading: false,
       scoreData: [],
       rankData: [],
@@ -136,6 +143,10 @@ export default {
             this.$router.replace('/404');
           } else {
             let data = res.data;
+            let subject = data.subject;
+            this.oneWeekBeforeFirstEpTimestamp = subject && subject.eps && subject.eps[0].airdate
+                ? moment(subject.eps[0].airdate).subtract(1, 'weeks').valueOf()
+                : 0;
             if (data.history) {
               this.rankData = {
                 history: data.history
@@ -231,8 +242,69 @@ export default {
           }
         });
       }
+    },
+    _setFiltered: function(filtered) {
+      this.filtered = filtered;
     }
-  }
+  },
+  computed: {
+    filteredScoreData: function() {
+      console.log('Computing filteredScoreData. Filtered:', this.filtered); // Log the state of `filtered`
+
+      if (this.filtered) {
+        const filteredData = {
+          ...this.scoreData, // Spread the scoreData object to retain all its properties
+          history: this.scoreData.history.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
+          ten: this.scoreData.ten.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
+          one: this.scoreData.one.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
+        };
+
+        // Log the filtered data for debugging
+        console.log('Filtered Score Data:', filteredData);
+        return filteredData;
+      } else {
+        console.log('Returning unfiltered scoreData', this.scoreData); // Log when returning the original data
+        return _.cloneDeep(this.scoreData); // Return the full scoreData object
+      }
+    },
+    filteredRankData: function() {
+      if (this.filtered) {
+        // Filter the history data based on the condition
+        return {
+          ...this.rankData, // Spread the rankData object to retain all its properties
+          history: this.rankData.history.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp)
+        };
+      } else {
+        return _.cloneDeep(this.rankData); // Return the full rankData object
+      }
+    },
+    filteredCollectionData: function() {
+      if (this.filtered) {
+        return {
+          history: {
+            wish: this.collectionData.history.wish.filter(
+              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            ),
+            collect: this.collectionData.history.collect.filter(
+              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            ),
+            doing: this.collectionData.history.doing.filter(
+              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            ),
+            on_hold: this.collectionData.history.on_hold.filter(
+              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            ),
+            dropped: this.collectionData.history.dropped.filter(
+              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            )
+          },
+          meta: this.collectionData.meta
+        };
+      } else {
+        return _.cloneDeep(this.collectionData);
+      }
+    }
+  },
 };
 </script>
 
@@ -329,5 +401,24 @@ export default {
 }
 .blue {
   color: #3194ff;
+}
+
+.rangeBtns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding-left: 5px;
+  div {
+    padding: 0;
+    border: none;
+    font-size: 1vmax;
+    border-radius: 4px;
+    cursor: pointer;
+    text-underline-offset: 10px;
+    &.active, &:hover {
+      text-decoration: underline;
+      text-decoration-color: #f2006e;
+    }
+  }
 }
 </style>

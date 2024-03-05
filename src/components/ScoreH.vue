@@ -21,8 +21,10 @@ export default {
   },
   watch: {
     UIData: function() {
+      console.log('UIData changed', this.UIData);
       this._refresh();
-    }
+    },
+    deep: true,
   },
   methods: {
     _refresh: function() {
@@ -60,17 +62,34 @@ export default {
               useHTML: true
             }
           };
-          subject.eps
-            .filter(ep => ep.type === 0 && ep.airdate)
-            .forEach(ep => {
-              let epOption = _.cloneDeep(plotOptions);
-              epOption.label.text = `<a target="_blank" href="https://bgm.tv/ep/${
-                ep.id
-              }">ep. ${ep.sort}</a>`;
-              epOption.value = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
-              this.chart.xAxis[0].addPlotLine(epOption);
-              //this.chart.xAxis[0].update();
-            });
+
+          // Clean up: Remove existing plot lines
+          this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
+            this.chart.xAxis[0].removePlotLine(plotLine.id);
+          });
+
+          // Group episodes by airdate
+          const episodesByDate = subject.eps
+              .filter(ep => ep.type === 0 && ep.airdate)
+              .reduce((acc, ep) => {
+                const airdateValue = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
+                if (!acc[airdateValue]) {
+                  acc[airdateValue] = [];
+                }
+                acc[airdateValue].push(ep);
+                return acc;
+              }, {});
+
+          // Create a plot line for each group of episodes with the same airdate
+          Object.entries(episodesByDate).forEach(([airdateValue, episodes]) => {
+            let epOption = _.cloneDeep(plotOptions);
+            epOption.value = Number(airdateValue);
+
+            // Adjust label to list all episodes for this airdate
+            epOption.label.text = episodes.map(ep => `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${ep.sort} ${episodes.length > 1 ? '' : ep.name}</a>`).join(', ');
+
+            this.chart.xAxis[0].addPlotLine(epOption);
+          });
         }
         // this.chart.data.datasets[0].data = this.UIData;
         // this.chart.update();
@@ -231,8 +250,10 @@ export default {
       this._refresh();
     });
   },
-  updated() {
-    this._refresh();
+  beforeDestroy() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 };
 </script>
