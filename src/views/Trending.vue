@@ -26,7 +26,9 @@
           <div class="chart-cell">
             <mini-score :color="pink" :UIData="item.history" />
           </div>
-          <div class="score" v-if="item.history[0]">{{ item.history[0].score }}</div>
+          <div class="score" v-if="item.history[0]">
+            {{ item.history[0].score }}
+          </div>
           <div class="delta pink">▴{{ Math.abs(item.score).toFixed(2) }}</div>
         </div>
       </div>
@@ -52,7 +54,9 @@
           <div class="chart-cell">
             <mini-score :UIData="item.history" />
           </div>
-          <div class="score" v-if="item.history[0]">{{ item.history[0].score }}</div>
+          <div class="score" v-if="item.history[0]">
+            {{ item.history[0].score }}
+          </div>
           <div class="delta blue">▾{{ Math.abs(item.score).toFixed(2) }}</div>
         </div>
       </div>
@@ -81,7 +85,9 @@
               :UIData="item.history"
             />
           </div>
-          <div class="score" v-if="item.history[0]">{{ item.history[0].score }}</div>
+          <div class="score" v-if="item.history[0]">
+            {{ item.history[0].score }}
+          </div>
           <div
             v-if="!isNaN(item.score)"
             class="delta"

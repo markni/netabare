@@ -10,8 +10,12 @@
         <h2 class="subtitle">{{ subjectData.name_cn }}</h2>
 
         <div class="rangeBtns">
-          <div :class="{active: !filtered}" @click="_setFiltered(false)">全部</div>
-          <div :class="{active: !!filtered}" @click="_setFiltered(true)">开播以来</div>
+          <div :class="{ active: !filtered }" @click="_setFiltered(false)">
+            全部
+          </div>
+          <div :class="{ active: !!filtered }" @click="_setFiltered(true)">
+            开播以来
+          </div>
         </div>
 
         <div class="score-chart">
@@ -144,8 +148,11 @@ export default {
           } else {
             let data = res.data;
             let subject = data.subject;
-            this.oneWeekBeforeFirstEpTimestamp = subject && subject.eps && subject.eps[0].airdate
-                ? moment(subject.eps[0].airdate).subtract(1, 'weeks').valueOf()
+            this.oneWeekBeforeFirstEpTimestamp =
+              subject && subject.eps && subject.eps[0].airdate
+                ? moment(subject.eps[0].airdate)
+                    .subtract(1, 'weeks')
+                    .valueOf()
                 : 0;
             if (data.history) {
               this.rankData = {
@@ -254,9 +261,15 @@ export default {
       if (this.filtered) {
         const filteredData = {
           ...this.scoreData, // Spread the scoreData object to retain all its properties
-          history: this.scoreData.history.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
-          ten: this.scoreData.ten.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
-          one: this.scoreData.one.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp),
+          history: this.scoreData.history.filter(
+            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+          ),
+          ten: this.scoreData.ten.filter(
+            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+          ),
+          one: this.scoreData.one.filter(
+            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+          )
         };
 
         // Log the filtered data for debugging
@@ -272,7 +285,9 @@ export default {
         // Filter the history data based on the condition
         return {
           ...this.rankData, // Spread the rankData object to retain all its properties
-          history: this.rankData.history.filter(d => d.x >= this.oneWeekBeforeFirstEpTimestamp)
+          history: this.rankData.history.filter(
+            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+          )
         };
       } else {
         return _.cloneDeep(this.rankData); // Return the full rankData object
@@ -304,7 +319,7 @@ export default {
         return _.cloneDeep(this.collectionData);
       }
     }
-  },
+  }
 };
 </script>
 
@@ -415,7 +430,8 @@ export default {
     border-radius: 4px;
     cursor: pointer;
     text-underline-offset: 10px;
-    &.active, &:hover {
+    &.active,
+    &:hover {
       text-decoration: underline;
       text-decoration-color: #f2006e;
     }
