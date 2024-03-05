@@ -74,21 +74,23 @@ export default {
           };
 
           // Clean up: Remove existing plot lines
-          this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
+          this.chart.xAxis[0].plotLinesAndBands.forEach(plotLine => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
 
           // Group episodes by airdate
           const episodesByDate = subject.eps
-              .filter(ep => ep.type === 0 && ep.airdate)
-              .reduce((acc, ep) => {
-                const airdateValue = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
-                if (!acc[airdateValue]) {
-                  acc[airdateValue] = [];
-                }
-                acc[airdateValue].push(ep);
-                return acc;
-              }, {});
+            .filter(ep => ep.type === 0 && ep.airdate)
+            .reduce((acc, ep) => {
+              const airdateValue = moment(
+                `${ep.airdate}T00:00:00+08:00`
+              ).valueOf();
+              if (!acc[airdateValue]) {
+                acc[airdateValue] = [];
+              }
+              acc[airdateValue].push(ep);
+              return acc;
+            }, {});
 
           // Create a plot line for each group of episodes with the same airdate
           Object.entries(episodesByDate).forEach(([airdateValue, episodes]) => {
@@ -96,7 +98,14 @@ export default {
             epOption.value = Number(airdateValue);
 
             // Adjust label to list all episodes for this airdate
-            epOption.label.text = episodes.map(ep => `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${ep.sort} ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`).join(', ');
+            epOption.label.text = episodes
+              .map(
+                ep =>
+                  `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${
+                    ep.sort
+                  } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
+              )
+              .join(', ');
 
             this.chart.xAxis[0].addPlotLine(epOption);
           });
@@ -143,7 +152,7 @@ export default {
             }
           },
           series: {
-            turboThreshold: 365*10
+            turboThreshold: 365 * 10
           }
         },
         yAxis: {

@@ -1,7 +1,5 @@
 <template>
-  <div class="chart-container" ref="container">
-    <canvas ref="score"></canvas>
-  </div>
+  <div class="chart-container" ref="container"></div>
 </template>
 <script>
 import { COLORS } from '@/constants/colors';
@@ -24,7 +22,7 @@ export default {
       console.log('UIData changed', this.UIData);
       this._refresh();
     },
-    deep: true,
+    deep: true
   },
   methods: {
     _refresh: function() {
@@ -64,21 +62,23 @@ export default {
           };
 
           // Clean up: Remove existing plot lines
-          this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
+          this.chart.xAxis[0].plotLinesAndBands.forEach(plotLine => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
 
           // Group episodes by airdate
           const episodesByDate = subject.eps
-              .filter(ep => ep.type === 0 && ep.airdate)
-              .reduce((acc, ep) => {
-                const airdateValue = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
-                if (!acc[airdateValue]) {
-                  acc[airdateValue] = [];
-                }
-                acc[airdateValue].push(ep);
-                return acc;
-              }, {});
+            .filter(ep => ep.type === 0 && ep.airdate)
+            .reduce((acc, ep) => {
+              const airdateValue = moment(
+                `${ep.airdate}T00:00:00+08:00`
+              ).valueOf();
+              if (!acc[airdateValue]) {
+                acc[airdateValue] = [];
+              }
+              acc[airdateValue].push(ep);
+              return acc;
+            }, {});
 
           // Create a plot line for each group of episodes with the same airdate
           Object.entries(episodesByDate).forEach(([airdateValue, episodes]) => {
@@ -86,13 +86,18 @@ export default {
             epOption.value = Number(airdateValue);
 
             // Adjust label to list all episodes for this airdate
-            epOption.label.text = episodes.map(ep => `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${ep.sort} ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`).join(', ');
+            epOption.label.text = episodes
+              .map(
+                ep =>
+                  `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${
+                    ep.sort
+                  } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
+              )
+              .join(', ');
 
             this.chart.xAxis[0].addPlotLine(epOption);
           });
         }
-        // this.chart.data.datasets[0].data = this.UIData;
-        // this.chart.update();
       }
     }
   },
@@ -132,7 +137,7 @@ export default {
             }
           },
           series: {
-            turboThreshold: 365*10
+            turboThreshold: 365 * 10
           }
         },
         yAxis: [
@@ -222,31 +227,6 @@ export default {
         }
       });
 
-      // Highcharts.chart(this.$refs.container, {
-      //
-      //   xAxis: {
-      //     type: 'datetime'
-      //   },
-      //
-      //   tooltip: {
-      //     xDateFormat: '%Y-%m-%d',
-      //     shared: true
-      //   },
-      //
-      //   plotOptions: {
-      //     series: {
-      //       pointStart: Date.UTC(2012, 0, 1),
-      //       pointInterval: 24 * 3600 * 1000
-      //     }
-      //   },
-      //
-      //   series: [{
-      //     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-      //   }, {
-      //     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4].reverse()
-      //   }]
-      //
-      // });
       this._refresh();
     });
   },
