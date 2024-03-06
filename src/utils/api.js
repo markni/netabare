@@ -9,11 +9,11 @@ if (
   api_root = 'http://localhost:8888';
 }
 
-export const fetchRank = bgmId => {
+export const fetchRank = (bgmId) => {
   return axios.get(`${api_root}/archive/${bgmId}`);
 };
 
-export const fetchUser = bgmUserId => {
+export const fetchUser = (bgmUserId) => {
   return axios.get(`${api_root}/user/${bgmUserId}`);
 };
 

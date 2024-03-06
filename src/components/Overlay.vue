@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'overlay',
-  props: ['text', 'animated']
+  props: ['text', 'animated'],
 };
 </script>
 

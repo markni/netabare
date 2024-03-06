@@ -16,45 +16,45 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/user/:id',
       name: 'user',
       component: User,
-      props: true
+      props: true,
     },
     {
       path: '/profile/:id',
       name: 'profile',
       component: User,
-      props: true
+      props: true,
     },
     {
       path: '/subject/:id',
       name: 'subject',
       component: Subject,
-      props: true
+      props: true,
     },
     {
       path: '/trending',
       name: 'trending',
-      component: Trending
+      component: Trending,
     },
     {
       path: '/popular',
       name: 'popular',
-      component: Popular
+      component: Popular,
     },
     {
       path: '/history',
       name: 'history',
-      component: History
+      component: History,
     },
     {
       path: '*',
       name: 'notfound',
-      component: NotFound
-    }
-  ]
+      component: NotFound,
+    },
+  ],
 });

@@ -24,10 +24,10 @@ import Back from '@/components/Back';
 let loadingTimer;
 
 export default {
-  data: function() {
+  data: function () {
     return {
       loading: false,
-      UIData: null
+      UIData: null,
     };
   },
   props: ['id'],
@@ -36,23 +36,23 @@ export default {
     Overlay,
     Scatter,
     SubjectStats,
-    Back
+    Back,
   },
-  mounted: function() {
+  mounted: function () {
     this._getData();
   },
   watch: {
-    id: function() {
+    id: function () {
       this._getData();
-    }
+    },
   },
   methods: {
-    _getData: function() {
+    _getData: function () {
       loadingTimer = setTimeout(() => {
         this.loading = true;
       }, 600);
       console.log(`${new Date()} | starting loading from api`);
-      fetchHistory().then(res => {
+      fetchHistory().then((res) => {
         console.log(`${new Date()} | finished loading api`);
         if (res.data['error']) {
           this.$router.replace('/404');
@@ -66,7 +66,7 @@ export default {
                 name,
                 name_cn,
                 air_date,
-                rank
+                rank,
               };
             }
           );
@@ -75,8 +75,8 @@ export default {
           this.loading = false;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

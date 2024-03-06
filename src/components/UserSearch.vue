@@ -20,17 +20,17 @@
 export default {
   name: 'Search',
   props: ['fontSize'],
-  data: function() {
+  data: function () {
     return {
-      bgmUserId: ''
+      bgmUserId: '',
     };
   },
   methods: {
-    submit: function(e) {
+    submit: function (e) {
       e.preventDefault();
       if (this.bgmUserId) this.$router.push(`/user/${this.bgmUserId}`);
-    }
-  }
+    },
+  },
 };
 </script>
 

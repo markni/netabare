@@ -33,24 +33,24 @@ export default {
     UserStats,
     UserRating,
     UserSearch,
-    Overlay
+    Overlay,
   },
-  data: function() {
+  data: function () {
     return {
       UIData: [],
-      loading: false
+      loading: false,
     };
   },
-  mounted: function() {
+  mounted: function () {
     this._getData();
   },
   methods: {
-    _getData: function() {
+    _getData: function () {
       if (this.id) {
         loadingTimer = setTimeout(() => {
           this.loading = true;
         }, 300);
-        fetchUser(this.id).then(res => {
+        fetchUser(this.id).then((res) => {
           if (res.data['error']) {
             this.$router.replace('/404');
           } else {
@@ -77,13 +77,13 @@ export default {
           }
         });
       }
-    }
+    },
   },
   watch: {
-    id: function() {
+    id: function () {
       this._getData();
-    }
-  }
+    },
+  },
 };
 </script>
 

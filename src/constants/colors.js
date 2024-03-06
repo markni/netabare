@@ -11,7 +11,7 @@ export const COLORS = [
   '#B1319E',
   '#C7208E',
   '#DC107E',
-  '#F2006E'
+  '#F2006E',
 ];
 export const COLORS2 = [
   '#3094FF',
@@ -19,16 +19,22 @@ export const COLORS2 = [
   '#8652BE',
   '#B1319E',
   '#DC107E',
-  '#F2006E'
+  '#F2006E',
 ];
 export const GRAY = '#b9b9b9';
 
 export const GRADIENT1 = {
   linearGradient: [0, 0, '100%', '100%'],
-  stops: [[0, PINK], [1, BLUE]]
+  stops: [
+    [0, PINK],
+    [1, BLUE],
+  ],
 };
 
 export const GRADIENT2 = {
   linearGradient: [0, 0, '50%', '100%'],
-  stops: [[0, BLUE], [1, PINK]]
+  stops: [
+    [0, BLUE],
+    [1, PINK],
+  ],
 };

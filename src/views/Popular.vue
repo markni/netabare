@@ -38,23 +38,23 @@ let loadingTimer;
 export default {
   name: 'Trending',
   components: { MiniScore, Overlay, Back },
-  data: function() {
+  data: function () {
     return {
       loading: false,
       pink: PINK,
       lastUpdate: null,
-      items: []
+      items: [],
     };
   },
-  mounted: function() {
+  mounted: function () {
     this._gedIVata();
   },
   methods: {
-    _gedIVata: function() {
+    _gedIVata: function () {
       loadingTimer = setTimeout(() => {
         this.loading = true;
       }, 300);
-      fetchPopular().then(res => {
+      fetchPopular().then((res) => {
         if (res.data['error'] || !res.data || !res.data.length) {
           this.$router.replace('/404');
         } else {
@@ -69,8 +69,8 @@ export default {
         if (loadingTimer) clearTimeout(loadingTimer);
         this.loading = false;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

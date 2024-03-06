@@ -10,8 +10,8 @@ import Overlay from '@/components/Overlay.vue';
 export default {
   name: 'NotFound',
   components: {
-    Overlay
-  }
+    Overlay,
+  },
 };
 </script>
 

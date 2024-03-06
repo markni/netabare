@@ -14,47 +14,47 @@ export default {
   data() {
     return {
       chart: null,
-      raw: []
+      raw: [],
     };
   },
   watch: {
     UIData: {
-      handler: function() {
+      handler: function () {
         this._refresh();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
-    _refresh: function() {
+    _refresh: function () {
       if (this.chart && this.UIData && this.UIData.history) {
         this.chart.series[0].update(
           {
-            data: this.UIData.history['dropped']
+            data: this.UIData.history['dropped'],
           },
           false
         );
         this.chart.series[1].update(
           {
-            data: this.UIData.history['wish']
+            data: this.UIData.history['wish'],
           },
           false
         );
         this.chart.series[2].update(
           {
-            data: this.UIData.history['on_hold']
+            data: this.UIData.history['on_hold'],
           },
           false
         );
         this.chart.series[3].update(
           {
-            data: this.UIData.history['collect']
+            data: this.UIData.history['collect'],
           },
           false
         );
         this.chart.series[4].update(
           {
-            data: this.UIData.history['doing']
+            data: this.UIData.history['doing'],
           },
           true
         );
@@ -69,18 +69,18 @@ export default {
               textAlign: 'right',
               y: -10,
               x: 5,
-              useHTML: true
-            }
+              useHTML: true,
+            },
           };
 
           // Clean up: Remove existing plot lines
-          this.chart.xAxis[0].plotLinesAndBands.forEach(plotLine => {
+          this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
 
           // Group episodes by airdate
           const episodesByDate = subject.eps
-            .filter(ep => ep.type === 0 && ep.airdate)
+            .filter((ep) => ep.type === 0 && ep.airdate)
             .reduce((acc, ep) => {
               const airdateValue = moment(
                 `${ep.airdate}T00:00:00+08:00`
@@ -100,7 +100,7 @@ export default {
             // Adjust label to list all episodes for this airdate
             epOption.label.text = episodes
               .map(
-                ep =>
+                (ep) =>
                   `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${
                     ep.sort
                   } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
@@ -113,55 +113,55 @@ export default {
         // this.chart.data.datasets[0].data = this.UIData;
         // this.chart.update();
       }
-    }
+    },
   },
   props: ['bgmId', 'UIData'],
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       Highcharts.setOptions({
         lang: {
-          thousandsSep: ''
-        }
+          thousandsSep: '',
+        },
       });
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
-          backgroundColor: null
+          backgroundColor: null,
         },
         title: {
           text: '',
-          enabled: false
+          enabled: false,
         },
         tooltip: {
           crosshairs: true,
           backgroundColor: 'black',
           borderColor: 'none',
           style: {
-            color: 'white'
+            color: 'white',
           },
           useHTML: false,
           xDateFormat: '%Y-%m-%d',
-          shared: true
+          shared: true,
         },
         subtitle: {
-          enabled: false
+          enabled: false,
         },
         plotOptions: {
           spline: {
             marker: {
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           series: {
-            turboThreshold: 365 * 10
-          }
+            turboThreshold: 365 * 10,
+          },
         },
         yAxis: {
           title: {
-            enabled: false
+            enabled: false,
           },
           labels: {
-            format: '{value:.0f}'
-          }
+            format: '{value:.0f}',
+          },
         },
         xAxis: {
           type: 'datetime',
@@ -173,11 +173,11 @@ export default {
             day: '%m-%d',
             week: '%m-%d',
             month: '%m-%d',
-            year: '%m-%d'
-          }
+            year: '%m-%d',
+          },
         },
         exporting: {
-          enabled: false
+          enabled: false,
         },
         legend: {
           // layout: 'vertical',
@@ -187,43 +187,43 @@ export default {
             color: '#2c3e50',
             fontWeight: 'normal',
             fontSize: '1vw',
-            fontFamily: `'source-han-serif-sc', serif`
-          }
+            fontFamily: `'source-han-serif-sc', serif`,
+          },
         },
         credits: {
-          enabled: false
+          enabled: false,
         },
         series: [
           {
             type: 'spline',
             name: '抛弃',
-            data: this.UIData.history['dropped']
+            data: this.UIData.history['dropped'],
           },
           {
             type: 'spline',
             name: '想看',
-            data: []
+            data: [],
           },
           {
             type: 'spline',
             name: '搁置',
-            data: []
+            data: [],
           },
           {
             type: 'spline',
             name: '看过',
-            data: []
+            data: [],
           },
           {
             type: 'spline',
             name: '在看',
-            data: []
-          }
+            data: [],
+          },
         ],
         colors: COLORS2,
         lang: {
-          thousandsSep: ''
-        }
+          thousandsSep: '',
+        },
       });
     });
 
@@ -232,7 +232,7 @@ export default {
   },
   updated() {
     this._refresh();
-  }
+  },
 };
 </script>
 

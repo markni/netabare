@@ -2,7 +2,7 @@
   <div>
     <transition name="fade">
       <div class="container" v-show="subjectData.name">
-        <h1 class=" title">
+        <h1 class="title">
           <a target="_blank" :href="'https://bgm.tv/subject/' + id">{{
             subjectData.name
           }}</a>
@@ -25,56 +25,56 @@
         </div>
 
         <div class="score-chart">
-          <div class=" minititle">
+          <div class="minititle">
             评分
             <span
               v-if="!isNaN(subjectData.deltaScore)"
               class="delta"
               :class="{
                 pink: subjectData.deltaScore >= 0,
-                blue: subjectData.deltaScore < 0
+                blue: subjectData.deltaScore < 0,
               }"
               title="30天之内的评分变化"
               >{{ subjectData.deltaScoreStr }}</span
             >
           </div>
-          <div class=" em">{{ subjectData.score }}</div>
+          <div class="em">{{ subjectData.score }}</div>
 
           <score :UIData="filteredScoreData"></score>
         </div>
         <div class="rank-chart">
-          <div class=" minititle">
+          <div class="minititle">
             排名
             <span
               v-if="!isNaN(subjectData.deltaRank)"
               class="delta"
               :class="{
                 pink: subjectData.deltaRank <= 0,
-                blue: subjectData.deltaRank > 0
+                blue: subjectData.deltaRank > 0,
               }"
               title="30天之内的排名变化"
               >{{ subjectData.deltaRankStr }}</span
             >
           </div>
-          <div class=" em">{{ subjectData.rank }}</div>
+          <div class="em">{{ subjectData.rank }}</div>
 
           <rank :UIData="filteredRankData"></rank>
         </div>
         <div class="collection-chart">
-          <div class=" minititle">
+          <div class="minititle">
             在看
             <span
               v-if="!isNaN(subjectData.deltaWatching)"
               class="delta"
               :class="{
                 pink: subjectData.deltaWatching >= 0,
-                blue: subjectData.deltaWatching < 0
+                blue: subjectData.deltaWatching < 0,
               }"
               title="30天之内的变化"
               >{{ subjectData.deltaWatchingStr }}</span
             >
           </div>
-          <div class=" em">{{ subjectData.watching }}</div>
+          <div class="em">{{ subjectData.watching }}</div>
           <collection :UIData="filteredCollectionData"></collection>
         </div>
       </div>
@@ -100,7 +100,7 @@ import moment from 'moment';
 let loadingTimer;
 
 export default {
-  data: function() {
+  data: function () {
     return {
       oneWeekBeforeFirstEpTimestamp: 0, //ms since epoch
       oneWeekAfterLastEpTimestamp: Infinity, //ms since epoch
@@ -115,10 +115,10 @@ export default {
           collect: [],
           doing: [],
           on_hold: [],
-          dropped: []
+          dropped: [],
         },
-        meta: {}
-      }
+        meta: {},
+      },
     };
   },
   props: ['id'],
@@ -129,30 +129,30 @@ export default {
     Score,
     SubjectStats,
     Collection,
-    Back
+    Back,
   },
-  mounted: function() {
+  mounted: function () {
     this._getData();
   },
   watch: {
-    id: function() {
+    id: function () {
       this._getData();
-    }
+    },
   },
   methods: {
-    _filterDataByEpsTimestamp: function(data) {
+    _filterDataByEpsTimestamp: function (data) {
       return data.filter(
-        d =>
+        (d) =>
           d.x >= this.oneWeekBeforeFirstEpTimestamp &&
           d.x <= this.oneWeekAfterLastEpTimestamp
       );
     },
-    _getData: function() {
+    _getData: function () {
       loadingTimer = setTimeout(() => {
         this.loading = true;
       }, 600);
       if (this.id) {
-        fetchRank(this.id).then(res => {
+        fetchRank(this.id).then((res) => {
           if (
             res.data['error'] ||
             res.data.length === 0 ||
@@ -166,9 +166,7 @@ export default {
             // Set the oneWeekBeforeFirstEpTimestamp to 1 week before the first episode's airdate
             this.oneWeekBeforeFirstEpTimestamp =
               subject && subject.eps && subject.eps[0].airdate
-                ? moment(subject.eps[0].airdate)
-                    .subtract(1, 'weeks')
-                    .valueOf()
+                ? moment(subject.eps[0].airdate).subtract(1, 'weeks').valueOf()
                 : 0;
 
             // Set the oneWeekAfterLastEpTimestamp to 1 week after the last episode's airdate
@@ -184,29 +182,29 @@ export default {
             if (data.history) {
               this.rankData = {
                 history: data.history
-                  .filter(r => !!r.rank)
-                  .map(r => {
+                  .filter((r) => !!r.rank)
+                  .map((r) => {
                     let y = r.rank;
                     let x = moment(r.recordedAt).valueOf();
                     return { x, y };
                   })
                   .reverse(),
-                meta: data.subject
+                meta: data.subject,
               };
               this.scoreData = {
                 history: data.history
-                  .filter(r => !!r.score)
-                  .map(r => {
+                  .filter((r) => !!r.score)
+                  .map((r) => {
                     let y = r.score;
                     let x = moment(r.recordedAt).valueOf();
                     return { x, y };
                   })
                   .reverse(),
-                meta: data.subject
+                meta: data.subject,
               };
               this.scoreData.one = [];
               this.scoreData.ten = [];
-              data.history.forEach(h => {
+              data.history.forEach((h) => {
                 if (h.collect) {
                   for (let key in h.collect) {
                     let y = h.collect[key];
@@ -225,9 +223,8 @@ export default {
               this.scoreData.one.reverse();
               this.scoreData.ten.reverse();
               for (let key in this.collectionData['history']) {
-                this.collectionData['history'][key] = this.collectionData[
-                  'history'
-                ][key].reverse();
+                this.collectionData['history'][key] =
+                  this.collectionData['history'][key].reverse();
               }
               this.collectionData.meta = data.subject;
             }
@@ -238,7 +235,7 @@ export default {
                 name_cn: subject.name_cn,
                 score: data.history[0].score,
                 rank: data.history[0].rank,
-                watching: data.history[0].collect.doing
+                watching: data.history[0].collect.doing,
               };
               if (data.history.length >= 30) {
                 let current = _.first(data.history);
@@ -277,18 +274,18 @@ export default {
         });
       }
     },
-    _setFiltered: function(filtered) {
+    _setFiltered: function (filtered) {
       this.filtered = filtered;
-    }
+    },
   },
   computed: {
-    filteredScoreData: function() {
+    filteredScoreData: function () {
       if (this.filtered === 'eps') {
         const filteredData = {
           ...this.scoreData, // Spread the scoreData object to retain all its properties
           history: this._filterDataByEpsTimestamp(this.scoreData.history),
           ten: this._filterDataByEpsTimestamp(this.scoreData.ten),
-          one: this._filterDataByEpsTimestamp(this.scoreData.one)
+          one: this._filterDataByEpsTimestamp(this.scoreData.one),
         };
 
         // Log the filtered data for debugging
@@ -297,18 +294,18 @@ export default {
         return _.cloneDeep(this.scoreData); // Return the full scoreData object
       }
     },
-    filteredRankData: function() {
+    filteredRankData: function () {
       if (this.filtered === 'eps') {
         // Filter the history data based on the condition
         return {
           ...this.rankData, // Spread the rankData object to retain all its properties
-          history: this._filterDataByEpsTimestamp(this.rankData.history)
+          history: this._filterDataByEpsTimestamp(this.rankData.history),
         };
       } else {
         return _.cloneDeep(this.rankData); // Return the full rankData object
       }
     },
-    filteredCollectionData: function() {
+    filteredCollectionData: function () {
       if (this.filtered === 'eps') {
         return {
           history: {
@@ -326,15 +323,15 @@ export default {
             ),
             dropped: this._filterDataByEpsTimestamp(
               this.collectionData.history.dropped
-            )
+            ),
           },
-          meta: this.collectionData.meta
+          meta: this.collectionData.meta,
         };
       } else {
         return _.cloneDeep(this.collectionData);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
