@@ -1,7 +1,7 @@
 <template>
   <div class="home" v-bind:class="{ ready: !loading }">
     <div>
-      <h1 class="tk-myriad-pro title">netabare.</h1>
+      <h1 class="title">netabare.</h1>
       <div class="inputs">
         <div class="input-label">
           个人
