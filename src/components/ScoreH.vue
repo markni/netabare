@@ -12,37 +12,37 @@ export default {
   data() {
     return {
       chart: null,
-      raw: []
+      raw: [],
     };
   },
   watch: {
     UIData: {
-      handler: function() {
+      handler: function () {
         this._refresh();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
-    _refresh: function() {
+    _refresh: function () {
       // Check if the chart and UIData with history exist
       if (this.chart && this.UIData && this.UIData.history) {
         // Update the chart series with new data
         this.chart.series[1].update(
           {
-            data: this.UIData.one
+            data: this.UIData.one,
           },
           false
         );
         this.chart.series[2].update(
           {
-            data: this.UIData.ten
+            data: this.UIData.ten,
           },
           false
         );
         this.chart.series[0].update(
           {
-            data: this.UIData.history
+            data: this.UIData.history,
           },
           true
         );
@@ -61,18 +61,18 @@ export default {
               textAlign: 'right',
               y: -10,
               x: 5,
-              useHTML: true
-            }
+              useHTML: true,
+            },
           };
 
           // Remove existing plot lines from the chart
-          this.chart.xAxis[0].plotLinesAndBands.forEach(plotLine => {
+          this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
 
           // Group episodes by airdate
           const episodesByDate = subject.eps
-            .filter(ep => ep.type === 0 && ep.airdate)
+            .filter((ep) => ep.type === 0 && ep.airdate)
             .reduce((acc, ep) => {
               const airdateValue = moment(
                 `${ep.airdate}T00:00:00+08:00`
@@ -92,7 +92,7 @@ export default {
             // Set the label text to list all episodes for this airdate
             epOption.label.text = episodes
               .map(
-                ep =>
+                (ep) =>
                   `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${
                     ep.sort
                   } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
@@ -103,69 +103,69 @@ export default {
           });
         }
       }
-    }
+    },
   },
   props: ['bgmId', 'UIData'], // Declare the props
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       // Set Highcharts options
       Highcharts.setOptions({
         lang: {
-          thousandsSep: ''
-        }
+          thousandsSep: '',
+        },
       });
 
       // Create the chart instance
       this.chart = Highcharts.chart(this.$refs.container, {
         // Chart configuration options
         chart: {
-          backgroundColor: null
+          backgroundColor: null,
         },
         title: {
           text: '',
-          enabled: false
+          enabled: false,
         },
         tooltip: {
           crosshairs: true,
           backgroundColor: 'black',
           borderColor: 'none',
           style: {
-            color: 'white'
+            color: 'white',
           },
           useHTML: false,
-          xDateFormat: '%Y-%m-%d'
+          xDateFormat: '%Y-%m-%d',
         },
         subtitle: {
-          enabled: false
+          enabled: false,
         },
         plotOptions: {
           spline: {
             marker: {
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           series: {
-            turboThreshold: 365 * 10
-          }
+            turboThreshold: 365 * 10,
+          },
         },
         yAxis: [
           {
             title: {
-              enabled: false
+              enabled: false,
             },
             labels: {
-              format: '{value:.2f}'
-            }
+              format: '{value:.2f}',
+            },
           },
           {
             title: {
-              enabled: false
+              enabled: false,
             },
             labels: {
-              format: '{value:.0f}'
+              format: '{value:.0f}',
             },
-            opposite: true
-          }
+            opposite: true,
+          },
         ],
         xAxis: {
           type: 'datetime',
@@ -177,27 +177,27 @@ export default {
             day: '%m-%d',
             week: '%m-%d',
             month: '%m-%d',
-            year: '%m-%d'
-          }
+            year: '%m-%d',
+          },
         },
         exporting: {
-          enabled: false
+          enabled: false,
         },
         legend: {
           layout: 'vertical',
           align: 'right',
           verticalAlign: 'middle',
-          enabled: false
+          enabled: false,
         },
         credits: {
-          enabled: false
+          enabled: false,
         },
         series: [
           {
             type: 'spline',
             name: '评分',
             yAxis: 0,
-            data: []
+            data: [],
           },
           {
             type: 'spline',
@@ -205,7 +205,7 @@ export default {
             yAxis: 1,
             data: [],
             color: 'rgba(0,0,0, 0.1)',
-            dashStyle: 'dot'
+            dashStyle: 'dot',
           },
           {
             type: 'spline',
@@ -213,26 +213,26 @@ export default {
             yAxis: 1,
             data: [],
             dashStyle: 'longdashdot',
-            color: 'rgba(0,0,0, 0.1)'
-          }
+            color: 'rgba(0,0,0, 0.1)',
+          },
         ],
         colors: COLORS, // Use the COLORS constant
         responsive: {
           rules: [
             {
               condition: {
-                maxWidth: 500
+                maxWidth: 500,
               },
               chartOptions: {
                 legend: {
                   layout: 'horizontal',
                   align: 'center',
-                  verticalAlign: 'bottom'
-                }
-              }
-            }
-          ]
-        }
+                  verticalAlign: 'bottom',
+                },
+              },
+            },
+          ],
+        },
       });
 
       // Refresh the chart with initial data
@@ -244,7 +244,7 @@ export default {
     if (this.chart) {
       this.chart.destroy();
     }
-  }
+  },
 };
 </script>
 

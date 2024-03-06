@@ -64,7 +64,7 @@
         <h2>热门条目趋势观察</h2>
         <h3>30天内收藏变化最多的条目 (最后更新：{{ lastUpdate }})</h3>
       </div>
-      <div class="section-list  list-3">
+      <div class="section-list list-3">
         <div class="before"></div>
 
         <div
@@ -119,25 +119,25 @@ let loadingTimer;
 export default {
   name: 'Trending',
   components: { MiniScore, Overlay, Back },
-  data: function() {
+  data: function () {
     return {
       up: [],
       down: [],
       done: [],
       loading: false,
       pink: PINK,
-      lastUpdate: null
+      lastUpdate: null,
     };
   },
-  mounted: function() {
+  mounted: function () {
     this._gedIVata();
   },
   methods: {
-    _gedIVata: function() {
+    _gedIVata: function () {
       loadingTimer = setTimeout(() => {
         this.loading = true;
       }, 300);
-      fetchTrending().then(res => {
+      fetchTrending().then((res) => {
         if (res.data['error'] || !res.data.up || !res.data.up.length) {
           this.$router.replace('/404');
         } else {
@@ -154,8 +154,8 @@ export default {
         if (loadingTimer) clearTimeout(loadingTimer);
         this.loading = false;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -291,8 +291,7 @@ table {
   transition: opacity 1.5s;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
- {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 

@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'Avatar',
-  props: ['user']
+  props: ['user'],
 };
 </script>
 

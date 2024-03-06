@@ -1,25 +1,25 @@
 <template>
   <div class="wrapper">
     <div class="control">
-      <div class="unit ">
+      <div class="unit">
         <div class="l">最早：</div>
         <vue-monthly-picker dateFormat="YYYY年M月" v-model="startYear">
         </vue-monthly-picker>
       </div>
-      <div class="unit ">
+      <div class="unit">
         <div class="l">最晚：</div>
         <vue-monthly-picker dateFormat="YYYY年M月" v-model="endYear">
         </vue-monthly-picker>
       </div>
-      <div class="unit ">
+      <div class="unit">
         <div class="l">最低评分：</div>
         <input type="number" v-model="startScore" />
       </div>
-      <div class="unit ">
+      <div class="unit">
         <div class="l">最高评分：</div>
         <input type="number" v-model="endScore" />
       </div>
-      <div class="unit ">
+      <div class="unit">
         <div class="l">符合条件：</div>
         <div>{{ matched }}</div>
       </div>
@@ -52,17 +52,13 @@ export default {
     if (!endScore || endScore > 10) endScore = 10;
     if (!startScore || startScore < 1) startScore = 1;
 
-    let defaultYear = moment()
-      .subtract(20, 'year')
-      .year();
+    let defaultYear = moment().subtract(20, 'year').year();
 
     startYear = moment()
       .year(startYear || defaultYear)
       .startOf('year');
     if (endYear) {
-      endYear = moment()
-        .year(endYear)
-        .startOf('year');
+      endYear = moment().year(endYear).startOf('year');
     } else {
       endYear = moment();
     }
@@ -76,28 +72,28 @@ export default {
       startScore: startScore,
       endScore: endScore,
       matched: 0,
-      rendering: true
+      rendering: true,
     };
   },
   watch: {
-    UIData: function() {
+    UIData: function () {
       this._refresh('watch uidata');
     },
-    startYear: function() {
+    startYear: function () {
       this._refresh();
     },
-    endYear: function() {
+    endYear: function () {
       this._refresh();
     },
-    startScore: function() {
+    startScore: function () {
       this._refresh();
     },
-    endScore: function() {
+    endScore: function () {
       this._refresh();
-    }
+    },
   },
   methods: {
-    _refresh: function() {
+    _refresh: function () {
       if (this.UIData) {
         this.UIData.forEach(
           ({ rank, air_date, bgmId, name, name_cn, score }) => {
@@ -117,7 +113,7 @@ export default {
         ).map(({ air_date, score, rank }) => {
           return [
             moment(air_date).valueOf(),
-            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0'))
+            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 4, '0')),
           ];
         });
         let yearly = {};
@@ -135,92 +131,89 @@ export default {
           }
         });
         for (let key in yearly) {
-          let x = moment()
-            .year(key)
-            .startOf('year')
-            .valueOf();
+          let x = moment().year(key).startOf('year').valueOf();
           let std = stats.stdev(yearly[key]);
           yearlyData.push({
             x: x,
-            y: _.mean(yearly[key])
+            y: _.mean(yearly[key]),
           });
           std1Data.push({
             x: x,
             y: _.mean(yearly[key]) + std,
-            std
+            std,
           });
           std1DataNegative.push({
             x: x,
             y: _.mean(yearly[key]) - std,
-            std
+            std,
           });
         }
         this.matched = matched.length;
         this.chart.series[0].update(
           {
-            data: matched
+            data: matched,
           },
           false
         );
         this.chart.series[2].update(
           {
-            data: std1Data
+            data: std1Data,
           },
           false
         );
         this.chart.series[3].update(
           {
-            data: std1DataNegative
+            data: std1DataNegative,
           },
           false
         );
         this.chart.series[1].update(
           {
-            data: yearlyData
+            data: yearlyData,
           },
           true
         );
       }
-    }
+    },
   },
   props: ['UIData'],
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       Highcharts.setOptions({
         lang: {
           thousandsSep: '',
-          resetZoom: '重置缩放'
-        }
+          resetZoom: '重置缩放',
+        },
       });
       let self = this;
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
           type: 'scatter',
           zoomType: 'xy',
-          backgroundColor: null
+          backgroundColor: null,
         },
         boost: {
           useGPUTranslations: true,
-          usePreAllocated: true
+          usePreAllocated: true,
         },
         rangeSelector: {
           verticalAlign: 'top',
           x: 0,
-          y: 0
+          y: 0,
         },
         title: {
           text: '',
-          enabled: false
+          enabled: false,
         },
         tooltip: {
           crosshairs: true,
           backgroundColor: 'black',
           borderColor: 'none',
           style: {
-            color: 'white'
+            color: 'white',
           },
           // xDateFormat: '%Y-%m-%d',
-          formatter: function() {
+          formatter: function () {
             if (this.series.name === '年度均分') {
               return `${moment(this.x).year()}年均分：<b>${this.y.toFixed(
                 2
@@ -256,48 +249,48 @@ export default {
               return `Error`;
             }
 
-            return `<div class="scatter-tp-title"><b>${self.dic[rank].name_cn ||
-              self.dic[rank]
-                .name}</b></div><br /><div class="scatter-tp-body">首播：${moment(
+            return `<div class="scatter-tp-title"><b>${
+              self.dic[rank].name_cn || self.dic[rank].name
+            }</b></div><br /><div class="scatter-tp-body">首播：${moment(
               this.x
             ).format('Y.M.DD')}<br />排名：${rank}<br />均分：${
               self.dic[rank].score
             }</div>`;
-          }
+          },
         },
         subtitle: {
-          enabled: false
+          enabled: false,
         },
         plotOptions: {
           spline: {
             marker: {
-              enabled: false
-            }
+              enabled: false,
+            },
           },
           line: {
             marker: {
-              symbol: 'circle'
-            }
+              symbol: 'circle',
+            },
           },
           series: {
             cursor: 'pointer',
             animation: {
-              complete: function() {
+              complete: function () {
                 // console.log(`${new Date()} | finished update`);
                 self.rendering = false;
-              }
+              },
             },
             point: {
               events: {
-                click: function() {
+                click: function () {
                   let rank = _.round(
                     _.padEnd((this.y + '').split('.')[1], 8, '0').slice(-4)
                   );
                   if (this.series.name === '评分')
                     window.open(`/subject/${self.dic[rank].bgmId}`);
-                }
-              }
-            }
+                },
+              },
+            },
           },
           scatter: {
             marker: {
@@ -306,41 +299,41 @@ export default {
                 hover: {
                   enabled: true,
                   // lineColor: 'rgb(100,100,100)',
-                  fillColor: COLORS[8]
-                }
-              }
+                  fillColor: COLORS[8],
+                },
+              },
             },
             states: {
               hover: {
                 marker: {
-                  enabled: false
-                }
-              }
+                  enabled: false,
+                },
+              },
             },
-            tooltip: {}
-          }
+            tooltip: {},
+          },
         },
         yAxis: [
           {
             startOnTick: false,
             // reversed: true,
             title: {
-              enabled: false
+              enabled: false,
             },
             labels: {
-              format: '{value:.1f}'
-            }
+              format: '{value:.1f}',
+            },
           },
           {
             startOnTick: false,
             title: {
-              enabled: false
+              enabled: false,
             },
             labels: {
-              format: '{value:.1f}'
+              format: '{value:.1f}',
             },
-            opposite: true
-          }
+            opposite: true,
+          },
         ],
         xAxis: {
           type: 'datetime',
@@ -353,11 +346,11 @@ export default {
             day: '%m-%d',
             week: '%m-%d',
             month: '%Y-%m',
-            year: '%Y'
-          }
+            year: '%Y',
+          },
         },
         exporting: {
-          enabled: false
+          enabled: false,
         },
         legend: {
           display: true,
@@ -367,23 +360,23 @@ export default {
             color: '#2c3e50',
             fontWeight: 'normal',
             fontSize: '1rem',
-            fontFamily: `'source-han-serif-sc', serif`
-          }
+            fontFamily: `'source-han-serif-sc', serif`,
+          },
         },
         credits: {
-          enabled: false
+          enabled: false,
         },
         series: [
           {
             color: 'rgba(49, 148, 255, 0.4)',
             name: '评分',
-            data: []
+            data: [],
           },
           {
             type: 'line',
             color: PINK,
             name: '年度均分',
-            data: []
+            data: [],
           },
           {
             type: 'line',
@@ -393,9 +386,9 @@ export default {
             dashStyle: 'longdashdot',
             step: true,
             marker: {
-              enabled: false
+              enabled: false,
             },
-            visible: false
+            visible: false,
           },
           {
             type: 'line',
@@ -405,28 +398,28 @@ export default {
             dashStyle: 'longdashdot',
             step: true,
             marker: {
-              enabled: false
+              enabled: false,
             },
-            visible: false
-          }
+            visible: false,
+          },
         ],
         colors: COLORS,
         responsive: {
           rules: [
             {
               condition: {
-                maxWidth: 500
+                maxWidth: 500,
               },
               chartOptions: {
                 legend: {
                   layout: 'horizontal',
                   align: 'center',
-                  verticalAlign: 'bottom'
-                }
-              }
-            }
-          ]
-        }
+                  verticalAlign: 'bottom',
+                },
+              },
+            },
+          ],
+        },
       });
 
       this._refresh('finish mount');
@@ -434,7 +427,7 @@ export default {
   },
   updated() {
     //this._refresh('updated');
-  }
+  },
 };
 </script>
 

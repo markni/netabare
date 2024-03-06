@@ -3,7 +3,7 @@
     <div>
       <h1 class="tk-myriad-pro title">netabare.</h1>
       <div class="inputs">
-        <div class=" input-label">
+        <div class="input-label">
           个人
           <router-link class="link" to="/history">评分分布</router-link>
           :
@@ -11,7 +11,7 @@
         <div class="input-box">
           <user-search font-size="1rem" />
         </div>
-        <div class=" input-label">
+        <div class="input-label">
           动画
           <router-link class="link" to="/trending">评分趋势</router-link>
           :
@@ -35,12 +35,12 @@ import LineArt from '@/components/LineArt';
 
 export default {
   name: 'home',
-  data: function() {
+  data: function () {
     return {
-      loading: true
+      loading: true,
     };
   },
-  mounted: function() {
+  mounted: function () {
     setTimeout(() => {
       this.loading = false;
     }, 1000);
@@ -48,8 +48,8 @@ export default {
   components: {
     UserSearch,
     SubjectSearch,
-    LineArt
-  }
+    LineArt,
+  },
 };
 </script>
 

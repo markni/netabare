@@ -1,7 +1,7 @@
 <template>
   <div class="stats-container">
-    <h1 class=" title">{{ UIData.name }}</h1>
-    <h2 class=" subtitle" v-if="UIData.name_cn">{{ UIData.name_cn }}</h2>
+    <h1 class="title">{{ UIData.name }}</h1>
+    <h2 class="subtitle" v-if="UIData.name_cn">{{ UIData.name_cn }}</h2>
     <!--<div class=" minititle">当前评分</div>-->
     <!--<div class=" score">{{UIData.score || "n/a"}}</div>-->
     <!--<div class=" minititle">评分变化</div>-->
@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'SubjectStats',
-  props: ['UIData']
+  props: ['UIData'],
 };
 </script>
 

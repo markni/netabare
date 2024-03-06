@@ -15,17 +15,17 @@
 export default {
   name: 'Search',
   props: ['fontSize'],
-  data: function() {
+  data: function () {
     return {
-      bgmSubjectId: ''
+      bgmSubjectId: '',
     };
   },
   methods: {
-    submit: function(e) {
+    submit: function (e) {
       e.preventDefault();
       if (this.bgmSubjectId) this.$router.push(`/subject/${this.bgmSubjectId}`);
-    }
-  }
+    },
+  },
 };
 </script>
 

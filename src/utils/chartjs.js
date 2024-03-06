@@ -2,7 +2,7 @@ import Chart from 'chart.js';
 
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
-  draw: function(ease) {
+  draw: function (ease) {
     Chart.controllers.line.prototype.draw.call(this, ease);
 
     if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
@@ -22,7 +22,7 @@ Chart.controllers.LineWithLine = Chart.controllers.line.extend({
       ctx.stroke();
       ctx.restore();
     }
-  }
+  },
 });
 
 export default Chart;

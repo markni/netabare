@@ -16,26 +16,26 @@ export default {
   data() {
     return {
       chart: null,
-      raw: []
+      raw: [],
     };
   },
   watch: {
-    UIData: function() {
+    UIData: function () {
       this._refresh();
-    }
+    },
   },
   methods: {
-    _refresh: function() {
+    _refresh: function () {
       if (this.chart && this.UIData) {
         let data = [];
-        this.UIData.forEach(u => {
+        this.UIData.forEach((u) => {
           data.unshift({ x: moment(u.recordedAt).valueOf(), y: u.score });
         });
         // console.log(JSON.stringify(data, null, '  '));
 
         this.chart.series[0].update(
           {
-            data: data
+            data: data,
           },
           true
         );
@@ -50,16 +50,14 @@ export default {
               textAlign: 'right',
               y: -10,
               x: 5,
-              useHTML: true
-            }
+              useHTML: true,
+            },
           };
           subject.eps
-            .filter(ep => ep.type === 0 && ep.airdate)
-            .forEach(ep => {
+            .filter((ep) => ep.type === 0 && ep.airdate)
+            .forEach((ep) => {
               let epOption = _.cloneDeep(plotOptions);
-              epOption.label.text = `<a target="_blank" href="https://bgm.tv/ep/${
-                ep.id
-              }">ep. ${ep.sort}</a>`;
+              epOption.label.text = `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep. ${ep.sort}</a>`;
               epOption.value = moment(`${ep.airdate}T00:00:00+08:00`).valueOf();
               this.chart.xAxis[0].addPlotLine(epOption);
               //this.chart.xAxis[0].update();
@@ -68,54 +66,54 @@ export default {
         // this.chart.data.datasets[0].data = this.UIData;
         // this.chart.update();
       }
-    }
+    },
   },
   props: ['color', 'UIData'],
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       Highcharts.setOptions({
         lang: {
-          thousandsSep: ''
-        }
+          thousandsSep: '',
+        },
       });
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
-          backgroundColor: null
+          backgroundColor: null,
         },
         title: {
           text: '',
-          enabled: false
+          enabled: false,
         },
         tooltip: {
           crosshairs: true,
           backgroundColor: 'black',
           borderColor: 'none',
           style: {
-            color: 'white'
+            color: 'white',
           },
           useHTML: false,
-          xDateFormat: '%Y-%m-%d'
+          xDateFormat: '%Y-%m-%d',
         },
         subtitle: {
-          enabled: false
+          enabled: false,
         },
         plotOptions: {
           spline: {
             marker: {
-              enabled: false
-            }
-          }
+              enabled: false,
+            },
+          },
         },
         yAxis: [
           {
             title: {
-              enabled: false
+              enabled: false,
             },
             labels: {
-              enabled: false
+              enabled: false,
             },
-            tickInterval: 0.1
-          }
+            tickInterval: 0.1,
+          },
         ],
         xAxis: {
           type: 'datetime',
@@ -127,23 +125,23 @@ export default {
             day: '%m-%d',
             week: '%m-%d',
             month: '%m-%d',
-            year: '%m-%d'
+            year: '%m-%d',
           },
           labels: {
-            enabled: false
-          }
+            enabled: false,
+          },
         },
         exporting: {
-          enabled: false
+          enabled: false,
         },
         legend: {
           layout: 'vertical',
           align: 'right',
           verticalAlign: 'middle',
-          enabled: false
+          enabled: false,
         },
         credits: {
-          enabled: false
+          enabled: false,
         },
         series: [
           {
@@ -151,32 +149,32 @@ export default {
             name: '评分',
             yAxis: 0,
             data: [],
-            color: this.color || BLUE
-          }
+            color: this.color || BLUE,
+          },
         ],
         responsive: {
           rules: [
             {
               condition: {
-                maxWidth: 500
+                maxWidth: 500,
               },
               chartOptions: {
                 legend: {
                   layout: 'horizontal',
                   align: 'center',
-                  verticalAlign: 'bottom'
-                }
-              }
-            }
-          ]
-        }
+                  verticalAlign: 'bottom',
+                },
+              },
+            },
+          ],
+        },
       });
       this._refresh();
     });
   },
   updated() {
     this._refresh();
-  }
+  },
 };
 </script>
 
