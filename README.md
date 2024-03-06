@@ -9,16 +9,16 @@ Simple analytical site with vue.js and Highcharts.  Display back-end data with b
 
 ## Install
 
-```yarn```
+```npm i```
 
 ## Serve
 
-```yarn serve```
+```npm run serve```
 
 visit testing result at http://localhost:8080/
 
 ## Build
 
-```yarn build```
+```npm run build```
 
 build in located in `/dist/`, serve `index.html` with your production server.
