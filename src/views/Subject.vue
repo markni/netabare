@@ -10,11 +10,17 @@
         <h2 class="subtitle">{{ subjectData.name_cn }}</h2>
 
         <div class="rangeBtns">
-          <div :class="{ active: !filtered }" @click="_setFiltered(false)">
+          <div
+            :class="{ active: filtered === 'none' }"
+            @click="_setFiltered(`none`)"
+          >
             全部
           </div>
-          <div :class="{ active: !!filtered }" @click="_setFiltered(true)">
-            开播以来
+          <div
+            :class="{ active: filtered === 'eps' }"
+            @click="_setFiltered('eps')"
+          >
+            放送期间
           </div>
         </div>
 
@@ -97,7 +103,8 @@ export default {
   data: function() {
     return {
       oneWeekBeforeFirstEpTimestamp: 0, //ms since epoch
-      filtered: false,
+      oneWeekAfterLastEpTimestamp: Infinity, //ms since epoch
+      filtered: 'none',
       loading: false,
       scoreData: [],
       rankData: [],
@@ -133,6 +140,13 @@ export default {
     }
   },
   methods: {
+    _filterDataByEpsTimestamp: function(data) {
+      return data.filter(
+        d =>
+          d.x >= this.oneWeekBeforeFirstEpTimestamp &&
+          d.x <= this.oneWeekAfterLastEpTimestamp
+      );
+    },
     _getData: function() {
       loadingTimer = setTimeout(() => {
         this.loading = true;
@@ -148,12 +162,25 @@ export default {
           } else {
             let data = res.data;
             let subject = data.subject;
+
+            // Set the oneWeekBeforeFirstEpTimestamp to 1 week before the first episode's airdate
             this.oneWeekBeforeFirstEpTimestamp =
               subject && subject.eps && subject.eps[0].airdate
                 ? moment(subject.eps[0].airdate)
                     .subtract(1, 'weeks')
                     .valueOf()
                 : 0;
+
+            // Set the oneWeekAfterLastEpTimestamp to 1 week after the last episode's airdate
+            this.oneWeekAfterLastEpTimestamp =
+              subject &&
+              subject.eps &&
+              subject.eps[subject.eps.length - 1].airdate
+                ? moment(subject.eps[subject.eps.length - 1].airdate)
+                    .add(1, 'weeks')
+                    .valueOf()
+                : Infinity;
+
             if (data.history) {
               this.rankData = {
                 history: data.history
@@ -256,61 +283,49 @@ export default {
   },
   computed: {
     filteredScoreData: function() {
-      console.log('Computing filteredScoreData. Filtered:', this.filtered); // Log the state of `filtered`
-
-      if (this.filtered) {
+      if (this.filtered === 'eps') {
         const filteredData = {
           ...this.scoreData, // Spread the scoreData object to retain all its properties
-          history: this.scoreData.history.filter(
-            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
-          ),
-          ten: this.scoreData.ten.filter(
-            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
-          ),
-          one: this.scoreData.one.filter(
-            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
-          )
+          history: this._filterDataByEpsTimestamp(this.scoreData.history),
+          ten: this._filterDataByEpsTimestamp(this.scoreData.ten),
+          one: this._filterDataByEpsTimestamp(this.scoreData.one)
         };
 
         // Log the filtered data for debugging
-        console.log('Filtered Score Data:', filteredData);
         return filteredData;
       } else {
-        console.log('Returning unfiltered scoreData', this.scoreData); // Log when returning the original data
         return _.cloneDeep(this.scoreData); // Return the full scoreData object
       }
     },
     filteredRankData: function() {
-      if (this.filtered) {
+      if (this.filtered === 'eps') {
         // Filter the history data based on the condition
         return {
           ...this.rankData, // Spread the rankData object to retain all its properties
-          history: this.rankData.history.filter(
-            d => d.x >= this.oneWeekBeforeFirstEpTimestamp
-          )
+          history: this._filterDataByEpsTimestamp(this.rankData.history)
         };
       } else {
         return _.cloneDeep(this.rankData); // Return the full rankData object
       }
     },
     filteredCollectionData: function() {
-      if (this.filtered) {
+      if (this.filtered === 'eps') {
         return {
           history: {
-            wish: this.collectionData.history.wish.filter(
-              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            wish: this._filterDataByEpsTimestamp(
+              this.collectionData.history.wish
             ),
-            collect: this.collectionData.history.collect.filter(
-              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            collect: this._filterDataByEpsTimestamp(
+              this.collectionData.history.collect
             ),
-            doing: this.collectionData.history.doing.filter(
-              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            doing: this._filterDataByEpsTimestamp(
+              this.collectionData.history.doing
             ),
-            on_hold: this.collectionData.history.on_hold.filter(
-              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            on_hold: this._filterDataByEpsTimestamp(
+              this.collectionData.history.on_hold
             ),
-            dropped: this.collectionData.history.dropped.filter(
-              d => d.x >= this.oneWeekBeforeFirstEpTimestamp
+            dropped: this._filterDataByEpsTimestamp(
+              this.collectionData.history.dropped
             )
           },
           meta: this.collectionData.meta
