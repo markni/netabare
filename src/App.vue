@@ -15,7 +15,8 @@ body {
 }
 
 #app {
-  font-family: 'source-han-serif-sc', 'source-han-serif-japanese', serif;
+  font-family: 'source-han-serif-sc', 'source-han-serif-japanese', '宋体',
+    '新宋体', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
