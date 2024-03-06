@@ -1,14 +1,12 @@
 <template>
   <div class="chart-container" ref="container"></div>
 </template>
+
 <script>
 import { COLORS } from '@/constants/colors';
 import _ from 'lodash';
 import moment from 'moment';
-// Load Highcharts
 import Highcharts from 'highcharts';
-// Alternatively, this is how to load Highstock. Highmaps is similar.
-// import Highcharts from 'highcharts/highstock';
 
 export default {
   data() {
@@ -18,16 +16,18 @@ export default {
     };
   },
   watch: {
-    UIData: function() {
-      console.log('UIData changed', this.UIData);
-      this._refresh();
-    },
-    deep: true
+    UIData: {
+      handler: function() {
+        this._refresh();
+      },
+      deep: true
+    }
   },
   methods: {
     _refresh: function() {
+      // Check if the chart and UIData with history exist
       if (this.chart && this.UIData && this.UIData.history) {
-        // console.log(JSON.stringify(this.UIData.one, null, '  '));
+        // Update the chart series with new data
         this.chart.series[1].update(
           {
             data: this.UIData.one
@@ -46,7 +46,11 @@ export default {
           },
           true
         );
+
+        // Get the subject data from UIData
         let subject = this.UIData.meta;
+
+        // If the subject has episodes data, add plot lines for episode airdates
         if (subject && subject.eps && subject.eps.length) {
           const plotOptions = {
             color: 'rgba(0,0,0,0.1)',
@@ -61,7 +65,7 @@ export default {
             }
           };
 
-          // Clean up: Remove existing plot lines
+          // Remove existing plot lines from the chart
           this.chart.xAxis[0].plotLinesAndBands.forEach(plotLine => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
@@ -85,7 +89,7 @@ export default {
             let epOption = _.cloneDeep(plotOptions);
             epOption.value = Number(airdateValue);
 
-            // Adjust label to list all episodes for this airdate
+            // Set the label text to list all episodes for this airdate
             epOption.label.text = episodes
               .map(
                 ep =>
@@ -101,15 +105,19 @@ export default {
       }
     }
   },
-  props: ['bgmId', 'UIData'],
+  props: ['bgmId', 'UIData'], // Declare the props
   mounted() {
     this.$nextTick(function() {
+      // Set Highcharts options
       Highcharts.setOptions({
         lang: {
           thousandsSep: ''
         }
       });
+
+      // Create the chart instance
       this.chart = Highcharts.chart(this.$refs.container, {
+        // Chart configuration options
         chart: {
           backgroundColor: null
         },
@@ -208,7 +216,7 @@ export default {
             color: 'rgba(0,0,0, 0.1)'
           }
         ],
-        colors: COLORS,
+        colors: COLORS, // Use the COLORS constant
         responsive: {
           rules: [
             {
@@ -227,10 +235,12 @@ export default {
         }
       });
 
+      // Refresh the chart with initial data
       this._refresh();
     });
   },
   beforeDestroy() {
+    // Destroy the chart instance when the component is destroyed
     if (this.chart) {
       this.chart.destroy();
     }
