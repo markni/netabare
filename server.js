@@ -11,6 +11,6 @@ app.use('/*', (req, res) => {
 
 app.listen(port, () =>
   console.log(
-    `http://netaba.re front-end server is up at http://localhost:${port}`
+    `https://netaba.re front-end server is up at http://localhost:${port}`
   )
 );

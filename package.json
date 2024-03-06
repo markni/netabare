@@ -8,12 +8,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "go": "yarn lint && yarn build && git add ."
+    "go": "npm run lint && npm run build && git add ."
   },
   "dependencies": {
     "animejs": "^2.2.0",
-    "axios": "^0.18.1",
-    "axios-cache-plugin": "^0.1.0",
+    "axios": "^1.6.7",
     "chart.js": "^2.9.4",
     "express": "^4.18.3",
     "highcharts": "^6.2.0",
