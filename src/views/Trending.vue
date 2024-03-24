@@ -1,6 +1,44 @@
 <template>
   <div class="container">
     <div v-show="up.length">
+      <div class="section-header header-3">
+        <h2>热门条目趋势观察</h2>
+        <h3>30天内收藏变化最多的条目 (最后更新：{{ lastUpdate }})</h3>
+      </div>
+      <div class="section-list list-3">
+        <div class="before"></div>
+
+        <div
+          class="row"
+          v-bind:class="['row-' + (index + 1)]"
+          v-for="(item, index) in done"
+          :key="item.bgmId"
+        >
+          <div class="index">{{ index + 1 }}.</div>
+          <div class="title">
+            <router-link :to="{ path: 'subject/' + item.bgmId }"
+              >{{ item.subject.name_cn || item.subject.name }}
+            </router-link>
+          </div>
+          <div class="chart-cell">
+            <mini-score
+              :color="item.score >= 0 ? pink : ''"
+              :UIData="item.history"
+            />
+          </div>
+          <div class="score" v-if="item.history[0]">
+            {{ item.history[0].score }}
+          </div>
+          <div
+            v-if="!isNaN(item.score)"
+            class="delta"
+            :class="{ pink: item.score >= 0, blue: item.score < 0 }"
+          >
+            {{ item.score >= 0 ? '▴' : '▾'
+            }}{{ Math.abs(item.score).toFixed(2) }}
+          </div>
+        </div>
+      </div>
       <div class="section-header header-1">
         <h2>评分涨幅榜</h2>
         <h3>
@@ -60,44 +98,7 @@
           <div class="delta blue">▾{{ Math.abs(item.score).toFixed(2) }}</div>
         </div>
       </div>
-      <div class="section-header header-3">
-        <h2>热门条目趋势观察</h2>
-        <h3>30天内收藏变化最多的条目 (最后更新：{{ lastUpdate }})</h3>
-      </div>
-      <div class="section-list list-3">
-        <div class="before"></div>
 
-        <div
-          class="row"
-          v-bind:class="['row-' + (index + 1)]"
-          v-for="(item, index) in done"
-          :key="item.bgmId"
-        >
-          <div class="index">{{ index + 1 }}.</div>
-          <div class="title">
-            <router-link :to="{ path: 'subject/' + item.bgmId }"
-              >{{ item.subject.name_cn || item.subject.name }}
-            </router-link>
-          </div>
-          <div class="chart-cell">
-            <mini-score
-              :color="item.score >= 0 ? pink : ''"
-              :UIData="item.history"
-            />
-          </div>
-          <div class="score" v-if="item.history[0]">
-            {{ item.history[0].score }}
-          </div>
-          <div
-            v-if="!isNaN(item.score)"
-            class="delta"
-            :class="{ pink: item.score >= 0, blue: item.score < 0 }"
-          >
-            {{ item.score >= 0 ? '▴' : '▾'
-            }}{{ Math.abs(item.score).toFixed(2) }}
-          </div>
-        </div>
-      </div>
       <back />
     </div>
     <transition name="fade">

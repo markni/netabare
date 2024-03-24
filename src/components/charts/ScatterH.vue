@@ -272,8 +272,8 @@ export default {
           series: {
             cursor: 'pointer',
             animation: {
+              enabled: false,
               complete: function () {
-                // console.log(`${new Date()} | finished update`);
                 self.rendering = false;
               },
             },

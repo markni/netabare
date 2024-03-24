@@ -12,6 +12,7 @@ Highcharts.setOptions({
   plotOptions: {
     series: {
       animation: true, // Enable initial animation for all series
+      duration: 5000, // Set the initial animation duration to 1 second
     },
   },
   // Add other global options as needed
