@@ -1,12 +1,12 @@
 <template>
   <div class="chart-container" ref="container"></div>
 </template>
-
 <script>
-import { COLORS } from '@/constants/colors';
+import { COLORS2 } from '@/constants/colors';
 import _ from 'lodash';
 import moment from 'moment';
-import Highcharts from 'highcharts';
+// Load Highcharts
+import Highcharts from '@/utils/highcharts';
 
 export default {
   data() {
@@ -25,32 +25,38 @@ export default {
   },
   methods: {
     _refresh: function () {
-      // Check if the chart and UIData with history exist
       if (this.chart && this.UIData && this.UIData.history) {
-        // Update the chart series with new data
+        this.chart.series[0].update(
+          {
+            data: this.UIData.history['dropped'],
+          },
+          false
+        );
         this.chart.series[1].update(
           {
-            data: this.UIData.one,
+            data: this.UIData.history['wish'],
           },
           false
         );
         this.chart.series[2].update(
           {
-            data: this.UIData.ten,
+            data: this.UIData.history['on_hold'],
           },
           false
         );
-        this.chart.series[0].update(
+        this.chart.series[3].update(
           {
-            data: this.UIData.history,
+            data: this.UIData.history['collect'],
+          },
+          false
+        );
+        this.chart.series[4].update(
+          {
+            data: this.UIData.history['doing'],
           },
           true
         );
-
-        // Get the subject data from UIData
         let subject = this.UIData.meta;
-
-        // If the subject has episodes data, add plot lines for episode airdates
         if (subject && subject.eps && subject.eps.length) {
           const plotOptions = {
             color: 'rgba(0,0,0,0.1)',
@@ -65,7 +71,7 @@ export default {
             },
           };
 
-          // Remove existing plot lines from the chart
+          // Clean up: Remove existing plot lines
           this.chart.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
             this.chart.xAxis[0].removePlotLine(plotLine.id);
           });
@@ -89,7 +95,7 @@ export default {
             let epOption = _.cloneDeep(plotOptions);
             epOption.value = Number(airdateValue);
 
-            // Set the label text to list all episodes for this airdate
+            // Adjust label to list all episodes for this airdate
             epOption.label.text = episodes
               .map(
                 (ep) =>
@@ -102,22 +108,20 @@ export default {
             this.chart.xAxis[0].addPlotLine(epOption);
           });
         }
+        // this.chart.data.datasets[0].data = this.UIData;
+        // this.chart.update();
       }
     },
   },
-  props: ['bgmId', 'UIData'], // Declare the props
+  props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function () {
-      // Set Highcharts options
       Highcharts.setOptions({
         lang: {
           thousandsSep: '',
         },
       });
-
-      // Create the chart instance
       this.chart = Highcharts.chart(this.$refs.container, {
-        // Chart configuration options
         chart: {
           backgroundColor: null,
         },
@@ -134,6 +138,7 @@ export default {
           },
           useHTML: false,
           xDateFormat: '%Y-%m-%d',
+          shared: true,
         },
         subtitle: {
           enabled: false,
@@ -148,25 +153,14 @@ export default {
             turboThreshold: 365 * 10,
           },
         },
-        yAxis: [
-          {
-            title: {
-              enabled: false,
-            },
-            labels: {
-              format: '{value:.2f}',
-            },
+        yAxis: {
+          title: {
+            enabled: false,
           },
-          {
-            title: {
-              enabled: false,
-            },
-            labels: {
-              format: '{value:.0f}',
-            },
-            opposite: true,
+          labels: {
+            format: '{value:.0f}',
           },
-        ],
+        },
         xAxis: {
           type: 'datetime',
           dateTimeLabelFormats: {
@@ -184,10 +178,15 @@ export default {
           enabled: false,
         },
         legend: {
-          layout: 'vertical',
+          // layout: 'vertical',
           align: 'right',
-          verticalAlign: 'middle',
-          enabled: false,
+          verticalAlign: 'bottom',
+          itemStyle: {
+            color: '#2c3e50',
+            fontWeight: 'normal',
+            fontSize: '1vw',
+            fontFamily: `'source-han-serif-sc', serif`,
+          },
         },
         credits: {
           enabled: false,
@@ -195,55 +194,42 @@ export default {
         series: [
           {
             type: 'spline',
-            name: '评分',
-            yAxis: 0,
+            name: '抛弃',
+            data: this.UIData.history['dropped'],
+          },
+          {
+            type: 'spline',
+            name: '想看',
             data: [],
           },
           {
             type: 'spline',
-            name: '1分',
-            yAxis: 1,
+            name: '搁置',
             data: [],
-            color: 'rgba(0,0,0, 0.1)',
-            dashStyle: 'dot',
           },
           {
             type: 'spline',
-            name: '10分',
-            yAxis: 1,
+            name: '看过',
             data: [],
-            dashStyle: 'longdashdot',
-            color: 'rgba(0,0,0, 0.1)',
+          },
+          {
+            type: 'spline',
+            name: '在看',
+            data: [],
           },
         ],
-        colors: COLORS, // Use the COLORS constant
-        responsive: {
-          rules: [
-            {
-              condition: {
-                maxWidth: 500,
-              },
-              chartOptions: {
-                legend: {
-                  layout: 'horizontal',
-                  align: 'center',
-                  verticalAlign: 'bottom',
-                },
-              },
-            },
-          ],
+        colors: COLORS2,
+        lang: {
+          thousandsSep: '',
         },
       });
-
-      // Refresh the chart with initial data
-      this._refresh();
     });
+
+    if (this.UIData && this.UIData.meta && this.UIData.meta.name)
+      this._refresh();
   },
-  beforeDestroy() {
-    // Destroy the chart instance when the component is destroyed
-    if (this.chart) {
-      this.chart.destroy();
-    }
+  updated() {
+    this._refresh();
   },
 };
 </script>

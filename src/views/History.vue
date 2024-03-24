@@ -17,7 +17,7 @@
 <script>
 import { fetchHistory } from '@/utils/api';
 import Overlay from '@/components/Overlay';
-import Scatter from '@/components/ScatterH';
+import Scatter from '@/components/charts/ScatterH.vue';
 import SubjectStats from '@/components/SubjectStats';
 import Back from '@/components/Back';
 

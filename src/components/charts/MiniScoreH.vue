@@ -8,9 +8,7 @@ import { BLUE } from '@/constants/colors';
 import _ from 'lodash';
 import moment from 'moment';
 // Load Highcharts
-import Highcharts from 'highcharts';
-// Alternatively, this is how to load Highstock. Highmaps is similar.
-// import Highcharts from 'highcharts/highstock';
+import Highcharts from '@/utils/highcharts';
 
 export default {
   data() {
