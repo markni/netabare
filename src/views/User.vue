@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import UserRating from '@/components/UserRatingH';
+import UserRating from '@/components/charts/UserRatingH.vue';
 import UserStats from '@/components/UserStats';
 import UserSearch from '@/components/UserSearch';
 import Overlay from '@/components/Overlay';

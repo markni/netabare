@@ -90,9 +90,9 @@
 import _ from 'lodash';
 import { fetchRank } from '@/utils/api';
 import Overlay from '@/components/Overlay';
-import Rank from '@/components/RankH';
-import Score from '@/components/ScoreH';
-import Collection from '@/components/CollectionH';
+import Rank from '@/components/charts/RankH.vue';
+import Score from '@/components/charts/ScoreH.vue';
+import Collection from '@/components/charts/CollectionH.vue';
 import SubjectStats from '@/components/SubjectStats';
 import Back from '@/components/Back';
 import moment from 'moment';

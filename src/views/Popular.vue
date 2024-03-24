@@ -27,7 +27,7 @@
 
 <script>
 import { fetchPopular } from '@/utils/api';
-import MiniScore from '@/components/MiniScoreH';
+import MiniScore from '@/components/charts/MiniScoreH.vue';
 import Back from '@/components/Back';
 import { PINK } from '@/constants/colors';
 import Overlay from '@/components/Overlay';

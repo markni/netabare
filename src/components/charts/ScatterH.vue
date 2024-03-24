@@ -33,14 +33,10 @@ import { COLORS, PINK } from '@/constants/colors';
 import VueMonthlyPicker from 'vue-monthly-picker';
 import moment from 'moment';
 // Load Highcharts
-import Highcharts from 'highcharts';
-import Boost from 'highcharts/modules/boost';
-Boost(Highcharts);
-import Overlay from '@/components/Overlay';
+import Highcharts from '@/utils/highcharts';
+import Overlay from '@/components/Overlay.vue';
 import _ from 'lodash';
 import stats from 'stats-lite';
-// Alternatively, this is how to load Highstock. Highmaps is similar.
-// import Highcharts from 'highcharts/highstock';
 
 export default {
   components: { Overlay, VueMonthlyPicker },
@@ -193,6 +189,7 @@ export default {
           backgroundColor: null,
         },
         boost: {
+          enabled: true,
           useGPUTranslations: true,
           usePreAllocated: true,
         },

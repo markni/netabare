@@ -1,14 +1,14 @@
 <template>
-  <div class="chart-container" ref="container"></div>
+  <div class="chart-container" ref="container">
+    <canvas ref="score"></canvas>
+  </div>
 </template>
 <script>
-import { COLORS2 } from '@/constants/colors';
+import { PINK } from '@/constants/colors';
 import _ from 'lodash';
 import moment from 'moment';
 // Load Highcharts
-import Highcharts from 'highcharts';
-// Alternatively, this is how to load Highstock. Highmaps is similar.
-// import Highcharts from 'highcharts/highstock';
+import Highcharts from '@/utils/highcharts';
 
 export default {
   data() {
@@ -18,11 +18,8 @@ export default {
     };
   },
   watch: {
-    UIData: {
-      handler: function () {
-        this._refresh();
-      },
-      deep: true,
+    UIData: function () {
+      this._refresh();
     },
   },
   methods: {
@@ -30,31 +27,7 @@ export default {
       if (this.chart && this.UIData && this.UIData.history) {
         this.chart.series[0].update(
           {
-            data: this.UIData.history['dropped'],
-          },
-          false
-        );
-        this.chart.series[1].update(
-          {
-            data: this.UIData.history['wish'],
-          },
-          false
-        );
-        this.chart.series[2].update(
-          {
-            data: this.UIData.history['on_hold'],
-          },
-          false
-        );
-        this.chart.series[3].update(
-          {
-            data: this.UIData.history['collect'],
-          },
-          false
-        );
-        this.chart.series[4].update(
-          {
-            data: this.UIData.history['doing'],
+            data: this.UIData.history,
           },
           true
         );
@@ -130,6 +103,7 @@ export default {
         title: {
           text: '',
           enabled: false,
+          backgroundColor: null,
         },
         tooltip: {
           crosshairs: true,
@@ -140,13 +114,12 @@ export default {
           },
           useHTML: false,
           xDateFormat: '%Y-%m-%d',
-          shared: true,
         },
         subtitle: {
           enabled: false,
         },
         plotOptions: {
-          spline: {
+          line: {
             marker: {
               enabled: false,
             },
@@ -156,6 +129,7 @@ export default {
           },
         },
         yAxis: {
+          reversed: true,
           title: {
             enabled: false,
           },
@@ -180,55 +154,42 @@ export default {
           enabled: false,
         },
         legend: {
-          // layout: 'vertical',
+          layout: 'vertical',
           align: 'right',
-          verticalAlign: 'bottom',
-          itemStyle: {
-            color: '#2c3e50',
-            fontWeight: 'normal',
-            fontSize: '1vw',
-            fontFamily: `'source-han-serif-sc', serif`,
-          },
+          verticalAlign: 'middle',
+          enabled: false,
         },
         credits: {
           enabled: false,
         },
         series: [
           {
-            type: 'spline',
-            name: '抛弃',
-            data: this.UIData.history['dropped'],
-          },
-          {
-            type: 'spline',
-            name: '想看',
-            data: [],
-          },
-          {
-            type: 'spline',
-            name: '搁置',
-            data: [],
-          },
-          {
-            type: 'spline',
-            name: '看过',
-            data: [],
-          },
-          {
-            type: 'spline',
-            name: '在看',
+            step: true,
+            name: '排名',
             data: [],
           },
         ],
-        colors: COLORS2,
-        lang: {
-          thousandsSep: '',
+        colors: [PINK],
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 500,
+              },
+              chartOptions: {
+                legend: {
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom',
+                },
+              },
+            },
+          ],
         },
       });
+      if (this.UIData && this.UIData.meta && this.UIData.meta.name)
+        this._refresh();
     });
-
-    if (this.UIData && this.UIData.meta && this.UIData.meta.name)
-      this._refresh();
   },
   updated() {
     this._refresh();

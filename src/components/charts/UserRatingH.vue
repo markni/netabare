@@ -4,7 +4,7 @@
 <script>
 import { COLORS } from '@/constants/colors';
 
-import Highcharts from 'highcharts';
+import Highcharts from '@/utils/highcharts';
 
 export default {
   data() {
