@@ -98,7 +98,7 @@ export default {
 @media only screen and (min-width: 901px) {
   .wrapper {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 83px);
     width: 100vw;
     overflow: hidden;
     box-sizing: border-box;
