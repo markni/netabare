@@ -101,6 +101,12 @@ export default {
               enabled: false,
             },
           },
+          series: {
+            animation: {
+              defer: 500,
+              duration: 1000,
+            },
+          },
         },
         yAxis: [
           {
