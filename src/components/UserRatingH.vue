@@ -24,7 +24,7 @@ export default {
       if (this.chart && this.UIData.data) {
         this.chart.series[0].setData(this.UIData.data);
       }
-      if (this.chart && this.UIData.data && this.chart.series[1].visible) {
+      if (this.chart && this.UIData.data) {
         this.chart.series[1].setData(this.UIData.gData);
       }
     },
@@ -81,10 +81,16 @@ export default {
           enabled: false,
         },
         legend: {
-          layout: 'vertical',
-          align: 'right',
-          verticalAlign: 'middle',
-          enabled: false,
+          // layout: 'vertical',
+          squareSymbol: true,
+          align: 'center',
+          verticalAlign: 'bottom',
+          itemStyle: {
+            color: '#2c3e50',
+            fontWeight: 'normal',
+            fontSize: '1vw',
+            fontFamily: `'source-han-serif-sc', serif`,
+          },
         },
         credits: {
           enabled: false,
@@ -92,8 +98,14 @@ export default {
         series: [
           {
             name: '个人评分',
+            color: 'red',
             data: [],
             colors: COLORS,
+            events: {
+              legendItemClick: function () {
+                return false; // Prevents toggling this series off
+              },
+            },
           },
           {
             name: '全站评分',
