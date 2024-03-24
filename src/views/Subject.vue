@@ -152,126 +152,133 @@ export default {
         this.loading = true;
       }, 600);
       if (this.id) {
-        fetchRank(this.id).then((res) => {
-          if (
-            res.data['error'] ||
-            res.data.length === 0 ||
-            res.data.history.length === 0
-          ) {
-            this.$router.replace('/404');
-          } else {
-            let data = res.data;
-            let subject = data.subject;
+        fetchRank(this.id)
+          .then((res) => {
+            if (
+              res.data['error'] ||
+              res.data.length === 0 ||
+              res.data.history.length === 0
+            ) {
+              this.$router.replace('/404');
+            } else {
+              let data = res.data;
+              let subject = data.subject;
 
-            // Set the oneWeekBeforeFirstEpTimestamp to 1 week before the first episode's airdate
-            this.oneWeekBeforeFirstEpTimestamp =
-              subject && subject.eps && subject.eps[0].airdate
-                ? moment(subject.eps[0].airdate).subtract(1, 'weeks').valueOf()
-                : 0;
+              // Set the oneWeekBeforeFirstEpTimestamp to 1 week before the first episode's airdate
+              this.oneWeekBeforeFirstEpTimestamp =
+                subject && subject.eps && subject.eps[0].airdate
+                  ? moment(subject.eps[0].airdate)
+                      .subtract(1, 'weeks')
+                      .valueOf()
+                  : 0;
 
-            // Set the oneWeekAfterLastEpTimestamp to 1 week after the last episode's airdate
-            this.oneWeekAfterLastEpTimestamp =
-              subject &&
-              subject.eps &&
-              subject.eps[subject.eps.length - 1].airdate
-                ? moment(subject.eps[subject.eps.length - 1].airdate)
-                    .add(1, 'weeks')
-                    .valueOf()
-                : Infinity;
+              // Set the oneWeekAfterLastEpTimestamp to 1 week after the last episode's airdate
+              this.oneWeekAfterLastEpTimestamp =
+                subject &&
+                subject.eps &&
+                subject.eps[subject.eps.length - 1].airdate
+                  ? moment(subject.eps[subject.eps.length - 1].airdate)
+                      .add(1, 'weeks')
+                      .valueOf()
+                  : Infinity;
 
-            if (data.history) {
-              this.rankData = {
-                history: data.history
-                  .filter((r) => !!r.rank)
-                  .map((r) => {
-                    let y = r.rank;
-                    let x = moment(r.recordedAt).valueOf();
-                    return { x, y };
-                  })
-                  .reverse(),
-                meta: data.subject,
-              };
-              this.scoreData = {
-                history: data.history
-                  .filter((r) => !!r.score)
-                  .map((r) => {
-                    let y = r.score;
-                    let x = moment(r.recordedAt).valueOf();
-                    return { x, y };
-                  })
-                  .reverse(),
-                meta: data.subject,
-              };
-              this.scoreData.one = [];
-              this.scoreData.ten = [];
-              data.history.forEach((h) => {
-                if (h.collect) {
-                  for (let key in h.collect) {
-                    let y = h.collect[key];
+              if (data.history) {
+                this.rankData = {
+                  history: data.history
+                    .filter((r) => !!r.rank)
+                    .map((r) => {
+                      let y = r.rank;
+                      let x = moment(r.recordedAt).valueOf();
+                      return { x, y };
+                    })
+                    .reverse(),
+                  meta: data.subject,
+                };
+                this.scoreData = {
+                  history: data.history
+                    .filter((r) => !!r.score)
+                    .map((r) => {
+                      let y = r.score;
+                      let x = moment(r.recordedAt).valueOf();
+                      return { x, y };
+                    })
+                    .reverse(),
+                  meta: data.subject,
+                };
+                this.scoreData.one = [];
+                this.scoreData.ten = [];
+                data.history.forEach((h) => {
+                  if (h.collect) {
+                    for (let key in h.collect) {
+                      let y = h.collect[key];
+                      let x = moment(h.recordedAt).valueOf();
+                      this.collectionData['history'][key].push({ x, y });
+                    }
+                  }
+                  if (h.rating && h.rating.count) {
+                    let ten = h.rating.count[10] || 0;
+                    let one = h.rating.count[1] || 0;
                     let x = moment(h.recordedAt).valueOf();
-                    this.collectionData['history'][key].push({ x, y });
+                    this.scoreData.one.push({ x, y: one });
+                    this.scoreData.ten.push({ x, y: ten });
+                  }
+                });
+                this.scoreData.one.reverse();
+                this.scoreData.ten.reverse();
+                for (let key in this.collectionData['history']) {
+                  this.collectionData['history'][key] =
+                    this.collectionData['history'][key].reverse();
+                }
+                this.collectionData.meta = data.subject;
+              }
+              if (data.subject) {
+                let { subject } = data;
+                this.subjectData = {
+                  name: subject.name,
+                  name_cn: subject.name_cn,
+                  score: data.history[0].score,
+                  rank: data.history[0].rank,
+                  watching: data.history[0].collect.doing,
+                };
+                if (data.history.length >= 30) {
+                  let current = _.first(data.history);
+                  let before = _.nth(data.history, 29);
+
+                  this.subjectData.deltaScore = current.score - before.score;
+                  if (this.subjectData.deltaScore >= 0)
+                    this.subjectData.deltaScoreStr =
+                      '▴' + this.subjectData.deltaScore.toFixed(2);
+                  else {
+                    this.subjectData.deltaScoreStr =
+                      '▾' + Math.abs(this.subjectData.deltaScore.toFixed(2));
+                  }
+                  this.subjectData.deltaRank = current.rank - before.rank;
+                  if (this.subjectData.deltaRank > 0)
+                    this.subjectData.deltaRankStr =
+                      '▾' + this.subjectData.deltaRank;
+                  else {
+                    this.subjectData.deltaRankStr =
+                      '▴' + Math.abs(this.subjectData.deltaRank);
+                  }
+                  this.subjectData.deltaWatching =
+                    current.collect.doing - before.collect.doing;
+                  if (this.subjectData.deltaWatching > 0)
+                    this.subjectData.deltaWatchingStr =
+                      '▴' + this.subjectData.deltaWatching;
+                  else {
+                    this.subjectData.deltaWatchingStr =
+                      '▾' + Math.abs(this.subjectData.deltaWatching);
                   }
                 }
-                if (h.rating && h.rating.count) {
-                  let ten = h.rating.count[10] || 0;
-                  let one = h.rating.count[1] || 0;
-                  let x = moment(h.recordedAt).valueOf();
-                  this.scoreData.one.push({ x, y: one });
-                  this.scoreData.ten.push({ x, y: ten });
-                }
-              });
-              this.scoreData.one.reverse();
-              this.scoreData.ten.reverse();
-              for (let key in this.collectionData['history']) {
-                this.collectionData['history'][key] =
-                  this.collectionData['history'][key].reverse();
               }
-              this.collectionData.meta = data.subject;
+              if (loadingTimer) clearTimeout(loadingTimer);
+              this.loading = false;
             }
-            if (data.subject) {
-              let { subject } = data;
-              this.subjectData = {
-                name: subject.name,
-                name_cn: subject.name_cn,
-                score: data.history[0].score,
-                rank: data.history[0].rank,
-                watching: data.history[0].collect.doing,
-              };
-              if (data.history.length >= 30) {
-                let current = _.first(data.history);
-                let before = _.nth(data.history, 29);
-
-                this.subjectData.deltaScore = current.score - before.score;
-                if (this.subjectData.deltaScore >= 0)
-                  this.subjectData.deltaScoreStr =
-                    '▴' + this.subjectData.deltaScore.toFixed(2);
-                else {
-                  this.subjectData.deltaScoreStr =
-                    '▾' + Math.abs(this.subjectData.deltaScore.toFixed(2));
-                }
-                this.subjectData.deltaRank = current.rank - before.rank;
-                if (this.subjectData.deltaRank > 0)
-                  this.subjectData.deltaRankStr =
-                    '▾' + this.subjectData.deltaRank;
-                else {
-                  this.subjectData.deltaRankStr =
-                    '▴' + Math.abs(this.subjectData.deltaRank);
-                }
-                this.subjectData.deltaWatching =
-                  current.collect.doing - before.collect.doing;
-                if (this.subjectData.deltaWatching > 0)
-                  this.subjectData.deltaWatchingStr =
-                    '▴' + this.subjectData.deltaWatching;
-                else {
-                  this.subjectData.deltaWatchingStr =
-                    '▾' + Math.abs(this.subjectData.deltaWatching);
-                }
-              }
-            }
-            if (loadingTimer) clearTimeout(loadingTimer);
-            this.loading = false;
-          }
-        });
+          })
+          .catch((err) => {
+            console.error(err);
+            this.$router.replace('/404');
+          });
       }
     },
     _setFiltered: function (filtered) {
