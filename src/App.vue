@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <!--<div id="nav">-->
-    <!--<router-link to="/">Home</router-link> |-->
-    <!--<router-link to="/about">About</router-link>-->
-    <!--</div>-->
+    <div id="nav">
+      <router-link to="/" v-if="$route.path !== '/'">返回首页</router-link>
+      <a href="https://bgm.tv/group/topic/346147" about="blank">问题反馈</a>
+      <a href="https://bgm.tv/group/topic/346147" about="blank">更新日志</a>
+    </div>
     <router-view />
   </div>
 </template>
@@ -22,13 +23,21 @@ body {
   text-align: left;
   color: #2c3e50;
 }
+#nav > *:not(:last-child)::after {
+  content: '|';
+  margin: 0 4px;
+}
 #nav {
+  display: flex;
   padding: 30px;
   a {
+    opacity: 0.3;
+
     font-weight: bold;
     color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+    &:hover {
+      opacity: 1;
+      color: #3194ff;
     }
   }
 }
