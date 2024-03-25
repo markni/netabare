@@ -6,6 +6,10 @@ HighchartsBoost(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
+  lang: {
+    thousandsSep: '',
+    resetZoom: '重置缩放',
+  },
   boost: {
     enabled: false, // Enable boost globally
   },

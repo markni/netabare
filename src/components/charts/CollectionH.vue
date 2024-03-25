@@ -116,14 +116,10 @@ export default {
   props: ['bgmId', 'UIData'],
   mounted() {
     this.$nextTick(function () {
-      Highcharts.setOptions({
-        lang: {
-          thousandsSep: '',
-        },
-      });
       this.chart = Highcharts.chart(this.$refs.container, {
         chart: {
           backgroundColor: null,
+          zoomType: 'x',
         },
         title: {
           text: '',

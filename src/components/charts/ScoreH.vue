@@ -109,16 +109,12 @@ export default {
   mounted() {
     this.$nextTick(function () {
       // Set Highcharts options
-      Highcharts.setOptions({
-        lang: {
-          thousandsSep: '',
-        },
-      });
 
       // Create the chart instance
       this.chart = Highcharts.chart(this.$refs.container, {
         // Chart configuration options
         chart: {
+          zoomType: 'x',
           backgroundColor: null,
         },
         title: {
