@@ -24,6 +24,13 @@
           </div>
         </div>
 
+        <div
+          title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
+          class="hint"
+        >
+          如何自定义时间范围？
+        </div>
+
         <div class="score-chart">
           <div class="minititle">
             评分
@@ -442,6 +449,7 @@ export default {
   justify-content: flex-start;
   gap: 8px;
   padding-left: 5px;
+  margin-bottom: 10px;
   div {
     padding: 0;
     border: none;
@@ -455,5 +463,12 @@ export default {
       text-decoration-color: #f2006e;
     }
   }
+}
+
+.hint {
+  cursor: help;
+  opacity: 0.3;
+  padding-left: 5px;
+  font-size: 0.7vmax;
 }
 </style>
