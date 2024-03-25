@@ -23,8 +23,10 @@ export default {
 }
 .avatar img {
   border-radius: 50%;
-  width: 8vh;
-  height: 8vh;
+  max-height: 120px;
+  max-width: 120px;
+  width: 8vmax;
+  height: 8vmax;
   box-sizing: border-box;
 }
 .avatar img:hover {
