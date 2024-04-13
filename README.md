@@ -1,24 +1,35 @@
-# Netabare Front-end
+# netabare
 
-Simple analytical site with vue.js and Highcharts.  Display back-end data with beautiful charts to show trends in Anime viewership.
+This template should help get you started developing with Vue 3 in Vite.
 
-![explorer_2018-12-06_12-27-14](https://user-images.githubusercontent.com/1743179/49610095-5d22db00-f952-11e8-9258-9e25998dcbb2.png)
-![webstorm64_2018-12-06_12-24-42](https://user-images.githubusercontent.com/1743179/49610053-3f557600-f952-11e8-86b6-657cebcedbad.png)
-![webstorm64_2018-12-06_12-25-11](https://user-images.githubusercontent.com/1743179/49610054-3f557600-f952-11e8-94df-e34bf560ab90.png)
+## Recommended IDE Setup
 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Install
+## Customize configuration
 
-```npm i```
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Serve
+## Project Setup
 
-```npm run serve```
+```sh
+npm install
+```
 
-visit testing result at http://localhost:8080/
+### Compile and Hot-Reload for Development
 
-## Build
+```sh
+npm run dev
+```
 
-```npm run build```
+### Compile and Minify for Production
 
-build in located in `/dist/`, serve `index.html` with your production server.
+```sh
+npm run build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
