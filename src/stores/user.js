@@ -7,8 +7,32 @@ export const useUserStore = defineStore('user', {
     user: null
   }),
   getters: {
-    // Define getters if necessary, for example:
-    isLoggedIn: (state) => !!state.user
+    globalData: (state) => {
+      if (!state.user) return null
+
+      let UIData = state.user;
+      let g = [];
+      for (let key in UIData.gCount) {
+        if (key !== '-1') {
+          g.push({ x: parseInt(key), y: UIData.gCount[key] });
+        }
+      }
+
+      return g;
+    },
+    userData: (state) => {
+      if (!state.user) return null
+
+      let UIData = state.user;
+      let r = [];
+      for (let key in UIData.count) {
+        if (key !== '-1') {
+          r.push({ x: parseInt(key), y: UIData.count[key] });
+        }
+      }
+
+      return r;
+    },
   },
   actions: {
     async fetchUser(userId) {
