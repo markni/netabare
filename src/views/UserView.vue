@@ -1,13 +1,14 @@
 <template>
-  <div class="container mx-auto">
-    <div class="aspect-square sm:aspect-[16/10] mt-40">
-      <UserChart :userData="userData" :globalData="globalData" />
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-10">
+      <div class="aspect-square sm:aspect-[16/10] pt-14">
+        <UserChart :userData="userData" :globalData="globalData" />
+      </div>
+    </div>
+    <div class="col-span-2 px-2">
       <UserStats :user="user" />
-
     </div>
   </div>
-
-
 </template>
 
 <script setup>
@@ -22,8 +23,7 @@ const props = defineProps({
     type: String, // or Number, depending on what the ID is supposed to be
     required: true
   }
-});
-
+})
 
 const store = useUserStore()
 const { userData, globalData, user } = storeToRefs(store)
