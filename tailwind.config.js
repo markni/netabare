@@ -2,6 +2,7 @@
 
 import colors from 'tailwindcss/colors'
 import { GOLD, TEAL, RED, IVORY, GRAY } from './src/constants/colors.js'
+import plugin from 'tailwindcss/plugin'
 
 export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -15,9 +16,28 @@ export default {
       gold: GOLD,
       blood: RED,
       darkGray: GRAY,
-      lightGray: '#f5f5f5'
+      lightGray: '#a6a6a6'
+    },
+    fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+      serif: ['source-han-serif-sc', 'source-han-serif-japanese', '宋体', '新宋体']
     },
     extend: {}
   },
-  plugins: []
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.horizontal-tb': {
+          writingMode: 'horizontal-tb'
+        },
+        '.vertical-rl': {
+          writingMode: 'vertical-rl'
+        },
+        '.vertical-lr': {
+          writingMode: 'vertical-lr'
+        }
+      }
+      addUtilities(newUtilities)
+    })
+  ]
 }

@@ -10,16 +10,16 @@ export const BLUE = '#3194FF'
 export const PINK = '#F2006E'
 export const BLACK = '#2c3e50'
 export const COLORS = [
-  '#98f6e3',
-  '#71e4ec',
-  '#5bd0f5',
-  '#62b9f8',
-  '#7c9ff0',
-  '#9981d9',
-  '#ae61b4',
-  '#b73f84',
-  '#af2350',
-  '#981b1b'
+  '#88cdbd',
+  '#75cdd6',
+  '#77c9ef',
+  '#93c1ff',
+  '#beb4ff',
+  '#e9a4ee',
+  '#ff97ca',
+  '#ff989f',
+  '#ff9d6e',
+  '#e4ae49'
 ]
 export const COLORS2 = ['#3094FF', '#5B73DE', '#8652BE', '#B1319E', '#DC107E', '#F2006E']
 
