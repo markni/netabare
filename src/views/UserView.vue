@@ -1,7 +1,7 @@
 <template>
-  <div v-if="user" class="grid grid-cols-12 gap-4">
+  <div v-if="user && id" class="grid grid-cols-12 gap-4">
     <div class="col-span-10">
-      <div class="aspect-square sm:aspect-[16/10] pt-14">
+      <div class="aspect-square sm:aspect-[16/12] pt-14">
         <UserChart :userData="userData" :globalData="globalData" />
       </div>
     </div>
@@ -9,7 +9,7 @@
       <UserStats :user="user" />
     </div>
   </div>
-  <div v-if="!user" class="h-full flex flex-col items-center justify-center">
+  <div v-if="!user || !id" class="h-full flex flex-col items-center justify-center">
     <form @submit="submit">
       <input
         id="username"
@@ -50,7 +50,7 @@ const bgmUserId = ref('')
 
 const submit = (event) => {
   event.preventDefault() // Prevent the default form submission behavior
-  router.push(`/user/${bgmUserId.value}`) // Redirect to the user page
+  router.replace(`/user/${bgmUserId.value}`) // Redirect to the user page
   // Add your submission logic here
 }
 
