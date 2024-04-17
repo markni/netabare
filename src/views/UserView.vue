@@ -5,8 +5,22 @@
         <UserChart :userData="userData" :globalData="globalData" />
       </div>
     </div>
-    <div class="col-span-2 px-2">
+    <div class="col-span-2 px-2 flex flex-col">
       <UserStats :user="user" />
+      <form @submit="submit" class="mt-10">
+        <input
+          id="username"
+          autocomplete="off"
+          data-lpignore="true"
+          required
+          pattern="^\w+$"
+          class="text-xl bg-transparent border-b-2 focus:outline-0 p-2"
+          maxlength="15"
+          type="text"
+          v-model="bgmUserId"
+          placeholder="username / id"
+        />
+      </form>
     </div>
   </div>
   <div v-if="!user || !id" class="h-full flex flex-col items-center justify-center">
@@ -32,7 +46,7 @@ import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import UserChart from '@/components/charts/UserChart.vue'
 import UserStats from '@/components/UserStats.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import router from '@/router/index.js'
 
 // Import the defineProps function, which is available in <script setup>
@@ -44,7 +58,7 @@ const props = defineProps({
 })
 
 const store = useUserStore()
-const { userData, globalData, user } = storeToRefs(store)
+const { userData, globalData, user, username } = storeToRefs(store)
 
 const bgmUserId = ref('')
 
@@ -53,6 +67,19 @@ const submit = (event) => {
   router.replace(`/user/${bgmUserId.value}`) // Redirect to the user page
   // Add your submission logic here
 }
+if (props.id) {
+  store.fetchUser(props.id)
+} else if (username.value) {
+  router.replace(`/user/${username.value}`)
+} // Example user ID
 
-if (props.id) store.fetchUser(props.id) // Example user ID
+watch(
+  [() => props.id],
+  () => {
+    if (props.id) {
+      store.fetchUser(props.id)
+    }
+  },
+  { deep: true }
+)
 </script>
