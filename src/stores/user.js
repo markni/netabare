@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia'
 import { fetchUser } from '@/utils/api.js'
 import { useAppStore } from '@/stores/app.js'
+import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -41,26 +42,13 @@ export const useUserStore = defineStore('user', {
   actions: {
     async fetchUser(userId) {
       try {
-        let startTime
-        const timeoutId = setTimeout(() => {
-          useAppStore().setLongPolling(true)
-          startTime = Date.now()
-        }, 500)
+        const fetchUserWithLoading = withSmartLoadingUx(fetchUser, {
+          delay: 500,
+          minimumDisplayTime: 1500,
+          setLoadingState: useAppStore().setLongPolling
+        })
 
-        const response = await fetchUser(userId)
-        useAppStore().setLongPolling(false)
-
-        // Clear the timeout if the request finishes before 500ms
-        clearTimeout(timeoutId)
-        // Ensure long polling is disabled when the request is complete
-        const elapsedTime = Date.now() - startTime
-        const remainingTime = 1000 - elapsedTime // Ensure loading for at least 1000ms
-
-        if (remainingTime > 0) {
-          setTimeout(() => {
-            useAppStore().setLongPolling(false)
-          }, remainingTime)
-        }
+        const response = await fetchUserWithLoading(userId)
 
         this.user = response.data
       } catch (error) {
