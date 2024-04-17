@@ -1,11 +1,26 @@
 <template>
-  <div class="about">
-    <h1>This is an home page</h1>
+  <div
+    class="flex flex-col h-full w-full items-center justify-center text-6xl tracking-wider gap-16"
+  >
+    <div class="text-4xl">Netabare</div>
+
+    <div class="flex flex-col gap-4 tracking-widest">
+      <div class="gap-10 flex items-baseline">
+        <div class="text-4xl">个人动画</div>
+        <RouterLink class="text-5xl" to="/user">评分分布</RouterLink>
+      </div>
+
+      <div class="gap-10 flex items-baseline">
+        <div class="text-4xl">全站动画</div>
+        <RouterLink class="text-5xl" to="/history">评分分布图</RouterLink>
+      </div>
+
+      <div class="gap-10 flex items-baseline">
+        <div class="text-4xl">全站动画</div>
+        <RouterLink class="text-5xl" to="/trending">热门趋势</RouterLink>
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-
-</style>
-<script setup>
-</script>
+<script setup></script>
