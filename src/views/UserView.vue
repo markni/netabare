@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-12 gap-4">
+  <div v-if="user" class="grid grid-cols-12 gap-4">
     <div class="col-span-10">
       <div class="aspect-square sm:aspect-[16/10] pt-14">
         <UserChart :userData="userData" :globalData="globalData" />
@@ -9,6 +9,22 @@
       <UserStats :user="user" />
     </div>
   </div>
+  <div v-if="!user" class="h-full flex flex-col items-center justify-center">
+    <form @submit="submit">
+      <input
+        id="username"
+        autocomplete="off"
+        data-lpignore="true"
+        required
+        pattern="^\w+$"
+        class="text-4xl bg-transparent border-b-2 focus:outline-0 p-2"
+        maxlength="15"
+        type="text"
+        v-model="bgmUserId"
+        placeholder="username / id"
+      />
+    </form>
+  </div>
 </template>
 
 <script setup>
@@ -16,17 +32,27 @@ import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import UserChart from '@/components/charts/UserChart.vue'
 import UserStats from '@/components/UserStats.vue'
+import { ref } from 'vue'
+import router from '@/router/index.js'
 
 // Import the defineProps function, which is available in <script setup>
 const props = defineProps({
   id: {
     type: String, // or Number, depending on what the ID is supposed to be
-    required: true
+    required: false
   }
 })
 
 const store = useUserStore()
 const { userData, globalData, user } = storeToRefs(store)
 
-store.fetchUser(props.id) // Example user ID
+const bgmUserId = ref('')
+
+const submit = (event) => {
+  event.preventDefault() // Prevent the default form submission behavior
+  router.push(`/user/${bgmUserId.value}`) // Redirect to the user page
+  // Add your submission logic here
+}
+
+if (props.id) store.fetchUser(props.id) // Example user ID
 </script>

@@ -25,103 +25,106 @@ const initializeChart = () => {
   if (chartInstance) {
     chartInstance.destroy() // Destroys previous instance if exists
   }
-  chartInstance = Highcharts.chart(chartContainer.value, {
-    chart: {
-      type: 'column',
-      backgroundColor: null
-    },
-    title: {
-      text: '',
-      enabled: false
-    },
-    tooltip: {
-      backgroundColor: 'black',
-      borderColor: 'none',
-      style: {
-        color: 'white'
+  if (chartContainer.value) {
+    chartInstance = Highcharts.chart(chartContainer.value, {
+      chart: {
+        type: 'column',
+        backgroundColor: null
       },
-      formatter: function () {
-        return `${this.x}分：<b>${this.y}</b>部`
-      }
-    },
-    subtitle: {
-      enabled: false
-    },
-    plotOptions: {
-      column: {
-        colorByPoint: true,
-        pointPadding: 0,
-        dataLabels: {
-          enabled: false
-        }
-      }
-    },
-    yAxis: {
       title: {
+        text: '',
         enabled: false
       },
-      labels: {
-        format: '{value:.0f}'
-      }
-    },
-    xAxis: {},
-    exporting: {
-      enabled: false
-    },
-    legend: {
-      // layout: 'vertical',
-      squareSymbol: true,
-      align: 'center',
-      verticalAlign: 'bottom',
-      itemStyle: {
-        color: '#2c3e50',
-        fontWeight: 'normal',
-        fontSize: '16px',
-        fontFamily: `'source-han-serif-sc', serif`
-      }
-    },
-    credits: {
-      enabled: false
-    },
-    series: [
-      {
-        name: '个人评分',
-        color: 'red',
-        data: [],
-        colors: COLORS,
-        maxPointWidth: 70,
-
-        events: {
-          legendItemClick: function () {
-            return false // Prevents toggling this series off
+      tooltip: {
+        backgroundColor: 'black',
+        borderColor: 'none',
+        style: {
+          color: 'white'
+        },
+        formatter: function () {
+          return `${this.x}分：<b>${this.y}</b>部`
+        }
+      },
+      subtitle: {
+        enabled: false
+      },
+      plotOptions: {
+        column: {
+          colorByPoint: true,
+          pointPadding: 0,
+          dataLabels: {
+            enabled: false
           }
         }
       },
-      {
-        name: '全站评分',
-        data: [],
-        colors: ['rgba(0, 0, 0, 0.2)'],
-        visible: false
-      }
-    ],
-    colors: COLORS,
-    responsive: {
-      rules: [
+      yAxis: {
+        title: {
+          enabled: false
+        },
+        labels: {
+          format: '{value:.0f}'
+        }
+      },
+      xAxis: {},
+      exporting: {
+        enabled: false
+      },
+      legend: {
+        // layout: 'vertical',
+        squareSymbol: true,
+        align: 'center',
+        verticalAlign: 'bottom',
+        itemStyle: {
+          color: '#2c3e50',
+          fontWeight: 'normal',
+          fontSize: '16px',
+          fontFamily: `'source-han-serif-sc', serif`
+        }
+      },
+      credits: {
+        enabled: false
+      },
+      series: [
         {
-          condition: {
-            maxWidth: 500
-          },
-          chartOptions: {
-            legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom'
+          name: '个人评分',
+          color: 'red',
+          data: [],
+          colors: COLORS,
+          maxPointWidth: 70,
+
+          events: {
+            legendItemClick: function () {
+              return false // Prevents toggling this series off
             }
           }
+        },
+        {
+          name: '全站评分',
+          data: [],
+          colors: ['rgba(0, 0, 0, 0.2)'],
+          visible: false
         }
-      ]
-    }
-  })
+      ],
+      colors: COLORS,
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 500
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+              }
+            }
+          }
+        ]
+      }
+    })
+    updateData()
+  }
 }
 
 onMounted(() => {
@@ -131,20 +134,25 @@ onMounted(() => {
 onUnmounted(() => {
   if (chartInstance) {
     chartInstance.destroy()
+    chartInstance = null
   }
 })
+
+const updateData = () => {
+  if (chartInstance) {
+    chartInstance.series[0].setData(props.userData)
+    if (props.globalData && props.globalData.length) {
+      chartInstance.series[1].setData(props.globalData)
+    }
+    chartInstance.series[1].hide() // Hide the series if no data
+  }
+}
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.userData, () => props.globalData],
   () => {
-    if (chartInstance) {
-      chartInstance.series[0].setData(props.userData)
-      if (props.globalData && props.globalData.length) {
-        chartInstance.series[1].setData(props.globalData)
-      }
-      chartInstance.series[1].hide() // Hide the series if no data
-    }
+    updateData()
   },
   { deep: true }
 )

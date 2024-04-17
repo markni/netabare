@@ -35,7 +35,7 @@ const { networkError } = storeToRefs(store)
         { 'container p-4 mx-auto pt-10 bottom-0': $route.path !== '/' }
       ]"
     >
-      <RouterView />
+      <RouterView :key="$route.path + ($route.params.id || '')" />
     </div>
   </div>
 </template>
