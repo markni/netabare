@@ -7,7 +7,7 @@
     </div>
     <div class="col-span-2 px-2 flex flex-col">
       <UserStats :user="user" />
-      <form @submit="submit" class="mt-10">
+      <form @submit="submit" class="mt-10 flex flex-col">
         <input
           id="username"
           autocomplete="off"
@@ -24,7 +24,9 @@
     </div>
   </div>
   <div v-if="!user || !id" class="h-full flex flex-col items-center justify-center">
-    <form @submit="submit">
+    <form @submit="submit" class="mt-10 flex flex-col">
+      <label for="username" class="text-xl">输入目标用户名</label>
+
       <input
         id="username"
         autocomplete="off"
@@ -78,6 +80,7 @@ watch(
   () => {
     if (props.id) {
       store.fetchUser(props.id)
+      bgmUserId.value = props.id
     }
   },
   { deep: true }

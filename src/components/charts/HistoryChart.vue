@@ -7,7 +7,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
 import _ from 'lodash'
 import dayjs from 'dayjs'
-import { COLORS, PINK } from '@/constants/colors.js'
+import { COLORS, GOLD } from '@/constants/colors.js'
 
 const props = defineProps({
   historyData: {
@@ -195,7 +195,7 @@ const initializeChart = () => {
         },
         {
           type: 'line',
-          color: PINK,
+          color: GOLD,
           name: '年度均分',
           data: []
         }
