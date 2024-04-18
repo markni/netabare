@@ -25,7 +25,7 @@
   </div>
   <div v-if="!user || !id" class="h-full flex flex-col items-center justify-center">
     <form @submit="submit" class="mt-10 flex flex-col">
-      <label for="username" class="text-xl">输入目标用户名</label>
+      <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
 
       <input
         id="username"
@@ -50,6 +50,7 @@ import UserChart from '@/components/charts/UserChart.vue'
 import UserStats from '@/components/UserStats.vue'
 import { ref, watch } from 'vue'
 import router from '@/router/index.js'
+import texts from '../constants/texts.js'
 
 // Import the defineProps function, which is available in <script setup>
 const props = defineProps({

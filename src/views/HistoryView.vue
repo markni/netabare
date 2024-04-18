@@ -2,6 +2,7 @@
 import { useHistoryStore } from '@/stores/history'
 import { storeToRefs } from 'pinia'
 import HistoryChart from '@/components/charts/HistoryChart.vue'
+import texts from '@/constants/texts.js'
 
 const store = useHistoryStore()
 const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store)
@@ -12,7 +13,7 @@ store.fetchHistory()
 <template>
   <div class="flex gap-4 text-3xl justify-end">
     <div class="flex-col flex">
-      <label for="startingYear" class="text-xl">开始年份</label>
+      <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
       <input
         class="bg-transparent w-40"
         type="number"
@@ -22,7 +23,7 @@ store.fetchHistory()
       />
     </div>
     <div class="flex-col flex">
-      <label for="endingYear" class="text-xl">结束年份</label>
+      <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
       <input
         class="bg-transparent w-40"
         type="number"
@@ -32,7 +33,7 @@ store.fetchHistory()
       />
     </div>
     <div class="flex-col flex">
-      <label for="minScore" class="text-xl">最低分</label>
+      <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
       <input
         class="bg-transparent w-40"
         type="number"
@@ -42,7 +43,7 @@ store.fetchHistory()
       />
     </div>
     <div class="flex-col flex">
-      <label for="maxScore" class="text-xl">最高分</label>
+      <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
       <input
         class="bg-transparent w-40"
         type="number"
