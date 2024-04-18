@@ -20,6 +20,14 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/subject/:id',
+      name: 'subject',
+      // route level code-splitting
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/SubjectView.vue'),
+      props: true
+    },
+    {
       path: '/history',
       name: 'history',
       component: HistoryView,
