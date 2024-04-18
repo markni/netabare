@@ -18,50 +18,48 @@ export const useHistoryStore = defineStore('history', {
     maxScore: 10
   }),
   getters: {
-    yearlyData: (state) => {
-      if (!state.history) return null
+    combinedData: (state) => {
+      if (!state.history) return { yearlyData: null, historyData: null }
+
       let yearlyData = {}
-      state.history
-        .filter(({ score, air_date }) => {
-          return (
-            score >= state.minScore &&
-            score <= state.maxScore &&
-            dayjs(air_date).year() >= state.startingYear &&
-            dayjs(air_date).year() <= state.endingYear
-          )
-        })
-        .forEach(({ air_date, score }) => {
-          let year = dayjs(air_date).year()
+      let historyData = []
+
+      state.history.forEach(({ score, air_date, rank }) => {
+        const year = dayjs(air_date).year()
+
+        // Check if the entry matches the filter criteria
+        if (
+          score >= state.minScore &&
+          score <= state.maxScore &&
+          year >= state.startingYear &&
+          year <= state.endingYear
+        ) {
+          // Update historyData
+          historyData.push([
+            dayjs(air_date).valueOf(),
+            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 5, '0'))
+          ])
+
+          // Initialize yearly data for the year if it does not exist
           if (!yearlyData[year]) {
             yearlyData[year] = { score: 0, count: 0 }
           }
+
+          // Update yearlyData
           yearlyData[year].score += score
           yearlyData[year].count++
-        })
-      return Object.keys(yearlyData).map((year) => {
+        }
+      })
+
+      // Prepare yearlyData output
+      let finalYearlyData = Object.keys(yearlyData).map((year) => {
         return {
           x: dayjs().year(year).startOf('year').valueOf(),
           y: parseFloat((yearlyData[year].score / yearlyData[year].count).toFixed(4))
         }
       })
-    },
-    historyData: (state) => {
-      if (!state.history) return null
-      return state.history
-        .filter(({ score, air_date }) => {
-          return (
-            score >= state.minScore &&
-            score <= state.maxScore &&
-            dayjs(air_date).year() >= state.startingYear &&
-            dayjs(air_date).year() <= state.endingYear
-          )
-        })
-        .map(({ air_date, score, rank }) => {
-          return [
-            dayjs(air_date).valueOf(),
-            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 5, '0'))
-          ]
-        })
+
+      return { yearlyData: finalYearlyData, historyData: historyData }
     }
   },
   actions: {

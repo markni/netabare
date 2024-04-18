@@ -4,8 +4,7 @@ import { storeToRefs } from 'pinia'
 import HistoryChart from '@/components/charts/HistoryChart.vue'
 
 const store = useHistoryStore()
-const { historyData, dic, yearlyData, startingYear, endingYear, minScore, maxScore } =
-  storeToRefs(store)
+const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store)
 
 store.fetchHistory()
 </script>
@@ -54,8 +53,12 @@ store.fetchHistory()
     </div>
   </div>
 
-  <div v-if="historyData" class="aspect-square sm:aspect-[16/12] pt-14">
-    <HistoryChart :yearly-data="yearlyData" :historyData="historyData" :dic="dic" />
+  <div v-if="combinedData.historyData" class="aspect-square sm:aspect-[16/12] pt-14">
+    <HistoryChart
+      :yearly-data="combinedData.yearlyData"
+      :historyData="combinedData.historyData"
+      :dic="dic"
+    />
   </div>
 </template>
 
