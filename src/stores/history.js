@@ -20,7 +20,6 @@ export const useHistoryStore = defineStore('history', {
   getters: {
     yearlyData: (state) => {
       if (!state.history) return null
-      debugger
       let yearlyData = {}
       state.history
         .filter(({ score, air_date }) => {

@@ -7,22 +7,6 @@ const store = useHistoryStore()
 const { historyData, dic, yearlyData, startingYear, endingYear, minScore, maxScore } =
   storeToRefs(store)
 
-function updateStartingYear() {
-  store.setStartingYear(startingYear.value)
-}
-
-function updateEndingYear() {
-  store.setEndingYear(endingYear.value)
-}
-
-function updateMinScore() {
-  store.setMinScore(minScore.value)
-}
-
-function updateMaxScore() {
-  store.setMaxScore(maxScore.value)
-}
-
 store.fetchHistory()
 </script>
 
