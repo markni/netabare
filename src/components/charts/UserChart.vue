@@ -21,6 +21,16 @@ const props = defineProps({
 const chartContainer = ref(null)
 let chartInstance = null
 
+const updateData = () => {
+  if (chartInstance) {
+    chartInstance.series[0].setData(props.userData)
+    if (props.globalData && props.globalData.length) {
+      chartInstance.series[1].setData(props.globalData)
+    }
+    chartInstance.series[1].hide() // Hide the series if no data
+  }
+}
+
 const initializeChart = () => {
   if (chartInstance) {
     chartInstance.destroy() // Destroys previous instance if exists
@@ -137,16 +147,6 @@ onUnmounted(() => {
     chartInstance = null
   }
 })
-
-const updateData = () => {
-  if (chartInstance) {
-    chartInstance.series[0].setData(props.userData)
-    if (props.globalData && props.globalData.length) {
-      chartInstance.series[1].setData(props.globalData)
-    }
-    chartInstance.series[1].hide() // Hide the series if no data
-  }
-}
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
