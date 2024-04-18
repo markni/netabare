@@ -76,6 +76,7 @@ export const useHistoryStore = defineStore('history', {
       this.maxScore = score
     },
     async fetchHistory() {
+      if (this.history) return this.history
       try {
         const fetchHistoryWithLoading = withSmartLoadingUx(fetchHistory, {
           setLoadingState: useAppStore().setLongPolling,
