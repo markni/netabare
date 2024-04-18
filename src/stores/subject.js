@@ -4,6 +4,7 @@ import { fetchRank } from '@/utils/api.js'
 import { useAppStore } from '@/stores/app.js'
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js'
 import dayjs from 'dayjs'
+import _ from 'lodash'
 
 export const useSubjectStore = defineStore('subject', {
   state: () => ({
@@ -22,6 +23,17 @@ export const useSubjectStore = defineStore('subject', {
             .add(1, 'weeks')
             .valueOf()
         : Infinity
+    },
+    delta: (state) => {
+      const { history } = state
+      if (!history || history.length < 30) return null
+      let current = _.first(history)
+      let before = _.nth(history, 29)
+      let score = current.score - before.score
+      let rank = current.rank - before.rank
+      let watching = current.collect?.doing - before.collect?.doing
+
+      return { score, rank, watching }
     },
     combinedData: (state) => {
       const { history } = state
