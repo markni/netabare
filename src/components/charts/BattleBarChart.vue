@@ -1,0 +1,133 @@
+<script setup>
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import Highcharts from '@/utils/highcharts'
+import { BLUE, PINK } from '@/constants/colors.js'
+
+const props = defineProps({
+  rateData: {
+    type: Object,
+    required: true
+  },
+
+  name: {
+    type: String,
+    required: true
+  }
+})
+
+const chartContainer = ref(null)
+let chartInstance = null
+
+const updateData = () => {
+  if (chartInstance) {
+    chartInstance.yAxis[0].setExtremes(
+      -props.rateData.extreme,
+      props.rateData.extreme,
+      false,
+      false
+    )
+
+    chartInstance.series[0].setData(props.rateData.negative, false)
+    chartInstance.series[1].setData(props.rateData.positive, true)
+  }
+}
+
+const initializeChart = () => {
+  if (chartInstance) {
+    chartInstance.destroy() // Destroys previous instance if exists
+  }
+  if (chartContainer.value) {
+    chartInstance = Highcharts.chart(chartContainer.value, {
+      chart: {
+        type: 'bar',
+        inverted: true,
+        backgroundColor: 'transparent',
+        zoomType: 'none'
+      },
+      tooltip: {
+        crosshairs: true,
+        backgroundColor: 'black',
+        borderColor: 'none',
+        headerFormat: '',
+        pointFormatter: function () {
+          return `${this.series.name}: ${Math.abs(this.y)}`
+        },
+        style: {
+          color: 'white'
+        },
+        useHTML: false
+      },
+      title: {
+        text: null
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {
+        visible: false
+      },
+      yAxis: {
+        title: {
+          text: null
+        },
+        labels: {
+          enabled: false
+        }
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal'
+        }
+      },
+      legend: {
+        // layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'bottom',
+        itemStyle: {
+          color: '#2c3e50',
+          fontWeight: 'normal',
+          fontSize: '16px',
+          fontFamily: `'source-han-serif-sc', serif`
+        }
+      },
+      series: [
+        {
+          name: '1分',
+          data: [],
+          color: BLUE
+        },
+        {
+          name: '10分',
+          data: [],
+          color: PINK
+        }
+      ]
+    })
+    updateData()
+  }
+}
+
+onMounted(() => {
+  initializeChart()
+})
+
+onUnmounted(() => {
+  if (chartInstance) {
+    chartInstance.destroy()
+    chartInstance = null
+  }
+})
+
+// Watch for changes in userData and globalData props and update the chart accordingly
+watch(
+  [() => props.rateData],
+  () => {
+    updateData()
+  },
+  { deep: true }
+)
+</script>
+
+<template><div class="h-full" ref="chartContainer"></div></template>
+
+<style scoped></style>

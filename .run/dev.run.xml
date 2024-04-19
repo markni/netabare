@@ -5,7 +5,7 @@
     <scripts>
       <script value="dev" />
     </scripts>
-    <node-interpreter value="project" />
+    <node-interpreter value="C:/nvm/v20.12.2/node" />
     <envs />
     <method v="2" />
   </configuration>

@@ -116,22 +116,6 @@ const initializeChart = () => {
         }
       ],
       colors: COLORS,
-      responsive: {
-        rules: [
-          {
-            condition: {
-              maxWidth: 500
-            },
-            chartOptions: {
-              legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
-              }
-            }
-          }
-        ]
-      }
     })
     updateData()
   }
