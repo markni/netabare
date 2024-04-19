@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { COLORS, GOLD, PINK } from '@/constants/colors'
+import { GOLD } from '@/constants/colors'
 import _ from 'lodash'
 
 const props = defineProps({

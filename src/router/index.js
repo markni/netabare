@@ -28,6 +28,13 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/trending',
+      name: 'trending',
+      // route level code-splitting
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/TrendingView.vue')
+    },
+    {
       path: '/history',
       name: 'history',
       component: HistoryView,

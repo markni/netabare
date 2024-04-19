@@ -2,10 +2,10 @@
 import { useSubjectStore } from '@/stores/subject'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import _ from 'lodash'
 import ScoreChart from '@/components/charts/ScoreChart.vue'
 import RankChart from '@/components/charts/RankChart.vue'
 import CollectionChart from '@/components/charts/CollectionChart.vue'
+import DeltaDisplay from '@/components/DeltaDisplay.vue'
 
 const props = defineProps({
   id: {
@@ -26,10 +26,6 @@ const {
 
 const _setfilteredBy = (f) => {
   filteredBy.value = f
-}
-
-const _getDeltaSymbol = (value) => {
-  return value >= 0 ? '▴' : '▾'
 }
 
 store.fetchSubject(props.id)
@@ -73,16 +69,7 @@ store.fetchSubject(props.id)
       <div class="mt-20">
         <div class="text-2xl">
           评分
-          <span
-            v-if="!isNaN(delta.score)"
-            class="cursor-help"
-            :class="{
-              'text-gold': delta.score >= 0,
-              'text-mint': delta.score < 0
-            }"
-            title="30天之内的评分变化"
-            >{{ _getDeltaSymbol(delta.score) }}{{ Math.abs(_.round(delta.score, 2)) }}</span
-          >
+          <DeltaDisplay :delta="delta.score" />
         </div>
         <div class="text-8xl">{{ subject.rating.score }}</div>
       </div>
@@ -101,16 +88,7 @@ store.fetchSubject(props.id)
       <div class="mt-20">
         <div class="text-2xl">
           排名
-          <span
-            v-if="!isNaN(delta.rank)"
-            class="cursor-help"
-            :class="{
-              'text-gold': delta.rank >= 0,
-              'text-mint': delta.rank < 0
-            }"
-            title="30天之内的评分变化"
-            >{{ _getDeltaSymbol(delta.rank) }}{{ Math.abs(_.round(delta.rank, 2)) }}</span
-          >
+          <DeltaDisplay :delta="delta.rank" />
         </div>
         <div class="text-8xl">{{ subject.rank }}</div>
       </div>
@@ -127,16 +105,7 @@ store.fetchSubject(props.id)
       <div class="mt-10">
         <div class="text-2xl">
           在看
-          <span
-            v-if="!isNaN(delta.watching)"
-            class="cursor-help"
-            :class="{
-              'text-gold': delta.watching >= 0,
-              'text-mint': delta.watching < 0
-            }"
-            title="30天之内的评分变化"
-            >{{ _getDeltaSymbol(delta.watching) }}{{ Math.abs(_.round(delta.watching, 2)) }}</span
-          >
+          <DeltaDisplay :delta="delta.watching" />
         </div>
         <div class="text-8xl">{{ subject.rank }}</div>
       </div>

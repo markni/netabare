@@ -80,7 +80,7 @@ export const useHistoryStore = defineStore('history', {
       try {
         const fetchHistoryWithLoading = withSmartLoadingUx(fetchHistory, {
           setLoadingState: useAppStore().setLongPolling,
-          minimumDisplayTime: 2000,
+          minimumDisplayTime: 1000,
           delay: 0
         })
 

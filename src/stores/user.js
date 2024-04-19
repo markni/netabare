@@ -44,7 +44,7 @@ export const useUserStore = defineStore('user', {
       try {
         const fetchUserWithLoading = withSmartLoadingUx(fetchUser, {
           delay: 500,
-          minimumDisplayTime: 1500,
+          minimumDisplayTime: 1000,
           setLoadingState: useAppStore().setLongPolling
         })
 

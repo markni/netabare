@@ -122,7 +122,7 @@ export const useSubjectStore = defineStore('subject', {
       try {
         const fetchSubjectWithLoading = withSmartLoadingUx(fetchRank, {
           delay: 500,
-          minimumDisplayTime: 1500,
+          minimumDisplayTime: 1000,
           setLoadingState: useAppStore().setLongPolling
         })
 
