@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import colors from 'tailwindcss/colors'
-import { GOLD, TEAL, RED, IVORY, GRAY, BLUE } from './src/constants/colors.js'
+import { GOLD, TEAL, RED, IVORY, GRAY, BLUE, PINK } from './src/constants/colors.js'
 import plugin from 'tailwindcss/plugin'
 
 export default {
@@ -17,6 +17,7 @@ export default {
       blood: RED,
       blue: BLUE,
       darkGray: GRAY,
+      pink: PINK,
       lightGray: '#a6a6a6'
     },
     fontFamily: {

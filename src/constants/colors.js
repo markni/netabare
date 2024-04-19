@@ -7,7 +7,7 @@ export const GOLD = '#e4ae4a' // YELLOW-700
 
 export const GRAY = '#252322' // ZINC-900
 export const BLUE = '#3194FF'
-export const PINK = '#F2006E'
+export const PINK = '#ff989f'
 export const BLACK = '#2c3e50'
 export const COLORS = [
   '#88cdbd',

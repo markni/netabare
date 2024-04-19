@@ -23,9 +23,38 @@ const formatData = (history) => {
 <template>
   <div class="flex flex-col pt-14 gap-16">
     <div class="flex flex-col gap-8">
-      <h2 class="text-2xl">热门条目</h2>
+      <h2 class="text-2xl bg-pink mr-auto">热门条目</h2>
       <ol class="flex flex-col gap-8 list-decimal">
         <li class="" v-for="item in done" :key="item.bgmId">
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-8">
+              <div class="text-4xl">
+                <RouterLink class="hover:bg-pink" :to="'/subject/' + item.bgmId">{{
+                  item.subject.name_cn || item.subject.name
+                }}</RouterLink>
+              </div>
+              <div class="text-lg">{{ item.subject.name }}</div>
+            </div>
+
+            <div class="aspect-[16/8] col-span-3">
+              <MiniScoreChart
+                :color="item.score >= 0 ? GOLD : BLUE"
+                :history-data="formatData(item.history)"
+              />
+            </div>
+
+            <div class="col-span-1 text-4xl">
+              <DeltaDisplay :delta="item.score" />
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="flex flex-col gap-8">
+      <h2 class="text-2xl bg-blue mr-auto">跌幅排行</h2>
+      <ol class="flex flex-col gap-8 list-decimal">
+        <li class="" v-for="item in down" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-8">
               <div class="text-4xl">
@@ -52,42 +81,13 @@ const formatData = (history) => {
     </div>
 
     <div class="flex flex-col gap-8">
-      <h2 class="text-2xl">跌幅排行</h2>
-      <ol class="flex flex-col gap-8 list-decimal">
-        <li class="" v-for="item in down" :key="item.bgmId">
-          <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-8">
-              <div class="text-4xl">
-                <RouterLink :to="'/subject/' + item.bgmId">{{
-                  item.subject.name_cn || item.subject.name
-                }}</RouterLink>
-              </div>
-              <div class="text-lg">{{ item.subject.name }}</div>
-            </div>
-
-            <div class="aspect-[16/8] col-span-3">
-              <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : BLUE"
-                :history-data="formatData(item.history)"
-              />
-            </div>
-
-            <div class="col-span-1 text-4xl">
-              <DeltaDisplay :delta="item.score" />
-            </div>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="flex flex-col gap-8">
-      <h2 class="text-2xl">涨幅排行</h2>
+      <h2 class="text-2xl bg-gold mr-auto">涨幅排行</h2>
       <ol class="flex flex-col gap-8 list-decimal">
         <li class="" v-for="item in up" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-8">
               <div class="text-4xl">
-                <RouterLink :to="'/subject/' + item.bgmId">{{
+                <RouterLink class="hover:bg-gold" :to="'/subject/' + item.bgmId">{{
                   item.subject.name_cn || item.subject.name
                 }}</RouterLink>
               </div>

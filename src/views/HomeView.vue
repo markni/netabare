@@ -12,7 +12,7 @@
 
       <div class="gap-10 flex items-baseline">
         <div class="text-4xl">全站动画</div>
-        <RouterLink class="text-5xl hover:bg-red-300" to="/history">评分分布图</RouterLink>
+        <RouterLink class="text-5xl hover:bg-pink" to="/history">评分分布图</RouterLink>
       </div>
 
       <div class="gap-10 flex items-baseline">
