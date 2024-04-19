@@ -11,12 +11,19 @@ const props = defineProps({
     required: true
   }
 })
-const filtered = ref('none')
+const filteredBy = ref('none')
 const store = useSubjectStore()
-const { subject, combinedData, delta, epsData } = storeToRefs(store)
+const {
+  subject,
+  combinedData,
+  delta,
+  epsData,
+  oneWeekBeforeFirstEpTimestamp,
+  oneWeekAfterLastEpTimestamp
+} = storeToRefs(store)
 
-const _setFiltered = (f) => {
-  filtered.value = f
+const _setfilteredBy = (f) => {
+  filteredBy.value = f
 }
 
 const _getDeltaSymbol = (value) => {
@@ -30,21 +37,25 @@ store.fetchSubject(props.id)
   <div class="pt-14" v-if="subject">
     <div class="flex flex-col gap-4 items-end">
       <div class="sticky top-0 bg-paper z-50 flex flex-col gap-4">
-        <h1 class="text-6xl">{{ subject.name }}</h1>
+        <h1 class="text-6xl">
+          <a target="_blank" title="访问Bangumi上的条目" :href="'https://bgm.tv/subject/' + id">{{
+            subject.name
+          }}</a>
+        </h1>
         <h2 class="text-4xl">{{ subject.name_cn }}</h2>
 
         <div class="flex gap-2 mt-4 text-xl">
           <div
             class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-            :class="{ 'underline underline-offset-8': filtered === 'none' }"
-            @click="_setFiltered(`none`)"
+            :class="{ 'underline underline-offset-8': filteredBy === 'none' }"
+            @click="_setfilteredBy(`none`)"
           >
             全部
           </div>
           <div
             class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-            :class="{ 'underline underline-offset-8': filtered === 'eps' }"
-            @click="_setFiltered('eps')"
+            :class="{ 'underline underline-offset-8': filteredBy === 'eps' }"
+            @click="_setfilteredBy('eps')"
           >
             放送期间
           </div>
@@ -81,6 +92,8 @@ store.fetchSubject(props.id)
           :ten-data="combinedData.scoreData.ten"
           :one-data="combinedData.scoreData.one"
           :history-data="combinedData.scoreData.history"
+          :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
+          :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
         />
       </div>
     </div>

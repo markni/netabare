@@ -24,13 +24,27 @@ const props = defineProps({
     required: true
   },
   epsData: {
-    type: Array,
+    type: Object,
     required: true
+  },
+  xMin: {
+    type: Number,
+    required: false
+  },
+  xMax: {
+    type: Number,
+    required: false
   }
 })
 
 const chartContainer = ref(null)
 let chartInstance = null
+
+const updateRange = () => {
+  if (chartInstance) {
+    chartInstance.xAxis[0].setExtremes(props.xMin, props.xMax)
+  }
+}
 
 const updateData = () => {
   if (chartInstance) {
@@ -243,6 +257,14 @@ watch(
   [() => props.historyData],
   () => {
     updateData()
+  },
+  { deep: true }
+)
+
+watch(
+  [() => props.xMax],
+  () => {
+    updateRange()
   },
   { deep: true }
 )

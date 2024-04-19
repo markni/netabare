@@ -26,16 +26,30 @@ export const useSubjectStore = defineStore('subject', {
         }, {})
     },
     oneWeekBeforeFirstEpTimestamp: (state) => {
-      return state.subject?.eps?.[0]?.airdate
-        ? dayjs(state.subject.eps[0].airdate).subtract(1, 'weeks').valueOf()
-        : 0
+      if (state.subject?.eps) {
+        // Sorting episodes by airdate
+        const sortedEps = [...state.subject.eps].sort(
+          (a, b) => new Date(a.airdate) - new Date(b.airdate)
+        )
+        // Get the first episode's airdate and subtract one week
+        return sortedEps.length > 0 ? dayjs(sortedEps[0].airdate).subtract(1, 'weeks').valueOf() : 0
+      }
+      return 0
     },
     oneWeekAfterLastEpTimestamp: (state) => {
-      return state.subject?.eps?.[state.subject.eps.length - 1]?.airdate
-        ? dayjs(state.subject.eps[state.subject.eps.length - 1].airdate)
-            .add(1, 'weeks')
-            .valueOf()
-        : Infinity
+      if (state.subject?.eps) {
+        // Sorting episodes by airdate
+        const sortedEps = [...state.subject.eps].sort(
+          (a, b) => new Date(a.airdate) - new Date(b.airdate)
+        )
+        // Get the last episode's airdate and add one week
+        return sortedEps.length > 0
+          ? dayjs(sortedEps[sortedEps.length - 1].airdate)
+              .add(1, 'weeks')
+              .valueOf()
+          : Infinity
+      }
+      return Infinity
     },
     delta: (state) => {
       const { history } = state
