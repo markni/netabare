@@ -33,6 +33,7 @@ const updateData = () => {
         chartInstance.addSeries(
           {
             name: seriesData.name,
+            id: seriesData.bgmId,
             data: seriesData.history,
             type: 'spline',
             yAxis: 0
@@ -91,6 +92,12 @@ const initializeChart = () => {
           animation: {
             defer: 500,
             duration: 1000
+          },
+          events: {
+            legendItemClick: function () {
+              window.location.href = `/subject/${this.options.id}`
+              return false // Prevents the default toggle behavior
+            }
           }
         }
       },
