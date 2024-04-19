@@ -12,6 +12,19 @@ export const useSubjectStore = defineStore('subject', {
     history: []
   }),
   getters: {
+    epsData: (state) => {
+      if (!state.subject) return null
+      return state.subject.eps
+        .filter((ep) => ep.type === 0 && ep.airdate)
+        .reduce((acc, ep) => {
+          const airdateValue = dayjs(`${ep.airdate}T00:00:00+08:00`).valueOf()
+          if (!acc[airdateValue]) {
+            acc[airdateValue] = []
+          }
+          acc[airdateValue].push(ep)
+          return acc
+        }, {})
+    },
     oneWeekBeforeFirstEpTimestamp: (state) => {
       return state.subject?.eps?.[0]?.airdate
         ? dayjs(state.subject.eps[0].airdate).subtract(1, 'weeks').valueOf()

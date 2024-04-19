@@ -13,10 +13,14 @@ const props = defineProps({
 })
 const filtered = ref('none')
 const store = useSubjectStore()
-const { subject, combinedData, delta } = storeToRefs(store)
+const { subject, combinedData, delta, epsData } = storeToRefs(store)
 
 const _setFiltered = (f) => {
   filtered.value = f
+}
+
+const _getDeltaSymbol = (value) => {
+  return value >= 0 ? '▴' : '▾'
 }
 
 store.fetchSubject(props.id)
@@ -25,30 +29,32 @@ store.fetchSubject(props.id)
 <template>
   <div class="pt-14" v-if="subject">
     <div class="flex flex-col gap-4 items-end">
-      <h1 class="text-6xl">{{ subject.name }}</h1>
-      <h2 class="text-4xl">{{ subject.name_cn }}</h2>
+      <div class="sticky top-0 bg-paper z-50 flex flex-col gap-4">
+        <h1 class="text-6xl">{{ subject.name }}</h1>
+        <h2 class="text-4xl">{{ subject.name_cn }}</h2>
 
-      <div class="flex gap-2 mt-4 text-xl">
-        <div
-          class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-          :class="{ 'underline underline-offset-8': filtered === 'none' }"
-          @click="_setFiltered(`none`)"
-        >
-          全部
+        <div class="flex gap-2 mt-4 text-xl">
+          <div
+            class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
+            :class="{ 'underline underline-offset-8': filtered === 'none' }"
+            @click="_setFiltered(`none`)"
+          >
+            全部
+          </div>
+          <div
+            class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
+            :class="{ 'underline underline-offset-8': filtered === 'eps' }"
+            @click="_setFiltered('eps')"
+          >
+            放送期间
+          </div>
         </div>
         <div
-          class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-          :class="{ 'underline underline-offset-8': filtered === 'eps' }"
-          @click="_setFiltered('eps')"
+          title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
+          class="cursor-help text-gray-200"
         >
-          放送期间
+          如何自定义时间范围？
         </div>
-      </div>
-      <div
-        title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-        class="cursor-help text-gray-200"
-      >
-        如何自定义时间范围？
       </div>
 
       <div class="mt-10">
@@ -56,13 +62,13 @@ store.fetchSubject(props.id)
           评分
           <span
             v-if="!isNaN(delta.score)"
-            class="delta"
+            class="cursor-help"
             :class="{
               'text-gold': delta.score >= 0,
               'text-mint': delta.score < 0
             }"
             title="30天之内的评分变化"
-            >{{ Math.abs(_.round(delta.score, 2)) }}</span
+            >{{ _getDeltaSymbol(delta.score) }}{{ Math.abs(_.round(delta.score, 2)) }}</span
           >
         </div>
         <div class="text-8xl">{{ subject.rating.score }}</div>
@@ -70,6 +76,7 @@ store.fetchSubject(props.id)
 
       <div class="aspect-square sm:aspect-[16/8] w-full">
         <ScoreChart
+          :eps-data="epsData"
           :subject-data="subject"
           :ten-data="combinedData.scoreData.ten"
           :one-data="combinedData.scoreData.one"
