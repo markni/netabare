@@ -1,20 +1,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { COLORS } from '@/constants/colors'
+import { COLORS, GOLD, PINK } from '@/constants/colors'
 import _ from 'lodash'
 
 const props = defineProps({
   historyData: {
-    type: Array,
-    required: true
-  },
-
-  oneData: {
-    type: Array,
-    required: true
-  },
-  tenData: {
     type: Array,
     required: true
   },
@@ -78,18 +69,7 @@ const updateData = () => {
     })
 
     // Update the series data
-    chartInstance.series[1].update(
-      {
-        data: props.oneData
-      },
-      false //redraw
-    )
-    chartInstance.series[2].update(
-      {
-        data: props.tenData
-      },
-      false
-    )
+
     chartInstance.series[0].update(
       {
         data: props.historyData
@@ -105,14 +85,14 @@ const initializeChart = () => {
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
-      // Chart configuration options
       chart: {
         zoomType: 'x',
         backgroundColor: null
       },
       title: {
         text: '',
-        enabled: false
+        enabled: false,
+        backgroundColor: null
       },
       tooltip: {
         crosshairs: true,
@@ -128,38 +108,24 @@ const initializeChart = () => {
         enabled: false
       },
       plotOptions: {
-        spline: {
+        line: {
           marker: {
             enabled: false
           }
         },
         series: {
-          turboThreshold: 365 * 10,
-          animation: {
-            defer: 500,
-            duration: 1000
-          }
+          turboThreshold: 365 * 10
         }
       },
-      yAxis: [
-        {
-          title: {
-            enabled: false
-          },
-          labels: {
-            format: '{value:.2f}'
-          }
+      yAxis: {
+        reversed: true,
+        title: {
+          enabled: false
         },
-        {
-          title: {
-            enabled: false
-          },
-          labels: {
-            format: '{value:.0f}'
-          },
-          opposite: true
+        labels: {
+          format: '{value:.0f}'
         }
-      ],
+      },
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
@@ -192,29 +158,28 @@ const initializeChart = () => {
       },
       series: [
         {
-          type: 'spline',
-          name: '评分',
-          yAxis: 0,
+          step: true,
+          name: '排名',
           data: []
-        },
-        {
-          type: 'spline',
-          name: '1分',
-          yAxis: 1,
-          data: [],
-          color: 'rgba(0,0,0, 0.1)',
-          dashStyle: 'dot'
-        },
-        {
-          type: 'spline',
-          name: '10分',
-          yAxis: 1,
-          data: [],
-          dashStyle: 'longdashdot',
-          color: 'rgba(0,0,0, 0.1)'
         }
       ],
-      colors: COLORS // Use the COLORS constant
+      colors: [GOLD],
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 500
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+              }
+            }
+          }
+        ]
+      }
     })
     updateData()
   }

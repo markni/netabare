@@ -21,7 +21,7 @@ export const COLORS = [
   '#ff9d6e',
   '#e4ae49'
 ]
-export const COLORS2 = ['#3094FF', '#5B73DE', '#8652BE', '#B1319E', '#DC107E', '#F2006E']
+export const COLORS2 = ['#88cdbd', '#75cdd6', '#beb4ff', '#ff97ca', '#ff989f', '#e4ae49']
 
 export const GRADIENT1 = {
   linearGradient: [0, 0, '100%', '100%'],
