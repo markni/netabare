@@ -2,7 +2,7 @@
 import { useTrendingStore } from '@/stores/trending'
 import { storeToRefs } from 'pinia'
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue'
-import { GOLD, TEAL } from '@/constants/colors.js'
+import { BLUE, GOLD } from '@/constants/colors.js'
 import DeltaDisplay from '@/components/DeltaDisplay.vue'
 
 const store = useTrendingStore()
@@ -29,7 +29,7 @@ const formatData = (history) => {
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-8">
               <div class="text-4xl">
-                <RouterLink :to="'/subject/' + item.bgmId">{{
+                <RouterLink class="hover:bg-blue" :to="'/subject/' + item.bgmId">{{
                   item.subject.name_cn || item.subject.name
                 }}</RouterLink>
               </div>
@@ -38,7 +38,7 @@ const formatData = (history) => {
 
             <div class="aspect-[16/8] col-span-3">
               <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : TEAL"
+                :color="item.score >= 0 ? GOLD : BLUE"
                 :history-data="formatData(item.history)"
               />
             </div>
@@ -67,7 +67,7 @@ const formatData = (history) => {
 
             <div class="aspect-[16/8] col-span-3">
               <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : TEAL"
+                :color="item.score >= 0 ? GOLD : BLUE"
                 :history-data="formatData(item.history)"
               />
             </div>
@@ -96,7 +96,7 @@ const formatData = (history) => {
 
             <div class="aspect-[16/8] col-span-3">
               <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : TEAL"
+                :color="item.score >= 0 ? GOLD : BLUE"
                 :history-data="formatData(item.history)"
               />
             </div>

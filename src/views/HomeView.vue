@@ -7,23 +7,17 @@
     <div class="flex flex-col gap-4 tracking-widest">
       <div class="gap-10 flex items-baseline">
         <div class="text-4xl">个人动画</div>
-        <RouterLink class="text-5xl hover:underline underline-offset-8" to="/user"
-          >评分分布</RouterLink
-        >
+        <RouterLink class="text-5xl hover:bg-gold" to="/user">评分分布</RouterLink>
       </div>
 
       <div class="gap-10 flex items-baseline">
         <div class="text-4xl">全站动画</div>
-        <RouterLink class="text-5xl hover:underline underline-offset-8" to="/history"
-          >评分分布图</RouterLink
-        >
+        <RouterLink class="text-5xl hover:bg-red-300" to="/history">评分分布图</RouterLink>
       </div>
 
       <div class="gap-10 flex items-baseline">
         <div class="text-4xl">全站动画</div>
-        <RouterLink class="text-5xl hover:underline underline-offset-8" to="/trending"
-          >热门趋势</RouterLink
-        >
+        <RouterLink class="text-5xl hover:bg-blue" to="/trending">热门趋势</RouterLink>
       </div>
     </div>
   </div>

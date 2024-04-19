@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { COLORS } from '@/constants/colors'
+import { BLUE, COLORS } from '@/constants/colors'
 import _ from 'lodash'
 
 const props = defineProps({
@@ -195,7 +195,8 @@ const initializeChart = () => {
           type: 'spline',
           name: '评分',
           yAxis: 0,
-          data: []
+          data: [],
+          color: BLUE
         },
         {
           type: 'spline',
