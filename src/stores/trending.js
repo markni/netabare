@@ -14,6 +14,7 @@ export const useTrendingStore = defineStore('trending', {
   getters: {},
   actions: {
     async fetchTrending() {
+      if (this.up.length > 0) return
       try {
         const fetchTrendingWithLoading = withSmartLoadingUx(fetchTrending, {
           delay: 500,

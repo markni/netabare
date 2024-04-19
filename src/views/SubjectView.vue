@@ -34,7 +34,7 @@ store.fetchSubject(props.id)
 <template>
   <div v-if="subject">
     <div class="flex flex-col gap-4 items-end">
-      <div class="sticky top-0 bg-paper z-50 gap-4 py-14 w-full flex flex-col items-end">
+      <div class="sticky top-0 bg-paper z-[49] gap-4 py-14 w-full flex flex-col items-end">
         <h1 class="text-6xl">
           <a target="_blank" title="访问Bangumi上的条目" :href="'https://bgm.tv/subject/' + id">{{
             subject.name
