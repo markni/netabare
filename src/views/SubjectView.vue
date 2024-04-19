@@ -3,6 +3,7 @@ import { useSubjectStore } from '@/stores/subject'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import _ from 'lodash'
+import ScoreChart from '@/components/charts/ScoreChart.vue'
 
 const props = defineProps({
   id: {
@@ -65,6 +66,15 @@ store.fetchSubject(props.id)
           >
         </div>
         <div class="text-8xl">{{ subject.rating.score }}</div>
+      </div>
+
+      <div class="aspect-square sm:aspect-[16/8] w-full">
+        <ScoreChart
+          :subject-data="subject"
+          :ten-data="combinedData.scoreData.ten"
+          :one-data="combinedData.scoreData.one"
+          :history-data="combinedData.scoreData.history"
+        />
       </div>
     </div>
   </div>

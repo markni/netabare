@@ -1,25 +1,25 @@
-<template>
-  <div class="h-full" ref="chartContainer"></div>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import _ from 'lodash'
-import dayjs from 'dayjs'
-import { COLORS, GOLD } from '@/constants/colors.js'
+import { COLORS } from '@/constants/colors'
 
 const props = defineProps({
   historyData: {
     type: Array,
     required: true
   },
-  yearlyData: {
+
+  subjectData: {
+    type: Object,
+    required: true
+  },
+
+  oneData: {
     type: Array,
     required: true
   },
-  dic: {
-    type: Object,
+  tenData: {
+    type: Array,
     required: true
   }
 })
@@ -29,8 +29,25 @@ let chartInstance = null
 
 const updateData = () => {
   if (chartInstance) {
-    chartInstance.series[1].update({ data: props.yearlyData }, false)
-    chartInstance.series[0].update({ data: props.historyData }, true)
+    // Update the series data
+    chartInstance.series[1].update(
+      {
+        data: props.oneData
+      },
+      false //redraw
+    )
+    chartInstance.series[2].update(
+      {
+        data: props.tenData
+      },
+      false
+    )
+    chartInstance.series[0].update(
+      {
+        data: props.historyData
+      },
+      true
+    )
   }
 }
 
@@ -40,20 +57,10 @@ const initializeChart = () => {
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
+      // Chart configuration options
       chart: {
-        type: 'scatter',
-        zoomType: 'xy',
+        zoomType: 'x',
         backgroundColor: null
-      },
-      boost: {
-        enabled: true,
-        useGPUTranslations: true,
-        usePreAllocated: true
-      },
-      rangeSelector: {
-        verticalAlign: 'top',
-        x: 0,
-        y: 0
       },
       title: {
         text: '',
@@ -66,21 +73,8 @@ const initializeChart = () => {
         style: {
           color: 'white'
         },
-        // xDateFormat: '%Y-%m-%d',
-        formatter: function () {
-          if (this.series.name === '年度均分') {
-            return `${dayjs(this.x).year()}年均分：<b>${this.y.toFixed(2)}</b>`
-          }
-          let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5))
-
-          if (!props.dic[rank]) {
-            return `Error`
-          }
-
-          return `<div class="scatter-tp-title"><b>${
-            props.dic[rank].name_cn || props.dic[rank].name
-          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />均分：${props.dic[rank].score}</div>`
-        }
+        useHTML: false,
+        xDateFormat: '%Y-%m-%d'
       },
       subtitle: {
         enabled: false
@@ -91,74 +85,35 @@ const initializeChart = () => {
             enabled: false
           }
         },
-        line: {
-          marker: {
-            symbol: 'circle'
-          }
-        },
         series: {
-          cursor: 'pointer',
+          turboThreshold: 365 * 10,
           animation: {
-            enabled: false,
-            complete: function () {
-              self.rendering = false
-            }
-          },
-          point: {
-            events: {
-              click: function () {
-                let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5))
-                if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`)
-              }
-            }
+            defer: 500,
+            duration: 1000
           }
-        },
-        scatter: {
-          marker: {
-            radius: 5,
-            states: {
-              hover: {
-                enabled: true,
-                // lineColor: 'rgb(100,100,100)',
-                fillColor: COLORS[8]
-              }
-            }
-          },
-          states: {
-            hover: {
-              marker: {
-                enabled: false
-              }
-            }
-          },
-          tooltip: {}
         }
       },
       yAxis: [
         {
-          startOnTick: false,
-          // reversed: true,
           title: {
             enabled: false
           },
           labels: {
-            format: '{value:.1f}'
+            format: '{value:.2f}'
           }
         },
         {
-          startOnTick: false,
           title: {
             enabled: false
           },
           labels: {
-            format: '{value:.1f}'
+            format: '{value:.0f}'
           },
           opposite: true
         }
       ],
       xAxis: {
         type: 'datetime',
-
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
           second: '%m-%d',
@@ -166,8 +121,8 @@ const initializeChart = () => {
           hour: '%m-%d',
           day: '%m-%d',
           week: '%m-%d',
-          month: '%Y-%m',
-          year: '%Y'
+          month: '%m-%d',
+          year: '%m-%d'
         }
       },
       exporting: {
@@ -189,18 +144,29 @@ const initializeChart = () => {
       },
       series: [
         {
-          color: 'rgba(49, 148, 255, 0.4)',
+          type: 'spline',
           name: '评分',
+          yAxis: 0,
           data: []
         },
         {
-          type: 'line',
-          color: GOLD,
-          name: '年度均分',
-          data: []
+          type: 'spline',
+          name: '1分',
+          yAxis: 1,
+          data: [],
+          color: 'rgba(0,0,0, 0.1)',
+          dashStyle: 'dot'
+        },
+        {
+          type: 'spline',
+          name: '10分',
+          yAxis: 1,
+          data: [],
+          dashStyle: 'longdashdot',
+          color: 'rgba(0,0,0, 0.1)'
         }
       ],
-      colors: COLORS,
+      colors: COLORS, // Use the COLORS constant
       responsive: {
         rules: [
           {
@@ -242,3 +208,7 @@ watch(
   { deep: true }
 )
 </script>
+
+<template><div class="h-full" ref="chartContainer"></div></template>
+
+<style scoped></style>
