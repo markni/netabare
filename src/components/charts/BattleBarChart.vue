@@ -94,7 +94,13 @@ const initializeChart = () => {
         {
           name: '1分',
           data: [],
-          color: BLUE
+          color: BLUE,
+          dataLabels: {
+            enabled: true,
+            inside: true,
+            align: 'right',
+            format: '{point.name}' // Specifying how data labels should appear
+          }
         },
         {
           name: '10分',
