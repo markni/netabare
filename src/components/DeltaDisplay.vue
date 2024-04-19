@@ -9,6 +9,10 @@ const props = defineProps({
   delta: {
     type: Number,
     required: true
+  },
+  precision: {
+    type: Number,
+    default: 2
   }
 })
 </script>
@@ -22,6 +26,7 @@ const props = defineProps({
       'text-mint': props.delta < 0
     }"
     title="30天之内的评分变化"
-    >{{ _getDeltaSymbol(props.delta) }}{{ Math.abs(_.round(props.delta, 2)).toFixed(2) }}</span
+    >{{ _getDeltaSymbol(props.delta)
+    }}{{ Math.abs(_.round(props.delta, 2)).toFixed(props.precision) }}</span
   >
 </template>

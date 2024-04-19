@@ -88,7 +88,7 @@ store.fetchSubject(props.id)
       <div class="mt-20">
         <div class="text-2xl">
           排名
-          <DeltaDisplay :delta="delta.rank" />
+          <DeltaDisplay :precision="0" :delta="delta.rank" />
         </div>
         <div class="text-8xl">{{ subject.rank }}</div>
       </div>
@@ -105,9 +105,9 @@ store.fetchSubject(props.id)
       <div class="mt-10">
         <div class="text-2xl">
           在看
-          <DeltaDisplay :delta="delta.watching" />
+          <DeltaDisplay :precision="0" :delta="delta.watching" />
         </div>
-        <div class="text-8xl">{{ subject.rank }}</div>
+        <div class="text-8xl">{{ subject.collection.doing }}</div>
       </div>
 
       <div class="aspect-square sm:aspect-[16/8] w-full">
