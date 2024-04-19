@@ -66,7 +66,7 @@ store.fetchSubject(props.id)
         </div>
       </div>
 
-      <div class="mt-20">
+      <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           评分
           <DeltaDisplay :delta="delta.score" />
@@ -85,7 +85,7 @@ store.fetchSubject(props.id)
         />
       </div>
 
-      <div class="mt-20">
+      <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           排名
           <DeltaDisplay :precision="0" :delta="delta.rank" />
@@ -102,7 +102,7 @@ store.fetchSubject(props.id)
         />
       </div>
 
-      <div class="mt-10">
+      <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           在看
           <DeltaDisplay :precision="0" :delta="delta.watching" />
