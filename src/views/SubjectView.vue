@@ -1,7 +1,7 @@
 <script setup>
 import { useSubjectStore } from '@/stores/subject'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import ScoreChart from '@/components/charts/ScoreChart.vue'
 import RankChart from '@/components/charts/RankChart.vue'
 import CollectionChart from '@/components/charts/CollectionChart.vue'
@@ -29,6 +29,10 @@ const _setfilteredBy = (f) => {
 }
 
 store.fetchSubject(props.id)
+
+onUnmounted(() => {
+  store.$reset()
+})
 </script>
 
 <template>
