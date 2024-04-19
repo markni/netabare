@@ -19,6 +19,11 @@
         <div class="text-4xl">全站动画</div>
         <RouterLink class="text-5xl hover:bg-blue" to="/trending">热门趋势</RouterLink>
       </div>
+
+      <div class="gap-10 flex items-baseline">
+        <div class="text-4xl">本季动画</div>
+        <RouterLink class="text-5xl hover:bg-mint" to="/season">龙争虎斗</RouterLink>
+      </div>
     </div>
   </div>
 </template>
