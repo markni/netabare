@@ -2,8 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'Netabare Front',
-      script: 'npm',
-      args: 'run server:start',
+      script: 'server.cjs',
       instances: 1,
       autorestart: true,
       exec_mode: 'fork',
