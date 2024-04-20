@@ -41,10 +41,7 @@ const initializeChart = () => {
         type: 'column',
         backgroundColor: null
       },
-      title: {
-        text: '',
-        enabled: false
-      },
+
       tooltip: {
         backgroundColor: 'black',
         borderColor: 'none',
@@ -76,24 +73,6 @@ const initializeChart = () => {
         }
       },
       xAxis: {},
-      exporting: {
-        enabled: false
-      },
-      legend: {
-        // layout: 'vertical',
-        squareSymbol: true,
-        align: 'center',
-        verticalAlign: 'bottom',
-        itemStyle: {
-          color: '#2c3e50',
-          fontWeight: 'normal',
-          fontSize: '16px',
-          fontFamily: `'source-han-serif-sc', serif`
-        }
-      },
-      credits: {
-        enabled: false
-      },
       series: [
         {
           name: '个人评分',
@@ -115,7 +94,7 @@ const initializeChart = () => {
           visible: false
         }
       ],
-      colors: COLORS,
+      colors: COLORS
     })
     updateData()
   }

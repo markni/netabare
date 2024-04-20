@@ -164,17 +164,7 @@ const initializeChart = () => {
       exporting: {
         enabled: false
       },
-      legend: {
-        // layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'bottom',
-        itemStyle: {
-          color: '#2c3e50',
-          fontWeight: 'normal',
-          fontSize: '16px',
-          fontFamily: `'source-han-serif-sc', serif`
-        }
-      },
+
       credits: {
         enabled: false
       },

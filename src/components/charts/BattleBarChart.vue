@@ -57,12 +57,6 @@ const initializeChart = () => {
         },
         useHTML: false
       },
-      title: {
-        text: null
-      },
-      credits: {
-        enabled: false
-      },
       xAxis: {
         visible: false
       },
@@ -76,18 +70,11 @@ const initializeChart = () => {
       },
       plotOptions: {
         series: {
-          stacking: 'normal'
-        }
-      },
-      legend: {
-        // layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'bottom',
-        itemStyle: {
-          color: '#2c3e50',
-          fontWeight: 'normal',
-          fontSize: '16px',
-          fontFamily: `'source-han-serif-sc', serif`
+          stacking: 'normal',
+          animation: {
+            defer: 1500,
+            duration: 1000
+          }
         }
       },
       series: [

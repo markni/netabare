@@ -173,17 +173,7 @@ const initializeChart = () => {
       exporting: {
         enabled: false
       },
-      legend: {
-        display: true,
-        position: 'bottom',
-        align: 'right',
-        itemStyle: {
-          color: '#2c3e50',
-          fontWeight: 'normal',
-          fontSize: '1rem',
-          fontFamily: `'source-han-serif-sc', serif`
-        }
-      },
+
       credits: {
         enabled: false
       },

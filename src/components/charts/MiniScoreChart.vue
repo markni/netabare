@@ -97,9 +97,6 @@ const initializeChart = () => {
         enabled: false
       },
       legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle',
         enabled: false
       },
       credits: {
