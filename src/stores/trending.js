@@ -24,6 +24,15 @@ export const useTrendingStore = defineStore('trending', {
 
         const response = await fetchTrendingWithLoading()
 
+        response.data.up.forEach((item) => {
+          item.history = item.history.reverse()
+        })
+        response.data.down.forEach((item) => {
+          item.history = item.history.reverse()
+        })
+        response.data.done.forEach((item) => {
+          item.history = item.history.reverse()
+        })
         this.up = response.data.up
         this.down = response.data.down
         this.done = response.data.done

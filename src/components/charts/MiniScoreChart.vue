@@ -17,12 +17,6 @@ const props = defineProps({
 const chartContainer = ref(null)
 let chartInstance = null
 
-const updateRange = () => {
-  if (chartInstance) {
-    chartInstance.xAxis[0].setExtremes(props.xMin, props.xMax)
-  }
-}
-
 const updateData = () => {
   if (chartInstance) {
     chartInstance.series[0].update(
@@ -120,15 +114,7 @@ watch(
   () => {
     updateData()
   },
-  { deep: true }
-)
-
-watch(
-  [() => props.xMax],
-  () => {
-    updateRange()
-  },
-  { deep: true }
+  { deep: false }
 )
 </script>
 
