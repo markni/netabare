@@ -21,7 +21,7 @@ const updateData = () => {
       dashStyle: 'longdashdot',
       label: {
         useHTML: true,
-        y: 20,
+        y: -20,
         style: {
           fontSize: '14px',
           fontFamily: `'source-han-serif-sc', serif`,
@@ -115,8 +115,15 @@ const initializeChart = () => {
         title: {
           enabled: false
         },
+
+        min: -50, // Extend axis below 0 (visually above 0 on a reversed chart)
+
         labels: {
-          format: '{value:.0f}'
+          format: '{value:.0f}',
+
+          formatter: function () {
+            return this.value >= 0 ? this.value : ''
+          }
         }
       },
       xAxis: {
