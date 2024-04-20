@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { COLORS } from '@/constants/colors'
+import { BLUE, COLORS } from '@/constants/colors'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   historyData: {
@@ -12,6 +13,7 @@ const props = defineProps({
 
 const chartContainer = ref(null)
 let chartInstance = null
+const router = useRouter()
 
 const updateData = () => {
   if (chartInstance) {
@@ -81,9 +83,16 @@ const initializeChart = () => {
             }
           },
           events: {
-            legendItemClick: function () {
-              window.location.href = `/subject/${this.options.id}`
-              return false // Prevents the default toggle behavior
+            legendItemClick: function (e) {
+              const { browserEvent } = e
+              if (
+                browserEvent.target &&
+                browserEvent.target.matches('.legend-link') &&
+                e.target.userOptions.id
+              ) {
+                router.push(`/subject/${e.target.userOptions.id}`)
+                return false
+              }
             }
           }
         }
@@ -109,6 +118,12 @@ const initializeChart = () => {
           week: '%m-%d',
           month: '%m-%d',
           year: '%m-%d'
+        }
+      },
+      legend: {
+        useHTML: true,
+        labelFormatter: function () {
+          return `${this.name} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`
         }
       },
       series: [],
