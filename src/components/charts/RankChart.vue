@@ -86,26 +86,7 @@ const initializeChart = () => {
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
       chart: {
-        zoomType: 'x',
-        backgroundColor: null
-      },
-      title: {
-        text: '',
-        enabled: false,
-        backgroundColor: null
-      },
-      tooltip: {
-        crosshairs: true,
-        backgroundColor: 'black',
-        borderColor: 'none',
-        style: {
-          color: 'white'
-        },
-        useHTML: false,
-        xDateFormat: '%Y-%m-%d'
-      },
-      subtitle: {
-        enabled: false
+        zoomType: 'x'
       },
       plotOptions: {
         line: {
@@ -139,12 +120,7 @@ const initializeChart = () => {
           year: '%m-%d'
         }
       },
-      exporting: {
-        enabled: false
-      },
-      credits: {
-        enabled: false
-      },
+
       series: [
         {
           step: true,
@@ -152,23 +128,7 @@ const initializeChart = () => {
           data: []
         }
       ],
-      colors: [GOLD],
-      responsive: {
-        rules: [
-          {
-            condition: {
-              maxWidth: 500
-            },
-            chartOptions: {
-              legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
-              }
-            }
-          }
-        ]
-      }
+      colors: [GOLD]
     })
     updateData()
   }

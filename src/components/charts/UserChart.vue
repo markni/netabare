@@ -38,23 +38,15 @@ const initializeChart = () => {
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
       chart: {
-        type: 'column',
-        backgroundColor: null
+        type: 'column'
       },
 
       tooltip: {
-        backgroundColor: 'black',
-        borderColor: 'none',
-        style: {
-          color: 'white'
-        },
         formatter: function () {
           return `${this.x}分：<b>${this.y}</b>部`
         }
       },
-      subtitle: {
-        enabled: false
-      },
+
       plotOptions: {
         column: {
           colorByPoint: true,

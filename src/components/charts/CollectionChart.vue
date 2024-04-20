@@ -117,18 +117,12 @@ const initializeChart = () => {
         enabled: false
       },
       tooltip: {
-        crosshairs: true,
-        backgroundColor: 'black',
-        borderColor: 'none',
-        style: {
-          color: 'white'
-        },
-        useHTML: false,
-        xDateFormat: '%Y-%m-%d',
         shared: true
       },
-      subtitle: {
-        enabled: false
+      boost: {
+        enabled: true,
+        useGPUTranslations: true,
+        usePreAllocated: true
       },
       plotOptions: {
         spline: {

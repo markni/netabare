@@ -13,14 +13,33 @@ Highcharts.setOptions({
     thousandsSep: '',
     resetZoom: '重置缩放'
   },
+
+  subtitle: {
+    enabled: false
+  },
+  tooltip: {
+    crosshairs: true,
+    backgroundColor: 'black',
+    borderColor: 'none',
+    style: {
+      color: 'white'
+    },
+    useHTML: false,
+    xDateFormat: '%Y-%m-%d'
+  },
   title: {
     text: '',
     enabled: false
   },
   boost: {
-    enabled: false // Enable boost globally
+    enabled: false,
+    useGPUTranslations: true,
+    usePreAllocated: true
   },
   exporting: {
+    enabled: false
+  },
+  accessibility: {
     enabled: false
   },
   credits: {

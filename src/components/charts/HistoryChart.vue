@@ -50,22 +50,8 @@ const initializeChart = () => {
         useGPUTranslations: true,
         usePreAllocated: true
       },
-      rangeSelector: {
-        verticalAlign: 'top',
-        x: 0,
-        y: 0
-      },
-      title: {
-        text: '',
-        enabled: false
-      },
+
       tooltip: {
-        crosshairs: true,
-        backgroundColor: 'black',
-        borderColor: 'none',
-        style: {
-          color: 'white'
-        },
         // xDateFormat: '%Y-%m-%d',
         formatter: function () {
           if (this.series.name === '年度均分') {
@@ -119,7 +105,6 @@ const initializeChart = () => {
             states: {
               hover: {
                 enabled: true,
-                // lineColor: 'rgb(100,100,100)',
                 fillColor: COLORS[8]
               }
             }
@@ -170,13 +155,7 @@ const initializeChart = () => {
           year: '%Y'
         }
       },
-      exporting: {
-        enabled: false
-      },
 
-      credits: {
-        enabled: false
-      },
       series: [
         {
           color: 'rgba(49, 148, 255, 0.4)',
@@ -190,23 +169,7 @@ const initializeChart = () => {
           data: []
         }
       ],
-      colors: COLORS,
-      responsive: {
-        rules: [
-          {
-            condition: {
-              maxWidth: 500
-            },
-            chartOptions: {
-              legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
-              }
-            }
-          }
-        ]
-      }
+      colors: COLORS
     })
     updateData()
   }

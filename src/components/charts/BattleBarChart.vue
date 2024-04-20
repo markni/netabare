@@ -41,21 +41,12 @@ const initializeChart = () => {
       chart: {
         type: 'bar',
         inverted: true,
-        backgroundColor: 'transparent',
         zoomType: 'none'
       },
       tooltip: {
-        crosshairs: true,
-        backgroundColor: 'black',
-        borderColor: 'none',
-        headerFormat: '',
         pointFormatter: function () {
           return `${this.series.name}: ${Math.abs(this.y)}`
-        },
-        style: {
-          color: 'white'
-        },
-        useHTML: false
+        }
       },
       xAxis: {
         visible: false

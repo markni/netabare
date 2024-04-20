@@ -40,19 +40,10 @@ const initializeChart = () => {
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
-      chart: {
-        backgroundColor: null
-      },
-      title: {
-        text: '',
-        enabled: false
-      },
       tooltip: {
         enabled: false
       },
-      subtitle: {
-        enabled: false
-      },
+
       plotOptions: {
         spline: {
           marker: {
@@ -93,15 +84,11 @@ const initializeChart = () => {
           enabled: false
         }
       },
-      exporting: {
-        enabled: false
-      },
+
       legend: {
         enabled: false
       },
-      credits: {
-        enabled: false
-      },
+
       series: [
         {
           type: 'spline',

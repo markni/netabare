@@ -61,26 +61,9 @@ const initializeChart = () => {
     chartInstance = Highcharts.chart(chartContainer.value, {
       // Chart configuration options
       chart: {
-        zoomType: 'x',
-        backgroundColor: null
+        zoomType: 'x'
       },
-      title: {
-        text: '',
-        enabled: false
-      },
-      tooltip: {
-        crosshairs: true,
-        backgroundColor: 'black',
-        borderColor: 'none',
-        style: {
-          color: 'white'
-        },
-        useHTML: false,
-        xDateFormat: '%Y-%m-%d'
-      },
-      subtitle: {
-        enabled: false
-      },
+
       plotOptions: {
         spline: {
           marker: {
