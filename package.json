@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "server:start": "vite build && node server.cjs"
+    "server:start": "nvm use && npm i && npm run build && nvm use default && pm2 start ecosystem.config.mjs"
   },
   "dependencies": {
     "axios": "^1.6.7",
