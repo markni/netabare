@@ -8,31 +8,45 @@ import texts from '@/constants/texts.js'
 
 const store = useAppStore()
 const { networkError, longPolling } = storeToRefs(store)
+
+console.log(`
+  _   _ ______ _______       ____          _____  ______
+ | \\ | |  ____|__   __|/\\   |  _ \\   /\\   |  __ \\|  ____|
+ |  \\| | |__     | |  /  \\  | |_) | /  \\  | |__) | |__
+ | . \` |  __|    | | / /\\ \\ |  _ < / /\\ \\ |  _  /|  __|
+ | |\\  | |____   | |/ ____ \\| |_) / ____ \\| | \\ \\| |____
+ |_| \\_|______|  |_/_/    \\_\\____/_/    \\_\\_|  \\_\\______|
+
+ Star the repo or submit a pull request here:  https://github.com/markni/netabare
+
+`)
 </script>
 
 <template>
-  <FullscreenOverlay
-    v-if="networkError"
-    :text="texts._lostConnection"
-    code="504"
-    annotation="lost connection"
-  />
-  <FullscreenOverlay
-    v-if="longPolling"
-    color="bg-gold"
-    :text="texts._loading"
-    annotation="loading"
-  />
-  <GlobalHeader />
-  <div class="min-h-screen bg-paper flex font-serif">
-    <div
-      :class="['bg-paper w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]"
-    >
-      <RouterView />
+  <div>
+    <FullscreenOverlay
+      v-if="networkError"
+      :text="texts._lostConnection"
+      code="504"
+      annotation="lost connection"
+    />
+    <FullscreenOverlay
+      v-if="longPolling"
+      color="bg-gold"
+      :text="texts._loading"
+      annotation="loading"
+    />
+    <GlobalHeader />
+    <div class="min-h-screen bg-paper flex font-serif">
+      <div
+        :class="['bg-paper w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]"
+      >
+        <RouterView />
+      </div>
     </div>
-  </div>
-  <div class="opacity-0 fixed bottom-0 right-0 pointer-events-none">
-    {{ texts._allTextCombined }}
+    <div class="opacity-0 fixed bottom-0 right-0 pointer-events-none">
+      {{ texts._allTextCombined }}
+    </div>
   </div>
 </template>
 
