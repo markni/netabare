@@ -7,7 +7,7 @@ import GlobalHeader from '@/components/GlobalHeader.vue'
 import texts from '@/constants/texts.js'
 
 const store = useAppStore()
-const { networkError, longPolling } = storeToRefs(store)
+const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store)
 
 console.log(`
   _   _ ______ _______       ____          _____  ______
@@ -29,6 +29,20 @@ console.log(`
       :text="texts._lostConnection"
       code="504"
       annotation="lost connection"
+    />
+    <FullscreenOverlay
+      v-if="notFoundUserError"
+      :text="texts._notFoundUser"
+      code="404"
+      color="bg-blue"
+      annotation="not found"
+    />
+    <FullscreenOverlay
+      v-if="notFoundSubjectError"
+      :text="texts._notFoundSubject"
+      code="404"
+      color="bg-blue"
+      annotation="not found"
     />
     <FullscreenOverlay
       v-if="longPolling"

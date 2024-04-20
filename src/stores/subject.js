@@ -120,6 +120,7 @@ export const useSubjectStore = defineStore('subject', {
   actions: {
     async fetchSubject(subjectId) {
       try {
+        useAppStore().setNotFoundSubjectError(false)
         const fetchSubjectWithLoading = withSmartLoadingUx(fetchRank, {
           delay: 500,
           minimumDisplayTime: 1000,
@@ -131,6 +132,7 @@ export const useSubjectStore = defineStore('subject', {
         this.subject = response.data['subject']
         this.history = response.data['history']
       } catch (error) {
+        useAppStore().setNotFoundSubjectError(true)
         console.error('Failed to fetch subject:', error)
         // Handle error appropriately
       }

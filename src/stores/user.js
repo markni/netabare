@@ -42,6 +42,7 @@ export const useUserStore = defineStore('user', {
   actions: {
     async fetchUser(userId) {
       try {
+        useAppStore().setNotFoundUserError(false)
         const fetchUserWithLoading = withSmartLoadingUx(fetchUser, {
           delay: 500,
           minimumDisplayTime: 1000,
@@ -53,6 +54,7 @@ export const useUserStore = defineStore('user', {
         this.user = response.data
       } catch (error) {
         console.error('Failed to fetch user:', error)
+        useAppStore().setNotFoundUserError(true)
         // Handle error appropriately
       }
       return this.user
