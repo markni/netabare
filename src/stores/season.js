@@ -14,7 +14,7 @@ export const useSeasonStore = defineStore('season', {
       if (!state.season) return null
       let extreme = 0
       const positive = state.season.map((entry) => {
-        if (entry.history[0].rating.count['10'] > extreme) {
+        if (entry.history[entry.history.length - 1].rating.count['10'] > extreme) {
           extreme = entry.history[entry.history.length - 1].rating.count['10']
         }
         return {
@@ -23,7 +23,7 @@ export const useSeasonStore = defineStore('season', {
         }
       })
       const negative = state.season.map((entry) => {
-        if (entry.history[0].rating.count['1'] > extreme) {
+        if (entry.history[entry.history.length - 1].rating.count['1'] > extreme) {
           extreme = entry.history[entry.history.length - 1].rating.count['1']
         }
         return {
