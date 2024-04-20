@@ -40,8 +40,11 @@ export const useSeasonStore = defineStore('season', {
         return {
           name: entry.name_cn || entry.name,
           bgmId: entry.bgmId,
-          history: entry.history.map((h) => {
+          scoreHistory: entry.history.map((h) => {
             return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
+          }),
+          rankHistory: entry.history.map((h) => {
+            return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
           })
         }
       })

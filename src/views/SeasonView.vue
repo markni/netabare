@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import BattleChart from '@/components/charts/BattleChart.vue'
 import dayjs from 'dayjs'
 import BattleBarChart from '@/components/charts/BattleBarChart.vue'
+import BattleRankChart from '@/components/charts/BattleRankChart.vue'
 
 const store = useSeasonStore()
 const { historyData, rateData } = storeToRefs(store)
@@ -34,12 +35,30 @@ store.fetchSeason()
 </script>
 
 <template>
-  <div class="mt-14 flex flex-col gap-4">
+  <div class="mt-14 flex flex-col gap-10">
     <h1 class="text-4xl">{{ dayjs().year() }}年{{ getCurrentSeasonStartDate() }}新番战况</h1>
-    <h2 class="text-2xl mt-4">热门前10评分对比</h2>
-    <div class="sm:aspect-[16/8]">
-      <BattleChart :historyData="historyData" />
+
+    <div class="flex flex-col gap-4">
+      <div
+        title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
+        class="cursor-help text-gray-200"
+      >
+        如何放大缩小？
+      </div>
+      <h2 class="text-2xl">热门前10评分对比</h2>
+
+      <div class="sm:aspect-[16/8]">
+        <BattleChart :historyData="historyData" />
+      </div>
     </div>
+
+    <div class="flex flex-col gap-4">
+      <h2 class="text-2xl">热门前10排名对比</h2>
+      <div class="sm:aspect-[16/8]">
+        <BattleRankChart :historyData="historyData" />
+      </div>
+    </div>
+
     <div class="flex flex-col gap-4">
       <h2 class="text-2xl">平衡榜</h2>
       <p class="text-gray-400">打1分和10分的数量对比</p>

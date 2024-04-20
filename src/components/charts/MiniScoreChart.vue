@@ -119,5 +119,3 @@ watch(
 </script>
 
 <template><div class="h-full" ref="chartContainer"></div></template>
-
-<style scoped></style>

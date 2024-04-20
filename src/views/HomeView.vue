@@ -6,13 +6,8 @@
 
     <div class="flex flex-col gap-4 tracking-widest">
       <div class="gap-10 flex items-baseline">
-        <div class="text-4xl">个人动画</div>
-        <RouterLink class="text-5xl hover:bg-gold" to="/user">评分分布</RouterLink>
-      </div>
-
-      <div class="gap-10 flex items-baseline">
-        <div class="text-4xl">全站动画</div>
-        <RouterLink class="text-5xl hover:bg-pink" to="/history">评分分布图</RouterLink>
+        <div class="text-4xl">当季动画</div>
+        <RouterLink class="text-5xl hover:bg-mint" to="/season">龙争虎斗</RouterLink>
       </div>
 
       <div class="gap-10 flex items-baseline">
@@ -21,8 +16,12 @@
       </div>
 
       <div class="gap-10 flex items-baseline">
-        <div class="text-4xl">本季动画</div>
-        <RouterLink class="text-5xl hover:bg-mint" to="/season">龙争虎斗</RouterLink>
+        <div class="text-4xl">全站动画</div>
+        <RouterLink class="text-5xl hover:bg-pink" to="/history">评分分布图</RouterLink>
+      </div>
+      <div class="gap-10 flex items-baseline">
+        <div class="text-4xl">个人动画</div>
+        <RouterLink class="text-5xl hover:bg-gold" to="/user">评分分布</RouterLink>
       </div>
     </div>
   </div>

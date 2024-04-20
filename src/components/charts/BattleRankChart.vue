@@ -15,6 +15,23 @@ let chartInstance = null
 
 const updateData = () => {
   if (chartInstance) {
+    const epPlotOptions = {
+      color: 'rgba(0,0,0,0.2)',
+      width: 2,
+      dashStyle: 'longdashdot',
+      label: {
+        useHTML: true,
+        y: 20,
+        style: {
+          fontSize: '14px',
+          fontFamily: `'source-han-serif-sc', serif`,
+          color: 'rgba(0,0,0,0.2)'
+        },
+        text: '<a target="_blank" href="https://bgm.tv/anime/browser?sort=rank" title="Bangumi排名第一页">第一页之墙</a>'
+      },
+      value: 24
+    }
+
     const currentSeries = {}
 
     // Create a map of existing series by their names for easy lookup
@@ -22,11 +39,16 @@ const updateData = () => {
       currentSeries[series.name] = series
     })
 
+    chartInstance.yAxis[0].plotLinesAndBands.forEach((plotLine) => {
+      chartInstance.yAxis[0].removePlotLine(plotLine.id)
+    })
+
+    chartInstance.yAxis[0].addPlotLine(epPlotOptions)
     // Add or update series
     props.historyData.forEach((seriesData) => {
       if (currentSeries[seriesData.name]) {
         // Update existing series
-        currentSeries[seriesData.name].setData(seriesData.scoreHistory, false)
+        currentSeries[seriesData.name].setData(seriesData.rankHistory, false)
         delete currentSeries[seriesData.name] // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
@@ -34,8 +56,8 @@ const updateData = () => {
           {
             name: seriesData.name,
             id: seriesData.bgmId,
-            data: seriesData.scoreHistory,
-            type: 'spline',
+            data: seriesData.rankHistory,
+            type: 'line',
             yAxis: 0
           },
           false
@@ -81,23 +103,22 @@ const initializeChart = () => {
             }
           },
           events: {
-            legendItemClick: function () {
-              window.location.href = `/subject/${this.options.id}`
-              return false // Prevents the default toggle behavior
-            }
+            // legendItemClick: function () {
+            //   window.location.href = `/subject/${this.options.id}`
+            //   return false // Prevents the default toggle behavior
+            // }
           }
         }
       },
-      yAxis: [
-        {
-          title: {
-            enabled: false
-          },
-          labels: {
-            format: '{value:.2f}'
-          }
+      yAxis: {
+        reversed: true,
+        title: {
+          enabled: false
+        },
+        labels: {
+          format: '{value:.0f}'
         }
-      ],
+      },
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
