@@ -87,7 +87,7 @@ const initializeChart = () => {
       },
 
       plotOptions: {
-        spline: {
+        line: {
           marker: {
             enabled: false
           }
