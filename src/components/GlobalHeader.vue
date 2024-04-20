@@ -5,7 +5,7 @@ import texts from '../constants/texts.js'
 
 <template>
   <header class="p-8 fixed top-0 left-0">
-    <nav class="inline-flex flex-col gap-4 pr-10 items-start justify-start">
+    <nav class="inline-flex 2xl:flex-col gap-4 pr-10 items-start justify-start bg-paper z-50">
       <div v-if="$route.path !== '/'" class="text-gray-400 hover:text-gray-700">
         <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
       </div>
