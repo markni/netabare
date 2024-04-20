@@ -47,14 +47,14 @@ store.fetchSeason()
       </div>
       <h2 class="text-2xl">热门前10评分对比</h2>
 
-      <div class="sm:aspect-[16/8]">
+      <div class="sm:aspect-[16/10]">
         <BattleChart :historyData="historyData" />
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
       <h2 class="text-2xl">热门前10排名对比</h2>
-      <div class="sm:aspect-[16/8]">
+      <div class="sm:aspect-[16/10]">
         <BattleRankChart :historyData="historyData" />
       </div>
     </div>
