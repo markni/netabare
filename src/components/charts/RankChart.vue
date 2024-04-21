@@ -40,7 +40,7 @@ const updateData = () => {
       dashStyle: 'longdashdot',
       label: {
         useHTML: true,
-        y: -20,
+        y: 20,
         style: {
           fontSize: '14px',
           fontFamily: `'source-han-serif-sc', serif`,
