@@ -49,14 +49,14 @@ const initializeChart = () => {
         }
       },
       xAxis: {
-        visible: false
+        visible: true
       },
       yAxis: {
         title: {
           text: null
         },
         labels: {
-          enabled: false
+          enabled: true
         }
       },
       plotOptions: {
