@@ -2,7 +2,7 @@
   <div
     class="flex flex-col h-full w-full items-center justify-center text-6xl tracking-wider gap-64"
   >
-    <div class="flex flex-col gap-16">
+    <div class="flex flex-col gap-16 pt-32">
       <h1 class="text-4xl text-center">Netabare</h1>
 
       <div class="flex flex-col gap-4 tracking-widest">
