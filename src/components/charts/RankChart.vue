@@ -34,6 +34,23 @@ const updateRange = () => {
 
 const updateData = () => {
   if (chartInstance) {
+    const epPlotOptionsForWall = {
+      color: 'rgba(0,0,0,0.2)',
+      width: 2,
+      dashStyle: 'longdashdot',
+      label: {
+        useHTML: true,
+        y: -20,
+        style: {
+          fontSize: '14px',
+          fontFamily: `'source-han-serif-sc', serif`,
+          color: 'rgba(0,0,0,0.2)'
+        },
+        text: '<a target="_blank" href="https://bgm.tv/anime/browser?sort=rank" title="Bangumi排名第一页">第一页之墙</a>'
+      },
+      value: 24
+    }
+
     const epPlotOptions = {
       color: 'rgba(0,0,0,0.1)',
       width: 2,
@@ -50,6 +67,8 @@ const updateData = () => {
     chartInstance.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
       chartInstance.xAxis[0].removePlotLine(plotLine.id)
     })
+
+    chartInstance.yAxis[0].addPlotLine(epPlotOptionsForWall)
 
     Object.entries(props.epsData).forEach(([airdateValue, episodes]) => {
       let epOption = _.cloneDeep(epPlotOptions)

@@ -35,6 +35,12 @@ const updateData = () => {
       value: 24
     }
 
+    chartInstance.yAxis[0].plotLinesAndBands.forEach((plotLine) => {
+      chartInstance.yAxis[0].removePlotLine(plotLine.id)
+    })
+
+    chartInstance.yAxis[0].addPlotLine(epPlotOptions)
+
     const currentSeries = {}
 
     // Create a map of existing series by their names for easy lookup
@@ -42,11 +48,6 @@ const updateData = () => {
       currentSeries[series.name] = series
     })
 
-    chartInstance.yAxis[0].plotLinesAndBands.forEach((plotLine) => {
-      chartInstance.yAxis[0].removePlotLine(plotLine.id)
-    })
-
-    chartInstance.yAxis[0].addPlotLine(epPlotOptions)
     // Add or update series
     props.historyData.forEach((seriesData) => {
       if (currentSeries[seriesData.name]) {
