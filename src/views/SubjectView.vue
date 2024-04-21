@@ -38,17 +38,28 @@ onUnmounted(() => {
 <template>
   <div v-if="subject">
     <div class="flex flex-col gap-4 items-end">
-      <div class="sticky top-0 bg-paper z-[49] gap-4 py-14 w-full flex flex-col items-end">
-        <h1 class="text-6xl">
+      <h1 class="text-6xl">
+        <a
+          class="hover:bg-gold"
+          target="_blank"
+          title="访问Bangumi上的条目"
+          :href="'https://bgm.tv/subject/' + id"
+          >{{ subject.name }}</a
+        >
+      </h1>
+      <div
+        v-if="subject.name_cn"
+        class="sticky top-0 bg-paper z-[49] gap-4 py-5 w-full flex flex-col items-end"
+      >
+        <h2 class="text-4xl">
           <a
             class="hover:bg-gold"
             target="_blank"
             title="访问Bangumi上的条目"
             :href="'https://bgm.tv/subject/' + id"
-            >{{ subject.name }}</a
+            >{{ subject.name_cn }}</a
           >
-        </h1>
-        <h2 class="text-4xl">{{ subject.name_cn }}</h2>
+        </h2>
 
         <div class="flex gap-2 mt-4 text-xl">
           <div
@@ -66,14 +77,13 @@ onUnmounted(() => {
             放送期间
           </div>
         </div>
-        <div
-          title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-          class="cursor-help text-gray-200"
-        >
-          如何自定义时间范围？
-        </div>
       </div>
-
+      <div
+        title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
+        class="cursor-help text-gray-200"
+      >
+        如何自定义时间范围？
+      </div>
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           评分
