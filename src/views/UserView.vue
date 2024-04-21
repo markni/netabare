@@ -23,7 +23,7 @@
       </form>
     </div>
   </div>
-  <div v-if="!user || !id" class="h-full flex flex-col items-center justify-center">
+  <div v-if="!id" class="h-full flex flex-col items-center justify-center">
     <form @submit="submit" class="mt-10 flex flex-col">
       <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
 
