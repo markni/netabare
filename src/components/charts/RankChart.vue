@@ -118,6 +118,15 @@ const initializeChart = () => {
           week: '%m-%d',
           month: '%m-%d',
           year: '%m-%d'
+        },
+        events: {
+          // Re-apply these extremes after reset
+          setExtremes: function (e) {
+            if (e.min === undefined) {
+              e.preventDefault()
+              this.setExtremes(props.xMin, props.xMax)
+            }
+          }
         }
       },
 
