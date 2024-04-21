@@ -2,7 +2,7 @@
 import { useTrendingStore } from '@/stores/trending'
 import { storeToRefs } from 'pinia'
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue'
-import { BLUE, GOLD } from '@/constants/colors.js'
+import { BLUE, COLORS, GOLD, PINK } from '@/constants/colors.js'
 import DeltaDisplay from '@/components/DeltaDisplay.vue'
 
 const store = useTrendingStore()
@@ -10,97 +10,42 @@ const { up, down, done } = storeToRefs(store)
 
 store.fetchTrending()
 
-const formatData = (history) => {
-  return history.map((item) => {
-    return {
-      x: new Date(item.recordedAt),
-      y: item.score
-    }
-  })
-}
+const formatData = (history) =>
+  history.map((item) => ({ x: new Date(item.recordedAt), y: item.score }))
 </script>
 
 <template>
   <div class="flex flex-col pt-14 gap-16">
-    <div class="flex flex-col gap-8">
-      <h2 class="text-2xl bg-pink mr-auto">热门条目</h2>
+    <div v-for="(items, index) in [done, down, up]" :key="index" class="flex flex-col gap-8">
+      <h2 class="text-2xl mr-auto" :class="['bg-gold', 'bg-pink', 'bg-blue'][index]">
+        {{ ['热门条目', '涨幅排行', '跌幅排行'][index] }}
+      </h2>
       <ol class="flex flex-col gap-8 list-decimal">
-        <li class="" v-for="item in done" :key="item.bgmId">
+        <li v-for="item in items" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-8">
               <div class="text-4xl">
-                <RouterLink class="hover:bg-pink" :to="'/subject/' + item.bgmId">{{
-                  item.subject.name_cn || item.subject.name
-                }}</RouterLink>
+                <RouterLink
+                  :class="['hover:bg-gold', 'hover:bg-pink', 'hover:bg-blue'][index]"
+                  :to="'/subject/' + item.bgmId"
+                  >{{ item.subject.name_cn || item.subject.name }}</RouterLink
+                >
+                <span
+                  class="ml-2 text-sm px-1 text-white"
+                  :style="{
+                    color: COLORS[Math.round(item.history[item.history.length - 1].score)]
+                  }"
+                  >{{ item.history[item.history.length - 1].score }}</span
+                >
               </div>
               <div class="text-lg">{{ item.subject.name }}</div>
             </div>
-
             <div class="aspect-[16/8] col-span-3">
               <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : BLUE"
+                :color="item.score >= 0 ? PINK : BLUE"
                 :history-data="formatData(item.history)"
               />
             </div>
-
-            <div class="col-span-1 text-4xl">
-              <DeltaDisplay :delta="item.score" />
-            </div>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="flex flex-col gap-8">
-      <h2 class="text-2xl bg-blue mr-auto">跌幅排行</h2>
-      <ol class="flex flex-col gap-8 list-decimal">
-        <li class="" v-for="item in down" :key="item.bgmId">
-          <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-8">
-              <div class="text-4xl">
-                <RouterLink class="hover:bg-blue" :to="'/subject/' + item.bgmId">{{
-                  item.subject.name_cn || item.subject.name
-                }}</RouterLink>
-              </div>
-              <div class="text-lg">{{ item.subject.name }}</div>
-            </div>
-
-            <div class="aspect-[16/8] col-span-3">
-              <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : BLUE"
-                :history-data="formatData(item.history)"
-              />
-            </div>
-
-            <div class="col-span-1 text-4xl">
-              <DeltaDisplay :delta="item.score" />
-            </div>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="flex flex-col gap-8">
-      <h2 class="text-2xl bg-gold mr-auto">涨幅排行</h2>
-      <ol class="flex flex-col gap-8 list-decimal">
-        <li class="" v-for="item in up" :key="item.bgmId">
-          <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-8">
-              <div class="text-4xl">
-                <RouterLink class="hover:bg-gold" :to="'/subject/' + item.bgmId">{{
-                  item.subject.name_cn || item.subject.name
-                }}</RouterLink>
-              </div>
-              <div class="text-lg">{{ item.subject.name }}</div>
-            </div>
-
-            <div class="aspect-[16/8] col-span-3">
-              <MiniScoreChart
-                :color="item.score >= 0 ? GOLD : BLUE"
-                :history-data="formatData(item.history)"
-              />
-            </div>
-
             <div class="col-span-1 text-4xl">
               <DeltaDisplay :delta="item.score" />
             </div>

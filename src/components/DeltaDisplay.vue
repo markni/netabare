@@ -21,7 +21,7 @@ const props = defineProps({
   <span v-if="!isNaN(props.delta)" class="cursor-help" title="30天之内的评分变化"
     ><span
       :class="{
-        'text-gold': props.delta >= 0,
+        'text-pink': props.delta >= 0,
         'text-blue': props.delta < 0
       }"
       >{{ _getDeltaSymbol(props.delta) }}</span
