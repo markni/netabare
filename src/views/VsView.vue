@@ -7,7 +7,6 @@ import BattleChart from '@/components/charts/BattleChart.vue'
 import { useRouter } from 'vue-router'
 import BattleRankChart from '@/components/charts/BattleRankChart.vue'
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue'
-import texts from '@/constants/texts.js'
 
 const router = useRouter()
 
