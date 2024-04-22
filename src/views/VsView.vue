@@ -6,6 +6,8 @@ import { useVsStore } from '@/stores/vs.js'
 import BattleChart from '@/components/charts/BattleChart.vue'
 import { useRouter } from 'vue-router'
 import BattleRankChart from '@/components/charts/BattleRankChart.vue'
+import FullscreenOverlay from '@/components/FullscreenOverlay.vue'
+import texts from '@/constants/texts.js'
 
 const router = useRouter()
 
@@ -33,44 +35,56 @@ const submit = () => {
   })
 }
 
-store.fetchSubject(props.id0, 0)
-store.fetchSubject(props.id1, 1)
+if (props.id0 !== props.id1) {
+  store.fetchSubject(props.id0, 0)
+  store.fetchSubject(props.id1, 1)
 
-watch(
-  [() => props.id0],
-  () => {
-    store.fetchSubject(props.id0, 0)
-  },
-  { deep: false }
-)
+  watch(
+    [() => props.id0],
+    () => {
+      store.fetchSubject(props.id0, 0)
+    },
+    { deep: false }
+  )
 
-watch(
-  [() => props.id1],
-  () => {
-    store.fetchSubject(props.id1, 1)
-  },
-  { deep: false }
-)
+  watch(
+    [() => props.id1],
+    () => {
+      store.fetchSubject(props.id1, 1)
+    },
+    { deep: false }
+  )
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-20 pt-14">
-    <div class="grid grid-cols-2 text-3xl gap-4">
-      <form @submit.prevent="submit" class="flex flex-col gap-4">
-        <label for="localId0" class="text-xl">动画零</label>
-        <input type="number" class="bg-transparent w-40" id="localId0" v-model="localId0" />
-      </form>
-      <form @submit.prevent="submit" class="flex flex-col gap-4">
-        <label for="localId1" class="text-xl">动画一</label>
-        <input type="number" class="bg-transparent w-40" id="localId1" v-model="localId1" />
-      </form>
+  <div class="pt-14">
+    <div v-if="props.id0 === props.id1" class="text-6xl">
+      <FullscreenOverlay
+        text="你摧毁了时空结构"
+        annotation="game over"
+        code="400602"
+        color="bg-blood"
+      />
     </div>
-    <div v-if="histories[0] || histories[1]" class="flex flex-col gap-8">
-      <div class="sm:aspect-[16/10]">
-        <BattleChart :history-data="histories.filter((h) => !!h)" />
+    <div v-if="props.id0 !== props.id1" class="flex flex-col gap-20">
+      <div class="grid grid-cols-2 text-3xl gap-4">
+        <form @submit.prevent="submit" class="flex flex-col gap-4">
+          <label for="localId0" class="text-xl">动画零</label>
+          <input type="number" class="bg-transparent w-40" id="localId0" v-model="localId0" />
+        </form>
+        <form @submit.prevent="submit" class="flex flex-col gap-4">
+          <label for="localId1" class="text-xl">动画一</label>
+          <input type="number" class="bg-transparent w-40" id="localId1" v-model="localId1" />
+        </form>
       </div>
-      <div class="sm:aspect-[16/10]">
-        <BattleRankChart :history-data="histories.filter((h) => !!h)" />
+      <div v-if="histories[0] || histories[1]" class="flex flex-col gap-8">
+        <div class="sm:aspect-[16/10]">
+          <BattleChart :history-data="histories.filter((h) => !!h)" />
+        </div>
+        <div class="sm:aspect-[16/10]">
+          <BattleRankChart :history-data="histories.filter((h) => !!h)" />
+        </div>
       </div>
     </div>
   </div>

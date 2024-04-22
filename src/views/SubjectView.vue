@@ -136,6 +136,10 @@ onUnmounted(() => {
           :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
         />
       </div>
+
+      <div v-if="props.id !== '400602'" class="bg-pink">
+        <RouterLink :to="`/${props.id}/vs/400602`">实验功能：对比「葬送的芙莉莲」</RouterLink>
+      </div>
     </div>
   </div>
 </template>
