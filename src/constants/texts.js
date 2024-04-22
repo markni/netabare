@@ -15,7 +15,8 @@ const texts = {
   _season: '当季动画',
   _trending: '评分趋势',
   _history: '历史分布',
-  _user: '个人评分'
+  _user: '个人评分',
+  _experimental: '实验功能'
 }
 const _allTextCombined = Object.values(texts).join(' ')
 

@@ -44,6 +44,13 @@ import texts from '../constants/texts.js'
       >
         <RouterLink to="/user">{{ texts._user }}</RouterLink>
       </div>
+      <div
+        v-if="$route.path !== '/'"
+        class="text-gray-400 hover:text-gray-700"
+        :class="{ 'text-gray-700': $route.path.includes('/vs/') }"
+      >
+        <RouterLink to="/395378/vs/400602">{{ texts._experimental }}</RouterLink>
+      </div>
     </nav>
   </header>
 </template>

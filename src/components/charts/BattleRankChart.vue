@@ -62,7 +62,8 @@ const updateData = () => {
             id: seriesData.bgmId,
             data: seriesData.rankHistory,
             type: 'line',
-            yAxis: 0
+            yAxis: 0,
+            color: seriesData.color
           },
           false
         )

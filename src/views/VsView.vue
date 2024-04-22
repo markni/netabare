@@ -1,38 +1,77 @@
 <script setup>
-import { useSubjectStore } from '@/stores/subject'
 import { storeToRefs } from 'pinia'
-import { ref, onUnmounted } from 'vue'
-import ScoreChart from '@/components/charts/ScoreChart.vue'
-import RankChart from '@/components/charts/RankChart.vue'
-import CollectionChart from '@/components/charts/CollectionChart.vue'
-import DeltaDisplay from '@/components/DeltaDisplay.vue'
+import { ref, watch } from 'vue'
+
+import { useVsStore } from '@/stores/vs.js'
+import BattleChart from '@/components/charts/BattleChart.vue'
+import { useRouter } from 'vue-router'
+import BattleRankChart from '@/components/charts/BattleRankChart.vue'
+
+const router = useRouter()
 
 const props = defineProps({
-  id1: {
+  id0: {
     type: String,
     required: true
   },
-  id2: {
+  id1: {
     type: String,
     required: true
   }
 })
 
+const store = useVsStore()
+const { histories } = storeToRefs(store)
+
+const localId0 = ref(props.id0)
 const localId1 = ref(props.id1)
-const localId2 = ref(props.id2)
-const updateId1 = (val) => {
-  localId1.value = props.id1
+
+const submit = () => {
+  router.push({
+    name: 'vs',
+    params: { id0: localId0.value, id1: localId1.value } // Make sure to match the parameter names in your route definition
+  })
 }
+
+store.fetchSubject(props.id0, 0)
+store.fetchSubject(props.id1, 1)
+
+watch(
+  [() => props.id0],
+  () => {
+    store.fetchSubject(props.id0, 0)
+  },
+  { deep: false }
+)
+
+watch(
+  [() => props.id1],
+  () => {
+    store.fetchSubject(props.id1, 1)
+  },
+  { deep: false }
+)
 </script>
 
 <template>
-  <div class="grid grid-cols-2">
-    <div class="col-span-1">
-      <form @submit.prevent="updateId1">
-        <input name="id1" />
-        <button type="submit">Submit</button>
+  <div class="flex flex-col gap-20 pt-14">
+    <div class="grid grid-cols-2 text-3xl gap-4">
+      <form @submit.prevent="submit" class="flex flex-col gap-4">
+        <label for="localId0" class="text-xl">动画零</label>
+        <input type="number" class="bg-transparent w-40" id="localId0" v-model="localId0" />
       </form>
-      {{ localId1 }}
+      <form @submit.prevent="submit" class="flex flex-col gap-4">
+        <label for="localId1" class="text-xl">动画一</label>
+        <input type="number" class="bg-transparent w-40" id="localId1" v-model="localId1" />
+      </form>
+    </div>
+    <div v-if="histories[0] || histories[1]" class="flex flex-col gap-8">
+      <div class="sm:aspect-[16/10]">
+        <BattleChart :history-data="histories.filter((h) => !!h)" />
+      </div>
+      <div class="sm:aspect-[16/10]">
+        <BattleRankChart :history-data="histories.filter((h) => !!h)" />
+      </div>
     </div>
   </div>
 </template>

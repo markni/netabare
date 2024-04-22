@@ -49,7 +49,7 @@ const router = createRouter({
       component: () => import('../views/SeasonView.vue')
     },
     {
-      path: '/:id1/vs/:id2',
+      path: '/:id0/vs/:id1',
       name: 'vs',
       props: true,
       // route level code-splitting
