@@ -49,6 +49,14 @@ const router = createRouter({
       component: () => import('../views/SeasonView.vue')
     },
     {
+      path: '/:id1/vs/:id2',
+      name: 'vs',
+      props: true,
+      // route level code-splitting
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/VsView.vue')
+    },
+    {
       path: '/history',
       name: 'history',
       component: HistoryView,

@@ -15,6 +15,35 @@ import texts from '../constants/texts.js'
       <div class="text-gray-400 hover:text-gray-700">
         <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._changeLog }}</a>
       </div>
+      <div class="mt-4"></div>
+      <div
+        v-if="$route.path !== '/'"
+        class="text-gray-400 hover:text-gray-700"
+        :class="{ 'text-gray-700': $route.path === '/season' }"
+      >
+        <RouterLink to="/season">{{ texts._season }}</RouterLink>
+      </div>
+      <div
+        v-if="$route.path !== '/'"
+        class="text-gray-400 hover:text-gray-700"
+        :class="{ 'text-gray-700': $route.path === '/trending' }"
+      >
+        <RouterLink to="/trending">{{ texts._trending }}</RouterLink>
+      </div>
+      <div
+        v-if="$route.path !== '/'"
+        class="text-gray-400 hover:text-gray-700"
+        :class="{ 'text-gray-700': $route.path === '/history' }"
+      >
+        <RouterLink to="/history">{{ texts._history }}</RouterLink>
+      </div>
+      <div
+        v-if="$route.path !== '/'"
+        class="text-gray-400 hover:text-gray-700"
+        :class="{ 'text-gray-700': $route.path.startsWith('/user') }"
+      >
+        <RouterLink to="/user">{{ texts._user }}</RouterLink>
+      </div>
     </nav>
   </header>
 </template>

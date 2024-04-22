@@ -11,7 +11,11 @@ const texts = {
   _enterTargetUsername: '输入目标用户名',
   _feedback: '问题反馈',
   _changeLog: '更新日志',
-  _backToHome: '返回首页'
+  _backToHome: '返回首页',
+  _season: '当季动画',
+  _trending: '评分趋势',
+  _history: '历史分布',
+  _user: '个人评分'
 }
 const _allTextCombined = Object.values(texts).join(' ')
 
