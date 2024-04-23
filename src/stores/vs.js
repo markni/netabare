@@ -104,12 +104,14 @@ export const useVsStore = defineStore('vs', {
             .map((h) => {
               return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
             })
-            .sort((a, b) => a.x - b.x),
+            .sort((a, b) => a.x - b.x)
+            .filter((h) => h.y),
           rankHistory: history
             .map((h) => {
               return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
             })
             .sort((a, b) => a.x - b.x)
+            .filter((h) => h.y)
         }
       } catch (error) {
         useAppStore().setNotFoundSubjectError(true)

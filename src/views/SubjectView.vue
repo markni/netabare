@@ -38,7 +38,7 @@ onUnmounted(() => {
 <template>
   <div v-if="subject">
     <div class="flex flex-col gap-4 items-end">
-      <h1 class="text-6xl">
+      <h1 class="text-6xl pt-8">
         <a
           class="hover:bg-gold"
           target="_blank"
@@ -49,7 +49,7 @@ onUnmounted(() => {
       </h1>
       <div
         v-if="subject.name_cn"
-        class="sticky top-0 bg-paper z-[49] gap-4 py-5 w-full flex flex-col items-end"
+        class="sticky top-0 bg-paper z-[48] gap-4 py-5 w-full flex flex-col items-end"
       >
         <h2 class="text-4xl">
           <a
