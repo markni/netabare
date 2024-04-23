@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { BLUE, COLORS } from '@/constants/colors'
+import { BLUE, COLORS10 } from '@/constants/colors'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
@@ -130,7 +130,7 @@ const initializeChart = () => {
         }
       },
       series: [],
-      colors: COLORS // Use the COLORS constant
+      colors: COLORS10 // Use the COLORS constant
     })
     updateData()
   }

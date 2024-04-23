@@ -5,7 +5,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { COLORS } from '@/constants/colors'
+import { COLORS10 } from '@/constants/colors'
 
 const props = defineProps({
   userData: {
@@ -70,7 +70,7 @@ const initializeChart = () => {
           name: '个人评分',
           color: 'red',
           data: [],
-          colors: COLORS,
+          colors: COLORS10,
           maxPointWidth: 70,
 
           events: {
@@ -86,7 +86,7 @@ const initializeChart = () => {
           visible: false
         }
       ],
-      colors: COLORS
+      colors: COLORS10
     })
     updateData()
   }

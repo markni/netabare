@@ -2,7 +2,7 @@
 import { useTrendingStore } from '@/stores/trending'
 import { storeToRefs } from 'pinia'
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue'
-import { BLUE, COLORS, PINK } from '@/constants/colors.js'
+import { BLUE, COLORS10, PINK } from '@/constants/colors.js'
 import DeltaDisplay from '@/components/DeltaDisplay.vue'
 
 const store = useTrendingStore()
@@ -33,7 +33,7 @@ const formatData = (history) =>
                 <span
                   class="ml-2 text-sm px-1 text-white"
                   :style="{
-                    color: COLORS[Math.round(item.history[item.history.length - 1].score)]
+                    color: COLORS10[Math.round(item.history[item.history.length - 1].score)]
                   }"
                   >{{ item.history[item.history.length - 1].score }}</span
                 >

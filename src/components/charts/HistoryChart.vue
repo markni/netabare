@@ -7,7 +7,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
 import _ from 'lodash'
 import dayjs from 'dayjs'
-import { COLORS, PINK } from '@/constants/colors.js'
+import { COLORS10, PINK } from '@/constants/colors.js'
 
 const props = defineProps({
   historyData: {
@@ -105,7 +105,7 @@ const initializeChart = () => {
             states: {
               hover: {
                 enabled: true,
-                fillColor: COLORS[8]
+                fillColor: COLORS10[8]
               }
             }
           },
@@ -169,7 +169,7 @@ const initializeChart = () => {
           data: []
         }
       ],
-      colors: COLORS
+      colors: COLORS10
     })
     updateData()
   }

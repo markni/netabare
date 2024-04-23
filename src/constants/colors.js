@@ -9,7 +9,7 @@ export const GRAY = '#252322' // ZINC-900
 export const BLUE = '#3194FF'
 export const PINK = '#ff989f'
 export const BLACK = '#2c3e50'
-export const COLORS = [
+export const COLORS10 = [
   '#88cdbd',
   '#75cdd6',
   '#77c9ef',

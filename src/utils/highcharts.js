@@ -61,7 +61,6 @@ Highcharts.setOptions({
     align: 'right',
     verticalAlign: 'bottom',
     itemStyle: {
-      color: '#2c3e50',
       fontWeight: 'normal',
       fontSize: '16px',
       fontFamily: `'source-han-serif-sc', serif`

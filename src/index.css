@@ -8,6 +8,8 @@
     '新宋体', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
 }
 
 .wf-loading #app {
