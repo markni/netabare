@@ -53,7 +53,10 @@ console.log(`
     <GlobalHeader />
     <div class="min-h-screen bg-paper flex font-serif">
       <div
-        :class="['bg-paper w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]"
+        :class="[
+          'bg-paper w-full p-4 mx-auto pt-10 bottom-0',
+          { 'container ': $route.path !== '/' }
+        ]"
       >
         <RouterView />
       </div>

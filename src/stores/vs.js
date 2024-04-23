@@ -99,12 +99,17 @@ export const useVsStore = defineStore('vs', {
           color: index === 0 ? BLUE : PINK,
           name: subject.name_cn || subject.name,
           bgmId: subjectId,
-          scoreHistory: history.map((h) => {
-            return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
-          }),
-          rankHistory: history.map((h) => {
-            return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
-          })
+          //todo: fix sorting in backend instead
+          scoreHistory: history
+            .map((h) => {
+              return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
+            })
+            .sort((a, b) => a.x - b.x),
+          rankHistory: history
+            .map((h) => {
+              return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
+            })
+            .sort((a, b) => a.x - b.x)
         }
       } catch (error) {
         useAppStore().setNotFoundSubjectError(true)

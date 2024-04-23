@@ -24,8 +24,6 @@ const updateData = () => {
       currentSeries[series.name] = series
     })
 
-    console.log(props.historyData.length)
-
     // Add or update series
     props.historyData.forEach((seriesData) => {
       if (currentSeries[seriesData.name]) {
