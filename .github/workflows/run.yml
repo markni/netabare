@@ -16,4 +16,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: source ~/.nvm/nvm.sh && cd ${{ secrets.PATH }} && ls && node -v
+          script: source ~/.nvm/nvm.sh && cd ${{ secrets.PATH }} && nvm use && node -v && nvm use default && node -v
