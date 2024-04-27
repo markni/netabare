@@ -14,7 +14,7 @@ const props = defineProps({
     required: true
   }
 })
-const filteredBy = ref('none')
+const filteredBy = ref('eps')
 const store = useSubjectStore()
 const {
   subject,

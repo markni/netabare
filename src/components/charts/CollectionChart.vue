@@ -204,6 +204,7 @@ const initializeChart = () => {
       }
     })
     updateData()
+    updateRange()
   }
 }
 

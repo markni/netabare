@@ -159,6 +159,7 @@ const initializeChart = () => {
       colors: [GOLD]
     })
     updateData()
+    updateRange()
   }
 }
 

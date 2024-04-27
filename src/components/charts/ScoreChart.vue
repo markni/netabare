@@ -194,6 +194,7 @@ const initializeChart = () => {
       colors: COLORS10 // Use the COLORS constant
     })
     updateData()
+    updateRange()
   }
 }
 
