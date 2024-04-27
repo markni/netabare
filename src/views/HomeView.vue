@@ -8,7 +8,7 @@
       <div class="flex flex-col gap-4 tracking-widest">
         <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
           <span class="lg:text-4xl text-2xl">当季动画</span>
-          <RouterLink class="lg:text-5xl text-3xl hover:bg-mint" to="/season">龙争虎斗</RouterLink>
+          <RouterLink class="lg:text-5xl text-3xl hover:bg-teal" to="/season">龙争虎斗</RouterLink>
         </h2>
 
         <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">

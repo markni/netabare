@@ -13,7 +13,7 @@ defineProps({
     required: false
   },
   color: {
-    default: 'bg-blood',
+    default: 'bg-red',
     type: String,
     required: false
   }

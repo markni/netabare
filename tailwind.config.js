@@ -1,24 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 
-import colors from 'tailwindcss/colors'
-import { GOLD, TEAL, RED, IVORY, GRAY, BLUE, PINK } from './src/constants/colors.js'
+import {
+  GOLD,
+  TEAL,
+  RED,
+  IVORY,
+  DARK_GRAY,
+  LIGHT_GRAY,
+  BLUE,
+  PINK,
+  BLACK
+} from './src/constants/colors.js'
 import plugin from 'tailwindcss/plugin'
 
 export default {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-
-  content: [],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     colors: {
-      ...colors,
-      mint: TEAL,
+      teal: TEAL,
       paper: IVORY,
       gold: GOLD,
-      blood: RED,
+      red: RED,
       blue: BLUE,
-      darkGray: GRAY,
+      darkGray: DARK_GRAY,
       pink: PINK,
-      lightGray: '#a6a6a6'
+      lightGray: LIGHT_GRAY,
+      black: BLACK
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],

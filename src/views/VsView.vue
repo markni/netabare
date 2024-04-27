@@ -63,7 +63,7 @@ if (props.id0 !== props.id1) {
         text="你摧毁了时空结构"
         annotation="game over"
         code="400602"
-        color="bg-blood"
+        color="bg-red"
       />
     </div>
     <div v-if="props.id0 !== props.id1" class="flex flex-col gap-20">
