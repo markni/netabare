@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import NotFoundView from '@/views/NotFoundView.vue'
-import HistoryView from '@/views/HistoryView.vue'
 
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
@@ -59,13 +57,13 @@ const router = createRouter({
     {
       path: '/history',
       name: 'history',
-      component: HistoryView,
+      component: () => import('../views/HistoryView.vue'),
       props: true
     },
     {
       path: '/:catchAll(.*)*', // This regex will match any path
       name: 'NotFound',
-      component: NotFoundView
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })
