@@ -6,6 +6,7 @@ import ScoreChart from '@/components/charts/ScoreChart.vue'
 import RankChart from '@/components/charts/RankChart.vue'
 import CollectionChart from '@/components/charts/CollectionChart.vue'
 import DeltaDisplay from '@/components/DeltaDisplay.vue'
+import HintDiv from '@/components/HintDiv.vue'
 
 const props = defineProps({
   id: {
@@ -78,12 +79,12 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-      <div
+      <HintDiv
         title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-        class="cursor-help text-gray-200"
       >
         如何自定义时间范围？
-      </div>
+      </HintDiv>
+
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           评分

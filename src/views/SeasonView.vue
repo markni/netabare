@@ -5,6 +5,7 @@ import BattleChart from '@/components/charts/BattleChart.vue'
 import dayjs from 'dayjs'
 import BattleBarChart from '@/components/charts/BattleBarChart.vue'
 import BattleRankChart from '@/components/charts/BattleRankChart.vue'
+import HintDiv from '@/components/HintDiv.vue'
 
 const store = useSeasonStore()
 const { historyData, rateData } = storeToRefs(store)
@@ -39,12 +40,11 @@ store.fetchSeason()
     <h1 class="text-4xl">{{ dayjs().year() }}年{{ getCurrentSeasonStartDate() }}新番战况</h1>
 
     <div class="flex flex-col gap-4">
-      <div
+      <HintDiv
         title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-        class="cursor-help text-gray-200"
       >
         如何放大缩小？
-      </div>
+      </HintDiv>
       <h2 class="text-2xl">热门前10评分对比</h2>
 
       <div class="sm:aspect-[16/10]">

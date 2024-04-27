@@ -12,6 +12,7 @@ import {
   BLACK
 } from './src/constants/colors.js'
 import plugin from 'tailwindcss/plugin'
+import colors from 'tailwindcss/colors.js'
 
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -25,7 +26,8 @@ export default {
       darkGray: DARK_GRAY,
       pink: PINK,
       lightGray: LIGHT_GRAY,
-      black: BLACK
+      black: BLACK,
+      gray: colors.gray
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
