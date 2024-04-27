@@ -15,7 +15,7 @@ const formatData = (history) =>
 </script>
 
 <template>
-  <div class="flex flex-col pt-14 gap-16" v-if="done">
+  <div class="flex flex-col pt-14 gap-16" v-if="done.length">
     <div v-for="(items, index) in [done, up, down]" :key="index" class="flex flex-col gap-8">
       <h2 class="text-2xl mr-auto" :class="['bg-gold', 'bg-pink', 'bg-blue'][index]">
         {{ ['热门条目', '涨幅排行', '跌幅排行'][index] }}

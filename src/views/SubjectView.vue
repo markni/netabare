@@ -7,6 +7,7 @@ import RankChart from '@/components/charts/RankChart.vue'
 import CollectionChart from '@/components/charts/CollectionChart.vue'
 import DeltaDisplay from '@/components/DeltaDisplay.vue'
 import HintDiv from '@/components/HintDiv.vue'
+import _ from 'lodash'
 
 const props = defineProps({
   id: {
@@ -14,7 +15,6 @@ const props = defineProps({
     required: true
   }
 })
-const filteredBy = ref('eps')
 const store = useSubjectStore()
 const {
   subject,
@@ -25,11 +25,18 @@ const {
   oneWeekAfterLastEpTimestamp
 } = storeToRefs(store)
 
-const _setfilteredBy = (f) => {
+/**
+ * @type {Ref<UnwrapRef<'none' | 'eps' | 'disabled'>>}
+ */
+const filteredBy = ref('none')
+
+const _setFilteredBy = (f) => {
   filteredBy.value = f
 }
 
-store.fetchSubject(props.id)
+store.fetchSubject(props.id).then(() => {
+  _setFilteredBy(_.isEmpty(epsData.value) ? 'disabled' : 'eps')
+})
 
 onUnmounted(() => {
   store.$reset()
@@ -63,20 +70,28 @@ onUnmounted(() => {
         </h2>
 
         <div class="flex gap-2 mt-4 text-xl">
-          <div
+          <button
             class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-            :class="{ 'underline underline-offset-8': filteredBy === 'none' }"
-            @click="_setfilteredBy(`none`)"
+            :class="{
+              underline: filteredBy === 'none' || filteredBy === 'disabled'
+            }"
+            :disabled="filteredBy === 'disabled'"
+            @click="_setFilteredBy(`none`)"
           >
             全部
-          </div>
-          <div
-            class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
-            :class="{ 'underline underline-offset-8': filteredBy === 'eps' }"
-            @click="_setfilteredBy('eps')"
+          </button>
+          <button
+            class="cursor-pointer underline-offset-8 decoration-gold"
+            :class="{
+              'hover:underline': filteredBy !== 'disabled',
+              underline: filteredBy === 'eps',
+              'text-gray-200': filteredBy === 'disabled'
+            }"
+            :disabled="filteredBy === 'disabled'"
+            @click="_setFilteredBy('eps')"
           >
             放送期间
-          </div>
+          </button>
         </div>
       </div>
       <HintDiv

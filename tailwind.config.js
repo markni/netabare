@@ -27,7 +27,9 @@ export default {
       pink: PINK,
       lightGray: LIGHT_GRAY,
       black: BLACK,
-      gray: colors.gray
+      gray: colors.gray,
+      white: colors.white,
+      transparent: colors.transparent
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],

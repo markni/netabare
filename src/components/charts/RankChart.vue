@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Highcharts from '@/utils/highcharts'
-import { GOLD } from '@/constants/colors'
+import { BLUE } from '@/constants/colors'
 import _ from 'lodash'
 
 const props = defineProps({
@@ -156,7 +156,7 @@ const initializeChart = () => {
           data: []
         }
       ],
-      colors: [GOLD]
+      colors: [BLUE]
     })
     updateData()
     updateRange()
