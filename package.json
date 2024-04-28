@@ -11,7 +11,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "server:start": "vite build && node server.cjs",
-    "license": "license-checker --production --json --out licenses.json --exclue licenseFile --relativeLicensePath && node scripts/licenses.js licenses.json"
+    "license": "license-checker --production --json --out licenses.json --exclue licenseFile --relativeLicensePath && node scripts/licenses.js licenses.json",
+    "postversion": "git push && git push --tags && bash ./scripts/deploy.sh",
+    "deploy": "npm run license && git add . && git commit -m 'chore: update licenses' && npm version patch"
   },
   "dependencies": {
     "axios": "^1.6.7",

@@ -1,4 +1,3 @@
-// Importing Pinia and other utilities
 import { defineStore } from 'pinia'
 import { fetchRank } from '@/utils/api.js'
 import { useAppStore } from '@/stores/app.js'
