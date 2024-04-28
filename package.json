@@ -13,7 +13,7 @@
     "server:start": "vite build && node server.cjs",
     "license": "license-checker --production --json --out licenses.json --relativeLicensePath && node scripts/licenses.js licenses.json",
     "postversion": "git push && git push --tags && start https://github.com/markni/netabare/actions",
-    "deploy": "npm run license && git add . && git commit -m \"chore: update licenses\" || echo No changes to commit && git fetch && git status --branch --porcelain | findstr \"ahead\" || echo Nothing to push && (git rev-parse --abbrev-ref HEAD | findstr \"master\" && npm version patch || echo Not on master branch)"
+    "deploy": "npm run license && git add . && git commit -m \"chore: update licenses\" || echo No changes to commit && git fetch && git status -uno | findstr \"ahead\" >nul && (npm version patch && git push) || echo No changes to push"
   },
   "dependencies": {
     "axios": "^1.6.7",
