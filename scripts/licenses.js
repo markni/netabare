@@ -17,8 +17,12 @@ async function sanitizeJson() {
 
     // Remove the 'path' key from each entry
     for (const packageName of Object.keys(json)) {
-      delete json[packageName].path
-      delete json[packageName].licenseFile
+      if (packageName.startsWith('netabare')) {
+        delete json[packageName]
+      } else {
+        delete json[packageName].path
+        delete json[packageName].licenseFile
+      }
     }
 
     // Write the modified data back to a new JSON file
