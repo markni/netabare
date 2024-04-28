@@ -386,7 +386,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/negotiator"
     },
-    "netabare@3.0.1": {
+    "netabare@3.0.2": {
         "licenses": "MIT"
     },
     "object-inspect@1.13.1": {
