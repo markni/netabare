@@ -1,6 +1,6 @@
 {
   "name": "netabare",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "private": false,
   "license": "MIT",
   "type": "module",
@@ -14,10 +14,7 @@
     "license": "license-checker --production --json --out licenses.json --relativeLicensePath && node scripts/licenses.js licenses.json",
     "postversion": "git push && git push --tags && start https://github.com/markni/netabare/actions",
     "full-license-update": "npm run license && git diff-index --quiet HEAD -- || git commit -am \"chore: update licenses\" && git diff --cached --quiet || (npm version patch)"
-
-
   },
-
   "dependencies": {
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
