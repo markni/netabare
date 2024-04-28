@@ -40,7 +40,6 @@ export const useSeasonStore = defineStore('season', {
         return {
           name: entry.name_cn || entry.name,
           bgmId: entry.bgmId,
-          //todo: fix filtering in backend
           scoreHistory: entry.history
             .map((h) => {
               return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
