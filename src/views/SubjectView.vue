@@ -55,11 +55,8 @@ onUnmounted(() => {
           >{{ subject.name }}</a
         >
       </h1>
-      <div
-        v-if="subject.name_cn"
-        class="sticky top-0 bg-paper z-[48] gap-4 py-5 w-full flex flex-col items-end"
-      >
-        <h2 class="text-4xl">
+      <div class="sticky top-0 bg-paper z-[48] gap-4 py-5 w-full flex flex-col items-end">
+        <h2 class="text-4xl" v-if="subject.name_cn">
           <a
             class="hover:bg-gold"
             target="_blank"
