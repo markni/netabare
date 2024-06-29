@@ -91,11 +91,11 @@ export const useSubjectStore = defineStore('subject', {
         const x = dayjs(h.recordedAt).valueOf()
 
         if (h.rank) {
-          rankData.history.push({ x, y: h.rank })
+          rankData.history.push([x, h.rank])
         }
 
         if (h.score) {
-          scoreData.history.push({ x, y: h.score })
+          scoreData.history.push([x, h.score])
         }
 
         if (h.collect) {
@@ -103,13 +103,13 @@ export const useSubjectStore = defineStore('subject', {
             if (!collectionData.history[key]) {
               collectionData.history[key] = []
             }
-            collectionData.history[key].push({ x, y: h.collect[key] })
+            collectionData.history[key].push([x, h.collect[key]])
           }
         }
 
         if (h.rating?.count) {
-          scoreData.ten.push({ x, y: h.rating.count[10] || 0 })
-          scoreData.one.push({ x, y: h.rating.count[1] || 0 })
+          scoreData.ten.push([x, h.rating.count[10] || 0])
+          scoreData.one.push([x, h.rating.count[1] || 0])
         }
       })
 

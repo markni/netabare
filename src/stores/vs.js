@@ -10,74 +10,7 @@ export const useVsStore = defineStore('vs', {
     subjects: [null, null],
     histories: [null, null]
   }),
-  getters: {
-    epsData: (state) => {
-      if (!state.subject) return null
-      return state.subject.eps
-        .filter((ep) => ep.type === 0 && ep.airdate)
-        .reduce((acc, ep) => {
-          const airdateValue = dayjs(`${ep.airdate}T00:00:00+08:00`).valueOf()
-          if (!acc[airdateValue]) {
-            acc[airdateValue] = []
-          }
-          acc[airdateValue].push(ep)
-          return acc
-        }, {})
-    },
-    combinedData: (state) => {
-      const { history } = state
-      if (!history) return null
-      const rankData = {
-        history: []
-      }
-      const scoreData = {
-        history: [],
-        one: [],
-        ten: []
-      }
-      const collectionData = {
-        history: {}
-      }
-
-      // Initialize collection history keys
-      history.forEach((h) => {
-        if (h.collect) {
-          for (let key in h.collect) {
-            collectionData.history[key] = collectionData.history[key] || []
-          }
-        }
-      })
-
-      // Process history in one loop
-      history.forEach((h) => {
-        const x = dayjs(h.recordedAt).valueOf()
-
-        if (h.rank) {
-          rankData.history.unshift({ x, y: h.rank })
-        }
-
-        if (h.score) {
-          scoreData.history.unshift({ x, y: h.score })
-        }
-
-        if (h.collect) {
-          for (let key in h.collect) {
-            if (!collectionData.history[key]) {
-              collectionData.history[key] = []
-            }
-            collectionData.history[key].unshift({ x, y: h.collect[key] })
-          }
-        }
-
-        if (h.rating?.count) {
-          scoreData.ten.unshift({ x, y: h.rating.count[10] || 0 })
-          scoreData.one.unshift({ x, y: h.rating.count[1] || 0 })
-        }
-      })
-
-      return { rankData, scoreData, collectionData }
-    }
-  },
+  getters: {},
 
   actions: {
     async fetchSubject(subjectId, index) {
@@ -100,14 +33,14 @@ export const useVsStore = defineStore('vs', {
           bgmId: subjectId,
           scoreHistory: history
             .map((h) => {
-              return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
+              return [dayjs(h.recordedAt).valueOf(), h.score]
             })
-            .filter((h) => h.y),
+            .filter((h) => h[1] !== null && h[1] !== undefined),
           rankHistory: history
             .map((h) => {
-              return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
+              return [dayjs(h.recordedAt).valueOf(), h.rank]
             })
-            .filter((h) => h.y)
+            .filter((h) => h[1] !== null && h[1] !== undefined)
         }
       } catch (error) {
         useAppStore().setNotFoundSubjectError(true)

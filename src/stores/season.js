@@ -41,15 +41,11 @@ export const useSeasonStore = defineStore('season', {
           name: entry.name_cn || entry.name,
           bgmId: entry.bgmId,
           scoreHistory: entry.history
-            .map((h) => {
-              return { x: dayjs(h.recordedAt).valueOf(), y: h.score }
-            })
-            .filter((h) => h.y),
+            .map((h) => [dayjs(h.recordedAt).valueOf(), h.score])
+            .filter((h) => h[1]),
           rankHistory: entry.history
-            .map((h) => {
-              return { x: dayjs(h.recordedAt).valueOf(), y: h.rank }
-            })
-            .filter((h) => h.y)
+            .map((h) => [dayjs(h.recordedAt).valueOf(), h.rank])
+            .filter((h) => h[1])
         }
       })
     }
