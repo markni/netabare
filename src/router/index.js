@@ -40,7 +40,7 @@ const router = createRouter({
       component: () => import('../views/TrendingView.vue')
     },
     {
-      path: '/season',
+      path: '/season/:year?/:month?',
       name: 'season',
       // route level code-splitting
       // which is lazy-loaded when the route is visited.

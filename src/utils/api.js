@@ -17,8 +17,12 @@ export const fetchTrending = () => {
   return axios.get(`${api_root}/trending`)
 }
 
-export const fetchSeason = () => {
-  return axios.get(`${api_root}/season`)
+export const fetchSeason = (year, month) => {
+  let url = `${api_root}/season`
+  if (year && month) {
+    url += `/${year}/${month}`
+  }
+  return axios.get(url)
 }
 
 export const fetchHistory = () => {

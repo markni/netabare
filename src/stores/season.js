@@ -52,9 +52,9 @@ export const useSeasonStore = defineStore('season', {
   },
 
   actions: {
-    async fetchSeason() {
+    async fetchSeason(year, month) {
       try {
-        const fetchSeasonWithLoading = withSmartLoadingUx(fetchSeason, {
+        const fetchSeasonWithLoading = withSmartLoadingUx(() => fetchSeason(year, month), {
           delay: 500,
           minimumDisplayTime: 1000,
           setLoadingState: useAppStore().setLongPolling
