@@ -12,7 +12,8 @@
     "format": "prettier --write src/",
     "license": "license-checker --production --json --out licenses.json --relativeLicensePath && node scripts/licenses.js licenses.json",
     "postversion": "git push && git push --tags && start https://github.com/markni/netabare/actions",
-    "full-license-update": "npm run license && git diff-index --quiet HEAD -- || git commit -am \"chore: update licenses\" && git diff --cached --quiet || (npm version patch)"
+    "full-license-update": "npm run license && git diff-index --quiet HEAD -- || git commit -am \"chore: update licenses\" && git diff --cached --quiet || (npm version patch)",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^1.6.7",
@@ -38,5 +39,9 @@
   },
   "engines": {
     "node": "20.12.2"
+  },
+  "lint-staged": {
+    "*.{vue,js,jsx,cjs,mjs}": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "*.src/": "prettier --write src/"
   }
 }

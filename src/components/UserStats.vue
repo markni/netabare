@@ -1,6 +1,6 @@
 <template>
   <div v-if="user" class="flex flex-col gap-2">
-    <Avatar :user="user.user" />
+    <UserAvatar :user="user.user" />
     <div class="text-3xl font-bold mb-4">{{ user.user.nickname }}</div>
 
     <div>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import Avatar from '@/components/Avatar.vue'
+import UserAvatar from '@/components/UserAvatar.vue'
 
 defineProps({
   user: {
