@@ -18,7 +18,9 @@ const router = useRouter()
 
 const updateData = () => {
   if (chartInstance) {
+    // Define the plot line options
     const epPlotOptions = {
+      id: 'ep-plot-line',
       color: 'rgba(0,0,0,0.2)',
       width: 2,
       dashStyle: 'longdashdot',
@@ -32,13 +34,13 @@ const updateData = () => {
         },
         text: '<a target="_blank" href="https://bgm.tv/anime/browser?sort=rank" title="Bangumi排名第一页">第一页之墙</a>'
       },
-      value: 24
+      value: 24 // Adjust this value as needed
     }
 
-    chartInstance.yAxis[0].plotLinesAndBands.forEach((plotLine) => {
-      chartInstance.yAxis[0].removePlotLine(plotLine.id)
-    })
+    // Remove existing plot lines to prevent duplicates
+    chartInstance.yAxis[0].removePlotLine('ep-plot-line')
 
+    // Add the new plot line
     chartInstance.yAxis[0].addPlotLine(epPlotOptions)
 
     const currentSeries = {}
@@ -50,20 +52,47 @@ const updateData = () => {
 
     // Add or update series
     props.historyData.forEach((seriesData) => {
-      if (currentSeries[seriesData.name]) {
+      const { name, bgmId, rankHistory, color, airDate } = seriesData
+
+      // Define zones based on airDate
+      const zones = [
+        {
+          value: airDate, // All points with x < airDate
+          dashStyle: 'Dash',
+          color: color // Maintain original color
+        },
+        {
+          dashStyle: 'Solid',
+          color: color // Maintain original color
+        }
+      ]
+
+      if (currentSeries[name]) {
         // Update existing series
-        currentSeries[seriesData.name].setData(seriesData.rankHistory, false)
-        delete currentSeries[seriesData.name] // Remove from currentSeries to avoid deleting it later
+        currentSeries[name].setData(rankHistory, false)
+        currentSeries[name].update(
+          {
+            zones: zones,
+            zoneAxis: 'x' // Ensure zones are based on the x-axis
+          },
+          false
+        )
+        delete currentSeries[name] // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
         chartInstance.addSeries(
           {
-            name: seriesData.name,
-            id: seriesData.bgmId,
-            data: seriesData.rankHistory,
+            name: name,
+            id: bgmId,
+            data: rankHistory,
             type: 'line',
             yAxis: 0,
-            color: seriesData.color
+            color: color,
+            zones: zones,
+            zoneAxis: 'x', // Ensure zones are based on the x-axis
+            marker: {
+              enabled: false
+            }
           },
           false
         )
@@ -82,7 +111,7 @@ const updateData = () => {
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy() // Destroy previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -175,9 +204,9 @@ onUnmounted(() => {
   }
 })
 
-// Watch for changes in userData and globalData props and update the chart accordingly
+// Watch for changes in historyData prop and update the chart accordingly
 watch(
-  [() => props.historyData],
+  () => props.historyData,
   () => {
     updateData()
   },
@@ -185,6 +214,8 @@ watch(
 )
 </script>
 
-<template><div class="h-full" ref="chartContainer"></div></template>
+<template>
+  <div class="h-full" ref="chartContainer"></div>
+</template>
 
 <style scoped></style>

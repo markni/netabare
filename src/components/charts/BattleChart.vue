@@ -26,20 +26,36 @@ const updateData = () => {
 
     // Add or update series
     props.historyData.forEach((seriesData) => {
-      if (currentSeries[seriesData.name]) {
+      const { name, bgmId, scoreHistory, color, airDate } = seriesData
+      const zones = [
+        {
+          value: airDate, // All points with x < airDate
+          dashStyle: 'Dash',
+          color: color // Optional: maintain the original color
+        },
+        {
+          dashStyle: 'Solid',
+          color: color // Optional: maintain the original color
+        }
+      ]
+
+      if (currentSeries[name]) {
         // Update existing series
-        currentSeries[seriesData.name].setData(seriesData.scoreHistory, false)
-        delete currentSeries[seriesData.name] // Remove from currentSeries to avoid deleting it later
+        currentSeries[name].setData(scoreHistory, false)
+        currentSeries[name].update({ zones }, false)
+        delete currentSeries[name] // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
         chartInstance.addSeries(
           {
-            name: seriesData.name,
-            id: seriesData.bgmId,
-            data: seriesData.scoreHistory,
+            name: name,
+            id: bgmId,
+            data: scoreHistory,
             type: 'spline',
             yAxis: 0,
-            color: seriesData.color
+            color: color,
+            zones: zones,
+            zoneAxis: 'x' // Ensure zones are based on the x-axis
           },
           false
         )
@@ -145,9 +161,9 @@ onUnmounted(() => {
   }
 })
 
-// Watch for changes in userData and globalData props and update the chart accordingly
+// Watch for changes in historyData prop and update the chart accordingly
 watch(
-  [() => props.historyData],
+  () => props.historyData,
   () => {
     updateData()
   },
@@ -155,6 +171,8 @@ watch(
 )
 </script>
 
-<template><div class="h-full" ref="chartContainer"></div></template>
+<template>
+  <div class="h-full" ref="chartContainer"></div>
+</template>
 
 <style scoped></style>

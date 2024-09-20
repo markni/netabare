@@ -38,6 +38,7 @@ export const useSeasonStore = defineStore('season', {
       if (!state.season) return null
       return state.season.map((entry) => {
         return {
+          airDate: dayjs(entry.air_date).valueOf(),
           name: entry.name_cn || entry.name,
           bgmId: entry.bgmId,
           scoreHistory: entry.history
