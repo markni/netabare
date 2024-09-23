@@ -1,6 +1,6 @@
 import axios from '@/utils/axios'
 
-let api_root = `${window.location.protocol}//api.netaba.re`
+let api_root = `https://api.netaba.re`
 if (import.meta.env.MODE === 'development') {
   api_root = 'http://localhost:8888'
 }

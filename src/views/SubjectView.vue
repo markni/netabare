@@ -100,9 +100,9 @@ onUnmounted(() => {
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           评分
-          <DeltaDisplay :delta="delta.score" />
+          <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
         </div>
-        <div class="text-8xl">{{ subject.rating.score }}</div>
+        <div class="text-8xl">{{ subject.rating?.score ?? 'N/A' }}</div>
       </div>
 
       <div class="aspect-square sm:aspect-[16/8] w-full">
@@ -119,9 +119,9 @@ onUnmounted(() => {
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           排名
-          <DeltaDisplay :precision="0" :delta="delta.rank" />
+          <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
         </div>
-        <div class="text-8xl">{{ subject.rank }}</div>
+        <div class="text-8xl">{{ subject.rank ?? 'N/A' }}</div>
       </div>
 
       <div class="aspect-square sm:aspect-[16/8] w-full">
@@ -136,9 +136,9 @@ onUnmounted(() => {
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           在看
-          <DeltaDisplay :precision="0" :delta="delta.watching" />
+          <DeltaDisplay v-if="delta?.watching !== undefined" :precision="0" :delta="delta.watching" />
         </div>
-        <div class="text-8xl">{{ subject.collection.doing }}</div>
+        <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
       </div>
 
       <div class="aspect-square sm:aspect-[16/8] w-full">
