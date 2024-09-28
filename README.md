@@ -1,35 +1,13 @@
-# netabare
+# Netaba.re
 
-This template should help get you started developing with Vue 3 in Vite.
+**Netabare** is frontend for [https://netaba.re](https://netaba.re), an analytics web app that tracks trending animes in China. It pulls data from [Bangumi](https://bgm.tv), the most popular anime review site in China, and lets you see daily changes in rankings and popularity.
 
-## Recommended IDE Setup
+Fun fact: "Netabare" is a Japanese term that means "spoiler", so spoiler alert!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Charts, Charts, and More Charts
 
-## Customize configuration
+Build with highcharts, Netabare has ton of beautiful crafted charts to help you understand the data better.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## License
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+MIT
