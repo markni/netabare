@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import Highcharts from '@/utils/highcharts'
-import { COLORS2 } from '@/constants/colors'
-import _ from 'lodash'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import Highcharts from '@/utils/highcharts';
+import { COLORS2 } from '@/constants/colors';
+import _ from 'lodash';
 
 const props = defineProps({
   historyData: {
@@ -21,16 +21,16 @@ const props = defineProps({
     type: Number,
     required: false
   }
-})
+});
 
-const chartContainer = ref(null)
-let chartInstance = null
+const chartContainer = ref(null);
+let chartInstance = null;
 
 const updateRange = () => {
   if (chartInstance) {
-    chartInstance.xAxis[0].setExtremes(props.xMin, props.xMax)
+    chartInstance.xAxis[0].setExtremes(props.xMin, props.xMax);
   }
-}
+};
 
 const updateData = () => {
   if (chartInstance) {
@@ -45,15 +45,15 @@ const updateData = () => {
         x: 5,
         useHTML: true
       }
-    }
+    };
 
     chartInstance.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
-      chartInstance.xAxis[0].removePlotLine(plotLine.id)
-    })
+      chartInstance.xAxis[0].removePlotLine(plotLine.id);
+    });
 
     Object.entries(props.epsData).forEach(([airdateValue, episodes]) => {
-      let epOption = _.cloneDeep(epPlotOptions)
-      epOption.value = Number(airdateValue)
+      let epOption = _.cloneDeep(epPlotOptions);
+      epOption.value = Number(airdateValue);
 
       // Set the label text to list all episodes for this airdate
       epOption.label.text = episodes
@@ -63,10 +63,10 @@ const updateData = () => {
               ep.sort
             } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
         )
-        .join(', ')
+        .join(', ');
 
-      chartInstance.xAxis[0].addPlotLine(epOption)
-    })
+      chartInstance.xAxis[0].addPlotLine(epOption);
+    });
 
     // Update the series data
     chartInstance.series[1].update(
@@ -74,37 +74,37 @@ const updateData = () => {
         data: props.historyData.wish
       },
       false //redraw
-    )
+    );
     chartInstance.series[2].update(
       {
         data: props.historyData.on_hold
       },
       false
-    )
+    );
     chartInstance.series[3].update(
       {
         data: props.historyData.collect
       },
       false
-    )
+    );
     chartInstance.series[4].update(
       {
         data: props.historyData.doing
       },
       false
-    )
+    );
     chartInstance.series[0].update(
       {
         data: props.historyData.dropped
       },
       true
-    )
+    );
   }
-}
+};
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -158,8 +158,8 @@ const initializeChart = () => {
           // Re-apply these extremes after reset
           setExtremes: function (e) {
             if (e.min === undefined) {
-              e.preventDefault()
-              this.setExtremes(props.xMin, props.xMax)
+              e.preventDefault();
+              this.setExtremes(props.xMin, props.xMax);
             }
           }
         }
@@ -202,39 +202,39 @@ const initializeChart = () => {
       lang: {
         thousandsSep: ''
       }
-    })
-    updateData()
-    updateRange()
+    });
+    updateData();
+    updateRange();
   }
-}
+};
 
 onMounted(() => {
-  initializeChart()
-})
+  initializeChart();
+});
 
 onUnmounted(() => {
   if (chartInstance) {
-    chartInstance.destroy()
-    chartInstance = null
+    chartInstance.destroy();
+    chartInstance = null;
   }
-})
+});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.historyData],
   () => {
-    updateData()
+    updateData();
   },
   { deep: true }
-)
+);
 
 watch(
   [() => props.xMax],
   () => {
-    updateRange()
+    updateRange();
   },
   { deep: true }
-)
+);
 </script>
 
 <template><div class="h-full" ref="chartContainer"></div></template>

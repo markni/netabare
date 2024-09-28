@@ -44,13 +44,13 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/user'
-import { storeToRefs } from 'pinia'
-import UserChart from '@/components/charts/UserChart.vue'
-import UserStats from '@/components/UserStats.vue'
-import { ref, watch } from 'vue'
-import router from '@/router/index.js'
-import texts from '../constants/texts.js'
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from 'pinia';
+import UserChart from '@/components/charts/UserChart.vue';
+import UserStats from '@/components/UserStats.vue';
+import { ref, watch } from 'vue';
+import router from '@/router/index.js';
+import texts from '../constants/texts.js';
 
 // Import the defineProps function, which is available in <script setup>
 const props = defineProps({
@@ -58,32 +58,32 @@ const props = defineProps({
     type: String, // or Number, depending on what the ID is supposed to be
     required: false
   }
-})
+});
 
-const store = useUserStore()
-const { userData, globalData, user, username } = storeToRefs(store)
+const store = useUserStore();
+const { userData, globalData, user, username } = storeToRefs(store);
 
-const bgmUserId = ref('')
+const bgmUserId = ref('');
 
 const submit = (event) => {
-  event.preventDefault() // Prevent the default form submission behavior
-  router.replace(`/user/${bgmUserId.value}`) // Redirect to the user page
+  event.preventDefault(); // Prevent the default form submission behavior
+  router.replace(`/user/${bgmUserId.value}`); // Redirect to the user page
   // Add your submission logic here
-}
+};
 if (props.id) {
-  store.fetchUser(props.id)
+  store.fetchUser(props.id);
 } else if (username.value) {
-  router.replace(`/user/${username.value}`)
+  router.replace(`/user/${username.value}`);
 } // Example user ID
 
 watch(
   [() => props.id],
   () => {
     if (props.id) {
-      store.fetchUser(props.id)
-      bgmUserId.value = props.id
+      store.fetchUser(props.id);
+      bgmUserId.value = props.id;
     }
   },
   { deep: true }
-)
+);
 </script>

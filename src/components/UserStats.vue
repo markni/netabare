@@ -33,17 +33,17 @@
 </template>
 
 <script setup>
-import UserAvatar from '@/components/UserAvatar.vue'
+import UserAvatar from '@/components/UserAvatar.vue';
 
 defineProps({
   user: {
     type: Object,
     required: true
   }
-})
+});
 
 const styles = {
   subtitle: '',
   score: 'text-4xl'
-}
+};
 </script>

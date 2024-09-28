@@ -1,5 +1,5 @@
 // Importing Pinia and other utilities
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -11,16 +11,16 @@ export const useAppStore = defineStore('app', {
   getters: {},
   actions: {
     setNetworkError(value) {
-      this.networkError = value
+      this.networkError = value;
     },
     setLongPolling(value) {
-      this.longPolling = value
+      this.longPolling = value;
     },
     setNotFoundUserError(value) {
-      this.notFoundUserError = value
+      this.notFoundUserError = value;
     },
     setNotFoundSubjectError(value) {
-      this.notFoundSubjectError = value
+      this.notFoundSubjectError = value;
     }
   }
-})
+});

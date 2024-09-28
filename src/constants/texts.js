@@ -17,7 +17,7 @@ const texts = {
   _history: '历史分布',
   _user: '个人评分',
   _experimental: '实验功能'
-}
-const _allTextCombined = Object.values(texts).join(' ')
+};
+const _allTextCombined = Object.values(texts).join(' ');
 
-export default { ...texts, _allTextCombined }
+export default { ...texts, _allTextCombined };

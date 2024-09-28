@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import Highcharts from '@/utils/highcharts'
-import { BLUE } from '@/constants/colors'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import Highcharts from '@/utils/highcharts';
+import { BLUE } from '@/constants/colors';
 
 const props = defineProps({
   historyData: {
@@ -12,10 +12,10 @@ const props = defineProps({
     type: String,
     default: BLUE
   }
-})
+});
 
-const chartContainer = ref(null)
-let chartInstance = null
+const chartContainer = ref(null);
+let chartInstance = null;
 
 const updateData = () => {
   if (chartInstance) {
@@ -24,13 +24,13 @@ const updateData = () => {
         data: props.historyData
       },
       true
-    )
+    );
   }
-}
+};
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -92,30 +92,30 @@ const initializeChart = () => {
           color: props.color
         }
       ]
-    })
-    updateData()
+    });
+    updateData();
   }
-}
+};
 
 onMounted(() => {
-  initializeChart()
-})
+  initializeChart();
+});
 
 onUnmounted(() => {
   if (chartInstance) {
-    chartInstance.destroy()
-    chartInstance = null
+    chartInstance.destroy();
+    chartInstance = null;
   }
-})
+});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.historyData],
   () => {
-    updateData()
+    updateData();
   },
   { deep: false }
-)
+);
 </script>
 
 <template><div class="h-full" ref="chartContainer"></div></template>

@@ -1,9 +1,9 @@
 // Importing Pinia and other utilities
-import { defineStore } from 'pinia'
-import { fetchSeason } from '@/utils/api.js'
-import { useAppStore } from '@/stores/app.js'
-import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js'
-import dayjs from 'dayjs'
+import { defineStore } from 'pinia';
+import { fetchSeason } from '@/utils/api.js';
+import { useAppStore } from '@/stores/app.js';
+import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
+import dayjs from 'dayjs';
 
 export const useSeasonStore = defineStore('season', {
   state: () => ({
@@ -11,31 +11,31 @@ export const useSeasonStore = defineStore('season', {
   }),
   getters: {
     rateData: (state) => {
-      if (!state.season) return null
-      let extreme = 0
+      if (!state.season) return null;
+      let extreme = 0;
       const positive = state.season.map((entry) => {
         if (entry.history[entry.history.length - 1].rating.count['10'] > extreme) {
-          extreme = entry.history[entry.history.length - 1].rating.count['10']
+          extreme = entry.history[entry.history.length - 1].rating.count['10'];
         }
         return {
           name: entry.name_cn || entry.name,
           y: entry.history[entry.history.length - 1].rating.count['10']
-        }
-      })
+        };
+      });
       const negative = state.season.map((entry) => {
         if (entry.history[entry.history.length - 1].rating.count['1'] > extreme) {
-          extreme = entry.history[entry.history.length - 1].rating.count['1']
+          extreme = entry.history[entry.history.length - 1].rating.count['1'];
         }
         return {
           name: entry.name_cn || entry.name,
           y: -entry.history[entry.history.length - 1].rating.count['1']
-        }
-      })
+        };
+      });
 
-      return { positive, negative, extreme }
+      return { positive, negative, extreme };
     },
     historyData: (state) => {
-      if (!state.season) return null
+      if (!state.season) return null;
       return state.season.map((entry) => {
         return {
           airDate: dayjs(entry.air_date).valueOf(),
@@ -47,8 +47,8 @@ export const useSeasonStore = defineStore('season', {
           rankHistory: entry.history
             .map((h) => [dayjs(h.recordedAt).valueOf(), h.rank])
             .filter((h) => h[1])
-        }
-      })
+        };
+      });
     }
   },
 
@@ -59,18 +59,18 @@ export const useSeasonStore = defineStore('season', {
           delay: 500,
           minimumDisplayTime: 1000,
           setLoadingState: useAppStore().setLongPolling
-        })
+        });
 
-        const response = await fetchSeasonWithLoading()
+        const response = await fetchSeasonWithLoading();
 
-        this.season = response.data
+        this.season = response.data;
       } catch (error) {
-        console.error('Failed to fetch season:', error)
+        console.error('Failed to fetch season:', error);
         // Handle error appropriately
       }
     },
     clearSeason() {
-      this.season = null
+      this.season = null;
     }
   }
-})
+});

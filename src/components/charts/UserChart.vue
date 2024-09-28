@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import Highcharts from '@/utils/highcharts'
-import { COLORS10 } from '@/constants/colors'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import Highcharts from '@/utils/highcharts';
+import { COLORS10 } from '@/constants/colors';
 
 const props = defineProps({
   userData: {
@@ -16,24 +16,24 @@ const props = defineProps({
     type: Array,
     default: () => [] // Set default to an empty array if not provided
   }
-})
+});
 
-const chartContainer = ref(null)
-let chartInstance = null
+const chartContainer = ref(null);
+let chartInstance = null;
 
 const updateData = () => {
   if (chartInstance) {
-    chartInstance.series[0].setData(props.userData)
+    chartInstance.series[0].setData(props.userData);
     if (props.globalData && props.globalData.length) {
-      chartInstance.series[1].setData(props.globalData)
+      chartInstance.series[1].setData(props.globalData);
     }
-    chartInstance.series[1].hide() // Hide the series if no data
+    chartInstance.series[1].hide(); // Hide the series if no data
   }
-}
+};
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -43,7 +43,7 @@ const initializeChart = () => {
 
       tooltip: {
         formatter: function () {
-          return `${this.x}分：<b>${this.y}</b>部`
+          return `${this.x}分：<b>${this.y}</b>部`;
         }
       },
 
@@ -75,7 +75,7 @@ const initializeChart = () => {
 
           events: {
             legendItemClick: function () {
-              return false // Prevents toggling this series off
+              return false; // Prevents toggling this series off
             }
           }
         },
@@ -87,28 +87,28 @@ const initializeChart = () => {
         }
       ],
       colors: COLORS10
-    })
-    updateData()
+    });
+    updateData();
   }
-}
+};
 
 onMounted(() => {
-  initializeChart()
-})
+  initializeChart();
+});
 
 onUnmounted(() => {
   if (chartInstance) {
-    chartInstance.destroy()
-    chartInstance = null
+    chartInstance.destroy();
+    chartInstance = null;
   }
-})
+});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.userData, () => props.globalData],
   () => {
-    updateData()
+    updateData();
   },
   { deep: true }
-)
+);
 </script>

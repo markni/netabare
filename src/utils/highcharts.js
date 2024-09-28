@@ -1,8 +1,8 @@
 // highchartsSettings.js
-import Highcharts from 'highcharts'
-import HighchartsBoost from 'highcharts/modules/boost'
+import Highcharts from 'highcharts';
+import HighchartsBoost from 'highcharts/modules/boost';
 
-HighchartsBoost(Highcharts)
+HighchartsBoost(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
@@ -67,7 +67,7 @@ Highcharts.setOptions({
     }
   }
   // Add other global options as needed
-})
+});
 
 // Export the Highcharts object with global options set
-export default Highcharts
+export default Highcharts;

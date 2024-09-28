@@ -1,21 +1,21 @@
 <script setup>
-import { useSubjectStore } from '@/stores/subject'
-import { storeToRefs } from 'pinia'
-import { ref, onUnmounted } from 'vue'
-import ScoreChart from '@/components/charts/ScoreChart.vue'
-import RankChart from '@/components/charts/RankChart.vue'
-import CollectionChart from '@/components/charts/CollectionChart.vue'
-import DeltaDisplay from '@/components/DeltaDisplay.vue'
-import HintDiv from '@/components/HintDiv.vue'
-import _ from 'lodash'
+import { useSubjectStore } from '@/stores/subject';
+import { storeToRefs } from 'pinia';
+import { ref, onUnmounted } from 'vue';
+import ScoreChart from '@/components/charts/ScoreChart.vue';
+import RankChart from '@/components/charts/RankChart.vue';
+import CollectionChart from '@/components/charts/CollectionChart.vue';
+import DeltaDisplay from '@/components/DeltaDisplay.vue';
+import HintDiv from '@/components/HintDiv.vue';
+import _ from 'lodash';
 
 const props = defineProps({
   id: {
     type: String,
     required: true
   }
-})
-const store = useSubjectStore()
+});
+const store = useSubjectStore();
 const {
   subject,
   combinedData,
@@ -23,24 +23,24 @@ const {
   epsData,
   oneWeekBeforeFirstEpTimestamp,
   oneWeekAfterLastEpTimestamp
-} = storeToRefs(store)
+} = storeToRefs(store);
 
 /**
  * @type {Ref<UnwrapRef<'none' | 'eps' | 'disabled'>>}
  */
-const filteredBy = ref('none')
+const filteredBy = ref('none');
 
 const _setFilteredBy = (f) => {
-  filteredBy.value = f
-}
+  filteredBy.value = f;
+};
 
 store.fetchSubject(props.id).then(() => {
-  _setFilteredBy(_.isEmpty(epsData.value) ? 'disabled' : 'eps')
-})
+  _setFilteredBy(_.isEmpty(epsData.value) ? 'disabled' : 'eps');
+});
 
 onUnmounted(() => {
-  store.$reset()
-})
+  store.$reset();
+});
 </script>
 
 <template>
@@ -136,7 +136,11 @@ onUnmounted(() => {
       <div class="mt-20 flex flex-col items-end">
         <div class="text-2xl">
           在看
-          <DeltaDisplay v-if="delta?.watching !== undefined" :precision="0" :delta="delta.watching" />
+          <DeltaDisplay
+            v-if="delta?.watching !== undefined"
+            :precision="0"
+            :delta="delta.watching"
+          />
         </div>
         <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
       </div>

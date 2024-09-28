@@ -67,5 +67,5 @@
   </div>
 </template>
 <script setup>
-import licenses from '../../licenses.json'
+import licenses from '../../licenses.json';
 </script>

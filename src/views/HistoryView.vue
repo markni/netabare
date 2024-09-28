@@ -1,13 +1,13 @@
 <script setup>
-import { useHistoryStore } from '@/stores/history'
-import { storeToRefs } from 'pinia'
-import HistoryChart from '@/components/charts/HistoryChart.vue'
-import texts from '@/constants/texts.js'
+import { useHistoryStore } from '@/stores/history';
+import { storeToRefs } from 'pinia';
+import HistoryChart from '@/components/charts/HistoryChart.vue';
+import texts from '@/constants/texts.js';
 
-const store = useHistoryStore()
-const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store)
+const store = useHistoryStore();
+const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store);
 
-store.fetchHistory()
+store.fetchHistory();
 </script>
 
 <template>

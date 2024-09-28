@@ -1,14 +1,14 @@
 <script setup>
-import { storeToRefs } from 'pinia'
-import { ref, watch } from 'vue'
+import { storeToRefs } from 'pinia';
+import { ref, watch } from 'vue';
 
-import { useVsStore } from '@/stores/vs.js'
-import BattleChart from '@/components/charts/BattleChart.vue'
-import { useRouter } from 'vue-router'
-import BattleRankChart from '@/components/charts/BattleRankChart.vue'
-import FullscreenOverlay from '@/components/FullscreenOverlay.vue'
+import { useVsStore } from '@/stores/vs.js';
+import BattleChart from '@/components/charts/BattleChart.vue';
+import { useRouter } from 'vue-router';
+import BattleRankChart from '@/components/charts/BattleRankChart.vue';
+import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 
-const router = useRouter()
+const router = useRouter();
 
 const props = defineProps({
   id0: {
@@ -19,40 +19,40 @@ const props = defineProps({
     type: String,
     required: true
   }
-})
+});
 
-const store = useVsStore()
-const { histories } = storeToRefs(store)
+const store = useVsStore();
+const { histories } = storeToRefs(store);
 
-const localId0 = ref(props.id0)
-const localId1 = ref(props.id1)
+const localId0 = ref(props.id0);
+const localId1 = ref(props.id1);
 
 const submit = () => {
   router.push({
     name: 'vs',
     params: { id0: localId0.value, id1: localId1.value } // Make sure to match the parameter names in your route definition
-  })
-}
+  });
+};
 
 if (props.id0 !== props.id1) {
-  store.fetchSubject(props.id0, 0)
-  store.fetchSubject(props.id1, 1)
+  store.fetchSubject(props.id0, 0);
+  store.fetchSubject(props.id1, 1);
 
   watch(
     [() => props.id0],
     () => {
-      store.fetchSubject(props.id0, 0)
+      store.fetchSubject(props.id0, 0);
     },
     { deep: false }
-  )
+  );
 
   watch(
     [() => props.id1],
     () => {
-      store.fetchSubject(props.id1, 1)
+      store.fetchSubject(props.id1, 1);
     },
     { deep: false }
-  )
+  );
 }
 </script>
 

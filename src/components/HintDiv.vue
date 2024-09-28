@@ -10,7 +10,7 @@ defineProps({
     type: String,
     default: 'Hover for more information'
   }
-})
+});
 </script>
 
 <style scoped>

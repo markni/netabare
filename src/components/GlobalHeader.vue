@@ -1,6 +1,6 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import texts from '../constants/texts.js'
+import { RouterLink } from 'vue-router';
+import texts from '../constants/texts.js';
 </script>
 
 <template>

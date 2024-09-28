@@ -11,13 +11,13 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 // Prop 'user' is defined implicitly when using <script setup>
 const props = defineProps({
   user: Object
-})
+});
 
-const httpsUserUrl = computed(() => props.user.url.replace('http:', 'https:'))
-const httpsAvatarUrl = computed(() => props.user.avatar.large.replace('http:', 'https:'))
+const httpsUserUrl = computed(() => props.user.url.replace('http:', 'https:'));
+const httpsAvatarUrl = computed(() => props.user.avatar.large.replace('http:', 'https:'));
 </script>

@@ -1,9 +1,9 @@
 <script setup>
-import _ from 'lodash'
+import _ from 'lodash';
 
 const _getDeltaSymbol = (value) => {
-  return value >= 0 ? '▴' : '▾'
-}
+  return value >= 0 ? '▴' : '▾';
+};
 
 const props = defineProps({
   delta: {
@@ -14,7 +14,7 @@ const props = defineProps({
     type: Number,
     default: 2
   }
-})
+});
 </script>
 
 <template>

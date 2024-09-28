@@ -1,60 +1,60 @@
 <script setup>
-import { useSeasonStore } from '@/stores/season.js'
-import { storeToRefs } from 'pinia'
-import BattleChart from '@/components/charts/BattleChart.vue'
-import BattleBarChart from '@/components/charts/BattleBarChart.vue'
-import BattleRankChart from '@/components/charts/BattleRankChart.vue'
-import HintDiv from '@/components/HintDiv.vue'
-import { useRoute } from 'vue-router'
-import { onMounted, watch } from 'vue'
+import { useSeasonStore } from '@/stores/season.js';
+import { storeToRefs } from 'pinia';
+import BattleChart from '@/components/charts/BattleChart.vue';
+import BattleBarChart from '@/components/charts/BattleBarChart.vue';
+import BattleRankChart from '@/components/charts/BattleRankChart.vue';
+import HintDiv from '@/components/HintDiv.vue';
+import { useRoute } from 'vue-router';
+import { onMounted, watch } from 'vue';
 
-const store = useSeasonStore()
-const route = useRoute()
-const { historyData, rateData } = storeToRefs(store)
+const store = useSeasonStore();
+const route = useRoute();
+const { historyData, rateData } = storeToRefs(store);
 
 const getSeasonDateName = () => {
-  const { year, month } = route.params
-  const today = year && month ? new Date(year, month - 1, 1) : new Date()
-  const currentMonth = today.getMonth() // Get the current month (0-11)
-  let seasonStartMonth
+  const { year, month } = route.params;
+  const today = year && month ? new Date(year, month - 1, 1) : new Date();
+  const currentMonth = today.getMonth(); // Get the current month (0-11)
+  let seasonStartMonth;
 
   if (currentMonth >= 0 && currentMonth < 3) {
     // Jan, Feb, Mar
-    seasonStartMonth = '一月' // January
+    seasonStartMonth = '一月'; // January
   } else if (currentMonth >= 3 && currentMonth < 6) {
     // Apr, May, Jun
-    seasonStartMonth = '四月' // April
+    seasonStartMonth = '四月'; // April
   } else if (currentMonth >= 6 && currentMonth < 9) {
     // Jul, Aug, Sep
-    seasonStartMonth = '七月' // July
+    seasonStartMonth = '七月'; // July
   } else {
     // Oct, Nov, Dec
-    seasonStartMonth = '十月' // October
+    seasonStartMonth = '十月'; // October
   }
 
-  return `${today.getFullYear()}年${seasonStartMonth}`
-}
+  return `${today.getFullYear()}年${seasonStartMonth}`;
+};
 
 // Function to fetch season subjects with optional year and month
 const fetchSeason = async () => {
-  const { year, month } = route.params
+  const { year, month } = route.params;
   try {
-    await store.fetchSeason(year, month)
+    await store.fetchSeason(year, month);
   } catch (error) {
-    console.error('Failed to fetch season:', error)
+    console.error('Failed to fetch season:', error);
     // Handle error appropriately
   }
-}
+};
 
 // Fetch data on component mount
 onMounted(() => {
-  fetchSeason()
-})
+  fetchSeason();
+});
 
 // Watch for route parameter changes and fetch data accordingly
 watch(route.params, () => {
-  fetchSeason()
-})
+  fetchSeason();
+});
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup>
-import FullscreenOverlay from '@/components/FullscreenOverlay.vue'
-import texts from '@/constants/texts.js'
+import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
+import texts from '@/constants/texts.js';
 </script>
 
 <template>

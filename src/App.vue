@@ -1,13 +1,13 @@
 <script setup>
-import { RouterView } from 'vue-router'
-import { storeToRefs } from 'pinia'
-import { useAppStore } from '@/stores/app.js'
-import FullscreenOverlay from '@/components/FullscreenOverlay.vue'
-import GlobalHeader from '@/components/GlobalHeader.vue'
-import texts from '@/constants/texts.js'
+import { RouterView } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { useAppStore } from '@/stores/app.js';
+import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
+import GlobalHeader from '@/components/GlobalHeader.vue';
+import texts from '@/constants/texts.js';
 
-const store = useAppStore()
-const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store)
+const store = useAppStore();
+const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 
 console.log(`
   _   _ ______ _______       ____          _____  ______
@@ -19,7 +19,7 @@ console.log(`
 
  Star the repo or submit a pull request here:  https://github.com/markni/netabare
 
-`)
+`);
 </script>
 
 <template>

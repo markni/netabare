@@ -3,11 +3,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import Highcharts from '@/utils/highcharts'
-import _ from 'lodash'
-import dayjs from 'dayjs'
-import { COLORS10, PINK } from '@/constants/colors.js'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import Highcharts from '@/utils/highcharts';
+import _ from 'lodash';
+import dayjs from 'dayjs';
+import { COLORS10, PINK } from '@/constants/colors.js';
 
 const props = defineProps({
   historyData: {
@@ -22,21 +22,21 @@ const props = defineProps({
     type: Object,
     required: true
   }
-})
+});
 
-const chartContainer = ref(null)
-let chartInstance = null
+const chartContainer = ref(null);
+let chartInstance = null;
 
 const updateData = () => {
   if (chartInstance) {
-    chartInstance.series[1].update({ data: props.yearlyData }, false)
-    chartInstance.series[0].update({ data: props.historyData }, true)
+    chartInstance.series[1].update({ data: props.yearlyData }, false);
+    chartInstance.series[0].update({ data: props.historyData }, true);
   }
-}
+};
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -55,17 +55,17 @@ const initializeChart = () => {
         // xDateFormat: '%Y-%m-%d',
         formatter: function () {
           if (this.series.name === '年度均分') {
-            return `${dayjs(this.x).year()}年均分：<b>${this.y.toFixed(2)}</b>`
+            return `${dayjs(this.x).year()}年均分：<b>${this.y.toFixed(2)}</b>`;
           }
-          let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5))
+          let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
 
           if (!props.dic[rank]) {
-            return `Error`
+            return `Error`;
           }
 
           return `<div class="scatter-tp-title"><b>${
             props.dic[rank].name_cn || props.dic[rank].name
-          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />均分：${props.dic[rank].score}</div>`
+          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />均分：${props.dic[rank].score}</div>`;
         }
       },
       subtitle: {
@@ -87,14 +87,14 @@ const initializeChart = () => {
           animation: {
             enabled: false,
             complete: function () {
-              self.rendering = false
+              self.rendering = false;
             }
           },
           point: {
             events: {
               click: function () {
-                let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5))
-                if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`)
+                let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
+                if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`);
               }
             }
           }
@@ -170,28 +170,28 @@ const initializeChart = () => {
         }
       ],
       colors: COLORS10
-    })
-    updateData()
+    });
+    updateData();
   }
-}
+};
 
 onMounted(() => {
-  initializeChart()
-})
+  initializeChart();
+});
 
 onUnmounted(() => {
   if (chartInstance) {
-    chartInstance.destroy()
-    chartInstance = null
+    chartInstance.destroy();
+    chartInstance = null;
   }
-})
+});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.historyData],
   () => {
-    updateData()
+    updateData();
   },
   { deep: true }
-)
+);
 </script>

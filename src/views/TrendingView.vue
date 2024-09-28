@@ -1,17 +1,17 @@
 <script setup>
-import { useTrendingStore } from '@/stores/trending'
-import { storeToRefs } from 'pinia'
-import MiniScoreChart from '@/components/charts/MiniScoreChart.vue'
-import { BLUE, COLORS10, PINK } from '@/constants/colors.js'
-import DeltaDisplay from '@/components/DeltaDisplay.vue'
+import { useTrendingStore } from '@/stores/trending';
+import { storeToRefs } from 'pinia';
+import MiniScoreChart from '@/components/charts/MiniScoreChart.vue';
+import { BLUE, COLORS10, PINK } from '@/constants/colors.js';
+import DeltaDisplay from '@/components/DeltaDisplay.vue';
 
-const store = useTrendingStore()
-const { up, down, done } = storeToRefs(store)
+const store = useTrendingStore();
+const { up, down, done } = storeToRefs(store);
 
-store.fetchTrending()
+store.fetchTrending();
 
 const formatData = (history) =>
-  history.map((item) => ({ x: new Date(item.recordedAt), y: item.score }))
+  history.map((item) => ({ x: new Date(item.recordedAt), y: item.score }));
 </script>
 
 <template>

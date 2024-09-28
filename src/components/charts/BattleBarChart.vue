@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import Highcharts from '@/utils/highcharts'
-import { BLUE, PINK } from '@/constants/colors.js'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import Highcharts from '@/utils/highcharts';
+import { BLUE, PINK } from '@/constants/colors.js';
 
 const props = defineProps({
   rateData: {
@@ -13,10 +13,10 @@ const props = defineProps({
     type: String,
     required: true
   }
-})
+});
 
-const chartContainer = ref(null)
-let chartInstance = null
+const chartContainer = ref(null);
+let chartInstance = null;
 
 const updateData = () => {
   if (chartInstance) {
@@ -25,16 +25,16 @@ const updateData = () => {
       props.rateData.extreme,
       false,
       false
-    )
+    );
 
-    chartInstance.series[0].setData(props.rateData.negative, false)
-    chartInstance.series[1].setData(props.rateData.positive, true)
+    chartInstance.series[0].setData(props.rateData.negative, false);
+    chartInstance.series[1].setData(props.rateData.positive, true);
   }
-}
+};
 
 const initializeChart = () => {
   if (chartInstance) {
-    chartInstance.destroy() // Destroys previous instance if exists
+    chartInstance.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
@@ -45,7 +45,7 @@ const initializeChart = () => {
       },
       tooltip: {
         pointFormatter: function () {
-          return `${this.series.name}: ${Math.abs(this.y)}`
+          return `${this.series.name}: ${Math.abs(this.y)}`;
         }
       },
       xAxis: {
@@ -90,30 +90,30 @@ const initializeChart = () => {
           color: PINK
         }
       ]
-    })
-    updateData()
+    });
+    updateData();
   }
-}
+};
 
 onMounted(() => {
-  initializeChart()
-})
+  initializeChart();
+});
 
 onUnmounted(() => {
   if (chartInstance) {
-    chartInstance.destroy()
-    chartInstance = null
+    chartInstance.destroy();
+    chartInstance = null;
   }
-})
+});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
   [() => props.rateData],
   () => {
-    updateData()
+    updateData();
   },
   { deep: true }
-)
+);
 </script>
 
 <template><div class="h-full" ref="chartContainer"></div></template>
