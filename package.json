@@ -43,7 +43,7 @@
     "node": "20.12.2"
   },
   "lint-staged": {
-    "*.{vue,js,jsx,cjs,mjs}": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "*.src/": "prettier --write src/"
+    "*.{vue,js,jsx,cjs,mjs}": "eslint --fix --ignore-path .gitignore",
+    "src/**/*.{vue,js,jsx,cjs,mjs}": "prettier --write"
   }
 }
