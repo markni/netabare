@@ -8,7 +8,7 @@
 
 ## Charts, Charts, and More Charts
 
-Build with highcharts, Netabare has ton of beautiful crafted， fully animated charts to help you understand the data better.
+Build with highcharts, Netabare has ton of beautiful crafted, fully animated charts to help you understand the data better.
 
 ![history](media/history.gif)
 ![season](media/season.gif)
