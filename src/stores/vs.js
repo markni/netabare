@@ -31,6 +31,7 @@ export const useVsStore = defineStore('vs', {
           color: index === 0 ? BLUE : PINK,
           name: subject.name_cn || subject.name,
           bgmId: subjectId,
+          airDate: dayjs(subject.air_date).valueOf(),
           scoreHistory: history
             .map((h) => {
               return [dayjs(h.recordedAt).valueOf(), h.score];
