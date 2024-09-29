@@ -58,7 +58,7 @@ const updateData = () => {
       const zones = [
         {
           value: airDate, // All points with x < airDate
-          dashStyle: 'Dash',
+          dashStyle: 'ShortDot',
           color: color // Maintain original color
         },
         {
