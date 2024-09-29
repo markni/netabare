@@ -78,7 +78,8 @@ const initializeChart = () => {
             inside: true,
             align: 'right',
             style: {
-              fontSize: '14px',
+              fontWeight: 'normal',
+              fontSize: '16px',
               fontFamily: `'source-han-serif-sc', serif`
             },
             format: '{point.name}' // Specifying how data labels should appear
