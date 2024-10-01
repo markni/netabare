@@ -5,9 +5,16 @@ import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
+import { useThemeStore } from './stores/theme';
+import { onMounted } from 'vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
+const themeStore = useThemeStore();
+
+onMounted(() => {
+  themeStore.initTheme();
+});
 
 console.log(`
   _   _ ______ _______       ____          _____  ______
@@ -23,7 +30,7 @@ console.log(`
 </script>
 
 <template>
-  <div>
+  <div :class="{ dark: themeStore.isDarkMode }">
     <FullscreenOverlay
       v-if="networkError"
       :text="texts._lostConnection"
@@ -51,13 +58,9 @@ console.log(`
       annotation="loading"
     />
     <GlobalHeader />
-    <div class="min-h-screen bg-paper flex font-serif">
-      <div
-        :class="[
-          'bg-paper w-full p-4 mx-auto pt-10 bottom-0',
-          { 'container ': $route.path !== '/' }
-        ]"
-      >
+
+    <div class="min-h-screen bg-paper dark:bg-gray-900 flex text-black dark:text-white font-serif">
+      <div :class="['w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]">
         <RouterView />
       </div>
     </div>
@@ -66,5 +69,3 @@ console.log(`
     </div>
   </div>
 </template>
-
-<style scoped></style>

@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
+import ThemeToggle from '@/components/ThemeToggle.vue';
 </script>
 
 <template>
@@ -8,6 +9,8 @@ import texts from '../constants/texts.js';
     <nav
       class="inline-flex min-[1800px]:flex-col gap-4 pr-10 items-start justify-start bg-paper z-50"
     >
+      <ThemeToggle />
+
       <div v-if="$route.path !== '/'" class="text-gray-400 hover:text-gray-700">
         <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
       </div>

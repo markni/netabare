@@ -10,12 +10,13 @@ import {
   BLUE,
   PINK,
   BLACK
-} from './src/constants/colors.js'
-import plugin from 'tailwindcss/plugin'
-import colors from 'tailwindcss/colors.js'
+} from './src/constants/colors.js';
+import plugin from 'tailwindcss/plugin';
+import colors from 'tailwindcss/colors.js';
 
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: 'class', // Add this line to enable dark mode
   theme: {
     colors: {
       teal: TEAL,
@@ -49,8 +50,8 @@ export default {
         '.vertical-lr': {
           writingMode: 'vertical-lr'
         }
-      }
-      addUtilities(newUtilities)
+      };
+      addUtilities(newUtilities);
     })
   ]
-}
+};
