@@ -13,7 +13,7 @@ const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = s
 const themeStore = useThemeStore();
 
 onMounted(() => {
-  themeStore.initTheme();
+  // themeStore.initTheme();
 });
 
 console.log(`

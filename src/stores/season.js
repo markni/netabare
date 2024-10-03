@@ -14,21 +14,25 @@ export const useSeasonStore = defineStore('season', {
       if (!state.season) return null;
       let extreme = 0;
       const positive = state.season.map((entry) => {
-        if (entry.history[entry.history.length - 1].rating.count['10'] > extreme) {
-          extreme = entry.history[entry.history.length - 1].rating.count['10'];
+        const lastHistory = entry.history[entry.history.length - 1];
+        const count10 = lastHistory?.rating?.count['10'] || 0;
+        if (count10 > extreme) {
+          extreme = count10;
         }
         return {
           name: entry.name_cn || entry.name,
-          y: entry.history[entry.history.length - 1].rating.count['10']
+          y: count10
         };
       });
       const negative = state.season.map((entry) => {
-        if (entry.history[entry.history.length - 1].rating.count['1'] > extreme) {
-          extreme = entry.history[entry.history.length - 1].rating.count['1'];
+        const lastHistory = entry.history[entry.history.length - 1];
+        const count1 = lastHistory?.rating?.count['1'] || 0;
+        if (count1 > extreme) {
+          extreme = count1;
         }
         return {
           name: entry.name_cn || entry.name,
-          y: -entry.history[entry.history.length - 1].rating.count['1']
+          y: -count1
         };
       });
 
