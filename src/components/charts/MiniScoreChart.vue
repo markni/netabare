@@ -39,10 +39,19 @@ const initializeChart = () => {
       },
 
       plotOptions: {
-        spline: {
+        area: {
           marker: {
             enabled: false
-          }
+          },
+          fillColor: {
+            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+            stops: [
+              [0, Highcharts.color(props.color).setOpacity(0.5).get('rgba')],
+              [1, Highcharts.color(props.color).setOpacity(0).get('rgba')]
+            ]
+          },
+          lineWidth: 2,
+          threshold: null
         },
         series: {
           animation: {
@@ -85,7 +94,7 @@ const initializeChart = () => {
 
       series: [
         {
-          type: 'spline',
+          type: 'area',
           name: '评分',
           yAxis: 0,
           data: [],
