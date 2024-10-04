@@ -61,7 +61,9 @@ console.log(`
     />
     <GlobalHeader />
 
-    <div class="min-h-screen bg-paper dark:bg-gray-900 flex text-black dark:text-white font-serif">
+    <div
+      class="min-h-screen bg-paper dark:bg-paper-dark flex text-black dark:text-white font-serif"
+    >
       <div :class="['w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]">
         <RouterView />
       </div>

@@ -1,15 +1,17 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
-// import ThemeToggle from '@/components/ThemeToggle.vue';
+import ThemeToggle from '@/components/ThemeToggle.vue';
+
+const isDevelopment = import.meta.env.DEV;
 </script>
 
 <template>
   <header class="p-8 fixed top-0 left-0 z-[49]">
     <nav
-      class="inline-flex min-[1800px]:flex-col gap-4 pr-10 items-start justify-start bg-paper z-50"
+      class="inline-flex min-[1800px]:flex-col gap-4 pr-10 items-start justify-start bg-paper dark:bg-paper-dark z-50"
     >
-      <!-- <ThemeToggle /> -->
+      <ThemeToggle v-if="isDevelopment" />
 
       <div v-if="$route.path !== '/'" class="text-gray-400 hover:text-gray-700">
         <RouterLink to="/">{{ texts._backToHome }}</RouterLink>

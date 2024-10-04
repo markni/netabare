@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { BLUE, COLORS10 } from '@/constants/colors';
 import { useRouter } from 'vue-router';
+import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
   historyData: {
@@ -12,12 +13,13 @@ const props = defineProps({
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+useChartTheme(chartInstance);
 
 const router = useRouter();
 
 const updateData = () => {
-  if (chartInstance) {
+  if (chartInstance.value) {
     // Define the plot line options
     const epPlotOptions = {
       id: 'ep-plot-line',
@@ -38,15 +40,15 @@ const updateData = () => {
     };
 
     // Remove existing plot lines to prevent duplicates
-    chartInstance.yAxis[0].removePlotLine('ep-plot-line');
+    chartInstance.value.yAxis[0].removePlotLine('ep-plot-line');
 
     // Add the new plot line
-    chartInstance.yAxis[0].addPlotLine(epPlotOptions);
+    chartInstance.value.yAxis[0].addPlotLine(epPlotOptions);
 
     const currentSeries = {};
 
     // Create a map of existing series by their names for easy lookup
-    chartInstance.series.forEach((series) => {
+    chartInstance.value.series.forEach((series) => {
       currentSeries[series.name] = series;
     });
 
@@ -80,7 +82,7 @@ const updateData = () => {
         delete currentSeries[name]; // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
-        chartInstance.addSeries(
+        chartInstance.value.addSeries(
           {
             name: name,
             id: bgmId,
@@ -105,19 +107,24 @@ const updateData = () => {
     });
 
     // Redraw the chart after all operations
-    chartInstance.redraw();
+    chartInstance.value.redraw();
   }
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy(); // Destroy previous instance if exists
+  if (chartInstance.value) {
+    chartInstance.value.destroy(); // Destroy previous instance if exists
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
+    const chart = Highcharts.chart(chartContainer.value, {
       // Chart configuration options
       chart: {
-        zoomType: 'xy'
+        zoomType: 'xy',
+        events: {
+          load: function () {
+            chartInstance.value = this;
+          }
+        }
       },
 
       plotOptions: {
@@ -189,6 +196,10 @@ const initializeChart = () => {
       series: [],
       colors: COLORS10 // Use the COLORS constant
     });
+
+    // Immediately set the chartInstance
+    chartInstance.value = chart;
+
     updateData();
   }
 };
@@ -198,9 +209,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 

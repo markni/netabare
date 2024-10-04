@@ -15,7 +15,7 @@ const props = defineProps({
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 const router = useRouter();
-const { legendStyle } = useChartTheme(chartInstance);
+useChartTheme(chartInstance);
 
 const updateData = () => {
   if (chartInstance.value) {
@@ -148,8 +148,7 @@ const initializeChart = () => {
         useHTML: true,
         labelFormatter: function () {
           return `${this.name} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`;
-        },
-        ...legendStyle.value
+        }
       },
       series: [],
       colors: COLORS10 // Use the COLORS constant

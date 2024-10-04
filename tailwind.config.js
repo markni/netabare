@@ -20,7 +20,10 @@ export default {
   theme: {
     colors: {
       teal: TEAL,
-      paper: IVORY,
+      paper: {
+        DEFAULT: IVORY, // Light mode color
+        dark: DARK_GRAY // Dark mode color
+      },
       gold: GOLD,
       red: RED,
       blue: BLUE,
@@ -29,7 +32,7 @@ export default {
       lightGray: LIGHT_GRAY,
       black: BLACK,
       gray: colors.gray,
-      white: colors.white,
+      white: IVORY,
       transparent: colors.transparent
     },
     fontFamily: {

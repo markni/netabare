@@ -1,6 +1,7 @@
 import { computed, watch } from 'vue';
 import { useThemeStore } from '@/stores/theme';
 import Highcharts from '@/utils/highcharts';
+import { BLACK, IVORY } from '@/constants/colors';
 
 export function useChartTheme(chartInstance) {
   const themeStore = useThemeStore();
@@ -8,24 +9,65 @@ export function useChartTheme(chartInstance) {
 
   const legendStyle = computed(() => ({
     itemStyle: {
-      color: isDarkMode.value ? '#FFFFFF' : '#000000'
+      color: isDarkMode.value ? IVORY : BLACK
     },
     itemHoverStyle: {
-      color: Highcharts.color(isDarkMode.value ? '#FFFFFF' : '#000000')
+      color: Highcharts.color(isDarkMode.value ? IVORY : BLACK)
         .brighten(isDarkMode.value ? -0.3 : 0.3)
         .get()
     }
   }));
 
-  watch(isDarkMode, () => {
+  const dataLabelStyle = computed(() => ({
+    color: isDarkMode.value ? IVORY : BLACK
+  }));
+
+  const updateChartTheme = () => {
     if (chartInstance.value) {
       chartInstance.value.update({
-        legend: legendStyle.value
+        legend: legendStyle.value,
+        plotOptions: {
+          series: {
+            dataLabels: {
+              style: dataLabelStyle.value
+            }
+          }
+        }
       });
+
+      // Update individual series data labels
+      chartInstance.value.series.forEach((series) => {
+        if (series.options.dataLabels && series.options.dataLabels.enabled) {
+          series.update(
+            {
+              dataLabels: {
+                style: {
+                  ...series.options.dataLabels.style,
+                  ...dataLabelStyle.value
+                }
+              }
+            },
+            false
+          );
+        }
+      });
+
+      chartInstance.value.redraw();
+    }
+  };
+
+  // Watch for changes in chartInstance
+  watch(chartInstance, (newValue) => {
+    if (newValue) {
+      updateChartTheme();
     }
   });
 
+  // Watch for theme changes
+  watch(isDarkMode, updateChartTheme);
+
   return {
-    legendStyle
+    legendStyle,
+    dataLabelStyle
   };
 }

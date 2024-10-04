@@ -1,6 +1,7 @@
 // highchartsSettings.js
 import Highcharts from 'highcharts';
 import HighchartsBoost from 'highcharts/modules/boost';
+import { IVORY } from '../constants/colors';
 
 HighchartsBoost(Highcharts);
 
@@ -22,7 +23,7 @@ Highcharts.setOptions({
     backgroundColor: 'black',
     borderColor: 'none',
     style: {
-      color: 'white'
+      color: IVORY
     },
     useHTML: false,
     xDateFormat: '%Y-%m-%d'

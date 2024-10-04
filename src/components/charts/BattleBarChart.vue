@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { BLUE, PINK } from '@/constants/colors.js';
+import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
   rateData: {
@@ -16,32 +17,38 @@ const props = defineProps({
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+useChartTheme(chartInstance);
 
 const updateData = () => {
-  if (chartInstance) {
-    chartInstance.yAxis[0].setExtremes(
+  if (chartInstance.value) {
+    chartInstance.value.yAxis[0].setExtremes(
       -props.rateData.extreme,
       props.rateData.extreme,
       false,
       false
     );
 
-    chartInstance.series[0].setData(props.rateData.negative, false);
-    chartInstance.series[1].setData(props.rateData.positive, true);
+    chartInstance.value.series[0].setData(props.rateData.negative, false);
+    chartInstance.value.series[1].setData(props.rateData.positive, true);
   }
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy(); // Destroys previous instance if exists
+  if (chartInstance.value) {
+    chartInstance.value.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
+    const chart = Highcharts.chart(chartContainer.value, {
       chart: {
         type: 'bar',
         inverted: true,
-        zoomType: 'none'
+        zoomType: 'none',
+        events: {
+          load: function () {
+            chartInstance.value = this;
+          }
+        }
       },
       tooltip: {
         pointFormatter: function () {
@@ -65,7 +72,8 @@ const initializeChart = () => {
           animation: {
             defer: 1500,
             duration: 1000
-          }
+          },
+          borderWidth: 0 // Add this line to remove the border
         }
       },
       series: [
@@ -80,9 +88,10 @@ const initializeChart = () => {
             style: {
               fontWeight: 'normal',
               fontSize: '16px',
-              fontFamily: `'source-han-serif-sc', serif`
+              fontFamily: `'source-han-serif-sc', serif`,
+              textOutline: 'none'
             },
-            format: '{point.name}' // Specifying how data labels should appear
+            format: '{point.name}'
           }
         },
         {
@@ -92,6 +101,8 @@ const initializeChart = () => {
         }
       ]
     });
+
+    chartInstance.value = chart;
     updateData();
   }
 };
@@ -101,15 +112,15 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 
-// Watch for changes in userData and globalData props and update the chart accordingly
+// Watch for changes in rateData prop and update the chart accordingly
 watch(
-  [() => props.rateData],
+  () => props.rateData,
   () => {
     updateData();
   },

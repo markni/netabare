@@ -12,30 +12,40 @@ export const useSeasonStore = defineStore('season', {
   getters: {
     rateData: (state) => {
       if (!state.season) return null;
-      let extreme = 0;
+      let extreme = 0; // Tracks the highest count (either 10 or 1 rating) for scaling
+
+      // Process positive ratings (10/10 scores)
       const positive = state.season.map((entry) => {
         const lastHistory = entry.history[entry.history.length - 1];
+        // Get count of 10/10 ratings, default to 0 if not available
         const count10 = lastHistory?.rating?.count['10'] || 0;
+        // Update extreme if this count is higher
         if (count10 > extreme) {
           extreme = count10;
         }
         return {
           name: entry.name_cn || entry.name,
-          y: count10
+          y: count10 // Use count of 10/10 ratings as the y-value
         };
       });
+
+      // Process negative ratings (1/10 scores)
       const negative = state.season.map((entry) => {
         const lastHistory = entry.history[entry.history.length - 1];
+        // Get count of 1/10 ratings, default to 0 if not available
         const count1 = lastHistory?.rating?.count['1'] || 0;
+        // Update extreme if this count is higher
         if (count1 > extreme) {
           extreme = count1;
         }
         return {
           name: entry.name_cn || entry.name,
-          y: -count1
+          y: -count1 // Use negative count of 1/10 ratings as the y-value
         };
       });
 
+      // Return an object containing positive and negative data arrays,
+      // and the extreme value for scaling the chart
       return { positive, negative, extreme };
     },
     historyData: (state) => {
