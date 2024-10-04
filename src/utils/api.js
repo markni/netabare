@@ -1,8 +1,9 @@
 import axios from '@/utils/axios';
 
-let api_root = `https://api.netaba.re`;
+let api_root = 'https://api.netaba.re';
+
 if (import.meta.env.MODE === 'development') {
-  api_root = 'http://localhost:8888';
+  api_root = import.meta.env.VITE_API_ROOT || api_root;
 }
 
 export const fetchRank = (bgmId) => {

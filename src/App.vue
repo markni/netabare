@@ -13,7 +13,9 @@ const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = s
 const themeStore = useThemeStore();
 
 onMounted(() => {
-  // themeStore.initTheme();
+  if (import.meta.env.DEV) {
+    themeStore.initTheme();
+  }
 });
 
 console.log(`
