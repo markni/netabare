@@ -1,12 +1,15 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+import ThemeToggle from '@/components/ThemeToggle.vue';
+
+const route = useRoute();
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
@@ -14,6 +17,10 @@ const themeStore = useThemeStore();
 
 onMounted(() => {
   themeStore.initTheme();
+});
+
+const showThemeToggle = computed(() => {
+  return !route.path.startsWith('/user');
 });
 
 console.log(`
@@ -57,6 +64,8 @@ console.log(`
       :text="texts._loading"
       annotation="loading"
     />
+    <ThemeToggle v-if="showThemeToggle" />
+
     <GlobalHeader />
 
     <div

@@ -1,21 +1,13 @@
 <script setup>
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
-import ThemeToggle from '@/components/ThemeToggle.vue';
-import { computed } from 'vue';
-
-const route = useRoute();
-
-const showThemeToggle = computed(() => {
-  return !route.path.startsWith('/user');
-});
 </script>
 
 <template>
-  <header class="p-8 fixed top-0 left-0 z-[49]">
+  <header
+    class="p-8 fixed top-0 left-0 z-[49] transition-[background-color] duration-300 bg-paper dark:bg-paper-dark"
+  >
     <nav class="inline-flex min-[1800px]:flex-col gap-4 pr-10 items-start justify-start z-50">
-      <ThemeToggle v-if="showThemeToggle" />
-
       <div
         v-if="$route.path !== '/'"
         class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
