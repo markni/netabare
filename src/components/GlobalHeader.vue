@@ -4,11 +4,10 @@ import texts from '../constants/texts.js';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { computed } from 'vue';
 
-const isDevelopment = import.meta.env.DEV;
 const route = useRoute();
 
 const showThemeToggle = computed(() => {
-  return isDevelopment && !route.path.startsWith('/user');
+  return !route.path.startsWith('/user');
 });
 </script>
 
