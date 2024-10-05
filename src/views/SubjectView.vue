@@ -56,7 +56,7 @@ onUnmounted(() => {
         >
       </h1>
       <div
-        class="sticky top-0 bg-paper dark:bg-paper-dark z-[48] gap-4 py-5 w-full flex flex-col items-end"
+        class="sticky top-0 transition-[background-color] duration-300 bg-paper dark:bg-paper-dark z-[48] gap-4 py-5 w-full flex flex-col items-end"
       >
         <h2 class="text-4xl" v-if="subject.name_cn">
           <a
