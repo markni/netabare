@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed top-16 right-32 z-45">
+  <div
+    class="fixed top-16 right-32 z-45 opacity-5 hover:opacity-100 transition-opacity duration-[10000ms] hover:duration-300"
+  >
     <button
       @click="themeStore.toggleDarkMode"
       :class="[
@@ -67,5 +69,13 @@ const narrowLongShadow = ref(generateShadow(shadowConfig));
 <style scoped>
 .narrow-long-shadow {
   box-shadow: v-bind(narrowLongShadow);
+}
+
+.theme-toggle-transition {
+  transition: opacity 10s;
+}
+
+.theme-toggle-transition:hover {
+  transition: opacity 0.1s;
 }
 </style>

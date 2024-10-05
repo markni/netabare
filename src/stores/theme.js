@@ -12,11 +12,24 @@ export const useThemeStore = defineStore('theme', {
     },
     initTheme() {
       this.cleanupLegacyStorage();
+
+      // Check localStorage first
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark' || savedTheme === 'light') {
         this.isDarkMode = savedTheme === 'dark';
       } else {
-        this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // If not set in localStorage, check for theme query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const themeParam = urlParams.get('theme');
+
+        if (themeParam === 'dark' || themeParam === 'light') {
+          // Use theme from query parameter
+          this.isDarkMode = themeParam === 'dark';
+          localStorage.setItem('theme', themeParam);
+        } else {
+          // Default to light mode if not set by user or query
+          this.isDarkMode = false;
+        }
       }
     },
     cleanupLegacyStorage() {

@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { GOLD } from '@/constants/colors';
 import _ from 'lodash';
+import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
   historyData: {
@@ -33,16 +34,18 @@ const props = defineProps({
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+
+useChartTheme(chartInstance);
 
 const updateRange = () => {
-  if (chartInstance) {
-    chartInstance.xAxis[0].setExtremes(props.xMin, props.xMax);
+  if (chartInstance.value) {
+    chartInstance.value.xAxis[0].setExtremes(props.xMin, props.xMax);
   }
 };
 
 const updateData = () => {
-  if (chartInstance) {
+  if (chartInstance.value) {
     const epPlotOptions = {
       color: 'rgba(0,0,0,0.1)',
       width: 2,
@@ -56,8 +59,8 @@ const updateData = () => {
       }
     };
 
-    chartInstance.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
-      chartInstance.xAxis[0].removePlotLine(plotLine.id);
+    chartInstance.value.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
+      chartInstance.value.xAxis[0].removePlotLine(plotLine.id);
     });
 
     Object.entries(props.epsData).forEach(([airdateValue, episodes]) => {
@@ -74,23 +77,23 @@ const updateData = () => {
         )
         .join(', ');
 
-      chartInstance.xAxis[0].addPlotLine(epOption);
+      chartInstance.value.xAxis[0].addPlotLine(epOption);
     });
 
     // Update the series data
-    chartInstance.series[1].update(
+    chartInstance.value.series[1].update(
       {
         data: props.oneData
       },
       false //redraw
     );
-    chartInstance.series[2].update(
+    chartInstance.value.series[2].update(
       {
         data: props.tenData
       },
       false
     );
-    chartInstance.series[0].update(
+    chartInstance.value.series[0].update(
       {
         data: props.historyData
       },
@@ -100,16 +103,20 @@ const updateData = () => {
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy(); // Destroys previous instance if exists
+  if (chartInstance.value) {
+    chartInstance.value.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
-      // Chart configuration options
+    const chart = Highcharts.chart(chartContainer.value, {
       chart: {
-        zoomType: 'x'
+        backgroundColor: null,
+        zoomType: 'x',
+        events: {
+          load: function () {
+            chartInstance.value = this;
+          }
+        }
       },
-
       plotOptions: {
         spline: {
           marker: {
@@ -193,6 +200,10 @@ const initializeChart = () => {
       ],
       colors: GOLD // Use the COLORS constant
     });
+
+    // Immediately set the chartInstance
+    chartInstance.value = chart;
+
     updateData();
     updateRange();
   }
@@ -203,9 +214,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 

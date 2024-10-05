@@ -3,11 +3,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import _ from 'lodash';
 import dayjs from 'dayjs';
 import { COLORS10, PINK } from '@/constants/colors.js';
+import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
   historyData: {
@@ -25,25 +26,32 @@ const props = defineProps({
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+
+useChartTheme(chartInstance);
 
 const updateData = () => {
-  if (chartInstance) {
-    chartInstance.series[1].update({ data: props.yearlyData }, false);
-    chartInstance.series[0].update({ data: props.historyData }, true);
+  if (chartInstance.value) {
+    chartInstance.value.series[1].update({ data: props.yearlyData }, false);
+    chartInstance.value.series[0].update({ data: props.historyData }, true);
   }
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy(); // Destroys previous instance if exists
+  if (chartInstance.value) {
+    chartInstance.value.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
+    const chart = Highcharts.chart(chartContainer.value, {
       chart: {
         type: 'scatter',
         zoomType: 'xy',
-        backgroundColor: null
+        backgroundColor: null,
+        events: {
+          load: function () {
+            chartInstance.value = this;
+          }
+        }
       },
       boost: {
         enabled: true,
@@ -171,6 +179,10 @@ const initializeChart = () => {
       ],
       colors: COLORS10
     });
+
+    // Immediately set the chartInstance
+    chartInstance.value = chart;
+
     updateData();
   }
 };
@@ -180,9 +192,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 

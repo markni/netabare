@@ -1,15 +1,21 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import texts from '../constants/texts.js';
 import ThemeToggle from '@/components/ThemeToggle.vue';
+import { computed } from 'vue';
 
 const isDevelopment = import.meta.env.DEV;
+const route = useRoute();
+
+const showThemeToggle = computed(() => {
+  return isDevelopment && !route.path.startsWith('/user');
+});
 </script>
 
 <template>
   <header class="p-8 fixed top-0 left-0 z-[49]">
     <nav class="inline-flex min-[1800px]:flex-col gap-4 pr-10 items-start justify-start z-50">
-      <ThemeToggle v-if="isDevelopment" />
+      <ThemeToggle v-if="showThemeToggle" />
 
       <div
         v-if="$route.path !== '/'"
