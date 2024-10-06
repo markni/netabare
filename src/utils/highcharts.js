@@ -47,6 +47,15 @@ Highcharts.setOptions({
     enabled: false
   },
   plotOptions: {
+    spline: {
+      // lineWidth: 3,
+      // shadow: {
+      //   color: 'rgba(255, 255, 255, 0.5)', // White shadow for glow
+      //   width: 8,
+      //   offsetX: 0,
+      //   offsetY: 0
+      // }
+    },
     series: {
       states: {
         inactive: {
@@ -67,6 +76,7 @@ Highcharts.setOptions({
       fontFamily: `'source-han-serif-sc', serif`
     }
   }
+
   // Add other global options as needed
 });
 

@@ -1,7 +1,7 @@
 import { computed, watch } from 'vue';
 import { useThemeStore } from '@/stores/theme';
 import Highcharts from '@/utils/highcharts';
-import { BLACK, IVORY } from '@/constants/colors';
+import { BLACK, GRID_LINE_DEFAULT, IVORY, GRID_LINE_DARK } from '@/constants/colors';
 
 export function useChartTheme(chartInstance) {
   const themeStore = useThemeStore();
@@ -22,6 +22,10 @@ export function useChartTheme(chartInstance) {
     color: isDarkMode.value ? IVORY : BLACK
   }));
 
+  const yAxisStyle = computed(() => ({
+    gridLineColor: isDarkMode.value ? GRID_LINE_DARK : GRID_LINE_DEFAULT
+  }));
+
   const updateChartTheme = () => {
     if (chartInstance.value) {
       chartInstance.value.update({
@@ -32,7 +36,8 @@ export function useChartTheme(chartInstance) {
               style: dataLabelStyle.value
             }
           }
-        }
+        },
+        yAxis: yAxisStyle.value
       });
 
       // Update individual series data labels
@@ -68,6 +73,7 @@ export function useChartTheme(chartInstance) {
 
   return {
     legendStyle,
-    dataLabelStyle
+    dataLabelStyle,
+    yAxisStyle
   };
 }
