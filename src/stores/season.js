@@ -46,6 +46,7 @@ export const useSeasonStore = defineStore('season', {
 
       // Return an object containing positive and negative data arrays,
       // and the extreme value for scaling the chart
+      console.log({ positive, negative, extreme });
       return { positive, negative, extreme };
     },
     historyData: (state) => {

@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { BLUE } from '@/constants/colors';
+import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
   historyData: {
@@ -15,25 +16,21 @@ const props = defineProps({
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+useChartTheme(chartInstance);
 
 const updateData = () => {
-  if (chartInstance) {
-    chartInstance.series[0].update(
-      {
-        data: props.historyData
-      },
-      true
-    );
+  if (chartInstance.value) {
+    chartInstance.value.series[0].setData(props.historyData, true);
   }
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy(); // Destroys previous instance if exists
+  if (chartInstance.value) {
+    chartInstance.value.destroy(); // Destroys previous instance if exists
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
+    const chart = Highcharts.chart(chartContainer.value, {
       tooltip: {
         enabled: false
       },
@@ -73,16 +70,8 @@ const initializeChart = () => {
       ],
       xAxis: {
         type: 'datetime',
-        dateTimeLabelFormats: {
-          millisecond: '%m-%d',
-          second: '%m-%d',
-          minute: '%m-%d',
-          hour: '%m-%d',
-          day: '%m-%d',
-          week: '%m-%d',
-          month: '%m-%d',
-          year: '%m-%d'
-        },
+        tickWidth: 0, // This hides the ticks
+
         labels: {
           enabled: false
         }
@@ -102,6 +91,10 @@ const initializeChart = () => {
         }
       ]
     });
+
+    // Immediately set the chartInstance
+    chartInstance.value = chart;
+
     updateData();
   }
 };
@@ -111,15 +104,15 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 
-// Watch for changes in userData and globalData props and update the chart accordingly
+// Watch for changes in historyData prop and update the chart accordingly
 watch(
-  [() => props.historyData],
+  () => props.historyData,
   () => {
     updateData();
   },

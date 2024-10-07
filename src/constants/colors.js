@@ -7,7 +7,8 @@ export const GOLD = '#e4ae4a';
 export const DARK_GRAY = colors.neutral[900]; // ZINC-900
 export const LIGHT_GRAY = colors.neutral[500]; // GRAY-500
 export const BLUE = '#3194FF';
-export const PINK = '#ff989f';
+export const PINK = '#FF3194';
+
 export const BLACK = colors.black;
 
 export const COLORS10 = [

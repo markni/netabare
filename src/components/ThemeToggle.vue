@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute top-8 right-16 z-45 opacity-5 hover:opacity-100 transition-opacity duration-[10000ms] hover:duration-500"
+    class="fixed top-8 right-16 z-50 opacity-5 hover:opacity-100 transition-opacity duration-[10000ms] hover:duration-500"
   >
     <button
       @click="themeStore.toggleDarkMode"

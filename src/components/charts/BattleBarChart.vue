@@ -73,7 +73,8 @@ const initializeChart = () => {
             defer: 1500,
             duration: 1000
           },
-          borderWidth: 0 // Add this line to remove the border
+          pointWidth: 20 // Add this line to set a fixed width for bars
+          // or use pointPadding: 0.1, // to set the padding between bars
         }
       },
       series: [
@@ -83,7 +84,7 @@ const initializeChart = () => {
           color: BLUE,
           dataLabels: {
             enabled: true,
-            inside: true,
+            inside: false,
             align: 'right',
             style: {
               fontWeight: 'normal',

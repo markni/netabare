@@ -71,9 +71,5 @@ export function useChartTheme(chartInstance) {
   // Watch for theme changes
   watch(isDarkMode, updateChartTheme);
 
-  return {
-    legendStyle,
-    dataLabelStyle,
-    yAxisStyle
-  };
+  return;
 }
