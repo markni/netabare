@@ -4,11 +4,7 @@
   >
     <button
       @click="themeStore.toggleDarkMode"
-      :class="[
-        'w-12 h-12 rounded-full flex items-center justify-center overflow-hidden',
-        'bg-paper',
-        'narrow-long-shadow relative'
-      ]"
+      class="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-paper narrow-long-shadow relative"
     >
       <!-- Adjusted round div clipped inside the button -->
       <div
