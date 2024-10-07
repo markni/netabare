@@ -40,9 +40,11 @@ export const useSubjectStore = defineStore('subject', {
     },
     oneWeekAfterLastEpTimestamp: (state) => {
       if (state.subject?.eps) {
-        // Sorting episodes by airdate
+        const currentDate = dayjs();
+        // Sorting episodes by airdate and filtering out those more than 10 years from now
         const sortedEps = [...state.subject.eps]
           .filter((ep) => ep.type === 0 && ep.airdate)
+          .filter((ep) => dayjs(ep.airdate).isBefore(currentDate.add(10, 'years')))
           .sort((a, b) => new Date(a.airdate) - new Date(b.airdate));
         // Get the last episode's airdate and add one week
         return sortedEps.length > 0
