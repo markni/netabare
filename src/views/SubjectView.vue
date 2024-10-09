@@ -35,7 +35,9 @@ const _setFilteredBy = (f) => {
 };
 
 store.fetchSubject(props.id).then(() => {
-  _setFilteredBy(_.isEmpty(epsData.value) ? 'disabled' : 'eps');
+  const airDate = new Date(subject.value.air_date);
+  const cutoffDate = new Date('2018-05-16');
+  _setFilteredBy(_.isEmpty(epsData.value) || airDate < cutoffDate ? 'disabled' : 'eps');
 });
 
 onUnmounted(() => {
