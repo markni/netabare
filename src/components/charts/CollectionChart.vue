@@ -1,9 +1,9 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef, computed } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { COLORS2 } from '@/constants/colors';
-import _ from 'lodash';
 import { useChartTheme } from '@/composables/useChartTheme';
+import { useEpisodePlot } from '@/composables/useEpisodePlot';
 
 const props = defineProps({
   historyData: {
@@ -29,6 +29,11 @@ const chartInstance = shallowRef(null);
 
 useChartTheme(chartInstance);
 
+const { drawPlotLines } = useEpisodePlot(
+  chartInstance,
+  computed(() => props.epsData)
+);
+
 const updateRange = () => {
   if (chartInstance.value) {
     chartInstance.value.xAxis[0].setExtremes(props.xMin, props.xMax);
@@ -37,39 +42,7 @@ const updateRange = () => {
 
 const updateData = () => {
   if (chartInstance.value) {
-    const epPlotOptions = {
-      color: 'rgba(0,0,0,0.1)',
-      width: 2,
-      dashStyle: 'longdashdot',
-      label: {
-        verticalAlign: 'bottom',
-        textAlign: 'right',
-        y: -10,
-        x: 5,
-        useHTML: true
-      }
-    };
-
-    chartInstance.value.xAxis[0].plotLinesAndBands.forEach((plotLine) => {
-      chartInstance.value.xAxis[0].removePlotLine(plotLine.id);
-    });
-
-    Object.entries(props.epsData).forEach(([airdateValue, episodes]) => {
-      let epOption = _.cloneDeep(epPlotOptions);
-      epOption.value = Number(airdateValue);
-
-      // Set the label text to list all episodes for this airdate
-      epOption.label.text = episodes
-        .map(
-          (ep) =>
-            `<a target="_blank" href="https://bgm.tv/ep/${ep.id}">ep.${
-              ep.sort
-            } ${episodes.length > 1 ? '' : ep.name_cn || ep.name}</a>`
-        )
-        .join(', ');
-
-      chartInstance.value.xAxis[0].addPlotLine(epOption);
-    });
+    drawPlotLines();
 
     // Update the series data
     chartInstance.value.series[1].update(
