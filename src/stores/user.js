@@ -19,7 +19,7 @@ export const useUserStore = defineStore('user', {
       let g = [];
       for (let key in UIData.gCount) {
         if (key !== '-1') {
-          g.push({ x: parseInt(key), y: UIData.gCount[key] });
+          g.unshift(UIData.gCount[key]);
         }
       }
 
@@ -32,7 +32,7 @@ export const useUserStore = defineStore('user', {
       let r = [];
       for (let key in UIData.count) {
         if (key !== '-1') {
-          r.push({ x: parseInt(key), y: UIData.count[key] });
+          r.unshift(UIData.count[key]);
         }
       }
 
