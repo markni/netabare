@@ -1,7 +1,7 @@
 <script setup>
 import { useSubjectStore } from '@/stores/subject';
 import { storeToRefs } from 'pinia';
-import { ref, onUnmounted } from 'vue';
+import { ref, onUnmounted, computed } from 'vue';
 import ScoreChart from '@/components/charts/ScoreChart.vue';
 import RankChart from '@/components/charts/RankChart.vue';
 import CollectionChart from '@/components/charts/CollectionChart.vue';
@@ -43,6 +43,27 @@ store.fetchSubject(props.id).then(() => {
 onUnmounted(() => {
   store.$reset();
 });
+
+// Function to decode HTML entities
+
+// Todo: move this to backend
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'");
+}
+
+const decodedName = computed(() => {
+  return decodeHtmlEntities(subject.value.name || '');
+});
+
+const decodedNameCn = computed(() => {
+  return decodeHtmlEntities(subject.value.name_cn || '');
+});
 </script>
 
 <template>
@@ -54,7 +75,7 @@ onUnmounted(() => {
           target="_blank"
           title="访问Bangumi上的条目"
           :href="'https://bgm.tv/subject/' + id"
-          >{{ subject.name }}</a
+          >{{ decodedName }}</a
         >
       </h1>
       <div
@@ -66,7 +87,7 @@ onUnmounted(() => {
             target="_blank"
             title="访问Bangumi上的条目"
             :href="'https://bgm.tv/subject/' + id"
-            >{{ subject.name_cn }}</a
+            >{{ decodedNameCn }}</a
           >
         </h2>
 
