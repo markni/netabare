@@ -38,7 +38,7 @@ const initializeChart = () => {
   if (chartContainer.value) {
     chartInstance = Highcharts.chart(chartContainer.value, {
       chart: {
-        type: 'column'
+        type: 'bar' // Changed from 'column' to 'bar'
       },
 
       tooltip: {
@@ -48,7 +48,8 @@ const initializeChart = () => {
       },
 
       plotOptions: {
-        column: {
+        bar: {
+          // Changed from 'column' to 'bar'
           colorByPoint: true,
           pointPadding: 0,
           dataLabels: {
@@ -64,7 +65,9 @@ const initializeChart = () => {
           format: '{value:.0f}'
         }
       },
-      xAxis: {},
+      xAxis: {
+        categories: ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1']
+      },
       series: [
         {
           name: '个人评分',

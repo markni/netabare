@@ -1,7 +1,7 @@
 <script setup>
 import { useSubjectStore } from '@/stores/subject';
 import { storeToRefs } from 'pinia';
-import { ref, onUnmounted } from 'vue';
+import { ref, onUnmounted, computed } from 'vue';
 import ScoreChart from '@/components/charts/ScoreChart.vue';
 import RankChart from '@/components/charts/RankChart.vue';
 import CollectionChart from '@/components/charts/CollectionChart.vue';
@@ -35,11 +35,34 @@ const _setFilteredBy = (f) => {
 };
 
 store.fetchSubject(props.id).then(() => {
-  _setFilteredBy(_.isEmpty(epsData.value) ? 'disabled' : 'eps');
+  const airDate = new Date(subject.value.air_date);
+  const cutoffDate = new Date('2018-05-16');
+  _setFilteredBy(_.isEmpty(epsData.value) || airDate < cutoffDate ? 'disabled' : 'eps');
 });
 
 onUnmounted(() => {
   store.$reset();
+});
+
+// Function to decode HTML entities
+
+// Todo: move this to backend
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'");
+}
+
+const decodedName = computed(() => {
+  return decodeHtmlEntities(subject.value.name || '');
+});
+
+const decodedNameCn = computed(() => {
+  return decodeHtmlEntities(subject.value.name_cn || '');
 });
 </script>
 
@@ -52,7 +75,7 @@ onUnmounted(() => {
           target="_blank"
           title="访问Bangumi上的条目"
           :href="'https://bgm.tv/subject/' + id"
-          >{{ subject.name }}</a
+          >{{ decodedName }}</a
         >
       </h1>
       <div
@@ -64,7 +87,7 @@ onUnmounted(() => {
             target="_blank"
             title="访问Bangumi上的条目"
             :href="'https://bgm.tv/subject/' + id"
-            >{{ subject.name_cn }}</a
+            >{{ decodedNameCn }}</a
           >
         </h2>
 
@@ -99,62 +122,68 @@ onUnmounted(() => {
         如何自定义时间范围？
       </HintDiv>
 
-      <div class="mt-20 flex flex-col items-end">
-        <div class="text-2xl">
-          评分
-          <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
+      <!-- Section 1: Score -->
+      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-16">
+        <div class="mt-20 flex flex-col items-end">
+          <div class="text-2xl">
+            评分
+            <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
+          </div>
+          <div class="text-8xl">{{ subject.rating?.score ?? 'N/A' }}</div>
         </div>
-        <div class="text-8xl">{{ subject.rating?.score ?? 'N/A' }}</div>
-      </div>
-
-      <div class="aspect-square sm:aspect-[16/8] w-full">
-        <ScoreChart
-          :eps-data="epsData"
-          :ten-data="combinedData.scoreData.ten"
-          :one-data="combinedData.scoreData.one"
-          :history-data="combinedData.scoreData.history"
-          :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
-          :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
-        />
-      </div>
-
-      <div class="mt-20 flex flex-col items-end">
-        <div class="text-2xl">
-          排名
-          <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
-        </div>
-        <div class="text-8xl">{{ subject.rank ?? 'N/A' }}</div>
-      </div>
-
-      <div class="aspect-square sm:aspect-[16/8] w-full">
-        <RankChart
-          :eps-data="epsData"
-          :history-data="combinedData.rankData.history"
-          :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
-          :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
-        />
-      </div>
-
-      <div class="mt-20 flex flex-col items-end">
-        <div class="text-2xl">
-          在看
-          <DeltaDisplay
-            v-if="delta?.watching !== undefined"
-            :precision="0"
-            :delta="delta.watching"
+        <div class="aspect-square sm:aspect-[16/8] w-full">
+          <ScoreChart
+            :eps-data="epsData"
+            :ten-data="combinedData.scoreData.ten"
+            :one-data="combinedData.scoreData.one"
+            :history-data="combinedData.scoreData.history"
+            :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
+            :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
           />
         </div>
-        <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
-      </div>
+      </section>
 
-      <div class="aspect-square sm:aspect-[16/8] w-full">
-        <CollectionChart
-          :eps-data="epsData"
-          :history-data="combinedData.collectionData.history"
-          :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
-          :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
-        />
-      </div>
+      <!-- Section 2: Rank -->
+      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+        <div class="mt-20 flex flex-col items-end">
+          <div class="text-2xl">
+            排名
+            <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
+          </div>
+          <div class="text-8xl">{{ subject.rank ?? 'N/A' }}</div>
+        </div>
+        <div class="aspect-square sm:aspect-[16/8] w-full">
+          <RankChart
+            :eps-data="epsData"
+            :history-data="combinedData.rankData.history"
+            :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
+            :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
+          />
+        </div>
+      </section>
+
+      <!-- Section 3: Collection -->
+      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+        <div class="mt-20 flex flex-col items-end">
+          <div class="text-2xl">
+            在看
+            <DeltaDisplay
+              v-if="delta?.watching !== undefined"
+              :precision="0"
+              :delta="delta.watching"
+            />
+          </div>
+          <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
+        </div>
+        <div class="aspect-square sm:aspect-[16/8] w-full">
+          <CollectionChart
+            :eps-data="epsData"
+            :history-data="combinedData.collectionData.history"
+            :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
+            :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
+          />
+        </div>
+      </section>
 
       <div v-if="props.id !== '400602'" class="bg-pink">
         <RouterLink :to="`/${props.id}/vs/400602`">实验功能：对比「葬送的芙莉莲」</RouterLink>
