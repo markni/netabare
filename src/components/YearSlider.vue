@@ -68,7 +68,7 @@ function pointerEvents(e) {
 }
 
 function updateDialPosition() {
-  if (!canSlide.value) return;
+  // if (!canSlide.value) return;
 
   const index = props.years.indexOf(selectedYear.value);
   const deg = (index * 360) / (totalYears + 1) + 360 / (totalYears + 1);

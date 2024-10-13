@@ -91,6 +91,8 @@ watch(
   (newYears) => {
     if (newYears.length > 0) {
       selectedYear.value = newYears[newYears.length - 1];
+    } else {
+      selectedYear.value = null;
     }
   },
   { immediate: true }
