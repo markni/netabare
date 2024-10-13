@@ -1,23 +1,23 @@
 {
-    "@babel/helper-string-parser@7.24.8": {
+    "@babel/helper-string-parser@7.25.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
         "url": "https://babel.dev/team"
     },
-    "@babel/helper-validator-identifier@7.24.7": {
+    "@babel/helper-validator-identifier@7.25.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
         "url": "https://babel.dev/team"
     },
-    "@babel/parser@7.25.3": {
+    "@babel/parser@7.25.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
         "url": "https://babel.dev/team"
     },
-    "@babel/types@7.25.2": {
+    "@babel/types@7.25.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
@@ -28,52 +28,52 @@
         "repository": "https://github.com/jridgewell/sourcemap-codec",
         "publisher": "Rich Harris"
     },
-    "@vue/compiler-core@3.4.38": {
+    "@vue/compiler-core@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-dom@3.4.38": {
+    "@vue/compiler-dom@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-sfc@3.4.38": {
+    "@vue/compiler-sfc@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-ssr@3.4.38": {
+    "@vue/compiler-ssr@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/devtools-api@6.6.3": {
+    "@vue/devtools-api@6.6.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-devtools",
         "publisher": "Guillaume Chau"
     },
-    "@vue/reactivity@3.4.38": {
+    "@vue/reactivity@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/runtime-core@3.4.38": {
+    "@vue/runtime-core@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/runtime-dom@3.4.38": {
+    "@vue/runtime-dom@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/server-renderer@3.4.38": {
+    "@vue/server-renderer@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/shared@3.4.38": {
+    "@vue/shared@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
@@ -84,7 +84,7 @@
         "publisher": "Alex Indigo",
         "email": "iam@alexindigo.com"
     },
-    "axios@1.7.4": {
+    "axios@1.7.7": {
         "licenses": "MIT",
         "repository": "https://github.com/axios/axios",
         "publisher": "Matt Zabriskie"
@@ -102,7 +102,7 @@
         "publisher": "Fredrik Nicol",
         "email": "fredrik.nicol@gmail.com"
     },
-    "dayjs@1.11.12": {
+    "dayjs@1.11.13": {
         "licenses": "MIT",
         "repository": "https://github.com/iamkun/dayjs",
         "publisher": "iamkun"
@@ -176,7 +176,7 @@
         "repository": "https://github.com/alexeyraspopov/picocolors",
         "publisher": "Alexey Raspopov"
     },
-    "pinia@2.2.2": {
+    "pinia@2.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/pinia",
         "publisher": "Eduardo San Martin Morote",
@@ -214,13 +214,13 @@
         "publisher": "Anthony Fu",
         "email": "anthonyfu117@hotmail.com"
     },
-    "vue-router@4.4.3": {
+    "vue-router@4.4.5": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/router",
         "publisher": "Eduardo San Martin Morote",
         "email": "posva13@gmail.com"
     },
-    "vue@3.4.38": {
+    "vue@3.5.10": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
