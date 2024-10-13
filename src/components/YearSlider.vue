@@ -115,8 +115,6 @@ function rangeSliderStop() {
 }
 
 function rangeSliderUpdate(e) {
-  if (!props.years.length) return;
-
   e.preventDefault();
 
   const position = pointerEvents(e);
@@ -145,7 +143,9 @@ function rangeSliderUpdate(e) {
 }
 
 onMounted(() => {
-  updateDialPosition();
+  if (props.years.length) {
+    updateDialPosition();
+  }
 });
 
 // Watch for changes in selectedYear and emit the update
@@ -172,7 +172,7 @@ watch(selectedYear, (newYear) => {
   margin-left: -10px;
   position: absolute;
   top: -10px;
-  /* transform: translate(93px, 5px); */
+  transform: translate(47px, 10px);
   width: 20px;
   z-index: 40;
 }
