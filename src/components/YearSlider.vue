@@ -25,7 +25,7 @@
 <script setup>
 import UserAvatar from '@/components/UserAvatar.vue';
 
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 
 const props = defineProps({
   years: {
@@ -35,21 +35,22 @@ const props = defineProps({
   user: {
     type: Object,
     required: true
+  },
+  selectedYear: {
+    type: Number,
+    required: true
   }
 });
 
-const emit = defineEmits(['update:year']);
+const emit = defineEmits(['update:selectedYear']);
 
-const selectedYear = ref(0);
 const canSlide = ref(false);
 const range = ref(null);
 const dial = ref(null);
 
-const maxYear = Math.max(...props.years);
-const totalYears = props.years.length;
+const totalYears = computed(() => props.years.length);
 
 // Initialize selectedYear to maxYear
-selectedYear.value = maxYear;
 
 function pointerEvents(e) {
   let x = 0;
@@ -68,12 +69,10 @@ function pointerEvents(e) {
 }
 
 function updateDialPosition() {
-  // if (!canSlide.value) return;
+  if (!range.value || !dial.value) return;
 
-  const index = props.years.indexOf(selectedYear.value);
-  const deg = (index * 360) / (totalYears + 1) + 360 / (totalYears + 1);
-
-  console.log(deg, index);
+  const index = props.years.indexOf(props.selectedYear);
+  const deg = (index * 360) / (totalYears.value + 1) + 360 / (totalYears.value + 1);
 
   const radius = range.value.clientWidth / 2;
   const x = Math.ceil((radius - 5) * Math.sin((deg * Math.PI) / 180)) + radius;
@@ -128,16 +127,16 @@ function rangeSliderUpdate(e) {
   const atan = Math.atan2(coords.x - radius, coords.y - radius);
   let deg = (-atan / (Math.PI / 180) + 180) % 360;
 
-  const index = Math.round((deg * (totalYears - 1)) / 360);
+  const index = Math.round((deg * (totalYears.value - 1)) / 360);
 
-  const adjustedIndex = Math.min(Math.max(index, 0), totalYears - 1);
+  const adjustedIndex = Math.min(Math.max(index, 0), totalYears.value - 1);
 
-  const currentIndex = props.years.indexOf(selectedYear.value);
+  const currentIndex = props.years.indexOf(props.selectedYear);
   const nextSelectedYear = props.years[adjustedIndex];
 
   // Ensure the next selected year is adjacent to the current year
   if (Math.abs(adjustedIndex - currentIndex) <= 1) {
-    selectedYear.value = nextSelectedYear;
+    emit('update:selectedYear', nextSelectedYear);
     updateDialPosition();
   }
 }
@@ -149,9 +148,23 @@ onMounted(() => {
 });
 
 // Watch for changes in selectedYear and emit the update
-watch(selectedYear, (newYear) => {
-  emit('update:year', newYear);
-});
+watch(
+  () => props.selectedYear,
+  () => {
+    updateDialPosition();
+  }
+);
+
+// Watch for changes in years prop
+watch(
+  () => props.years,
+  () => {
+    if (props.years.length) {
+      updateDialPosition();
+    }
+  },
+  { deep: true }
+);
 </script>
 
 <style scoped>

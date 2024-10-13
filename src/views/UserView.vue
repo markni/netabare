@@ -9,8 +9,8 @@
     <div class="col-span-2 px-2 flex flex-col">
       <YearSlider
         :years="availableYears"
+        v-model:selectedYear="selectedYear"
         :user="currentYearData"
-        @update:year="updateSelectedYear"
       />
 
       <UserStats :user="currentYearData" />
@@ -81,17 +81,15 @@ const currentYearData = computed(() => {
   };
 });
 
-const updateSelectedYear = (year) => {
-  selectedYear.value = year;
-};
-
-// Set initial selected year to the most recent year
+// Modify the availableYears watcher
 watch(
   availableYears,
   (newYears) => {
     if (newYears.length > 0) {
+      // Always set the selectedYear to the most recent year when availableYears changes
       selectedYear.value = newYears[newYears.length - 1];
     } else {
+      // Reset selectedYear if there are no available years
       selectedYear.value = null;
     }
   },
@@ -99,8 +97,8 @@ watch(
 );
 
 const submit = (event) => {
-  event.preventDefault(); // Prevent the default form submission behavior
-  router.replace(`/user/${bgmUserId.value}`); // Redirect to the user page
+  event.preventDefault();
+  router.replace(`/user/${bgmUserId.value}`);
   // Add your submission logic here
 };
 
