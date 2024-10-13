@@ -1,6 +1,6 @@
 <template>
   <div class="avatar">
-    <a :href="httpsUserUrl" target="_blank" class="inline-block">
+    <a :href="httpsUserUrl" target="_blank" class="flex">
       <img
         :alt="user.nickname"
         :src="httpsAvatarUrl"

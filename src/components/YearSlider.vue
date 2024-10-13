@@ -1,0 +1,228 @@
+<template>
+  <div v-if="!years.length" class="mb-5">
+    <UserAvatar :user="user.user" />
+  </div>
+  <div
+    v-else
+    class="range mb-5"
+    ref="range"
+    @mousedown="rangeSliderInit"
+    @touchstart="rangeSliderInit"
+  >
+    <div class="slice left bg-lightGray opacity-10">
+      <div class="blocker bg-paper"></div>
+    </div>
+    <div class="slice right bg-lightGray opacity-10">
+      <div class="blocker bg-paper"></div>
+    </div>
+    <span class="info flex items-center justify-center">
+      <UserAvatar :user="user.user" />
+    </span>
+    <div class="dial" tabindex="0" ref="dial"></div>
+  </div>
+</template>
+
+<script setup>
+import UserAvatar from '@/components/UserAvatar.vue';
+
+import { ref, onMounted, watch } from 'vue';
+
+const props = defineProps({
+  years: {
+    type: Array,
+    required: true
+  },
+  user: {
+    type: Object,
+    required: true
+  }
+});
+
+const emit = defineEmits(['update:year']);
+
+const selectedYear = ref(0);
+const canSlide = ref(false);
+const range = ref(null);
+const dial = ref(null);
+
+const maxYear = Math.max(...props.years);
+const totalYears = props.years.length;
+
+// Initialize selectedYear to maxYear
+selectedYear.value = maxYear;
+
+function pointerEvents(e) {
+  let x = 0;
+  let y = 0;
+
+  if (e.type.startsWith('touch')) {
+    const touch = e.changedTouches[0];
+    x = touch.pageX;
+    y = touch.pageY;
+  } else {
+    x = e.pageX;
+    y = e.pageY;
+  }
+
+  return { x, y };
+}
+
+function updateDialPosition() {
+  if (!canSlide.value) return;
+
+  const index = props.years.indexOf(selectedYear.value);
+  const deg = (index * 360) / (totalYears + 1) + 360 / (totalYears + 1);
+
+  console.log(deg, index);
+
+  const radius = range.value.clientWidth / 2;
+  const x = Math.ceil((radius - 5) * Math.sin((deg * Math.PI) / 180)) + radius;
+  const y = Math.ceil((radius - 5) * -Math.cos((deg * Math.PI) / 180)) + radius;
+
+  dial.value.style.transform = `translate(${x}px, ${y}px)`;
+
+  const leftBlocker = range.value.querySelector('.left .blocker');
+  const rightBlocker = range.value.querySelector('.right .blocker');
+
+  if (deg <= 180) {
+    rightBlocker.style.transform = `rotate(${deg}deg)`;
+    leftBlocker.style.transform = 'rotate(0deg)';
+  } else {
+    rightBlocker.style.transform = 'rotate(180deg)';
+    leftBlocker.style.transform = `rotate(${deg - 180}deg)`;
+  }
+}
+
+function rangeSliderInit(e) {
+  e.preventDefault();
+  canSlide.value = true;
+
+  // Add these event listeners when sliding starts
+  document.addEventListener('mousemove', rangeSliderUpdate);
+  document.addEventListener('touchmove', rangeSliderUpdate);
+  document.addEventListener('mouseup', rangeSliderStop);
+  document.addEventListener('touchend', rangeSliderStop);
+}
+
+function rangeSliderStop() {
+  canSlide.value = false;
+
+  // Remove the event listeners when sliding stops
+  document.removeEventListener('mousemove', rangeSliderUpdate);
+  document.removeEventListener('touchmove', rangeSliderUpdate);
+  document.removeEventListener('mouseup', rangeSliderStop);
+  document.removeEventListener('touchend', rangeSliderStop);
+}
+
+function rangeSliderUpdate(e) {
+  if (!props.years.length) return;
+
+  e.preventDefault();
+
+  const position = pointerEvents(e);
+
+  const rect = range.value.getBoundingClientRect();
+  const coords = {
+    x: position.x - rect.left,
+    y: position.y - rect.top
+  };
+  const radius = range.value.clientWidth / 2;
+  const atan = Math.atan2(coords.x - radius, coords.y - radius);
+  let deg = (-atan / (Math.PI / 180) + 180) % 360;
+
+  const index = Math.round((deg * (totalYears - 1)) / 360);
+
+  const adjustedIndex = Math.min(Math.max(index, 0), totalYears - 1);
+
+  const currentIndex = props.years.indexOf(selectedYear.value);
+  const nextSelectedYear = props.years[adjustedIndex];
+
+  // Ensure the next selected year is adjacent to the current year
+  if (Math.abs(adjustedIndex - currentIndex) <= 1) {
+    selectedYear.value = nextSelectedYear;
+    updateDialPosition();
+  }
+}
+
+onMounted(() => {
+  updateDialPosition();
+});
+
+// Watch for changes in selectedYear and emit the update
+watch(selectedYear, (newYear) => {
+  emit('update:year', newYear);
+});
+</script>
+
+<style scoped>
+.range {
+  border-radius: 50%;
+  display: table;
+  height: 140px;
+  position: relative;
+  width: 140px;
+}
+
+.range .dial {
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 20px;
+  margin-left: -10px;
+  position: absolute;
+  top: -10px;
+  /* transform: translate(93px, 5px); */
+  width: 20px;
+  z-index: 40;
+}
+
+.range .dial:focus {
+  outline: 0;
+}
+
+.range .info {
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 10px;
+  color: #333;
+  cursor: default;
+  left: 10px;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 10px;
+  user-select: none;
+  text-transform: uppercase;
+  z-index: 30;
+}
+
+.slice {
+  border-radius: 186px 0 0 186px;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  user-select: none;
+  width: 50%;
+  z-index: 10;
+}
+
+.slice.right {
+  border-radius: 0 186px 186px 0;
+  right: 0;
+}
+
+.slice.right .blocker {
+  left: 0;
+  right: auto;
+  transform-origin: 0 25%;
+}
+
+.slice .blocker {
+  height: 200%;
+  position: absolute;
+  right: 0;
+  transform-origin: 100% 25%;
+  width: 200%;
+}
+</style>

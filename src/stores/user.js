@@ -26,17 +26,54 @@ export const useUserStore = defineStore('user', {
       return g;
     },
     userData: (state) => {
-      if (!state.user) return null;
+      return (year) => {
+        if (!state.user) return null;
 
-      let UIData = state.user;
-      let r = [];
-      for (let key in UIData.count) {
-        if (key !== '-1') {
-          r.unshift(UIData.count[key]);
+        const history = state.user.history;
+
+        if (year) {
+          const yearData = history.find((entry) => entry.year === year);
+          if (yearData) {
+            let r = [];
+            for (let key in yearData.count) {
+              if (key !== '-1') {
+                r.unshift(yearData.count[key]);
+              }
+            }
+            return {
+              data: r,
+              total: yearData.total,
+              voted: yearData.voted,
+              stdev: yearData.stdev,
+              median: yearData.median,
+              avg: yearData.avg,
+              year: year
+            };
+          }
+          return null; // Return null if the year is not found
         }
-      }
 
-      return r;
+        // If no year is provided, return data for all years
+        let r = [];
+        for (let key in state.user.count) {
+          if (key !== '-1') {
+            r.unshift(state.user.count[key]);
+          }
+        }
+        return {
+          data: r,
+          total: state.user.total,
+          voted: state.user.voted,
+          stdev: state.user.stdev,
+          median: state.user.median,
+          avg: state.user.avg
+        };
+      };
+    },
+    availableYears: (state) => {
+      if (!state.user || !state.user.history) return [];
+
+      return state.user.history.map((entry) => entry.year).sort((a, b) => a - b);
     }
   },
   actions: {

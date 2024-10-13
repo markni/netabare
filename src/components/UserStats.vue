@@ -1,7 +1,10 @@
 <template>
   <div v-if="user" class="flex flex-col gap-2">
-    <UserAvatar :user="user.user" />
-    <div class="text-3xl font-bold mb-4">{{ user.user.nickname }}</div>
+    <!-- <UserAvatar :user="user.user" /> -->
+    <div class="text-3xl font-bold mb-4">
+      {{ user.user.nickname }}
+      <span v-if="user.year" class="text-sm text-lightGray"> ver. {{ user.year }}</span>
+    </div>
 
     <div>
       <div>看过</div>
@@ -33,8 +36,6 @@
 </template>
 
 <script setup>
-import UserAvatar from '@/components/UserAvatar.vue';
-
 defineProps({
   user: {
     type: Object,
