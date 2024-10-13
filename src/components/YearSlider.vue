@@ -5,15 +5,16 @@
   <div
     v-else
     class="range mb-5"
+    :style="{ backgroundColor: trackColor }"
     ref="range"
     @mousedown="rangeSliderInit"
     @touchstart="rangeSliderInit"
   >
-    <div class="slice left bg-lightGray opacity-10">
-      <div class="blocker bg-paper"></div>
+    <div class="slice left opacity-15" :style="{ backgroundColor: progressColor }">
+      <div class="blocker" :style="{ backgroundColor: trackColor }"></div>
     </div>
-    <div class="slice right bg-lightGray opacity-10">
-      <div class="blocker bg-paper"></div>
+    <div class="slice right opacity-15" :style="{ backgroundColor: progressColor }">
+      <div class="blocker" :style="{ backgroundColor: trackColor }"></div>
     </div>
     <span class="info flex items-center justify-center">
       <slot name="info"> </slot>
@@ -24,7 +25,7 @@
 
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue';
-
+import { LIGHT_GRAY, IVORY } from '@/constants/colors';
 const props = defineProps({
   years: {
     type: Array,
@@ -33,6 +34,14 @@ const props = defineProps({
   selectedYear: {
     type: Number,
     required: true
+  },
+  progressColor: {
+    type: String,
+    default: LIGHT_GRAY // Default color for the progress
+  },
+  trackColor: {
+    type: String,
+    default: IVORY // Default color for the track
   }
 });
 
@@ -130,7 +139,6 @@ function rangeSliderUpdate(e) {
   // Ensure the next selected year is adjacent to the current year
   if (Math.abs(adjustedIndex - currentIndex) <= 1) {
     emit('update:selectedYear', nextSelectedYear);
-    updateDialPosition();
   }
 }
 

@@ -4,7 +4,7 @@
       <img
         :alt="user.nickname"
         :src="httpsAvatarUrl"
-        class="rounded-full max-h-[120px] max-w-[120px] w-[8vmax] h-[8vmax] box-border hover:opacity-90"
+        class="rounded-full max-h-[120px] max-w-[120px] w-[8vmax] h-[8vmax] box-border"
       />
     </a>
   </div>
