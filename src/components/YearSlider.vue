@@ -1,6 +1,6 @@
 <template>
   <div v-if="!years.length" class="mb-5">
-    <UserAvatar :user="user.user" />
+    <slot name="info"> </slot>
   </div>
   <div
     v-else
@@ -16,24 +16,18 @@
       <div class="blocker bg-paper"></div>
     </div>
     <span class="info flex items-center justify-center">
-      <UserAvatar :user="user.user" />
+      <slot name="info"> </slot>
     </span>
     <div class="dial" tabindex="0" ref="dial"></div>
   </div>
 </template>
 
 <script setup>
-import UserAvatar from '@/components/UserAvatar.vue';
-
 import { ref, onMounted, watch, computed } from 'vue';
 
 const props = defineProps({
   years: {
     type: Array,
-    required: true
-  },
-  user: {
-    type: Object,
     required: true
   },
   selectedYear: {
@@ -128,7 +122,6 @@ function rangeSliderUpdate(e) {
   let deg = (-atan / (Math.PI / 180) + 180) % 360;
 
   const index = Math.round((deg * (totalYears.value - 1)) / 360);
-
   const adjustedIndex = Math.min(Math.max(index, 0), totalYears.value - 1);
 
   const currentIndex = props.years.indexOf(props.selectedYear);

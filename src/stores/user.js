@@ -12,6 +12,9 @@ export const useUserStore = defineStore('user', {
     username: (state) => {
       return state?.user?.user?.username || state?.user?.user?.id || '';
     },
+    userProfile: (state) => {
+      return state?.user?.user || null;
+    },
     globalData: (state) => {
       if (!state.user) return null;
 

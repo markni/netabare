@@ -7,11 +7,11 @@
     </div>
 
     <div class="col-span-2 px-2 flex flex-col">
-      <YearSlider
-        :years="availableYears"
-        v-model:selectedYear="selectedYear"
-        :user="currentYearData"
-      />
+      <YearSlider :years="availableYears" v-model:selectedYear="selectedYear">
+        <template #info>
+          <UserAvatar :user="userProfile" />
+        </template>
+      </YearSlider>
 
       <UserStats :user="currentYearData" />
       <form @submit="submit" class="mt-10 flex flex-col">
@@ -59,6 +59,7 @@ import YearSlider from '@/components/YearSlider.vue';
 import { ref, watch, computed } from 'vue';
 import router from '@/router/index.js';
 import texts from '../constants/texts.js';
+import UserAvatar from '@/components/UserAvatar.vue';
 
 // Import the defineProps function, which is available in <script setup>
 const props = defineProps({
@@ -69,7 +70,7 @@ const props = defineProps({
 });
 
 const store = useUserStore();
-const { globalData, user, username, availableYears } = storeToRefs(store);
+const { globalData, user, username, availableYears, userProfile } = storeToRefs(store);
 
 const bgmUserId = ref('');
 const selectedYear = ref(null);
@@ -80,6 +81,18 @@ const currentYearData = computed(() => {
     user: user.value?.user
   };
 });
+
+const submit = (event) => {
+  event.preventDefault();
+  router.replace(`/user/${bgmUserId.value}`);
+  // Add your submission logic here
+};
+
+if (props.id) {
+  store.fetchUser(props.id);
+} else if (username.value) {
+  router.replace(`/user/${username.value}`);
+}
 
 // Modify the availableYears watcher
 watch(
@@ -96,18 +109,6 @@ watch(
   { immediate: true }
 );
 
-const submit = (event) => {
-  event.preventDefault();
-  router.replace(`/user/${bgmUserId.value}`);
-  // Add your submission logic here
-};
-
-if (props.id) {
-  store.fetchUser(props.id);
-} else if (username.value) {
-  router.replace(`/user/${username.value}`);
-}
-
 watch(
   () => props.id,
   (newId) => {
@@ -115,7 +116,6 @@ watch(
       store.fetchUser(newId);
       bgmUserId.value = newId;
     }
-  },
-  { deep: true }
+  }
 );
 </script>
