@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-span-2 px-2 flex flex-col">
-      <YearSlider :years="availableYears" v-model:selectedYear="selectedYear">
+      <YearSlider :years="availableYears" v-model:selectedYear="selectedYear" class="mb-5">
         <template #info>
           <UserAvatar :user="userProfile" />
         </template>

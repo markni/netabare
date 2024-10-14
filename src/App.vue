@@ -20,7 +20,7 @@ onMounted(() => {
 });
 
 const showThemeToggle = computed(() => {
-  return !route.path.startsWith('/user');
+  return !route.path.startsWith('/uxxxser');
 });
 
 console.log(`

@@ -1,31 +1,33 @@
 <template>
-  <div v-if="!years.length" class="mb-5">
-    <slot name="info"> </slot>
-  </div>
-  <div
-    v-else
-    class="range mb-5"
-    :style="{ backgroundColor: trackColor }"
-    ref="range"
-    @mousedown="rangeSliderInit"
-    @touchstart="rangeSliderInit"
-  >
-    <div class="slice left opacity-15" :style="{ backgroundColor: progressColor }">
-      <div class="blocker" :style="{ backgroundColor: trackColor }"></div>
-    </div>
-    <div class="slice right opacity-15" :style="{ backgroundColor: progressColor }">
-      <div class="blocker" :style="{ backgroundColor: trackColor }"></div>
-    </div>
-    <span class="info flex items-center justify-center">
+  <div>
+    <div v-if="!years.length" class="mb-5">
       <slot name="info"> </slot>
-    </span>
-    <div class="dial" tabindex="0" ref="dial"></div>
+    </div>
+    <div
+      v-else
+      class="range bg-paper dark:bg-paper-dark rounded-full relative w-[140px] h-[140px] table"
+      ref="range"
+      @mousedown="rangeSliderInit"
+      @touchstart="rangeSliderInit"
+    >
+      <div class="slice left opacity-15" :style="{ backgroundColor: progressColor }">
+        <div class="blocker bg-paper dark:bg-paper-dark"></div>
+      </div>
+      <div class="slice right opacity-15" :style="{ backgroundColor: progressColor }">
+        <div class="blocker bg-paper dark:bg-paper-dark"></div>
+      </div>
+
+      <span class="info flex items-center justify-center">
+        <slot name="info"> </slot>
+      </span>
+      <div class="dial focus:outline-none" ref="dial"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue';
-import { LIGHT_GRAY, IVORY } from '@/constants/colors';
+import { LIGHT_GRAY } from '@/constants/colors';
 const props = defineProps({
   years: {
     type: Array,
@@ -38,10 +40,6 @@ const props = defineProps({
   progressColor: {
     type: String,
     default: LIGHT_GRAY // Default color for the progress
-  },
-  trackColor: {
-    type: String,
-    default: IVORY // Default color for the track
   }
 });
 
@@ -169,14 +167,6 @@ watch(
 </script>
 
 <style scoped>
-.range {
-  border-radius: 50%;
-  display: table;
-  height: 140px;
-  position: relative;
-  width: 140px;
-}
-
 .range .dial {
   background-color: #fff;
   border-radius: 50%;
