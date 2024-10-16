@@ -1,12 +1,12 @@
 <template>
   <div class="avatar">
-    <a :href="httpsUserUrl" target="_blank" class="flex">
+    <div class="flex">
       <img
         :alt="user.nickname"
         :src="httpsAvatarUrl"
         class="rounded-full max-h-[120px] max-w-[120px] w-[8vmax] h-[8vmax] box-border"
       />
-    </a>
+    </div>
   </div>
 </template>
 
@@ -18,6 +18,6 @@ const props = defineProps({
   user: Object
 });
 
-const httpsUserUrl = computed(() => props.user.url.replace('http:', 'https:'));
+// const httpsUserUrl = computed(() => props.user.url.replace('http:', 'https:'));
 const httpsAvatarUrl = computed(() => props.user.avatar.large.replace('http:', 'https:'));
 </script>

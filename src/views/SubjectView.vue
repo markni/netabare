@@ -123,7 +123,7 @@ const decodedNameCn = computed(() => {
       </HintDiv>
 
       <!-- Section 1: Score -->
-      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-16">
+      <section class="w-full flex flex-col gap-4 scroll-mt-16">
         <div class="mt-20 flex flex-col items-end">
           <div class="text-2xl">
             评分
