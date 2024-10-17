@@ -6,8 +6,9 @@ import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
+import { DARK_GRAY, IVORY } from './constants/colors';
 
 const route = useRoute();
 
@@ -18,6 +19,14 @@ const themeStore = useThemeStore();
 onMounted(() => {
   themeStore.initTheme();
 });
+
+watch(
+  () => themeStore.isDarkMode,
+  (newValue) => {
+    document.documentElement.style.backgroundColor = newValue ? DARK_GRAY : IVORY;
+  },
+  { immediate: true }
+);
 
 const showThemeToggle = computed(() => {
   return !route.path.startsWith('/uxxxser');

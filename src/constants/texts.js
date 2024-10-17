@@ -16,7 +16,8 @@ const texts = {
   _trending: '评分趋势',
   _history: '历史分布',
   _user: '个人评分',
-  _experimental: '实验功能'
+  _experimental: '实验功能',
+  _menu: '————'
 };
 const _allTextCombined = Object.values(texts).join(' ');
 
