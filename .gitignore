@@ -29,3 +29,5 @@ coverage
 
 *.tsbuildinfo
 /.run/
+
+.npmrc
