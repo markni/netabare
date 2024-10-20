@@ -17,12 +17,12 @@ const isMenuExpanded = ref(false);
         @click="isMenuExpanded = !isMenuExpanded"
       ></div>
       <div
-        class="flex flex-col gap-4 min-[1800px]:h-auto overflow-hidden"
+        class="flex flex-col gap-4 min-[1800px]:h-auto overflow-hidden mt-4"
         :class="{ 'h-auto': isMenuExpanded, 'h-0': !isMenuExpanded }"
       >
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white mt-4"
+          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
         >
           <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
         </div>
