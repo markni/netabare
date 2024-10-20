@@ -123,12 +123,14 @@ const decodedNameCn = computed(() => {
       </HintDiv>
 
       <!-- Section 1: Score -->
-      <section class="w-full flex flex-col gap-4 scroll-mt-16">
+      <section id="score" class="w-full flex flex-col gap-4 scroll-mt-16">
         <div class="mt-20 flex flex-col items-end">
-          <div class="text-2xl">
-            评分
-            <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
-          </div>
+          <h3 class="text-2xl z-10">
+            <a href="#score" class="hover:bg-gold">
+              评分
+              <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
+            </a>
+          </h3>
           <div class="text-8xl">{{ subject.rating?.score ?? 'N/A' }}</div>
         </div>
         <div class="aspect-square sm:aspect-[16/8] w-full">
@@ -144,12 +146,14 @@ const decodedNameCn = computed(() => {
       </section>
 
       <!-- Section 2: Rank -->
-      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+      <section id="rank" class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
         <div class="mt-20 flex flex-col items-end">
-          <div class="text-2xl">
-            排名
-            <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
-          </div>
+          <h3 class="text-2xl z-10">
+            <a href="#rank" class="hover:bg-blue">
+              排名
+              <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
+            </a>
+          </h3>
           <div class="text-8xl">{{ subject.rank ?? 'N/A' }}</div>
         </div>
         <div class="aspect-square sm:aspect-[16/8] w-full">
@@ -163,16 +167,18 @@ const decodedNameCn = computed(() => {
       </section>
 
       <!-- Section 3: Collection -->
-      <section class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+      <section id="watching" class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
         <div class="mt-20 flex flex-col items-end">
-          <div class="text-2xl">
-            在看
-            <DeltaDisplay
-              v-if="delta?.watching !== undefined"
-              :precision="0"
-              :delta="delta.watching"
-            />
-          </div>
+          <h3 class="text-2xl z-10">
+            <a href="#watching" class="hover:bg-pink">
+              在看
+              <DeltaDisplay
+                v-if="delta?.watching !== undefined"
+                :precision="0"
+                :delta="delta.watching"
+              />
+            </a>
+          </h3>
           <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
         </div>
         <div class="aspect-square sm:aspect-[16/8] w-full">

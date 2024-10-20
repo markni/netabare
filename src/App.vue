@@ -41,6 +41,7 @@ console.log(`
  |_| \\_|______|  |_/_/    \\_\\____/_/    \\_\\_|  \\_\\______|
 
  Star the repo or submit a pull request here:  https://github.com/markni/netabare
+ 欢迎提交问题和建议:  https://github.com/markni/netabare/issues
 
 `);
 </script>
