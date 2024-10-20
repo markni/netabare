@@ -4,6 +4,7 @@ import Highcharts from '@/utils/highcharts';
 import { GOLD } from '@/constants/colors';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useEpisodePlot } from '@/composables/useEpisodePlot'; // Import the new composable
+import { useThemeStore } from '@/stores/theme'; // Import the theme store
 
 const props = defineProps({
   historyData: {
@@ -44,6 +45,12 @@ const { drawPlotLines } = useEpisodePlot(
   computed(() => props.epsData)
 );
 
+const themeStore = useThemeStore(); // Use the theme store
+
+const getSeriesColor = computed(() =>
+  themeStore.isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'
+);
+
 const updateRange = () => {
   if (chartInstance.value) {
     chartInstance.value.xAxis[0].setExtremes(props.xMin, props.xMax);
@@ -52,18 +59,20 @@ const updateRange = () => {
 
 const updateData = () => {
   if (chartInstance.value) {
-    drawPlotLines(); // Call the drawPlotLines function from the composable
+    drawPlotLines();
 
-    // Update the series data
+    // Update the series data and color
     chartInstance.value.series[1].update(
       {
-        data: props.oneData
+        data: props.oneData,
+        color: getSeriesColor.value
       },
       false
     );
     chartInstance.value.series[2].update(
       {
-        data: props.tenData
+        data: props.tenData,
+        color: getSeriesColor.value
       },
       false
     );
@@ -160,7 +169,7 @@ const initializeChart = () => {
           name: '1分',
           yAxis: 1,
           data: [],
-          color: 'rgba(0,0,0, 0.1)',
+          color: 'rgba(111,111,111)',
           dashStyle: 'dot'
         },
         {
@@ -169,7 +178,7 @@ const initializeChart = () => {
           yAxis: 1,
           data: [],
           dashStyle: 'longdashdot',
-          color: 'rgba(0,0,0, 0.1)'
+          color: 'rgba(111,111,111)'
         }
       ],
       colors: GOLD // Use the COLORS constant
@@ -209,6 +218,14 @@ watch(
     updateRange();
   },
   { deep: true }
+);
+
+// Watch for theme changes
+watch(
+  () => themeStore.isDarkMode,
+  () => {
+    updateData();
+  }
 );
 </script>
 
