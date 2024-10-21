@@ -83,25 +83,40 @@ import licenses from '../../licenses.json';
   --c4-opacity: 0;
   --c5-opacity: 0;
   --c6-opacity: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(228, 244, 48, var(--c1-opacity)) 0%,
-    rgba(157, 252, 47, var(--c2-opacity)) 20%,
-    rgba(40, 252, 252, var(--c3-opacity)) 30%,
-    rgba(58, 40, 255, var(--c4-opacity)) 50%,
-    rgba(255, 40, 255, var(--c5-opacity)) 70%,
-    rgba(255, 40, 65, var(--c6-opacity)) 90%
-  );
+  --lg1-c6-percent: 95%;
+  --lg1-c1-percent: 5%;
+  background:
+    linear-gradient(
+      to right,
+      rgba(23, 23, 23, 1) var(--lg1-c1-percent),
+      rgba(23, 23, 23, 0.7) 25%,
+      rgba(23, 23, 23, 0.1) 40%,
+      rgba(23, 23, 23, 0.1) 60%,
+      rgba(23, 23, 23, 0.7) 75%,
+      rgba(23, 23, 23, 1) var(--lg1-c6-percent)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(23, 23, 23, 0.8) 1%,
+      rgba(23, 23, 23, 0.1) 45%,
+      rgba(23, 23, 23, 0.3) 55%,
+      rgba(23, 23, 23, 1) 98%
+    ),
+    /* Bottom layer: Your existing rainbow gradient */
+      linear-gradient(
+        to bottom,
+        rgba(228, 244, 48, var(--c1-opacity)) 0%,
+        rgba(157, 252, 47, var(--c2-opacity)) 20%,
+        rgba(40, 252, 252, var(--c3-opacity)) 30%,
+        rgba(58, 40, 255, var(--c4-opacity)) 50%,
+        rgba(255, 40, 255, var(--c5-opacity)) 70%,
+        rgba(255, 40, 65, var(--c6-opacity)) 90%
+      );
   transition: background 0.1s linear;
 }
 
 .dark .rainbow:hover {
   animation: shine 1s forwards;
-
-  mask: linear-gradient(to right, transparent 5%, black 45%, black 55%, transparent 95%),
-    linear-gradient(to top, transparent, black 40%, black 90%, transparent);
-
-  mask-composite: intersect;
 }
 
 .text-in-rainbow:hover {
@@ -130,6 +145,8 @@ import licenses from '../../licenses.json';
     --c3-opacity: 0;
     --c4-opacity: 0.5;
     --c5-opacity: 0.8;
+    --lg1-c1-percent: 1%;
+    --lg1-c6-percent: 99%;
   }
   60% {
     --c4-opacity: 0;
