@@ -13,11 +13,11 @@ const isMenuExpanded = ref(false);
   >
     <nav class="flex flex-col">
       <div
-        class="text-gray-400 hover:text-gray-700 dark:hover:text-white cursor-pointer min-[1800px]:hidden h-1 bg-paper-dark dark:bg-paper"
+        class="text-gray-400 hover:text-gray-700 dark:hover:text-white cursor-pointer min-[1800px]:hidden h-1 border-t-4 border-solid border-t-paper-dark dark:border-t-paper pb-4"
         @click="isMenuExpanded = !isMenuExpanded"
       ></div>
       <div
-        class="flex flex-col gap-4 min-[1800px]:h-auto overflow-hidden mt-4"
+        class="flex flex-col gap-4 min-[1800px]:h-auto overflow-hidden"
         :class="{ 'h-auto': isMenuExpanded, 'h-0': !isMenuExpanded }"
       >
         <div
