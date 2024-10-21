@@ -31,19 +31,25 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-16" v-if="licenses">
+    <div class="w-full flex flex-col gap-16" v-if="licenses">
       <h2 class="text-4xl text-center">Credits</h2>
 
       <div class="flex flex-col gap-4 tracking-widest">
-        <div
-          v-for="(value, key) in licenses"
-          :key="key"
-          class="gap-10 flex items-baseline justify-between lg:flex-row flex-col"
-        >
-          <a :href="value.repository" class="text-sm lg:text-2xl hover:bg-blue">{{ key }}</a>
-          <a :href="value.repository" class="text-lg lg:text-3xl hover:bg-blue">{{
-            value.publisher
-          }}</a>
+        <div v-for="(value, key) in licenses" :key="key" class="rainbow py-1">
+          <div
+            class="flex items-baseline justify-between lg:flex-row flex-col lg:max-w-5xl max-w-sm mx-auto"
+          >
+            <a
+              :href="value.repository"
+              class="text-sm lg:text-xl hover:bg-blue dark:hover:bg-transparent text-in-rainbow"
+              >{{ key }}</a
+            >
+            <a
+              :href="value.repository"
+              class="text-lg lg:text-2xl hover:bg-blue dark:hover:bg-transparent text-in-rainbow"
+              >{{ value.publisher }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -69,3 +75,73 @@
 <script setup>
 import licenses from '../../licenses.json';
 </script>
+<style scoped>
+.rainbow {
+  --c1-opacity: 0;
+  --c2-opacity: 0;
+  --c3-opacity: 0;
+  --c4-opacity: 0;
+  --c5-opacity: 0;
+  --c6-opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(228, 244, 48, var(--c1-opacity)) 0%,
+    rgba(157, 252, 47, var(--c2-opacity)) 20%,
+    rgba(40, 252, 252, var(--c3-opacity)) 30%,
+    rgba(58, 40, 255, var(--c4-opacity)) 50%,
+    rgba(255, 40, 255, var(--c5-opacity)) 70%,
+    rgba(255, 40, 65, var(--c6-opacity)) 90%
+  );
+  transition: background 0.1s linear;
+}
+
+.dark .rainbow:hover {
+  animation: shine 1s forwards;
+
+  mask: linear-gradient(to right, transparent 5%, black 45%, black 55%, transparent 95%),
+    linear-gradient(to top, transparent, black 40%, black 90%, transparent);
+
+  mask-composite: intersect;
+}
+
+.text-in-rainbow:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+@keyframes shine {
+  10% {
+    --c1-opacity: 1;
+  }
+  20% {
+    --c1-opacity: 0.5;
+    --c2-opacity: 0.8;
+  }
+  30% {
+    --c1-opacity: 0;
+    --c2-opacity: 0.5;
+    --c3-opacity: 0.8;
+  }
+  40% {
+    --c2-opacity: 0;
+    --c3-opacity: 0.5;
+    --c4-opacity: 0.8;
+  }
+  50% {
+    --c3-opacity: 0;
+    --c4-opacity: 0.5;
+    --c5-opacity: 0.8;
+  }
+  60% {
+    --c4-opacity: 0;
+    --c5-opacity: 0.5;
+    --c6-opacity: 0.8;
+  }
+  70% {
+    --c5-opacity: 0;
+    --c6-opacity: 0.5;
+  }
+  80% {
+    --c6-opacity: 0;
+  }
+}
+</style>
