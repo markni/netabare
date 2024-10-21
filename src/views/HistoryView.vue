@@ -20,6 +20,12 @@ const years = [
 // Computed properties for valid year ranges
 const validStartYears = computed(() => years.filter((year) => year < endingYear.value));
 const validEndYears = computed(() => years.filter((year) => year > startingYear.value));
+
+// Computed properties for valid score ranges
+const validMinScores = computed(() => Array.from({ length: maxScore.value + 1 }, (_, i) => i));
+const validMaxScores = computed(() =>
+  Array.from({ length: 11 - minScore.value }, (_, i) => i + minScore.value)
+);
 </script>
 
 <template>
@@ -53,16 +59,26 @@ const validEndYears = computed(() => years.filter((year) => year > startingYear.
     <div class="flex-col flex">
       <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
       <select class="bg-transparent w-40" id="minScore" v-model="minScore">
-        <option class="bg-paper dark:bg-paper-dark" v-for="n in 11" :key="n - 1" :value="n - 1">
-          {{ n - 1 }}
+        <option
+          class="bg-paper dark:bg-paper-dark"
+          v-for="score in validMinScores"
+          :key="score"
+          :value="score"
+        >
+          {{ score }}
         </option>
       </select>
     </div>
     <div class="flex-col flex">
       <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
       <select class="bg-transparent w-40" id="maxScore" v-model="maxScore">
-        <option class="bg-paper dark:bg-paper-dark" v-for="n in 11" :key="n - 1" :value="n - 1">
-          {{ n - 1 }}
+        <option
+          class="bg-paper dark:bg-paper-dark"
+          v-for="score in validMaxScores"
+          :key="score"
+          :value="score"
+        >
+          {{ score }}
         </option>
       </select>
     </div>
