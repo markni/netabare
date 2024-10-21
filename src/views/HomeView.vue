@@ -76,7 +76,16 @@
 import licenses from '../../licenses.json';
 </script>
 <style scoped>
-.rainbow {
+.dark .rainbow {
+  --rainbow-gradient: linear-gradient(
+    to bottom,
+    rgba(228, 244, 48, var(--c1-opacity)) 0%,
+    rgba(157, 252, 47, var(--c2-opacity)) 20%,
+    rgba(40, 252, 252, var(--c3-opacity)) 30%,
+    rgba(58, 40, 255, var(--c4-opacity)) 50%,
+    rgba(255, 40, 255, var(--c5-opacity)) 70%,
+    rgba(255, 40, 65, var(--c6-opacity)) 90%
+  );
   --c1-opacity: 0;
   --c2-opacity: 0;
   --c3-opacity: 0;
@@ -85,8 +94,14 @@ import licenses from '../../licenses.json';
   --c6-opacity: 0;
   --lg1-c6-percent: 95%;
   --lg1-c1-percent: 5%;
-  background:
-    linear-gradient(
+  background: var(--rainbow-gradient);
+  transition: background 0.1s linear;
+}
+
+.dark .rainbow:hover {
+  animation: shine 1s forwards;
+
+  background: linear-gradient(
       to right,
       rgba(23, 23, 23, 1) var(--lg1-c1-percent),
       rgba(23, 23, 23, 0.7) 25%,
@@ -102,21 +117,7 @@ import licenses from '../../licenses.json';
       rgba(23, 23, 23, 0.3) 55%,
       rgba(23, 23, 23, 1) 98%
     ),
-    /* Bottom layer: Your existing rainbow gradient */
-      linear-gradient(
-        to bottom,
-        rgba(228, 244, 48, var(--c1-opacity)) 0%,
-        rgba(157, 252, 47, var(--c2-opacity)) 20%,
-        rgba(40, 252, 252, var(--c3-opacity)) 30%,
-        rgba(58, 40, 255, var(--c4-opacity)) 50%,
-        rgba(255, 40, 255, var(--c5-opacity)) 70%,
-        rgba(255, 40, 65, var(--c6-opacity)) 90%
-      );
-  transition: background 0.1s linear;
-}
-
-.dark .rainbow:hover {
-  animation: shine 1s forwards;
+    var(--rainbow-gradient);
 }
 
 .text-in-rainbow:hover {
