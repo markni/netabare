@@ -23,11 +23,13 @@ let chartInstance = null;
 
 const updateData = () => {
   if (chartInstance) {
-    chartInstance.series[0].setData(props.userData);
     if (props.globalData && props.globalData.length) {
       chartInstance.series[1].setData(props.globalData);
+    } else {
+      chartInstance.series[1].hide(); // Hide the series if no data
     }
-    chartInstance.series[1].hide(); // Hide the series if no data
+
+    chartInstance.series[0].setData(props.userData, true);
   }
 };
 

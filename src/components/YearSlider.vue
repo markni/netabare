@@ -7,8 +7,8 @@
       v-else
       class="range bg-paper dark:bg-paper-dark rounded-full relative w-[140px] h-[140px] table"
       ref="range"
-      @mousedown="rangeSliderInit"
-      @touchstart="rangeSliderInit"
+      @mousedown.prevent="rangeSliderInit"
+      @touchstart.prevent="rangeSliderInit"
     >
       <div class="slice left opacity-15" :style="{ backgroundColor: progressColor }">
         <div class="blocker bg-paper dark:bg-paper-dark"></div>
@@ -98,8 +98,8 @@ function rangeSliderInit(e) {
   canSlide.value = true;
 
   // Add these event listeners when sliding starts
-  document.addEventListener('mousemove', rangeSliderUpdate);
-  document.addEventListener('touchmove', rangeSliderUpdate);
+  document.addEventListener('mousemove', rangeSliderUpdate, { passive: false });
+  document.addEventListener('touchmove', rangeSliderUpdate, { passive: false });
   document.addEventListener('mouseup', rangeSliderStop);
   document.addEventListener('touchend', rangeSliderStop);
 }
@@ -115,28 +115,30 @@ function rangeSliderStop() {
 }
 
 function rangeSliderUpdate(e) {
-  e.preventDefault();
+  if (canSlide.value) {
+    e.preventDefault();
 
-  const position = pointerEvents(e);
+    const position = pointerEvents(e);
 
-  const rect = range.value.getBoundingClientRect();
-  const coords = {
-    x: position.x - rect.left,
-    y: position.y - rect.top
-  };
-  const radius = range.value.clientWidth / 2;
-  const atan = Math.atan2(coords.x - radius, coords.y - radius);
-  let deg = (-atan / (Math.PI / 180) + 180) % 360;
+    const rect = range.value.getBoundingClientRect();
+    const coords = {
+      x: position.x - rect.left,
+      y: position.y - rect.top
+    };
+    const radius = range.value.clientWidth / 2;
+    const atan = Math.atan2(coords.x - radius, coords.y - radius);
+    let deg = (-atan / (Math.PI / 180) + 180) % 360;
 
-  const index = Math.round((deg * (totalYears.value - 1)) / 360);
-  const adjustedIndex = Math.min(Math.max(index, 0), totalYears.value - 1);
+    const index = Math.round((deg * (totalYears.value - 1)) / 360);
+    const adjustedIndex = Math.min(Math.max(index, 0), totalYears.value - 1);
 
-  const currentIndex = props.years.indexOf(props.selectedYear);
-  const nextSelectedYear = props.years[adjustedIndex];
+    const currentIndex = props.years.indexOf(props.selectedYear);
+    const nextSelectedYear = props.years[adjustedIndex];
 
-  // Ensure the next selected year is adjacent to the current year
-  if (Math.abs(adjustedIndex - currentIndex) <= 1) {
-    emit('update:selectedYear', nextSelectedYear);
+    // Ensure the next selected year is adjacent to the current year
+    if (Math.abs(adjustedIndex - currentIndex) <= 1) {
+      emit('update:selectedYear', nextSelectedYear);
+    }
   }
 }
 

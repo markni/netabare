@@ -1,12 +1,12 @@
 <template>
   <div v-if="user && id" class="grid grid-cols-12 gap-4">
-    <div class="col-span-10">
+    <div class="col-span-12 sm:col-span-10">
       <div class="aspect-square sm:aspect-[16/12] pt-14">
         <UserChart :userData="currentYearData['data']" :globalData="globalData" />
       </div>
     </div>
 
-    <div class="col-span-2 px-2 flex flex-col">
+    <div class="col-span-12 sm:col-span-2 px-2 flex flex-col items-center sm:items-start">
       <YearSlider :years="availableYears" v-model:selectedYear="selectedYear" class="mb-5">
         <template #info>
           <UserAvatar :user="userProfile" />
@@ -14,14 +14,14 @@
       </YearSlider>
 
       <UserStats :user="currentYearData" />
-      <form @submit="submit" class="mt-10 flex flex-col">
+      <form @submit="submit" class="mt-10 flex flex-col mt-auto mb-16">
         <input
           id="username"
           autocomplete="off"
           data-lpignore="true"
           required
           pattern="^\w+$"
-          class="text-xl bg-transparent border-b-2 focus:outline-0 p-2"
+          class="bg-transparent border-b-2 focus:outline-0 p-2"
           maxlength="15"
           type="text"
           v-model="bgmUserId"

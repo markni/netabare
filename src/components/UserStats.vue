@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" class="flex flex-col gap-2">
+  <div v-if="user" class="flex flex-col gap-2 items-center sm:items-start">
     <!-- <UserAvatar :user="user.user" /> -->
     <div class="text-3xl font-bold mb-4">
       {{ user.user.nickname }}
@@ -8,31 +8,33 @@
       >
     </div>
 
-    <div>
-      <div>看过</div>
-      <div :class="styles.score">{{ user.total }}</div>
-    </div>
-
-    <div>
-      <div>已评</div>
-      <div :class="styles.score">
-        {{ ((user.voted / user.total) * 100).toFixed(0) }}<span class="percent">%</span>
+    <div class="flex flex-row sm:flex-col gap-x-16 gap-y-4 sm:gap-y-2 sm:gap-x-2 flex-wrap">
+      <div>
+        <div>看过</div>
+        <div :class="styles.score">{{ user.total }}</div>
       </div>
-    </div>
 
-    <div>
-      <div>均值</div>
-      <div :class="styles.score">{{ user.avg }}</div>
-    </div>
+      <div>
+        <div>已评</div>
+        <div :class="styles.score">
+          {{ ((user.voted / user.total) * 100).toFixed(0) }}<span class="percent">%</span>
+        </div>
+      </div>
 
-    <div>
-      <div>中值</div>
-      <div :class="styles.score">{{ user.median }}</div>
-    </div>
+      <div>
+        <div>均值</div>
+        <div :class="styles.score">{{ user.avg }}</div>
+      </div>
 
-    <div>
-      <div>标准差</div>
-      <div :class="styles.score">{{ user.stdev }}</div>
+      <div>
+        <div>中值</div>
+        <div :class="styles.score">{{ user.median }}</div>
+      </div>
+
+      <div>
+        <div>标准差</div>
+        <div :class="styles.score">{{ user.stdev }}</div>
+      </div>
     </div>
   </div>
 </template>
