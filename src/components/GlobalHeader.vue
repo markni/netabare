@@ -33,6 +33,9 @@ const isMenuExpanded = ref(false);
         <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">
           <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._changeLog }}</a>
         </div>
+        <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
+        <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
+        <!--        </div>-->
         <div class="mt-4">
           <!-- gap between main links and other links -->
         </div>
