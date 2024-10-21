@@ -3,7 +3,7 @@
     class="flex flex-col h-full w-full items-center justify-center text-6xl tracking-wider gap-64"
   >
     <div class="flex flex-col gap-16 pt-32">
-      <h1 class="text-4xl text-center">Netabare</h1>
+      <h1 class="text-4xl text-center rainbow">Netabare</h1>
 
       <div class="flex flex-col gap-4 tracking-widest">
         <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="w-full flex flex-col gap-16" v-if="licenses">
-      <h2 class="text-4xl text-center">Credits</h2>
+      <h2 class="text-4xl text-center rainbow">Credits</h2>
 
       <div class="flex flex-col gap-4 tracking-widest">
         <div v-for="(value, key) in licenses" :key="key" class="rainbow py-1">
@@ -41,12 +41,12 @@
           >
             <a
               :href="value.repository"
-              class="text-sm lg:text-xl hover:bg-blue dark:hover:bg-transparent text-in-rainbow"
+              class="text-sm lg:text-xl hover:bg-blue dark:hover:bg-transparent"
               >{{ key }}</a
             >
             <a
               :href="value.repository"
-              class="text-lg lg:text-2xl hover:bg-blue dark:hover:bg-transparent text-in-rainbow"
+              class="text-lg lg:text-2xl hover:bg-blue dark:hover:bg-transparent"
               >{{ value.publisher }}</a
             >
           </div>
@@ -55,20 +55,23 @@
     </div>
 
     <div class="flex flex-col gap-16" v-if="licenses">
-      <h2 class="lg:text-4xl text-2xl text-center">Special Thanks</h2>
+      <h2 class="lg:text-4xl text-2xl text-center rainbow">Special Thanks</h2>
 
-      <div class="flex flex-col gap-4 tracking-widest">
+      <div class="flex flex-col gap-4 tracking-widest rainbow">
         <div class="gap-10 flex items-baseline justify-between lg:flex-row flex-col">
           <div class="lg:text-4xl text-2xl">数据支持</div>
-          <a href="https://bgm.tv" target="_blank" class="lg:text-5xl text-3xl hover:bg-pink"
+          <a
+            href="https://bgm.tv"
+            target="_blank"
+            class="lg:text-5xl text-3xl hover:bg-pink dark:hover:bg-transparent"
             >bangumi.tv</a
           >
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col gap-16 mt-32 mb-64" v-if="licenses">
-      <h2 class="lg:text-4xl text-2xl text-center">Netabare制作委员会</h2>
+    <div class="flex flex-col gap-16 mt-32 mb-64 w-full" v-if="licenses">
+      <h2 class="lg:text-4xl text-2xl text-center rainbow">Netabare制作委员会</h2>
     </div>
   </div>
 </template>
@@ -95,10 +98,13 @@ import licenses from '../../licenses.json';
   --lg1-c6-percent: 95%;
   --lg1-c1-percent: 5%;
   background: var(--rainbow-gradient);
-  transition: background 0.1s linear;
+  transition:
+    background 0.1s linear,
+    text-shadow 0.1s linear;
 }
 
 .dark .rainbow:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   animation: shine 1s forwards;
 
   background: linear-gradient(
@@ -118,10 +124,6 @@ import licenses from '../../licenses.json';
       rgba(23, 23, 23, 1) 98%
     ),
     var(--rainbow-gradient);
-}
-
-.text-in-rainbow:hover {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
 
 @keyframes shine {
