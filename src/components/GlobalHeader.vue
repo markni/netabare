@@ -9,15 +9,15 @@ const isMenuExpanded = ref(false);
 <template>
   <!-- z-49 so it's lower than overlay -->
   <header
-    class="px-8 py-4 fixed top-0 left-0 z-[49] transition-[background-color] duration-300 bg-paper dark:bg-paper-dark"
+    class="fixed left-0 top-0 z-[49] bg-paper px-8 py-4 transition-[background-color] duration-300 dark:bg-paper-dark"
   >
     <nav class="flex flex-col">
       <div
-        class="text-gray-400 hover:text-gray-700 dark:hover:text-white cursor-pointer min-[1800px]:hidden h-1 border-t-4 border-solid border-t-paper-dark dark:border-t-paper pb-4"
+        class="h-1 cursor-pointer border-t-4 border-solid border-t-paper-dark pb-4 text-gray-400 hover:text-gray-700 dark:border-t-paper dark:hover:text-white min-[1800px]:hidden"
         @click="isMenuExpanded = !isMenuExpanded"
       ></div>
       <div
-        class="flex flex-col gap-4 min-[1800px]:h-auto overflow-hidden"
+        class="flex flex-col gap-4 overflow-hidden min-[1800px]:h-auto"
         :class="{ 'h-auto': isMenuExpanded, 'h-0': !isMenuExpanded }"
       >
         <div

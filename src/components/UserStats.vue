@@ -1,14 +1,14 @@
 <template>
-  <div v-if="user" class="flex flex-col gap-2 items-center sm:items-start">
+  <div v-if="user" class="flex flex-col items-center gap-2 sm:items-start">
     <!-- <UserAvatar :user="user.user" /> -->
-    <div class="text-3xl font-bold mb-4">
+    <div class="mb-4 text-3xl font-bold">
       {{ user.user.nickname }}
-      <span v-if="user.year" class="text-sm text-lightGray whitespace-nowrap">
+      <span v-if="user.year" class="whitespace-nowrap text-sm text-lightGray">
         ver. {{ user.year }}</span
       >
     </div>
 
-    <div class="flex flex-row sm:flex-col gap-x-16 gap-y-4 sm:gap-y-2 sm:gap-x-2 flex-wrap">
+    <div class="flex flex-row flex-wrap gap-x-16 gap-y-4 sm:flex-col sm:gap-x-2 sm:gap-y-2">
       <div>
         <div>看过</div>
         <div :class="styles.score">{{ user.total }}</div>

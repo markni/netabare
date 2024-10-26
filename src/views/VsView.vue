@@ -67,14 +67,14 @@ if (props.id0 !== props.id1) {
       />
     </div>
     <div v-if="props.id0 !== props.id1" class="flex flex-col gap-20">
-      <div class="grid grid-cols-2 text-3xl gap-4">
+      <div class="grid grid-cols-2 gap-4 text-3xl">
         <form @submit.prevent="submit" class="flex flex-col gap-4">
           <label for="localId0" class="text-xl">动画零</label>
-          <input type="number" class="bg-transparent w-40" id="localId0" v-model="localId0" />
+          <input type="number" class="w-40 bg-transparent" id="localId0" v-model="localId0" />
         </form>
         <form @submit.prevent="submit" class="flex flex-col gap-4">
           <label for="localId1" class="text-xl">动画一</label>
-          <input type="number" class="bg-transparent w-40" id="localId1" v-model="localId1" />
+          <input type="number" class="w-40 bg-transparent" id="localId1" v-model="localId1" />
         </form>
       </div>
       <div v-if="histories[0] || histories[1]" class="flex flex-col gap-8">

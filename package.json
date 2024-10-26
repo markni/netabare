@@ -34,7 +34,8 @@
     "husky": "^9.1.4",
     "license-checker": "^25.0.1",
     "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.8"
   },

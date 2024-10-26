@@ -1,52 +1,52 @@
 <template>
   <div
-    class="flex flex-col h-full w-full items-center justify-center text-6xl tracking-wider gap-64"
+    class="flex h-full w-full flex-col items-center justify-center gap-64 text-6xl tracking-wider"
   >
     <div class="flex flex-col gap-16 pt-32">
-      <h1 class="text-4xl text-center rainbow">Netabare</h1>
+      <h1 class="rainbow text-center text-4xl">Netabare</h1>
 
       <div class="flex flex-col gap-4 tracking-widest">
-        <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
-          <span class="lg:text-4xl text-2xl">当季动画</span>
-          <RouterLink class="lg:text-5xl text-3xl hover:bg-teal" to="/season">龙争虎斗</RouterLink>
+        <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
+          <span class="text-2xl lg:text-4xl">当季动画</span>
+          <RouterLink class="text-3xl hover:bg-teal lg:text-5xl" to="/season">龙争虎斗</RouterLink>
         </h2>
 
-        <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
-          <span class="lg:text-4xl text-2xl">全站动画</span>
-          <RouterLink class="lg:text-5xl text-3xl hover:bg-blue" to="/trending"
+        <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
+          <span class="text-2xl lg:text-4xl">全站动画</span>
+          <RouterLink class="text-3xl hover:bg-blue lg:text-5xl" to="/trending"
             >热门趋势</RouterLink
           >
         </h2>
 
-        <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
-          <span class="lg:text-4xl text-2xl">全站动画</span>
-          <RouterLink class="lg:text-5xl text-3xl hover:bg-pink" to="/history"
+        <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
+          <span class="text-2xl lg:text-4xl">全站动画</span>
+          <RouterLink class="text-3xl hover:bg-pink lg:text-5xl" to="/history"
             >评分分布图</RouterLink
           >
         </h2>
-        <h2 class="gap-4 lg:gap-10 flex items-baseline justify-between lg:flex-row flex-col">
-          <span class="lg:text-4xl text-2xl">个人动画</span>
-          <RouterLink class="lg:text-5xl text-3xl hover:bg-gold" to="/user">评分分布</RouterLink>
+        <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
+          <span class="text-2xl lg:text-4xl">个人动画</span>
+          <RouterLink class="text-3xl hover:bg-gold lg:text-5xl" to="/user">评分分布</RouterLink>
         </h2>
       </div>
     </div>
 
-    <div class="w-full flex flex-col gap-16" v-if="licenses">
-      <h2 class="text-4xl text-center rainbow">Credits</h2>
+    <div class="flex w-full flex-col gap-16" v-if="licenses">
+      <h2 class="rainbow text-center text-4xl">Credits</h2>
 
       <div class="flex flex-col gap-4 tracking-widest">
         <div v-for="(value, key) in licenses" :key="key" class="rainbow py-1">
           <div
-            class="flex items-baseline justify-between lg:flex-row flex-col lg:max-w-5xl max-w-sm mx-auto"
+            class="mx-auto flex max-w-sm flex-col items-baseline justify-between lg:max-w-5xl lg:flex-row"
           >
             <a
               :href="value.repository"
-              class="text-sm lg:text-xl hover:bg-blue dark:hover:bg-transparent"
+              class="text-sm hover:bg-blue dark:hover:bg-transparent lg:text-xl"
               >{{ key }}</a
             >
             <a
               :href="value.repository"
-              class="text-lg lg:text-2xl hover:bg-blue dark:hover:bg-transparent"
+              class="text-lg hover:bg-blue dark:hover:bg-transparent lg:text-2xl"
               >{{ value.publisher }}</a
             >
           </div>
@@ -55,23 +55,23 @@
     </div>
 
     <div class="flex flex-col gap-16" v-if="licenses">
-      <h2 class="lg:text-4xl text-2xl text-center rainbow">Special Thanks</h2>
+      <h2 class="rainbow text-center text-2xl lg:text-4xl">Special Thanks</h2>
 
-      <div class="flex flex-col gap-4 tracking-widest rainbow">
-        <div class="gap-10 flex items-baseline justify-between lg:flex-row flex-col">
-          <div class="lg:text-4xl text-2xl">数据支持</div>
+      <div class="rainbow flex flex-col gap-4 tracking-widest">
+        <div class="flex flex-col items-baseline justify-between gap-10 lg:flex-row">
+          <div class="text-2xl lg:text-4xl">数据支持</div>
           <a
             href="https://bgm.tv"
             target="_blank"
-            class="lg:text-5xl text-3xl hover:bg-pink dark:hover:bg-transparent"
+            class="text-3xl hover:bg-pink dark:hover:bg-transparent lg:text-5xl"
             >bangumi.tv</a
           >
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col gap-16 mt-32 mb-64 w-full" v-if="licenses">
-      <h2 class="lg:text-4xl text-2xl text-center rainbow">Netabare制作委员会</h2>
+    <div class="mb-64 mt-32 flex w-full flex-col gap-16" v-if="licenses">
+      <h2 class="rainbow text-center text-2xl lg:text-4xl">Netabare制作委员会</h2>
     </div>
   </div>
 </template>

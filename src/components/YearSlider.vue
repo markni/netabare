@@ -5,7 +5,7 @@
     </div>
     <div
       v-else
-      class="range bg-paper dark:bg-paper-dark rounded-full relative w-[140px] h-[140px] table"
+      class="range relative table h-[140px] w-[140px] rounded-full bg-paper dark:bg-paper-dark"
       ref="range"
       @mousedown.prevent="rangeSliderInit"
       @touchstart.prevent="rangeSliderInit"

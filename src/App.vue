@@ -79,13 +79,13 @@ console.log(`
     <GlobalHeader />
 
     <div
-      class="min-h-screen transition-[background-color] duration-300 bg-paper dark:bg-paper-dark flex text-black dark:text-white font-serif"
+      class="flex min-h-screen bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white"
     >
-      <div :class="['w-full p-4 mx-auto pt-10 bottom-0', { container: $route.path !== '/' }]">
+      <div :class="['bottom-0 mx-auto w-full p-4 pt-10', { container: $route.path !== '/' }]">
         <RouterView />
       </div>
     </div>
-    <div class="opacity-0 fixed bottom-0 right-0 pointer-events-none">
+    <div class="pointer-events-none fixed bottom-0 right-0 opacity-0">
       {{ texts._allTextCombined }}
     </div>
   </div>

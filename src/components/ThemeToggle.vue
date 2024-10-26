@@ -1,14 +1,14 @@
 <template>
   <div
-    class="fixed top-8 right-16 z-50 opacity-5 hover:opacity-100 transition-opacity duration-[10000ms] hover:duration-500"
+    class="fixed right-16 top-8 z-50 opacity-5 transition-opacity duration-[10000ms] hover:opacity-100 hover:duration-500"
   >
     <button
       @click="themeStore.toggleDarkMode"
-      class="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-paper narrow-long-shadow relative"
+      class="narrow-long-shadow relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-paper"
     >
       <!-- Adjusted round div clipped inside the button -->
       <div
-        class="absolute inset-0 rounded-full bg-paper-dark transition-transform duration-300 translate-x-[37px] dark:translate-x-[1px]"
+        class="absolute inset-0 translate-x-[37px] rounded-full bg-paper-dark transition-transform duration-300 dark:translate-x-[1px]"
       ></div>
     </button>
   </div>

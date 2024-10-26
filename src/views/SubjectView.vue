@@ -68,8 +68,8 @@ const decodedNameCn = computed(() => {
 
 <template>
   <div v-if="subject">
-    <div class="flex flex-col gap-4 items-end">
-      <h1 class="text-6xl pt-8">
+    <div class="flex flex-col items-end gap-4">
+      <h1 class="pt-8 text-6xl">
         <a
           class="hover:bg-gold"
           target="_blank"
@@ -79,7 +79,7 @@ const decodedNameCn = computed(() => {
         >
       </h1>
       <div
-        class="sticky top-0 transition-[background-color] duration-300 bg-paper dark:bg-paper-dark z-[48] gap-4 py-5 w-full flex flex-col items-end"
+        class="sticky top-0 z-[48] flex w-full flex-col items-end gap-4 bg-paper py-5 transition-[background-color] duration-300 dark:bg-paper-dark"
       >
         <h2 class="text-4xl" v-if="subject.name_cn">
           <a
@@ -91,9 +91,9 @@ const decodedNameCn = computed(() => {
           >
         </h2>
 
-        <div class="flex gap-2 mt-4 text-xl">
+        <div class="mt-4 flex gap-2 text-xl">
           <button
-            class="cursor-pointer hover:underline underline-offset-8 decoration-gold"
+            class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
             :class="{
               underline: filteredBy === 'none' || filteredBy === 'disabled'
             }"
@@ -103,7 +103,7 @@ const decodedNameCn = computed(() => {
             全部
           </button>
           <button
-            class="cursor-pointer underline-offset-8 decoration-gold"
+            class="cursor-pointer decoration-gold underline-offset-8"
             :class="{
               'hover:underline': filteredBy !== 'disabled',
               underline: filteredBy === 'eps',
@@ -123,9 +123,9 @@ const decodedNameCn = computed(() => {
       </HintDiv>
 
       <!-- Section 1: Score -->
-      <section id="score" class="w-full flex flex-col gap-4 scroll-mt-16">
+      <section id="score" class="flex w-full scroll-mt-16 flex-col gap-4">
         <div class="mt-20 flex flex-col items-end">
-          <h3 class="text-2xl z-10">
+          <h3 class="z-10 text-2xl">
             <a href="#score" class="hover:bg-gold">
               评分
               <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
@@ -133,7 +133,7 @@ const decodedNameCn = computed(() => {
           </h3>
           <div class="text-8xl">{{ subject.rating?.score ?? 'N/A' }}</div>
         </div>
-        <div class="aspect-square sm:aspect-[16/8] w-full">
+        <div class="aspect-square w-full sm:aspect-[16/8]">
           <ScoreChart
             :eps-data="epsData"
             :ten-data="combinedData.scoreData.ten"
@@ -146,9 +146,9 @@ const decodedNameCn = computed(() => {
       </section>
 
       <!-- Section 2: Rank -->
-      <section id="rank" class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+      <section id="rank" class="flex w-full snap-start scroll-mt-20 flex-col gap-4">
         <div class="mt-20 flex flex-col items-end">
-          <h3 class="text-2xl z-10">
+          <h3 class="z-10 text-2xl">
             <a href="#rank" class="hover:bg-blue">
               排名
               <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
@@ -156,7 +156,7 @@ const decodedNameCn = computed(() => {
           </h3>
           <div class="text-8xl">{{ subject.rank ?? 'N/A' }}</div>
         </div>
-        <div class="aspect-square sm:aspect-[16/8] w-full">
+        <div class="aspect-square w-full sm:aspect-[16/8]">
           <RankChart
             :eps-data="epsData"
             :history-data="combinedData.rankData.history"
@@ -167,9 +167,9 @@ const decodedNameCn = computed(() => {
       </section>
 
       <!-- Section 3: Collection -->
-      <section id="watching" class="w-full flex flex-col gap-4 snap-start scroll-mt-20">
+      <section id="watching" class="flex w-full snap-start scroll-mt-20 flex-col gap-4">
         <div class="mt-20 flex flex-col items-end">
-          <h3 class="text-2xl z-10">
+          <h3 class="z-10 text-2xl">
             <a href="#watching" class="hover:bg-pink">
               在看
               <DeltaDisplay
@@ -181,7 +181,7 @@ const decodedNameCn = computed(() => {
           </h3>
           <div class="text-8xl">{{ subject.collection?.doing ?? 'N/A' }}</div>
         </div>
-        <div class="aspect-square sm:aspect-[16/8] w-full">
+        <div class="aspect-square w-full sm:aspect-[16/8]">
           <CollectionChart
             :eps-data="epsData"
             :history-data="combinedData.collectionData.history"

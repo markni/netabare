@@ -1,12 +1,12 @@
 <template>
   <div v-if="user && id" class="grid grid-cols-12 gap-4">
     <div class="col-span-12 sm:col-span-10">
-      <div class="aspect-square sm:aspect-[16/12] pt-14">
+      <div class="aspect-square pt-14 sm:aspect-[16/12]">
         <UserChart :userData="currentYearData['data']" :globalData="globalData" />
       </div>
     </div>
 
-    <div class="col-span-12 sm:col-span-2 px-2 flex flex-col items-center sm:items-start">
+    <div class="col-span-12 flex flex-col items-center px-2 sm:col-span-2 sm:items-start">
       <YearSlider :years="availableYears" v-model:selectedYear="selectedYear" class="mb-5">
         <template #info>
           <UserAvatar :user="userProfile" />
@@ -14,14 +14,14 @@
       </YearSlider>
 
       <UserStats :user="currentYearData" />
-      <form @submit="submit" class="mt-10 flex flex-col mt-auto mb-16">
+      <form @submit="submit" class="mb-16 mt-10 mt-auto flex flex-col">
         <input
           id="username"
           autocomplete="off"
           data-lpignore="true"
           required
           pattern="^\w+$"
-          class="bg-transparent border-b-2 focus:outline-0 p-2"
+          class="border-b-2 bg-transparent p-2 focus:outline-0"
           maxlength="15"
           type="text"
           v-model="bgmUserId"
@@ -30,7 +30,7 @@
       </form>
     </div>
   </div>
-  <div v-if="!id" class="h-full flex flex-col items-center justify-center">
+  <div v-if="!id" class="flex h-full flex-col items-center justify-center">
     <form @submit="submit" class="mt-10 flex flex-col">
       <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
 
@@ -40,7 +40,7 @@
         data-lpignore="true"
         required
         pattern="^\w+$"
-        class="text-4xl bg-transparent border-b-2 focus:outline-0 p-2"
+        class="border-b-2 bg-transparent p-2 text-4xl focus:outline-0"
         maxlength="15"
         type="text"
         v-model="bgmUserId"

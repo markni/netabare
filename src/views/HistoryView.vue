@@ -29,10 +29,10 @@ const validMaxScores = computed(() =>
 </script>
 
 <template>
-  <div class="flex gap-4 text-3xl justify-end">
-    <div class="flex-col flex">
+  <div class="flex justify-end gap-4 text-3xl">
+    <div class="flex flex-col">
       <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
-      <select class="bg-transparent w-40" id="startingYear" v-model="startingYear">
+      <select class="w-40 bg-transparent" id="startingYear" v-model="startingYear">
         <option
           class="bg-paper dark:bg-paper-dark"
           v-for="year in validStartYears"
@@ -43,9 +43,9 @@ const validMaxScores = computed(() =>
         </option>
       </select>
     </div>
-    <div class="flex-col flex">
+    <div class="flex flex-col">
       <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
-      <select class="bg-transparent w-40" id="endingYear" v-model="endingYear">
+      <select class="w-40 bg-transparent" id="endingYear" v-model="endingYear">
         <option
           class="bg-paper dark:bg-paper-dark"
           v-for="year in validEndYears"
@@ -56,9 +56,9 @@ const validMaxScores = computed(() =>
         </option>
       </select>
     </div>
-    <div class="flex-col flex">
+    <div class="flex flex-col">
       <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
-      <select class="bg-transparent w-40" id="minScore" v-model="minScore">
+      <select class="w-40 bg-transparent" id="minScore" v-model="minScore">
         <option
           class="bg-paper dark:bg-paper-dark"
           v-for="score in validMinScores"
@@ -69,9 +69,9 @@ const validMaxScores = computed(() =>
         </option>
       </select>
     </div>
-    <div class="flex-col flex">
+    <div class="flex flex-col">
       <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
-      <select class="bg-transparent w-40" id="maxScore" v-model="maxScore">
+      <select class="w-40 bg-transparent" id="maxScore" v-model="maxScore">
         <option
           class="bg-paper dark:bg-paper-dark"
           v-for="score in validMaxScores"
@@ -84,7 +84,7 @@ const validMaxScores = computed(() =>
     </div>
   </div>
 
-  <div v-if="combinedData.historyData" class="aspect-square sm:aspect-[16/12] pt-14">
+  <div v-if="combinedData.historyData" class="aspect-square pt-14 sm:aspect-[16/12]">
     <HistoryChart
       :yearly-data="combinedData.yearlyData"
       :historyData="combinedData.historyData"
