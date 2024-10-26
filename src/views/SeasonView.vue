@@ -59,7 +59,7 @@ watch(route.params, () => {
 
 <template>
   <div class="mt-14 flex flex-col gap-10">
-    <h1 class="text-4xl">{{ getSeasonDateName() }}新番战况</h1>
+    <h1 class="text-6xl">{{ getSeasonDateName() }}新番战况</h1>
 
     <div class="flex flex-col gap-4">
       <HintDiv

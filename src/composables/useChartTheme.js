@@ -9,11 +9,17 @@ export function useChartTheme(chartInstance) {
 
   const legendStyle = computed(() => ({
     itemStyle: {
-      color: isDarkMode.value ? IVORY : BLACK
+      color: isDarkMode.value ? IVORY : BLACK,
+      fontWeight: 'normal'
     },
     itemHoverStyle: {
       color: Highcharts.color(isDarkMode.value ? IVORY : BLACK)
         .brighten(isDarkMode.value ? -0.3 : 0.3)
+        .get()
+    },
+    itemHiddenStyle: {
+      color: Highcharts.color(isDarkMode.value ? IVORY : BLACK)
+        .setOpacity(0.3)
         .get()
     }
   }));
