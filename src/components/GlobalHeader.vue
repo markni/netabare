@@ -10,7 +10,6 @@ const isMenuExpanded = ref(false);
   <!-- z-49 so it's lower than overlay -->
   <header
     class="px-8 py-4 fixed top-0 left-0 z-[49] transition-[background-color] duration-300 bg-paper dark:bg-paper-dark"
-    :class="{ 'dark:bg-transparent': !isMenuExpanded }"
   >
     <nav class="flex flex-col">
       <div
