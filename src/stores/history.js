@@ -92,7 +92,7 @@ export const useHistoryStore = defineStore('history', {
           this.dic[rank] = { rank, bgmId, name, name_cn, score, air_date };
         });
       } catch (error) {
-        console.error('Failed to fetch user:', error);
+        console.error('Failed to fetch history:', error);
         // Handle error appropriately
       }
       return this.history;

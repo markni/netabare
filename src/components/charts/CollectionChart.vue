@@ -43,33 +43,40 @@ const updateRange = () => {
 const updateData = () => {
   if (chartInstance.value) {
     drawPlotLines();
-
-    // Update the series data
-    chartInstance.value.series[1].update(
-      {
-        data: props.historyData.wish
-      },
-      false //redraw
-    );
-    chartInstance.value.series[2].update(
-      {
-        data: props.historyData.on_hold
-      },
-      false
-    );
-    chartInstance.value.series[3].update(
-      {
-        data: props.historyData.collect
-      },
-      false
-    );
-    chartInstance.value.series[4].update(
+    chartInstance.value.series[0].update(
       {
         data: props.historyData.doing
       },
       false
     );
-    chartInstance.value.series[0].update(
+    chartInstance.value.series[1].update(
+      {
+        data: props.historyData.collect
+      },
+      false
+    );
+    // Update the series data
+
+    chartInstance.value.series[2].update(
+      {
+        data: props.historyData.rated
+      },
+      false
+    );
+    chartInstance.value.series[3].update(
+      {
+        data: props.historyData.wish
+      },
+      false //redraw
+    );
+
+    chartInstance.value.series[4].update(
+      {
+        data: props.historyData.on_hold
+      },
+      false
+    );
+    chartInstance.value.series[5].update(
       {
         data: props.historyData.dropped
       },
@@ -98,7 +105,37 @@ const initializeChart = () => {
         enabled: false
       },
       tooltip: {
-        shared: true
+        shared: true,
+        formatter: function () {
+          let s =
+            '<p style="font-size: 10px;">' + Highcharts.dateFormat('%Y-%m-%d', this.x) + '</p>';
+
+          // Calculate total (excluding rated)
+          const total = this.points.reduce((sum, point) => {
+            // Skip 'rated' series in total calculation
+            if (point.series.name !== '打分') {
+              return sum + point.y;
+            }
+            return sum;
+          }, 0);
+
+          this.points.forEach(function (point) {
+            const percentage = ((point.y / total) * 100).toFixed(1);
+            s +=
+              '<br/>' +
+              '<span style="color:' +
+              point.color +
+              '">●</span> ' +
+              point.series.name +
+              ': <b>' +
+              point.y +
+              '</b> (' +
+              percentage +
+              '%)';
+          });
+
+          return s;
+        }
       },
       boost: {
         enabled: true,
@@ -155,9 +192,20 @@ const initializeChart = () => {
       series: [
         {
           type: 'spline',
-          name: '抛弃',
+          name: '在看',
           data: []
         },
+        {
+          type: 'spline',
+          name: '看过',
+          data: []
+        },
+        {
+          type: 'spline',
+          name: '打分',
+          data: []
+        },
+
         {
           type: 'spline',
           name: '想看',
@@ -170,12 +218,7 @@ const initializeChart = () => {
         },
         {
           type: 'spline',
-          name: '看过',
-          data: []
-        },
-        {
-          type: 'spline',
-          name: '在看',
+          name: '抛弃',
           data: []
         }
       ],

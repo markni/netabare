@@ -88,6 +88,9 @@ export const useSubjectStore = defineStore('subject', {
             collectionData.history[key] = collectionData.history[key] || [];
           }
         }
+        if (h.rating?.total) {
+          collectionData.history['rated'] = collectionData.history['rated'] || [];
+        }
       });
 
       // Process history in one loop
@@ -109,6 +112,10 @@ export const useSubjectStore = defineStore('subject', {
             }
             collectionData.history[key].push([x, h.collect[key]]);
           }
+        }
+
+        if (h.rating?.total) {
+          collectionData.history['rated'].push([x, h.rating.total]);
         }
 
         if (h.rating?.count) {
