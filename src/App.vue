@@ -80,7 +80,7 @@ console.log(`
       <div class="sticky top-0 self-start">
         <GlobalHeader />
       </div>
-      <div :class="['bottom-0 mx-auto w-full p-4 pt-10', { container: $route.path !== '/' }]">
+      <div :class="['container bottom-0 mx-auto w-full p-4 pt-10']">
         <RouterView />
       </div>
       <div class="sticky top-0 self-start">

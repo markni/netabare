@@ -26,10 +26,10 @@ const formatData = (history) =>
           {{ ['热门条目', '涨幅排行', '跌幅排行'][index] }}
         </a>
       </h2>
-      <ol class="flex list-decimal flex-col gap-8">
+      <ol class="flex list-decimal flex-col gap-16 xl:gap-8">
         <li v-for="item in items" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-8">
+            <div class="col-span-12 xl:col-span-8">
               <div class="text-4xl">
                 <RouterLink
                   :class="['hover:bg-gold', 'hover:bg-pink', 'hover:bg-blue'][index]"
@@ -46,13 +46,13 @@ const formatData = (history) =>
               </div>
               <div class="text-lg">{{ item.subject.name }}</div>
             </div>
-            <div class="col-span-3 aspect-[16/8]">
+            <div class="col-span-12 aspect-[16/8] xl:col-span-3">
               <MiniScoreChart
                 :color="item.score >= 0 ? PINK : BLUE"
                 :history-data="formatData(item.history)"
               />
             </div>
-            <div class="col-span-1 text-4xl">
+            <div class="col-span-12 text-4xl xl:col-span-1">
               <DeltaDisplay :delta="item.score" />
             </div>
           </div>
