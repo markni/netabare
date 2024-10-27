@@ -1,16 +1,14 @@
 <script setup>
-import { RouterView, useRoute } from 'vue-router';
+import { RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { computed, onMounted, watch } from 'vue';
+import { onMounted, watch } from 'vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
-
-const route = useRoute();
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
@@ -24,13 +22,14 @@ watch(
   () => themeStore.isDarkMode,
   (newValue) => {
     document.documentElement.style.backgroundColor = newValue ? DARK_GRAY : IVORY;
+    // Add this line to update the scrollbar color
+    document.documentElement.style.setProperty(
+      '--scrollbar-color',
+      newValue ? 'rgba(0,0,0,0.3)' : ''
+    );
   },
   { immediate: true }
 );
-
-const showThemeToggle = computed(() => {
-  return !route.path.startsWith('/uxxxser');
-});
 
 console.log(`
   _   _ ______ _______       ____          _____  ______
@@ -74,15 +73,18 @@ console.log(`
       :text="texts._loading"
       annotation="loading"
     />
-    <ThemeToggle v-if="showThemeToggle" />
-
-    <GlobalHeader />
 
     <div
       class="flex min-h-screen bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white"
     >
+      <div class="sticky top-0 self-start">
+        <GlobalHeader />
+      </div>
       <div :class="['bottom-0 mx-auto w-full p-4 pt-10', { container: $route.path !== '/' }]">
         <RouterView />
+      </div>
+      <div class="sticky top-0 self-start">
+        <ThemeToggle />
       </div>
     </div>
     <div class="pointer-events-none fixed bottom-0 right-0 opacity-0">
@@ -90,3 +92,18 @@ console.log(`
     </div>
   </div>
 </template>
+
+<style>
+/* Add this style block at the end of the file */
+:root {
+  --scrollbar-color: initial;
+}
+
+* {
+  scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+</style>
