@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-8 py-4 opacity-5 transition-opacity duration-[10000ms] hover:opacity-100 hover:duration-500"
+    class="px-1 py-2 opacity-5 transition-opacity duration-[10000ms] hover:opacity-100 hover:duration-500 sm:px-8 sm:py-4"
   >
     <button
       @click="themeStore.toggleDarkMode"
