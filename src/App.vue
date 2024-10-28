@@ -27,6 +27,11 @@ watch(
       '--scrollbar-color',
       newValue ? 'rgba(0,0,0,0.3)' : ''
     );
+
+    // Update title if running on localhost
+    if (window.location.hostname === 'localhost') {
+      document.title = '[DEV] Netabare';
+    }
   },
   { immediate: true }
 );

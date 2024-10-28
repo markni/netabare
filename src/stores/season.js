@@ -10,12 +10,14 @@ export const useSeasonStore = defineStore('season', {
     season: []
   }),
   getters: {
-    rateData: (state) => {
+    balanceData: (state) => {
       if (!state.season) return null;
       let extreme = 0; // Tracks the highest count (either 10 or 1 rating) for scaling
 
+      const limitedSeason = state.season.slice(0, 10);
+
       // Process positive ratings (10/10 scores)
-      const positive = state.season.map((entry) => {
+      const positive = limitedSeason.map((entry) => {
         const lastHistory = entry.history[entry.history.length - 1];
         // Get count of 10/10 ratings, default to 0 if not available
         const count10 = lastHistory?.rating?.count['10'] || 0;
@@ -30,7 +32,7 @@ export const useSeasonStore = defineStore('season', {
       });
 
       // Process negative ratings (1/10 scores)
-      const negative = state.season.map((entry) => {
+      const negative = limitedSeason.map((entry) => {
         const lastHistory = entry.history[entry.history.length - 1];
         // Get count of 1/10 ratings, default to 0 if not available
         const count1 = lastHistory?.rating?.count['1'] || 0;
@@ -46,12 +48,12 @@ export const useSeasonStore = defineStore('season', {
 
       // Return an object containing positive and negative data arrays,
       // and the extreme value for scaling the chart
-      console.log({ positive, negative, extreme });
       return { positive, negative, extreme };
     },
     historyData: (state) => {
       if (!state.season) return null;
-      return state.season.map((entry) => {
+      const limitedSeason = state.season.slice(0, 10);
+      return limitedSeason.map((entry) => {
         return {
           airDate: dayjs(entry.air_date).valueOf(),
           name: entry.name_cn || entry.name,

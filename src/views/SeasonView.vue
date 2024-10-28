@@ -6,11 +6,11 @@ import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import HintDiv from '@/components/HintDiv.vue';
 import { useRoute } from 'vue-router';
-import { onMounted, watch } from 'vue';
+import { onMounted, watch, computed } from 'vue';
 
 const store = useSeasonStore();
 const route = useRoute();
-const { historyData, rateData } = storeToRefs(store);
+const { historyData, balanceData } = storeToRefs(store);
 
 const getSeasonDateName = () => {
   const { year, month } = route.params;
@@ -46,13 +46,16 @@ const fetchSeason = async () => {
   }
 };
 
+// Create a computed property for route parameters
+const routeParams = computed(() => route.params);
+
 // Fetch data on component mount
 onMounted(() => {
   fetchSeason();
 });
 
-// Watch for route parameter changes and fetch data accordingly
-watch(route.params, () => {
+// Watch for changes in the computed route parameters
+watch(routeParams, () => {
   fetchSeason();
 });
 </script>
@@ -85,7 +88,7 @@ watch(route.params, () => {
       <h2 class="text-2xl">平衡榜</h2>
       <p class="text-gray-400">打1分和10分的数量对比</p>
       <div class="sm:aspect-[10/5]">
-        <BattleBarChart name="10分" :rate-data="rateData" />
+        <BattleBarChart name="10分" :balanceData="balanceData" />
       </div>
     </div>
   </div>

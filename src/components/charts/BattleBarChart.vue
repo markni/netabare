@@ -5,7 +5,7 @@ import { BLUE, PINK } from '@/constants/colors.js';
 import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
-  rateData: {
+  balanceData: {
     type: Object,
     required: true
   },
@@ -23,14 +23,14 @@ useChartTheme(chartInstance);
 const updateData = () => {
   if (chartInstance.value) {
     chartInstance.value.yAxis[0].setExtremes(
-      -props.rateData.extreme,
-      props.rateData.extreme,
+      -props.balanceData.extreme,
+      props.balanceData.extreme,
       false,
       false
     );
 
-    chartInstance.value.series[0].setData(props.rateData.negative, false);
-    chartInstance.value.series[1].setData(props.rateData.positive, true);
+    chartInstance.value.series[0].setData(props.balanceData.negative, false);
+    chartInstance.value.series[1].setData(props.balanceData.positive, true);
   }
 };
 
@@ -119,9 +119,9 @@ onUnmounted(() => {
   }
 });
 
-// Watch for changes in rateData prop and update the chart accordingly
+// Watch for changes in balanceData prop and update the chart accordingly
 watch(
-  () => props.rateData,
+  () => props.balanceData,
   () => {
     updateData();
   },
