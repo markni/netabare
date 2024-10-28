@@ -8,11 +8,6 @@ const props = defineProps({
   balanceData: {
     type: Object,
     required: true
-  },
-
-  name: {
-    type: String,
-    required: true
   }
 });
 

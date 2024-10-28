@@ -82,7 +82,6 @@ onUnmounted(() => {
 
 const updateData = () => {
   if (chartInstance.value) {
-    console.log('yearlyData', props.yearlyData);
     chartInstance.value.series[1].update({ data: props.yearlyData }, false);
     chartInstance.value.series[0].update({ data: props.historyData }, true);
   }
@@ -124,7 +123,7 @@ const initializeChart = () => {
 
           return `<div class="scatter-tp-title"><b>${
             props.dic[rank].name_cn || props.dic[rank].name
-          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />均分：${props.dic[rank].score}</div>`;
+          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />评分：${props.dic[rank].score}</div>`;
         }
       },
       subtitle: {

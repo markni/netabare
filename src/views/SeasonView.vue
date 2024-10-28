@@ -7,10 +7,11 @@ import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import HintDiv from '@/components/HintDiv.vue';
 import { useRoute } from 'vue-router';
 import { onMounted, watch, computed } from 'vue';
+import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 
 const store = useSeasonStore();
 const route = useRoute();
-const { historyData, balanceData } = storeToRefs(store);
+const { historyData, balanceData, subjectsData } = storeToRefs(store);
 
 const getSeasonDateName = () => {
   const { year, month } = route.params;
@@ -88,7 +89,17 @@ watch(routeParams, () => {
       <h2 class="text-2xl">平衡榜</h2>
       <p class="text-gray-400">打1分和10分的数量对比</p>
       <div class="sm:aspect-[10/5]">
-        <BattleBarChart name="10分" :balanceData="balanceData" />
+        <BattleBarChart :balanceData="balanceData" />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h2 class="text-2xl">分布图</h2>
+      <p class="cursor-help text-gray-400" title="尺寸越大越热门，颜色越红争议越大">
+        尺寸越大越热门，颜色越红争议越大
+      </p>
+      <div class="sm:aspect-[10/5]">
+        <ScoreBubbleChart :subjects="subjectsData" />
       </div>
     </div>
   </div>

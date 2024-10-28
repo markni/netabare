@@ -10,6 +10,44 @@ export const useSeasonStore = defineStore('season', {
     season: []
   }),
   getters: {
+    subjectsData: (state) => {
+      console.log(state.season);
+      return state.season.map((subject) => {
+        // Calculate standard deviation
+        let std = 0;
+        if (subject.rating?.count) {
+          const counts = Object.entries(subject.rating.count).map(([score, count]) => ({
+            score: parseInt(score),
+            count: count
+          }));
+
+          // Calculate mean
+          const totalCount = counts.reduce((sum, { count }) => sum + count, 0);
+          const mean =
+            counts.reduce((sum, { score, count }) => sum + score * count, 0) / totalCount;
+
+          // Calculate variance
+          const variance =
+            counts.reduce((sum, { score, count }) => {
+              return sum + count * Math.pow(score - mean, 2);
+            }, 0) / totalCount;
+
+          // Calculate standard deviation
+          std = Math.sqrt(variance);
+        }
+
+        return {
+          bgmId: subject.bgmId,
+          name: subject.name,
+          name_cn: subject.name_cn,
+          score: subject.rating?.score || 0,
+          rank: subject.rank,
+          air_date: subject.air_date,
+          total: subject.rating?.total || 0,
+          std: parseFloat(std.toFixed(2)) // Round to 2 decimal places
+        };
+      });
+    },
     balanceData: (state) => {
       if (!state.season) return null;
       let extreme = 0; // Tracks the highest count (either 10 or 1 rating) for scaling

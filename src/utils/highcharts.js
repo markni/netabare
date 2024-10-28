@@ -1,9 +1,11 @@
 // highchartsSettings.js
 import Highcharts from 'highcharts';
 import HighchartsBoost from 'highcharts/modules/boost';
+import HighchartsMore from 'highcharts/highcharts-more';
 import { IVORY } from '../constants/colors';
 
 HighchartsBoost(Highcharts);
+HighchartsMore(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
