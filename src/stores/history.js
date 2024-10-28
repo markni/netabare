@@ -27,28 +27,20 @@ export const useHistoryStore = defineStore('history', {
       state.history.forEach(({ score, air_date, rank }) => {
         const year = dayjs(air_date).year();
 
-        // Check if the entry matches the filter criteria
-        if (
-          score >= state.minScore &&
-          score <= state.maxScore &&
-          year >= state.startingYear &&
-          year <= state.endingYear
-        ) {
-          // Update historyData
-          historyData.push([
-            dayjs(air_date).valueOf(),
-            parseFloat(score.toFixed(4) + '' + _.padStart(rank, 5, '0'))
-          ]);
+        // Update historyData without filters
+        historyData.push([
+          dayjs(air_date).valueOf(),
+          parseFloat(score.toFixed(4) + '' + _.padStart(rank, 5, '0'))
+        ]);
 
-          // Initialize yearly data for the year if it does not exist
-          if (!yearlyData[year]) {
-            yearlyData[year] = { score: 0, count: 0 };
-          }
-
-          // Update yearlyData
-          yearlyData[year].score += score;
-          yearlyData[year].count++;
+        // Initialize yearly data for the year if it does not exist
+        if (!yearlyData[year]) {
+          yearlyData[year] = { score: 0, count: 0 };
         }
+
+        // Update yearlyData
+        yearlyData[year].score += score;
+        yearlyData[year].count++;
       });
 
       // Prepare yearlyData output

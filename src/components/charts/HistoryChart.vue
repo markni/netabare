@@ -22,6 +22,23 @@ const props = defineProps({
   dic: {
     type: Object,
     required: true
+  },
+  // Add new props
+  minYear: {
+    type: Number,
+    default: 1970
+  },
+  maxYear: {
+    type: Number,
+    default: () => dayjs().year()
+  },
+  minScore: {
+    type: Number,
+    default: 0
+  },
+  maxScore: {
+    type: Number,
+    default: 10
   }
 });
 
@@ -136,7 +153,9 @@ const initializeChart = () => {
           },
           labels: {
             format: '{value:.1f}'
-          }
+          },
+          min: props.minScore, // Add min score
+          max: props.maxScore // Add max score
         },
         {
           startOnTick: false,
@@ -146,12 +165,15 @@ const initializeChart = () => {
           labels: {
             format: '{value:.1f}'
           },
-          opposite: true
+          opposite: true,
+          min: props.minScore, // Add min score
+          max: props.maxScore // Add max score
         }
       ],
       xAxis: {
         type: 'datetime',
-
+        min: dayjs().year(props.minYear).startOf('year').valueOf(), // Add min year
+        max: dayjs().year(props.maxYear).endOf('year').valueOf(), // Add max year
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
           second: '%m-%d',
@@ -200,9 +222,25 @@ onUnmounted(() => {
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
-  [() => props.historyData],
+  [
+    () => props.historyData,
+    () => props.minYear,
+    () => props.maxYear,
+    () => props.minScore,
+    () => props.maxScore
+  ],
   () => {
-    updateData();
+    if (chartInstance.value) {
+      // Update axis extremes
+      chartInstance.value.xAxis[0].setExtremes(
+        dayjs().year(props.minYear).startOf('year').valueOf(),
+        dayjs().year(props.maxYear).endOf('year').valueOf()
+      );
+      chartInstance.value.yAxis[0].setExtremes(props.minScore, props.maxScore);
+      chartInstance.value.yAxis[1].setExtremes(props.minScore, props.maxScore);
+
+      updateData();
+    }
   },
   { deep: true }
 );

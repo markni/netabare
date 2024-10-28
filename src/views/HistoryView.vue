@@ -89,6 +89,10 @@ const validMaxScores = computed(() =>
       :yearly-data="combinedData.yearlyData"
       :historyData="combinedData.historyData"
       :dic="dic"
+      :min-year="startingYear"
+      :max-year="endingYear"
+      :min-score="minScore"
+      :max-score="maxScore"
     />
   </div>
 </template>
