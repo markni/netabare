@@ -44,11 +44,45 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
+let hoveredPoint = null;
 
 useChartTheme(chartInstance);
 
+const handleChartClick = () => {
+  if (hoveredPoint) {
+    // Access props.dic or pass dic through chart options
+    let rank = _.round(_.padEnd((hoveredPoint.y + '').split('.')[1], 9, '0').slice(-5));
+    if (hoveredPoint.series.name === '评分') {
+      const dic = props.dic;
+      if (dic[rank]) {
+        window.open(`/subject/${dic[rank].bgmId}`);
+      } else {
+        console.error(`No entry found in dic for rank: ${rank}`);
+      }
+    }
+  }
+};
+
+onMounted(() => {
+  initializeChart();
+  if (chartContainer.value) {
+    chartContainer.value.addEventListener('click', handleChartClick);
+  }
+});
+
+onUnmounted(() => {
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
+  }
+  if (chartContainer.value) {
+    chartContainer.value.removeEventListener('click', handleChartClick);
+  }
+});
+
 const updateData = () => {
   if (chartInstance.value) {
+    console.log('yearlyData', props.yearlyData);
     chartInstance.value.series[1].update({ data: props.yearlyData }, false);
     chartInstance.value.series[0].update({ data: props.historyData }, true);
   }
@@ -107,7 +141,8 @@ const initializeChart = () => {
             symbol: 'circle'
           }
         },
-        series: {
+        series: {},
+        scatter: {
           cursor: 'pointer',
           animation: {
             enabled: false,
@@ -117,14 +152,19 @@ const initializeChart = () => {
           },
           point: {
             events: {
-              click: function () {
-                let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
-                if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`);
+              // click: function () {
+              //   console.log('test');
+              //   let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
+              //   if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`);
+              // },
+              mouseOver: function () {
+                hoveredPoint = this;
+              },
+              mouseOut: function () {
+                hoveredPoint = null;
               }
             }
-          }
-        },
-        scatter: {
+          },
           marker: {
             radius: 5,
             states: {

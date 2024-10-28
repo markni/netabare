@@ -51,6 +51,12 @@ export const useHistoryStore = defineStore('history', {
         };
       });
 
+      // Only remove the last entry if it's for next year
+      const nextYear = currentYear + 1;
+      if (yearlyData[nextYear]) {
+        finalYearlyData.pop();
+      }
+
       return { yearlyData: finalYearlyData, historyData: historyData };
     }
   },
