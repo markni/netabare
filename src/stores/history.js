@@ -93,10 +93,11 @@ export const useHistoryStore = defineStore('history', {
         yearlyData[year].count++;
       });
 
-      // Prepare filtered yearly data output
+      // Prepare filtered yearly data output with both avg and count
       return Object.keys(yearlyData).map((year) => ({
         x: dayjs().year(year).startOf('year').valueOf(),
-        y: parseFloat((yearlyData[year].score / yearlyData[year].count).toFixed(4))
+        y: parseFloat((yearlyData[year].score / yearlyData[year].count).toFixed(4)),
+        count: yearlyData[year].count
       }));
     }
   },

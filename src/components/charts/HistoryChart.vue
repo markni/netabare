@@ -114,10 +114,11 @@ const initializeChart = () => {
       },
 
       tooltip: {
-        // xDateFormat: '%Y-%m-%d',
         formatter: function () {
           if (this.series.name === '均分') {
-            return `${dayjs(this.x).year()}年符合条件条目的均分：<b>${this.y.toFixed(2)}</b>`;
+            return `${dayjs(this.x).year()}年<br/>
+                   均分：<b>${this.y.toFixed(2)}</b><br/>
+                   数量：<b>${this.point.count}</b>条`;
           }
           let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
 
@@ -134,18 +135,13 @@ const initializeChart = () => {
         enabled: false
       },
       plotOptions: {
-        spline: {
-          marker: {
-            enabled: false
-          }
-        },
-        line: {
-          marker: {
-            symbol: 'circle'
-          }
-        },
-        series: {},
         scatter: {
+          boostThreshold: 1,
+          boost: {
+            enabled: true,
+            useGPUTranslations: true,
+            usePreAllocated: true
+          },
           cursor: 'pointer',
           animation: {
             enabled: false,
@@ -185,7 +181,16 @@ const initializeChart = () => {
             }
           },
           tooltip: {}
-        }
+        },
+        line: {
+          boost: {
+            enabled: false
+          },
+          marker: {
+            symbol: 'circle'
+          }
+        },
+        series: {}
       },
       yAxis: [
         {
