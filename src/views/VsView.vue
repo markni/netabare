@@ -7,7 +7,7 @@ import BattleChart from '@/components/charts/BattleChart.vue';
 import { useRouter } from 'vue-router';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
-
+import FoilCard from '@/components/FoilCard.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -54,6 +54,8 @@ if (props.id0 !== props.id1) {
     { deep: false }
   );
 }
+
+const isDev = import.meta.env.DEV;
 </script>
 
 <template>
@@ -86,6 +88,8 @@ if (props.id0 !== props.id1) {
         </div>
       </div>
     </div>
+
+    <FoilCard v-if="isDev" />
   </div>
 </template>
 
