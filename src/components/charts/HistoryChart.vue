@@ -186,27 +186,14 @@ const initializeChart = () => {
       yAxis: [
         {
           startOnTick: false,
-          // reversed: true,
           title: {
             enabled: false
           },
           labels: {
             format: '{value:.1f}'
           },
-          min: props.minScore - 0.05, // Add min score
-          max: props.maxScore + 0.05 // Add max score
-        },
-        {
-          startOnTick: false,
-          title: {
-            enabled: false
-          },
-          labels: {
-            format: '{value:.1f}'
-          },
-          opposite: true,
-          min: props.minScore - 0.05, // Add min score
-          max: props.maxScore + 0.05 // Add max score
+          min: props.minScore - (props.minScore > 0 ? 0.05 : 0),
+          max: props.maxScore + (props.maxScore < 10 ? 0.05 : 0)
         }
       ],
       xAxis: {
@@ -229,7 +216,20 @@ const initializeChart = () => {
         {
           color: 'rgba(49, 148, 255, 0.4)',
           name: '评分',
-          data: []
+          data: [],
+          zones: [
+            {
+              value: props.minScore,
+              color: 'transparent'
+            },
+            {
+              value: props.maxScore,
+              color: 'rgba(49, 148, 255, 0.4)'
+            },
+            {
+              color: 'transparent'
+            }
+          ]
         },
         {
           type: 'line',
@@ -270,13 +270,34 @@ watch(
   ],
   () => {
     if (chartInstance.value) {
-      // Update axis extremes
       chartInstance.value.xAxis[0].setExtremes(
         dayjs().year(props.minYear).startOf('year').valueOf(),
         dayjs().year(props.maxYear).endOf('year').valueOf()
       );
-      chartInstance.value.yAxis[0].setExtremes(props.minScore - 0.05, props.maxScore + 0.05);
-      chartInstance.value.yAxis[1].setExtremes(props.minScore - 0.05, props.maxScore + 0.05);
+      chartInstance.value.yAxis[0].setExtremes(
+        props.minScore - (props.minScore > 0 ? 0.05 : 0),
+        props.maxScore + (props.maxScore < 10 ? 0.05 : 0)
+      );
+
+      // Update zones
+      chartInstance.value.series[0].update(
+        {
+          zones: [
+            {
+              value: props.minScore,
+              color: 'transparent'
+            },
+            {
+              value: props.maxScore,
+              color: 'rgba(49, 148, 255, 0.4)'
+            },
+            {
+              color: 'transparent'
+            }
+          ]
+        },
+        false
+      );
 
       updateData();
     }
