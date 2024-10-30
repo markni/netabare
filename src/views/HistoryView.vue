@@ -100,9 +100,7 @@ watch(
 watch(
   () => route.path,
   (newPath) => {
-    console.log('newPath', newPath);
     if (newPath === '/history') {
-      console.log('resetting filters');
       store.resetFilters();
       // Force update the refs
       startingYear.value = store.$state.startingYear;
