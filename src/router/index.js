@@ -58,7 +58,14 @@ const router = createRouter({
       path: '/history',
       name: 'history',
       component: () => import('../views/HistoryView.vue'),
-      props: true
+      children: [
+        {
+          path: ':yearRange(\\d{4}-\\d{4})?/:scoreRange(\\d+-\\d+)?',
+          name: 'history-filtered',
+          component: () => import('../views/HistoryView.vue'),
+          props: true
+        }
+      ]
     },
     {
       path: '/:catchAll(.*)*', // This regex will match any path

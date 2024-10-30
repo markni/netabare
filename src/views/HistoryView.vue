@@ -3,10 +3,14 @@ import { useHistoryStore } from '@/stores/history';
 import { storeToRefs } from 'pinia';
 import HistoryChart from '@/components/charts/HistoryChart.vue';
 import texts from '@/constants/texts.js';
-import { computed } from 'vue';
+import { computed, watch, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
 const store = useHistoryStore();
 const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store);
+
+const router = useRouter();
+const route = useRoute();
 
 store.fetchHistory();
 
@@ -18,13 +22,84 @@ const years = [
 ];
 
 // Computed properties for valid year ranges
-const validStartYears = computed(() => years.filter((year) => year < endingYear.value));
-const validEndYears = computed(() => years.filter((year) => year > startingYear.value));
+const validStartYears = computed(() => years.filter((year) => year < endingYear.value).reverse());
+const validEndYears = computed(() => years.filter((year) => year > startingYear.value).reverse());
 
 // Computed properties for valid score ranges
 const validMinScores = computed(() => Array.from({ length: maxScore.value + 1 }, (_, i) => i));
 const validMaxScores = computed(() =>
   Array.from({ length: 11 - minScore.value }, (_, i) => i + minScore.value)
+);
+
+// Add default values
+const DEFAULT_START_YEAR = 1990;
+const DEFAULT_END_YEAR = new Date().getFullYear();
+const DEFAULT_MIN_SCORE = 0;
+const DEFAULT_MAX_SCORE = 10;
+
+// Parse route parameters on mount
+onMounted(() => {
+  // Reset to defaults first
+  startingYear.value = DEFAULT_START_YEAR;
+  endingYear.value = DEFAULT_END_YEAR;
+  minScore.value = DEFAULT_MIN_SCORE;
+  maxScore.value = DEFAULT_MAX_SCORE;
+
+  if (route.params.yearRange) {
+    const [startYear, endYear] = route.params.yearRange.split('-').map(Number);
+
+    // Validate years are within valid range and in correct order
+    if (years.includes(startYear) && years.includes(endYear) && startYear < endYear) {
+      startingYear.value = startYear;
+      endingYear.value = endYear;
+    } else {
+      // Invalid years - redirect to base history route
+      router.replace({ name: 'history' });
+    }
+  }
+
+  if (route.params.scoreRange) {
+    const [minScoreVal, maxScoreVal] = route.params.scoreRange.split('-').map(Number);
+
+    // Validate scores are within valid range and in correct order
+    if (minScoreVal >= 0 && maxScoreVal <= 10 && minScoreVal < maxScoreVal) {
+      minScore.value = minScoreVal;
+      maxScore.value = maxScoreVal;
+    } else {
+      // Invalid scores - redirect to base history route
+      router.replace({ name: 'history' });
+    }
+  }
+});
+
+// Update URL when filters change (only if values are valid)
+watch(
+  [startingYear, endingYear, minScore, maxScore],
+  ([newStartYear, newEndYear, newMinScore, newMaxScore]) => {
+    if (
+      newStartYear &&
+      newEndYear &&
+      newStartYear < newEndYear &&
+      newMinScore !== undefined &&
+      newMaxScore !== undefined &&
+      newMinScore < newMaxScore
+    ) {
+      const yearRange = `${newStartYear}-${newEndYear}`;
+      const scoreRange = `${newMinScore}-${newMaxScore}`;
+
+      router.replace({
+        name: 'history-filtered',
+        params: {
+          yearRange,
+          scoreRange
+        }
+      });
+    } else {
+      // Invalid values - reset to base route
+      router.replace({ name: 'history' });
+    }
+  },
+  { deep: true }
 );
 </script>
 

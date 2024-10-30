@@ -193,8 +193,8 @@ const initializeChart = () => {
           labels: {
             format: '{value:.1f}'
           },
-          min: props.minScore, // Add min score
-          max: props.maxScore // Add max score
+          min: props.minScore - 0.05, // Add min score
+          max: props.maxScore + 0.05 // Add max score
         },
         {
           startOnTick: false,
@@ -205,8 +205,8 @@ const initializeChart = () => {
             format: '{value:.1f}'
           },
           opposite: true,
-          min: props.minScore, // Add min score
-          max: props.maxScore // Add max score
+          min: props.minScore - 0.05, // Add min score
+          max: props.maxScore + 0.05 // Add max score
         }
       ],
       xAxis: {
@@ -275,8 +275,8 @@ watch(
         dayjs().year(props.minYear).startOf('year').valueOf(),
         dayjs().year(props.maxYear).endOf('year').valueOf()
       );
-      chartInstance.value.yAxis[0].setExtremes(props.minScore, props.maxScore);
-      chartInstance.value.yAxis[1].setExtremes(props.minScore, props.maxScore);
+      chartInstance.value.yAxis[0].setExtremes(props.minScore - 0.05, props.maxScore + 0.05);
+      chartInstance.value.yAxis[1].setExtremes(props.minScore - 0.05, props.maxScore + 0.05);
 
       updateData();
     }
