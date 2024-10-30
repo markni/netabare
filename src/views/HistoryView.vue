@@ -7,7 +7,8 @@ import { computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 const store = useHistoryStore();
-const { combinedData, dic, startingYear, endingYear, minScore, maxScore } = storeToRefs(store);
+const { combinedData, dic, startingYear, endingYear, minScore, maxScore, filteredYearlyData } =
+  storeToRefs(store);
 
 const router = useRouter();
 const route = useRoute();
@@ -31,19 +32,13 @@ const validMaxScores = computed(() =>
   Array.from({ length: 11 - minScore.value }, (_, i) => i + minScore.value)
 );
 
-// Add default values
-const DEFAULT_START_YEAR = 1990;
-const DEFAULT_END_YEAR = new Date().getFullYear();
-const DEFAULT_MIN_SCORE = 0;
-const DEFAULT_MAX_SCORE = 10;
-
 // Parse route parameters on mount
 onMounted(() => {
-  // Reset to defaults first
-  startingYear.value = DEFAULT_START_YEAR;
-  endingYear.value = DEFAULT_END_YEAR;
-  minScore.value = DEFAULT_MIN_SCORE;
-  maxScore.value = DEFAULT_MAX_SCORE;
+  // Reset to store defaults
+  startingYear.value = store.$state.startingYear;
+  endingYear.value = store.$state.endingYear;
+  minScore.value = store.$state.minScore;
+  maxScore.value = store.$state.maxScore;
 
   if (route.params.yearRange) {
     const [startYear, endYear] = route.params.yearRange.split('-').map(Number);
@@ -100,6 +95,23 @@ watch(
     }
   },
   { deep: true }
+);
+
+watch(
+  () => route.path,
+  (newPath) => {
+    console.log('newPath', newPath);
+    if (newPath === '/history') {
+      console.log('resetting filters');
+      store.resetFilters();
+      // Force update the refs
+      startingYear.value = store.$state.startingYear;
+      endingYear.value = store.$state.endingYear;
+      minScore.value = store.$state.minScore;
+      maxScore.value = store.$state.maxScore;
+    }
+  },
+  { immediate: true, deep: true }
 );
 </script>
 
@@ -168,6 +180,7 @@ watch(
       :max-year="endingYear"
       :min-score="minScore"
       :max-score="maxScore"
+      :filtered-yearly-data="filteredYearlyData"
     />
   </div>
 </template>

@@ -7,15 +7,20 @@ import _ from 'lodash';
 import dayjs from 'dayjs';
 
 const currentYear = parseInt(dayjs().year());
+// Add initial filter values as constants
+const INITIAL_FILTER_VALUES = {
+  startingYear: currentYear - 15,
+  endingYear: currentYear,
+  minScore: 0,
+  maxScore: 10
+};
 
 export const useHistoryStore = defineStore('history', {
   state: () => ({
     history: null,
     dic: {},
-    startingYear: currentYear - 5,
-    endingYear: currentYear,
-    minScore: 0,
-    maxScore: 10
+    // Reference the initial values
+    ...INITIAL_FILTER_VALUES
   }),
   getters: {
     combinedData: (state) => {
@@ -58,6 +63,41 @@ export const useHistoryStore = defineStore('history', {
       }
 
       return { yearlyData: finalYearlyData, historyData: historyData };
+    },
+    filteredYearlyData: (state) => {
+      if (!state.history) return null;
+
+      let yearlyData = {};
+
+      // Filter and aggregate data based on year and score ranges
+      state.history.forEach(({ score, air_date }) => {
+        const year = dayjs(air_date).year();
+
+        // Skip if outside year range or score range
+        if (
+          year < state.startingYear ||
+          year > state.endingYear ||
+          score < state.minScore ||
+          score > state.maxScore
+        ) {
+          return;
+        }
+
+        // Initialize yearly data for the year if it does not exist
+        if (!yearlyData[year]) {
+          yearlyData[year] = { score: 0, count: 0 };
+        }
+
+        // Update yearlyData
+        yearlyData[year].score += score;
+        yearlyData[year].count++;
+      });
+
+      // Prepare filtered yearly data output
+      return Object.keys(yearlyData).map((year) => ({
+        x: dayjs().year(year).startOf('year').valueOf(),
+        y: parseFloat((yearlyData[year].score / yearlyData[year].count).toFixed(4))
+      }));
     }
   },
   actions: {
@@ -94,6 +134,10 @@ export const useHistoryStore = defineStore('history', {
         // Handle error appropriately
       }
       return this.history;
+    },
+    resetFilters() {
+      // Reference the same initial values
+      this.$patch(INITIAL_FILTER_VALUES);
     }
   }
 });

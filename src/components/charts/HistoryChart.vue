@@ -19,6 +19,10 @@ const props = defineProps({
     type: Array,
     required: true
   },
+  filteredYearlyData: {
+    type: Array,
+    required: true
+  },
   dic: {
     type: Object,
     required: true
@@ -82,7 +86,7 @@ onUnmounted(() => {
 
 const updateData = () => {
   if (chartInstance.value) {
-    chartInstance.value.series[1].update({ data: props.yearlyData }, false);
+    chartInstance.value.series[1].update({ data: props.filteredYearlyData }, false);
     chartInstance.value.series[0].update({ data: props.historyData }, true);
   }
 };
@@ -112,8 +116,8 @@ const initializeChart = () => {
       tooltip: {
         // xDateFormat: '%Y-%m-%d',
         formatter: function () {
-          if (this.series.name === '年度均分') {
-            return `${dayjs(this.x).year()}年均分：<b>${this.y.toFixed(2)}</b>`;
+          if (this.series.name === '均分') {
+            return `${dayjs(this.x).year()}年符合条件条目的均分：<b>${this.y.toFixed(2)}</b>`;
           }
           let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
 
@@ -234,7 +238,7 @@ const initializeChart = () => {
         {
           type: 'line',
           color: PINK,
-          name: '年度均分',
+          name: '均分',
           data: []
         }
       ],
