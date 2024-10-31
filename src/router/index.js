@@ -68,6 +68,13 @@ const router = createRouter({
       ]
     },
     {
+      path: '/guess',
+      name: 'guess',
+      // route level code-splitting
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/GuessView.vue')
+    },
+    {
       path: '/:catchAll(.*)*', // This regex will match any path
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue')

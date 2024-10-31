@@ -29,3 +29,11 @@ export const fetchSeason = (year, month) => {
 export const fetchHistory = () => {
   return axios.get(`${api_root}/history`);
 };
+
+export const fetchGuess = () => {
+  return axios.get(`${api_root}/guess`);
+};
+
+export const submitGuess = (key, answers) => {
+  return axios.post(`${api_root}/guess/answer`, { key, answers });
+};
