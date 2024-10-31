@@ -68,8 +68,8 @@ const router = createRouter({
       ]
     },
     {
-      path: '/guess',
-      name: 'guess',
+      path: '/quiz',
+      name: 'quiz',
       // route level code-splitting
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/GuessView.vue')
