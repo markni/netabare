@@ -10,7 +10,7 @@
       <div class="relative w-64 border-b border-b-paper-dark dark:border-paper">
         <div
           v-if="guessStore.score !== null"
-          class="absolute bottom-[-30px] left-16 z-30 text-8xl text-red"
+          class="absolute bottom-[-30px] left-16 z-30 text-8xl text-red underline underline-offset-8"
           style="transform: rotate(-5deg)"
         >
           {{ JSON.stringify(guessStore.score * 10) }}
@@ -30,35 +30,48 @@
         :key="qIndex"
         class="flex flex-col gap-2"
       >
-        <div>图形 {{ qIndex + 1 }}</div>
+        <div class="relative">图形 {{ qIndex + 1 }}</div>
+        <div class="aspect-[4/3]">
+          <MiniBarChart :rating-data="guessStore.getRatingChartData(qIndex)" />
+        </div>
         <div
           v-for="(answer, aIndex) in question.answers"
           :key="aIndex"
           @click="selectAnswer(qIndex, aIndex)"
           :class="[
-            'cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
-            guessStore.answers[qIndex] === aIndex
-              ? 'border-blue'
-              : 'border-gray-200 hover:bg-gray-50'
+            'relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
+            guessStore.answers[qIndex] === aIndex ? 'border-blue' : 'border-gray-200'
           ]"
         >
           {{ String.fromCharCode(65 + aIndex) }}. {{ answer }}
+
+          <div
+            v-if="guessStore.answers[qIndex] === aIndex && guessStore.score !== null"
+            class="absolute z-30 text-8xl text-red"
+            :style="{
+              transform: `rotate(${-5 + Math.random() * 10 - 5}deg)`,
+              top: `${-20 + Math.random() * 10 - 5}px`,
+              left: `${10 + Math.random() * 10 - 5}px`
+            }"
+          >
+            {{ guessStore.results[qIndex] ? 'o' : '✔' }}
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Submit Button -->
     <button
-      @click="submitAnswers"
-      :disabled="!isComplete"
+      @click="guessStore.score !== null ? guessStore.fetchQuestions() : submitAnswers()"
+      :disabled="!isComplete && guessStore.score === null"
       :class="[
-        'w-full rounded-lg py-3.5 transition-colors',
-        isComplete
+        'w-full rounded-lg py-3.5 text-2xl transition-colors',
+        isComplete || guessStore.score !== null
           ? 'cursor-pointer bg-blue text-white hover:bg-blue'
           : 'cursor-not-allowed bg-gray-400 text-white'
       ]"
     >
-      交卷
+      {{ guessStore.score !== null ? '继续挑战' : '交卷' }}
     </button>
   </div>
 </template>
@@ -66,7 +79,7 @@
 <script setup>
 import { onMounted, computed } from 'vue';
 import { useGuessStore } from '@/stores/guess';
-
+import MiniBarChart from '@/components/charts/MiniBarChart.vue';
 const guessStore = useGuessStore();
 
 // Computed property to check if all questions are answered

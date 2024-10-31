@@ -7,8 +7,21 @@ export const useGuessStore = defineStore('guess', {
     currentKey: null,
     score: null,
     error: null,
-    answers: []
+    answers: [],
+    results: []
   }),
+
+  getters: {
+    getRatingChartData: (state) => (index) => {
+      if (!state.questions[index]?.rating) return [];
+
+      const count = state.questions[index].rating.count;
+      return Object.entries(count).map(([rating, percentage]) => ({
+        name: rating,
+        y: percentage
+      }));
+    }
+  },
 
   actions: {
     async fetchQuestions() {
@@ -33,12 +46,13 @@ export const useGuessStore = defineStore('guess', {
       try {
         const response = await submitGuess(this.currentKey, this.answers);
         this.score = response.data.score;
+        this.results = response.data.results;
         console.log('Score value:', this.score);
-        return { score: this.score };
+        return { score: this.score, results: this.results };
       } catch (error) {
         this.error = 'Failed to submit answer';
         console.error('Failed to submit answer:', error);
-        return { score: null };
+        return { score: null, results: [] };
       }
     },
 
@@ -48,6 +62,7 @@ export const useGuessStore = defineStore('guess', {
       this.score = null;
       this.error = null;
       this.answers = [];
+      this.results = [];
     }
   }
 });
