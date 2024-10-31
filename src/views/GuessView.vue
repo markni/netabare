@@ -31,7 +31,7 @@
         class="flex flex-col gap-2"
       >
         <div class="relative">图形 {{ qIndex + 1 }}</div>
-        <div class="aspect-[4/3]">
+        <div class="aspect-[6/3]">
           <MiniBarChart :rating-data="guessStore.getRatingChartData(qIndex)" />
         </div>
         <div
