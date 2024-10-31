@@ -94,7 +94,7 @@ watch(
       router.replace({ name: 'history' });
     }
   },
-  { deep: true }
+  { deep: false }
 );
 
 watch(

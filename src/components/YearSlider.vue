@@ -164,7 +164,7 @@ watch(
       updateDialPosition();
     }
   },
-  { deep: true }
+  { deep: false }
 );
 </script>
 

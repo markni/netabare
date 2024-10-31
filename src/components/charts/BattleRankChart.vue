@@ -221,7 +221,7 @@ watch(
   () => {
     updateData();
   },
-  { deep: true }
+  { deep: false }
 );
 </script>
 
