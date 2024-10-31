@@ -5,8 +5,8 @@
       {{ guessStore.error }}
     </div>
 
-    <div class="flex justify-between">
-      <h1 class="text-4xl">评分图识别技术初级考试</h1>
+    <div class="flex flex-col justify-between gap-16 sm:flex-row">
+      <h1 class="text-2xl sm:text-4xl">评分图识别技术考试</h1>
       <div class="relative w-64 border-b border-b-paper-dark dark:border-paper">
         <div
           v-if="guessStore.score !== null"
@@ -24,7 +24,7 @@
     <!--    </button>-->
 
     <!-- Questions Section -->
-    <div class="grid grid-cols-2 gap-14 gap-y-16">
+    <div class="grid grid-cols-1 gap-14 gap-y-16 sm:grid-cols-2">
       <div
         v-for="(question, qIndex) in guessStore.questions"
         :key="qIndex"
