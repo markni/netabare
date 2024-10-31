@@ -1,43 +1,65 @@
 <template>
-  <div class="guess-container">
+  <div class="mx-auto flex max-w-3xl flex-col gap-16 p-5">
     <!-- Error Alert -->
-    <div v-if="guessStore.error" class="error-alert">
+    <div v-if="guessStore.error" class="bg-red-100 mb-5 rounded-lg p-3">
       {{ guessStore.error }}
     </div>
 
-    <!-- Score Display -->
-    <div v-if="guessStore.score !== null" class="score-section">
-      <h2>Your Score: {{ JSON.stringify(guessStore.score) }}</h2>
-      <button @click="startNewGame" class="primary-button">Start New Game</button>
-    </div>
-
-    <!-- Questions Section -->
-    <div v-else class="questions-section">
-      <div v-for="(question, qIndex) in guessStore.questions" :key="qIndex" class="question-card">
-        <h3>Question {{ qIndex + 1 }}</h3>
-        <p>{{ question.text }}</p>
-
-        <div class="options-grid">
-          <button
-            v-for="(answer, aIndex) in question.answers"
-            :key="aIndex"
-            @click="selectAnswer(qIndex, aIndex)"
-            :class="{
-              'option-button': true,
-              selected: guessStore.answers[qIndex] === aIndex
-            }"
-          >
-            {{ String.fromCharCode(65 + aIndex) }}. {{ answer }}
-          </button>
+    <div class="flex justify-between">
+      <h1 class="text-4xl">评分图识别技术初级考试</h1>
+      <div class="relative w-64 border-b border-b-paper-dark dark:border-paper">
+        <div
+          v-if="guessStore.score !== null"
+          class="absolute bottom-[-30px] left-16 z-30 text-8xl text-red"
+          style="transform: rotate(-5deg)"
+        >
+          {{ JSON.stringify(guessStore.score * 10) }}
         </div>
       </div>
-
-      {{ guessStore.answers }}
-      <!-- Submit Button -->
-      <button @click="submitAnswers" :disabled="!isComplete" class="submit-button">
-        Submit Answers
-      </button>
     </div>
+
+    <!-- Score Display -->
+    <!--    <button @click="startNewGame" class="hover:border-blu rounded-lg border-blue px-6 py-3">-->
+    <!--      再来一卷-->
+    <!--    </button>-->
+
+    <!-- Questions Section -->
+    <div class="grid grid-cols-2 gap-14 gap-y-16">
+      <div
+        v-for="(question, qIndex) in guessStore.questions"
+        :key="qIndex"
+        class="flex flex-col gap-2"
+      >
+        <div>图形 {{ qIndex + 1 }}</div>
+        <div
+          v-for="(answer, aIndex) in question.answers"
+          :key="aIndex"
+          @click="selectAnswer(qIndex, aIndex)"
+          :class="[
+            'cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
+            guessStore.answers[qIndex] === aIndex
+              ? 'border-blue'
+              : 'border-gray-200 hover:bg-gray-50'
+          ]"
+        >
+          {{ String.fromCharCode(65 + aIndex) }}. {{ answer }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      @click="submitAnswers"
+      :disabled="!isComplete"
+      :class="[
+        'w-full rounded-lg py-3.5 transition-colors',
+        isComplete
+          ? 'cursor-pointer bg-blue text-white hover:bg-blue'
+          : 'cursor-not-allowed bg-gray-400 text-white'
+      ]"
+    >
+      交卷
+    </button>
   </div>
 </template>
 
@@ -63,103 +85,15 @@ const selectAnswer = (questionIndex, answerIndex) => {
 
 const submitAnswers = async () => {
   await guessStore.submitAnswer();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-const startNewGame = async () => {
-  await guessStore.fetchQuestions();
-};
+// const startNewGame = async () => {
+//   await guessStore.fetchQuestions();
+// };
 
 // Fetch questions when component mounts
 onMounted(async () => {
   await guessStore.fetchQuestions();
 });
 </script>
-
-<style scoped>
-.guess-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.error-alert {
-  background-color: #fee2e2;
-  color: #dc2626;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-.question-card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.options-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.option-button {
-  padding: 12px;
-  border: 2px solid #e5e7eb;
-  border-radius: 6px;
-  background-color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.option-button:hover {
-  background-color: #f3f4f6;
-}
-
-.option-button.selected {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 14px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-top: 20px;
-}
-
-.submit-button:disabled {
-  background-color: #9ca3af;
-  cursor: not-allowed;
-}
-
-.submit-button:hover:not(:disabled) {
-  background-color: #2563eb;
-}
-
-.score-section {
-  text-align: center;
-  padding: 40px;
-}
-
-.primary-button {
-  padding: 12px 24px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.primary-button:hover {
-  background-color: #2563eb;
-}
-</style>
