@@ -5,6 +5,12 @@ import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
 import dayjs from 'dayjs';
 import _ from 'lodash';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+// Initialize dayjs plugins
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export const useSubjectStore = defineStore('subject', {
   state: () => ({
@@ -20,7 +26,7 @@ export const useSubjectStore = defineStore('subject', {
           //  todo: remove this after api fix only return UTC time
           const airdateValue = ep.airdate.includes('T')
             ? dayjs(ep.airdate).valueOf()
-            : dayjs.tz(ep.airdate, 'Asia/Shanghai').valueOf();
+            : dayjs(ep.airdate).tz('Asia/Shanghai').valueOf();
           if (!acc[airdateValue]) {
             acc[airdateValue] = [];
           }
