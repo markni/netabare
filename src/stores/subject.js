@@ -17,7 +17,10 @@ export const useSubjectStore = defineStore('subject', {
       return state.subject.eps
         .filter((ep) => ep.type === 0 && ep.airdate)
         .reduce((acc, ep) => {
-          const airdateValue = dayjs(`${ep.airdate}T00:00:00+08:00`).valueOf();
+          //  todo: remove this after api fix only return UTC time
+          const airdateValue = ep.airdate.includes('T')
+            ? dayjs(ep.airdate).valueOf()
+            : dayjs.tz(ep.airdate, 'Asia/Shanghai').valueOf();
           if (!acc[airdateValue]) {
             acc[airdateValue] = [];
           }

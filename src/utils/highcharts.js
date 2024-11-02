@@ -9,6 +9,9 @@ HighchartsMore(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
+  time: {
+    timezone: 'Asia/Shanghai'
+  },
   chart: {
     backgroundColor: null
   },
