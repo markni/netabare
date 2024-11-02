@@ -42,7 +42,7 @@ const updateData = () => {
     const maxTotal = Math.max(...props.subjects.map((subject) => subject.total));
 
     const bubbleData = props.subjects.map((subject) => ({
-      x: subject.std,
+      x: subject.total,
       y: subject.score,
       z: (subject.total / maxTotal) * 500,
       color: getColorByStd(subject.std)
@@ -56,7 +56,7 @@ const initializeChart = () => {
     const maxTotal = Math.max(...props.subjects.map((subject) => subject.total));
 
     const bubbleData = props.subjects.map((subject) => ({
-      x: subject.std,
+      x: subject.total,
       y: subject.score,
       z: (subject.total / maxTotal) * 500,
       color: getColorByStd(subject.std)
@@ -70,12 +70,10 @@ const initializeChart = () => {
       },
       tooltip: {
         formatter: function () {
-          const subject = props.subjects.find(
-            (s) => Math.abs(s.std - this.x) < 0.001 && s.score === this.y
-          );
+          const subject = props.subjects.find((s) => s.total === this.x && s.score === this.y);
           if (!subject) return 'Error';
 
-          return `${subject.name_cn || subject.name}<br/>评分：${subject.score}<br/>标准差：${subject.std.toFixed(2)}<br/>总票数：${subject.total}`;
+          return `${subject.name_cn || subject.name}<br/>评分：${subject.score}<br/>标准差：${subject.std.toFixed(2)}<br/>总票数：${this.x}`;
         }
       },
       subtitle: {
@@ -123,11 +121,11 @@ const initializeChart = () => {
       },
       xAxis: {
         type: 'linear',
-        title: {
-          text: '标准差'
-        },
+
         labels: {
-          format: '{value:.2f}'
+          formatter: function () {
+            return this.value; // Format numbers with thousands separator
+          }
         }
       },
       series: [
