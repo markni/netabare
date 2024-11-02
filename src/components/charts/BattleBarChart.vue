@@ -76,7 +76,7 @@ const initializeChart = () => {
         {
           name: '1分',
           data: [],
-          color: BLUE,
+          color: Highcharts.color(BLUE).setOpacity(0.7).get(),
           dataLabels: {
             enabled: true,
             inside: false,
@@ -93,7 +93,7 @@ const initializeChart = () => {
         {
           name: '10分',
           data: [],
-          color: PINK
+          color: Highcharts.color(PINK).setOpacity(0.7).get()
         }
       ]
     });
