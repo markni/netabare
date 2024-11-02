@@ -5,7 +5,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import dayjs from 'dayjs';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { BLUE, PINK } from '@/constants/colors';
 
@@ -43,7 +42,7 @@ const updateData = () => {
     const maxTotal = Math.max(...props.subjects.map((subject) => subject.total));
 
     const bubbleData = props.subjects.map((subject) => ({
-      x: dayjs(subject.air_date).valueOf(),
+      x: subject.std,
       y: subject.score,
       z: (subject.total / maxTotal) * 500,
       color: getColorByStd(subject.std)
@@ -57,7 +56,7 @@ const initializeChart = () => {
     const maxTotal = Math.max(...props.subjects.map((subject) => subject.total));
 
     const bubbleData = props.subjects.map((subject) => ({
-      x: dayjs(subject.air_date).valueOf(),
+      x: subject.std,
       y: subject.score,
       z: (subject.total / maxTotal) * 500,
       color: getColorByStd(subject.std)
@@ -72,11 +71,11 @@ const initializeChart = () => {
       tooltip: {
         formatter: function () {
           const subject = props.subjects.find(
-            (s) => dayjs(s.air_date).valueOf() === this.x && s.score === this.y
+            (s) => Math.abs(s.std - this.x) < 0.001 && s.score === this.y
           );
           if (!subject) return 'Error';
 
-          return `${subject.name_cn || subject.name}<br/>首播：${dayjs(this.x).format('YYYY.MM.DD')}<br/>排名：${subject.rank}<br/>评分：${subject.score} (${subject.total}票)<br/>标准差：${subject.std}`;
+          return `${subject.name_cn || subject.name}<br/>评分：${subject.score}<br/>标准差：${subject.std.toFixed(2)}<br/>总票数：${subject.total}`;
         }
       },
       subtitle: {
@@ -103,7 +102,7 @@ const initializeChart = () => {
             events: {
               click: function () {
                 const subject = props.subjects.find(
-                  (s) => dayjs(s.air_date).valueOf() === this.x && s.score === this.y
+                  (s) => Math.abs(s.std - this.x) < 0.001 && s.score === this.y
                 );
                 if (subject) {
                   window.open(`/subject/${subject.bgmId}`);
@@ -123,16 +122,12 @@ const initializeChart = () => {
         }
       },
       xAxis: {
-        type: 'datetime',
-        dateTimeLabelFormats: {
-          millisecond: '%m-%d',
-          second: '%m-%d',
-          minute: '%m-%d',
-          hour: '%m-%d',
-          day: '%m-%d',
-          week: '%m-%d',
-          month: '%m-%d',
-          year: '%m-%d'
+        type: 'linear',
+        title: {
+          text: '标准差'
+        },
+        labels: {
+          format: '{value:.2f}'
         }
       },
       series: [
