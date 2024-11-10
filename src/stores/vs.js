@@ -10,10 +10,27 @@ export const useVsStore = defineStore('vs', {
     subjects: [null, null],
     histories: [null, null]
   }),
-  getters: {},
+  getters: {
+    getRatingData: (state) => (index) => {
+      const ratingCount = state.subjects[index]?.rating?.count;
+      if (!ratingCount) return [];
+
+      // Calculate total votes
+      const totalVotes = Object.values(ratingCount).reduce((sum, count) => sum + count, 0);
+
+      // Convert counts to percentages
+      return Object.entries(ratingCount).map(([score, count]) => ({
+        x: Number(score),
+        y: (count / totalVotes) * 100 // Convert to percentage
+      }));
+    }
+  },
 
   actions: {
     async fetchSubject(subjectId, index) {
+      if (index !== 0 && index !== 1) {
+        throw new Error('Invalid index');
+      }
       try {
         useAppStore().setNotFoundSubjectError(false);
         const fetchSubjectWithLoading = withSmartLoadingUx(fetchRank, {
