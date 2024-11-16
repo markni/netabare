@@ -2,15 +2,22 @@
 import Highcharts from 'highcharts';
 import HighchartsBoost from 'highcharts/modules/boost';
 import HighchartsMore from 'highcharts/highcharts-more';
+import moment from 'moment';
+import 'moment-timezone'; // Import timezone data
 import { IVORY } from '../constants/colors';
 
+// Initialize moment timezone
+moment.tz.setDefault('Asia/Shanghai');
+
+// Load Highcharts modules
 HighchartsBoost(Highcharts);
 HighchartsMore(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
   time: {
-    timezone: 'Asia/Shanghai'
+    timezone: 'Asia/Shanghai',
+    moment: moment // Add this line to use moment
   },
   chart: {
     backgroundColor: null
