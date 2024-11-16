@@ -86,6 +86,22 @@ onUnmounted(() => {
 
 const updateData = () => {
   if (chartInstance.value) {
+    // Log the raw data
+
+    // Transform yearly data to include count series
+    const countData = props.filteredYearlyData.map((point) => {
+      // Log individual point to see its structure
+
+      return {
+        x: Array.isArray(point) ? point[0] : point.x, // Handle both array and object format
+        y: point.count || (Array.isArray(point) ? point[2] : 0) // Try to get count from different possible locations
+      };
+    });
+
+    // Log the transformed data
+
+    // Update series in correct order
+    chartInstance.value.series[2].update({ data: countData }, false);
     chartInstance.value.series[1].update({ data: props.filteredYearlyData }, false);
     chartInstance.value.series[0].update({ data: props.historyData }, true);
   }
@@ -119,6 +135,10 @@ const initializeChart = () => {
             return `${dayjs(this.x).year()}年<br/>
                    均分：<b>${this.y.toFixed(2)}</b><br/>
                    数量：<b>${this.point.count}</b>条`;
+          }
+          if (this.series.name === '数量') {
+            return `${dayjs(this.x).year()}年<br/>
+                   数量：<b>${this.y}</b>条`;
           }
           let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
 
@@ -194,6 +214,7 @@ const initializeChart = () => {
       },
       yAxis: [
         {
+          // Primary y-axis for scores
           startOnTick: false,
           title: {
             enabled: false
@@ -203,6 +224,20 @@ const initializeChart = () => {
           },
           min: props.minScore - (props.minScore > 0 ? 0.05 : 0),
           max: props.maxScore + (props.maxScore < 10 ? 0.05 : 0)
+        },
+        {
+          // Secondary y-axis for count
+          min: 0,
+          title: {
+            enabled: false
+          },
+          labels: {
+            style: {
+              color: 'rgba(128, 128, 128, 0.8)'
+            }
+          },
+          opposite: true,
+          gridLineWidth: 0
         }
       ],
       xAxis: {
@@ -245,6 +280,21 @@ const initializeChart = () => {
           color: PINK,
           name: '均分',
           data: []
+        },
+        // Add new series for count
+        {
+          type: 'column',
+          name: '数量',
+          yAxis: 1,
+          data: [],
+          color: 'rgba(128, 128, 128, 0.3)',
+          tooltip: {
+            valueSuffix: ' 条'
+          },
+          pointPadding: 0.1,
+          groupPadding: 0.2,
+          borderWidth: 0,
+          zIndex: -1 // Put columns behind other series
         }
       ],
       colors: COLORS10
