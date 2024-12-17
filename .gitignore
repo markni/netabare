@@ -31,3 +31,4 @@ coverage
 /.run/
 
 .npmrc
+/vite.config.js.timestamp*.mjs

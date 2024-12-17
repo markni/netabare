@@ -8,6 +8,7 @@ import CollectionChart from '@/components/charts/CollectionChart.vue';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
 import HintDiv from '@/components/HintDiv.vue';
 import _ from 'lodash';
+import RatingChart from '@/components/charts/RatingChart.vue';
 
 const props = defineProps({
   id: {
@@ -17,6 +18,7 @@ const props = defineProps({
 });
 const store = useSubjectStore();
 const {
+  ratingDeltas,
   subject,
   combinedData,
   delta,
@@ -64,6 +66,19 @@ const decodedName = computed(() => {
 const decodedNameCn = computed(() => {
   return decodeHtmlEntities(subject.value.name_cn || '');
 });
+
+// Add this near the top of the script section, with other refs
+const selectedRatingPeriod = ref('now');
+
+// Add this computed property to get rating data for the selected period
+const currentRatingData = computed(() => {
+  return ratingDeltas.value(selectedRatingPeriod.value);
+});
+
+// Add this function to handle period selection
+const setRatingPeriod = (period) => {
+  selectedRatingPeriod.value = period;
+};
 </script>
 
 <template>
@@ -188,6 +203,81 @@ const decodedNameCn = computed(() => {
             :x-max="filteredBy === 'eps' ? oneWeekAfterLastEpTimestamp : null"
             :x-min="filteredBy === 'eps' ? oneWeekBeforeFirstEpTimestamp : null"
           />
+        </div>
+      </section>
+
+      <section id="rating" class="flex w-full snap-start scroll-mt-20 flex-col gap-4">
+        <div class="mt-20 flex flex-col items-end">
+          <div class="bg-pink">
+            <RouterLink :to="`/${props.id}/vs/400602`">实验功能</RouterLink>
+          </div>
+          <h3 class="z-10 text-2xl">
+            评分分布
+            <DeltaDisplay
+              :title="
+                selectedRatingPeriod === 'now'
+                  ? '当前均分'
+                  : selectedRatingPeriod === '1m'
+                    ? '一个月内均分与当前均分的差异'
+                    : '一年内均分与当前均分的差异'
+              "
+              v-show="currentRatingData?.score"
+              :delta="currentRatingData?.score - subject.rating?.score"
+            />
+          </h3>
+          <div class="text-8xl">{{ currentRatingData?.score ?? 'N/A' }}</div>
+
+          <div class="mt-4 flex gap-2 text-xl">
+            <button
+              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              :class="{
+                underline: selectedRatingPeriod === 'now'
+              }"
+              @click="setRatingPeriod('now')"
+            >
+              当前评分
+            </button>
+            <!-- <button
+              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              :class="{
+                underline: selectedRatingPeriod === '1w'
+              }"
+              @click="setRatingPeriod('1w')"
+            >
+              一周内
+            </button> -->
+            <button
+              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              :class="{
+                underline: selectedRatingPeriod === '1m'
+              }"
+              @click="setRatingPeriod('1m')"
+            >
+              一个月内评分
+            </button>
+            <!-- <button
+              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              :class="{
+                underline: selectedRatingPeriod === '6m'
+              }"
+              @click="setRatingPeriod('6m')"
+            >
+              半年内
+            </button> -->
+            <button
+              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              :class="{
+                underline: selectedRatingPeriod === '1y'
+              }"
+              @click="setRatingPeriod('1y')"
+            >
+              一年内评分
+            </button>
+          </div>
+
+          <div class="aspect-square w-full sm:aspect-[16/8]">
+            <RatingChart v-if="currentRatingData?.rating" :rating-data="currentRatingData.rating" />
+          </div>
         </div>
       </section>
 

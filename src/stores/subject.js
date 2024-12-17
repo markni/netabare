@@ -134,6 +134,85 @@ export const useSubjectStore = defineStore('subject', {
       });
 
       return { rankData, scoreData, collectionData };
+    },
+    ratingDeltas: (state) => (period) => {
+      const { history } = state;
+      if (!history || history.length === 0) return null;
+
+      const latest = _.last(history);
+
+      // If period is 'now', just return the latest rating and current score
+      if (period === 'now') {
+        return {
+          rating: latest.rating,
+          score: latest.score
+        };
+      }
+
+      const now = dayjs();
+      let startDate;
+
+      // Convert period string to date
+      switch (period) {
+        case '1w':
+          startDate = now.subtract(1, 'week');
+          break;
+        case '1m':
+          startDate = now.subtract(1, 'month');
+          break;
+        case '6m':
+          startDate = now.subtract(6, 'months');
+          break;
+        case '1y':
+          startDate = now.subtract(1, 'year');
+          break;
+        default:
+          return null;
+      }
+
+      // Find the closest historical record to the start date with 2 weeks tolerance
+      const historicalRecord = _.chain(history)
+        .filter((h) => {
+          const recordDate = dayjs(h.recordedAt);
+          const diffInDays = Math.abs(recordDate.diff(startDate, 'days'));
+          return recordDate.isBefore(startDate) && diffInDays <= 14; // 2 weeks tolerance
+        })
+        .minBy((h) => {
+          const recordDate = dayjs(h.recordedAt);
+          return Math.abs(recordDate.diff(startDate, 'days'));
+        })
+        .value();
+
+      if (!historicalRecord) return null;
+
+      const ratingChanges = {
+        count: {
+          1: (latest.rating?.count?.[1] || 0) - (historicalRecord.rating?.count?.[1] || 0),
+          2: (latest.rating?.count?.[2] || 0) - (historicalRecord.rating?.count?.[2] || 0),
+          3: (latest.rating?.count?.[3] || 0) - (historicalRecord.rating?.count?.[3] || 0),
+          4: (latest.rating?.count?.[4] || 0) - (historicalRecord.rating?.count?.[4] || 0),
+          5: (latest.rating?.count?.[5] || 0) - (historicalRecord.rating?.count?.[5] || 0),
+          6: (latest.rating?.count?.[6] || 0) - (historicalRecord.rating?.count?.[6] || 0),
+          7: (latest.rating?.count?.[7] || 0) - (historicalRecord.rating?.count?.[7] || 0),
+          8: (latest.rating?.count?.[8] || 0) - (historicalRecord.rating?.count?.[8] || 0),
+          9: (latest.rating?.count?.[9] || 0) - (historicalRecord.rating?.count?.[9] || 0),
+          10: (latest.rating?.count?.[10] || 0) - (historicalRecord.rating?.count?.[10] || 0)
+        },
+        total: (latest.rating?.total || 0) - (historicalRecord.rating?.total || 0)
+      };
+
+      // Calculate weighted sum of new ratings
+      const weightedSum = Object.entries(ratingChanges.count).reduce((sum, [score, count]) => {
+        return sum + Number(score) * count;
+      }, 0);
+
+      // Calculate average score for the period
+      const periodScore = ratingChanges.total !== 0 ? weightedSum / ratingChanges.total : 0;
+
+      return {
+        rating: ratingChanges,
+        score: Number(periodScore.toFixed(2)) // Round to 2 decimal places
+      };
     }
   },
 

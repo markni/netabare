@@ -13,12 +13,16 @@ const props = defineProps({
   precision: {
     type: Number,
     default: 2
+  },
+  title: {
+    type: String,
+    default: '30天之内的评分变化'
   }
 });
 </script>
 
 <template>
-  <span v-if="!isNaN(props.delta)" class="cursor-help" title="30天之内的评分变化"
+  <span v-if="!isNaN(props.delta)" class="cursor-help" :title="props.title"
     ><span
       :class="{
         'text-pink': props.delta >= 0,
