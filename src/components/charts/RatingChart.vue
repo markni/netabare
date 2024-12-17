@@ -23,6 +23,12 @@ const chartData = computed(() => {
   return [10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((score) => props.ratingData.count[score] || 0);
 });
 
+// Add a computed property for total ratings
+const totalRatings = computed(() => {
+  if (!props.ratingData?.count) return 0;
+  return Object.values(props.ratingData.count).reduce((sum, count) => sum + count, 0);
+});
+
 const chartContainer = ref(null);
 let chartInstance = null;
 
@@ -44,7 +50,8 @@ const initializeChart = () => {
 
       tooltip: {
         formatter: function () {
-          return `${this.x}分：<b>${this.y}</b>人评分`;
+          const percentage = ((this.y / totalRatings.value) * 100).toFixed(1);
+          return `${this.x}分：<b>${this.y}</b>人评分 (${percentage}%)`;
         }
       },
 
