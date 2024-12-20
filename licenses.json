@@ -11,13 +11,13 @@
         "publisher": "The Babel Team",
         "url": "https://babel.dev/team"
     },
-    "@babel/parser@7.25.7": {
+    "@babel/parser@7.25.8": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
         "url": "https://babel.dev/team"
     },
-    "@babel/types@7.25.7": {
+    "@babel/types@7.25.8": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "publisher": "The Babel Team",
@@ -28,22 +28,22 @@
         "repository": "https://github.com/jridgewell/sourcemap-codec",
         "publisher": "Rich Harris"
     },
-    "@vue/compiler-core@3.5.10": {
+    "@vue/compiler-core@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-dom@3.5.10": {
+    "@vue/compiler-dom@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-sfc@3.5.10": {
+    "@vue/compiler-sfc@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/compiler-ssr@3.5.10": {
+    "@vue/compiler-ssr@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
@@ -53,27 +53,27 @@
         "repository": "https://github.com/vuejs/vue-devtools",
         "publisher": "Guillaume Chau"
     },
-    "@vue/reactivity@3.5.10": {
+    "@vue/reactivity@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/runtime-core@3.5.10": {
+    "@vue/runtime-core@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/runtime-dom@3.5.10": {
+    "@vue/runtime-dom@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/server-renderer@3.5.10": {
+    "@vue/server-renderer@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
     },
-    "@vue/shared@3.5.10": {
+    "@vue/shared@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
@@ -152,7 +152,7 @@
         "publisher": "John-David Dalton",
         "email": "john.david.dalton@gmail.com"
     },
-    "magic-string@0.30.11": {
+    "magic-string@0.30.12": {
         "licenses": "MIT",
         "repository": "https://github.com/rich-harris/magic-string",
         "publisher": "Rich Harris"
@@ -164,6 +164,20 @@
     "mime-types@2.1.35": {
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/mime-types"
+    },
+    "moment-timezone@0.5.46": {
+        "licenses": "MIT",
+        "repository": "https://github.com/moment/moment-timezone",
+        "publisher": "Tim Wood",
+        "email": "washwithcare@gmail.com",
+        "url": "http://timwoodcreates.com/"
+    },
+    "moment@2.30.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/moment/moment",
+        "publisher": "Iskren Ivov Chernev",
+        "email": "iskren.chernev@gmail.com",
+        "url": "https://github.com/ichernev"
     },
     "nanoid@3.3.7": {
         "licenses": "MIT",
@@ -220,7 +234,7 @@
         "publisher": "Eduardo San Martin Morote",
         "email": "posva13@gmail.com"
     },
-    "vue@3.5.10": {
+    "vue@3.5.12": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/core",
         "publisher": "Evan You"
