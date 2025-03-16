@@ -3,39 +3,43 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { BLUE, PINK } from '@/constants/colors';
+import { useChartTheme } from '@/composables/useChartTheme';
+
 const props = defineProps({
   ratingData: {
-    type: Array,
+    type: Object,
     required: true
   },
   comparisonData: {
-    type: Array,
+    type: Object,
     required: false,
     default: null
   }
 });
 
 const chartContainer = ref(null);
-let chartInstance = null;
+const chartInstance = shallowRef(null);
+
+useChartTheme(chartInstance);
 
 const updateData = () => {
-  if (chartInstance) {
-    chartInstance.series[0].setData(props.ratingData, false);
+  if (chartInstance.value) {
+    chartInstance.value.series[0].setData(props.ratingData.data, false);
     if (props.comparisonData) {
-      chartInstance.series[1].setData(props.comparisonData, true);
+      chartInstance.value.series[1].setData(props.comparisonData.data, true);
     }
   }
 };
 
 const initializeChart = () => {
-  if (chartInstance) {
-    chartInstance.destroy();
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
   }
   if (chartContainer.value) {
-    chartInstance = Highcharts.chart(chartContainer.value, {
+    chartInstance.value = Highcharts.chart(chartContainer.value, {
       chart: {
         type: 'column'
       },
@@ -62,12 +66,12 @@ const initializeChart = () => {
       },
       series: [
         {
-          name: '动画0',
+          name: props.ratingData.name,
           data: [],
           color: BLUE
         },
         {
-          name: '动画1',
+          name: props.comparisonData?.name || '动画1',
           data: [],
           color: PINK
         }
@@ -82,14 +86,14 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
+  if (chartInstance.value) {
+    chartInstance.value.destroy();
+    chartInstance.value = null;
   }
 });
 
 watch(
-  () => props.ratingData,
+  [() => props.ratingData, () => props.comparisonData],
   () => {
     updateData();
   },

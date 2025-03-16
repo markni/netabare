@@ -12,17 +12,21 @@ export const useVsStore = defineStore('vs', {
   }),
   getters: {
     getRatingData: (state) => (index) => {
-      const ratingCount = state.subjects[index]?.rating?.count;
+      const subject = state.subjects[index];
+      const ratingCount = subject?.rating?.count;
       if (!ratingCount) return [];
 
       // Calculate total votes
       const totalVotes = Object.values(ratingCount).reduce((sum, count) => sum + count, 0);
 
-      // Convert counts to percentages
-      return Object.entries(ratingCount).map(([score, count]) => ({
-        x: Number(score),
-        y: (count / totalVotes) * 100 // Convert to percentage
-      }));
+      // Convert counts to percentages and include subject name
+      return {
+        name: subject.name_cn || subject.name,
+        data: Object.entries(ratingCount).map(([score, count]) => ({
+          x: Number(score),
+          y: (count / totalVotes) * 100 // Convert to percentage
+        }))
+      };
     }
   },
 
