@@ -3,6 +3,14 @@
     ref="containerRef"
     class="flex h-full w-full flex-col items-center justify-center gap-64 text-6xl tracking-wider"
   >
+    <!-- Auto-scroll indicator (only show when active) -->
+    <div
+      v-if="isAutoScrolling"
+      class="fixed right-4 top-4 z-50 rounded-md bg-black/70 px-4 py-2 text-sm text-white"
+    >
+      Auto-scrolling (Press Enter to stop)
+    </div>
+
     <div class="flex flex-col gap-16 pt-32">
       <h1 class="rainbow text-center text-4xl">Netabare</h1>
 
@@ -86,20 +94,110 @@ const containerRef = ref(null);
 // Initialize observer reference
 const observer = ref(null);
 
+// Track auto-scroll state
+const isAutoScrolling = ref(false);
+const autoScrollInterval = ref(null);
+const isProgrammaticScroll = ref(false);
+const lastScrollPosition = ref(0);
+
+// Handle auto-scroll functionality
+const toggleAutoScroll = () => {
+  if (isAutoScrolling.value) {
+    // Stop auto-scrolling
+    stopAutoScroll();
+  } else {
+    // Start auto-scrolling
+    startAutoScroll();
+  }
+};
+
+const startAutoScroll = () => {
+  isAutoScrolling.value = true;
+  lastScrollPosition.value = window.scrollY;
+
+  // Start auto-scrolling interval - very slow
+  autoScrollInterval.value = setInterval(() => {
+    isProgrammaticScroll.value = true;
+    window.scrollBy({ top: 1, behavior: 'auto' });
+    // Reset the flag after scroll operation is complete
+    setTimeout(() => {
+      isProgrammaticScroll.value = false;
+    }, 10);
+  }, 20);
+};
+
+const stopAutoScroll = () => {
+  isAutoScrolling.value = false;
+
+  // Clear the interval
+  if (autoScrollInterval.value) {
+    clearInterval(autoScrollInterval.value);
+    autoScrollInterval.value = null;
+  }
+
+  // Remove 'inview' class from all rainbow elements when auto-scroll stops
+  if (containerRef.value) {
+    containerRef.value.querySelectorAll('.rainbow.inview').forEach((el) => {
+      el.classList.remove('inview');
+    });
+  }
+};
+
+// Handle keyboard events
+const handleKeyDown = (event) => {
+  if (event.key === 'Enter') {
+    toggleAutoScroll();
+  }
+};
+
+// Handle manual scroll
+const handleManualScroll = () => {
+  // If auto-scrolling and this was NOT triggered by our auto-scroll function
+  if (isAutoScrolling.value && !isProgrammaticScroll.value) {
+    // Check if the scroll position differs significantly from what we expect
+    const currentScroll = window.scrollY;
+    const expectedScroll = lastScrollPosition.value + 1; // We add 1px per interval
+
+    // If the difference is more than a few pixels, it was likely a manual scroll
+    if (Math.abs(currentScroll - expectedScroll) > 3) {
+      stopAutoScroll();
+    } else {
+      // Update the last position for future checks
+      lastScrollPosition.value = currentScroll;
+    }
+  }
+};
+
+// Handle wheel events (better for detecting manual scrolling)
+const handleWheel = () => {
+  if (isAutoScrolling.value) {
+    stopAutoScroll();
+  }
+};
+
+// Handle touchmove events (for mobile)
+const handleTouchMove = () => {
+  if (isAutoScrolling.value) {
+    stopAutoScroll();
+  }
+};
+
 // Setup intersection observer on component mount
 onMounted(async () => {
   // Wait for the next DOM update
   await nextTick();
 
-  // Create observer that triggers when element is in middle 1/3 of viewport
+  // Create observer that triggers when element is in middle 1/6 of viewport
   observer.value = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // Add .inview class when in view, remove when out
-        if (entry.isIntersecting) {
-          entry.target.classList.add('inview');
-        } else {
-          entry.target.classList.remove('inview');
+        // Only add/remove .inview class when auto-scrolling is active
+        if (isAutoScrolling.value) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('inview');
+          } else {
+            entry.target.classList.remove('inview');
+          }
         }
       });
     },
@@ -117,13 +215,29 @@ onMounted(async () => {
       observer.value.observe(el);
     });
   }
+
+  // Add event listeners - we now listen for multiple scroll-related events
+  window.addEventListener('keydown', handleKeyDown);
+  window.addEventListener('scroll', handleManualScroll, { passive: true });
+  window.addEventListener('wheel', handleWheel, { passive: true });
+  window.addEventListener('touchmove', handleTouchMove, { passive: true });
 });
 
-// Clean up observer on component unmount
+// Clean up on component unmount
 onUnmounted(() => {
+  // Clean up intersection observer
   if (observer.value) {
     observer.value.disconnect();
   }
+
+  // Stop auto-scrolling if active
+  stopAutoScroll();
+
+  // Remove event listeners
+  window.removeEventListener('keydown', handleKeyDown);
+  window.removeEventListener('scroll', handleManualScroll);
+  window.removeEventListener('wheel', handleWheel);
+  window.removeEventListener('touchmove', handleTouchMove);
 });
 </script>
 <style scoped>
