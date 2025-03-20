@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="containerRef"
     class="flex h-full w-full flex-col items-center justify-center gap-64 text-6xl tracking-wider"
   >
     <div class="flex flex-col gap-16 pt-32">
@@ -77,6 +78,53 @@
 </template>
 <script setup>
 import licenses from '../../licenses.json';
+import { onMounted, onUnmounted, ref, nextTick } from 'vue';
+
+// Create a ref for the container
+const containerRef = ref(null);
+
+// Initialize observer reference
+const observer = ref(null);
+
+// Setup intersection observer on component mount
+onMounted(async () => {
+  // Wait for the next DOM update
+  await nextTick();
+
+  // Create observer that triggers when element is in middle 1/3 of viewport
+  observer.value = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // Add .inview class when in view, remove when out
+        if (entry.isIntersecting) {
+          entry.target.classList.add('inview');
+        } else {
+          entry.target.classList.remove('inview');
+        }
+      });
+    },
+    {
+      // Define threshold for middle 1/6 of viewport (50% narrower than before)
+      rootMargin: '-42% 0px -42% 0px',
+      threshold: 0
+    }
+  );
+
+  // Use containerRef to query for rainbow elements within our component
+  if (containerRef.value) {
+    const elements = containerRef.value.querySelectorAll('.rainbow');
+    elements.forEach((el) => {
+      observer.value.observe(el);
+    });
+  }
+});
+
+// Clean up observer on component unmount
+onUnmounted(() => {
+  if (observer.value) {
+    observer.value.disconnect();
+  }
+});
 </script>
 <style scoped>
 .dark .rainbow {
@@ -103,7 +151,8 @@ import licenses from '../../licenses.json';
     text-shadow 0.1s linear;
 }
 
-.dark .rainbow:hover {
+.dark .rainbow:hover,
+.dark .rainbow.inview {
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   animation: shine 1s forwards;
 
