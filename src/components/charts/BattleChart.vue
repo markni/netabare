@@ -9,6 +9,10 @@ const props = defineProps({
   historyData: {
     type: Array,
     required: true
+  },
+  showLabelsOnRight: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -41,9 +45,35 @@ const updateData = () => {
         }
       ];
 
+      // Prepare data with the last point having a dataLabel if showLabelsOnRight is true
+      let formattedData = [...scoreHistory];
+      if (props.showLabelsOnRight && formattedData.length > 0) {
+        const lastIndex = formattedData.length - 1;
+        formattedData[lastIndex] = {
+          x: formattedData[lastIndex][0],
+          y: formattedData[lastIndex][1],
+          dataLabels: {
+            enabled: true,
+            align: 'left',
+            verticalAlign: 'middle',
+            padding: 0,
+            distance: 1110,
+            borderWidth: 0,
+            borderRadius: 0,
+            shadow: true,
+            format: `${name}: {y:.2f}`,
+            style: {
+              fontWeight: 'normal',
+              fontSize: '15px',
+              color: color
+            }
+          }
+        };
+      }
+
       if (currentSeries[name]) {
         // Update existing series
-        currentSeries[name].setData(scoreHistory, false);
+        currentSeries[name].setData(formattedData, false);
         currentSeries[name].update({ zones }, false);
         delete currentSeries[name]; // Remove from currentSeries to avoid deleting it later
       } else {
@@ -52,7 +82,7 @@ const updateData = () => {
           {
             name: name,
             id: bgmId,
-            data: scoreHistory,
+            data: formattedData,
             type: 'spline',
             yAxis: 0,
             color: color,
@@ -90,6 +120,11 @@ const initializeChart = () => {
         }
       },
 
+      // Make sure we have adequate space inside the plot area
+      spacingRight: props.showLabelsOnRight ? 100 : 10,
+
+      // Essential: this ensures the plot area doesn't take the full width
+      // leaving space for the labels inside the chart area but outside the plot area
       plotOptions: {
         spline: {
           marker: {
@@ -179,6 +214,14 @@ watch(
     updateData();
   },
   { deep: true }
+);
+
+// Update the watcher for the showLabelsOnRight prop
+watch(
+  () => props.showLabelsOnRight,
+  () => {
+    updateData(); // Re-run updateData to apply or remove the labels
+  }
 );
 </script>
 

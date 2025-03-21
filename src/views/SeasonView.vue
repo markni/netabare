@@ -74,7 +74,7 @@ watch(routeParams, () => {
       <h2 class="text-2xl">热门前10评分对比</h2>
 
       <div class="sm:aspect-[16/10]">
-        <BattleChart :historyData="historyData" />
+        <BattleChart :historyData="historyData" :showLabelsOnRight="true" />
       </div>
     </div>
 
