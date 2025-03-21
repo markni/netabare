@@ -47,6 +47,11 @@ const updateData = () => {
 
       // Prepare data with the last point having a dataLabel if showLabelsOnRight is true
       let formattedData = [...scoreHistory];
+
+      // Always format all points as basic data points first
+      formattedData = formattedData.map((point) => [point[0], point[1]]);
+
+      // Then add data label to the last point only if showLabelsOnRight is true
       if (props.showLabelsOnRight && formattedData.length > 0) {
         const lastIndex = formattedData.length - 1;
         formattedData[lastIndex] = {
@@ -55,16 +60,17 @@ const updateData = () => {
           dataLabels: {
             enabled: true,
             align: 'left',
-            verticalAlign: 'middle',
+            verticalAlign: 'bottom',
             padding: 0,
-            distance: 1110,
+            distance: 0,
             borderWidth: 0,
             borderRadius: 0,
             shadow: true,
             format: `${name}: {y:.2f}`,
+            allowOverlap: true,
             style: {
               fontWeight: 'normal',
-              fontSize: '15px',
+              fontSize: '14px',
               color: color
             }
           }
@@ -219,8 +225,14 @@ watch(
 // Update the watcher for the showLabelsOnRight prop
 watch(
   () => props.showLabelsOnRight,
-  () => {
-    updateData(); // Re-run updateData to apply or remove the labels
+  (newValue) => {
+    if (!newValue) {
+      // When turning off labels, reinitialize the chart to ensure clean state
+      initializeChart();
+    } else {
+      // When turning on labels, just update the data
+      updateData();
+    }
   }
 );
 </script>

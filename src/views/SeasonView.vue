@@ -6,12 +6,31 @@ import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import HintDiv from '@/components/HintDiv.vue';
 import { useRoute } from 'vue-router';
-import { onMounted, watch, computed } from 'vue';
+import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 
 const store = useSeasonStore();
 const route = useRoute();
 const { historyData, balanceData, subjectsData } = storeToRefs(store);
+const showLabelsOnRight = ref(false); // Set to false by default
+
+// Toggle labels when Alt key is pressed
+const handleKeyDown = (e) => {
+  if (e.key === 'Alt') {
+    e.preventDefault(); // Prevent default Alt behavior
+    showLabelsOnRight.value = !showLabelsOnRight.value; // Toggle the value
+  }
+};
+
+// Add and remove event listeners
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+  fetchSeason();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+});
 
 const getSeasonDateName = () => {
   const { year, month } = route.params;
@@ -50,11 +69,6 @@ const fetchSeason = async () => {
 // Create a computed property for route parameters
 const routeParams = computed(() => route.params);
 
-// Fetch data on component mount
-onMounted(() => {
-  fetchSeason();
-});
-
 // Watch for changes in the computed route parameters
 watch(routeParams, () => {
   fetchSeason();
@@ -71,10 +85,11 @@ watch(routeParams, () => {
       >
         如何放大缩小？
       </HintDiv>
+      <HintDiv title="按Alt键可显示标签"> 如何在曲线上显示标签？ </HintDiv>
       <h2 class="text-2xl">热门前10评分对比</h2>
 
       <div class="sm:aspect-[16/10]">
-        <BattleChart :historyData="historyData" :showLabelsOnRight="true" />
+        <BattleChart :historyData="historyData" :showLabelsOnRight="showLabelsOnRight" />
       </div>
     </div>
 
