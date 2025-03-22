@@ -59,19 +59,17 @@ const updateData = () => {
           y: formattedData[lastIndex][1],
           dataLabels: {
             enabled: true,
-            align: 'left',
-            verticalAlign: 'bottom',
-            padding: 0,
-            distance: 0,
-            borderWidth: 0,
-            borderRadius: 0,
-            shadow: true,
             format: `${name}: {y:.2f}`,
             allowOverlap: true,
+            align: 'left',
+            verticalAlign: 'bottom',
+            // backgroundColor: 'rgba(0, 0,0 , 0.5)',
+            // overflow: 'allow',
+            // crop: false,
             style: {
-              fontWeight: 'normal',
-              fontSize: '14px',
-              color: color
+              fontSize: '15px',
+              color: color,
+              textOutline: false
             }
           }
         };
@@ -79,7 +77,9 @@ const updateData = () => {
 
       if (currentSeries[name]) {
         // Update existing series
-        currentSeries[name].setData(formattedData, false);
+
+        currentSeries[name].setData(formattedData, false, true, false);
+
         currentSeries[name].update({ zones }, false);
         delete currentSeries[name]; // Remove from currentSeries to avoid deleting it later
       } else {
@@ -126,11 +126,6 @@ const initializeChart = () => {
         }
       },
 
-      // Make sure we have adequate space inside the plot area
-      spacingRight: props.showLabelsOnRight ? 100 : 10,
-
-      // Essential: this ensures the plot area doesn't take the full width
-      // leaving space for the labels inside the chart area but outside the plot area
       plotOptions: {
         spline: {
           marker: {
@@ -225,14 +220,8 @@ watch(
 // Update the watcher for the showLabelsOnRight prop
 watch(
   () => props.showLabelsOnRight,
-  (newValue) => {
-    if (!newValue) {
-      // When turning off labels, reinitialize the chart to ensure clean state
-      initializeChart();
-    } else {
-      // When turning on labels, just update the data
-      updateData();
-    }
+  () => {
+    updateData();
   }
 );
 </script>
