@@ -165,7 +165,8 @@ const initializeChart = () => {
           },
           labels: {
             format: '{value:.2f}'
-          }
+          },
+          tickInterval: 0.5 // Set fixed tick interval at 0.5
         }
       ],
       xAxis: {
