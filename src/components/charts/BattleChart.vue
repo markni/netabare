@@ -69,7 +69,8 @@ const updateData = () => {
             style: {
               fontSize: '15px',
               color: color,
-              textOutline: false
+              textOutline: false,
+              fontFamily: `'source-han-serif-sc', serif`
             }
           }
         };
