@@ -18,7 +18,9 @@ const texts = {
   _history: '历史分布',
   _user: '个人评分',
   _experimental: '实验功能',
-  _menu: '————'
+  _menu: '————',
+  _darkMode: '黑暗模式',
+  _lightMode: '明亮模式'
 };
 const _allTextCombined = Object.values(texts).join(' ');
 

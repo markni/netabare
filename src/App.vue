@@ -86,10 +86,11 @@ console.log(`
       <div :class="['container bottom-0 mx-auto w-full p-4 pt-10']">
         <RouterView />
       </div>
-      <div class="sticky top-0 self-start">
+      <div class="sticky top-0 hidden self-start sm:flex">
         <ThemeToggle />
       </div>
     </div>
+
     <div class="pointer-events-none fixed bottom-0 right-0 opacity-0">
       {{ texts._allTextCombined }}
     </div>

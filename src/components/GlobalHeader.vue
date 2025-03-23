@@ -2,6 +2,9 @@
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
 import { ref } from 'vue';
+import { useThemeStore } from '../stores/theme';
+
+const themeStore = useThemeStore();
 
 const isMenuExpanded = ref(false);
 </script>
@@ -76,6 +79,18 @@ const isMenuExpanded = ref(false);
           :class="{ 'text-gray-700 dark:text-white': $route.path.includes('/vs/') }"
         >
           <RouterLink to="/395378/vs/400602">{{ texts._experimental }}</RouterLink>
+        </div>
+
+        <div class="mt-4">
+          <!-- gap between main links and other links -->
+        </div>
+
+        <div
+          class="flex cursor-pointer text-gray-400 hover:text-gray-700 dark:hover:text-white sm:hidden"
+        >
+          <a @click="themeStore.toggleDarkMode">{{
+            themeStore.isDarkMode ? texts._lightMode : texts._darkMode
+          }}</a>
         </div>
       </div>
     </nav>
