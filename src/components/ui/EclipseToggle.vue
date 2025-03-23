@@ -2,7 +2,7 @@
   <button @click="$emit('toggle')" class="sun">
     <div
       class="moon"
-      :style="{ transform: `translateX(${mode === 'dark' ? '1px' : '37px'})` }"
+      :class="{ 'moon-dark': mode === 'dark', 'moon-light': mode === 'light' }"
     ></div>
   </button>
 </template>
@@ -89,5 +89,13 @@ defineProps({
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+.moon-dark {
+  transform: translateX(1px);
+}
+
+.moon-light {
+  transform: translateX(37px);
 }
 </style>

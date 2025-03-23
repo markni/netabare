@@ -11,7 +11,7 @@
 <script setup>
 // Using Vue 3 Composition API as per project rules
 import { onMounted } from 'vue';
-import EclipseToggle from '../components/EclipseToggle.vue';
+import EclipseToggle from '../components/ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
 
 const themeStore = useThemeStore();

@@ -80,11 +80,9 @@ console.log(`
     />
 
     <div
-      class="flex min-h-screen bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white"
+      class="flex min-h-screen flex-col bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white sm:flex-row"
     >
-      <div class="sticky top-0 self-start">
-        <GlobalHeader />
-      </div>
+      <GlobalHeader />
       <div :class="['container bottom-0 mx-auto w-full p-4 pt-10']">
         <RouterView />
       </div>
