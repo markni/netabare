@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue';
 import { BLUE, COLORS10, PINK } from '@/constants/colors.js';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
-
 const store = useTrendingStore();
 const { up, down, done } = storeToRefs(store);
 

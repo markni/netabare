@@ -9,10 +9,13 @@ import { useThemeStore } from './stores/theme';
 import { onMounted, watch } from 'vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
+import useScrollToAnchor from '@/composables/useScrollToAnchor';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
+
+useScrollToAnchor();
 
 onMounted(() => {
   themeStore.initTheme();
