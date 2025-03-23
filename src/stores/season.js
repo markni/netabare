@@ -11,7 +11,6 @@ export const useSeasonStore = defineStore('season', {
   }),
   getters: {
     subjectsData: (state) => {
-      console.log(state.season);
       return state.season.map((subject) => {
         // Calculate standard deviation
         let std = 0;

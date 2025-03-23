@@ -47,7 +47,6 @@ export const useGuessStore = defineStore('guess', {
         const response = await submitGuess(this.currentKey, this.answers);
         this.score = response.data.score;
         this.results = response.data.results;
-        console.log('Score value:', this.score);
         return { score: this.score, results: this.results };
       } catch (error) {
         this.error = 'Failed to submit answer';
