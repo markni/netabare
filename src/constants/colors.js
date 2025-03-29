@@ -28,3 +28,5 @@ export const COLORS2 = ['#88cdbd', '#75cdd6', '#beb4ff', '#ff97ca', '#ff989f', '
 
 export const GRID_LINE_DEFAULT = '#e6e6e6';
 export const GRID_LINE_DARK = colors.neutral[700];
+export const AXIS_LABEL_DEFAULT = colors.neutral[500];
+export const AXIS_LABEL_DARK = colors.neutral[300];

@@ -1,7 +1,14 @@
 import { computed, watch } from 'vue';
 import { useThemeStore } from '@/stores/theme';
 import Highcharts from '@/utils/highcharts';
-import { BLACK, GRID_LINE_DEFAULT, IVORY, GRID_LINE_DARK } from '@/constants/colors';
+import {
+  BLACK,
+  GRID_LINE_DEFAULT,
+  IVORY,
+  GRID_LINE_DARK,
+  AXIS_LABEL_DEFAULT,
+  AXIS_LABEL_DARK
+} from '@/constants/colors';
 
 export function useChartTheme(chartInstance) {
   const themeStore = useThemeStore();
@@ -28,8 +35,15 @@ export function useChartTheme(chartInstance) {
     color: isDarkMode.value ? IVORY : BLACK
   }));
 
-  const yAxisStyle = computed(() => ({
-    gridLineColor: isDarkMode.value ? GRID_LINE_DARK : GRID_LINE_DEFAULT
+  const axisStyle = computed(() => ({
+    gridLineColor: isDarkMode.value ? GRID_LINE_DARK : GRID_LINE_DEFAULT,
+    labels: {
+      style: {
+        color: isDarkMode.value ? AXIS_LABEL_DARK : AXIS_LABEL_DEFAULT
+      }
+    },
+    lineColor: isDarkMode.value ? GRID_LINE_DARK : GRID_LINE_DEFAULT,
+    tickColor: isDarkMode.value ? GRID_LINE_DARK : GRID_LINE_DEFAULT
   }));
 
   const updateChartTheme = () => {
@@ -43,7 +57,8 @@ export function useChartTheme(chartInstance) {
             }
           }
         },
-        yAxis: yAxisStyle.value
+        yAxis: axisStyle.value,
+        xAxis: axisStyle.value
       });
 
       // Update individual series data labels

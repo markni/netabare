@@ -14,7 +14,7 @@
       </YearSlider>
 
       <UserStats :user="currentYearData" />
-      <form @submit="submit" class="mb-16 mt-10 mt-auto flex flex-col">
+      <form @submit="submit" class="mb-16 mt-auto flex flex-col">
         <input
           id="username"
           autocomplete="off"
