@@ -242,8 +242,9 @@ const initializeChart = () => {
       ],
       xAxis: {
         type: 'datetime',
-        min: dayjs().year(props.minYear).startOf('year').valueOf(), // Add min year
-        max: dayjs().year(props.maxYear).endOf('year').valueOf(), // Add max year
+        min: dayjs().year(props.minYear).startOf('year').valueOf(),
+        max: dayjs().year(props.maxYear).endOf('year').valueOf(),
+
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
           second: '%m-%d',
@@ -294,7 +295,8 @@ const initializeChart = () => {
           pointPadding: 0.1,
           groupPadding: 0.2,
           borderWidth: 0,
-          zIndex: -1 // Put columns behind other series
+          zIndex: -1,
+          visible: false
         }
       ],
       colors: COLORS10
@@ -328,6 +330,10 @@ watch(
     () => props.maxScore
   ],
   () => {
+    console.log('minYear', props.minYear);
+    console.log('maxYear', props.maxYear);
+    console.log('minScore', props.minScore);
+    console.log('maxScore', props.maxScore);
     if (chartInstance.value) {
       chartInstance.value.xAxis[0].setExtremes(
         dayjs().year(props.minYear).startOf('year').valueOf(),
