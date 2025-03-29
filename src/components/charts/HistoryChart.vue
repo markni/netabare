@@ -48,6 +48,7 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
+const historyDataSet = ref(false);
 let hoveredPoint = null;
 
 useChartTheme(chartInstance);
@@ -86,30 +87,27 @@ onUnmounted(() => {
 
 const updateData = () => {
   if (chartInstance.value) {
-    // Log the raw data
+    const countData = props.filteredYearlyData.map((point) => ({
+      x: point.x,
+      y: point.count || 0
+    }));
 
-    // Transform yearly data to include count series
-    const countData = props.filteredYearlyData.map((point) => {
-      // Log individual point to see its structure
+    chartInstance.value.series[2].setData(countData, false);
+    chartInstance.value.series[1].setData(props.filteredYearlyData, false);
 
-      return {
-        x: Array.isArray(point) ? point[0] : point.x, // Handle both array and object format
-        y: point.count || (Array.isArray(point) ? point[2] : 0) // Try to get count from different possible locations
-      };
-    });
+    // Only set history data if it hasn't been set before
+    if (!historyDataSet.value && props.historyData.length > 0) {
+      chartInstance.value.series[0].setData(props.historyData, false);
+      historyDataSet.value = true;
+    }
 
-    // Log the transformed data
-
-    // Update series in correct order
-    chartInstance.value.series[2].update({ data: countData }, false);
-    chartInstance.value.series[1].update({ data: props.filteredYearlyData }, false);
-    chartInstance.value.series[0].update({ data: props.historyData }, true);
+    chartInstance.value.redraw(); // Redraw chart after all updates
   }
 };
 
 const initializeChart = () => {
   if (chartInstance.value) {
-    chartInstance.value.destroy(); // Destroys previous instance if exists
+    chartInstance.value.destroy();
   }
   if (chartContainer.value) {
     const chart = Highcharts.chart(chartContainer.value, {
@@ -120,6 +118,9 @@ const initializeChart = () => {
         events: {
           load: function () {
             chartInstance.value = this;
+            requestAnimationFrame(() => {
+              updateData();
+            });
           }
         }
       },
@@ -302,10 +303,7 @@ const initializeChart = () => {
       colors: COLORS10
     });
 
-    // Immediately set the chartInstance
     chartInstance.value = chart;
-
-    updateData();
   }
 };
 
@@ -330,10 +328,6 @@ watch(
     () => props.maxScore
   ],
   () => {
-    console.log('minYear', props.minYear);
-    console.log('maxYear', props.maxYear);
-    console.log('minScore', props.minScore);
-    console.log('maxScore', props.maxScore);
     if (chartInstance.value) {
       chartInstance.value.xAxis[0].setExtremes(
         dayjs().year(props.minYear).startOf('year').valueOf(),
@@ -348,14 +342,19 @@ watch(
       chartInstance.value.series[0].update(
         {
           zones: [
+            // Zone 1: Hide points below minScore
+
             {
               value: props.minScore,
               color: 'transparent'
             },
+            // Zone 2: Show points between minScore and maxScore
+
             {
               value: props.maxScore,
               color: 'rgba(49, 148, 255, 0.4)'
             },
+            // Zone 3: Hide points above maxScore
             {
               color: 'transparent'
             }
