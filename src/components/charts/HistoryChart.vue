@@ -48,7 +48,6 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
-const historyDataSet = ref(false);
 let hoveredPoint = null;
 
 useChartTheme(chartInstance);
@@ -95,11 +94,7 @@ const updateData = () => {
     chartInstance.value.series[2].setData(countData, false);
     chartInstance.value.series[1].setData(props.filteredYearlyData, false);
 
-    // Only set history data if it hasn't been set before
-    if (!historyDataSet.value && props.historyData.length > 0) {
-      chartInstance.value.series[0].setData(props.historyData, false);
-      historyDataSet.value = true;
-    }
+    chartInstance.value.series[0].setData(props.historyData, false);
 
     chartInstance.value.redraw(); // Redraw chart after all updates
   }
@@ -334,30 +329,32 @@ watch(
         props.maxScore + (props.maxScore < 10 ? 0.05 : 0)
       );
 
-      // Update zones
-      chartInstance.value.series[0].update(
-        {
-          zones: [
-            // Zone 1: Hide points below minScore
+      // todo: figure out why this is not working v11+;
 
-            {
-              value: props.minScore,
-              color: 'transparent'
-            },
-            // Zone 2: Show points between minScore and maxScore
+      // // Update zones
+      // chartInstance.value.series[0].update(
+      //   {
+      //     zones: [
+      //       // Zone 1: Hide points below minScore
 
-            {
-              value: props.maxScore,
-              color: 'rgba(49, 148, 255, 0.4)'
-            },
-            // Zone 3: Hide points above maxScore
-            {
-              color: 'transparent'
-            }
-          ]
-        },
-        false
-      );
+      //       {
+      //         value: props.minScore,
+      //         color: 'transparent'
+      //       },
+      //       // Zone 2: Show points between minScore and maxScore
+
+      //       {
+      //         value: props.maxScore,
+      //         color: 'rgba(49, 148, 255, 0.4)'
+      //       },
+      //       // Zone 3: Hide points above maxScore
+      //       {
+      //         color: 'transparent'
+      //       }
+      //     ]
+      //   },
+      //   false
+      // );
 
       updateData();
     }
