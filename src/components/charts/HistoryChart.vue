@@ -158,11 +158,7 @@ const initializeChart = () => {
       plotOptions: {
         scatter: {
           boostThreshold: 1,
-          boost: {
-            enabled: true,
-            useGPUTranslations: true,
-            usePreAllocated: true
-          },
+
           cursor: 'pointer',
           animation: {
             enabled: false,

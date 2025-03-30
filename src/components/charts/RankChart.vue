@@ -122,7 +122,7 @@ const initializeChart = () => {
         events: {
           // Re-apply these extremes after reset
           setExtremes: function (e) {
-            if (e.min === undefined) {
+            if (e.min === undefined && e.max === undefined && e.trigger === 'zoom') {
               e.preventDefault();
               this.setExtremes(props.xMin, props.xMax);
             }

@@ -1,17 +1,13 @@
 // highchartsSettings.js
-import Highcharts from 'highcharts';
-import HighchartsBoost from 'highcharts/modules/boost';
-import HighchartsMore from 'highcharts/highcharts-more';
+import * as Highcharts from 'highcharts';
+import 'highcharts/modules/boost';
+import 'highcharts/highcharts-more';
 import moment from 'moment';
 import 'moment-timezone'; // Import timezone data
 import { IVORY } from '../constants/colors';
 
 // Initialize moment timezone
 moment.tz.setDefault('Asia/Shanghai');
-
-// Load Highcharts modules
-HighchartsBoost(Highcharts);
-HighchartsMore(Highcharts);
 
 // Set global Highcharts options
 Highcharts.setOptions({
@@ -44,11 +40,7 @@ Highcharts.setOptions({
     text: '',
     enabled: false
   },
-  boost: {
-    enabled: false,
-    useGPUTranslations: true,
-    usePreAllocated: true
-  },
+
   exporting: {
     enabled: false
   },
