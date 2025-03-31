@@ -9,6 +9,10 @@ const props = defineProps({
   historyData: {
     type: Array,
     required: true
+  },
+  showLabels: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -69,9 +73,37 @@ const updateData = () => {
         }
       ];
 
+      // Prepare data with the last point having a dataLabel if showLabels is true
+      let formattedData = [...rankHistory];
+
+      // Always format all points as basic data points first
+      formattedData = formattedData.map((point) => [point[0], point[1]]);
+
+      // Then add data label to the last point only if showLabels is true
+      if (props.showLabels && formattedData.length > 0) {
+        const lastIndex = formattedData.length - 1;
+        formattedData[lastIndex] = {
+          x: formattedData[lastIndex][0],
+          y: formattedData[lastIndex][1],
+          dataLabels: {
+            enabled: true,
+            format: `${name}: {y:.0f}`,
+            allowOverlap: true,
+            align: 'left',
+            verticalAlign: 'bottom',
+            style: {
+              fontSize: '15px',
+              color: color,
+              textOutline: false,
+              fontFamily: `'source-han-serif-sc', serif`
+            }
+          }
+        };
+      }
+
       if (currentSeries[name]) {
         // Update existing series
-        currentSeries[name].setData(rankHistory, false);
+        currentSeries[name].setData(formattedData, false);
         currentSeries[name].update(
           {
             zones: zones,
@@ -86,7 +118,7 @@ const updateData = () => {
           {
             name: name,
             id: bgmId,
-            data: rankHistory,
+            data: formattedData,
             type: 'line',
             yAxis: 0,
             color: color,
@@ -222,6 +254,14 @@ watch(
     updateData();
   },
   { deep: false }
+);
+
+// Update the watcher for the showLabels prop
+watch(
+  () => props.showLabels,
+  () => {
+    updateData();
+  }
 );
 </script>
 

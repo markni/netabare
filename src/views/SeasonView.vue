@@ -12,13 +12,13 @@ import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 const store = useSeasonStore();
 const route = useRoute();
 const { historyData, balanceData, subjectsData } = storeToRefs(store);
-const showLabelsOnRight = ref(false); // Set to false by default
+const showLabels = ref(false); // Set to false by default
 
 // Toggle labels when Alt key is pressed
 const handleKeyDown = (e) => {
   if (e.key === 'Alt') {
     e.preventDefault(); // Prevent default Alt behavior
-    showLabelsOnRight.value = !showLabelsOnRight.value; // Toggle the value
+    showLabels.value = !showLabels.value; // Toggle the value
   }
 };
 
@@ -89,14 +89,14 @@ watch(routeParams, () => {
       <h2 class="text-2xl">热门前10评分对比</h2>
 
       <div class="sm:aspect-[16/10]">
-        <BattleChart :historyData="historyData" :showLabelsOnRight="showLabelsOnRight" />
+        <BattleChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
       <h2 class="text-2xl">热门前10排名对比</h2>
       <div class="sm:aspect-[16/10]">
-        <BattleRankChart :historyData="historyData" />
+        <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
 

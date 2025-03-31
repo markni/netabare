@@ -10,7 +10,7 @@ const props = defineProps({
     type: Array,
     required: true
   },
-  showLabelsOnRight: {
+  showLabels: {
     type: Boolean,
     default: false
   }
@@ -45,14 +45,14 @@ const updateData = () => {
         }
       ];
 
-      // Prepare data with the last point having a dataLabel if showLabelsOnRight is true
+      // Prepare data with the last point having a dataLabel if showLabels is true
       let formattedData = [...scoreHistory];
 
       // Always format all points as basic data points first
       formattedData = formattedData.map((point) => [point[0], point[1]]);
 
-      // Then add data label to the last point only if showLabelsOnRight is true
-      if (props.showLabelsOnRight && formattedData.length > 0) {
+      // Then add data label to the last point only if showLabels is true
+      if (props.showLabels && formattedData.length > 0) {
         const lastIndex = formattedData.length - 1;
         formattedData[lastIndex] = {
           x: formattedData[lastIndex][0],
@@ -219,9 +219,9 @@ watch(
   { deep: true }
 );
 
-// Update the watcher for the showLabelsOnRight prop
+// Update the watcher for the showLabels prop
 watch(
-  () => props.showLabelsOnRight,
+  () => props.showLabels,
   () => {
     updateData();
   }
