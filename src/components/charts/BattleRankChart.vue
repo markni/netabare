@@ -103,7 +103,7 @@ const updateData = () => {
 
       if (currentSeries[name]) {
         // Update existing series
-        currentSeries[name].setData(formattedData, false);
+        currentSeries[name].setData(formattedData, false, true, false);
         currentSeries[name].update(
           {
             zones: zones,
