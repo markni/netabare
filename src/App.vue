@@ -6,19 +6,34 @@ import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { onMounted, watch } from 'vue';
+import { onMounted, watch, ref } from 'vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
+import BaseModal from '@/components/ui/BaseModal.vue';
+import FoilCard from '@/components/FoilCard.vue';
+import bangumiTan from '@/assets/bangumi_tan.png';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
+const showWelcomeModal = ref(false);
+
+// Check if current date is March 31st or April 1st
+const checkDate = () => {
+  const today = new Date();
+  const month = today.getMonth() + 1; // getMonth() returns 0-11
+  const date = today.getDate();
+  return (month === 3 && date === 31) || (month === 4 && date === 1);
+};
 
 useScrollToAnchor();
 
 onMounted(() => {
   themeStore.initTheme();
+  if (checkDate()) {
+    showWelcomeModal.value = true;
+  }
 });
 
 watch(
@@ -55,6 +70,34 @@ console.log(`
 
 <template>
   <div :class="{ dark: themeStore.isDarkMode }">
+    <BaseModal v-model="showWelcomeModal">
+      <div class="flex gap-8 rounded-lg bg-white p-8">
+        <div class="min-h-[400px] flex-1">
+          <a
+            href="https://bgm.tv/group/topic/8061"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block h-full"
+          >
+            <FoilCard>
+              <template #default>
+                <img
+                  :src="bangumiTan"
+                  alt="Bangumi Tan"
+                  class="card-image h-full w-full object-contain"
+                />
+              </template>
+            </FoilCard>
+          </a>
+        </div>
+        <div class="flex flex-1 items-center justify-center gap-8">
+          <div class="writing-mode-vertical text-sm text-gray-700">四月十八日 预售开始</div>
+
+          <div class="writing-mode-vertical text-3xl text-gray-700">爱是粉色。爱是可触摸。</div>
+        </div>
+      </div>
+    </BaseModal>
+
     <FullscreenOverlay
       v-if="networkError"
       :text="texts._lostConnection"
@@ -112,5 +155,11 @@ console.log(`
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-color);
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.5em;
 }
 </style>

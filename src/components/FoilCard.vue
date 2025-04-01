@@ -1,18 +1,20 @@
 <template>
   <div class="container">
     <div class="card" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave">
-      <img src="https://i.imgur.com/pVjGhvs.png" alt="Card Image" class="card-image" />
+      <slot></slot>
       <div class="card-glare"></div>
     </div>
 
-    <NumberSlider
-      id="tilt-sensitivity"
-      label="Tilt Sensitivity"
-      v-model="sensitivity"
-      :min="5"
-      :max="50"
-    />
-    <NumberSlider id="glare-angle" label="Glare Angle" v-model="glareAngle" :min="0" :max="360" />
+    <div class="hidden">
+      <NumberSlider
+        id="tilt-sensitivity"
+        label="Tilt Sensitivity"
+        v-model="sensitivity"
+        :min="5"
+        :max="50"
+      />
+      <NumberSlider id="glare-angle" label="Glare Angle" v-model="glareAngle" :min="0" :max="360" />
+    </div>
   </div>
 </template>
 
@@ -109,8 +111,8 @@ watch(glareAngle, (newValue) => {
   --glare-angle: 264deg;
   position: relative;
 
-  width: 300px;
-  height: 420px;
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
   transition: transform 0.2s ease-out;
   transform-style: preserve-3d;
