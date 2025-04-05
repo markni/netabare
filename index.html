@@ -1,18 +1,68 @@
-<!DOCTYPE html>
-<html lang="en" style="scroll-snap-type: y proximity;">
+<!doctype html>
+<html lang="en" style="scroll-snap-type: y proximity">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>netaba.re</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Track trending anime with real-time analytics from Bangumi. Daily rankings, popularity changes, and beautiful animated charts for anime enthusiasts."
+    />
+    <meta
+      name="keywords"
+      content="anime analytics, trending anime, China anime trends, Bangumi stats, anime rankings, anime popularity, anime charts"
+    />
+    <meta name="author" content="netaba.re" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="netaba.re - Anime Analytics & Trending Charts" />
+    <meta
+      property="og:description"
+      content="Track trending anime with real-time analytics from Bangumi. Beautiful animated charts showing daily rankings and popularity changes."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://netaba.re" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="netaba.re - Anime Analytics & Trending Charts" />
+    <meta
+      name="twitter:description"
+      content="Track trending anime with real-time analytics from Bangumi. Beautiful animated charts showing daily rankings and popularity changes."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
     <script>
-      (function(d) {
+      (function (d) {
         var config = {
             kitId: 'dzo0czx',
             scriptTimeout: 3000,
             async: true
           },
-          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className = h.className.replace(/\bwf-loading\b/g, '') + ' wf-inactive';
+          }, config.scriptTimeout),
+          tk = d.createElement('script'),
+          f = false,
+          s = d.getElementsByTagName('script')[0],
+          a;
+        h.className += ' wf-loading';
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != 'complete' && a != 'loaded')) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
       })(document);
     </script>
   </head>
