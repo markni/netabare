@@ -4,6 +4,8 @@ import { storeToRefs } from 'pinia';
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue';
 import { BLUE, COLORS10, PINK } from '@/constants/colors.js';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
+import texts from '@/constants/texts.js';
+
 const store = useTrendingStore();
 const { up, down, done } = storeToRefs(store);
 
@@ -22,7 +24,7 @@ const formatData = (history) =>
         :class="['bg-gold', 'bg-pink', 'bg-blue'][index]"
       >
         <a :href="'#' + ['popular', 'up', 'down'][index]" class="anchor-link">
-          {{ ['热门条目', '涨幅排行', '跌幅排行'][index] }}
+          {{ [texts._popularEntries, texts._increasingRank, texts._decreasingRank][index] }}
         </a>
       </h2>
       <ol class="flex list-decimal flex-col gap-16 xl:gap-8">

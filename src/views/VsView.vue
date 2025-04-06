@@ -9,6 +9,8 @@ import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import FoilCard from '@/components/FoilCard.vue';
 import VsBarChart from '@/components/charts/VsBarChart.vue';
+import texts from '@/constants/texts.js';
+
 const router = useRouter();
 
 const props = defineProps({
@@ -65,8 +67,8 @@ const { getRatingData } = store;
   <div class="pt-14">
     <div v-if="props.id0 === props.id1" class="text-6xl">
       <FullscreenOverlay
-        text="你摧毁了时空结构"
-        annotation="game over"
+        :text="texts._destroyedSpaceTime"
+        :annotation="texts._gameOver"
         code="400602"
         color="bg-red"
       />

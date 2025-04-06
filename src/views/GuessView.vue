@@ -6,7 +6,7 @@
     </div>
 
     <div class="flex flex-col justify-between gap-16 sm:flex-row">
-      <h1 class="text-2xl sm:text-4xl">评分图识别技术考试</h1>
+      <h1 class="text-2xl sm:text-4xl">{{ texts._scoreChartRecognition }}</h1>
       <div class="relative w-64 border-b border-b-paper-dark dark:border-paper">
         <div
           v-if="guessStore.score !== null"
@@ -30,7 +30,7 @@
         :key="qIndex"
         class="flex flex-col gap-2"
       >
-        <div class="relative">图形 {{ qIndex + 1 }}</div>
+        <div class="relative">{{ texts._graph }} {{ qIndex + 1 }}</div>
         <div class="aspect-[6/3]">
           <MiniBarChart :rating-data="guessStore.getRatingChartData(qIndex)" />
         </div>
@@ -71,7 +71,7 @@
           : 'cursor-not-allowed bg-gray-400 text-white'
       ]"
     >
-      {{ guessStore.score !== null ? '继续挑战' : '交卷' }}
+      {{ guessStore.score !== null ? texts._continueChallenge : texts._submitExam }}
     </button>
   </div>
 </template>
@@ -80,6 +80,8 @@
 import { onMounted, computed } from 'vue';
 import { useGuessStore } from '@/stores/guess';
 import MiniBarChart from '@/components/charts/MiniBarChart.vue';
+import texts from '@/constants/texts.js';
+
 const guessStore = useGuessStore();
 
 // Computed property to check if all questions are answered

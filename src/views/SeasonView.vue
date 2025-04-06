@@ -8,6 +8,7 @@ import HintDiv from '@/components/HintDiv.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
+import texts from '@/constants/texts';
 
 const store = useSeasonStore();
 const route = useRoute();
@@ -21,10 +22,10 @@ const years = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
 // Define seasons
 const seasons = [
-  { month: 1, name: '一月' },
-  { month: 4, name: '四月' },
-  { month: 7, name: '七月' },
-  { month: 10, name: '十月' }
+  { month: 1, name: texts._january },
+  { month: 4, name: texts._april },
+  { month: 7, name: texts._july },
+  { month: 10, name: texts._october }
 ];
 
 // Get current season
@@ -143,17 +144,15 @@ const handleSeasonChange = (event) => {
           {{ season.name }}
         </option>
       </select>
-      <h1 class="text-4xl sm:text-6xl">新番战况</h1>
+      <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
     </div>
 
     <div class="flex flex-col gap-4">
-      <HintDiv
-        title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-      >
-        如何放大缩小？
+      <HintDiv :title="texts._zoomInstruction">
+        {{ texts._howToZoom }}
       </HintDiv>
-      <HintDiv title="按Alt键可显示标签"> 如何在曲线上显示标签？ </HintDiv>
-      <h2 class="text-2xl">热门前10评分对比</h2>
+      <HintDiv :title="texts._altKeyShowLabels"> {{ texts._howToShowLabels }} </HintDiv>
+      <h2 class="text-2xl">{{ texts._top10ScoreComparison }}</h2>
 
       <div class="sm:aspect-[16/10]">
         <BattleChart :historyData="historyData" :showLabels="showLabels" />
@@ -161,24 +160,24 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-2xl">热门前10排名对比</h2>
+      <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
       <div class="sm:aspect-[16/10]">
         <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-2xl">平衡榜</h2>
-      <p class="text-gray-400">打1分和10分的数量对比</p>
+      <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
+      <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div class="sm:aspect-[10/5]">
         <BattleBarChart :balanceData="balanceData" />
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-2xl">分布图</h2>
-      <p class="cursor-help text-gray-400" title="尺寸越大越热门，颜色越红争议越大">
-        尺寸越大越热门，颜色越红争议越大
+      <h2 class="text-2xl">{{ texts._distributionChart }}</h2>
+      <p class="cursor-help text-gray-400" :title="texts._chartLegend">
+        {{ texts._chartLegend }}
       </p>
       <div class="sm:aspect-[10/5]">
         <ScoreBubbleChart :subjects="subjectsData" />

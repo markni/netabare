@@ -9,6 +9,7 @@ import DeltaDisplay from '@/components/DeltaDisplay.vue';
 import HintDiv from '@/components/HintDiv.vue';
 import _ from 'lodash';
 import RatingChart from '@/components/charts/RatingChart.vue';
+import texts from '@/constants/texts.js';
 
 const props = defineProps({
   id: {
@@ -88,7 +89,7 @@ const setRatingPeriod = (period) => {
         <a
           class="hover:bg-gold"
           target="_blank"
-          title="访问Bangumi上的条目"
+          :title="texts._visitBangumi"
           :href="'https://bgm.tv/subject/' + id"
           >{{ decodedName }}</a
         >
@@ -100,7 +101,7 @@ const setRatingPeriod = (period) => {
           <a
             class="hover:bg-gold"
             target="_blank"
-            title="访问Bangumi上的条目"
+            :title="texts._visitBangumi"
             :href="'https://bgm.tv/subject/' + id"
             >{{ decodedNameCn }}</a
           >
@@ -115,7 +116,7 @@ const setRatingPeriod = (period) => {
             :disabled="filteredBy === 'disabled'"
             @click="_setFilteredBy(`none`)"
           >
-            全部
+            {{ texts._all }}
           </button>
           <button
             class="cursor-pointer decoration-gold underline-offset-8"
@@ -127,14 +128,12 @@ const setRatingPeriod = (period) => {
             :disabled="filteredBy === 'disabled'"
             @click="_setFilteredBy('eps')"
           >
-            放送期间
+            {{ texts._broadcastPeriod }}
           </button>
         </div>
       </div>
-      <HintDiv
-        title="用鼠标左键在图表中拖选一个方块自定义时间范围，点击图表右上角的重置缩放按钮恢复"
-      >
-        如何自定义时间范围？
+      <HintDiv :title="texts._zoomInstruction">
+        {{ texts._howToCustomizeTimeRange }}
       </HintDiv>
 
       <!-- Section 1: Score -->
@@ -142,7 +141,7 @@ const setRatingPeriod = (period) => {
         <div class="mt-20 flex flex-col items-end">
           <h3 class="z-10 text-2xl">
             <a href="#score" class="hover:bg-gold">
-              评分
+              {{ texts._score }}
               <DeltaDisplay v-if="delta?.score !== undefined" :delta="delta.score" />
             </a>
           </h3>
@@ -165,7 +164,7 @@ const setRatingPeriod = (period) => {
         <div class="mt-20 flex flex-col items-end">
           <h3 class="z-10 text-2xl">
             <a href="#rank" class="hover:bg-blue">
-              排名
+              {{ texts._rank }}
               <DeltaDisplay v-if="delta?.rank !== undefined" :precision="0" :delta="delta.rank" />
             </a>
           </h3>
@@ -186,7 +185,7 @@ const setRatingPeriod = (period) => {
         <div class="mt-20 flex flex-col items-end">
           <h3 class="z-10 text-2xl">
             <a href="#watching" class="hover:bg-pink">
-              在看
+              {{ texts._watching }}
               <DeltaDisplay
                 v-if="delta?.watching !== undefined"
                 :precision="0"
@@ -209,17 +208,17 @@ const setRatingPeriod = (period) => {
       <section id="rating" class="flex w-full snap-start scroll-mt-20 flex-col gap-4">
         <div class="mt-20 flex flex-col items-end">
           <div class="bg-pink">
-            <RouterLink :to="`/${props.id}/vs/400602`">实验功能</RouterLink>
+            <RouterLink :to="`/${props.id}/vs/400602`">{{ texts._experimentalFeature }}</RouterLink>
           </div>
           <h3 class="z-10 text-2xl">
-            评分分布
+            {{ texts._ratingDistribution }}
             <DeltaDisplay
               :title="
                 selectedRatingPeriod === 'now'
-                  ? '当前均分'
+                  ? texts._currentAverageScore
                   : selectedRatingPeriod === '1m'
-                    ? '一个月内均分与当前均分的差异'
-                    : '一年内均分与当前均分的差异'
+                    ? texts._oneMonthAverageScore
+                    : texts._oneYearAverageScore
               "
               v-show="currentRatingData?.score"
               :delta="currentRatingData?.score - subject.rating?.score"
@@ -235,7 +234,7 @@ const setRatingPeriod = (period) => {
               }"
               @click="setRatingPeriod('now')"
             >
-              当前评分
+              {{ texts._currentRating }}
             </button>
             <!-- <button
               class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
@@ -253,7 +252,7 @@ const setRatingPeriod = (period) => {
               }"
               @click="setRatingPeriod('1m')"
             >
-              一个月内评分
+              {{ texts._oneMonthRating }}
             </button>
             <!-- <button
               class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
@@ -271,7 +270,7 @@ const setRatingPeriod = (period) => {
               }"
               @click="setRatingPeriod('1y')"
             >
-              一年内评分
+              {{ texts._oneYearRating }}
             </button>
           </div>
 
@@ -282,7 +281,7 @@ const setRatingPeriod = (period) => {
       </section>
 
       <div v-if="props.id !== '400602'" class="bg-pink">
-        <RouterLink :to="`/${props.id}/vs/400602`">实验功能：对比「葬送的芙莉莲」</RouterLink>
+        <RouterLink :to="`/${props.id}/vs/400602`">{{ texts._compareWithFrieren }}</RouterLink>
       </div>
     </div>
   </div>
