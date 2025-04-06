@@ -5,14 +5,19 @@ import BattleChart from '@/components/charts/BattleChart.vue';
 import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import HintDiv from '@/components/HintDiv.vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 
 const store = useSeasonStore();
 const route = useRoute();
+const router = useRouter();
 const { historyData, balanceData, subjectsData } = storeToRefs(store);
 const showLabels = ref(false); // Set to false by default
+
+// Generate array of last 5 years
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
 // Toggle labels when Alt key is pressed
 const handleKeyDown = (e) => {
@@ -52,7 +57,7 @@ const getSeasonDateName = () => {
     seasonStartMonth = '十月'; // October
   }
 
-  return `${today.getFullYear()}年${seasonStartMonth}`;
+  return seasonStartMonth;
 };
 
 // Function to fetch season subjects with optional year and month
@@ -73,11 +78,43 @@ const routeParams = computed(() => route.params);
 watch(routeParams, () => {
   fetchSeason();
 });
+
+// Handle year change
+const handleYearChange = (event) => {
+  const newYear = parseInt(event.target.value);
+  const currentMonth = new Date().getMonth();
+  let newMonth = 1; // Default to January
+
+  // Determine the appropriate month based on the current season
+  if (currentMonth >= 0 && currentMonth < 3) {
+    newMonth = 1; // January
+  } else if (currentMonth >= 3 && currentMonth < 6) {
+    newMonth = 4; // April
+  } else if (currentMonth >= 6 && currentMonth < 9) {
+    newMonth = 7; // July
+  } else {
+    newMonth = 10; // October
+  }
+
+  router.push({ name: 'season', params: { year: newYear, month: newMonth } });
+};
 </script>
 
 <template>
   <div class="mt-14 flex flex-col gap-10">
-    <h1 class="text-2xl sm:text-6xl">{{ getSeasonDateName() }}新番战况</h1>
+    <div class="flex items-baseline">
+      <select
+        class="mr-2 bg-transparent text-4xl sm:text-6xl"
+        :value="route.params.year || new Date().getFullYear()"
+        @change="handleYearChange"
+        aria-label="选择年份"
+      >
+        <option v-for="year in years" :key="year" :value="year" class="bg-paper dark:bg-paper-dark">
+          {{ year }}
+        </option>
+      </select>
+      <h1 class="text-4xl sm:text-6xl">{{ getSeasonDateName() }}新番战况</h1>
+    </div>
 
     <div class="flex flex-col gap-4">
       <HintDiv
