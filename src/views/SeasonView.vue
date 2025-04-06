@@ -19,6 +19,22 @@ const showLabels = ref(false); // Set to false by default
 const currentYear = new Date().getFullYear();
 const years = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
+// Define seasons
+const seasons = [
+  { month: 1, name: '一月' },
+  { month: 4, name: '四月' },
+  { month: 7, name: '七月' },
+  { month: 10, name: '十月' }
+];
+
+// Get current season
+const getCurrentSeason = (month) => {
+  if (month >= 1 && month <= 3) return 1;
+  if (month >= 4 && month <= 6) return 4;
+  if (month >= 7 && month <= 9) return 7;
+  return 10;
+};
+
 // Toggle labels when Alt key is pressed
 const handleKeyDown = (e) => {
   if (e.key === 'Alt') {
@@ -36,29 +52,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown);
 });
-
-const getSeasonDateName = () => {
-  const { year, month } = route.params;
-  const today = year && month ? new Date(year, month - 1, 1) : new Date();
-  const currentMonth = today.getMonth(); // Get the current month (0-11)
-  let seasonStartMonth;
-
-  if (currentMonth >= 0 && currentMonth < 3) {
-    // Jan, Feb, Mar
-    seasonStartMonth = '一月'; // January
-  } else if (currentMonth >= 3 && currentMonth < 6) {
-    // Apr, May, Jun
-    seasonStartMonth = '四月'; // April
-  } else if (currentMonth >= 6 && currentMonth < 9) {
-    // Jul, Aug, Sep
-    seasonStartMonth = '七月'; // July
-  } else {
-    // Oct, Nov, Dec
-    seasonStartMonth = '十月'; // October
-  }
-
-  return seasonStartMonth;
-};
 
 // Function to fetch season subjects with optional year and month
 const fetchSeason = async () => {
@@ -82,21 +75,15 @@ watch(routeParams, () => {
 // Handle year change
 const handleYearChange = (event) => {
   const newYear = parseInt(event.target.value);
-  const currentMonth = new Date().getMonth();
-  let newMonth = 1; // Default to January
+  const currentMonth = parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1);
+  router.push({ name: 'season', params: { year: newYear, month: currentMonth } });
+};
 
-  // Determine the appropriate month based on the current season
-  if (currentMonth >= 0 && currentMonth < 3) {
-    newMonth = 1; // January
-  } else if (currentMonth >= 3 && currentMonth < 6) {
-    newMonth = 4; // April
-  } else if (currentMonth >= 6 && currentMonth < 9) {
-    newMonth = 7; // July
-  } else {
-    newMonth = 10; // October
-  }
-
-  router.push({ name: 'season', params: { year: newYear, month: newMonth } });
+// Handle season change
+const handleSeasonChange = (event) => {
+  const newMonth = parseInt(event.target.value);
+  const currentYear = route.params.year || new Date().getFullYear();
+  router.push({ name: 'season', params: { year: currentYear, month: newMonth } });
 };
 </script>
 
@@ -113,7 +100,22 @@ const handleYearChange = (event) => {
           {{ year }}
         </option>
       </select>
-      <h1 class="text-4xl sm:text-6xl">{{ getSeasonDateName() }}新番战况</h1>
+      <select
+        class="mr-2 bg-transparent text-4xl sm:text-6xl"
+        :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
+        @change="handleSeasonChange"
+        aria-label="选择季度"
+      >
+        <option
+          v-for="season in seasons"
+          :key="season.month"
+          :value="season.month"
+          class="bg-paper dark:bg-paper-dark"
+        >
+          {{ season.name }}
+        </option>
+      </select>
+      <h1 class="text-4xl sm:text-6xl">新番战况</h1>
     </div>
 
     <div class="flex flex-col gap-4">
