@@ -35,6 +35,26 @@ const getCurrentSeason = (month) => {
   return 10;
 };
 
+// Get available seasons based on selected year
+const availableSeasons = computed(() => {
+  const selectedYear = parseInt(route.params.year) || currentYear;
+  const today = new Date();
+
+  // If selected year is current year, filter seasons
+  if (selectedYear === currentYear) {
+    const currentMonth = today.getMonth() + 1; // Convert to 1-based month
+    return seasons.filter((season) => season.month <= getCurrentSeason(currentMonth));
+  }
+
+  // If selected year is past year, show all seasons
+  if (selectedYear < currentYear) {
+    return seasons;
+  }
+
+  // If somehow we got a future year, return no seasons
+  return [];
+});
+
 // Toggle labels when Alt key is pressed
 const handleKeyDown = (e) => {
   if (e.key === 'Alt') {
@@ -76,7 +96,15 @@ watch(routeParams, () => {
 const handleYearChange = (event) => {
   const newYear = parseInt(event.target.value);
   const currentMonth = parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1);
-  router.push({ name: 'season', params: { year: newYear, month: currentMonth } });
+
+  // If switching to current year, ensure selected month is not in the future
+  if (newYear === currentYear) {
+    const currentSeason = getCurrentSeason(new Date().getMonth() + 1);
+    const newMonth = currentMonth <= currentSeason ? currentMonth : currentSeason;
+    router.push({ name: 'season', params: { year: newYear, month: newMonth } });
+  } else {
+    router.push({ name: 'season', params: { year: newYear, month: currentMonth } });
+  }
 };
 
 // Handle season change
@@ -107,7 +135,7 @@ const handleSeasonChange = (event) => {
         aria-label="选择季度"
       >
         <option
-          v-for="season in seasons"
+          v-for="season in availableSeasons"
           :key="season.month"
           :value="season.month"
           class="bg-paper dark:bg-paper-dark"
