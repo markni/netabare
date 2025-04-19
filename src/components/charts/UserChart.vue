@@ -45,7 +45,7 @@ const initializeChart = () => {
 
       tooltip: {
         formatter: function () {
-          return `${this.x}分：<b>${this.y}</b>部`;
+          return `${this.key}分：<b>${this.y}</b>部`;
         }
       },
 
