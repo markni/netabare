@@ -26,7 +26,10 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/UserView.vue'),
       props: true,
-      meta: { title: `${texts._user} | netaba.re` }
+      meta: {
+        title: `${texts._user} | netaba.re`,
+        dynamicTitle: true // Flag to indicate this route has dynamic title
+      }
     },
     {
       path: '/subject/:id',

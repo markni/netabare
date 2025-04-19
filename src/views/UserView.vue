@@ -75,6 +75,19 @@ const { globalData, user, username, availableYears, userProfile } = storeToRefs(
 const bgmUserId = ref('');
 const selectedYear = ref(null);
 
+// Watch for user data changes to update title
+watch(
+  () => user.value,
+  (newUser) => {
+    if (newUser?.user?.username) {
+      document.title = `${newUser.user.username} | netaba.re`;
+    } else {
+      document.title = `${texts._user} | netaba.re`;
+    }
+  },
+  { immediate: true }
+);
+
 const currentYearData = computed(() => {
   return {
     ...store.userData(selectedYear.value),
