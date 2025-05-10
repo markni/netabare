@@ -29,13 +29,13 @@ export const useHistoryStore = defineStore('history', {
       let yearlyData = {};
       let historyData = [];
 
-      state.history.forEach(({ score, air_date, rank }) => {
+      state.history.forEach(({ score, air_date, bgmId }) => {
         const year = dayjs(air_date).year();
 
         // Update historyData without filters
         historyData.push([
           dayjs(air_date).valueOf(),
-          parseFloat(score.toFixed(4) + '' + _.padStart(rank, 5, '0'))
+          parseFloat(score.toFixed(4) + '' + _.padStart(bgmId, 8, '0'))
         ]);
 
         // Initialize yearly data for the year if it does not exist
@@ -128,7 +128,7 @@ export const useHistoryStore = defineStore('history', {
         this.history = response.data;
 
         this.history.forEach(({ rank, air_date, bgmId, name, name_cn, score }) => {
-          this.dic[rank] = { rank, bgmId, name, name_cn, score, air_date };
+          this.dic[bgmId] = { rank, bgmId, name, name_cn, score, air_date };
         });
       } catch (error) {
         console.error('Failed to fetch history:', error);

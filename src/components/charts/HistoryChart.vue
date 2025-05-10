@@ -54,15 +54,10 @@ useChartTheme(chartInstance);
 
 const handleChartClick = () => {
   if (hoveredPoint) {
-    // Access props.dic or pass dic through chart options
-    let rank = _.round(_.padEnd((hoveredPoint.y + '').split('.')[1], 9, '0').slice(-5));
+    let bgmId = parseInt(_.padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
+
     if (hoveredPoint.series.name === '评分') {
-      const dic = props.dic;
-      if (dic[rank]) {
-        window.open(`/subject/${dic[rank].bgmId}`);
-      } else {
-        console.error(`No entry found in dic for rank: ${rank}`);
-      }
+      window.open(`/subject/${bgmId}`);
     }
   }
 };
@@ -136,15 +131,15 @@ const initializeChart = () => {
             return `${dayjs(this.x).year()}年<br/>
                    数量：<b>${this.y}</b>条`;
           }
-          let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
+          let bgmId = parseInt(_.padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
 
-          if (!props.dic[rank]) {
+          if (!props.dic[bgmId]) {
             return `Error`;
           }
 
           return `<div class="scatter-tp-title"><b>${
-            props.dic[rank].name_cn || props.dic[rank].name
-          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${rank}<br />评分：${props.dic[rank].score}</div>`;
+            props.dic[bgmId].name_cn || props.dic[bgmId].name
+          }</b></div><br /><div class="scatter-tp-body">首播：${dayjs(this.x).format('YYYY.MM.DD')}<br />排名：${props.dic[bgmId].rank}<br />评分：${props.dic[bgmId].score}</div>`;
         }
       },
       subtitle: {
