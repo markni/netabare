@@ -37,8 +37,7 @@ const router = createRouter({
       // route level code-splitting
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/SubjectView.vue'),
-      props: true,
-      meta: { title: `${texts._subject} | netaba.re` }
+      props: true
     },
     {
       path: '/trending',
@@ -85,8 +84,7 @@ const router = createRouter({
       name: 'quiz',
       // route level code-splitting
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/GuessView.vue'),
-      meta: { title: `${texts._quiz} | netaba.re` }
+      component: () => import('../views/GuessView.vue')
     },
     {
       path: '/ui',
