@@ -1,6 +1,6 @@
 <template>
   <div v-if="user && id" class="grid grid-cols-12 gap-4">
-    <div class="col-span-12 sm:col-span-10">
+    <div class="order-last col-span-12 sm:order-first sm:col-span-10">
       <div class="aspect-square pt-14 sm:aspect-[16/12]">
         <UserChart :userData="currentYearData['data']" :globalData="globalData" />
       </div>
@@ -14,7 +14,7 @@
       </YearSlider>
 
       <UserStats :user="currentYearData" />
-      <form @submit="submit" class="mb-16 mt-auto flex flex-col">
+      <form @submit="submit" class="mb-16 mt-auto hidden flex-col sm:flex">
         <input
           id="username"
           autocomplete="off"

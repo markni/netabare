@@ -1,7 +1,7 @@
 <template>
   <div v-if="user" class="flex flex-col items-center gap-2 sm:items-start">
     <!-- <UserAvatar :user="user.user" /> -->
-    <div class="mb-4 text-3xl font-bold">
+    <div class="mb-12 text-3xl font-bold sm:mb-4">
       {{ user.user.nickname }}
       <span v-if="user.year" class="whitespace-nowrap text-sm text-lightGray">
         ver. {{ user.year }}</span
