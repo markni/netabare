@@ -40,7 +40,7 @@
         data-lpignore="true"
         required
         pattern="^\w+$"
-        class="border-b-2 bg-transparent p-2 text-4xl focus:outline-0"
+        class="border-b-2 bg-transparent p-2 text-xl focus:outline-0 sm:text-4xl"
         maxlength="15"
         type="text"
         v-model="bgmUserId"
