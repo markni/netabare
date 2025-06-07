@@ -51,7 +51,7 @@ const initializeChart = () => {
       tooltip: {
         formatter: function () {
           const percentage = ((this.y / totalRatings.value) * 100).toFixed(1);
-          return `${this.x}分：<b>${this.y}</b>人评分 (${percentage}%)`;
+          return `${this.key}分：<b>${this.y}</b>人评分 (${percentage}%)`;
         }
       },
 
