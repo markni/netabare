@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { fetchHistory } from '@/utils/api.js';
 import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
-import _ from 'lodash';
+import padStart from 'lodash/padStart';
 import dayjs from 'dayjs';
 
 const currentYear = parseInt(dayjs().year());
@@ -35,7 +35,7 @@ export const useHistoryStore = defineStore('history', {
         // Update historyData without filters
         historyData.push([
           dayjs(air_date).valueOf(),
-          parseFloat(score.toFixed(4) + '' + _.padStart(bgmId, 8, '0'))
+          parseFloat(score.toFixed(4) + '' + padStart(bgmId, 8, '0'))
         ]);
 
         // Initialize yearly data for the year if it does not exist

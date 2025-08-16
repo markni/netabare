@@ -1,5 +1,5 @@
 <script setup>
-import _ from 'lodash';
+import round from 'lodash/round';
 
 const _getDeltaSymbol = (value) => {
   return value >= 0 ? '▴' : '▾';
@@ -29,6 +29,6 @@ const props = defineProps({
         'text-blue': props.delta < 0
       }"
       >{{ _getDeltaSymbol(props.delta) }}</span
-    ><span>{{ Math.abs(_.round(props.delta, 2)).toFixed(props.precision) }}</span></span
+    ><span>{{ Math.abs(round(props.delta, 2)).toFixed(props.precision) }}</span></span
   >
 </template>
