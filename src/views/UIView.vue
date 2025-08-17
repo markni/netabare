@@ -26,6 +26,12 @@
     </section>
 
     <section class="mt-16 flex flex-col gap-4">
+      <h2 class="mb-8 text-4xl font-semibold">链接</h2>
+      <a>测试</a>
+      <HintDiv title="鼠标悬停即可看到解释">这个链接是如何工作的</HintDiv>
+    </section>
+
+    <section class="mt-16 flex flex-col gap-4">
       <h2 class="mb-8 text-4xl font-semibold">顏色</h2>
       <div class="flex gap-4">
         <div class="h-10 w-60 bg-red"></div>
@@ -33,6 +39,7 @@
 
         <div class="h-10 w-60 bg-gold"></div>
         <div class="h-10 w-60 bg-blue"></div>
+        <div class="h-10 w-60 bg-teal"></div>
       </div>
     </section>
   </div>
@@ -44,6 +51,7 @@
 import { onMounted } from 'vue';
 import EclipseToggle from '../components/ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
+import HintDiv from '@/components/ui/HintDiv.vue';
 
 const themeStore = useThemeStore();
 

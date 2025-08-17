@@ -8,7 +8,7 @@
 defineProps({
   title: {
     type: String,
-    default: 'Hover for more information'
+    required: true
   }
 });
 </script>
