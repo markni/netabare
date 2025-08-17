@@ -86,14 +86,19 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/GuessView.vue')
     },
-    {
-      path: '/ui',
-      name: 'ui',
-      // route level code-splitting
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/UIView.vue'),
-      meta: { title: 'UI | netaba.re' }
-    },
+    // UI route - only available in development mode
+    ...(import.meta.env.DEV
+      ? [
+          {
+            path: '/ui',
+            name: 'ui',
+            // route level code-splitting
+            // which is lazy-loaded when the route is visited.
+            component: () => import('../views/UIView.vue'),
+            meta: { title: 'UI | netaba.re' }
+          }
+        ]
+      : []),
     {
       path: '/:catchAll(.*)*', // This regex will match any path
       name: 'NotFound',
