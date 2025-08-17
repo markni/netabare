@@ -7,7 +7,7 @@ import RankChart from '@/components/charts/RankChart.vue';
 import CollectionChart from '@/components/charts/CollectionChart.vue';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
 import HintDiv from '@/components/HintDiv.vue';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import RatingChart from '@/components/charts/RatingChart.vue';
 import texts from '@/constants/texts.js';
 
@@ -40,7 +40,7 @@ const _setFilteredBy = (f) => {
 store.fetchSubject(props.id).then(() => {
   const airDate = new Date(subject.value.air_date);
   const cutoffDate = new Date('2018-05-16');
-  _setFilteredBy(_.isEmpty(epsData.value) || airDate < cutoffDate ? 'disabled' : 'eps');
+  _setFilteredBy(isEmpty(epsData.value) || airDate < cutoffDate ? 'disabled' : 'eps');
 });
 
 onUnmounted(() => {

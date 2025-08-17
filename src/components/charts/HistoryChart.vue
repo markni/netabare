@@ -5,7 +5,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import _ from 'lodash';
+import padEnd from 'lodash/padEnd';
 import dayjs from 'dayjs';
 import { COLORS10, PINK } from '@/constants/colors.js';
 import { useChartTheme } from '@/composables/useChartTheme';
@@ -54,7 +54,7 @@ useChartTheme(chartInstance);
 
 const handleChartClick = () => {
   if (hoveredPoint) {
-    let bgmId = parseInt(_.padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
+    let bgmId = parseInt(padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
 
     if (hoveredPoint.series.name === '评分') {
       window.open(`/subject/${bgmId}`);
@@ -131,7 +131,7 @@ const initializeChart = () => {
             return `${dayjs(this.x).year()}年<br/>
                    数量：<b>${this.y}</b>条`;
           }
-          let bgmId = parseInt(_.padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
+          let bgmId = parseInt(padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
 
           if (!props.dic[bgmId]) {
             return `Error`;
@@ -158,11 +158,6 @@ const initializeChart = () => {
           },
           point: {
             events: {
-              // click: function () {
-              //   console.log('test');
-              //   let rank = _.round(_.padEnd((this.y + '').split('.')[1], 9, '0').slice(-5));
-              //   if (this.series.name === '评分') window.open(`/subject/${props.dic[rank].bgmId}`);
-              // },
               mouseOver: function () {
                 hoveredPoint = this;
               },

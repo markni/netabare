@@ -1,6 +1,6 @@
 import { computed, watch } from 'vue';
 import { useThemeStore } from '@/stores/theme';
-import _ from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 export function useEpisodePlot(chartInstance, epsData) {
   const themeStore = useThemeStore();
@@ -30,7 +30,7 @@ export function useEpisodePlot(chartInstance, epsData) {
     });
 
     Object.entries(epsData.value).forEach(([airdateValue, episodes]) => {
-      let epOption = _.cloneDeep(epPlotOptions);
+      let epOption = cloneDeep(epPlotOptions);
       epOption.value = Number(airdateValue);
 
       epOption.label.text = episodes

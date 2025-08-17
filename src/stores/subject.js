@@ -4,7 +4,10 @@ import { fetchRank } from '@/utils/api.js';
 import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
 import dayjs from 'dayjs';
-import _ from 'lodash';
+import first from 'lodash/first';
+import last from 'lodash/last';
+import nth from 'lodash/nth';
+import chain from 'lodash/chain';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
@@ -67,8 +70,8 @@ export const useSubjectStore = defineStore('subject', {
     delta: (state) => {
       const { history } = state;
       if (!history || history.length < 30) return null;
-      let current = _.first(history);
-      let before = _.nth(history, 29);
+      let current = first(history);
+      let before = nth(history, 29);
       let score = current.score - before.score;
       let rank = current.rank - before.rank;
       let watching = current.collect?.doing - before.collect?.doing;
@@ -139,7 +142,7 @@ export const useSubjectStore = defineStore('subject', {
       const { history } = state;
       if (!history || history.length === 0) return null;
 
-      const latest = _.last(history);
+      const latest = last(history);
 
       // If period is 'now', just return the latest rating and current score
       if (period === 'now') {
@@ -171,7 +174,7 @@ export const useSubjectStore = defineStore('subject', {
       }
 
       // Find the closest historical record to the start date with 2 weeks tolerance
-      const historicalRecord = _.chain(history)
+      const historicalRecord = chain(history)
         .filter((h) => {
           const recordDate = dayjs(h.recordedAt);
           const diffInDays = Math.abs(recordDate.diff(startDate, 'days'));
