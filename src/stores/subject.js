@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 import first from 'lodash/first';
 import last from 'lodash/last';
 import nth from 'lodash/nth';
-import chain from 'lodash/chain';
+import filter from 'lodash/filter';
+import minBy from 'lodash/minBy';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
@@ -174,17 +175,16 @@ export const useSubjectStore = defineStore('subject', {
       }
 
       // Find the closest historical record to the start date with 2 weeks tolerance
-      const historicalRecord = chain(history)
-        .filter((h) => {
-          const recordDate = dayjs(h.recordedAt);
-          const diffInDays = Math.abs(recordDate.diff(startDate, 'days'));
-          return recordDate.isBefore(startDate) && diffInDays <= 14; // 2 weeks tolerance
-        })
-        .minBy((h) => {
-          const recordDate = dayjs(h.recordedAt);
-          return Math.abs(recordDate.diff(startDate, 'days'));
-        })
-        .value();
+      const filteredHistory = filter(history, (h) => {
+        const recordDate = dayjs(h.recordedAt);
+        const diffInDays = Math.abs(recordDate.diff(startDate, 'days'));
+        return recordDate.isBefore(startDate) && diffInDays <= 14; // 2 weeks tolerance
+      });
+
+      const historicalRecord = minBy(filteredHistory, (h) => {
+        const recordDate = dayjs(h.recordedAt);
+        return Math.abs(recordDate.diff(startDate, 'days'));
+      });
 
       if (!historicalRecord) return null;
 
