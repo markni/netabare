@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import BattleChart from '@/components/charts/BattleChart.vue';
 import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
-import HintDiv from '@/components/HintDiv.vue';
+import HintDiv from '@/components/ui/HintDiv.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';

@@ -6,7 +6,7 @@ import ScoreChart from '@/components/charts/ScoreChart.vue';
 import RankChart from '@/components/charts/RankChart.vue';
 import CollectionChart from '@/components/charts/CollectionChart.vue';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
-import HintDiv from '@/components/HintDiv.vue';
+import HintDiv from '@/components/ui/HintDiv.vue';
 import isEmpty from 'lodash/isEmpty';
 import RatingChart from '@/components/charts/RatingChart.vue';
 import texts from '@/constants/texts.js';
