@@ -42,18 +42,34 @@
         <div class="h-10 w-60 bg-teal"></div>
       </div>
     </section>
+
+    <section class="mt-16 flex flex-col gap-4">
+      <h2 class="mb-8 text-4xl font-semibold">读取屏幕</h2>
+      <div @click="testFullscreenOverlay" class="cursor-pointer text-xl">展开</div>
+    </section>
   </div>
+
+  <!-- FullscreenOverlay for testing -->
+  <FullscreenOverlay
+    v-if="showOverlay"
+    text="加载中"
+    annotation="loading..."
+    code="404"
+    color="bg-gold"
+  />
 </template>
 
 <script setup>
 // Using Vue 3 Composition API as per project rules
 // This view is only available in development mode
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import EclipseToggle from '../components/ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
 import HintDiv from '@/components/ui/HintDiv.vue';
+import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 
 const themeStore = useThemeStore();
+const showOverlay = ref(false);
 
 // Initialize theme on component mount
 onMounted(() => {
@@ -62,5 +78,12 @@ onMounted(() => {
 
 function handleToggle() {
   themeStore.toggleDarkMode();
+}
+
+function testFullscreenOverlay() {
+  showOverlay.value = true;
+  setTimeout(() => {
+    showOverlay.value = false;
+  }, 5000);
 }
 </script>
