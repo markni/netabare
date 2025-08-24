@@ -70,7 +70,7 @@ console.log(`
 </script>
 
 <template>
-  <div id="main" :class="{ dark: themeStore.isDarkMode }">
+  <div :class="{ dark: themeStore.isDarkMode }">
     <BaseModal v-model="showWelcomeModal">
       <div class="flex gap-8 rounded-lg bg-white p-8">
         <div class="min-h-[400px] flex-1">
@@ -127,6 +127,7 @@ console.log(`
     />
 
     <div
+      id="main"
       class="flex min-h-screen flex-col bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white sm:flex-row"
     >
       <GlobalHeader />
@@ -138,11 +139,12 @@ console.log(`
       </div>
     </div>
 
+    <MorseCodeLoading />
+
     <div class="pointer-events-none fixed bottom-0 right-0 opacity-0">
       {{ texts._allTextCombined }}
     </div>
   </div>
-  <MorseCodeLoading />
 </template>
 
 <style>

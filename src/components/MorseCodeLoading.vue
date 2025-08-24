@@ -1,7 +1,7 @@
 <template>
   <div
-    id="loading2"
-    class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center"
+    id="loading"
+    class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center text-black dark:text-white"
   >
     <div class="text-center">
       <div class="morse-code font-mono mb-4 flex items-center text-4xl">
