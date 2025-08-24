@@ -13,6 +13,7 @@ import useScrollToAnchor from '@/composables/useScrollToAnchor';
 import BaseModal from '@/components/ui/BaseModal.vue';
 import FoilCard from '@/components/FoilCard.vue';
 import bangumiTan from '@/assets/bangumi_tan.png';
+import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
@@ -69,7 +70,7 @@ console.log(`
 </script>
 
 <template>
-  <div :class="{ dark: themeStore.isDarkMode }">
+  <div id="main" :class="{ dark: themeStore.isDarkMode }">
     <BaseModal v-model="showWelcomeModal">
       <div class="flex gap-8 rounded-lg bg-white p-8">
         <div class="min-h-[400px] flex-1">
@@ -141,6 +142,7 @@ console.log(`
       {{ texts._allTextCombined }}
     </div>
   </div>
+  <MorseCodeLoading />
 </template>
 
 <style>
