@@ -53,11 +53,11 @@ onUnmounted(() => {
 function decodeHtmlEntities(str) {
   return str
     .replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'");
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&');
 }
 
 const decodedName = computed(() => {
