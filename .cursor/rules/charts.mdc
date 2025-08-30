@@ -7,5 +7,5 @@ alwaysApply: false
 # Coding Rules for Charts
 
 - use [HistoryChart.vue](mdc:src/components/charts/HistoryChart.vue) as a reference
-- use hightCharts v10 api
+- use hightCharts v12 api
 - useChartTheme is important as it changes chart color base on theme (ex. dark mode)
