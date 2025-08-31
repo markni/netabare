@@ -1,16 +1,16 @@
 <template>
   <div class="mx-auto flex max-w-3xl flex-col gap-16 p-5">
     <!-- Error Alert -->
-    <div v-if="guessStore.error" class="bg-red-100 mb-5 rounded-lg p-3">
+    <div v-if="guessStore.error" class="mb-5 rounded-lg bg-red-100 p-3">
       {{ guessStore.error }}
     </div>
 
     <div class="flex flex-col justify-between gap-16 sm:flex-row">
       <h1 class="text-2xl sm:text-4xl">{{ texts._scoreChartRecognition }}</h1>
-      <div class="relative w-64 border-b border-b-paper-dark dark:border-paper">
+      <div class="border-b-zinc dark:border-paper relative w-64 border-b">
         <div
           v-if="guessStore.score !== null"
-          class="absolute bottom-[-30px] left-16 z-30 text-8xl text-red underline underline-offset-8"
+          class="text-red absolute bottom-[-30px] left-16 z-30 text-8xl underline underline-offset-8"
           style="transform: rotate(-5deg)"
         >
           {{ JSON.stringify(guessStore.score * 10) }}
@@ -39,7 +39,7 @@
           :key="aIndex"
           @click="selectAnswer(qIndex, aIndex)"
           :class="[
-            'relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
+            'hover:border-blue relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200',
             guessStore.answers[qIndex] === aIndex ? 'border-blue' : 'border-gray-200'
           ]"
         >
@@ -47,7 +47,7 @@
 
           <div
             v-if="guessStore.answers[qIndex] === aIndex && guessStore.score !== null"
-            class="absolute z-30 text-8xl text-red"
+            class="text-red absolute z-30 text-8xl"
             :style="{
               transform: `rotate(${-5 + Math.random() * 10 - 5}deg)`,
               top: `${-20 + Math.random() * 10 - 5}px`,
@@ -67,7 +67,7 @@
       :class="[
         'w-full rounded-lg py-3.5 text-2xl transition-colors',
         isComplete || guessStore.score !== null
-          ? 'cursor-pointer bg-blue text-white hover:bg-blue'
+          ? 'bg-blue hover:bg-blue cursor-pointer text-white'
           : 'cursor-not-allowed bg-gray-400 text-white'
       ]"
     >

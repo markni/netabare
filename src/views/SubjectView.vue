@@ -95,7 +95,7 @@ const setRatingPeriod = (period) => {
         >
       </h1>
       <div
-        class="sticky top-0 z-[48] flex w-full flex-col items-end gap-4 bg-paper py-5 transition-[background-color] duration-300 dark:bg-paper-dark"
+        class="bg-paper dark:bg-zinc sticky top-0 z-[48] flex w-full flex-col items-end gap-4 py-5 transition-[background-color] duration-300"
       >
         <h2 class="text-4xl" v-if="subject.name_cn">
           <a
@@ -109,7 +109,7 @@ const setRatingPeriod = (period) => {
 
         <div class="mt-4 flex gap-2 text-xl">
           <button
-            class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+            class="decoration-gold cursor-pointer underline-offset-8 hover:underline"
             :class="{
               underline: filteredBy === 'none' || filteredBy === 'disabled'
             }"
@@ -119,7 +119,7 @@ const setRatingPeriod = (period) => {
             {{ texts._all }}
           </button>
           <button
-            class="cursor-pointer decoration-gold underline-offset-8"
+            class="decoration-gold cursor-pointer underline-offset-8"
             :class="{
               'hover:underline': filteredBy !== 'disabled',
               underline: filteredBy === 'eps',
@@ -228,7 +228,7 @@ const setRatingPeriod = (period) => {
 
           <div class="mt-4 flex gap-2 text-xl">
             <button
-              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              class="decoration-gold cursor-pointer underline-offset-8 hover:underline"
               :class="{
                 underline: selectedRatingPeriod === 'now'
               }"
@@ -246,7 +246,7 @@ const setRatingPeriod = (period) => {
               一周内
             </button> -->
             <button
-              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              class="decoration-gold cursor-pointer underline-offset-8 hover:underline"
               :class="{
                 underline: selectedRatingPeriod === '1m'
               }"
@@ -264,7 +264,7 @@ const setRatingPeriod = (period) => {
               半年内
             </button> -->
             <button
-              class="cursor-pointer decoration-gold underline-offset-8 hover:underline"
+              class="decoration-gold cursor-pointer underline-offset-8 hover:underline"
               :class="{
                 underline: selectedRatingPeriod === '1y'
               }"

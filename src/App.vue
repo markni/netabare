@@ -128,10 +128,10 @@ console.log(`
 
     <div
       id="main"
-      class="flex min-h-screen flex-col bg-paper font-serif text-black transition-[background-color] duration-300 dark:bg-paper-dark dark:text-white sm:flex-row"
+      class="bg-paper dark:bg-zinc flex min-h-screen flex-col font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:text-white"
     >
       <GlobalHeader />
-      <div :class="['container bottom-0 mx-auto w-full p-4 pt-10']">
+      <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
         <RouterView />
       </div>
       <div class="sticky top-0 hidden self-start sm:flex">
@@ -141,7 +141,7 @@ console.log(`
 
     <MorseCodeLoading />
 
-    <div class="pointer-events-none fixed bottom-0 right-0 opacity-0">
+    <div class="pointer-events-none fixed right-0 bottom-0 opacity-0">
       {{ texts._allTextCombined }}
     </div>
   </div>

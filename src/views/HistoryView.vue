@@ -119,7 +119,7 @@ watch(
       <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
       <select class="w-40 bg-transparent" id="startingYear" v-model="startingYear">
         <option
-          class="bg-paper dark:bg-paper-dark"
+          class="bg-paper dark:bg-zinc"
           v-for="year in validStartYears"
           :key="year"
           :value="year"
@@ -132,7 +132,7 @@ watch(
       <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
       <select class="w-40 bg-transparent" id="endingYear" v-model="endingYear">
         <option
-          class="bg-paper dark:bg-paper-dark"
+          class="bg-paper dark:bg-zinc"
           v-for="year in validEndYears"
           :key="year"
           :value="year"
@@ -145,7 +145,7 @@ watch(
       <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
       <select class="w-40 bg-transparent" id="minScore" v-model="minScore">
         <option
-          class="bg-paper dark:bg-paper-dark"
+          class="bg-paper dark:bg-zinc"
           v-for="score in validMinScores"
           :key="score"
           :value="score"
@@ -158,7 +158,7 @@ watch(
       <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
       <select class="w-40 bg-transparent" id="maxScore" v-model="maxScore">
         <option
-          class="bg-paper dark:bg-paper-dark"
+          class="bg-paper dark:bg-zinc"
           v-for="score in validMaxScores"
           :key="score"
           :value="score"

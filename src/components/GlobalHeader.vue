@@ -12,15 +12,15 @@ const isMenuExpanded = ref(false);
 <template>
   <!-- z-49 so it's lower than overlay -->
   <header
-    class="min-w-32 bg-paper px-8 py-4 transition-[background-color] duration-300 dark:bg-paper-dark"
+    class="bg-paper dark:bg-zinc min-w-32 px-8 py-4 transition-[background-color] duration-300"
     :class="{
-      'fixed inset-0 z-40 h-full w-full overflow-y-auto dark:bg-paper-dark sm:relative sm:h-auto sm:w-auto sm:overflow-visible':
+      'dark:bg-zinc fixed inset-0 z-40 h-full w-full overflow-y-auto sm:relative sm:h-auto sm:w-auto sm:overflow-visible':
         isMenuExpanded
     }"
   >
     <nav class="flex flex-col items-center sm:items-start">
       <div
-        class="h-1 w-32 cursor-pointer border-t-4 border-solid border-t-paper-dark pb-4 text-gray-400 hover:text-gray-700 dark:border-t-paper dark:hover:text-white sm:hidden"
+        class="border-t-zinc dark:border-t-paper h-1 w-32 cursor-pointer border-t-4 border-solid pb-4 text-gray-400 hover:text-gray-700 sm:hidden dark:hover:text-white"
         @click="isMenuExpanded = !isMenuExpanded"
       ></div>
       <div
@@ -86,7 +86,7 @@ const isMenuExpanded = ref(false);
         </div>
 
         <div
-          class="flex cursor-pointer text-gray-400 hover:text-gray-700 dark:hover:text-white sm:hidden"
+          class="flex cursor-pointer text-gray-400 hover:text-gray-700 sm:hidden dark:hover:text-white"
         >
           <a @click="themeStore.toggleDarkMode">{{
             themeStore.isDarkMode ? texts._lightMode : texts._darkMode
