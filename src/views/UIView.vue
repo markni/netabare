@@ -34,12 +34,23 @@
     <section class="mt-16 flex flex-col gap-4">
       <h2 class="mb-8 text-4xl font-semibold">顏色</h2>
       <div class="flex gap-4">
-        <div class="h-10 w-60 bg-red"></div>
-        <div class="h-10 w-60 bg-pink"></div>
+        <div class="bg-red h-10 w-60"></div>
+        <div class="bg-pink h-10 w-60"></div>
+        <div class="bg-gold h-10 w-60"></div>
+        <div class="bg-blue h-10 w-60"></div>
+        <div class="bg-teal h-10 w-60"></div>
+        <div class="bg-ivory h-10 w-60"></div>
+        <div class="h-10 w-60 bg-white"></div>
+      </div>
 
-        <div class="h-10 w-60 bg-gold"></div>
-        <div class="h-10 w-60 bg-blue"></div>
-        <div class="h-10 w-60 bg-teal"></div>
+      <div class="flex gap-4">
+        <div class="h-10 w-60" :style="{ backgroundColor: RED }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: PINK }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: GOLD }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: BLUE }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: TEAL }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: IVORY }"></div>
+        <div class="h-10 w-60" :style="{ backgroundColor: WHITE }"></div>
       </div>
     </section>
 
@@ -67,6 +78,7 @@ import EclipseToggle from '../components/ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
 import HintDiv from '@/components/ui/HintDiv.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
+import { RED, PINK, GOLD, BLUE, TEAL, IVORY, WHITE } from '@/constants/colors';
 
 const themeStore = useThemeStore();
 const showOverlay = ref(false);

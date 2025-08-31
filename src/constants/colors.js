@@ -1,14 +1,18 @@
 import colors from 'tailwindcss/colors.js';
+export const RED = colors.red[800]; // RED-800
+export const IVORY = colors.stone[50]; // STONE-50
+export const LIGHT_GRAY = colors.neutral[500]; // GRAY-500
+export const DARK_GRAY = colors.neutral[900]; // ZINC-900
 
 export const TEAL = '#89cebe';
-export const IVORY = colors.stone[50]; // STONE-50
-export const RED = colors.red[800]; // RED-800
 export const GOLD = '#e4ae4a';
-export const DARK_GRAY = colors.neutral[900]; // ZINC-900
-export const LIGHT_GRAY = colors.neutral[500]; // GRAY-500
 export const BLUE = '#3194FF';
-export const PINK = '#FF3194';
+export const PINK = '#ff7ba9';
+export const TRANSPARENT = '#00000000';
+export const PAPER = '#fafaf9';
+export const PAPER_DARK = '#171717';
 
+export const WHITE = colors.white;
 export const BLACK = colors.black;
 
 export const COLORS10 = [
