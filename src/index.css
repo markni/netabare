@@ -1,7 +1,41 @@
 /* ./src/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-*: initial; /* Reset all color variables */
+
+  --color-teal: #89cebe;
+  --color-paper: #fafaf9;
+  --color-paper-dark: #171717;
+  --color-gold: #fad15d;
+  --color-red: #f45b69;
+  --color-blue: #78b3ff;
+  --color-dark-gray: #171717;
+  --color-light-gray: #fafaf9;
+
+  --color-transparent: #00000000;
+  --color-pink: #ff7ba9;
+
+  --color-black: #000000;
+  --color-white: #fafaf9;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'source-han-serif-sc', 'source-han-serif-japanese', '宋体', '新宋体', serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility horizontal-tb {
+  writing-mode: horizontal-tb;
+}
+
+@utility vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+@utility vertical-lr {
+  writing-mode: vertical-lr;
+}
 
 html {
   scroll-behavior: smooth;
