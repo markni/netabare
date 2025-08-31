@@ -7,13 +7,13 @@ import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
 import { onMounted, watch, ref } from 'vue';
-import ThemeToggle from '@/components/ThemeToggle.vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
 import BaseModal from '@/components/ui/BaseModal.vue';
 import FoilCard from '@/components/FoilCard.vue';
 import bangumiTan from '@/assets/bangumi_tan.png';
 import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
+import EclipseToggle from './components/ui/EclipseToggle.vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
@@ -134,8 +134,11 @@ console.log(`
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
         <RouterView />
       </div>
-      <div class="sticky top-0 hidden self-start sm:flex">
-        <ThemeToggle />
+      <div class="sticky top-10 right-10 hidden self-start sm:flex">
+        <EclipseToggle
+          @toggle="themeStore.toggleDarkMode"
+          :mode="themeStore.isDarkMode ? 'dark' : 'light'"
+        />
       </div>
     </div>
 
