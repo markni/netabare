@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('toggle')" class="sun">
+  <button @click="$emit('toggle')" class="sun cursor-pointer">
     <div
       class="moon"
       :class="{ 'moon-dark': mode === 'dark', 'moon-light': mode === 'light' }"

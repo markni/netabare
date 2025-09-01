@@ -3,7 +3,9 @@ description:
 globs: *.vue
 alwaysApply: false
 ---
+
 # Coding Rules for Netabare Project
+
 - Use Vue 3 Composition API for components (no Options API unless specified).
 - Use Pinia for state management.
 - Use Vue Router for routing.
@@ -11,4 +13,4 @@ alwaysApply: false
 - Use ESM syntax (import/export) for JavaScript.
 - Prefer "dayjs" for date/time over "moment".
 - Use "axios" for HTTP requests.
-- Keep code formatted per Prettier and linted per ESLint (Vue/JS rules).
+- Keep code formatted per Prettier and linted per ESLint (Vue/JS rules)

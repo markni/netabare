@@ -75,9 +75,9 @@ const { getRatingData } = store;
     </div>
     <div v-if="props.id0 !== props.id1" class="flex flex-col gap-20">
       <div
-        class="sticky top-0 z-40 grid grid-cols-2 gap-4 bg-paper py-4 text-3xl transition-[background-color] duration-300 dark:bg-paper-dark"
+        class="bg-paper dark:bg-zinc sticky top-0 z-40 grid grid-cols-2 gap-4 py-4 text-3xl transition-[background-color] duration-300"
       >
-        <form @submit.prevent="submit" class="flex flex-col gap-4 text-blue">
+        <form @submit.prevent="submit" class="text-blue flex flex-col gap-4">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId0" v-model="localId0" /> -->
           <div class="text-6xl">
             {{ subjects[0]?.rating?.score || 'N/A' }}
@@ -86,7 +86,7 @@ const { getRatingData } = store;
             subjects[0]?.name_cn || subjects[0]?.name
           }}</label>
         </form>
-        <form @submit.prevent="submit" class="al flex flex-col items-end gap-4 text-pink">
+        <form @submit.prevent="submit" class="al text-pink flex flex-col items-end gap-4">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId1" v-model="localId1" /> -->
           <div class="text-6xl">
             {{ subjects[1]?.rating?.score || 'N/A' }}
@@ -101,13 +101,13 @@ const { getRatingData } = store;
           <span class="w-4 text-sm">{{ n }}</span>
           <div class="flex h-4 w-full">
             <div
-              class="h-full bg-blue transition-all"
+              class="bg-blue h-full transition-all"
               :style="{
                 width: `${(subjects[0]?.rating?.count[n] / (subjects[0]?.rating?.count[n] + subjects[1]?.rating?.count[n])) * 100}%`
               }"
             />
             <div
-              class="h-full bg-pink transition-all"
+              class="bg-pink h-full transition-all"
               :style="{
                 width: `${(subjects[1]?.rating?.count[n] / (subjects[0]?.rating?.count[n] + subjects[1]?.rating?.count[n])) * 100}%`
               }"
