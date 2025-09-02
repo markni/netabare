@@ -7,7 +7,7 @@
       class="narrow-long-shadow bg-paper relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
     >
       <div
-        class="bg-zinc absolute inset-0 translate-x-[37px] rounded-full transition-transform duration-300 dark:translate-x-[1px]"
+        class="bg-paper-dark absolute inset-0 translate-x-[37px] rounded-full transition-transform duration-300 dark:translate-x-[1px]"
       ></div>
     </button>
   </div>

@@ -1,5 +1,5 @@
 import colors from 'tailwindcss/colors.js';
-export const RED = colors.red[800]; // RED-800
+export const RED = colors.red[900]; // RED-900
 export const IVORY = colors.stone[50]; // STONE-50
 export const LIGHT_GRAY = colors.neutral[500]; // GRAY-500
 export const DARK_GRAY = colors.neutral[900]; // ZINC-900

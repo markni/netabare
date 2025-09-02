@@ -1,6 +1,8 @@
 /* ./src/index.css */
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-red: var(--color-red-900);
   --color-ivory: var(--color-stone-50);
@@ -13,14 +15,14 @@
   --color-pink: #ff7ba9;
   --color-transparent: #00000000;
 
-  --color-paper: #fafaf9;
-  --color-zinc: #171717;
+  --color-paper: light-dark(#fafaf9, #171717);
+  /* backward compatibility classes, use dark:bg-paper-dark*/
+  --color-paper-dark: #171717;
 
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'source-han-serif-sc', 'source-han-serif-japanese', '宋体', '新宋体', serif;
+  --color-bg: #f6f9fb;
 }
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @utility horizontal-tb {
   writing-mode: horizontal-tb;
@@ -32,6 +34,14 @@
 
 @utility vertical-lr {
   writing-mode: vertical-lr;
+}
+
+:root {
+  color-scheme: only light;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 html {

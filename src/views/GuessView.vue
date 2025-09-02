@@ -7,7 +7,7 @@
 
     <div class="flex flex-col justify-between gap-16 sm:flex-row">
       <h1 class="text-2xl sm:text-4xl">{{ texts._scoreChartRecognition }}</h1>
-      <div class="border-b-zinc dark:border-paper relative w-64 border-b">
+      <div class="border-b-paper-dark dark:border-paper relative w-64 border-b">
         <div
           v-if="guessStore.score !== null"
           class="text-red absolute bottom-[-30px] left-16 z-30 text-8xl underline underline-offset-8"

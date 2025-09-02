@@ -95,7 +95,7 @@ const setRatingPeriod = (period) => {
         >
       </h1>
       <div
-        class="bg-paper dark:bg-zinc sticky top-0 z-[48] flex w-full flex-col items-end gap-4 py-5 transition-[background-color] duration-300"
+        class="bg-paper dark:bg-paper-dark sticky top-0 z-[48] flex w-full flex-col items-end gap-4 py-5 transition-[background-color] duration-300"
       >
         <h2 class="text-4xl" v-if="subject.name_cn">
           <a

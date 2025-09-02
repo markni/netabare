@@ -28,7 +28,10 @@ export const useThemeStore = defineStore('theme', {
           localStorage.setItem('theme', themeParam);
         } else {
           // Default to light mode if not set by user or query
-          this.isDarkMode = false;
+          const userBrowserPrefersDark = !!window.matchMedia('(prefers-color-scheme: dark)')
+            ?.matches;
+
+          this.isDarkMode = userBrowserPrefersDark;
         }
       }
     },

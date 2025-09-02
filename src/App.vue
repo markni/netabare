@@ -128,7 +128,7 @@ console.log(`
 
     <div
       id="main"
-      class="bg-paper dark:bg-zinc flex min-h-screen flex-col font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:text-white"
+      class="bg-paper dark:bg-paper-dark flex min-h-screen flex-col font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:text-white"
     >
       <GlobalHeader />
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
