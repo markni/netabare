@@ -4,6 +4,8 @@ import { useAppStore } from '@/stores/app';
 import texts from '@/constants/texts.js';
 
 const router = createRouter({
+  linkActiveClass: 'text-active-link dark:text-active-link-dark',
+  linkExactActiveClass: 'text-active-link dark:text-active-link-dark',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;

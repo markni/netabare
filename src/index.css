@@ -13,15 +13,18 @@
   --color-gold: #e4ae4a;
   --color-blue: #3194ff;
   --color-pink: #ff7ba9;
-  --color-transparent: #00000000;
+
+  /* transparent, black and white are predefined in Tailwind */
 
   --color-paper: light-dark(#fafaf9, #171717);
   /* backward compatibility classes, use dark:bg-paper-dark*/
   --color-paper-dark: #171717;
 
+  --color-active-link: light-dark(var(--color-dark-gray), var(--color-white));
+  --color-active-link-dark: var(--color-white);
+
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'source-han-serif-sc', 'source-han-serif-japanese', '宋体', '新宋体', serif;
-  --color-bg: #f6f9fb;
 }
 
 @utility horizontal-tb {
