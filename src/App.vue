@@ -9,16 +9,13 @@ import { useThemeStore } from './stores/theme';
 import { onMounted, watch, ref } from 'vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
-import BaseModal from '@/components/ui/BaseModal.vue';
-import FoilCard from '@/components/FoilCard.vue';
-import bangumiTan from '@/assets/bangumi_tan.png';
 import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
 import EclipseToggle from './components/ui/EclipseToggle.vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
-const showWelcomeModal = ref(false);
+const showWelcomeModal = ref(true);
 
 // Check if current date is March 31st or April 1st
 const checkDate = () => {
@@ -71,34 +68,6 @@ console.log(`
 
 <template>
   <div :class="{ dark: themeStore.isDarkMode }">
-    <BaseModal v-model="showWelcomeModal">
-      <div class="flex gap-8 rounded-lg bg-white p-8">
-        <div class="min-h-[400px] flex-1">
-          <a
-            href="https://bgm.tv/group/topic/8061"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block h-full"
-          >
-            <FoilCard>
-              <template #default>
-                <img
-                  :src="bangumiTan"
-                  alt="Bangumi Tan"
-                  class="card-image h-full w-full object-contain"
-                />
-              </template>
-            </FoilCard>
-          </a>
-        </div>
-        <div class="flex flex-1 items-center justify-center gap-8">
-          <div class="writing-mode-vertical text-sm text-gray-700">四月十八日 预售开始</div>
-
-          <div class="writing-mode-vertical text-3xl text-gray-700">爱是粉色。爱是可触摸。</div>
-        </div>
-      </div>
-    </BaseModal>
-
     <FullscreenOverlay
       v-if="networkError"
       :text="texts._lostConnection"
@@ -128,7 +97,7 @@ console.log(`
 
     <div
       id="main"
-      class="bg-paper dark:bg-paper-dark flex min-h-screen flex-col font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:text-white"
+      class="flex min-h-screen flex-col bg-paper font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:bg-paper-dark dark:text-white"
     >
       <GlobalHeader />
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
@@ -162,11 +131,5 @@ console.log(`
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-color);
-}
-
-.writing-mode-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  letter-spacing: 0.5em;
 }
 </style>
