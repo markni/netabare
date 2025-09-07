@@ -39,6 +39,10 @@
   writing-mode: vertical-lr;
 }
 
+@utility paper {
+  @apply bg-paper transition-[background-color] duration-300 dark:bg-paper-dark;
+}
+
 :root {
   color-scheme: only light;
 }

@@ -139,7 +139,7 @@ const handleSeasonChange = (event) => {
           v-for="season in availableSeasons"
           :key="season.month"
           :value="season.month"
-          class="bg-paper dark:bg-paper-dark"
+          class="paper"
         >
           {{ season.name }}
         </option>

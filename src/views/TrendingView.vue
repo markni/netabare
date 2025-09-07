@@ -18,15 +18,18 @@ const formatData = (history) =>
 <template>
   <div class="xl: grid grid-cols-1 gap-32 px-4 pt-14 xl:grid-cols-3" v-if="done.length">
     <div v-for="(items, index) in [done, up, down]" :key="index" class="flex flex-col gap-16">
-      <h2
-        :id="['popular', 'up', 'down'][index]"
-        class="mr-auto text-2xl"
-        :class="['bg-gold', 'bg-pink', 'bg-blue'][index]"
-      >
-        <a :href="'#' + ['popular', 'up', 'down'][index]" class="anchor-link">
-          {{ [texts._popularEntries, texts._increasingRank, texts._decreasingRank][index] }}
-        </a>
-      </h2>
+      <div class="sticky top-0 z-10 flex w-full paper py-4">
+        <h2
+          :id="['popular', 'up', 'down'][index]"
+          class="mr-auto text-2xl"
+          :class="['bg-gold', 'bg-pink', 'bg-blue'][index]"
+        >
+          <a :href="'#' + ['popular', 'up', 'down'][index]" class="anchor-link">
+            {{ [texts._popularEntries, texts._increasingRank, texts._decreasingRank][index] }}
+          </a>
+        </h2>
+      </div>
+
       <ol class="flex list-decimal flex-col gap-16 xl:gap-8">
         <li v-for="item in items" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">

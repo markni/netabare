@@ -85,7 +85,7 @@ console.log(`
 
     <div
       id="main"
-      class="flex min-h-screen flex-col bg-paper font-serif text-black transition-[background-color] duration-300 sm:flex-row dark:bg-paper-dark dark:text-white"
+      class="flex min-h-screen flex-col paper font-serif text-black sm:flex-row dark:text-white"
     >
       <GlobalHeader />
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">

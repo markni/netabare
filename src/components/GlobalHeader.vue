@@ -12,9 +12,9 @@ const isMenuExpanded = ref(false);
 <template>
   <!-- z-49 so it's lower than overlay -->
   <header
-    class="min-w-32 bg-paper px-8 py-4 transition-[background-color] duration-300 dark:bg-paper-dark"
+    class="min-w-32 paper px-8 py-4"
     :class="{
-      'fixed inset-0 z-40 h-full w-full overflow-y-auto sm:relative sm:h-auto sm:w-auto sm:overflow-visible dark:bg-paper-dark':
+      'fixed inset-0 z-40 h-full w-full overflow-y-auto paper sm:relative sm:h-auto sm:w-auto sm:overflow-visible':
         isMenuExpanded
     }"
   >
