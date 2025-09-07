@@ -36,10 +36,13 @@ const formatData = (history) =>
                   class="line-clamp-1"
                   :class="['hover:bg-gold', 'hover:bg-pink', 'hover:bg-blue'][index]"
                   :to="'/subject/' + item.bgmId"
+                  :title="item.subject.name_cn || item.subject.name"
                   >{{ item.subject.name_cn || item.subject.name }}</RouterLink
                 >
               </div>
-              <div class="line-clamp-1 text-lg">{{ item.subject.name }}</div>
+              <div class="text-md line-clamp-1 text-light-gray" :title="item.subject.name">
+                {{ item.subject.name }}
+              </div>
             </div>
             <div class="col-span-4 text-2xl">
               <div class="flex flex-col items-end">
