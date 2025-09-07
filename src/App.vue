@@ -6,7 +6,7 @@ import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { onMounted, watch, ref } from 'vue';
+import { onMounted, watch } from 'vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
 import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
@@ -15,23 +15,11 @@ import EclipseToggle from './components/ui/EclipseToggle.vue';
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
-const showWelcomeModal = ref(true);
-
-// Check if current date is March 31st or April 1st
-const checkDate = () => {
-  const today = new Date();
-  const month = today.getMonth() + 1; // getMonth() returns 0-11
-  const date = today.getDate();
-  return (month === 3 && date === 31) || (month === 4 && date === 1);
-};
 
 useScrollToAnchor();
 
 onMounted(() => {
   themeStore.initTheme();
-  if (checkDate()) {
-    showWelcomeModal.value = true;
-  }
 });
 
 watch(
