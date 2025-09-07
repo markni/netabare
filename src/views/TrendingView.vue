@@ -16,8 +16,8 @@ const formatData = (history) =>
 </script>
 
 <template>
-  <div class="flex flex-col gap-16 pt-14" v-if="done.length">
-    <div v-for="(items, index) in [done, up, down]" :key="index" class="flex flex-col gap-8">
+  <div class="xl: grid grid-cols-1 gap-32 px-4 pt-14 xl:grid-cols-3" v-if="done.length">
+    <div v-for="(items, index) in [done, up, down]" :key="index" class="flex flex-col gap-16">
       <h2
         :id="['popular', 'up', 'down'][index]"
         class="mr-auto text-2xl"
@@ -30,13 +30,20 @@ const formatData = (history) =>
       <ol class="flex list-decimal flex-col gap-16 xl:gap-8">
         <li v-for="item in items" :key="item.bgmId">
           <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-12 xl:col-span-8">
-              <div class="text-4xl">
+            <div class="col-span-8">
+              <div class="text-2xl">
                 <RouterLink
+                  class="line-clamp-1"
                   :class="['hover:bg-gold', 'hover:bg-pink', 'hover:bg-blue'][index]"
                   :to="'/subject/' + item.bgmId"
                   >{{ item.subject.name_cn || item.subject.name }}</RouterLink
                 >
+              </div>
+              <div class="line-clamp-1 text-lg">{{ item.subject.name }}</div>
+            </div>
+            <div class="col-span-4 text-2xl">
+              <div class="flex flex-col items-end">
+                <DeltaDisplay :delta="item.score" />
                 <span
                   class="ml-2 px-1 text-sm text-white"
                   :style="{
@@ -45,16 +52,12 @@ const formatData = (history) =>
                   >{{ item.history[item.history.length - 1].score }}</span
                 >
               </div>
-              <div class="text-lg">{{ item.subject.name }}</div>
             </div>
-            <div class="col-span-12 aspect-[16/8] xl:col-span-3">
+            <div class="col-span-12 aspect-[24/8]">
               <MiniScoreChart
                 :color="item.score >= 0 ? PINK : BLUE"
                 :history-data="formatData(item.history)"
               />
-            </div>
-            <div class="col-span-12 text-4xl xl:col-span-1">
-              <DeltaDisplay :delta="item.score" />
             </div>
           </div>
         </li>

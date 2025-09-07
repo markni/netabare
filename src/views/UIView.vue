@@ -34,12 +34,12 @@
     <section class="mt-16 flex flex-col gap-4">
       <h2 class="mb-8 text-4xl font-semibold">顏色</h2>
       <div class="flex gap-4">
-        <div class="bg-red h-10 w-60"></div>
-        <div class="bg-pink h-10 w-60"></div>
-        <div class="bg-gold h-10 w-60"></div>
-        <div class="bg-blue h-10 w-60"></div>
-        <div class="bg-teal h-10 w-60"></div>
-        <div class="bg-ivory h-10 w-60"></div>
+        <div class="h-10 w-60 bg-red"></div>
+        <div class="h-10 w-60 bg-pink"></div>
+        <div class="h-10 w-60 bg-gold"></div>
+        <div class="h-10 w-60 bg-blue"></div>
+        <div class="h-10 w-60 bg-teal"></div>
+        <div class="h-10 w-60 bg-ivory"></div>
         <div class="h-10 w-60 bg-white"></div>
       </div>
 
