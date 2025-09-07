@@ -65,6 +65,7 @@ const initializeChart = () => {
           labels: {
             enabled: false
           },
+          gridLineWidth: 0,
           tickInterval: 0.1
         }
       ],
