@@ -21,7 +21,7 @@ const formatData = (history) =>
       <div class="sticky top-0 z-10 flex w-full paper py-4">
         <h2
           :id="['popular', 'up', 'down'][index]"
-          class="mr-auto text-2xl"
+          class="mr-auto text-2xl tracking-wider first-letter:text-3xl"
           :class="['bg-gold', 'bg-pink', 'bg-blue'][index]"
         >
           <a :href="'#' + ['popular', 'up', 'down'][index]" class="anchor-link">
