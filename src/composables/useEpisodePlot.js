@@ -20,7 +20,7 @@ export function useEpisodePlot(chartInstance, epsData) {
         verticalAlign: 'bottom',
         textAlign: 'right',
         y: -10,
-        x: 5,
+        x: 15,
         useHTML: true
       }
     };
