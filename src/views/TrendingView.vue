@@ -43,7 +43,7 @@ const formatData = (history) =>
                   >{{ item.subject.name_cn || item.subject.name }}</RouterLink
                 >
               </div>
-              <div class="text-md line-clamp-1 text-light-gray" :title="item.subject.name">
+              <div class="text-md line-clamp-1" :title="item.subject.name">
                 {{ item.subject.name }}
               </div>
             </div>

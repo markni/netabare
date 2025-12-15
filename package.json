@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
-    "highcharts": "^12.1.2",
+    "highcharts": "12.3.0",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "moment-timezone": "^0.6.0",
