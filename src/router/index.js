@@ -98,6 +98,12 @@ const router = createRouter({
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/UIView.vue'),
             meta: { title: 'UI | netaba.re' }
+          },
+          {
+            path: '/debug',
+            name: 'debug',
+            component: () => import('../views/DebugThemeToggleView.vue'),
+            meta: { title: 'Theme Debug | netaba.re' }
           }
         ]
       : []),
