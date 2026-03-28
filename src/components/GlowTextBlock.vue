@@ -79,6 +79,8 @@ const props = defineProps({
 const slots = useSlots();
 const wordElements = new Map();
 let isRegistered = false;
+let transitionResetTimer = null;
+let transitionDuration = '0ms';
 
 const extractText = (nodes) => {
   let output = '';
@@ -137,10 +139,31 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const setWordRef = (element, tokenId) => {
   if (element) {
+    element.style.setProperty('--glow-transition-duration', transitionDuration);
     wordElements.set(tokenId, element);
   } else {
     wordElements.delete(tokenId);
   }
+};
+
+const setAllWordTransitionDuration = (duration) => {
+  transitionDuration = duration;
+  wordElements.forEach((element) => {
+    element.style.setProperty('--glow-transition-duration', duration);
+  });
+};
+
+const startToggleTransition = () => {
+  if (transitionResetTimer !== null) {
+    window.clearTimeout(transitionResetTimer);
+    transitionResetTimer = null;
+  }
+
+  setAllWordTransitionDuration('300ms');
+  transitionResetTimer = window.setTimeout(() => {
+    setAllWordTransitionDuration('0ms');
+    transitionResetTimer = null;
+  }, 300);
 };
 
 const updateWordGlow = () => {
@@ -229,12 +252,14 @@ watch(
   () => props.enabled,
   async (enabled) => {
     if (enabled) {
+      startToggleTransition();
       registerGlowUpdater();
       await nextTick();
       requestGlowUpdate();
       return;
     }
 
+    startToggleTransition();
     unregisterGlowUpdater();
     wordElements.forEach((element) => {
       element.style.setProperty('--glow-intensity', '0');
@@ -243,6 +268,10 @@ watch(
 );
 
 onBeforeUnmount(() => {
+  if (transitionResetTimer !== null) {
+    window.clearTimeout(transitionResetTimer);
+    transitionResetTimer = null;
+  }
   unregisterGlowUpdater();
   wordElements.clear();
 });
@@ -251,7 +280,8 @@ onBeforeUnmount(() => {
 <style scoped>
 .glow-word {
   --glow-intensity: 0;
-  transition: text-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --glow-transition-duration: 0ms;
+  transition: text-shadow var(--glow-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
   text-shadow:
     calc(0.8px + var(--glow-intensity) * 7px) calc(-0.8px - var(--glow-intensity) * 7px)
       calc(4px + var(--glow-intensity) * 34px)
