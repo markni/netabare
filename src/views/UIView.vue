@@ -6,6 +6,30 @@
     </p>
   </div>
 
+  <section class="mt-10 flex flex-col items-center gap-6 text-center">
+    <h2 class="mb-2 text-4xl font-semibold">Glow Text</h2>
+    <GlowTextBlock
+      class="w-full max-w-5xl text-sm leading-relaxed"
+      glow-rgb="255,140,70"
+      text="Small sample row. Scroll and resize to test how each word glows near the top-right."
+    />
+    <GlowTextBlock
+      class="w-full max-w-5xl text-lg leading-relaxed"
+      glow-rgb="255,190,80"
+      text="Medium sample row. Glow intensity should drop as words approach the center."
+    />
+    <GlowTextBlock
+      class="w-full max-w-5xl text-2xl leading-relaxed"
+      glow-rgb="100,210,255"
+      text="Larger sample row for clearer per-word glow behavior across the viewport."
+    />
+    <GlowTextBlock
+      class="w-full max-w-5xl text-4xl leading-relaxed"
+      glow-rgb="255,120,210"
+      text="Extra large row so you can inspect contrast and edge behavior quickly."
+    />
+  </section>
+
   <div class="mt-8 flex justify-center">
     <EclipseToggle @toggle="handleToggle" :mode="themeStore.isDarkMode ? 'dark' : 'light'" />
   </div>
@@ -58,6 +82,7 @@
       <h2 class="mb-8 text-4xl font-semibold">读取屏幕</h2>
       <div @click="testFullscreenOverlay" class="cursor-pointer text-xl">展开</div>
     </section>
+
   </div>
 
   <!-- FullscreenOverlay for testing -->
@@ -78,6 +103,7 @@ import EclipseToggle from '../components/ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
 import HintDiv from '@/components/ui/HintDiv.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
+import GlowTextBlock from '@/components/GlowTextBlock.vue';
 import { RED, PINK, GOLD, BLUE, TEAL, IVORY, WHITE } from '@/constants/colors';
 
 const themeStore = useThemeStore();
