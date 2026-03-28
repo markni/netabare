@@ -1,15 +1,7 @@
 <template>
-  <component
-    :is="tag"
-    v-bind="$attrs"
-    :style="{ '--glow-rgb': glowRgb }"
-  >
+  <component :is="tag" v-bind="$attrs" :style="{ '--glow-rgb': glowRgb }">
     <template v-for="token in tokens" :key="token.id">
-      <span
-        v-if="token.isWord"
-        :ref="(element) => setWordRef(element, token.id)"
-        class="glow-word"
-      >
+      <span v-if="token.isWord" :ref="(element) => setWordRef(element, token.id)" class="glow-word">
         {{ token.value }}
       </span>
       <span v-else>{{ token.value }}</span>

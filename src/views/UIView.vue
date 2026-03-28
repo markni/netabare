@@ -82,7 +82,6 @@
       <h2 class="mb-8 text-4xl font-semibold">读取屏幕</h2>
       <div @click="testFullscreenOverlay" class="cursor-pointer text-xl">展开</div>
     </section>
-
   </div>
 
   <!-- FullscreenOverlay for testing -->

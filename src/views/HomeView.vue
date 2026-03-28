@@ -6,52 +6,98 @@
     <!-- Auto-scroll indicator (only show when active) -->
     <div
       v-if="isAutoScrolling"
-      class="fixed right-4 top-4 z-50 rounded-md bg-black/70 px-4 py-2 text-sm text-white"
+      class="fixed top-4 right-4 z-50 rounded-md bg-black/70 px-4 py-2 text-sm text-white"
     >
-      <GlowTextBlock tag="span" :text="texts._autoScrolling" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+      <GlowTextBlock
+        tag="span"
+        :text="texts._autoScrolling"
+        :glow-rgb="HOME_GLOW_RGB"
+        :enabled="themeStore.isDarkMode"
+      />
     </div>
 
     <div class="flex flex-col gap-16 pt-32">
       <h1 class="rainbow text-center text-4xl">
-        <GlowTextBlock tag="span" text="Netabare" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+        <GlowTextBlock
+          tag="span"
+          text="Netabare"
+          :glow-rgb="HOME_GLOW_RGB"
+          :enabled="themeStore.isDarkMode"
+        />
       </h1>
 
       <div class="flex flex-col gap-4 tracking-widest">
         <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
           <span class="text-2xl lg:text-4xl">
-            <GlowTextBlock tag="span" :text="texts._currentSeason" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._currentSeason"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </span>
           <RouterLink class="text-3xl hover:bg-teal lg:text-5xl" to="/season">
-            <GlowTextBlock tag="span" :text="texts._dragonVsTiger" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._dragonVsTiger"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </RouterLink>
         </h2>
 
         <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
           <span class="text-2xl lg:text-4xl">
-            <GlowTextBlock tag="span" :text="texts._allSiteAnime" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._allSiteAnime"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </span>
           <RouterLink class="text-3xl hover:bg-blue lg:text-5xl" to="/trending">
-            <GlowTextBlock tag="span" :text="texts._hotTrends" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._hotTrends"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </RouterLink>
         </h2>
 
         <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
           <span class="text-2xl lg:text-4xl">
-            <GlowTextBlock tag="span" :text="texts._allSiteAnime" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._allSiteAnime"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </span>
           <RouterLink class="text-3xl hover:bg-pink lg:text-5xl" to="/history">
-            <GlowTextBlock tag="span" :text="texts._scoreDistribution" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._scoreDistribution"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </RouterLink>
         </h2>
         <h2 class="flex flex-col items-baseline justify-between gap-4 lg:flex-row lg:gap-10">
           <span class="text-2xl lg:text-4xl">
-            <GlowTextBlock tag="span" :text="texts._personalAnime" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._personalAnime"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </span>
           <RouterLink class="text-3xl hover:bg-gold lg:text-5xl" to="/user">
             <GlowTextBlock
               tag="span"
               :text="texts._scoreDistribution2"
-              :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
             />
           </RouterLink>
         </h2>
@@ -60,7 +106,12 @@
 
     <div class="flex w-full flex-col gap-16" v-if="licenses">
       <h2 class="rainbow text-center text-4xl">
-        <GlowTextBlock tag="span" :text="texts._credits" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+        <GlowTextBlock
+          tag="span"
+          :text="texts._credits"
+          :glow-rgb="HOME_GLOW_RGB"
+          :enabled="themeStore.isDarkMode"
+        />
       </h2>
 
       <div class="flex flex-col gap-4 tracking-widest">
@@ -70,16 +121,22 @@
           >
             <a
               :href="value.repository"
-              class="text-sm hover:bg-blue dark:hover:bg-transparent lg:text-xl"
-              ><GlowTextBlock tag="span" :text="key" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode"
-            /></a
-            >
+              class="text-sm hover:bg-blue lg:text-xl dark:hover:bg-transparent"
+              ><GlowTextBlock
+                tag="span"
+                :text="key"
+                :glow-rgb="HOME_GLOW_RGB"
+                :enabled="themeStore.isDarkMode"
+            /></a>
             <a
               :href="value.repository"
-              class="text-lg hover:bg-blue dark:hover:bg-transparent lg:text-2xl"
-              ><GlowTextBlock tag="span" :text="value.publisher" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode"
-            /></a
-            >
+              class="text-lg hover:bg-blue lg:text-2xl dark:hover:bg-transparent"
+              ><GlowTextBlock
+                tag="span"
+                :text="value.publisher"
+                :glow-rgb="HOME_GLOW_RGB"
+                :enabled="themeStore.isDarkMode"
+            /></a>
           </div>
         </div>
       </div>
@@ -87,28 +144,46 @@
 
     <div class="flex flex-col gap-16" v-if="licenses">
       <h2 class="rainbow text-center text-2xl lg:text-4xl">
-        <GlowTextBlock tag="span" :text="texts._specialThanks" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+        <GlowTextBlock
+          tag="span"
+          :text="texts._specialThanks"
+          :glow-rgb="HOME_GLOW_RGB"
+          :enabled="themeStore.isDarkMode"
+        />
       </h2>
 
       <div class="rainbow flex flex-col gap-4 tracking-widest">
         <div class="flex flex-col items-baseline justify-between gap-10 lg:flex-row">
           <div class="text-2xl lg:text-4xl">
-            <GlowTextBlock tag="span" :text="texts._dataSupport" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+            <GlowTextBlock
+              tag="span"
+              :text="texts._dataSupport"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+            />
           </div>
           <a
             href="https://bgm.tv"
             target="_blank"
-            class="text-3xl hover:bg-pink dark:hover:bg-transparent lg:text-5xl"
-            ><GlowTextBlock tag="span" text="bangumi.tv" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode"
-          /></a
-          >
+            class="text-3xl hover:bg-pink lg:text-5xl dark:hover:bg-transparent"
+            ><GlowTextBlock
+              tag="span"
+              text="bangumi.tv"
+              :glow-rgb="HOME_GLOW_RGB"
+              :enabled="themeStore.isDarkMode"
+          /></a>
         </div>
       </div>
     </div>
 
-    <div class="mb-64 mt-32 flex w-full flex-col gap-16" v-if="licenses">
+    <div class="mt-32 mb-64 flex w-full flex-col gap-16" v-if="licenses">
       <h2 class="rainbow text-center text-2xl lg:text-4xl">
-        <GlowTextBlock tag="span" :text="texts._netabareCommittee" :glow-rgb="HOME_GLOW_RGB" :enabled="themeStore.isDarkMode" />
+        <GlowTextBlock
+          tag="span"
+          :text="texts._netabareCommittee"
+          :glow-rgb="HOME_GLOW_RGB"
+          :enabled="themeStore.isDarkMode"
+        />
       </h2>
     </div>
   </div>
