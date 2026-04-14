@@ -25,12 +25,32 @@ const chartInstance = shallowRef(null);
 
 useChartTheme(chartInstance);
 
+const normalizeSeries = (seriesData, fallbackName) => {
+  if (seriesData && typeof seriesData === 'object' && !Array.isArray(seriesData)) {
+    return {
+      name: seriesData.name || fallbackName,
+      data: Array.isArray(seriesData.data) ? seriesData.data : []
+    };
+  }
+
+  return {
+    name: fallbackName,
+    data: []
+  };
+};
+
 const updateData = () => {
   if (chartInstance.value) {
-    chartInstance.value.series[0].setData(props.ratingData.data, false);
-    if (props.comparisonData) {
-      chartInstance.value.series[1].setData(props.comparisonData.data, true);
-    }
+    const ratingSeries = normalizeSeries(props.ratingData, '动画0');
+    const comparisonSeries = normalizeSeries(props.comparisonData, '动画1');
+
+    chartInstance.value.series[0].update({ name: ratingSeries.name }, false);
+    chartInstance.value.series[0].setData(ratingSeries.data, false);
+
+    chartInstance.value.series[1].update({ name: comparisonSeries.name }, false);
+    chartInstance.value.series[1].setData(comparisonSeries.data, false);
+
+    chartInstance.value.redraw();
   }
 };
 
@@ -66,12 +86,12 @@ const initializeChart = () => {
       },
       series: [
         {
-          name: props.ratingData.name,
+          name: normalizeSeries(props.ratingData, '动画0').name,
           data: [],
           color: BLUE
         },
         {
-          name: props.comparisonData?.name || '动画1',
+          name: normalizeSeries(props.comparisonData, '动画1').name,
           data: [],
           color: PINK
         }
