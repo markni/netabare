@@ -9,6 +9,7 @@ import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import FoilCard from '@/components/FoilCard.vue';
 import VsBarChart from '@/components/charts/VsBarChart.vue';
+import VsPopulationPyramidChart from '@/components/charts/VsPopulationPyramidChart.vue';
 import texts from '@/constants/texts.js';
 
 const router = useRouter();
@@ -116,6 +117,12 @@ const { getRatingData } = store;
       <div v-if="histories[0] || histories[1]" class="flex flex-col gap-8">
         <div class="sm:aspect-[16/10]">
           <VsBarChart :rating-data="getRatingData(0)" :comparison-data="getRatingData(1)" />
+        </div>
+        <div class="sm:aspect-[16/10]">
+          <VsPopulationPyramidChart
+            :rating-data="getRatingData(0)"
+            :comparison-data="getRatingData(1)"
+          />
         </div>
 
         <div class="sm:aspect-[16/10]">
