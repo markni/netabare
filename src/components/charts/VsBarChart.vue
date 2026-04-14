@@ -22,6 +22,7 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
+const SCORE_LABELS = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
 
 useChartTheme(chartInstance);
 
@@ -39,16 +40,27 @@ const normalizeSeries = (seriesData, fallbackName) => {
   };
 };
 
+const toCategoryData = (data) => {
+  const map = new Map();
+
+  data.forEach((point) => {
+    if (!point || point.x === undefined || point.y === undefined) return;
+    map.set(String(point.x), Number(point.y) || 0);
+  });
+
+  return SCORE_LABELS.map((score) => map.get(score) || 0);
+};
+
 const updateData = () => {
   if (chartInstance.value) {
     const ratingSeries = normalizeSeries(props.ratingData, '动画0');
     const comparisonSeries = normalizeSeries(props.comparisonData, '动画1');
 
     chartInstance.value.series[0].update({ name: ratingSeries.name }, false);
-    chartInstance.value.series[0].setData(ratingSeries.data, false);
+    chartInstance.value.series[0].setData(toCategoryData(ratingSeries.data), false);
 
     chartInstance.value.series[1].update({ name: comparisonSeries.name }, false);
-    chartInstance.value.series[1].setData(comparisonSeries.data, false);
+    chartInstance.value.series[1].setData(toCategoryData(comparisonSeries.data), false);
 
     chartInstance.value.redraw();
   }
@@ -88,11 +100,10 @@ const initializeChart = () => {
         }
       },
       xAxis: {
-        categories: ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'].reverse(),
+        categories: SCORE_LABELS,
         labels: {
           enabled: true
-        },
-        reversed: true
+        }
       },
       series: [
         {
