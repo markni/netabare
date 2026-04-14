@@ -73,8 +73,18 @@ const initializeChart = () => {
         }
       },
       yAxis: {
+        labels: {
+          formatter: function () {
+            return `${this.value}%`;
+          }
+        },
         title: {
           enabled: false
+        }
+      },
+      tooltip: {
+        pointFormatter: function () {
+          return `${this.series.name}: <b>${this.y.toFixed(2)}%</b><br/>`;
         }
       },
       xAxis: {
