@@ -4,7 +4,7 @@ import texts from '../constants/texts.js';
 </script>
 
 <template>
-  <header class="min-w-32 paper px-4 pt-0 pb-3 sm:px-6">
+  <header class="min-w-32 paper px-4 pt-0 pb-8 sm:px-6">
     <nav class="flex items-stretch">
       <div class="header-links ml-auto flex flex-row flex-wrap items-stretch justify-end gap-0">
         <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
