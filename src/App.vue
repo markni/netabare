@@ -85,13 +85,13 @@ console.log(`
 
     <div
       id="main"
-      class="flex min-h-screen flex-col paper font-serif text-black sm:flex-row dark:text-white"
+      class="flex min-h-screen flex-col paper font-serif text-black dark:text-white"
     >
       <GlobalHeader />
-      <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
+      <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
         <RouterView />
       </div>
-      <div class="sticky top-10 right-10 hidden self-start sm:flex">
+      <div class="fixed right-6 bottom-6 z-20 hidden sm:flex">
         <EclipseToggle
           @toggle="themeStore.toggleDarkMode"
           :mode="themeStore.isDarkMode ? 'dark' : 'light'"

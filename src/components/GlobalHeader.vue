@@ -1,95 +1,99 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
-import { ref } from 'vue';
-import { useThemeStore } from '../stores/theme';
-
-const themeStore = useThemeStore();
-
-const isMenuExpanded = ref(false);
 </script>
 
 <template>
-  <!-- z-49 so it's lower than overlay -->
-  <header
-    class="min-w-32 paper px-8 py-4"
-    :class="{
-      'fixed inset-0 z-40 h-full w-full overflow-y-auto paper sm:relative sm:h-auto sm:w-auto sm:overflow-visible':
-        isMenuExpanded
-    }"
-  >
-    <nav class="flex flex-col items-center sm:items-start">
-      <div
-        class="h-1 w-32 cursor-pointer border-t-4 border-solid border-t-paper-dark pb-4 text-gray-400 hover:text-gray-700 sm:hidden dark:border-t-paper dark:hover:text-white"
-        @click="isMenuExpanded = !isMenuExpanded"
-      ></div>
-      <div
-        class="flex flex-col gap-4 overflow-hidden sm:h-auto"
-        :class="{ 'h-auto': isMenuExpanded, 'h-0': !isMenuExpanded }"
-      >
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
-        </div>
-        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">
-          <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._feedback }}</a>
-        </div>
-        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">
-          <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._changeLog }}</a>
-        </div>
+  <header class="min-w-32 paper px-4 pt-0 pb-3 sm:px-6">
+    <nav class="flex items-stretch">
+      <div class="header-links ml-auto flex flex-row flex-wrap items-stretch justify-end gap-0">
         <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
         <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
         <!--        </div>-->
-        <div class="mt-4">
-          <!-- gap between main links and other links -->
-        </div>
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
+          :class="['header-link', { 'header-link-active': $route.path === '/season' }]"
         >
           <RouterLink to="/season">{{ texts._season }}</RouterLink>
         </div>
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
+          :class="['header-link', { 'header-link-active': $route.path === '/trending' }]"
         >
           <RouterLink to="/trending">{{ texts._trending }}</RouterLink>
         </div>
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
+          :class="['header-link', { 'header-link-active': $route.path === '/history' }]"
         >
           <RouterLink to="/history">{{ texts._history }}</RouterLink>
         </div>
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
+          :class="['header-link', { 'header-link-active': $route.path === '/user' }]"
         >
           <RouterLink to="/user">{{ texts._user }}</RouterLink>
         </div>
         <div
           v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
+          :class="[
+            'header-link',
+            { 'header-link-active': $route.path.startsWith('/395378/vs/400602') }
+          ]"
         >
           <RouterLink to="/395378/vs/400602">{{ texts._experimental }}</RouterLink>
-        </div>
-
-        <div class="mt-4">
-          <!-- gap between main links and other links -->
-        </div>
-
-        <div
-          class="flex cursor-pointer text-gray-400 hover:text-gray-700 sm:hidden dark:hover:text-white"
-        >
-          <a @click="themeStore.toggleDarkMode">{{
-            themeStore.isDarkMode ? texts._lightMode : texts._darkMode
-          }}</a>
         </div>
       </div>
     </nav>
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.header-links {
+  border: none;
+}
+
+.header-link {
+  border: none;
+  color: #111827;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.header-link :deep(a) {
+  display: block;
+  padding: 3.3rem 0.5rem 0.6rem;
+  text-align: center;
+}
+
+.header-link-active :deep(a) {
+  border: 1px solid #c9c9c9;
+  border-top: none;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .header-link {
+    min-width: 7.5rem;
+  }
+}
+
+.dark .header-link {
+  border: none;
+  color: #d1d5db;
+}
+
+.dark .header-links {
+  border: none;
+}
+
+.dark .header-link-active :deep(a) {
+  border: 1px solid #6b7280;
+  border-top: none;
+  color: #f3f4f6;
+  font-weight: 700;
+}
+</style>
