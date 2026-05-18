@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
-    "highcharts": "12.5.0",
+    "highcharts": "12.6.0",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "moment-timezone": "^0.6.0",
@@ -38,7 +38,7 @@
     "license-checker": "^25.0.1",
     "postcss": "^8.4.38",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.7.1",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4.1.12",
     "vite": "^6.2.2"
   },
