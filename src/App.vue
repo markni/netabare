@@ -87,7 +87,7 @@ console.log(`
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
         <RouterView />
       </div>
-      <footer class="mt-auto bg-black text-white">
+      <footer class="mt-auto bg-black text-white dark:bg-white dark:text-black">
         <div class="container mx-auto w-full px-4 py-3">
           <div class="flex flex-wrap items-center gap-4 text-sm">
             <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
