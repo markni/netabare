@@ -1,95 +1,113 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
-import { ref } from 'vue';
+import EclipseToggle from './ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
 
 const themeStore = useThemeStore();
-
-const isMenuExpanded = ref(false);
 </script>
 
 <template>
-  <!-- z-49 so it's lower than overlay -->
-  <header
-    class="min-w-32 paper px-8 py-4"
-    :class="{
-      'fixed inset-0 z-40 h-full w-full overflow-y-auto paper sm:relative sm:h-auto sm:w-auto sm:overflow-visible':
-        isMenuExpanded
-    }"
-  >
-    <nav class="flex flex-col items-center sm:items-start">
-      <div
-        class="h-1 w-32 cursor-pointer border-t-4 border-solid border-t-paper-dark pb-4 text-gray-400 hover:text-gray-700 sm:hidden dark:border-t-paper dark:hover:text-white"
-        @click="isMenuExpanded = !isMenuExpanded"
-      ></div>
-      <div
-        class="flex flex-col gap-4 overflow-hidden sm:h-auto"
-        :class="{ 'h-auto': isMenuExpanded, 'h-0': !isMenuExpanded }"
-      >
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
+  <header class="min-w-32 paper pt-0 pb-8">
+    <div class="container mx-auto w-full px-0">
+      <nav class="flex items-stretch">
+        <div class="header-links flex w-full flex-row flex-wrap items-stretch justify-start gap-4">
+          <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
+          <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
+          <!--        </div>-->
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/season' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/season">{{
+              texts._season
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/trending' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/trending">{{
+              texts._trending
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/history' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/history">{{
+              texts._history
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/user' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/user">{{
+              texts._user
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="[
+              'header-link',
+              { 'header-link-active': $route.path.startsWith('/395378/vs/400602') }
+            ]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/395378/vs/400602">{{
+              texts._experimental
+            }}</RouterLink>
+          </div>
+          <div class="header-toggle ml-auto flex items-end pb-2 pl-3">
+            <EclipseToggle
+              @toggle="themeStore.toggleDarkMode"
+              :mode="themeStore.isDarkMode ? 'dark' : 'light'"
+            />
+          </div>
         </div>
-        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">
-          <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._feedback }}</a>
-        </div>
-        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">
-          <a href="https://bgm.tv/group/topic/346147" about="blank">{{ texts._changeLog }}</a>
-        </div>
-        <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
-        <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
-        <!--        </div>-->
-        <div class="mt-4">
-          <!-- gap between main links and other links -->
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/season">{{ texts._season }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/trending">{{ texts._trending }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/history">{{ texts._history }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/user">{{ texts._user }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          class="text-gray-400 hover:text-gray-700 dark:hover:text-white"
-        >
-          <RouterLink to="/395378/vs/400602">{{ texts._experimental }}</RouterLink>
-        </div>
-
-        <div class="mt-4">
-          <!-- gap between main links and other links -->
-        </div>
-
-        <div
-          class="flex cursor-pointer text-gray-400 hover:text-gray-700 sm:hidden dark:hover:text-white"
-        >
-          <a @click="themeStore.toggleDarkMode">{{
-            themeStore.isDarkMode ? texts._lightMode : texts._darkMode
-          }}</a>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.header-links {
+  border: none;
+}
+
+.header-link {
+  border: none;
+  color: #111827;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.header-link :deep(a) {
+  display: block;
+}
+
+.header-link-active :deep(a) {
+  border: 1px solid #c9c9c9;
+  border-top: none;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.dark .header-link {
+  border: none;
+  color: #d1d5db;
+}
+
+.dark .header-links {
+  border: none;
+}
+
+.dark .header-link-active :deep(a) {
+  border: 1px solid #6b7280;
+  border-top: none;
+  color: #f3f4f6;
+  font-weight: 700;
+}
+</style>

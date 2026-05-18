@@ -10,7 +10,6 @@ import { onMounted, watch } from 'vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
 import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
-import EclipseToggle from './components/ui/EclipseToggle.vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
@@ -83,19 +82,10 @@ console.log(`
       annotation="loading"
     />
 
-    <div
-      id="main"
-      class="flex min-h-screen flex-col paper font-serif text-black sm:flex-row dark:text-white"
-    >
+    <div id="main" class="flex min-h-screen flex-col paper font-serif text-black dark:text-white">
       <GlobalHeader />
-      <div :class="['bottom-0 container mx-auto w-full p-4 pt-10']">
+      <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
         <RouterView />
-      </div>
-      <div class="sticky top-10 right-10 hidden self-start sm:flex">
-        <EclipseToggle
-          @toggle="themeStore.toggleDarkMode"
-          :mode="themeStore.isDarkMode ? 'dark' : 'light'"
-        />
       </div>
     </div>
 
