@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
@@ -87,6 +87,19 @@ console.log(`
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
         <RouterView />
       </div>
+      <footer class="mt-auto bg-black text-white">
+        <div class="container mx-auto w-full px-4 py-3">
+          <div class="flex flex-wrap items-center gap-4 text-sm">
+            <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
+            <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
+              texts._feedback
+            }}</a>
+            <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
+              texts._changeLog
+            }}</a>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <MorseCodeLoading />
