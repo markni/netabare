@@ -9,7 +9,7 @@ const themeStore = useThemeStore();
 
 <template>
   <header class="min-w-32 paper pt-0 pb-8">
-    <div class="container mx-auto w-full px-0">
+    <div class="container mx-auto w-full px-4">
       <nav class="flex items-stretch">
         <div class="header-links flex w-full flex-row flex-wrap items-stretch justify-start gap-4">
           <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
@@ -17,46 +17,73 @@ const themeStore = useThemeStore();
           <!--        </div>-->
           <div
             v-if="$route.path !== '/'"
-            :class="['header-link', { 'header-link-active': $route.path === '/season' }]"
+            :class="[
+              'header-link',
+              'mx-1 sm:mx-0',
+              { 'header-link-active': $route.path === '/season' }
+            ]"
           >
-            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/season">{{
-              texts._season
-            }}</RouterLink>
-          </div>
-          <div
-            v-if="$route.path !== '/'"
-            :class="['header-link', { 'header-link-active': $route.path === '/trending' }]"
-          >
-            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/trending">{{
-              texts._trending
-            }}</RouterLink>
-          </div>
-          <div
-            v-if="$route.path !== '/'"
-            :class="['header-link', { 'header-link-active': $route.path === '/history' }]"
-          >
-            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/history">{{
-              texts._history
-            }}</RouterLink>
-          </div>
-          <div
-            v-if="$route.path !== '/'"
-            :class="['header-link', { 'header-link-active': $route.path === '/user' }]"
-          >
-            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/user">{{
-              texts._user
-            }}</RouterLink>
+            <RouterLink
+              class="block px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              to="/season"
+              >{{ texts._season }}</RouterLink
+            >
           </div>
           <div
             v-if="$route.path !== '/'"
             :class="[
               'header-link',
+              'mx-1 sm:mx-0',
+              { 'header-link-active': $route.path === '/trending' }
+            ]"
+          >
+            <RouterLink
+              class="block px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              to="/trending"
+              >{{ texts._trending }}</RouterLink
+            >
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="[
+              'header-link',
+              'mx-1 sm:mx-0',
+              { 'header-link-active': $route.path === '/history' }
+            ]"
+          >
+            <RouterLink
+              class="block px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              to="/history"
+              >{{ texts._history }}</RouterLink
+            >
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="[
+              'header-link',
+              'mx-1 sm:mx-0',
+              { 'header-link-active': $route.path === '/user' }
+            ]"
+          >
+            <RouterLink
+              class="block px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              to="/user"
+              >{{ texts._user }}</RouterLink
+            >
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="[
+              'header-link',
+              'mx-1 sm:mx-0',
               { 'header-link-active': $route.path.startsWith('/395378/vs/400602') }
             ]"
           >
-            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/395378/vs/400602">{{
-              texts._experimental
-            }}</RouterLink>
+            <RouterLink
+              class="block px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              to="/395378/vs/400602"
+              >{{ texts._experimental }}</RouterLink
+            >
           </div>
           <div class="header-toggle ml-auto flex items-end pb-2 pl-3">
             <EclipseToggle
