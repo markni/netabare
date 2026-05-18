@@ -1,50 +1,72 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
+import EclipseToggle from './ui/EclipseToggle.vue';
+import { useThemeStore } from '../stores/theme';
+
+const themeStore = useThemeStore();
 </script>
 
 <template>
-  <header class="min-w-32 paper px-4 pt-0 pb-8 sm:px-6">
-    <nav class="flex items-stretch">
-      <div class="header-links ml-auto flex flex-row flex-wrap items-stretch justify-end gap-0">
-        <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
-        <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
-        <!--        </div>-->
-        <div
-          v-if="$route.path !== '/'"
-          :class="['header-link', { 'header-link-active': $route.path === '/season' }]"
-        >
-          <RouterLink to="/season">{{ texts._season }}</RouterLink>
+  <header class="min-w-32 paper pt-0 pb-8">
+    <div class="container mx-auto w-full px-0">
+      <nav class="flex items-stretch">
+        <div class="header-links flex w-full flex-row flex-wrap items-stretch justify-start gap-4">
+          <!--        <div class="text-gray-400 hover:text-gray-700 dark:hover:text-white">-->
+          <!--          <a href="https://github.com/markni/netabare" about="blank">{{ texts._submitPr }}</a>-->
+          <!--        </div>-->
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/season' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/season">{{
+              texts._season
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/trending' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/trending">{{
+              texts._trending
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/history' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/history">{{
+              texts._history
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="['header-link', { 'header-link-active': $route.path === '/user' }]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/user">{{
+              texts._user
+            }}</RouterLink>
+          </div>
+          <div
+            v-if="$route.path !== '/'"
+            :class="[
+              'header-link',
+              { 'header-link-active': $route.path.startsWith('/395378/vs/400602') }
+            ]"
+          >
+            <RouterLink class="block px-3 pt-14 pb-2 text-center" to="/395378/vs/400602">{{
+              texts._experimental
+            }}</RouterLink>
+          </div>
+          <div class="header-toggle ml-auto flex items-end pb-2 pl-3">
+            <EclipseToggle
+              @toggle="themeStore.toggleDarkMode"
+              :mode="themeStore.isDarkMode ? 'dark' : 'light'"
+            />
+          </div>
         </div>
-        <div
-          v-if="$route.path !== '/'"
-          :class="['header-link', { 'header-link-active': $route.path === '/trending' }]"
-        >
-          <RouterLink to="/trending">{{ texts._trending }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          :class="['header-link', { 'header-link-active': $route.path === '/history' }]"
-        >
-          <RouterLink to="/history">{{ texts._history }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          :class="['header-link', { 'header-link-active': $route.path === '/user' }]"
-        >
-          <RouterLink to="/user">{{ texts._user }}</RouterLink>
-        </div>
-        <div
-          v-if="$route.path !== '/'"
-          :class="[
-            'header-link',
-            { 'header-link-active': $route.path.startsWith('/395378/vs/400602') }
-          ]"
-        >
-          <RouterLink to="/395378/vs/400602">{{ texts._experimental }}</RouterLink>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -64,8 +86,6 @@ import texts from '../constants/texts.js';
 
 .header-link :deep(a) {
   display: block;
-  padding: 3.3rem 0.5rem 0.6rem;
-  text-align: center;
 }
 
 .header-link-active :deep(a) {
@@ -73,12 +93,6 @@ import texts from '../constants/texts.js';
   border-top: none;
   color: #6b7280;
   font-weight: 700;
-}
-
-@media (min-width: 640px) {
-  .header-link {
-    min-width: 7.5rem;
-  }
 }
 
 .dark .header-link {
