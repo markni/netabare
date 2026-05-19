@@ -5,16 +5,16 @@
     </div>
     <div
       v-else
-      class="range relative table h-[140px] w-[140px] rounded-full paper"
+      class="range relative table h-[140px] w-[140px] rounded-full bg-background transition-[background-color] duration-300"
       ref="range"
       @mousedown.prevent="rangeSliderInit"
       @touchstart.prevent="rangeSliderInit"
     >
       <div class="slice left opacity-15" :style="{ backgroundColor: progressColor }">
-        <div class="blocker paper"></div>
+        <div class="blocker bg-background transition-[background-color] duration-300"></div>
       </div>
       <div class="slice right opacity-15" :style="{ backgroundColor: progressColor }">
-        <div class="blocker paper"></div>
+        <div class="blocker bg-background transition-[background-color] duration-300"></div>
       </div>
 
       <span class="info flex items-center justify-center">

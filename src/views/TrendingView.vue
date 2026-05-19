@@ -18,7 +18,9 @@ const formatData = (history) =>
 <template>
   <div class="xl: grid grid-cols-1 gap-32 px-4 pt-14 xl:grid-cols-3" v-if="done.length">
     <div v-for="(items, index) in [done, up, down]" :key="index" class="flex flex-col gap-16">
-      <div class="sticky top-0 z-10 flex w-full paper py-4">
+      <div
+        class="sticky top-0 z-10 flex w-full bg-background py-4 transition-[background-color] duration-300"
+      >
         <h2
           :id="['popular', 'up', 'down'][index]"
           class="mr-auto text-2xl tracking-wider first-letter:text-3xl"
