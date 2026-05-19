@@ -2,7 +2,7 @@
   <div class="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 sm:px-8">
     <section class="flex flex-col gap-2">
       <h1 class="text-3xl font-semibold">Theme Toggle Debug</h1>
-      <p class="text-light-gray dark:text-gray-400">
+      <p class="text-muted-foreground">
         Compare legacy <code>ThemeToggle</code> and new <code>EclipseToggle</code> against the same
         theme state.
       </p>
@@ -31,21 +31,21 @@
       <div class="my-[40rem] px-8 sm:px-16">
         <div class="grid gap-x-24 gap-y-[40rem] sm:grid-cols-3">
           <div class="flex flex-col items-center gap-2">
-            <span class="min-h-10 text-center text-sm text-light-gray dark:text-gray-400">
+            <span class="min-h-10 text-center text-sm text-muted-foreground">
               Locked dark<br />
               (closed)
             </span>
             <ThemeToggle v-bind="normalizedLegacyShadow" mode="dark" :interactive="false" />
           </div>
           <div class="flex flex-col items-center gap-2">
-            <span class="min-h-10 text-center text-sm text-light-gray dark:text-gray-400">
+            <span class="min-h-10 text-center text-sm text-muted-foreground">
               Locked light<br />
               (open)
             </span>
             <ThemeToggle v-bind="normalizedLegacyShadow" mode="light" :interactive="false" />
           </div>
           <div class="flex flex-col items-center gap-2">
-            <span class="min-h-10 text-center text-sm text-light-gray dark:text-gray-400">
+            <span class="min-h-10 text-center text-sm text-muted-foreground">
               Interactive<br />
               (normal)
             </span>
@@ -112,15 +112,13 @@
         <label class="flex flex-col gap-1 text-sm">
           <span>shadowFade: {{ legacyShadow.shadowFade.toFixed(1) }}</span>
           <input v-model.number="legacyShadow.shadowFade" type="range" min="0" max="8" step="0.1" />
-          <span class="text-xs text-light-gray dark:text-gray-400">
-            Higher = fades out faster from center
-          </span>
+          <span class="text-xs text-muted-foreground"> Higher = fades out faster from center </span>
         </label>
 
         <label class="flex flex-col gap-1 text-sm">
           <span>blur: {{ legacyShadow.blur.toFixed(2) }}</span>
           <input v-model.number="legacyShadow.blur" type="range" min="0" max="10" step="0.01" />
-          <span class="text-xs text-light-gray dark:text-gray-400">
+          <span class="text-xs text-muted-foreground">
             Constant blur amount applied to every layer
           </span>
         </label>
@@ -134,7 +132,7 @@
             max="5"
             step="0.01"
           />
-          <span class="text-xs text-light-gray dark:text-gray-400">
+          <span class="text-xs text-muted-foreground">
             Extra blur added per layer offset distance
           </span>
         </label>
@@ -186,7 +184,7 @@
           @toggle="themeStore.toggleDarkMode"
           :mode="themeStore.isDarkMode ? 'dark' : 'light'"
         />
-        <span class="text-sm text-light-gray dark:text-gray-400">
+        <span class="text-sm text-muted-foreground">
           mode: {{ themeStore.isDarkMode ? 'dark' : 'light' }}
         </span>
       </div>

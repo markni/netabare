@@ -7,10 +7,10 @@
 
     <div class="flex flex-col justify-between gap-16 sm:flex-row">
       <h1 class="text-2xl sm:text-4xl">{{ texts._scoreChartRecognition }}</h1>
-      <div class="border-b-paper-dark dark:border-paper relative w-64 border-b">
+      <div class="relative w-64 border-b border-b-border">
         <div
           v-if="guessStore.score !== null"
-          class="text-red absolute bottom-[-30px] left-16 z-30 text-8xl underline underline-offset-8"
+          class="absolute bottom-[-30px] left-16 z-30 text-8xl text-red underline underline-offset-8"
           style="transform: rotate(-5deg)"
         >
           {{ JSON.stringify(guessStore.score * 10) }}
@@ -39,7 +39,7 @@
           :key="aIndex"
           @click="selectAnswer(qIndex, aIndex)"
           :class="[
-            'hover:border-blue relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200',
+            'relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
             guessStore.answers[qIndex] === aIndex ? 'border-blue' : 'border-gray-200'
           ]"
         >
@@ -47,7 +47,7 @@
 
           <div
             v-if="guessStore.answers[qIndex] === aIndex && guessStore.score !== null"
-            class="text-red absolute z-30 text-8xl"
+            class="absolute z-30 text-8xl text-red"
             :style="{
               transform: `rotate(${-5 + Math.random() * 10 - 5}deg)`,
               top: `${-20 + Math.random() * 10 - 5}px`,
@@ -67,7 +67,7 @@
       :class="[
         'w-full rounded-lg py-3.5 text-2xl transition-colors',
         isComplete || guessStore.score !== null
-          ? 'bg-blue hover:bg-blue cursor-pointer text-white'
+          ? 'cursor-pointer bg-blue text-white hover:bg-blue'
           : 'cursor-not-allowed bg-gray-400 text-white'
       ]"
     >

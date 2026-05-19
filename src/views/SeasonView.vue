@@ -125,7 +125,7 @@ const handleSeasonChange = (event) => {
         @change="handleYearChange"
         aria-label="选择年份"
       >
-        <option v-for="year in years" :key="year" :value="year" class="bg-paper dark:bg-paper-dark">
+        <option v-for="year in years" :key="year" :value="year" class="bg-background">
           {{ year }}
         </option>
       </select>
@@ -139,7 +139,7 @@ const handleSeasonChange = (event) => {
           v-for="season in availableSeasons"
           :key="season.month"
           :value="season.month"
-          class="paper"
+          class="bg-background transition-[background-color] duration-300"
         >
           {{ season.name }}
         </option>

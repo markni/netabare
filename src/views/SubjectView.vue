@@ -94,7 +94,9 @@ const setRatingPeriod = (period) => {
           >{{ decodedName }}</a
         >
       </h1>
-      <div class="sticky top-0 z-[48] flex w-full flex-col items-end gap-4 paper py-5">
+      <div
+        class="sticky top-0 z-[48] flex w-full flex-col items-end gap-4 bg-background py-5 transition-[background-color] duration-300"
+      >
         <h2 class="text-4xl" v-if="subject.name_cn">
           <a
             class="hover:bg-gold"

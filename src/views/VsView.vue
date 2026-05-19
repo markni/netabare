@@ -75,7 +75,9 @@ const { getRatingData } = store;
       />
     </div>
     <div v-if="props.id0 !== props.id1" class="flex flex-col gap-20">
-      <div class="sticky top-0 z-10 grid grid-cols-2 gap-4 paper py-4 text-3xl">
+      <div
+        class="sticky top-0 z-10 grid grid-cols-2 gap-4 bg-background py-4 text-3xl transition-[background-color] duration-300"
+      >
         <form @submit.prevent="submit" class="flex flex-col gap-4 text-blue">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId0" v-model="localId0" /> -->
           <div class="text-6xl">

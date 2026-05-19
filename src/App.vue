@@ -82,7 +82,10 @@ console.log(`
       annotation="loading"
     />
 
-    <div id="main" class="flex min-h-screen flex-col paper font-serif text-black dark:text-white">
+    <div
+      id="main"
+      class="flex min-h-screen flex-col bg-background font-serif text-black transition-[background-color] duration-300 dark:text-white"
+    >
       <GlobalHeader />
       <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
         <RouterView />
