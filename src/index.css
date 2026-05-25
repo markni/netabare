@@ -45,6 +45,11 @@
   margin-right: calc((100dvw - 100cqw) / -2);
 }
 
+@utility bleed-both-to-viewport {
+  margin-left: calc((100dvw - 100cqw) / -2);
+  margin-right: calc((100dvw - 100cqw) / -2);
+}
+
 :root {
   color-scheme: only light;
 }

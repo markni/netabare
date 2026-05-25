@@ -114,72 +114,76 @@ watch(
 </script>
 
 <template>
-  <div class="flex justify-end gap-4 text-3xl">
-    <div class="flex flex-col">
-      <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
-      <select class="w-40 bg-transparent" id="startingYear" v-model="startingYear">
-        <option
-          class="bg-background transition-[background-color] duration-300"
-          v-for="year in validStartYears"
-          :key="year"
-          :value="year"
-        >
-          {{ year }}
-        </option>
-      </select>
+  <div class="@container">
+    <div class="flex justify-end gap-4 text-3xl">
+      <div class="flex flex-col">
+        <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
+        <select class="w-40 bg-transparent" id="startingYear" v-model="startingYear">
+          <option
+            class="bg-background transition-[background-color] duration-300"
+            v-for="year in validStartYears"
+            :key="year"
+            :value="year"
+          >
+            {{ year }}
+          </option>
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
+        <select class="w-40 bg-transparent" id="endingYear" v-model="endingYear">
+          <option
+            class="bg-background transition-[background-color] duration-300"
+            v-for="year in validEndYears"
+            :key="year"
+            :value="year"
+          >
+            {{ year }}
+          </option>
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
+        <select class="w-40 bg-transparent" id="minScore" v-model="minScore">
+          <option
+            class="bg-background transition-[background-color] duration-300"
+            v-for="score in validMinScores"
+            :key="score"
+            :value="score"
+          >
+            {{ score }}
+          </option>
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
+        <select class="w-40 bg-transparent" id="maxScore" v-model="maxScore">
+          <option
+            class="bg-background transition-[background-color] duration-300"
+            v-for="score in validMaxScores"
+            :key="score"
+            :value="score"
+          >
+            {{ score }}
+          </option>
+        </select>
+      </div>
     </div>
-    <div class="flex flex-col">
-      <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
-      <select class="w-40 bg-transparent" id="endingYear" v-model="endingYear">
-        <option
-          class="bg-background transition-[background-color] duration-300"
-          v-for="year in validEndYears"
-          :key="year"
-          :value="year"
-        >
-          {{ year }}
-        </option>
-      </select>
+    <div
+      v-if="combinedData.historyData"
+      class="bleed-both-to-viewport aspect-square pt-14 sm:aspect-[16/12]"
+    >
+      <HistoryChart
+        :yearly-data="combinedData.yearlyData"
+        :historyData="combinedData.historyData"
+        :dic="dic"
+        :min-year="startingYear"
+        :max-year="endingYear"
+        :min-score="minScore"
+        :max-score="maxScore"
+        :filtered-yearly-data="filteredYearlyData"
+      />
     </div>
-    <div class="flex flex-col">
-      <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
-      <select class="w-40 bg-transparent" id="minScore" v-model="minScore">
-        <option
-          class="bg-background transition-[background-color] duration-300"
-          v-for="score in validMinScores"
-          :key="score"
-          :value="score"
-        >
-          {{ score }}
-        </option>
-      </select>
-    </div>
-    <div class="flex flex-col">
-      <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
-      <select class="w-40 bg-transparent" id="maxScore" v-model="maxScore">
-        <option
-          class="bg-background transition-[background-color] duration-300"
-          v-for="score in validMaxScores"
-          :key="score"
-          :value="score"
-        >
-          {{ score }}
-        </option>
-      </select>
-    </div>
-  </div>
-
-  <div v-if="combinedData.historyData" class="aspect-square pt-14 sm:aspect-[16/12]">
-    <HistoryChart
-      :yearly-data="combinedData.yearlyData"
-      :historyData="combinedData.historyData"
-      :dic="dic"
-      :min-year="startingYear"
-      :max-year="endingYear"
-      :min-score="minScore"
-      :max-score="maxScore"
-      :filtered-yearly-data="filteredYearlyData"
-    />
   </div>
 </template>
 
