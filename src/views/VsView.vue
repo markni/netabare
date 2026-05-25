@@ -66,7 +66,7 @@ const { getRatingData } = store;
 
 <template>
   <div class="pt-14">
-    <div v-if="props.id0 === props.id1" class="text-6xl">
+    <div v-if="props.id0 === props.id1" class="text-6xl font-bold">
       <FullscreenOverlay
         :text="texts._destroyedSpaceTime"
         :annotation="texts._gameOver"
@@ -80,7 +80,7 @@ const { getRatingData } = store;
       >
         <form @submit.prevent="submit" class="flex flex-col gap-4 text-blue">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId0" v-model="localId0" /> -->
-          <div class="text-6xl">
+          <div class="text-6xl font-bold">
             {{ subjects[0]?.rating?.score || 'N/A' }}
           </div>
           <label for="localId0" class="text-xl">{{
@@ -89,7 +89,7 @@ const { getRatingData } = store;
         </form>
         <form @submit.prevent="submit" class="al flex flex-col items-end gap-4 text-pink">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId1" v-model="localId1" /> -->
-          <div class="text-6xl">
+          <div class="text-6xl font-bold">
             {{ subjects[1]?.rating?.score || 'N/A' }}
           </div>
           <label for="localId1" class="text-xl">
@@ -141,3 +141,4 @@ const { getRatingData } = store;
 </template>
 
 <style scoped></style>
+

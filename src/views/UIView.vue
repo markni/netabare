@@ -45,7 +45,7 @@
         <div class="text-3xl">動畫番號 貳拾壹</div>
         <div class="text-4xl">動畫番號 貳拾壹</div>
         <div class="text-5xl">動畫番號 貳拾壹</div>
-        <div class="text-6xl">動畫番號 貳拾壹</div>
+        <div class="text-6xl font-bold">動畫番號 貳拾壹</div>
       </div>
     </section>
 
@@ -124,3 +124,4 @@ function testFullscreenOverlay() {
   }, 5000);
 }
 </script>
+

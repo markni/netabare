@@ -22,7 +22,7 @@ defineProps({
 
 <template>
   <div :class="'fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 ' + color">
-    <p class="float text-center text-6xl tracking-[30px] text-white vertical-rl">
+    <p class="float text-center text-6xl font-bold tracking-[30px] text-white vertical-rl">
       {{ text }}
     </p>
     <div class="flex flex-col gap-2">
@@ -50,3 +50,4 @@ defineProps({
   animation: float 6s ease-in-out infinite;
 }
 </style>
+

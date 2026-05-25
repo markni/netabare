@@ -87,11 +87,11 @@ console.log(`
       class="flex min-h-screen flex-col bg-background font-serif text-black transition-[background-color] duration-300 dark:text-white"
     >
       <GlobalHeader />
-      <div :class="['bottom-0 container mx-auto w-full p-4 pt-6']">
+      <div :class="['bottom-0 mx-auto w-full max-w-6xl p-4 pt-6']">
         <RouterView />
       </div>
       <footer class="mt-auto bg-black text-white dark:bg-white dark:text-black">
-        <div class="container mx-auto w-full px-4 py-3">
+        <div class="mx-auto w-full max-w-6xl px-4 py-3">
           <div class="flex flex-wrap items-center gap-4 text-sm">
             <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
             <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
