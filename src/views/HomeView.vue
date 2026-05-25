@@ -1,7 +1,7 @@
 <template>
   <div
     ref="containerRef"
-    class="flex h-full w-full flex-col items-center justify-center gap-64 text-6xl tracking-wider"
+    class="flex h-full w-full flex-col items-center justify-center gap-64 tracking-wider"
   >
     <!-- Auto-scroll indicator (only show when active) -->
     <div
@@ -439,3 +439,4 @@ onUnmounted(() => {
   }
 }
 </style>
+

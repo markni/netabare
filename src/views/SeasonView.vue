@@ -117,34 +117,38 @@ const handleSeasonChange = (event) => {
 </script>
 
 <template>
-  <div class="mt-14 flex flex-col gap-10">
-    <div class="flex items-baseline">
-      <select
-        class="mr-2 bg-transparent text-4xl sm:text-6xl"
-        :value="route.params.year || new Date().getFullYear()"
-        @change="handleYearChange"
-        aria-label="选择年份"
-      >
-        <option v-for="year in years" :key="year" :value="year" class="bg-background">
-          {{ year }}
-        </option>
-      </select>
-      <select
-        class="mr-2 bg-transparent text-4xl sm:text-6xl"
-        :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
-        @change="handleSeasonChange"
-        aria-label="选择季度"
-      >
-        <option
-          v-for="season in availableSeasons"
-          :key="season.month"
-          :value="season.month"
-          class="bg-background transition-[background-color] duration-300"
+  <div class="@container mt-14 flex flex-col gap-10">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-baseline">
+        <select
+          class="mr-2 bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          :value="route.params.year || new Date().getFullYear()"
+          @change="handleYearChange"
+          aria-label="选择年份"
         >
-          {{ season.name }}
-        </option>
-      </select>
-      <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
+          <option v-for="year in years" :key="year" :value="year" class="bg-background">
+            {{ year }}
+          </option>
+        </select>
+        <select
+          class="mr-2 bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
+          @change="handleSeasonChange"
+          aria-label="选择季度"
+        >
+          <option
+            v-for="season in availableSeasons"
+            :key="season.month"
+            :value="season.month"
+            class="bg-background transition-[background-color] duration-300"
+          >
+            {{ season.name }}
+          </option>
+        </select>
+        <h1 class="text-4xl sm:text-6xl sm:font-bold">{{ texts._seasonBattleStatus }}</h1>
+      </div>
+
+      <h2 class="text-3xl font-bold">该季度最热门的作品对比</h2>
     </div>
 
     <div class="flex flex-col gap-4">
@@ -154,14 +158,14 @@ const handleSeasonChange = (event) => {
       <HintDiv :title="texts._altKeyShowLabels"> {{ texts._howToShowLabels }} </HintDiv>
       <h2 class="text-2xl">{{ texts._top10ScoreComparison }}</h2>
 
-      <div class="sm:aspect-[16/10]">
+      <div class="bleed-left-to-container-right sm:aspect-[16/10]">
         <BattleChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
-      <div class="sm:aspect-[16/10]">
+      <div class="bleed-right-to-container-left sm:aspect-[16/10]">
         <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
@@ -169,7 +173,7 @@ const handleSeasonChange = (event) => {
     <div class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
-      <div class="sm:aspect-[10/5]">
+      <div class="bleed-left-to-container-right sm:aspect-[10/5]">
         <BattleBarChart :balanceData="balanceData" />
       </div>
     </div>
@@ -179,7 +183,7 @@ const handleSeasonChange = (event) => {
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
       </p>
-      <div class="sm:aspect-[10/5]">
+      <div class="bleed-right-to-container-left sm:aspect-[10/5]">
         <ScoreBubbleChart :subjects="subjectsData" />
       </div>
     </div>

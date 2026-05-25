@@ -37,6 +37,14 @@
   writing-mode: vertical-lr;
 }
 
+@utility bleed-left-to-container-right {
+  margin-left: calc((100dvw - 100cqw) / -2);
+}
+
+@utility bleed-right-to-container-left {
+  margin-right: calc((100dvw - 100cqw) / -2);
+}
+
 :root {
   color-scheme: only light;
 }

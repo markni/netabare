@@ -85,7 +85,7 @@ const setRatingPeriod = (period) => {
 <template>
   <div v-if="subject">
     <div class="flex flex-col items-end gap-4">
-      <h1 class="pt-8 text-6xl">
+      <h1 class="pt-8 text-6xl font-bold">
         <a
           class="hover:bg-gold"
           target="_blank"
@@ -288,3 +288,4 @@ const setRatingPeriod = (period) => {
 </template>
 
 <style scoped></style>
+
