@@ -21,18 +21,42 @@ const chartInstance = shallowRef(null);
 const router = useRouter();
 useChartTheme(chartInstance);
 
+const getLatestScore = (scoreHistory = []) => {
+  if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
+  const latest = Number(scoreHistory[scoreHistory.length - 1]?.[1]);
+  return Number.isFinite(latest) ? latest : Number.NEGATIVE_INFINITY;
+};
+
 const updateData = () => {
   if (chartInstance.value) {
     const currentSeries = {};
 
-    // Create a map of existing series by their names for easy lookup
+    // Create a map of existing series by their id for reliable updates
     chartInstance.value.series.forEach((series) => {
-      currentSeries[series.name] = series;
+      const seriesId = String(series.userOptions?.id || '');
+      if (seriesId) {
+        currentSeries[seriesId] = series;
+      }
+    });
+
+    // Keep sorting local to this chart: do not mutate source data from the store.
+    const sortedHistoryData = [...props.historyData].sort((a, b) => {
+      const scoreDiff = getLatestScore(b.scoreHistory) - getLatestScore(a.scoreHistory);
+      if (scoreDiff !== 0) return scoreDiff;
+      const nameA = a?.name || '';
+      const nameB = b?.name || '';
+      return nameA.localeCompare(nameB, 'zh-Hans-CN');
     });
 
     // Add or update series
-    props.historyData.forEach((seriesData) => {
+    sortedHistoryData.forEach((seriesData) => {
       const { name, bgmId, scoreHistory, color, airDate } = seriesData;
+      const latestScore =
+        Array.isArray(scoreHistory) && scoreHistory.length > 0
+          ? Number(scoreHistory[scoreHistory.length - 1][1])
+          : null;
+      const scorePrefix = Number.isFinite(latestScore) ? latestScore.toFixed(2) : 'N/A';
+      const legendName = `${scorePrefix} ${name}`;
       const zones = [
         {
           value: airDate, // All points with x < airDate
@@ -59,7 +83,7 @@ const updateData = () => {
           y: formattedData[lastIndex][1],
           dataLabels: {
             enabled: true,
-            format: `${name}: {y:.2f}`,
+            format: `${legendName}: {y:.2f}`,
             allowOverlap: true,
             align: 'left',
             verticalAlign: 'bottom',
@@ -76,18 +100,18 @@ const updateData = () => {
         };
       }
 
-      if (currentSeries[name]) {
+      if (currentSeries[String(bgmId)]) {
         // Update existing series
 
-        currentSeries[name].setData(formattedData, false, true, false);
+        currentSeries[String(bgmId)].setData(formattedData, false, true, false);
 
-        currentSeries[name].update({ zones }, false);
-        delete currentSeries[name]; // Remove from currentSeries to avoid deleting it later
+        currentSeries[String(bgmId)].update({ zones, name: legendName }, false);
+        delete currentSeries[String(bgmId)]; // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
         chartInstance.value.addSeries(
           {
-            name: name,
+            name: legendName,
             id: bgmId,
             data: formattedData,
             type: 'spline',
@@ -171,6 +195,7 @@ const initializeChart = () => {
       ],
       xAxis: {
         type: 'datetime',
+        tickPixelInterval: 120,
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
           second: '%m-%d',
@@ -185,7 +210,11 @@ const initializeChart = () => {
       legend: {
         useHTML: true,
         labelFormatter: function () {
-          return `${this.name} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`;
+          const match = this.name.match(/^(\d+\.\d{2}|N\/A)\s+(.*)$/);
+          const displayName = match
+            ? `<span style="color: ${this.color};">${match[1]}</span> ${match[2]}`
+            : this.name;
+          return `${displayName} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`;
         }
       },
       series: [],

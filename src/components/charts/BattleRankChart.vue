@@ -22,6 +22,12 @@ useChartTheme(chartInstance);
 
 const router = useRouter();
 
+const getLatestRank = (rankHistory = []) => {
+  if (!Array.isArray(rankHistory) || rankHistory.length === 0) return Number.POSITIVE_INFINITY;
+  const latest = Number(rankHistory[rankHistory.length - 1]?.[1]);
+  return Number.isFinite(latest) ? latest : Number.POSITIVE_INFINITY;
+};
+
 const updateData = () => {
   if (chartInstance.value) {
     // Define the plot line options
@@ -51,14 +57,27 @@ const updateData = () => {
 
     const currentSeries = {};
 
-    // Create a map of existing series by their names for easy lookup
+    // Create a map of existing series by id for reliable updates
     chartInstance.value.series.forEach((series) => {
-      currentSeries[series.name] = series;
+      const seriesId = String(series.userOptions?.id || '');
+      if (seriesId) {
+        currentSeries[seriesId] = series;
+      }
+    });
+
+    // Keep sorting local to this chart: do not mutate source data from the store.
+    const sortedHistoryData = [...props.historyData].sort((a, b) => {
+      const rankDiff = getLatestRank(a.rankHistory) - getLatestRank(b.rankHistory);
+      if (rankDiff !== 0) return rankDiff;
+      const nameA = a?.name || '';
+      const nameB = b?.name || '';
+      return nameA.localeCompare(nameB, 'zh-Hans-CN');
     });
 
     // Add or update series
-    props.historyData.forEach((seriesData) => {
+    sortedHistoryData.forEach((seriesData, index) => {
       const { name, bgmId, rankHistory, color, airDate } = seriesData;
+      const prefixedName = `#${index + 1} ${name}`;
 
       // Define zones based on airDate
       const zones = [
@@ -87,7 +106,7 @@ const updateData = () => {
           y: formattedData[lastIndex][1],
           dataLabels: {
             enabled: true,
-            format: `${name}: {y:.0f}`,
+            format: `${prefixedName}: {y:.0f}`,
             allowOverlap: true,
             align: 'left',
             verticalAlign: 'bottom',
@@ -101,22 +120,23 @@ const updateData = () => {
         };
       }
 
-      if (currentSeries[name]) {
+      if (currentSeries[String(bgmId)]) {
         // Update existing series
-        currentSeries[name].setData(formattedData, false, true, false);
-        currentSeries[name].update(
+        currentSeries[String(bgmId)].setData(formattedData, false, true, false);
+        currentSeries[String(bgmId)].update(
           {
+            name: prefixedName,
             zones: zones,
             zoneAxis: 'x' // Ensure zones are based on the x-axis
           },
           false
         );
-        delete currentSeries[name]; // Remove from currentSeries to avoid deleting it later
+        delete currentSeries[String(bgmId)]; // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
         chartInstance.value.addSeries(
           {
-            name: name,
+            name: prefixedName,
             id: bgmId,
             data: formattedData,
             type: 'line',
@@ -197,7 +217,6 @@ const initializeChart = () => {
         },
 
         min: -50, // Extend axis below 0 (visually above 0 on a reversed chart)
-
         labels: {
           format: '{value:.0f}',
 
@@ -209,11 +228,16 @@ const initializeChart = () => {
       legend: {
         useHTML: true,
         labelFormatter: function () {
-          return `${this.name} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`;
+          const match = this.name.match(/^(#\d+)\s+(.*)$/);
+          const displayName = match
+            ? `<span style="color: ${this.color};">${match[1]}</span> ${match[2]}`
+            : this.name;
+          return `${displayName} <span class="legend-link" style="color: ${BLUE}; opacity: 0.5; font-size: 11px; cursor: pointer;" >[↗]</span>`;
         }
       },
       xAxis: {
         type: 'datetime',
+        tickPixelInterval: 120,
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
           second: '%m-%d',
