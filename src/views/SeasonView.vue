@@ -117,8 +117,8 @@ const handleSeasonChange = (event) => {
 </script>
 
 <template>
-  <div class="@container mt-14 flex flex-col gap-10">
-    <div class="flex flex-col gap-2">
+  <div class="@container mt-14 flex flex-col gap-[7.5rem]">
+    <div id="season-header" class="flex flex-col gap-2">
       <div class="flex items-baseline">
         <select
           class="mr-2 bg-transparent text-4xl sm:text-6xl sm:font-bold"
@@ -151,7 +151,7 @@ const handleSeasonChange = (event) => {
       <h2 class="text-3xl font-bold">该季度最热门的作品对比</h2>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div id="season-score-comparison" class="flex flex-col gap-4">
       <HintDiv :title="texts._zoomInstruction">
         {{ texts._howToZoom }}
       </HintDiv>
@@ -163,14 +163,14 @@ const handleSeasonChange = (event) => {
       </div>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div id="season-ranking-comparison" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
       <div class="bleed-right-to-container-left sm:aspect-[16/10]">
         <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
       </div>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div id="season-balance-chart" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div class="bleed-left-to-container-right sm:aspect-[10/5]">
@@ -178,7 +178,7 @@ const handleSeasonChange = (event) => {
       </div>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div id="season-distribution-chart" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
