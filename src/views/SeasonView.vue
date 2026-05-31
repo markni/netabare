@@ -1,9 +1,11 @@
 <script setup>
 import { useSeasonStore } from '@/stores/season.js';
+import { useTrendingStore } from '@/stores/trending';
 import { storeToRefs } from 'pinia';
 import BattleChart from '@/components/charts/BattleChart.vue';
 import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
+import TrendingActionsDailyChart from '@/components/charts/TrendingActionsDailyChart.vue';
 import HintDiv from '@/components/ui/HintDiv.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
@@ -11,9 +13,11 @@ import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 import texts from '@/constants/texts';
 
 const store = useSeasonStore();
+const trendingStore = useTrendingStore();
 const route = useRoute();
 const router = useRouter();
 const { historyData, balanceData, subjectsData } = storeToRefs(store);
+const { actionsDailySeries } = storeToRefs(trendingStore);
 const showLabels = ref(false); // Set to false by default
 
 // Generate array of last 5 years
@@ -68,6 +72,7 @@ const handleKeyDown = (e) => {
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown);
   fetchSeason();
+  trendingStore.fetchTrendingActionsDaily();
 });
 
 onUnmounted(() => {
@@ -185,6 +190,17 @@ const handleSeasonChange = (event) => {
       </p>
       <div class="bleed-right-to-container-left sm:aspect-[10/5]">
         <ScoreBubbleChart :subjects="subjectsData" />
+      </div>
+    </div>
+
+    <div
+      id="season-site-trending-actions"
+      v-if="actionsDailySeries.length"
+      class="flex flex-col gap-4"
+    >
+      <h2 class="text-right text-2xl">{{ texts._trendingActionsDaily }}</h2>
+      <div class="bleed-left-to-container-right sm:aspect-[16/6]">
+        <TrendingActionsDailyChart :actions-daily-series="actionsDailySeries" />
       </div>
     </div>
   </div>
