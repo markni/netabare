@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 
 export const useSeasonStore = defineStore('season', {
   state: () => ({
-    season: []
+    season: [],
+    analysis: null
   }),
   getters: {
     subjectsData: (state) => {
@@ -117,7 +118,15 @@ export const useSeasonStore = defineStore('season', {
 
         const response = await fetchSeasonWithLoading();
 
-        this.season = response.data;
+        const payload = response.data;
+
+        if (Array.isArray(payload)) {
+          this.season = payload;
+          this.analysis = null;
+        } else {
+          this.season = payload?.subjects || payload?.season || [];
+          this.analysis = payload?.analysis || null;
+        }
       } catch (error) {
         console.error('Failed to fetch season:', error);
         // Handle error appropriately
@@ -125,6 +134,7 @@ export const useSeasonStore = defineStore('season', {
     },
     clearSeason() {
       this.season = null;
+      this.analysis = null;
     }
   }
 });
