@@ -44,26 +44,18 @@ const splitNearMiddleByStop = (text) => {
   };
 };
 
-const splitPartIntoTwoParagraphs = (text) => {
+const splitIntoTwoParagraphs = (text) => {
   const { first, second } = splitNearMiddleByStop(text);
   return [first, second].filter(Boolean);
 };
 
-const seasonOverviewParts = computed(() => splitNearMiddleByStop(analysis.value?.overview || ''));
-
-const seasonDivisiveParts = computed(() => splitNearMiddleByStop(analysis.value?.divisive || ''));
-
-const seasonOverviewFirstParagraphs = computed(() =>
-  splitPartIntoTwoParagraphs(seasonOverviewParts.value.first)
+const scoreAnalysisParagraphs = computed(() => splitIntoTwoParagraphs(analysis.value?.score || ''));
+const rankAnalysisParagraphs = computed(() => splitIntoTwoParagraphs(analysis.value?.rank || ''));
+const divisiveAnalysisParagraphs = computed(() =>
+  splitIntoTwoParagraphs(analysis.value?.divisive || '')
 );
-const seasonOverviewSecondParagraphs = computed(() =>
-  splitPartIntoTwoParagraphs(seasonOverviewParts.value.second)
-);
-const seasonDivisiveFirstParagraphs = computed(() =>
-  splitPartIntoTwoParagraphs(seasonDivisiveParts.value.first)
-);
-const seasonDivisiveSecondParagraphs = computed(() =>
-  splitPartIntoTwoParagraphs(seasonDivisiveParts.value.second)
+const popularityAnalysisParagraphs = computed(() =>
+  splitIntoTwoParagraphs(analysis.value?.popularity || '')
 );
 
 // Generate array of last 5 years
@@ -210,13 +202,10 @@ const handleSeasonChange = (event) => {
       <h2 class="text-2xl">{{ texts._top10ScoreComparison }}</h2>
 
       <div
-        v-if="seasonOverviewParts.first"
+        v-if="scoreAnalysisParagraphs.length"
         class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
       >
-        <p
-          v-for="(paragraph, index) in seasonOverviewFirstParagraphs"
-          :key="`overview-first-${index}`"
-        >
+        <p v-for="(paragraph, index) in scoreAnalysisParagraphs" :key="`score-${index}`">
           {{ paragraph }}
         </p>
       </div>
@@ -229,13 +218,10 @@ const handleSeasonChange = (event) => {
     <div id="season-ranking-comparison" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
       <div
-        v-if="seasonOverviewParts.second"
+        v-if="rankAnalysisParagraphs.length"
         class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
       >
-        <p
-          v-for="(paragraph, index) in seasonOverviewSecondParagraphs"
-          :key="`overview-second-${index}`"
-        >
+        <p v-for="(paragraph, index) in rankAnalysisParagraphs" :key="`rank-${index}`">
           {{ paragraph }}
         </p>
       </div>
@@ -248,13 +234,10 @@ const handleSeasonChange = (event) => {
       <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
-        v-if="seasonDivisiveParts.first"
+        v-if="divisiveAnalysisParagraphs.length"
         class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
       >
-        <p
-          v-for="(paragraph, index) in seasonDivisiveFirstParagraphs"
-          :key="`divisive-first-${index}`"
-        >
+        <p v-for="(paragraph, index) in divisiveAnalysisParagraphs" :key="`divisive-${index}`">
           {{ paragraph }}
         </p>
       </div>
@@ -269,13 +252,10 @@ const handleSeasonChange = (event) => {
         {{ texts._chartLegend }}
       </p>
       <div
-        v-if="seasonDivisiveParts.second"
+        v-if="popularityAnalysisParagraphs.length"
         class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
       >
-        <p
-          v-for="(paragraph, index) in seasonDivisiveSecondParagraphs"
-          :key="`divisive-second-${index}`"
-        >
+        <p v-for="(paragraph, index) in popularityAnalysisParagraphs" :key="`popularity-${index}`">
           {{ paragraph }}
         </p>
       </div>
