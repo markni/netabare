@@ -30,6 +30,14 @@ export const fetchSeason = (year, month) => {
   return axios.get(url);
 };
 
+export const fetchSeasonAnalysis = (year, month) => {
+  let url = `${api_root}/season/analysis`;
+  if (year && month) {
+    url = `${api_root}/season/${year}/${month}/analysis`;
+  }
+  return axios.get(url);
+};
+
 export const fetchHistory = () => {
   return axios.get(`${api_root}/history`);
 };
