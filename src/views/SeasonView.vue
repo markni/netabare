@@ -16,9 +16,55 @@ const store = useSeasonStore();
 const trendingStore = useTrendingStore();
 const route = useRoute();
 const router = useRouter();
-const { historyData, balanceData, subjectsData } = storeToRefs(store);
+const { historyData, balanceData, subjectsData, analysis } = storeToRefs(store);
 const { actionsDailySeries } = storeToRefs(trendingStore);
 const showLabels = ref(false); // Set to false by default
+const splitNearMiddleByStop = (text) => {
+  const content = text.trim();
+  if (!content) return { first: '', second: '' };
+
+  const stops = [...content.matchAll(/。/g)].map((match) => match.index);
+  if (!stops.length) return { first: content, second: '' };
+
+  const middle = Math.floor(content.length / 2);
+  let splitIndex = stops[0];
+  let bestDistance = Math.abs(stops[0] - middle);
+
+  for (const stopIndex of stops) {
+    const distance = Math.abs(stopIndex - middle);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      splitIndex = stopIndex;
+    }
+  }
+
+  return {
+    first: content.slice(0, splitIndex + 1).trim(),
+    second: content.slice(splitIndex + 1).trim()
+  };
+};
+
+const splitPartIntoTwoParagraphs = (text) => {
+  const { first, second } = splitNearMiddleByStop(text);
+  return [first, second].filter(Boolean);
+};
+
+const seasonOverviewParts = computed(() => splitNearMiddleByStop(analysis.value?.overview || ''));
+
+const seasonDivisiveParts = computed(() => splitNearMiddleByStop(analysis.value?.divisive || ''));
+
+const seasonOverviewFirstParagraphs = computed(() =>
+  splitPartIntoTwoParagraphs(seasonOverviewParts.value.first)
+);
+const seasonOverviewSecondParagraphs = computed(() =>
+  splitPartIntoTwoParagraphs(seasonOverviewParts.value.second)
+);
+const seasonDivisiveFirstParagraphs = computed(() =>
+  splitPartIntoTwoParagraphs(seasonDivisiveParts.value.first)
+);
+const seasonDivisiveSecondParagraphs = computed(() =>
+  splitPartIntoTwoParagraphs(seasonDivisiveParts.value.second)
+);
 
 // Generate array of last 5 years
 const currentYear = new Date().getFullYear();
@@ -163,6 +209,18 @@ const handleSeasonChange = (event) => {
       <HintDiv :title="texts._altKeyShowLabels"> {{ texts._howToShowLabels }} </HintDiv>
       <h2 class="text-2xl">{{ texts._top10ScoreComparison }}</h2>
 
+      <div
+        v-if="seasonOverviewParts.first"
+        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+      >
+        <p
+          v-for="(paragraph, index) in seasonOverviewFirstParagraphs"
+          :key="`overview-first-${index}`"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
+
       <div class="bleed-left-to-container-right sm:aspect-[16/10]">
         <BattleChart :historyData="historyData" :showLabels="showLabels" />
       </div>
@@ -170,6 +228,17 @@ const handleSeasonChange = (event) => {
 
     <div id="season-ranking-comparison" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
+      <div
+        v-if="seasonOverviewParts.second"
+        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+      >
+        <p
+          v-for="(paragraph, index) in seasonOverviewSecondParagraphs"
+          :key="`overview-second-${index}`"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
       <div class="bleed-right-to-container-left sm:aspect-[16/10]">
         <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
       </div>
@@ -178,6 +247,17 @@ const handleSeasonChange = (event) => {
     <div id="season-balance-chart" class="flex flex-col gap-4">
       <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
+      <div
+        v-if="seasonDivisiveParts.first"
+        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+      >
+        <p
+          v-for="(paragraph, index) in seasonDivisiveFirstParagraphs"
+          :key="`divisive-first-${index}`"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
       <div class="bleed-left-to-container-right sm:aspect-[10/5]">
         <BattleBarChart :balanceData="balanceData" />
       </div>
@@ -188,6 +268,17 @@ const handleSeasonChange = (event) => {
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
       </p>
+      <div
+        v-if="seasonDivisiveParts.second"
+        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+      >
+        <p
+          v-for="(paragraph, index) in seasonDivisiveSecondParagraphs"
+          :key="`divisive-second-${index}`"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
       <div class="bleed-right-to-container-left sm:aspect-[10/5]">
         <ScoreBubbleChart :subjects="subjectsData" />
       </div>
