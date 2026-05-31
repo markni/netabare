@@ -198,7 +198,7 @@ const handleSeasonChange = (event) => {
       v-if="actionsDailySeries.length"
       class="flex flex-col gap-4"
     >
-      <h2 class="text-2xl">{{ texts._trendingActionsDaily }}</h2>
+      <h2 class="text-right text-2xl">{{ texts._trendingActionsDaily }}</h2>
       <div class="bleed-left-to-container-right sm:aspect-[16/6]">
         <TrendingActionsDailyChart :actions-daily-series="actionsDailySeries" />
       </div>
