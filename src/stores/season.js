@@ -1,6 +1,6 @@
 // Importing Pinia and other utilities
 import { defineStore } from 'pinia';
-import { fetchSeason } from '@/utils/api.js';
+import { fetchSeason, fetchSeasonAnalysis } from '@/utils/api.js';
 import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
 import dayjs from 'dayjs';
@@ -8,7 +8,8 @@ import dayjs from 'dayjs';
 export const useSeasonStore = defineStore('season', {
   state: () => ({
     season: [],
-    analysis: null
+    analysis: null,
+    currentRequestKey: null
   }),
   getters: {
     subjectsData: (state) => {
@@ -109,6 +110,8 @@ export const useSeasonStore = defineStore('season', {
 
   actions: {
     async fetchSeason(year, month) {
+      const requestKey = `${year || 'current'}-${month || 'current'}-${Date.now()}`;
+      this.currentRequestKey = requestKey;
       try {
         const fetchSeasonWithLoading = withSmartLoadingUx(() => fetchSeason(year, month), {
           delay: 500,
@@ -116,18 +119,23 @@ export const useSeasonStore = defineStore('season', {
           setLoadingState: useAppStore().setLongPolling
         });
 
-        const response = await fetchSeasonWithLoading();
+        const seasonResponse = await fetchSeasonWithLoading();
+        if (this.currentRequestKey !== requestKey) return;
+        this.season = Array.isArray(seasonResponse.data) ? seasonResponse.data : [];
+        this.analysis = null;
 
-        const payload = response.data;
-
-        if (Array.isArray(payload)) {
-          this.season = payload;
-          this.analysis = null;
-        } else {
-          this.season = payload?.subjects || payload?.season || [];
-          this.analysis = payload?.analysis || null;
-        }
+        fetchSeasonAnalysis(year, month)
+          .then((analysisResponse) => {
+            if (this.currentRequestKey !== requestKey) return;
+            this.analysis = analysisResponse.data || null;
+          })
+          .catch((error) => {
+            if (this.currentRequestKey !== requestKey) return;
+            console.error('Failed to fetch season analysis:', error);
+            this.analysis = null;
+          });
       } catch (error) {
+        if (this.currentRequestKey !== requestKey) return;
         console.error('Failed to fetch season:', error);
         // Handle error appropriately
       }
@@ -135,6 +143,7 @@ export const useSeasonStore = defineStore('season', {
     clearSeason() {
       this.season = null;
       this.analysis = null;
+      this.currentRequestKey = null;
     }
   }
 });
