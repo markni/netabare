@@ -4,6 +4,7 @@ import Highcharts from '@/utils/highcharts';
 import { BLUE, COLORS10 } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
+import { useInViewOnce } from '@/composables/useInViewOnce';
 
 const props = defineProps({
   historyData: {
@@ -13,12 +14,17 @@ const props = defineProps({
   showLabels: {
     type: Boolean,
     default: false
+  },
+  animateWhenInView: {
+    type: Boolean,
+    default: false
   }
 });
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 useChartTheme(chartInstance);
+const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
 
 const router = useRouter();
 
@@ -29,6 +35,7 @@ const getLatestRank = (rankHistory = []) => {
 };
 
 const updateData = () => {
+  if (props.animateWhenInView && !isInViewOnce.value) return;
   if (chartInstance.value) {
     // Define the plot line options
     const epPlotOptions = {
@@ -188,10 +195,12 @@ const initializeChart = () => {
           }
         },
         series: {
-          animation: {
-            defer: 500,
-            duration: 1000
-          },
+          animation:
+            props.animateWhenInView && !isInViewOnce.value
+              ? false
+              : {
+                  duration: 1000
+                },
           states: {
             inactive: {
               opacity: 0.5
@@ -287,6 +296,15 @@ watch(
   () => props.showLabels,
   () => {
     updateData();
+  }
+);
+
+watch(
+  () => isInViewOnce.value,
+  (visible) => {
+    if (props.animateWhenInView && visible) {
+      initializeChart();
+    }
   }
 );
 </script>

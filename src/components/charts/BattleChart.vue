@@ -4,6 +4,7 @@ import Highcharts from '@/utils/highcharts';
 import { BLUE, COLORS10 } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
+import { useInViewOnce } from '@/composables/useInViewOnce';
 
 const props = defineProps({
   historyData: {
@@ -13,6 +14,10 @@ const props = defineProps({
   showLabels: {
     type: Boolean,
     default: false
+  },
+  animateWhenInView: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -20,6 +25,7 @@ const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 const router = useRouter();
 useChartTheme(chartInstance);
+const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
 
 const getLatestScore = (scoreHistory = []) => {
   if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
@@ -28,6 +34,7 @@ const getLatestScore = (scoreHistory = []) => {
 };
 
 const updateData = () => {
+  if (props.animateWhenInView && !isInViewOnce.value) return;
   if (chartInstance.value) {
     const currentSeries = {};
 
@@ -158,10 +165,12 @@ const initializeChart = () => {
           }
         },
         series: {
-          animation: {
-            defer: 500,
-            duration: 1000
-          },
+          animation:
+            props.animateWhenInView && !isInViewOnce.value
+              ? false
+              : {
+                  duration: 1000
+                },
           states: {
             inactive: {
               opacity: 0.5
@@ -253,6 +262,15 @@ watch(
   () => props.showLabels,
   () => {
     updateData();
+  }
+);
+
+watch(
+  () => isInViewOnce.value,
+  (visible) => {
+    if (props.animateWhenInView && visible) {
+      initializeChart();
+    }
   }
 );
 </script>

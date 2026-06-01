@@ -206,7 +206,11 @@ const handleSeasonChange = (event) => {
       </div>
 
       <div class="bleed-left-to-container-right sm:aspect-[16/10]">
-        <BattleChart :historyData="historyData" :showLabels="showLabels" />
+        <BattleChart
+          :historyData="historyData"
+          :showLabels="showLabels"
+          :animate-when-in-view="true"
+        />
       </div>
     </div>
 
@@ -221,7 +225,11 @@ const handleSeasonChange = (event) => {
         </p>
       </div>
       <div class="bleed-right-to-container-left sm:aspect-[16/10]">
-        <BattleRankChart :historyData="historyData" :showLabels="showLabels" />
+        <BattleRankChart
+          :historyData="historyData"
+          :showLabels="showLabels"
+          :animate-when-in-view="true"
+        />
       </div>
     </div>
 
@@ -237,7 +245,7 @@ const handleSeasonChange = (event) => {
         </p>
       </div>
       <div class="bleed-left-to-container-right sm:aspect-[10/5]">
-        <BattleBarChart :balanceData="balanceData" />
+        <BattleBarChart :balanceData="balanceData" :animate-when-in-view="true" />
       </div>
     </div>
 
@@ -255,7 +263,7 @@ const handleSeasonChange = (event) => {
         </p>
       </div>
       <div class="bleed-right-to-container-left sm:aspect-[10/5]">
-        <ScoreBubbleChart :subjects="subjectsData" />
+        <ScoreBubbleChart :subjects="subjectsData" :animate-when-in-view="true" />
       </div>
     </div>
   </div>
