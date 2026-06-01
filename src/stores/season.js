@@ -5,6 +5,28 @@ import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
 import dayjs from 'dayjs';
 
+const getCurrentSeasonMonth = (month) => {
+  if (month >= 1 && month <= 3) return 1;
+  if (month >= 4 && month <= 6) return 4;
+  if (month >= 7 && month <= 9) return 7;
+  return 10;
+};
+
+const resolveSeasonParams = (year, month) => {
+  const parsedYear = Number.parseInt(year, 10);
+  const parsedMonth = Number.parseInt(month, 10);
+
+  if (Number.isFinite(parsedYear) && Number.isFinite(parsedMonth)) {
+    return { year: parsedYear, month: parsedMonth };
+  }
+
+  const now = new Date();
+  return {
+    year: now.getFullYear(),
+    month: getCurrentSeasonMonth(now.getMonth() + 1)
+  };
+};
+
 export const useSeasonStore = defineStore('season', {
   state: () => ({
     season: [],
@@ -110,21 +132,25 @@ export const useSeasonStore = defineStore('season', {
 
   actions: {
     async fetchSeason(year, month) {
-      const requestKey = `${year || 'current'}-${month || 'current'}-${Date.now()}`;
+      const seasonParams = resolveSeasonParams(year, month);
+      const requestKey = `${seasonParams.year}-${seasonParams.month}-${Date.now()}`;
       this.currentRequestKey = requestKey;
       try {
-        const fetchSeasonWithLoading = withSmartLoadingUx(() => fetchSeason(year, month), {
-          delay: 500,
-          minimumDisplayTime: 1000,
-          setLoadingState: useAppStore().setLongPolling
-        });
+        const fetchSeasonWithLoading = withSmartLoadingUx(
+          () => fetchSeason(seasonParams.year, seasonParams.month),
+          {
+            delay: 500,
+            minimumDisplayTime: 1000,
+            setLoadingState: useAppStore().setLongPolling
+          }
+        );
 
         const seasonResponse = await fetchSeasonWithLoading();
         if (this.currentRequestKey !== requestKey) return;
         this.season = Array.isArray(seasonResponse.data) ? seasonResponse.data : [];
         this.analysis = null;
 
-        fetchSeasonAnalysis(year, month)
+        fetchSeasonAnalysis(seasonParams.year, seasonParams.month)
           .then((analysisResponse) => {
             if (this.currentRequestKey !== requestKey) return;
             this.analysis = analysisResponse.data || null;
