@@ -3,19 +3,26 @@ import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { BLUE, PINK } from '@/constants/colors.js';
 import { useChartTheme } from '@/composables/useChartTheme';
+import { useInViewOnce } from '@/composables/useInViewOnce';
 
 const props = defineProps({
   balanceData: {
     type: Object,
     required: true
+  },
+  animateWhenInView: {
+    type: Boolean,
+    default: false
   }
 });
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 useChartTheme(chartInstance);
+const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
 
 const updateData = () => {
+  if (props.animateWhenInView && !isInViewOnce.value) return;
   if (chartInstance.value) {
     chartInstance.value.yAxis[0].setExtremes(
       -props.balanceData.extreme,
@@ -64,10 +71,12 @@ const initializeChart = () => {
       plotOptions: {
         series: {
           stacking: 'normal',
-          animation: {
-            defer: 1500,
-            duration: 1000
-          },
+          animation:
+            props.animateWhenInView && !isInViewOnce.value
+              ? false
+              : {
+                  duration: 1000
+                },
           pointWidth: 20 // Add this line to set a fixed width for bars
           // or use pointPadding: 0.1, // to set the padding between bars
         }
@@ -121,6 +130,15 @@ watch(
     updateData();
   },
   { deep: true }
+);
+
+watch(
+  () => isInViewOnce.value,
+  (visible) => {
+    if (props.animateWhenInView && visible) {
+      initializeChart();
+    }
+  }
 );
 </script>
 

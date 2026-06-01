@@ -7,16 +7,22 @@ import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { BLUE, PINK } from '@/constants/colors';
+import { useInViewOnce } from '@/composables/useInViewOnce';
 
 const props = defineProps({
   subjects: {
     type: Array,
     required: true
+  },
+  animateWhenInView: {
+    type: Boolean,
+    default: false
   }
 });
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
+const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
 
 useChartTheme(chartInstance);
 
@@ -38,6 +44,7 @@ const getColorByStd = (std) => {
 };
 
 const updateData = () => {
+  if (props.animateWhenInView && !isInViewOnce.value) return;
   if (chartInstance.value) {
     const maxTotal = Math.max(...props.subjects.map((subject) => subject.total));
 
@@ -82,9 +89,12 @@ const initializeChart = () => {
       plotOptions: {
         bubble: {
           // Changed from scatter to bubble
-          animation: {
-            enabled: false
-          },
+          animation:
+            props.animateWhenInView && !isInViewOnce.value
+              ? false
+              : {
+                  duration: 900
+                },
           minSize: 3,
           maxSize: 25,
           zMin: 0,
@@ -147,5 +157,14 @@ watch(
     updateData();
   },
   { deep: true }
+);
+
+watch(
+  () => isInViewOnce.value,
+  (visible) => {
+    if (props.animateWhenInView && visible) {
+      initializeChart();
+    }
+  }
 );
 </script>
