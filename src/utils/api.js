@@ -23,19 +23,17 @@ export const fetchTrendingActionsDaily = () => {
 };
 
 export const fetchSeason = (year, month) => {
-  let url = `${api_root}/season`;
-  if (year && month) {
-    url += `/${year}/${month}`;
+  if (!year || !month) {
+    throw new Error('fetchSeason requires both year and month');
   }
-  return axios.get(url);
+  return axios.get(`${api_root}/season/${year}/${month}`);
 };
 
 export const fetchSeasonAnalysis = (year, month) => {
-  let url = `${api_root}/season/analysis`;
-  if (year && month) {
-    url = `${api_root}/season/${year}/${month}/analysis`;
+  if (!year || !month) {
+    throw new Error('fetchSeasonAnalysis requires both year and month');
   }
-  return axios.get(url);
+  return axios.get(`${api_root}/season/${year}/${month}/analysis`);
 };
 
 export const fetchHistory = () => {

@@ -75,9 +75,11 @@ const updateData = () => {
     });
 
     // Add or update series
-    sortedHistoryData.forEach((seriesData, index) => {
+    sortedHistoryData.forEach((seriesData) => {
       const { name, bgmId, rankHistory, color, airDate } = seriesData;
-      const prefixedName = `#${index + 1} ${name}`;
+      const latestRank = getLatestRank(rankHistory);
+      const rankPrefix = Number.isFinite(latestRank) ? `#${Math.round(latestRank)}` : '#N/A';
+      const prefixedName = `${rankPrefix} ${name}`;
 
       // Define zones based on airDate
       const zones = [
@@ -228,7 +230,7 @@ const initializeChart = () => {
       legend: {
         useHTML: true,
         labelFormatter: function () {
-          const match = this.name.match(/^(#\d+)\s+(.*)$/);
+          const match = this.name.match(/^(#(?:\d+|N\/A))\s+(.*)$/);
           const displayName = match
             ? `<span style="color: ${this.color};">${match[1]}</span> ${match[2]}`
             : this.name;
