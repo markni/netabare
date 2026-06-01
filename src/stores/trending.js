@@ -50,6 +50,12 @@ export const useTrendingStore = defineStore('trending', {
         const response = await fetchTrendingActionsDailyWithLoading();
         const payload = response.data || {};
         const rows = Array.isArray(payload.series) ? payload.series : [];
+        const latestDate = rows.reduce((max, item) => {
+          const value = item?.date;
+          if (!value) return max;
+          if (!max) return value;
+          return value > max ? value : max;
+        }, '');
         const actionKeys = ['wish', 'collect', 'doing', 'on_hold', 'dropped'];
         const chartSeries = actionKeys.map((key) => ({
           key,
@@ -59,6 +65,7 @@ export const useTrendingStore = defineStore('trending', {
         this.actionsDaily = payload;
 
         rows
+          .filter((item) => item?.date && item.date !== latestDate)
           .map((item) => ({
             x: new Date(item.date).getTime(),
             actions: item.actions || {}
