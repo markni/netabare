@@ -51,15 +51,6 @@ Highcharts.setOptions({
     enabled: false
   },
   plotOptions: {
-    spline: {
-      // lineWidth: 3,
-      // shadow: {
-      //   color: 'rgba(255, 255, 255, 0.5)', // White shadow for glow
-      //   width: 8,
-      //   offsetX: 0,
-      //   offsetY: 0
-      // }
-    },
     series: {
       states: {
         inactive: {
@@ -68,6 +59,18 @@ Highcharts.setOptions({
       },
       animation: true, // Enable initial animation for all series
       duration: 5000 // Set the initial animation duration to 1 second
+    },
+    line: {
+      lineWidth: 5
+    },
+    spline: {
+      lineWidth: 5
+      // shadow: {
+      //   color: 'rgba(255, 255, 255, 0.5)', // White shadow for glow
+      //   width: 8,
+      //   offsetX: 0,
+      //   offsetY: 0
+      // }
     }
   },
   legend: {

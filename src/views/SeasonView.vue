@@ -45,13 +45,45 @@ const splitIntoTwoParagraphs = (text) => {
   return [first, second].filter(Boolean);
 };
 
-const scoreAnalysisParagraphs = computed(() => splitIntoTwoParagraphs(analysis.value?.score || ''));
-const rankAnalysisParagraphs = computed(() => splitIntoTwoParagraphs(analysis.value?.rank || ''));
+const findBgmIdByNameCn = (nameCn) => {
+  const subject = subjectsData.value.find((subject) => subject.name_cn === nameCn);
+  return subject?.bgmId || null;
+};
+
+const linkSubjectNames = (text) => {
+  const segments = [];
+  const subjectNamePattern = /《([^》]+)》/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = subjectNamePattern.exec(text)) !== null) {
+    const [quotedName, nameCn] = match;
+    const bgmId = findBgmIdByNameCn(nameCn);
+
+    if (match.index > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, match.index), bgmId: null });
+    }
+
+    segments.push({ text: quotedName, bgmId });
+    lastIndex = match.index + quotedName.length;
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({ text: text.slice(lastIndex), bgmId: null });
+  }
+
+  return segments.length ? segments : [{ text, bgmId: null }];
+};
+
+const splitAndLinkAnalysis = (text) => splitIntoTwoParagraphs(text).map(linkSubjectNames);
+
+const scoreAnalysisParagraphs = computed(() => splitAndLinkAnalysis(analysis.value?.score || ''));
+const rankAnalysisParagraphs = computed(() => splitAndLinkAnalysis(analysis.value?.rank || ''));
 const divisiveAnalysisParagraphs = computed(() =>
-  splitIntoTwoParagraphs(analysis.value?.divisive || '')
+  splitAndLinkAnalysis(analysis.value?.divisive || '')
 );
 const popularityAnalysisParagraphs = computed(() =>
-  splitIntoTwoParagraphs(analysis.value?.popularity || '')
+  splitAndLinkAnalysis(analysis.value?.popularity || '')
 );
 
 // Generate array of last 5 years
@@ -157,9 +189,9 @@ const handleSeasonChange = (event) => {
 <template>
   <div class="@container mt-14 flex flex-col gap-[7.5rem]">
     <div id="season-header" class="flex flex-col gap-2">
-      <div class="flex items-baseline">
+      <div>
         <select
-          class="mr-2 bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
           :value="route.params.year || new Date().getFullYear()"
           @change="handleYearChange"
           aria-label="选择年份"
@@ -168,8 +200,10 @@ const handleSeasonChange = (event) => {
             {{ year }}
           </option>
         </select>
+      </div>
+      <div class="flex items-baseline">
         <select
-          class="mr-2 bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
           :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
           @change="handleSeasonChange"
           aria-label="选择季度"
@@ -183,10 +217,11 @@ const handleSeasonChange = (event) => {
             {{ season.name }}
           </option>
         </select>
+        <span class="mr-2 text-4xl sm:text-6xl sm:font-bold">·</span>
         <h1 class="text-4xl sm:text-6xl sm:font-bold">{{ texts._seasonBattleStatus }}</h1>
       </div>
 
-      <h2 class="text-3xl font-bold">该季度最热门的作品对比</h2>
+      <h2 class="mt-4 text-3xl text-gray-400">该季度最热门的作品对比</h2>
     </div>
 
     <div id="season-score-comparison" class="flex flex-col gap-4">
@@ -194,14 +229,23 @@ const handleSeasonChange = (event) => {
         {{ texts._howToZoom }}
       </HintDiv>
       <HintDiv :title="texts._altKeyShowLabels"> {{ texts._howToShowLabels }} </HintDiv>
-      <h2 class="text-2xl">{{ texts._top10ScoreComparison }}</h2>
+      <h2 class="text-2xl font-bold">{{ texts._top10ScoreComparison }}</h2>
 
       <div
         v-if="scoreAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in scoreAnalysisParagraphs" :key="`score-${index}`">
-          {{ paragraph }}
+          <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="underline underline-offset-4"
+            >
+              {{ segment.text }}
+            </RouterLink>
+            <span v-else>{{ segment.text }}</span>
+          </template>
         </p>
       </div>
 
@@ -215,13 +259,22 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-ranking-comparison" class="flex flex-col gap-4">
-      <h2 class="text-2xl">{{ texts._top10RankingComparison }}</h2>
+      <h2 class="text-2xl font-bold">{{ texts._top10RankingComparison }}</h2>
       <div
         v-if="rankAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in rankAnalysisParagraphs" :key="`rank-${index}`">
-          {{ paragraph }}
+          <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="underline underline-offset-4"
+            >
+              {{ segment.text }}
+            </RouterLink>
+            <span v-else>{{ segment.text }}</span>
+          </template>
         </p>
       </div>
       <div class="bleed-right-to-container-left sm:aspect-[16/10]">
@@ -234,14 +287,23 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-balance-chart" class="flex flex-col gap-4">
-      <h2 class="text-2xl">{{ texts._balanceChart }}</h2>
+      <h2 class="text-2xl font-bold">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
         v-if="divisiveAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in divisiveAnalysisParagraphs" :key="`divisive-${index}`">
-          {{ paragraph }}
+          <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="underline underline-offset-4"
+            >
+              {{ segment.text }}
+            </RouterLink>
+            <span v-else>{{ segment.text }}</span>
+          </template>
         </p>
       </div>
       <div class="bleed-left-to-container-right sm:aspect-[10/5]">
@@ -250,16 +312,25 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-distribution-chart" class="flex flex-col gap-4">
-      <h2 class="text-2xl">{{ texts._distributionChart }}</h2>
+      <h2 class="text-2xl font-bold">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
       </p>
       <div
         v-if="popularityAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in popularityAnalysisParagraphs" :key="`popularity-${index}`">
-          {{ paragraph }}
+          <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="underline underline-offset-4"
+            >
+              {{ segment.text }}
+            </RouterLink>
+            <span v-else>{{ segment.text }}</span>
+          </template>
         </p>
       </div>
       <div class="bleed-right-to-container-left sm:aspect-[10/5]">
