@@ -124,7 +124,7 @@ const initializeChart = () => {
       boost: {
         enabled: true,
         useGPUTranslations: true,
-        usePreAllocated: true
+        usePreallocated: true
       },
 
       tooltip: {
