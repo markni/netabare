@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import BattleChart from '@/components/charts/BattleChart.vue';
 import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
-import HintDiv from '@/components/ui/HintDiv.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
@@ -191,7 +190,7 @@ const handleSeasonChange = (event) => {
     <div id="season-header" class="flex flex-col gap-2">
       <div>
         <select
-          class="mr-2 appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 cursor-pointer appearance-none bg-gold text-4xl sm:text-6xl sm:font-bold"
           :value="route.params.year || new Date().getFullYear()"
           @change="handleYearChange"
           aria-label="选择年份"
@@ -203,7 +202,7 @@ const handleSeasonChange = (event) => {
       </div>
       <div class="flex items-baseline">
         <select
-          class="mr-2 appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 cursor-pointer appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
           :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
           @change="handleSeasonChange"
           aria-label="选择季度"
@@ -225,11 +224,8 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-score-comparison" class="flex flex-col gap-4">
-      <HintDiv :title="texts._zoomInstruction">
-        {{ texts._howToZoom }}
-      </HintDiv>
-      <HintDiv :title="texts._altKeyShowLabels"> {{ texts._howToShowLabels }} </HintDiv>
       <h2 class="text-2xl font-bold">{{ texts._top10ScoreComparison }}</h2>
+      <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
 
       <div
         v-if="scoreAnalysisParagraphs.length"
@@ -260,6 +256,7 @@ const handleSeasonChange = (event) => {
 
     <div id="season-ranking-comparison" class="flex flex-col gap-4">
       <h2 class="text-2xl font-bold">{{ texts._top10RankingComparison }}</h2>
+      <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
       <div
         v-if="rankAnalysisParagraphs.length"
         class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"

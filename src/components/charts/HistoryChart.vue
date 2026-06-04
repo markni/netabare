@@ -49,6 +49,7 @@ const props = defineProps({
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 let hoveredPoint = null;
+let resizeObserver = null;
 
 useChartTheme(chartInstance);
 
@@ -66,10 +67,16 @@ onMounted(() => {
   initializeChart();
   if (chartContainer.value) {
     chartContainer.value.addEventListener('click', handleChartClick);
+    resizeObserver = new ResizeObserver(() => {
+      chartInstance.value?.reflow();
+    });
+    resizeObserver.observe(chartContainer.value);
   }
 });
 
 onUnmounted(() => {
+  resizeObserver?.disconnect();
+  resizeObserver = null;
   if (chartInstance.value) {
     chartInstance.value.destroy();
     chartInstance.value = null;
@@ -287,17 +294,6 @@ const initializeChart = () => {
     chartInstance.value = chart;
   }
 };
-
-onMounted(() => {
-  initializeChart();
-});
-
-onUnmounted(() => {
-  if (chartInstance.value) {
-    chartInstance.value.destroy();
-    chartInstance.value = null;
-  }
-});
 
 // Watch for changes in userData and globalData props and update the chart accordingly
 watch(
