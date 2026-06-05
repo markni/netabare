@@ -88,11 +88,20 @@ console.log(`
       class="flex min-h-screen flex-col bg-background font-serif text-black transition-[background-color] duration-300 dark:text-white"
     >
       <GlobalHeader />
-      <div :class="['bottom-0 mx-auto w-full max-w-6xl p-4 pt-6']">
+      <div
+        :class="[
+          'bottom-0 mx-auto w-full max-w-6xl',
+          route.path === '/art'
+            ? 'px-0 pt-6 pb-0'
+            : route.path === '/'
+              ? 'px-4 pt-6 pb-0'
+              : 'p-4 pt-6'
+        ]"
+      >
         <RouterView />
       </div>
       <footer
-        v-if="route.path !== '/'"
+        v-if="route.path !== '/' && route.path !== '/art'"
         class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
       >
         <div class="mx-auto w-full max-w-6xl px-4 py-24 sm:py-32">

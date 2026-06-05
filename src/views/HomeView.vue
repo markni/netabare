@@ -176,7 +176,7 @@
       </div>
     </div>
 
-    <div class="mt-32 mb-64 flex w-full flex-col gap-16" v-if="licenses">
+    <div class="mt-32 mb-4 flex w-full flex-col gap-16" v-if="licenses">
       <h2 class="rainbow text-center text-2xl lg:text-4xl">
         <GlowTextBlock
           tag="span"
@@ -186,6 +186,12 @@
         />
       </h2>
     </div>
+
+    <div class="@container w-full">
+      <div class="bleed-both-to-viewport h-[70dvh] w-dvw overflow-hidden">
+        <ColorFan />
+      </div>
+    </div>
   </div>
 </template>
 <script setup>
@@ -193,6 +199,7 @@ import licenses from '../../licenses.json';
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import texts from '@/constants/texts.js';
 import GlowTextBlock from '@/components/GlowTextBlock.vue';
+import ColorFan from '@/components/ui/ColorFan.vue';
 
 const HOME_GLOW_RGB = '130,195,245';
 const HOME_GLOW_ENABLED = false;

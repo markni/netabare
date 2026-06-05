@@ -28,6 +28,19 @@ export const COLORS10 = [
   '#e4ae49'
 ];
 
+export const COLORS10_VIVID = [
+  '#0f9f9a',
+  '#ef3340',
+  '#6f7f1c',
+  '#9f9413',
+  '#f5b21b',
+  '#1f5bbf',
+  '#8637b8',
+  '#e45aa0',
+  '#d6247f',
+  '#c2185b'
+];
+
 export const COLORS2 = ['#88cdbd', '#75cdd6', '#beb4ff', '#ff97ca', '#ff989f', '#e4ae49'];
 
 export const GRID_LINE_DEFAULT = '#e6e6e6';
