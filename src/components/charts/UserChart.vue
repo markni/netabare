@@ -20,6 +20,7 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 let chartInstance = null;
+let resizeObserver = null;
 
 const updateData = () => {
   if (chartInstance) {
@@ -99,9 +100,17 @@ const initializeChart = () => {
 
 onMounted(() => {
   initializeChart();
+  if (chartContainer.value) {
+    resizeObserver = new ResizeObserver(() => {
+      chartInstance?.reflow();
+    });
+    resizeObserver.observe(chartContainer.value);
+  }
 });
 
 onUnmounted(() => {
+  resizeObserver?.disconnect();
+  resizeObserver = null;
   if (chartInstance) {
     chartInstance.destroy();
     chartInstance = null;

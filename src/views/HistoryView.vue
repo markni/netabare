@@ -3,7 +3,7 @@ import { useHistoryStore } from '@/stores/history';
 import { storeToRefs } from 'pinia';
 import HistoryChart from '@/components/charts/HistoryChart.vue';
 import texts from '@/constants/texts.js';
-import { computed, watch, onMounted, onUnmounted, nextTick, ref } from 'vue';
+import { computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 const store = useHistoryStore();
@@ -12,8 +12,6 @@ const { combinedData, dic, startingYear, endingYear, minScore, maxScore, filtere
 
 const router = useRouter();
 const route = useRoute();
-const chartFrame = ref(null);
-const chartHeight = ref(480);
 
 store.fetchHistory();
 
@@ -33,13 +31,6 @@ const validMinScores = computed(() => Array.from({ length: maxScore.value + 1 },
 const validMaxScores = computed(() =>
   Array.from({ length: 11 - minScore.value }, (_, i) => i + minScore.value)
 );
-
-const updateChartHeight = () => {
-  if (!chartFrame.value) return;
-
-  const { top } = chartFrame.value.getBoundingClientRect();
-  chartHeight.value = Math.max(320, Math.floor(window.innerHeight - top));
-};
 
 // Parse route parameters on mount
 onMounted(() => {
@@ -74,13 +65,6 @@ onMounted(() => {
       router.replace({ name: 'history' });
     }
   }
-
-  nextTick(updateChartHeight);
-  window.addEventListener('resize', updateChartHeight);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', updateChartHeight);
 });
 
 // Update URL when filters change (only if values are valid)
@@ -126,13 +110,6 @@ watch(
     }
   },
   { immediate: true, deep: true }
-);
-
-watch(
-  () => combinedData.value.historyData,
-  () => {
-    nextTick(updateChartHeight);
-  }
 );
 </script>
 
@@ -193,7 +170,7 @@ watch(
       </div>
     </div>
     <div v-if="combinedData.historyData" class="bleed-both-to-viewport pt-14">
-      <div ref="chartFrame" :style="{ height: `${chartHeight}px` }">
+      <div class="h-[calc(100dvh-16.875rem)] min-h-80">
         <HistoryChart
           :yearly-data="combinedData.yearlyData"
           :historyData="combinedData.historyData"

@@ -12,7 +12,7 @@
         tag="span"
         :text="texts._autoScrolling"
         :glow-rgb="HOME_GLOW_RGB"
-        :enabled="themeStore.isDarkMode"
+        :enabled="HOME_GLOW_ENABLED"
       />
     </div>
 
@@ -22,7 +22,7 @@
           tag="span"
           text="Netabare"
           :glow-rgb="HOME_GLOW_RGB"
-          :enabled="themeStore.isDarkMode"
+          :enabled="HOME_GLOW_ENABLED"
         />
       </h1>
 
@@ -33,7 +33,7 @@
               tag="span"
               :text="texts._currentSeason"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </span>
           <RouterLink class="text-3xl hover:bg-teal lg:text-5xl" to="/season">
@@ -41,7 +41,7 @@
               tag="span"
               :text="texts._dragonVsTiger"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </RouterLink>
         </h2>
@@ -52,7 +52,7 @@
               tag="span"
               :text="texts._allSiteAnime"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </span>
           <RouterLink class="text-3xl hover:bg-blue lg:text-5xl" to="/trending">
@@ -60,7 +60,7 @@
               tag="span"
               :text="texts._hotTrends"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </RouterLink>
         </h2>
@@ -71,7 +71,7 @@
               tag="span"
               :text="texts._allSiteAnime"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </span>
           <RouterLink class="text-3xl hover:bg-pink lg:text-5xl" to="/history">
@@ -79,7 +79,7 @@
               tag="span"
               :text="texts._scoreDistribution"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </RouterLink>
         </h2>
@@ -89,7 +89,7 @@
               tag="span"
               :text="texts._personalAnime"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </span>
           <RouterLink class="text-3xl hover:bg-gold lg:text-5xl" to="/user">
@@ -97,7 +97,7 @@
               tag="span"
               :text="texts._scoreDistribution2"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </RouterLink>
         </h2>
@@ -110,7 +110,7 @@
           tag="span"
           :text="texts._credits"
           :glow-rgb="HOME_GLOW_RGB"
-          :enabled="themeStore.isDarkMode"
+          :enabled="HOME_GLOW_ENABLED"
         />
       </h2>
 
@@ -126,7 +126,7 @@
                 tag="span"
                 :text="key"
                 :glow-rgb="HOME_GLOW_RGB"
-                :enabled="themeStore.isDarkMode"
+                :enabled="HOME_GLOW_ENABLED"
             /></a>
             <a
               :href="value.repository"
@@ -135,7 +135,7 @@
                 tag="span"
                 :text="value.publisher"
                 :glow-rgb="HOME_GLOW_RGB"
-                :enabled="themeStore.isDarkMode"
+                :enabled="HOME_GLOW_ENABLED"
             /></a>
           </div>
         </div>
@@ -148,7 +148,7 @@
           tag="span"
           :text="texts._specialThanks"
           :glow-rgb="HOME_GLOW_RGB"
-          :enabled="themeStore.isDarkMode"
+          :enabled="HOME_GLOW_ENABLED"
         />
       </h2>
 
@@ -159,7 +159,7 @@
               tag="span"
               :text="texts._dataSupport"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
             />
           </div>
           <a
@@ -170,7 +170,7 @@
               tag="span"
               text="bangumi.tv"
               :glow-rgb="HOME_GLOW_RGB"
-              :enabled="themeStore.isDarkMode"
+              :enabled="HOME_GLOW_ENABLED"
           /></a>
         </div>
       </div>
@@ -182,7 +182,7 @@
           tag="span"
           :text="texts._netabareCommittee"
           :glow-rgb="HOME_GLOW_RGB"
-          :enabled="themeStore.isDarkMode"
+          :enabled="HOME_GLOW_ENABLED"
         />
       </h2>
     </div>
@@ -193,10 +193,9 @@ import licenses from '../../licenses.json';
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import texts from '@/constants/texts.js';
 import GlowTextBlock from '@/components/GlowTextBlock.vue';
-import { useThemeStore } from '@/stores/theme';
 
 const HOME_GLOW_RGB = '130,195,245';
-const themeStore = useThemeStore();
+const HOME_GLOW_ENABLED = false;
 
 // Create a ref for the container
 const containerRef = ref(null);
@@ -439,4 +438,3 @@ onUnmounted(() => {
   }
 }
 </style>
-

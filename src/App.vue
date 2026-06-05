@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
@@ -14,6 +14,7 @@ import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
+const route = useRoute();
 
 useScrollToAnchor();
 
@@ -90,7 +91,10 @@ console.log(`
       <div :class="['bottom-0 mx-auto w-full max-w-6xl p-4 pt-6']">
         <RouterView />
       </div>
-      <footer class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white">
+      <footer
+        v-if="route.path !== '/'"
+        class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
+      >
         <div class="mx-auto w-full max-w-6xl px-4 py-24 sm:py-32">
           <div class="flex flex-wrap items-center gap-4 text-sm">
             <RouterLink to="/">{{ texts._backToHome }}</RouterLink>

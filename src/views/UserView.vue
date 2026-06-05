@@ -1,27 +1,50 @@
 <template>
-  <div v-if="user && id" class="grid grid-cols-12 gap-4">
-    <div class="order-last col-span-12 sm:order-first sm:col-span-10">
-      <div class="aspect-square pt-14 sm:aspect-[16/12]">
-        <UserChart :userData="currentYearData['data']" :globalData="globalData" />
+  <div class="min-h-[calc(100dvh-8.75rem)]">
+    <div v-if="user && id" class="grid grid-cols-12 gap-4">
+      <div class="order-last col-span-12 sm:order-first sm:col-span-10">
+        <div class="pt-14">
+          <div class="h-[calc(100dvh-12.25rem)] min-h-80">
+            <UserChart :userData="currentYearData['data']" :globalData="globalData" />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 flex flex-col items-center px-2 sm:col-span-2 sm:items-start">
+        <YearSlider :years="availableYears" v-model:selectedYear="selectedYear" class="mb-5">
+          <template #info>
+            <UserAvatar :user="userProfile" />
+          </template>
+        </YearSlider>
+
+        <UserStats :user="currentYearData" />
+        <form @submit="submit" class="mt-auto mb-16 hidden flex-col sm:flex">
+          <input
+            id="username"
+            autocomplete="off"
+            data-lpignore="true"
+            required
+            pattern="^\w+$"
+            class="border-b-2 bg-transparent p-2 focus:outline-0"
+            maxlength="15"
+            type="text"
+            v-model="bgmUserId"
+            placeholder="username / id"
+          />
+        </form>
       </div>
     </div>
 
-    <div class="col-span-12 flex flex-col items-center px-2 sm:col-span-2 sm:items-start">
-      <YearSlider :years="availableYears" v-model:selectedYear="selectedYear" class="mb-5">
-        <template #info>
-          <UserAvatar :user="userProfile" />
-        </template>
-      </YearSlider>
+    <div v-else class="flex min-h-[calc(100dvh-8.75rem)] flex-col items-center justify-center">
+      <form @submit="submit" class="flex flex-col items-start">
+        <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
 
-      <UserStats :user="currentYearData" />
-      <form @submit="submit" class="mb-16 mt-auto hidden flex-col sm:flex">
         <input
           id="username"
           autocomplete="off"
           data-lpignore="true"
           required
           pattern="^\w+$"
-          class="border-b-2 bg-transparent p-2 focus:outline-0"
+          class="border-b-2 bg-transparent p-2 text-xl focus:outline-0 sm:text-4xl"
           maxlength="15"
           type="text"
           v-model="bgmUserId"
@@ -29,24 +52,6 @@
         />
       </form>
     </div>
-  </div>
-  <div v-if="!id" class="flex h-full flex-col items-center justify-center">
-    <form @submit="submit" class="mt-10 flex flex-col">
-      <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
-
-      <input
-        id="username"
-        autocomplete="off"
-        data-lpignore="true"
-        required
-        pattern="^\w+$"
-        class="border-b-2 bg-transparent p-2 text-xl focus:outline-0 sm:text-4xl"
-        maxlength="15"
-        type="text"
-        v-model="bgmUserId"
-        placeholder="username / id"
-      />
-    </form>
   </div>
 </template>
 
@@ -101,11 +106,19 @@ const submit = (event) => {
   // Add your submission logic here
 };
 
-if (props.id) {
-  store.fetchUser(props.id);
-} else if (username.value) {
-  router.replace(`/user/${username.value}`);
-}
+const syncUserRoute = (id) => {
+  if (id) {
+    store.fetchUser(id);
+    bgmUserId.value = id;
+    return;
+  }
+
+  if (username.value) {
+    router.replace(`/user/${username.value}`);
+  }
+};
+
+syncUserRoute(props.id);
 
 // Modify the availableYears watcher
 watch(
@@ -125,10 +138,7 @@ watch(
 watch(
   () => props.id,
   (newId) => {
-    if (newId) {
-      store.fetchUser(newId);
-      bgmUserId.value = newId;
-    }
+    syncUserRoute(newId);
   }
 );
 </script>

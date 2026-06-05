@@ -3,8 +3,14 @@ import { RouterLink } from 'vue-router';
 import texts from '../constants/texts.js';
 import EclipseToggle from './ui/EclipseToggle.vue';
 import { useThemeStore } from '../stores/theme';
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 const themeStore = useThemeStore();
+const userStore = useUserStore();
+const { username } = storeToRefs(userStore);
+const userNavTarget = computed(() => (username.value ? `/user/${username.value}` : '/user'));
 </script>
 
 <template>
@@ -60,7 +66,7 @@ const themeStore = useThemeStore();
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
               class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
-              to="/user"
+              :to="userNavTarget"
               >{{ texts._user }}</RouterLink
             >
           </div>
