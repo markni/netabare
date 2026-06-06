@@ -4,13 +4,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-red: var(--color-red-900);
+  --color-red: #ef3340;
   --color-ivory: var(--color-stone-50);
 
-  --color-teal: #89cebe;
-  --color-gold: #e4ae4a;
-  --color-blue: #3194ff;
-  --color-pink: #ff7ba9;
+  --color-teal: #0f9f9a;
+  --color-gold: #f5b21b;
+  --color-blue: #00a7d8;
+  --color-pink: #e45aa0;
 
   /* transparent, black and white are predefined in Tailwind */
 

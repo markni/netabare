@@ -88,12 +88,6 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/GuessView.vue')
     },
-    {
-      path: '/art',
-      name: 'art',
-      component: () => import('../views/ArtView.vue'),
-      meta: { title: 'Art | netaba.re' }
-    },
     // UI route - only available in development mode
     ...(import.meta.env.DEV
       ? [

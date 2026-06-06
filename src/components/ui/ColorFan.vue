@@ -22,6 +22,13 @@
 import { computed } from 'vue';
 import { COLORS10_VIVID } from '@/constants/colors';
 
+const props = defineProps({
+  colors: {
+    type: Array,
+    default: () => COLORS10_VIVID
+  }
+});
+
 const apex = { x: 50, y: 2 };
 const startX = -18;
 const endX = 118;
@@ -33,7 +40,7 @@ const slices = computed(() => {
   const totalWeight = sliceWeights.reduce((sum, weight) => sum + weight, 0);
   let cursor = startX;
 
-  return COLORS10_VIVID.map((color, index) => {
+  return props.colors.map((color, index) => {
     const sliceWidth = (sliceWeights[index] / totalWeight) * totalWidth;
     const left = cursor - seamOverlap;
     const right = cursor + sliceWidth + seamOverlap;

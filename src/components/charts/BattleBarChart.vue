@@ -71,6 +71,7 @@ const initializeChart = () => {
       plotOptions: {
         series: {
           stacking: 'normal',
+          borderWidth: 0,
           animation:
             props.animateWhenInView && !isInViewOnce.value
               ? false
@@ -85,7 +86,7 @@ const initializeChart = () => {
         {
           name: '1分',
           data: [],
-          color: Highcharts.color(BLUE).setOpacity(0.7).get(),
+          color: BLUE,
           dataLabels: {
             enabled: true,
             inside: false,
@@ -102,7 +103,7 @@ const initializeChart = () => {
         {
           name: '10分',
           data: [],
-          color: Highcharts.color(PINK).setOpacity(0.7).get()
+          color: PINK
         }
       ]
     });

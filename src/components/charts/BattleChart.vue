@@ -1,10 +1,11 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
+import { computed, ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLUE, COLORS10 } from '@/constants/colors';
+import { BLUE, COLORS10, COLORS10_VIVID } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useInViewOnce } from '@/composables/useInViewOnce';
+import { useThemeStore } from '@/stores/theme';
 
 const props = defineProps({
   historyData: {
@@ -18,14 +19,22 @@ const props = defineProps({
   animateWhenInView: {
     type: Boolean,
     default: false
+  },
+  useThemePalette: {
+    type: Boolean,
+    default: false
   }
 });
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 const router = useRouter();
+const themeStore = useThemeStore();
 useChartTheme(chartInstance);
 const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
+const scoreColors = computed(() =>
+  props.useThemePalette && themeStore.isDarkMode ? COLORS10_VIVID : COLORS10
+);
 
 const getLatestScore = (scoreHistory = []) => {
   if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
@@ -56,8 +65,9 @@ const updateData = () => {
     });
 
     // Add or update series
-    sortedHistoryData.forEach((seriesData) => {
+    sortedHistoryData.forEach((seriesData, index) => {
       const { name, bgmId, scoreHistory, color, airDate } = seriesData;
+      const seriesColor = color || scoreColors.value[index % scoreColors.value.length];
       const latestScore =
         Array.isArray(scoreHistory) && scoreHistory.length > 0
           ? Number(scoreHistory[scoreHistory.length - 1][1])
@@ -68,11 +78,11 @@ const updateData = () => {
         {
           value: airDate, // All points with x < airDate
           dashStyle: 'ShortDot',
-          color: color // Optional: maintain the original color
+          color: seriesColor // Optional: maintain the original color
         },
         {
           dashStyle: 'Solid',
-          color: color // Optional: maintain the original color
+          color: seriesColor // Optional: maintain the original color
         }
       ];
 
@@ -99,7 +109,7 @@ const updateData = () => {
             // crop: false,
             style: {
               fontSize: '15px',
-              color: color,
+              color: seriesColor,
               textOutline: false,
               fontFamily: `'source-han-serif-sc', serif`
             }
@@ -112,7 +122,7 @@ const updateData = () => {
 
         currentSeries[String(bgmId)].setData(formattedData, false, true, false);
 
-        currentSeries[String(bgmId)].update({ zones, name: legendName }, false);
+        currentSeries[String(bgmId)].update({ color: seriesColor, zones, name: legendName }, false);
         delete currentSeries[String(bgmId)]; // Remove from currentSeries to avoid deleting it later
       } else {
         // Add new series if it does not exist
@@ -123,7 +133,7 @@ const updateData = () => {
             data: formattedData,
             type: 'spline',
             yAxis: 0,
-            color: color,
+            color: seriesColor,
             zones: zones,
             zoneAxis: 'x' // Ensure zones are based on the x-axis
           },
@@ -227,7 +237,7 @@ const initializeChart = () => {
         }
       },
       series: [],
-      colors: COLORS10 // Use the COLORS constant
+      colors: scoreColors.value
     });
 
     // Immediately set the chartInstance
@@ -262,6 +272,16 @@ watch(
   () => props.showLabels,
   () => {
     updateData();
+  }
+);
+
+watch(
+  () => themeStore.isDarkMode,
+  () => {
+    if (props.useThemePalette) {
+      chartInstance.value?.update({ colors: scoreColors.value }, false);
+      updateData();
+    }
   }
 );
 

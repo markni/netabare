@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, shallowRef, computed } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { COLORS2 } from '@/constants/colors';
+import { COLORS6 } from '@/constants/colors';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useEpisodePlot } from '@/composables/useEpisodePlot';
 
@@ -222,7 +222,7 @@ const initializeChart = () => {
           data: []
         }
       ],
-      colors: COLORS2,
+      colors: COLORS6,
       lang: {
         thousandsSep: ''
       }

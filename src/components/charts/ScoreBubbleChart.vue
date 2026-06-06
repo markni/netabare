@@ -6,7 +6,7 @@
 import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import { useChartTheme } from '@/composables/useChartTheme';
-import { BLUE, PINK } from '@/constants/colors';
+import { BLUE, RED } from '@/constants/colors';
 import { useInViewOnce } from '@/composables/useInViewOnce';
 
 const props = defineProps({
@@ -37,10 +37,12 @@ onUnmounted(() => {
   }
 });
 
+const minPinkStd = 1;
+const maxPinkStd = 2;
+
 const getColorByStd = (std) => {
-  // Calculate ratio where 1 is blue, anything higher moves towards red
-  const ratio = Math.max(0, Math.min(1, (std - 1) / 1.5)); // Will be pure red at std of 2.5
-  return Highcharts.color(BLUE).tweenTo(Highcharts.color(PINK), ratio);
+  const ratio = Math.max(0, Math.min(1, (std - minPinkStd) / (maxPinkStd - minPinkStd)));
+  return Highcharts.color(BLUE).tweenTo(Highcharts.color(RED), ratio);
 };
 
 const updateData = () => {
@@ -99,6 +101,9 @@ const initializeChart = () => {
           maxSize: 25,
           zMin: 0,
           zMax: 50,
+          marker: {
+            fillOpacity: 0.85
+          },
           states: {
             hover: {
               enabled: true

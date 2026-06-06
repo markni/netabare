@@ -250,6 +250,7 @@ const handleSeasonChange = (event) => {
           :historyData="historyData"
           :showLabels="showLabels"
           :animate-when-in-view="true"
+          :use-theme-palette="true"
         />
       </div>
     </div>
@@ -279,6 +280,7 @@ const handleSeasonChange = (event) => {
           :historyData="historyData"
           :showLabels="showLabels"
           :animate-when-in-view="true"
+          :use-theme-palette="true"
         />
       </div>
     </div>

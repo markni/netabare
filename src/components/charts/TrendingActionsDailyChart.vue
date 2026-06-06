@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { COLORS2 } from '@/constants/colors';
+import { COLORS6 } from '@/constants/colors';
 import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
@@ -101,35 +101,35 @@ const initializeChart = () => {
         id: 'wish',
         name: LABELS.wish,
         data: [],
-        color: COLORS2[0]
+        color: COLORS6[0]
       },
       {
         type: 'area',
         id: 'collect',
         name: LABELS.collect,
         data: [],
-        color: COLORS2[1]
+        color: COLORS6[1]
       },
       {
         type: 'area',
         id: 'doing',
         name: LABELS.doing,
         data: [],
-        color: COLORS2[2]
+        color: COLORS6[2]
       },
       {
         type: 'area',
         id: 'on_hold',
         name: LABELS.on_hold,
         data: [],
-        color: COLORS2[3]
+        color: COLORS6[3]
       },
       {
         type: 'area',
         id: 'dropped',
         name: LABELS.dropped,
         data: [],
-        color: COLORS2[4]
+        color: COLORS6[4]
       }
     ]
   });

@@ -61,6 +61,29 @@
         <ColorFan />
       </div>
 
+      <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div
+          v-for="suggestion in vivid10Suggestions"
+          :key="suggestion.name"
+          class="flex flex-col gap-3"
+        >
+          <div class="aspect-square w-full">
+            <ColorFan :colors="suggestion.colors" />
+          </div>
+          <div class="flex items-center justify-between gap-3 text-left text-sm">
+            <div>
+              <div class="font-semibold">{{ suggestion.name }}</div>
+              <div class="text-muted-foreground">{{ suggestion.note }}</div>
+            </div>
+            <div
+              class="h-8 w-8 shrink-0 rounded-full border border-neutral-500/50"
+              :style="{ backgroundColor: suggestion.replacement }"
+              :aria-label="suggestion.replacement"
+            ></div>
+          </div>
+        </div>
+      </div>
+
       <div class="flex gap-4">
         <div class="h-10 w-60 bg-red"></div>
         <div class="h-10 w-60 bg-pink"></div>
@@ -108,15 +131,49 @@ import HintDiv from '@/components/ui/HintDiv.vue';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import GlowTextBlock from '@/components/GlowTextBlock.vue';
 import ColorFan from '@/components/ui/ColorFan.vue';
-import { RED, PINK, GOLD, BLUE, TEAL, IVORY, WHITE } from '@/constants/colors';
+import { RED, PINK, GOLD, BLUE, TEAL, IVORY, WHITE, COLORS10_VIVID } from '@/constants/colors';
 
 const themeStore = useThemeStore();
 const showOverlay = ref(false);
+const vivid10ReplacementIndex = 9;
+const formerVivid10Raspberry = '#c2185b';
+const vivid10Suggestions = [
+  {
+    name: 'Current',
+    note: 'Cyan vivid10',
+    replacement: COLORS10_VIVID[vivid10ReplacementIndex],
+    colors: COLORS10_VIVID
+  },
+  {
+    name: 'Former',
+    note: 'Previous raspberry edge',
+    replacement: formerVivid10Raspberry,
+    colors: withVivid10Replacement(formerVivid10Raspberry)
+  },
+  {
+    name: 'Emerald Swap',
+    note: 'Less red, more balance',
+    replacement: '#00a86b',
+    colors: withVivid10Replacement('#00a86b')
+  },
+  {
+    name: 'Violet Swap',
+    note: 'Keeps intensity without heat',
+    replacement: '#5b5bd6',
+    colors: withVivid10Replacement('#5b5bd6')
+  }
+];
 
 // Initialize theme on component mount
 onMounted(() => {
   themeStore.initTheme();
 });
+
+function withVivid10Replacement(replacement) {
+  return COLORS10_VIVID.map((color, index) =>
+    index === vivid10ReplacementIndex ? replacement : color
+  );
+}
 
 function handleToggle() {
   themeStore.toggleDarkMode();
