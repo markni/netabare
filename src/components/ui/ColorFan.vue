@@ -7,13 +7,17 @@
       role="img"
       aria-label="Ten color fan"
     >
-      <polygon
+      <g
         v-for="(slice, index) in slices"
         :key="`${slice.color}-${index}`"
-        :points="slice.points"
-        :fill="slice.color"
-        stroke="none"
-      />
+        class="color-fan__blade"
+        :class="{ 'color-fan__blade--animated': animated }"
+        :style="{
+          '--fan-delay': `${slice.delay}ms`
+        }"
+      >
+        <polygon :points="slice.points" :fill="slice.color" stroke="none" />
+      </g>
     </svg>
   </figure>
 </template>
@@ -26,6 +30,10 @@ const props = defineProps({
   colors: {
     type: Array,
     default: () => COLORS10_VIVID
+  },
+  animated: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -39,6 +47,7 @@ const slices = computed(() => {
   const totalWidth = endX - startX;
   const totalWeight = sliceWeights.reduce((sum, weight) => sum + weight, 0);
   let cursor = startX;
+  const centerIndex = (props.colors.length - 1) / 2;
 
   return props.colors.map((color, index) => {
     const sliceWidth = (sliceWeights[index] / totalWeight) * totalWidth;
@@ -48,8 +57,38 @@ const slices = computed(() => {
 
     return {
       color,
-      points: `${apex.x} ${apex.y} ${left} 100 ${right} 100`
+      points: `${apex.x} ${apex.y} ${left} 100 ${right} 100`,
+      delay: Math.abs(index - centerIndex) * 22
     };
   });
 });
 </script>
+
+<style scoped>
+.color-fan__blade {
+  transform-box: view-box;
+  transform-origin: 50px 2px;
+  will-change: transform;
+}
+
+.color-fan__blade--animated {
+  animation: fan-unfold 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--fan-delay);
+}
+
+@keyframes fan-unfold {
+  from {
+    transform: scaleX(0.012);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .color-fan__blade--animated {
+    animation: none;
+  }
+}
+</style>

@@ -54,6 +54,10 @@ let resizeObserver = null;
 useChartTheme(chartInstance);
 
 const handleChartClick = () => {
+  if (chartInstance.value?.cancelClick) {
+    return;
+  }
+
   if (hoveredPoint) {
     let bgmId = parseInt(padEnd((hoveredPoint.y + '').split('.')[1], 12, '0').slice(-8));
 

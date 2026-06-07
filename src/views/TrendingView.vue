@@ -2,16 +2,14 @@
 import { useTrendingStore } from '@/stores/trending';
 import { storeToRefs } from 'pinia';
 import MiniScoreChart from '@/components/charts/MiniScoreChart.vue';
-import TrendingActionsDailyChart from '@/components/charts/TrendingActionsDailyChart.vue';
 import { BLUE, COLORS10, PINK } from '@/constants/colors.js';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
 import texts from '@/constants/texts.js';
 
 const store = useTrendingStore();
-const { up, down, done, actionsDailySeries } = storeToRefs(store);
+const { up, down, done } = storeToRefs(store);
 
 store.fetchTrending();
-store.fetchTrendingActionsDaily();
 
 const formatData = (history) =>
   history.map((item) => ({ x: new Date(item.recordedAt), y: item.score }));
@@ -73,17 +71,6 @@ const formatData = (history) =>
             </div>
           </li>
         </ol>
-      </div>
-    </div>
-
-    <div
-      id="trending-site-trending-actions"
-      v-if="actionsDailySeries.length"
-      class="flex flex-col gap-4"
-    >
-      <h2 class="text-right text-2xl">{{ texts._trendingActionsDaily }}</h2>
-      <div class="bleed-both-to-viewport sm:aspect-[16/6]">
-        <TrendingActionsDailyChart :actions-daily-series="actionsDailySeries" />
       </div>
     </div>
   </div>

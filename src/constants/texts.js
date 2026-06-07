@@ -41,7 +41,6 @@ const texts = {
   _july: '七月',
   _october: '十月',
   // Trending view texts
-  _trendingActionsDaily: '全站收藏趋势',
   _popularEntries: '热门条目',
   _increasingRank: '涨幅排行',
   _decreasingRank: '跌幅排行',
