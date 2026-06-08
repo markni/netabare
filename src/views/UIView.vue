@@ -136,6 +136,7 @@ import { RED, PINK, GOLD, BLUE, TEAL, IVORY, WHITE, COLORS10_VIVID } from '@/con
 const themeStore = useThemeStore();
 const showOverlay = ref(false);
 const vivid10ReplacementIndex = 9;
+const orangeReplacementIndex = 3;
 const formerVivid10Raspberry = '#c2185b';
 const vivid10Suggestions = [
   {
@@ -161,6 +162,12 @@ const vivid10Suggestions = [
     note: 'Keeps intensity without heat',
     replacement: '#5b5bd6',
     colors: withVivid10Replacement('#5b5bd6')
+  },
+  {
+    name: 'Orange Swap',
+    note: 'Replaces muted olive',
+    replacement: '#ff7a1a',
+    colors: withVivid10Replacement('#ff7a1a', orangeReplacementIndex)
   }
 ];
 
@@ -169,10 +176,8 @@ onMounted(() => {
   themeStore.initTheme();
 });
 
-function withVivid10Replacement(replacement) {
-  return COLORS10_VIVID.map((color, index) =>
-    index === vivid10ReplacementIndex ? replacement : color
-  );
+function withVivid10Replacement(replacement, replacementIndex = vivid10ReplacementIndex) {
+  return COLORS10_VIVID.map((color, index) => (index === replacementIndex ? replacement : color));
 }
 
 function handleToggle() {

@@ -5,7 +5,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLUE, PINK } from '@/constants/colors';
+import { GOLD, TEAL } from '@/constants/colors';
 import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
@@ -137,12 +137,12 @@ const initializeChart = () => {
       {
         name: leftName,
         data: [],
-        color: BLUE
+        color: TEAL
       },
       {
         name: rightName,
         data: [],
-        color: PINK
+        color: GOLD
       }
     ]
   });

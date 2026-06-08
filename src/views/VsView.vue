@@ -78,7 +78,7 @@ const { getRatingData } = store;
       <div
         class="sticky top-0 z-10 grid grid-cols-2 gap-4 bg-background py-4 text-3xl transition-[background-color] duration-300"
       >
-        <form @submit.prevent="submit" class="flex flex-col gap-4 text-blue">
+        <form @submit.prevent="submit" class="flex flex-col gap-4 text-teal">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId0" v-model="localId0" /> -->
           <div class="text-6xl font-bold">
             {{ subjects[0]?.rating?.score || 'N/A' }}
@@ -87,7 +87,7 @@ const { getRatingData } = store;
             subjects[0]?.name_cn || subjects[0]?.name
           }}</label>
         </form>
-        <form @submit.prevent="submit" class="al flex flex-col items-end gap-4 text-pink">
+        <form @submit.prevent="submit" class="al flex flex-col items-end gap-4 text-gold">
           <!-- <input type="number" class="w-40 bg-transparent" id="localId1" v-model="localId1" /> -->
           <div class="text-6xl font-bold">
             {{ subjects[1]?.rating?.score || 'N/A' }}
@@ -102,13 +102,13 @@ const { getRatingData } = store;
           <span class="w-4 text-sm">{{ n }}</span>
           <div class="flex h-4 w-full">
             <div
-              class="h-full bg-blue transition-all"
+              class="h-full bg-teal transition-all"
               :style="{
                 width: `${(subjects[0]?.rating?.count[n] / (subjects[0]?.rating?.count[n] + subjects[1]?.rating?.count[n])) * 100}%`
               }"
             />
             <div
-              class="h-full bg-pink transition-all"
+              class="h-full bg-gold transition-all"
               :style="{
                 width: `${(subjects[1]?.rating?.count[n] / (subjects[0]?.rating?.count[n] + subjects[1]?.rating?.count[n])) * 100}%`
               }"
@@ -141,4 +141,3 @@ const { getRatingData } = store;
 </template>
 
 <style scoped></style>
-

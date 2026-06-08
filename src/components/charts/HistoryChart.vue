@@ -7,7 +7,7 @@ import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
 import padEnd from 'lodash/padEnd';
 import dayjs from 'dayjs';
-import { COLORS10, PINK } from '@/constants/colors.js';
+import { COLORS10, GOLD, TEAL } from '@/constants/colors.js';
 import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
@@ -50,6 +50,7 @@ const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
 let hoveredPoint = null;
 let resizeObserver = null;
+const historyPointColor = Highcharts.color(TEAL).setOpacity(0.4).get('rgba');
 
 useChartTheme(chartInstance);
 
@@ -182,7 +183,7 @@ const initializeChart = () => {
             states: {
               hover: {
                 enabled: true,
-                fillColor: COLORS10[8]
+                fillColor: GOLD
               }
             }
           },
@@ -252,7 +253,7 @@ const initializeChart = () => {
 
       series: [
         {
-          color: 'rgba(49, 148, 255, 0.4)',
+          color: historyPointColor,
           name: '评分',
           data: [],
           zones: [
@@ -262,7 +263,7 @@ const initializeChart = () => {
             },
             {
               value: props.maxScore,
-              color: 'rgba(49, 148, 255, 0.4)'
+              color: historyPointColor
             },
             {
               color: 'transparent'
@@ -271,7 +272,7 @@ const initializeChart = () => {
         },
         {
           type: 'line',
-          color: PINK,
+          color: GOLD,
           name: '均分',
           data: []
         },

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLUE, PINK } from '@/constants/colors.js';
+import { GOLD, TEAL } from '@/constants/colors.js';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useInViewOnce } from '@/composables/useInViewOnce';
 
@@ -86,7 +86,7 @@ const initializeChart = () => {
         {
           name: '1分',
           data: [],
-          color: BLUE,
+          color: TEAL,
           dataLabels: {
             enabled: true,
             inside: false,
@@ -103,7 +103,7 @@ const initializeChart = () => {
         {
           name: '10分',
           data: [],
-          color: PINK
+          color: GOLD
         }
       ]
     });

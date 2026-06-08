@@ -3,7 +3,7 @@ import { fetchRank } from '@/utils/api.js';
 import { useAppStore } from '@/stores/app.js';
 import withSmartLoadingUx from '@/utils/withSmartLoadingUx.js';
 import dayjs from 'dayjs';
-import { BLUE, PINK } from '@/constants/colors.js';
+import { GOLD, TEAL } from '@/constants/colors.js';
 
 export const useVsStore = defineStore('vs', {
   state: () => ({
@@ -49,7 +49,7 @@ export const useVsStore = defineStore('vs', {
         const history = response.data['history'];
         const subject = response.data['subject'];
         this.histories[index] = {
-          color: index === 0 ? BLUE : PINK,
+          color: index === 0 ? TEAL : GOLD,
           name: subject.name_cn || subject.name,
           bgmId: subjectId,
           airDate: dayjs(subject.air_date).valueOf(),

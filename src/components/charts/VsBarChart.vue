@@ -5,7 +5,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLUE, PINK } from '@/constants/colors';
+import { GOLD, TEAL } from '@/constants/colors';
 import { useChartTheme } from '@/composables/useChartTheme';
 
 const props = defineProps({
@@ -109,12 +109,12 @@ const initializeChart = () => {
         {
           name: normalizeSeries(props.ratingData, '动画0').name,
           data: [],
-          color: BLUE
+          color: TEAL
         },
         {
           name: normalizeSeries(props.comparisonData, '动画1').name,
           data: [],
-          color: PINK
+          color: GOLD
         }
       ]
     });
