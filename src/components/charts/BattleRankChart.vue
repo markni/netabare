@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLUE, COLORS10, COLORS10_VIVID } from '@/constants/colors';
+import { BLACK, BLUE, COLORS10, COLORS10_VIVID, IVORY } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useInViewOnce } from '@/composables/useInViewOnce';
@@ -61,6 +61,28 @@ const getLatestRenderedPoint = (series) =>
   [...series.points].reverse().find((point) => Number.isFinite(point.plotX + point.plotY));
 
 const getSeriesId = (series) => String(series.userOptions?.id || series.options?.id || '');
+
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+const formatEndLabel = (name, rankColor, underlineName = false) => {
+  const textColor = themeStore.isDarkMode ? IVORY : BLACK;
+  const nameStyle = `color: ${textColor};${
+    underlineName ? ' text-decoration: underline; text-underline-offset: 3px;' : ''
+  }`;
+  const match = String(name).match(/^(#(?:\d+|N\/A))\s+(.*)$/);
+  if (!match) return `<span style="${nameStyle}">${escapeHtml(name)}</span>`;
+
+  return [
+    `<span style="color: ${rankColor};">${escapeHtml(match[1])}</span>`,
+    `<span style="${nameStyle}">${escapeHtml(match[2])}</span>`
+  ].join(' ');
+};
 
 const showEndLabelsAfterAnimation = () => {
   clearEndLabelsFallbackTimer();
@@ -156,19 +178,33 @@ const renderEndLabels = () => {
       if (!point) return null;
 
       const color = series.color;
+      const seriesId = getSeriesId(series);
       const label = chart.renderer
-        .label(series.name, labelX, minY, null, null, null, false)
+        .label(formatEndLabel(series.name, color), labelX, minY, null, null, null, true)
         .css({
-          color,
           fontSize: '15px',
           fontFamily: `'source-han-serif-sc', serif`,
           fontWeight: 'bold',
+          cursor: 'pointer',
           textOutline: 'none'
         })
         .attr({
           padding: 0
         })
         .add(group);
+
+      if (seriesId) {
+        label.on('click', () => {
+          router.push(`/subject/${seriesId}`);
+        });
+        label.on('mouseover', () => {
+          label.attr({ text: formatEndLabel(series.name, color, true) });
+        });
+        label.on('mouseout', () => {
+          label.attr({ text: formatEndLabel(series.name, color) });
+        });
+      }
+
       const bbox = label.getBBox();
 
       return {
@@ -409,6 +445,7 @@ const initializeChart = () => {
         }
       },
       legend: {
+        enabled: false,
         useHTML: true,
         labelFormatter: function () {
           const match = this.name.match(/^(#(?:\d+|N\/A))\s+(.*)$/);
