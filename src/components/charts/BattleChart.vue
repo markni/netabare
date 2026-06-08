@@ -12,10 +12,6 @@ const props = defineProps({
     type: Array,
     required: true
   },
-  showLabels: {
-    type: Boolean,
-    default: false
-  },
   animateWhenInView: {
     type: Boolean,
     default: false
@@ -28,6 +24,10 @@ const props = defineProps({
 
 const chartContainer = ref(null);
 const chartInstance = shallowRef(null);
+const endLabelsGroup = shallowRef(null);
+const endLabelsReady = ref(false);
+const pendingEndLabelSeriesIds = new Set();
+let endLabelsFallbackTimer = null;
 const router = useRouter();
 const themeStore = useThemeStore();
 useChartTheme(chartInstance);
@@ -40,6 +40,183 @@ const getLatestScore = (scoreHistory = []) => {
   if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
   const latest = Number(scoreHistory[scoreHistory.length - 1]?.[1]);
   return Number.isFinite(latest) ? latest : Number.NEGATIVE_INFINITY;
+};
+
+const destroyEndLabels = () => {
+  if (endLabelsGroup.value) {
+    endLabelsGroup.value.destroy();
+    endLabelsGroup.value = null;
+  }
+};
+
+const clearEndLabelsFallbackTimer = () => {
+  if (endLabelsFallbackTimer) {
+    clearTimeout(endLabelsFallbackTimer);
+    endLabelsFallbackTimer = null;
+  }
+};
+
+const getLatestRenderedPoint = (series) =>
+  [...series.points].reverse().find((point) => Number.isFinite(point.plotX + point.plotY));
+
+const getSeriesId = (series) => String(series.userOptions?.id || series.options?.id || '');
+
+const showEndLabelsAfterAnimation = () => {
+  clearEndLabelsFallbackTimer();
+  endLabelsReady.value = true;
+  renderEndLabels();
+};
+
+const markEndLabelSeriesAnimated = (series) => {
+  const seriesId = getSeriesId(series);
+  if (!seriesId || !pendingEndLabelSeriesIds.size) return;
+
+  pendingEndLabelSeriesIds.delete(seriesId);
+  if (!pendingEndLabelSeriesIds.size) {
+    showEndLabelsAfterAnimation();
+  }
+};
+
+const resetEndLabelAnimationGate = (seriesDataList) => {
+  destroyEndLabels();
+  clearEndLabelsFallbackTimer();
+  pendingEndLabelSeriesIds.clear();
+
+  const isInitialDataRender = chartInstance.value?.series.length === 0;
+  if (!isInitialDataRender) {
+    endLabelsReady.value = true;
+    return;
+  }
+
+  seriesDataList.forEach((seriesData) => {
+    if (Array.isArray(seriesData?.scoreHistory) && seriesData.scoreHistory.length > 0) {
+      pendingEndLabelSeriesIds.add(String(seriesData.bgmId));
+    }
+  });
+
+  endLabelsReady.value = pendingEndLabelSeriesIds.size === 0;
+  if (!endLabelsReady.value) {
+    endLabelsFallbackTimer = setTimeout(showEndLabelsAfterAnimation, 1200);
+  }
+};
+
+const distributeLabelY = (items, minY, maxY) => {
+  const gap = 6;
+  let nextY = minY;
+
+  items
+    .sort((a, b) => a.pointY - b.pointY)
+    .forEach((item) => {
+      item.labelY = Math.max(item.pointY - item.height / 2, nextY);
+      nextY = item.labelY + item.height + gap;
+    });
+
+  const overflow = nextY - gap - maxY;
+  if (overflow > 0) {
+    const availableShift = Math.max(items[0].labelY - minY, 0);
+    const shift = Math.min(overflow, availableShift);
+    items.forEach((item) => {
+      item.labelY -= shift;
+    });
+  }
+
+  for (let index = items.length - 2; index >= 0; index -= 1) {
+    const current = items[index];
+    const next = items[index + 1];
+    const maxCurrentY = next.labelY - current.height - gap;
+    current.labelY = Math.min(current.labelY, maxCurrentY);
+  }
+
+  if (items.length && items[0].labelY < minY) {
+    const shift = minY - items[0].labelY;
+    items.forEach((item) => {
+      item.labelY += shift;
+    });
+  }
+};
+
+const renderEndLabels = () => {
+  const chart = chartInstance.value;
+  if (!chart || chart.isResizing) return;
+
+  destroyEndLabels();
+  if (!endLabelsReady.value) return;
+
+  const labelX = chart.plotLeft + chart.plotWidth + 48;
+  const minY = chart.plotTop + 8;
+  const maxY = chart.plotTop + chart.plotHeight - 8;
+  const group = chart.renderer.g('battle-end-labels').attr({ zIndex: 7 }).add();
+  endLabelsGroup.value = group;
+
+  const items = chart.series
+    .filter((series) => series.visible)
+    .map((series) => {
+      const point = getLatestRenderedPoint(series);
+      if (!point) return null;
+
+      const color = series.color;
+      const label = chart.renderer
+        .label(series.name, labelX, minY, null, null, null, false)
+        .css({
+          color,
+          fontSize: '15px',
+          fontFamily: `'source-han-serif-sc', serif`,
+          fontWeight: 'bold',
+          textOutline: 'none'
+        })
+        .attr({
+          padding: 0
+        })
+        .add(group);
+      const bbox = label.getBBox();
+
+      return {
+        color,
+        pointX: chart.plotLeft + point.plotX,
+        pointY: chart.plotTop + point.plotY,
+        height: Math.max(bbox.height, 18),
+        label
+      };
+    })
+    .filter(Boolean);
+
+  if (!items.length) return;
+
+  distributeLabelY(items, minY, maxY);
+
+  items.forEach((item) => {
+    const labelCenterY = item.labelY + item.height / 2;
+    const connectorEndX = labelX - 12;
+    const connectorStartX = item.pointX + 10;
+
+    chart.renderer
+      .path([
+        ['M', connectorStartX, item.pointY],
+        ['L', connectorEndX, labelCenterY]
+      ])
+      .attr({
+        stroke: item.color,
+        'stroke-width': 1.25,
+        opacity: 0.75,
+        fill: 'none'
+      })
+      .add(group);
+
+    chart.renderer
+      .circle(item.pointX, item.pointY, 3.5)
+      .attr({
+        fill: item.color,
+        stroke: item.color,
+        'stroke-width': 1,
+        opacity: 0.9
+      })
+      .add(group);
+
+    item.label.attr({
+      x: labelX,
+      y: item.labelY
+    });
+  });
 };
 
 const updateData = () => {
@@ -63,6 +240,7 @@ const updateData = () => {
       const nameB = b?.name || '';
       return nameA.localeCompare(nameB, 'zh-Hans-CN');
     });
+    resetEndLabelAnimationGate(sortedHistoryData);
 
     // Add or update series
     sortedHistoryData.forEach((seriesData, index) => {
@@ -86,36 +264,9 @@ const updateData = () => {
         }
       ];
 
-      // Prepare data with the last point having a dataLabel if showLabels is true
-      let formattedData = [...scoreHistory];
-
-      // Always format all points as basic data points first
-      formattedData = formattedData.map((point) => [point[0], point[1]]);
-
-      // Then add data label to the last point only if showLabels is true
-      if (props.showLabels && formattedData.length > 0) {
-        const lastIndex = formattedData.length - 1;
-        formattedData[lastIndex] = {
-          x: formattedData[lastIndex][0],
-          y: formattedData[lastIndex][1],
-          dataLabels: {
-            enabled: true,
-            format: `${legendName}: {y:.2f}`,
-            allowOverlap: true,
-            align: 'left',
-            verticalAlign: 'bottom',
-            // backgroundColor: 'rgba(0, 0,0 , 0.5)',
-            // overflow: 'allow',
-            // crop: false,
-            style: {
-              fontSize: '15px',
-              color: seriesColor,
-              textOutline: false,
-              fontFamily: `'source-han-serif-sc', serif`
-            }
-          }
-        };
-      }
+      const formattedData = Array.isArray(scoreHistory)
+        ? scoreHistory.map((point) => [point[0], point[1]])
+        : [];
 
       if (currentSeries[String(bgmId)]) {
         // Update existing series
@@ -160,10 +311,14 @@ const initializeChart = () => {
     const chart = Highcharts.chart(chartContainer.value, {
       // Chart configuration options
       chart: {
+        spacingRight: 400,
         zoomType: 'xy',
         events: {
           load: function () {
             chartInstance.value = this;
+          },
+          render: function () {
+            renderEndLabels();
           }
         }
       },
@@ -187,6 +342,9 @@ const initializeChart = () => {
             }
           },
           events: {
+            afterAnimate: function () {
+              markEndLabelSeriesAnimated(this);
+            },
             legendItemClick: function (e) {
               const { browserEvent } = e;
               if (
@@ -214,6 +372,7 @@ const initializeChart = () => {
       ],
       xAxis: {
         type: 'datetime',
+        maxPadding: 0,
         tickPixelInterval: 120,
         dateTimeLabelFormats: {
           millisecond: '%m-%d',
@@ -253,6 +412,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (chartInstance.value) {
+    clearEndLabelsFallbackTimer();
+    destroyEndLabels();
     chartInstance.value.destroy();
     chartInstance.value = null;
   }
@@ -265,14 +426,6 @@ watch(
     updateData();
   },
   { deep: true }
-);
-
-// Update the watcher for the showLabels prop
-watch(
-  () => props.showLabels,
-  () => {
-    updateData();
-  }
 );
 
 watch(

@@ -5,7 +5,7 @@ import BattleChart from '@/components/charts/BattleChart.vue';
 import BattleBarChart from '@/components/charts/BattleBarChart.vue';
 import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import { useRoute, useRouter } from 'vue-router';
-import { onMounted, watch, computed, ref, onUnmounted } from 'vue';
+import { onMounted, watch, computed } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 import texts from '@/constants/texts';
 
@@ -13,7 +13,6 @@ const store = useSeasonStore();
 const route = useRoute();
 const router = useRouter();
 const { historyData, balanceData, subjectsData, analysis } = storeToRefs(store);
-const showLabels = ref(false); // Set to false by default
 const splitNearMiddleByStop = (text) => {
   const content = text.trim();
   if (!content) return { first: '', second: '' };
@@ -125,22 +124,8 @@ const availableSeasons = computed(() => {
   return [];
 });
 
-// Toggle labels when Alt key is pressed
-const handleKeyDown = (e) => {
-  if (e.key === 'Alt') {
-    e.preventDefault(); // Prevent default Alt behavior
-    showLabels.value = !showLabels.value; // Toggle the value
-  }
-};
-
-// Add and remove event listeners
 onMounted(() => {
-  window.addEventListener('keydown', handleKeyDown);
   fetchSeason();
-});
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeyDown);
 });
 
 // Function to fetch season subjects with optional year and month
@@ -224,7 +209,7 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-score-comparison" class="flex flex-col gap-4">
-      <h2 class="text-2xl font-bold">{{ texts._top10ScoreComparison }}</h2>
+      <h2 class="text-3xl font-bold">{{ texts._top10ScoreComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
 
       <div
@@ -248,7 +233,6 @@ const handleSeasonChange = (event) => {
       <div class="bleed-left-to-container-right sm:aspect-[16/10]">
         <BattleChart
           :historyData="historyData"
-          :showLabels="showLabels"
           :animate-when-in-view="true"
           :use-theme-palette="true"
         />
@@ -256,7 +240,7 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-ranking-comparison" class="flex flex-col gap-4">
-      <h2 class="text-2xl font-bold">{{ texts._top10RankingComparison }}</h2>
+      <h2 class="text-3xl font-bold">{{ texts._top10RankingComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
       <div
         v-if="rankAnalysisParagraphs.length"
@@ -278,7 +262,6 @@ const handleSeasonChange = (event) => {
       <div class="bleed-right-to-container-left sm:aspect-[16/10]">
         <BattleRankChart
           :historyData="historyData"
-          :showLabels="showLabels"
           :animate-when-in-view="true"
           :use-theme-palette="true"
         />
@@ -286,7 +269,7 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-balance-chart" class="flex flex-col gap-4">
-      <h2 class="text-2xl font-bold">{{ texts._balanceChart }}</h2>
+      <h2 class="text-3xl font-bold">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
         v-if="divisiveAnalysisParagraphs.length"
@@ -311,7 +294,7 @@ const handleSeasonChange = (event) => {
     </div>
 
     <div id="season-distribution-chart" class="flex flex-col gap-4">
-      <h2 class="text-2xl font-bold">{{ texts._distributionChart }}</h2>
+      <h2 class="text-3xl font-bold">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
       </p>
