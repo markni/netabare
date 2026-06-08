@@ -88,17 +88,17 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/GuessView.vue')
     },
-    // UI route - only available in development mode
+    {
+      path: '/ui',
+      name: 'ui',
+      // route level code-splitting
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/UIView.vue'),
+      meta: { title: '设计系统 | netaba.re' }
+    },
+    // Debug route - only available in development mode
     ...(import.meta.env.DEV
       ? [
-          {
-            path: '/ui',
-            name: 'ui',
-            // route level code-splitting
-            // which is lazy-loaded when the route is visited.
-            component: () => import('../views/UIView.vue'),
-            meta: { title: 'UI | netaba.re' }
-          },
           {
             path: '/debug',
             name: 'debug',

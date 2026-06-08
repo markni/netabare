@@ -106,13 +106,18 @@ console.log(`
       >
         <div class="mx-auto w-full max-w-6xl px-4 py-24 sm:py-32">
           <div class="flex flex-wrap items-center gap-4 text-sm">
-            <RouterLink to="/">{{ texts._backToHome }}</RouterLink>
+            <RouterLink to="/" active-class="!text-white" exact-active-class="!text-white">{{
+              texts._backToHome
+            }}</RouterLink>
             <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
               texts._feedback
             }}</a>
             <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
               texts._changeLog
             }}</a>
+            <RouterLink to="/ui" active-class="!text-white" exact-active-class="!text-white"
+              >设计系统</RouterLink
+            >
           </div>
         </div>
       </footer>
