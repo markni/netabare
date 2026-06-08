@@ -27,14 +27,15 @@ const chartInstance = shallowRef(null);
 const endLabelsGroup = shallowRef(null);
 const endLabelsReady = ref(false);
 const pendingEndLabelSeriesIds = new Set();
+const endLabelElements = [];
 let endLabelsFallbackTimer = null;
+let resizeObserver = null;
+let resizeEndTimer = null;
 const router = useRouter();
 const themeStore = useThemeStore();
 useChartTheme(chartInstance);
 const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
-const scoreColors = computed(() =>
-  props.useThemePalette && themeStore.isDarkMode ? COLORS10_VIVID : COLORS10
-);
+const scoreColors = computed(() => (props.useThemePalette ? COLORS10_VIVID : COLORS10));
 
 const getLatestScore = (scoreHistory = []) => {
   if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
@@ -43,6 +44,10 @@ const getLatestScore = (scoreHistory = []) => {
 };
 
 const destroyEndLabels = () => {
+  while (endLabelElements.length) {
+    endLabelElements.pop()?.destroy();
+  }
+
   if (endLabelsGroup.value) {
     endLabelsGroup.value.destroy();
     endLabelsGroup.value = null;
@@ -159,7 +164,7 @@ const distributeLabelY = (items, minY, maxY) => {
 
 const renderEndLabels = () => {
   const chart = chartInstance.value;
-  if (!chart || chart.isResizing) return;
+  if (!chart) return;
 
   destroyEndLabels();
   if (!endLabelsReady.value) return;
@@ -191,6 +196,7 @@ const renderEndLabels = () => {
           padding: 0
         })
         .add(group);
+      endLabelElements.push(label);
 
       if (seriesId) {
         label.on('click', () => {
@@ -225,7 +231,7 @@ const renderEndLabels = () => {
     const connectorEndX = labelX - 12;
     const connectorStartX = item.pointX + 10;
 
-    chart.renderer
+    const connector = chart.renderer
       .path([
         ['M', connectorStartX, item.pointY],
         ['L', connectorEndX, labelCenterY]
@@ -237,8 +243,9 @@ const renderEndLabels = () => {
         fill: 'none'
       })
       .add(group);
+    endLabelElements.push(connector);
 
-    chart.renderer
+    const pointMarker = chart.renderer
       .circle(item.pointX, item.pointY, 3.5)
       .attr({
         fill: item.color,
@@ -247,12 +254,27 @@ const renderEndLabels = () => {
         opacity: 0.9
       })
       .add(group);
+    endLabelElements.push(pointMarker);
 
     item.label.attr({
       x: labelX,
       y: item.labelY
     });
   });
+};
+
+const scheduleResizeRender = () => {
+  destroyEndLabels();
+
+  if (resizeEndTimer) {
+    clearTimeout(resizeEndTimer);
+  }
+
+  resizeEndTimer = setTimeout(() => {
+    resizeEndTimer = null;
+    chartInstance.value?.reflow();
+    renderEndLabels();
+  }, 180);
 };
 
 const updateData = () => {
@@ -445,9 +467,24 @@ const initializeChart = () => {
 
 onMounted(() => {
   initializeChart();
+
+  if (chartContainer.value) {
+    resizeObserver = new ResizeObserver(scheduleResizeRender);
+    resizeObserver.observe(chartContainer.value);
+  }
 });
 
 onUnmounted(() => {
+  if (resizeEndTimer) {
+    clearTimeout(resizeEndTimer);
+    resizeEndTimer = null;
+  }
+
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+    resizeObserver = null;
+  }
+
   if (chartInstance.value) {
     clearEndLabelsFallbackTimer();
     destroyEndLabels();
@@ -463,16 +500,6 @@ watch(
     updateData();
   },
   { deep: true }
-);
-
-watch(
-  () => themeStore.isDarkMode,
-  () => {
-    if (props.useThemePalette) {
-      chartInstance.value?.update({ colors: scoreColors.value }, false);
-      updateData();
-    }
-  }
 );
 
 watch(

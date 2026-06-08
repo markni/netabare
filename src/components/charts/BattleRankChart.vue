@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLACK, BLUE, COLORS10, COLORS10_VIVID, IVORY } from '@/constants/colors';
+import { BLACK, BLUE, COLORS10_VIVID, IVORY } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useInViewOnce } from '@/composables/useInViewOnce';
@@ -27,15 +27,16 @@ const chartInstance = shallowRef(null);
 const endLabelsGroup = shallowRef(null);
 const endLabelsReady = ref(false);
 const pendingEndLabelSeriesIds = new Set();
+const endLabelElements = [];
 let endLabelsFallbackTimer = null;
+let resizeObserver = null;
+let resizeEndTimer = null;
 useChartTheme(chartInstance);
 const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateWhenInView });
 
 const router = useRouter();
 const themeStore = useThemeStore();
-const rankColors = computed(() =>
-  props.useThemePalette && !themeStore.isDarkMode ? COLORS10 : COLORS10_VIVID
-);
+const rankColors = computed(() => COLORS10_VIVID);
 
 const getLatestRank = (rankHistory = []) => {
   if (!Array.isArray(rankHistory) || rankHistory.length === 0) return Number.POSITIVE_INFINITY;
@@ -44,6 +45,10 @@ const getLatestRank = (rankHistory = []) => {
 };
 
 const destroyEndLabels = () => {
+  while (endLabelElements.length) {
+    endLabelElements.pop()?.destroy();
+  }
+
   if (endLabelsGroup.value) {
     endLabelsGroup.value.destroy();
     endLabelsGroup.value = null;
@@ -160,7 +165,7 @@ const distributeLabelY = (items, minY, maxY) => {
 
 const renderEndLabels = () => {
   const chart = chartInstance.value;
-  if (!chart || chart.isResizing) return;
+  if (!chart) return;
 
   destroyEndLabels();
   if (!endLabelsReady.value) return;
@@ -192,6 +197,7 @@ const renderEndLabels = () => {
           padding: 0
         })
         .add(group);
+      endLabelElements.push(label);
 
       if (seriesId) {
         label.on('click', () => {
@@ -226,7 +232,7 @@ const renderEndLabels = () => {
     const connectorEndX = labelX - 12;
     const connectorStartX = item.pointX + 10;
 
-    chart.renderer
+    const connector = chart.renderer
       .path([
         ['M', connectorStartX, item.pointY],
         ['L', connectorEndX, labelCenterY]
@@ -238,8 +244,9 @@ const renderEndLabels = () => {
         fill: 'none'
       })
       .add(group);
+    endLabelElements.push(connector);
 
-    chart.renderer
+    const pointMarker = chart.renderer
       .circle(item.pointX, item.pointY, 3.5)
       .attr({
         fill: item.color,
@@ -248,12 +255,27 @@ const renderEndLabels = () => {
         opacity: 0.9
       })
       .add(group);
+    endLabelElements.push(pointMarker);
 
     item.label.attr({
       x: labelX,
       y: item.labelY
     });
   });
+};
+
+const scheduleResizeRender = () => {
+  destroyEndLabels();
+
+  if (resizeEndTimer) {
+    clearTimeout(resizeEndTimer);
+  }
+
+  resizeEndTimer = setTimeout(() => {
+    resizeEndTimer = null;
+    chartInstance.value?.reflow();
+    renderEndLabels();
+  }, 180);
 };
 
 const updateData = () => {
@@ -483,9 +505,24 @@ const initializeChart = () => {
 
 onMounted(() => {
   initializeChart();
+
+  if (chartContainer.value) {
+    resizeObserver = new ResizeObserver(scheduleResizeRender);
+    resizeObserver.observe(chartContainer.value);
+  }
 });
 
 onUnmounted(() => {
+  if (resizeEndTimer) {
+    clearTimeout(resizeEndTimer);
+    resizeEndTimer = null;
+  }
+
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+    resizeObserver = null;
+  }
+
   if (chartInstance.value) {
     clearEndLabelsFallbackTimer();
     destroyEndLabels();
@@ -501,16 +538,6 @@ watch(
     updateData();
   },
   { deep: false }
-);
-
-watch(
-  () => themeStore.isDarkMode,
-  () => {
-    if (props.useThemePalette) {
-      chartInstance.value?.update({ colors: rankColors.value }, false);
-      updateData();
-    }
-  }
 );
 
 watch(
