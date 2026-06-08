@@ -184,7 +184,7 @@ const renderEndLabels = () => {
         .css({
           fontSize: '15px',
           fontFamily: `'source-han-serif-sc', serif`,
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           cursor: 'pointer',
           textOutline: 'none'
         })
