@@ -18,7 +18,7 @@
       <div class="hero-specimen" aria-label="色彩扇面">
         <ColorFan animated />
         <div class="hero-specimen__mark">
-          <span>十色</span>
+          <span>10色</span>
           <span>扇面</span>
         </div>
       </div>
@@ -51,9 +51,20 @@
           </div>
         </div>
 
-        <div class="fan-panel">
-          <ColorFan :colors="fanColors" animated />
-          <p>用于排行榜、分布图、趋势线和高亮状态的综合色带。</p>
+        <div class="signal-panel" aria-label="色彩信号">
+          <div class="signal-panel__number">10</div>
+          <div class="signal-panel__rails">
+            <span
+              v-for="(color, index) in colorSignals"
+              :key="color"
+              :style="{
+                '--signal-color': color,
+                '--signal-top': `${14 + index * 3.4}%`,
+                '--signal-bottom': `${8 + (9 - index) * 2.4}%`
+              }"
+            ></span>
+          </div>
+          <p>同组颜色贯穿线、点、柱和状态，在不同图表密度中保持清晰识别。</p>
         </div>
       </div>
     </section>
@@ -81,7 +92,7 @@
           <p class="type-label">微光</p>
           <GlowTextBlock
             class="type-glow"
-            text="悬停、滚动与夜间模式中，文字可以像屏幕余辉一样慢慢亮起。"
+            text="悬停、滚动与夜间模式中，文字可以像屏幕余辉那样慢慢亮起。"
             glow-rgb="245,178,27"
           />
         </div>
@@ -146,7 +157,7 @@
     <section class="showcase-section">
       <div class="section-heading">
         <p class="section-kicker">图表</p>
-        <h2>让分布、波动与争议一眼可辨</h2>
+        <h2>让分布、波动与争议快速可辨</h2>
       </div>
 
       <div class="chart-board">
@@ -213,35 +224,35 @@ const swatches = [
   { name: '白', role: '留白', color: WHITE }
 ];
 
-const fanColors = COLORS10_VIVID;
+const colorSignals = COLORS10_VIVID;
 
 const metrics = [
-  { label: '均分', value: '8.42', delta: 0.4, title: '三十天内均分变化' },
-  { label: '排名', value: '024', delta: -1.2, title: '三十天内排名变化' },
-  { label: '收藏', value: '一万二千', delta: 8.5, title: '三十天内收藏变化' }
+  { label: '均分', value: '8.42', delta: 0.4, title: '30天内均分变化' },
+  { label: '排名', value: '024', delta: -1.2, title: '30天内排名变化' },
+  { label: '收藏', value: '12000', delta: 8.5, title: '30天内收藏变化' }
 ];
 
 const tags = ['新番', '总榜', '在看', '冷门', '争议'];
 
 const ranking = [
-  { rank: '一', name: '葬送之旅', note: '高分稳定', delta: 0.18, title: '均分变化' },
-  { rank: '二', name: '星间列车', note: '热度上升', delta: 0.31, title: '均分变化' },
-  { rank: '三', name: '午夜电波', note: '讨论分化', delta: -0.12, title: '均分变化' }
+  { rank: '1', name: '葬送之旅', note: '高分稳定', delta: 0.18, title: '均分变化' },
+  { rank: '2', name: '星间列车', note: '热度上升', delta: 0.31, title: '均分变化' },
+  { rank: '3', name: '午夜电波', note: '讨论分化', delta: -0.12, title: '均分变化' }
 ];
 
 const morseMarks = ['.', '-', '.', '.', ' ', '-', '-', '-', ' ', '.', '-'];
 
 const scoreBars = [
-  { score: '一', value: 14, color: '#88cdbd' },
-  { score: '二', value: 18, color: '#75cdd6' },
-  { score: '三', value: 24, color: '#77c9ef' },
-  { score: '四', value: 35, color: '#93c1ff' },
-  { score: '五', value: 48, color: '#beb4ff' },
-  { score: '六', value: 61, color: '#e9a4ee' },
-  { score: '七', value: 78, color: '#ff97ca' },
-  { score: '八', value: 92, color: '#ff989f' },
-  { score: '九', value: 71, color: '#ff9d6e' },
-  { score: '十', value: 44, color: '#e4ae49' }
+  { score: '1', value: 14, color: '#88cdbd' },
+  { score: '2', value: 18, color: '#75cdd6' },
+  { score: '3', value: 24, color: '#77c9ef' },
+  { score: '4', value: 35, color: '#93c1ff' },
+  { score: '5', value: 48, color: '#beb4ff' },
+  { score: '6', value: 61, color: '#e9a4ee' },
+  { score: '7', value: 78, color: '#ff97ca' },
+  { score: '8', value: 92, color: '#ff989f' },
+  { score: '9', value: 71, color: '#ff9d6e' },
+  { score: '10', value: 44, color: '#e4ae49' }
 ];
 
 const trendLines = [
@@ -423,15 +434,89 @@ onMounted(() => {
   font-size: 0.95rem;
 }
 
-.fan-panel {
+.signal-panel {
+  position: relative;
   display: grid;
   min-height: 24rem;
   grid-template-rows: 1fr auto;
   gap: 1rem;
+  overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-foreground) 26%, transparent);
+  background:
+    linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-foreground) 5%, transparent) 1px,
+        transparent 1px
+      )
+      0 0 / 2.2rem 100%,
+    linear-gradient(
+        0deg,
+        color-mix(in srgb, var(--color-foreground) 7%, transparent) 1px,
+        transparent 1px
+      )
+      0 0 / 100% 2.2rem;
 }
 
-.fan-panel p {
+.signal-panel__number {
+  position: absolute;
+  right: 0.8rem;
+  top: -0.25rem;
+  color: color-mix(in srgb, var(--color-foreground) 9%, transparent);
+  font-size: clamp(8rem, 26vw, 20rem);
+  font-weight: 700;
+  line-height: 0.8;
+  pointer-events: none;
+}
+
+.signal-panel__rails {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+  min-height: 17rem;
+}
+
+.signal-panel__rails::before {
+  content: '';
+  position: absolute;
+  inset: 18% 0 auto;
+  height: 1px;
+  background: color-mix(in srgb, var(--color-foreground) 30%, transparent);
+}
+
+.signal-panel__rails span {
+  position: relative;
+  min-width: 0;
+}
+
+.signal-panel__rails span::before,
+.signal-panel__rails span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--signal-color);
+}
+
+.signal-panel__rails span::before {
+  top: var(--signal-top);
+  width: clamp(0.65rem, 1.8vw, 1.1rem);
+  height: clamp(0.65rem, 1.8vw, 1.1rem);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px var(--color-background),
+    0 0 28px color-mix(in srgb, var(--signal-color) 55%, transparent);
+}
+
+.signal-panel__rails span::after {
+  top: calc(var(--signal-top) + 5%);
+  bottom: var(--signal-bottom);
+  width: 0.38rem;
+}
+
+.signal-panel p {
+  position: relative;
   padding: 0 1rem 1rem;
   color: var(--color-muted-foreground);
   line-height: 1.8;
