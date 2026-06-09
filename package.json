@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "license": "license-checker --production --json --out licenses.json --relativeLicensePath && node scripts/licenses.js licenses.json",
+    "outline-text": "python scripts/svg-outline-text.py",
     "postversion": "git push && git push --tags && start https://github.com/markni/netabare/actions",
     "full-license-update": "npm run license && git diff-index --quiet HEAD -- || git commit -am \"chore: update licenses\" && git diff --cached --quiet || (npm version patch)",
     "prepare": "husky"
