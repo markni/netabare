@@ -1,5 +1,5 @@
 <template>
-  <main class="ui-showcase">
+  <main v-if="isUiContentVisible" class="ui-showcase">
     <section class="hero-grid">
       <div class="hero-copy">
         <p class="section-kicker">界面谱系</p>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="hero-specimen" aria-label="色彩扇面">
-        <ColorFan animated />
+        <ColorFan :animated="isUiAnimationEnabled" />
         <div class="hero-specimen__mark">
           <span>10色</span>
           <span>扇面</span>
@@ -144,12 +144,19 @@
         <div class="component-panel overlay-panel">
           <div class="panel-head">
             <span>读取状态</span>
-            <strong>短暂停留</strong>
+            <strong>秋色展开</strong>
           </div>
-          <div class="morse-preview" aria-label="读取中">
-            <span v-for="(mark, index) in morseMarks" :key="`${mark}-${index}`">{{ mark }}</span>
+          <div class="fall-preview" aria-label="秋季读取动画预览">
+            <span
+              v-for="(color, index) in COLORS10_VIVID"
+              :key="`fall-preview-${color}`"
+              :style="{
+                '--preview-color': color,
+                '--preview-offset': `${index % 2 === 0 ? 18 : 46}%`
+              }"
+            ></span>
           </div>
-          <p>加载界面保持安静，只给出必要的等待信号。</p>
+          <p>加载时落色循环，结束时色幕收起，把后面的界面露出来。</p>
         </div>
       </div>
     </section>
@@ -201,18 +208,30 @@
       </div>
     </section>
   </main>
+
+  <FallPageLoading
+    v-if="showFallLoader"
+    :loading="isFallLoaderLoading"
+    @after-exit="handleFallLoaderExit"
+  />
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import DeltaDisplay from '@/components/DeltaDisplay.vue';
 import EclipseToggle from '@/components/ui/EclipseToggle.vue';
+import FallPageLoading from '@/components/FallPageLoading.vue';
 import GlowTextBlock from '@/components/GlowTextBlock.vue';
 import ColorFan from '@/components/ui/ColorFan.vue';
 import { BLUE, COLORS10_VIVID, GOLD, IVORY, PINK, RED, TEAL, WHITE } from '@/constants/colors';
 import { useThemeStore } from '@/stores/theme';
 
 const themeStore = useThemeStore();
+const showFallLoader = ref(true);
+const isFallLoaderLoading = ref(true);
+const isUiContentVisible = ref(false);
+const isUiAnimationEnabled = ref(false);
+let fallLoaderTimer = null;
 
 const swatches = [
   { name: '赤', role: '争议', color: RED },
@@ -239,8 +258,6 @@ const ranking = [
   { rank: '2', name: '星间列车', note: '热度上升', delta: 0.31, title: '均分变化' },
   { rank: '3', name: '午夜电波', note: '讨论分化', delta: -0.12, title: '均分变化' }
 ];
-
-const morseMarks = ['.', '-', '.', '.', ' ', '-', '-', '-', ' ', '.', '-'];
 
 const scoreBars = [
   { score: '1', value: 14, color: '#88cdbd' },
@@ -276,8 +293,23 @@ const trendLegend = [
   { name: '争议', color: GOLD }
 ];
 
+const handleFallLoaderExit = () => {
+  showFallLoader.value = false;
+  isUiAnimationEnabled.value = true;
+};
+
 onMounted(() => {
   themeStore.initTheme();
+  fallLoaderTimer = window.setTimeout(() => {
+    isUiContentVisible.value = true;
+    isFallLoaderLoading.value = false;
+  }, 5000);
+});
+
+onUnmounted(() => {
+  if (fallLoaderTimer !== null) {
+    window.clearTimeout(fallLoaderTimer);
+  }
 });
 </script>
 
@@ -681,26 +713,41 @@ onMounted(() => {
   color: var(--color-muted-foreground);
 }
 
-.morse-preview {
-  display: flex;
+.fall-preview {
+  position: relative;
   min-height: 7rem;
-  align-items: center;
-  gap: 0.28rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: clamp(2rem, 8vw, 5rem);
-  line-height: 1;
+  overflow: hidden;
+  border-block: 1px solid color-mix(in srgb, var(--color-foreground) 18%, transparent);
+  background:
+    linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-foreground) 7%, transparent) 1px,
+        transparent 1px
+      )
+      0 0 / 1.7rem 100%,
+    color-mix(in srgb, var(--color-background) 88%, var(--color-foreground) 12%);
 }
 
-.morse-preview span {
-  animation: pulse-mark 2.6s infinite;
+.fall-preview span {
+  position: absolute;
+  top: -1rem;
+  left: calc(5% + var(--preview-offset));
+  width: 1rem;
+  height: 1.55rem;
+  border-radius: 80% 12% 72% 16%;
+  background: var(--preview-color);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.14);
+  transform: translateY(calc((var(--preview-offset) * 1.5))) rotate(22deg);
 }
 
-.morse-preview span:nth-child(2n) {
-  animation-delay: 180ms;
+.fall-preview span:nth-child(3n) {
+  border-radius: 12% 80% 18% 72%;
+  transform: translateY(calc((var(--preview-offset) * 1.1))) rotate(-28deg);
 }
 
-.morse-preview span:nth-child(3n) {
-  animation-delay: 360ms;
+.fall-preview span:nth-child(4n) {
+  width: 1.45rem;
+  height: 2rem;
 }
 
 .overlay-panel p {
@@ -789,20 +836,6 @@ onMounted(() => {
   display: inline-block;
 }
 
-@keyframes pulse-mark {
-  0%,
-  25% {
-    opacity: 1;
-    transform: translateY(-0.08em);
-  }
-
-  30%,
-  100% {
-    opacity: 0.28;
-    transform: translateY(0);
-  }
-}
-
 @container (min-width: 760px) {
   .hero-grid {
     grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.75fr);
@@ -848,7 +881,6 @@ onMounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .morse-preview span,
   .score-bar span,
   .state-button {
     animation: none;

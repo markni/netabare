@@ -70,15 +70,3 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
-
-.wf-loading #main {
-  visibility: hidden;
-}
-
-#loading {
-  visibility: hidden;
-}
-
-.wf-loading #loading {
-  visibility: visible;
-}
