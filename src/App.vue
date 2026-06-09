@@ -22,14 +22,34 @@ const isAppContentVisible = ref(isUiRoute.value);
 
 useScrollToAnchor();
 
+const waitForAdobeFonts = () => {
+  const root = document.documentElement;
+
+  if (root.classList.contains('wf-active') || root.classList.contains('wf-inactive')) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const observer = new MutationObserver(() => {
+      if (root.classList.contains('wf-active') || root.classList.contains('wf-inactive')) {
+        observer.disconnect();
+        resolve();
+      }
+    });
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+};
+
 onMounted(() => {
   themeStore.initTheme();
 
   if (isUiRoute.value) return;
 
-  const fontsReady = document.fonts?.ready || Promise.resolve();
-
-  fontsReady.finally(() => {
+  waitForAdobeFonts().finally(() => {
     isAppContentVisible.value = true;
     isFallLoaderLoading.value = false;
   });
