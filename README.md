@@ -14,6 +14,31 @@ Build with highcharts, Netabare has ton of beautiful crafted, fully animated cha
 ![season](media/season.gif)
 ![user](media/user.gif)
 
+## Dev Helpers
+
+### SVG text outlines
+
+Use the local outline helper when loading-screen or logo text needs to render as SVG geometry instead of live font text.
+
+Install the Python helper dependency locally once:
+
+```sh
+python -m pip install fonttools
+```
+
+Generate Vue-ready glyph data:
+
+```sh
+npm run outline-text -- "载入秋色" \
+  --font "$LOCALAPPDATA/Microsoft/Windows/Fonts/SourceHanSerif.ttc" \
+  --face-name "Source Han Serif SC" \
+  --bold \
+  --font-size 120 \
+  --format vue
+```
+
+Do not commit installed Python packages or generated cache folders.
+
 ## License
 
 MIT

@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "license": "license-checker --production --json --out licenses.json --relativeLicensePath && node scripts/licenses.js licenses.json",
+    "outline-text": "python scripts/svg-outline-text.py",
     "postversion": "git push && git push --tags && start https://github.com/markni/netabare/actions",
     "full-license-update": "npm run license && git diff-index --quiet HEAD -- || git commit -am \"chore: update licenses\" && git diff --cached --quiet || (npm version patch)",
     "prepare": "husky"
@@ -19,6 +20,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
+    "gsap": "^3.15.0",
     "highcharts": "12.6.0",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
@@ -43,7 +45,7 @@
     "vite": "^6.2.2"
   },
   "engines": {
-    "node": "20.19.3"
+    "node": "24.14.1"
   },
   "lint-staged": {
     "*.{vue,js,jsx,cjs,mjs}": "eslint --fix --ignore-path .gitignore",

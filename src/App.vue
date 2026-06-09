@@ -3,24 +3,61 @@ import { RouterLink, RouterView, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
+import FallPageLoading from '@/components/FallPageLoading.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
-import { onMounted, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { DARK_GRAY, IVORY } from './constants/colors';
 import useScrollToAnchor from '@/composables/useScrollToAnchor';
-import MorseCodeLoading from '@/components/MorseCodeLoading.vue';
 
 const store = useAppStore();
 const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = storeToRefs(store);
 const themeStore = useThemeStore();
 const route = useRoute();
+const isUiRoute = computed(() => route.path === '/ui');
+const showFallLoader = ref(!isUiRoute.value);
+const isFallLoaderLoading = ref(!isUiRoute.value);
+const isAppContentVisible = ref(isUiRoute.value);
 
 useScrollToAnchor();
 
+const waitForAdobeFonts = () => {
+  const root = document.documentElement;
+
+  if (root.classList.contains('wf-active') || root.classList.contains('wf-inactive')) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const observer = new MutationObserver(() => {
+      if (root.classList.contains('wf-active') || root.classList.contains('wf-inactive')) {
+        observer.disconnect();
+        resolve();
+      }
+    });
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+};
+
 onMounted(() => {
   themeStore.initTheme();
+
+  if (isUiRoute.value) return;
+
+  waitForAdobeFonts().finally(() => {
+    isAppContentVisible.value = true;
+    isFallLoaderLoading.value = false;
+  });
 });
+
+const handleFallLoaderExit = () => {
+  showFallLoader.value = false;
+};
 
 watch(
   () => themeStore.isDarkMode,
@@ -84,6 +121,7 @@ console.log(`
     />
 
     <div
+      v-if="isAppContentVisible || isUiRoute"
       id="main"
       class="flex min-h-screen flex-col bg-background font-serif text-black transition-[background-color] duration-300 dark:text-white"
     >
@@ -123,11 +161,15 @@ console.log(`
       </footer>
     </div>
 
-    <MorseCodeLoading />
-
     <div class="pointer-events-none fixed right-0 bottom-0 opacity-0">
       {{ texts._allTextCombined }}
     </div>
+
+    <FallPageLoading
+      v-if="showFallLoader && !isUiRoute"
+      :loading="isFallLoaderLoading"
+      @after-exit="handleFallLoaderExit"
+    />
   </div>
 </template>
 
