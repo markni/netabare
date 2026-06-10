@@ -115,11 +115,10 @@ console.log(`
     />
     <FullscreenOverlay
       v-if="longPolling"
-      color="bg-gold"
+      color="bg-green"
       :text="texts._loading"
       annotation="loading"
     />
-
     <div
       v-if="isAppContentVisible || isUiRoute"
       id="main"
