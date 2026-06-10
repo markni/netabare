@@ -57,8 +57,9 @@ Highcharts.setOptions({
           opacity: 1
         }
       },
-      animation: true, // Enable initial animation for all series
-      duration: 5000 // Set the initial animation duration to 1 second
+      animation: {
+        duration: 650
+      }
     },
     line: {
       lineWidth: 5

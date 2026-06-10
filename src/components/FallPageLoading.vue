@@ -101,9 +101,9 @@ let curtainTimeline = null;
 let hasExited = false;
 
 const leaves = computed(() =>
-  Array.from({ length: 44 }, (_, index) => {
+  Array.from({ length: 32 }, (_, index) => {
     const color = colors[index % colors.length];
-    const row = Math.floor(index / 11);
+    const row = Math.floor(index / 8);
 
     return {
       id: index,
@@ -131,7 +131,8 @@ const createMotion = () => {
       xPercent: 0,
       yPercent: -120,
       rotate: (index) => leaves[index].style.getPropertyValue('--leaf-tilt'),
-      transformOrigin: '50% 50%'
+      transformOrigin: '50% 50%',
+      force3D: true
     });
 
     if (reduceMotion.matches) {
@@ -167,27 +168,25 @@ const createMotion = () => {
       ease: 'sine.inOut'
     });
 
-    leafTimeline = gsap.timeline({ repeat: -1 });
-    leaves.forEach((leaf, index) => {
-      leafTimeline.fromTo(
-        leaf,
-        {
-          x: 0,
-          y: '-12vh',
-          rotate: -50 + ((index * 29) % 100),
-          opacity: 0
-        },
-        {
-          x: 0,
-          y: '112vh',
-          rotate: `+=${190 + ((index * 23) % 260)}`,
-          opacity: 1,
-          duration: 4.8 + (index % 9) * 0.24,
-          ease: 'none'
-        },
-        index * 0.105
-      );
-    });
+    leafTimeline = gsap.timeline({ repeat: -1 }).fromTo(
+      leaves,
+      {
+        x: 0,
+        y: '-12vh',
+        rotate: (index) => -50 + ((index * 29) % 100),
+        opacity: 0
+      },
+      {
+        x: 0,
+        y: '112vh',
+        rotate: (index) => `+=${190 + ((index * 23) % 260)}`,
+        opacity: 1,
+        duration: (index) => 4.8 + (index % 9) * 0.24,
+        ease: 'none',
+        force3D: true,
+        stagger: 0.105
+      }
+    );
   }, rootRef.value);
 };
 
@@ -350,10 +349,10 @@ onUnmounted(() => {
   border-radius: var(--leaf-radius);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 42%), var(--loader-color);
-  box-shadow:
-    0 18px 32px rgba(0, 0, 0, 0.16),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.18);
   opacity: 0;
+  backface-visibility: hidden;
+  contain: layout paint;
   will-change: transform, opacity;
 }
 

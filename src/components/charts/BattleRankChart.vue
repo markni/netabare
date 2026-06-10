@@ -422,12 +422,7 @@ const initializeChart = () => {
           }
         },
         series: {
-          animation:
-            props.animateWhenInView && !isInViewOnce.value
-              ? false
-              : {
-                  duration: 1000
-                },
+          ...(props.animateWhenInView && !isInViewOnce.value ? { animation: false } : {}),
           states: {
             inactive: {
               opacity: 0.5

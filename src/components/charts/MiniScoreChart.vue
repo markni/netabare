@@ -52,8 +52,7 @@ const initializeChart = () => {
         },
         series: {
           animation: {
-            defer: 500,
-            duration: 1000
+            defer: 500
           }
         }
       },

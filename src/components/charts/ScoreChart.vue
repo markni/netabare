@@ -109,8 +109,7 @@ const initializeChart = () => {
         series: {
           turboThreshold: 365 * 10,
           animation: {
-            defer: 500,
-            duration: 1000
+            defer: 500
           }
         }
       },

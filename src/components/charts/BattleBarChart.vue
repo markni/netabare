@@ -72,12 +72,7 @@ const initializeChart = () => {
         series: {
           stacking: 'normal',
           borderWidth: 0,
-          animation:
-            props.animateWhenInView && !isInViewOnce.value
-              ? false
-              : {
-                  duration: 1000
-                },
+          ...(props.animateWhenInView && !isInViewOnce.value ? { animation: false } : {}),
           pointWidth: 20 // Add this line to set a fixed width for bars
           // or use pointPadding: 0.1, // to set the padding between bars
         }

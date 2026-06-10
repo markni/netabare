@@ -91,12 +91,7 @@ const initializeChart = () => {
       plotOptions: {
         bubble: {
           // Changed from scatter to bubble
-          animation:
-            props.animateWhenInView && !isInViewOnce.value
-              ? false
-              : {
-                  duration: 900
-                },
+          ...(props.animateWhenInView && !isInViewOnce.value ? { animation: false } : {}),
           minSize: 3,
           maxSize: 25,
           zMin: 0,
