@@ -1,6 +1,9 @@
 <template>
   <div class="min-h-[calc(100dvh-8.75rem)]">
-    <div v-if="user && id" class="grid grid-cols-12 gap-4">
+    <div
+      v-if="user && activeUserId"
+      class="relative left-1/2 grid w-dvw -translate-x-1/2 grid-cols-12 gap-4 overflow-hidden"
+    >
       <div class="order-last col-span-12 sm:order-first sm:col-span-10">
         <div class="pt-14">
           <div class="h-[calc(100dvh-12.25rem)] min-h-80">
@@ -17,7 +20,7 @@
         </YearSlider>
 
         <UserStats :user="currentYearData" />
-        <form @submit="submit" class="mt-auto mb-16 hidden flex-col sm:flex">
+        <form @submit.prevent="submit" class="mt-auto mb-16 hidden flex-col sm:flex">
           <input
             id="username"
             autocomplete="off"
@@ -35,7 +38,7 @@
     </div>
 
     <div v-else class="flex min-h-[calc(100dvh-8.75rem)] flex-col items-center justify-center">
-      <form @submit="submit" class="flex flex-col items-start">
+      <form @submit.prevent="submit" class="flex flex-col items-start">
         <label for="username" class="text-xl">{{ texts._enterTargetUsername }}</label>
 
         <input
@@ -79,6 +82,7 @@ const { globalData, user, username, availableYears, userProfile } = storeToRefs(
 
 const bgmUserId = ref('');
 const selectedYear = ref(null);
+const activeUserId = ref('');
 
 // Watch for user data changes to update title
 watch(
@@ -100,25 +104,31 @@ const currentYearData = computed(() => {
   };
 });
 
-const submit = (event) => {
-  event.preventDefault();
-  router.replace(`/user/${bgmUserId.value}`);
-  // Add your submission logic here
+const submit = () => {
+  const nextUserId = bgmUserId.value.trim();
+
+  if (!nextUserId) return;
+
+  router.replace({ name: 'user', params: { id: nextUserId } });
 };
 
 const syncUserRoute = (id) => {
   if (id) {
-    store.fetchUser(id);
+    activeUserId.value = id;
     bgmUserId.value = id;
+    store.clearUser();
+    store.fetchUser(id);
     return;
   }
 
+  activeUserId.value = '';
+
   if (username.value) {
-    router.replace(`/user/${username.value}`);
+    router.replace({ name: 'user', params: { id: username.value } });
+  } else {
+    store.clearUser();
   }
 };
-
-syncUserRoute(props.id);
 
 // Modify the availableYears watcher
 watch(
@@ -139,6 +149,7 @@ watch(
   () => props.id,
   (newId) => {
     syncUserRoute(newId);
-  }
+  },
+  { immediate: true }
 );
 </script>

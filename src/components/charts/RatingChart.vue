@@ -5,7 +5,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { COLORS10 } from '@/constants/colors';
+import { COLORS10_VIVID_SORTED } from '@/constants/colors';
 
 const props = defineProps({
   ratingData: {
@@ -58,6 +58,7 @@ const initializeChart = () => {
       plotOptions: {
         bar: {
           colorByPoint: true,
+          borderWidth: 0,
           pointPadding: 0,
           dataLabels: {
             enabled: false
@@ -83,7 +84,7 @@ const initializeChart = () => {
           name: '评分',
           color: 'red',
           data: chartData.value,
-          colors: COLORS10,
+          colors: COLORS10_VIVID_SORTED,
           maxPointWidth: 70,
           events: {
             legendItemClick: function () {
@@ -92,7 +93,7 @@ const initializeChart = () => {
           }
         }
       ],
-      colors: COLORS10
+      colors: COLORS10_VIVID_SORTED
     });
   }
 };
