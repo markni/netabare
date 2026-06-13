@@ -32,7 +32,7 @@
       >
         <div class="relative">{{ texts._graph }} {{ qIndex + 1 }}</div>
         <div class="aspect-[6/3]">
-          <MiniBarChart :rating-data="guessStore.getRatingChartData(qIndex)" />
+          <MiniBarChart :rating-data="ratingChartData[qIndex]" />
         </div>
         <component
           :is="guessStore.score !== null && getAnswerSubjectPath(answer) ? 'a' : 'button'"
@@ -101,6 +101,17 @@ const isComplete = computed(() => {
     guessStore.answers.length === guessStore.questions.length &&
     !guessStore.answers.includes(undefined)
   );
+});
+
+const ratingChartData = computed(() => {
+  return guessStore.questions.map((question) => {
+    if (!question.rating) return [];
+
+    return Object.entries(question.rating.count).map(([rating, percentage]) => ({
+      name: rating,
+      y: percentage
+    }));
+  });
 });
 
 // Methods
