@@ -34,16 +34,26 @@
         <div class="aspect-[6/3]">
           <MiniBarChart :rating-data="guessStore.getRatingChartData(qIndex)" />
         </div>
-        <div
-          v-for="(answer, aIndex) in question.answers"
+        <component
+          :is="guessStore.score !== null && getAnswerSubjectPath(answer) ? 'a' : 'button'"
+          v-for="(answer, aIndex) in getQuestionChoices(question)"
           :key="aIndex"
+          :href="guessStore.score !== null ? getAnswerSubjectPath(answer) : undefined"
+          :target="guessStore.score !== null && getAnswerSubjectPath(answer) ? '_blank' : undefined"
+          :rel="
+            guessStore.score !== null && getAnswerSubjectPath(answer)
+              ? 'noopener noreferrer'
+              : undefined
+          "
+          :type="guessStore.score === null ? 'button' : undefined"
           @click="selectAnswer(qIndex, aIndex)"
           :class="[
-            'relative cursor-pointer rounded-lg border-2 p-3 transition-all duration-200 hover:border-blue',
+            'relative w-full rounded-lg border-2 p-3 text-left transition-all duration-200',
+            guessStore.score === null ? 'cursor-pointer hover:border-blue' : 'cursor-alias',
             guessStore.answers[qIndex] === aIndex ? 'border-blue' : 'border-gray-200'
           ]"
         >
-          {{ String.fromCharCode(65 + aIndex) }}. {{ answer }}
+          {{ String.fromCharCode(65 + aIndex) }}. {{ getAnswerName(answer) }}
 
           <div
             v-if="guessStore.answers[qIndex] === aIndex && guessStore.score !== null"
@@ -56,7 +66,7 @@
           >
             {{ guessStore.results[qIndex] ? 'o' : '✔' }}
           </div>
-        </div>
+        </component>
       </div>
     </div>
 
@@ -95,7 +105,21 @@ const isComplete = computed(() => {
 
 // Methods
 const selectAnswer = (questionIndex, answerIndex) => {
+  if (guessStore.score !== null) return;
+
   guessStore.setAnswer(questionIndex, answerIndex);
+};
+
+const getAnswerName = (answer) => {
+  return typeof answer === 'string' ? answer : answer.name;
+};
+
+const getAnswerSubjectPath = (answer) => {
+  return typeof answer === 'string' || !answer.bgmId ? null : `/subject/${answer.bgmId}`;
+};
+
+const getQuestionChoices = (question) => {
+  return question.choices || question.answers || [];
 };
 
 const submitAnswers = async () => {

@@ -152,6 +152,9 @@ console.log(`
             <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
               texts._changeLog
             }}</a>
+            <RouterLink to="/quiz" active-class="!text-white" exact-active-class="!text-white">{{
+              texts._scoreChartRecognition
+            }}</RouterLink>
             <RouterLink to="/ui" active-class="!text-white" exact-active-class="!text-white"
               >设计系统</RouterLink
             >

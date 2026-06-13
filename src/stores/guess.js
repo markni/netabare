@@ -37,6 +37,8 @@ export const useGuessStore = defineStore('guess', {
     },
 
     setAnswer(questionIndex, answerIndex) {
+      if (this.score !== null) return;
+
       if (questionIndex >= 0 && questionIndex < this.questions.length) {
         this.answers[questionIndex] = answerIndex;
       }
