@@ -37,9 +37,9 @@ export const fetchHistory = () => {
 };
 
 export const fetchGuess = () => {
-  return axios.get(`${api_root}/guess`);
+  return axios.get(`${api_root}/guest`);
 };
 
 export const submitGuess = (key, answers) => {
-  return axios.post(`${api_root}/guess/answer`, { key, answers });
+  return axios.post(`${api_root}/guest/answer`, { key, answers });
 };
