@@ -172,10 +172,13 @@ const handleSeasonChange = (event) => {
 
 <template>
   <div class="@container mt-14 flex flex-col gap-[7.5rem]">
-    <div id="season-header" class="mb-10 flex flex-col gap-2">
+    <div
+      id="season-header"
+      class="mx-auto flex min-h-[calc(100dvh-8.75rem)] w-fit flex-col justify-center gap-2"
+    >
       <div>
         <select
-          class="mr-2 cursor-pointer appearance-none bg-gold text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 cursor-pointer appearance-none bg-gold text-4xl font-bold sm:text-6xl"
           :value="route.params.year || new Date().getFullYear()"
           @change="handleYearChange"
           aria-label="选择年份"
@@ -187,7 +190,7 @@ const handleSeasonChange = (event) => {
       </div>
       <div class="flex items-baseline">
         <select
-          class="mr-2 cursor-pointer appearance-none bg-transparent text-4xl sm:text-6xl sm:font-bold"
+          class="mr-2 cursor-pointer appearance-none bg-transparent text-4xl sm:text-6xl"
           :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
           @change="handleSeasonChange"
           aria-label="选择季度"
@@ -201,12 +204,14 @@ const handleSeasonChange = (event) => {
             {{ season.name }}
           </option>
         </select>
-        <span class="mr-2 text-4xl sm:text-6xl sm:font-bold">·</span>
+        <span class="mr-2 text-4xl sm:text-6xl">·</span>
         <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
       </div>
 
       <h2 class="mt-4 text-xl text-gray-400">该季度最热门的作品对比</h2>
     </div>
+
+    <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
     <div id="season-score-comparison" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
       <h2 class="text-4xl">{{ texts._top10ScoreComparison }}</h2>
