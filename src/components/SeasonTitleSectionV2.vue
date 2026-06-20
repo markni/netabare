@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import CalendarPage from '@/components/CalendarPage.vue';
 import texts from '@/constants/texts';
 
 const props = defineProps({
@@ -37,7 +38,7 @@ const monthGlyphs = {
   10: '/season-title-glyphs/autumn.svg'
 };
 
-const seasonCycle = [1, 4, 7, 10];
+const seasonCycle = [4, 7, 10, 1];
 
 const nextSeason = computed(() => {
   const currentIndex = seasonCycle.indexOf(props.selectedMonth);
@@ -46,75 +47,62 @@ const nextSeason = computed(() => {
 
   return seasonCycle[(currentIndex + 1) % seasonCycle.length];
 });
+
+const nextSeasonYear = computed(() => {
+  const currentIndex = seasonCycle.indexOf(props.selectedMonth);
+  if (currentIndex === -1) return props.selectedYear;
+
+  const year = Number(props.selectedYear);
+  if (!Number.isFinite(year)) return props.selectedYear;
+
+  return currentIndex === seasonCycle.length - 1 ? year + 1 : year;
+});
+
+const glyphMaskStyle = (glyph) => ({
+  maskImage: `url(${glyph})`,
+  maskRepeat: 'no-repeat',
+  maskPosition: 'center',
+  maskSize: 'contain',
+  WebkitMaskImage: `url(${glyph})`,
+  WebkitMaskRepeat: 'no-repeat',
+  WebkitMaskPosition: 'center',
+  WebkitMaskSize: 'contain'
+});
 </script>
 
 <template>
   <div
     id="season-header"
-    class="flex min-h-[calc(100dvh-13rem)] w-full flex-col items-center justify-center gap-2 border border-foreground"
+    class="relative min-h-[calc(100dvh-13rem)] w-full overflow-hidden border border-foreground"
   >
-    <div>
-      <select
-        class="mr-2 cursor-pointer appearance-none bg-gold text-4xl font-bold sm:text-6xl"
-        :value="selectedYear"
-        @change="$emit('year-change', $event)"
-        aria-label="选择年份"
-      >
-        <option v-for="year in years" :key="year" :value="year" class="bg-background">
-          {{ year }}
-        </option>
-      </select>
+    <div
+      class="pointer-events-none absolute inset-0 h-full w-full"
+      aria-hidden="true"
+      data-layer="back"
+    >
+      <CalendarPage
+        v-if="nextSeason"
+        :year="nextSeasonYear"
+        :selected-month="nextSeason"
+        :month-labels="monthLabels"
+        :glyph-class="'bg-red opacity-95'"
+        :glyph-style="glyphMaskStyle(monthGlyphs[nextSeason])"
+      />
     </div>
-    <div class="relative">
-      <div class="relative h-[clamp(12rem,45dvh,40rem)] w-[clamp(12rem,45dvh,40rem)]">
-        <div
-          v-if="nextSeason"
-          class="absolute inset-0 translate-y-8 bg-red bg-center bg-no-repeat opacity-25"
-          :style="{
-            maskImage: `url(${monthGlyphs[nextSeason]})`,
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center',
-            maskSize: 'contain',
-            WebkitMaskImage: `url(${monthGlyphs[nextSeason]})`,
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
-            WebkitMaskSize: 'contain'
-          }"
-          aria-hidden="true"
-        ></div>
-        <div
-          class="absolute inset-0 bg-blue bg-center bg-no-repeat"
-          :style="{
-            maskImage: `url(${monthGlyphs[selectedMonth]})`,
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center',
-            maskSize: 'contain',
-            WebkitMaskImage: `url(${monthGlyphs[selectedMonth]})`,
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
-            WebkitMaskSize: 'contain'
-          }"
-          aria-hidden="true"
-        ></div>
-      </div>
-      <select
-        class="absolute inset-0 cursor-pointer appearance-none bg-transparent text-transparent"
-        :value="selectedMonth"
-        @change="$emit('season-change', $event)"
-        aria-label="选择季度"
-      >
-        <option
-          v-for="season in availableSeasons"
-          :key="season.month"
-          :value="season.month"
-          class="bg-background text-base text-foreground transition-[background-color] duration-300"
-        >
-          {{ monthLabels[season.month] }}
-        </option>
-      </select>
-    </div>
-    <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
 
-    <h2 class="mt-4 text-xl text-gray-400">该季度最热门的作品对比</h2>
+    <div class="absolute inset-0 h-full w-full bg-background opacity-95" data-layer="front">
+      <CalendarPage
+        :year="selectedYear"
+        :years="years"
+        :selected-month="selectedMonth"
+        :available-seasons="availableSeasons"
+        :month-labels="monthLabels"
+        :glyph-class="'bg-blue'"
+        :glyph-style="glyphMaskStyle(monthGlyphs[selectedMonth])"
+        interactive
+        @year-change="$emit('year-change', $event)"
+        @season-change="$emit('season-change', $event)"
+      />
+    </div>
   </div>
 </template>

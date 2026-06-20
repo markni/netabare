@@ -30,6 +30,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
 try:
+    from fontTools.pens.boundsPen import BoundsPen
     from fontTools.varLib.instancer import instantiateVariableFont
     from fontTools.pens.svgPathPen import SVGPathPen
     from fontTools.pens.transformPen import TransformPen
@@ -121,6 +122,10 @@ def load_font(
         raise SystemExit(f"Face index out of range: {face_index}") from error
 
 
+def transformed_glyph_pen(font: TTFont, pen, x: float, baseline: float, scale: float) -> TransformPen:
+    return TransformPen(pen, (scale, 0, 0, -scale, x, baseline))
+
+
 def glyph_outline(font: TTFont, character: str, x: float, baseline: float, scale: float) -> str:
     glyph_set = font.getGlyphSet()
     cmap = font.getBestCmap()
@@ -130,9 +135,42 @@ def glyph_outline(font: TTFont, character: str, x: float, baseline: float, scale
         raise SystemExit(f"Font does not contain character: {character!r}")
 
     pen = SVGPathPen(glyph_set)
-    transform_pen = TransformPen(pen, (scale, 0, 0, -scale, x, baseline))
+    transform_pen = transformed_glyph_pen(font, pen, x, baseline, scale)
     glyph_set[glyph_name].draw(transform_pen)
     return pen.getCommands()
+
+
+def glyph_bounds(
+    font: TTFont,
+    character: str,
+    x: float,
+    baseline: float,
+    scale: float,
+) -> tuple[float, float, float, float] | None:
+    glyph_set = font.getGlyphSet()
+    cmap = font.getBestCmap()
+    glyph_name = cmap.get(ord(character))
+
+    if glyph_name is None:
+        raise SystemExit(f"Font does not contain character: {character!r}")
+
+    pen = BoundsPen(glyph_set)
+    transform_pen = transformed_glyph_pen(font, pen, x, baseline, scale)
+    glyph_set[glyph_name].draw(transform_pen)
+    return pen.bounds
+
+
+def collect_bounds(bounds: list[tuple[float, float, float, float] | None]):
+    visible_bounds = [bound for bound in bounds if bound is not None]
+    if not visible_bounds:
+        return None
+
+    return (
+        min(bound[0] for bound in visible_bounds),
+        min(bound[1] for bound in visible_bounds),
+        max(bound[2] for bound in visible_bounds),
+        max(bound[3] for bound in visible_bounds),
+    )
 
 
 def generate_outlines(args: argparse.Namespace) -> tuple[list[dict[str, str]], float]:
@@ -141,21 +179,52 @@ def generate_outlines(args: argparse.Namespace) -> tuple[list[dict[str, str]], f
     hmtx = font["hmtx"]
     scale = args.size / font["head"].unitsPerEm
     cursor = args.x
-    outlines = []
+    glyphs = []
 
     for index, character in enumerate(args.text):
         glyph_name = cmap.get(ord(character))
         if glyph_name is None:
             raise SystemExit(f"Font does not contain character: {character!r}")
 
-        outlines.append(
+        glyphs.append(
             {
                 "id": f"glyph-{index}",
                 "char": character,
-                "d": glyph_outline(font, character, cursor, args.baseline, scale),
+                "x": cursor,
+                "glyph_name": glyph_name,
             }
         )
         cursor += hmtx[glyph_name][0] * scale + args.gap
+
+    width = cursor
+    offset_x = 0
+    offset_y = 0
+
+    if args.normalize_bounds:
+        bounds = [
+            glyph_bounds(font, glyph["char"], glyph["x"], args.baseline, scale) for glyph in glyphs
+        ]
+        combined_bounds = collect_bounds(bounds)
+
+        if combined_bounds:
+            min_x, min_y, max_x, max_y = combined_bounds
+            offset_x = (width + args.x - (max_x - min_x)) / 2 - min_x
+            offset_y = (args.height - (max_y - min_y)) / 2 - min_y
+
+    outlines = [
+        {
+            "id": glyph["id"],
+            "char": glyph["char"],
+            "d": glyph_outline(
+                font,
+                glyph["char"],
+                glyph["x"] + offset_x,
+                args.baseline + offset_y,
+                scale,
+            ),
+        }
+        for glyph in glyphs
+    ]
 
     return outlines, cursor
 
@@ -203,6 +272,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--baseline", type=float, default=116, help="SVG baseline y position")
     parser.add_argument("--gap", type=float, default=8, help="Extra gap between glyph advances")
     parser.add_argument("--height", type=float, default=140, help="SVG viewBox height for --format svg")
+    parser.add_argument(
+        "--normalize-bounds",
+        action="store_true",
+        help="Center the visible outline bounds inside the SVG viewBox",
+    )
     parser.add_argument("--format", choices=("vue", "svg", "json"), default="vue")
     parser.add_argument(
         "--colors",

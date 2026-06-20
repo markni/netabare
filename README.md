@@ -46,6 +46,8 @@ npm run outline-text -- "4" \
   --format svg
 ```
 
+Pass `--normalize-bounds` with `--format svg` when generated glyphs need their visible outlines centered inside the SVG viewBox, such as mask artwork that stacks across states.
+
 Do not commit installed Python packages or generated cache folders.
 
 ## License

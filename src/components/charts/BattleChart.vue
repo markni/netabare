@@ -245,17 +245,6 @@ const renderEndLabels = () => {
       .add(group);
     endLabelElements.push(connector);
 
-    const pointMarker = chart.renderer
-      .circle(item.pointX, item.pointY, 3.5)
-      .attr({
-        fill: item.color,
-        stroke: item.color,
-        'stroke-width': 1,
-        opacity: 0.9
-      })
-      .add(group);
-    endLabelElements.push(pointMarker);
-
     item.label.attr({
       x: labelX,
       y: item.labelY
