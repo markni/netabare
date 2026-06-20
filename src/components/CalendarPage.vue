@@ -67,8 +67,8 @@ const seasonMonths = computed(() =>
       <span v-else class="mr-2 bg-gold text-4xl font-bold sm:text-6xl">{{ year }}</span>
     </div>
 
-    <div class="relative">
-      <div class="relative h-[clamp(12rem,45dvh,40rem)] w-[clamp(12rem,45dvh,40rem)]">
+    <div class="relative flex w-full justify-center">
+      <div class="relative aspect-square w-4/5 max-w-[40rem]">
         <div class="absolute inset-0 h-full w-full" aria-hidden="true">
           <div
             class="h-full w-full bg-center bg-no-repeat"
