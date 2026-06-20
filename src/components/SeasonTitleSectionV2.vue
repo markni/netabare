@@ -24,17 +24,17 @@ const props = defineProps({
 defineEmits(['year-change', 'season-change']);
 
 const monthLabels = {
-  1: texts._springGlyphLabel,
-  4: texts._summerGlyphLabel,
-  7: texts._autumnGlyphLabel,
-  10: texts._winterGlyphLabel
+  1: texts._winterGlyphLabel,
+  4: texts._springGlyphLabel,
+  7: texts._summerGlyphLabel,
+  10: texts._autumnGlyphLabel
 };
 
 const monthGlyphs = {
-  1: '/season-title-glyphs/spring.svg',
-  4: '/season-title-glyphs/summer.svg',
-  7: '/season-title-glyphs/autumn.svg',
-  10: '/season-title-glyphs/winter.svg'
+  1: '/season-title-glyphs/winter.svg',
+  4: '/season-title-glyphs/spring.svg',
+  7: '/season-title-glyphs/summer.svg',
+  10: '/season-title-glyphs/autumn.svg'
 };
 
 const seasonCycle = [1, 4, 7, 10];
