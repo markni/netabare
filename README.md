@@ -32,9 +32,18 @@ Generate Vue-ready glyph data:
 npm run outline-text -- "载入秋色" \
   --font "$LOCALAPPDATA/Microsoft/Windows/Fonts/SourceHanSerif.ttc" \
   --face-name "Source Han Serif SC" \
-  --bold \
+  --weight Bold \
   --font-size 120 \
   --format vue
+```
+
+For variable fonts, pass a numeric `wght` value instead:
+
+```sh
+npm run outline-text -- "4" \
+  --font "./path/to/VariableFont.ttf" \
+  --weight 700 \
+  --format svg
 ```
 
 Do not commit installed Python packages or generated cache folders.

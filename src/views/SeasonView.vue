@@ -7,6 +7,7 @@ import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
+import SeasonTitleSectionV2 from '@/components/SeasonTitleSectionV2.vue';
 import texts from '@/constants/texts';
 
 const store = useSeasonStore();
@@ -124,6 +125,11 @@ const availableSeasons = computed(() => {
   return [];
 });
 
+const selectedYear = computed(() => route.params.year || currentYear);
+const selectedMonth = computed(
+  () => parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)
+);
+
 onMounted(() => {
   fetchSeason();
 });
@@ -172,48 +178,18 @@ const handleSeasonChange = (event) => {
 
 <template>
   <div class="@container mt-14 flex flex-col gap-[7.5rem]">
-    <div
-      id="season-header"
-      class="mx-auto flex min-h-[calc(100dvh-8.75rem)] w-fit flex-col justify-center gap-2"
-    >
-      <div>
-        <select
-          class="mr-2 cursor-pointer appearance-none bg-gold text-4xl font-bold sm:text-6xl"
-          :value="route.params.year || new Date().getFullYear()"
-          @change="handleYearChange"
-          aria-label="选择年份"
-        >
-          <option v-for="year in years" :key="year" :value="year" class="bg-background">
-            {{ year }}
-          </option>
-        </select>
-      </div>
-      <div class="flex items-baseline">
-        <select
-          class="mr-2 cursor-pointer appearance-none bg-transparent text-4xl sm:text-6xl"
-          :value="parseInt(route.params.month) || getCurrentSeason(new Date().getMonth() + 1)"
-          @change="handleSeasonChange"
-          aria-label="选择季度"
-        >
-          <option
-            v-for="season in availableSeasons"
-            :key="season.month"
-            :value="season.month"
-            class="bg-background transition-[background-color] duration-300"
-          >
-            {{ season.name }}
-          </option>
-        </select>
-        <span class="mr-2 text-4xl sm:text-6xl">·</span>
-        <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
-      </div>
-
-      <h2 class="mt-4 text-xl text-gray-400">该季度最热门的作品对比</h2>
-    </div>
+    <SeasonTitleSectionV2
+      :years="years"
+      :selected-year="selectedYear"
+      :selected-month="selectedMonth"
+      :available-seasons="availableSeasons"
+      @year-change="handleYearChange"
+      @season-change="handleSeasonChange"
+    />
 
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
-    <div id="season-score-comparison" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
+    <div id="season-score-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
       <h2 class="text-4xl">{{ texts._top10ScoreComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
 
@@ -246,7 +222,7 @@ const handleSeasonChange = (event) => {
 
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
-    <div id="season-ranking-comparison" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
+    <div id="season-ranking-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
       <h2 class="text-4xl">{{ texts._top10RankingComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
       <div
@@ -277,7 +253,7 @@ const handleSeasonChange = (event) => {
 
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
-    <div id="season-balance-chart" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
+    <div id="season-balance-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
       <h2 class="text-4xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
@@ -304,7 +280,7 @@ const handleSeasonChange = (event) => {
 
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
-    <div id="season-distribution-chart" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
+    <div id="season-distribution-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
       <h2 class="text-4xl">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}

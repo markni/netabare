@@ -13,7 +13,7 @@ Example:
   python scripts/svg-outline-text.py "载入秋色" ^
     --font "%LOCALAPPDATA%/Microsoft/Windows/Fonts/SourceHanSerif.ttc" ^
     --face-name "Source Han Serif SC" ^
-    --bold ^
+    --weight Bold ^
     --font-size 120 ^
     --format vue
 """
@@ -30,6 +30,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
 try:
+    from fontTools.varLib.instancer import instantiateVariableFont
     from fontTools.pens.svgPathPen import SVGPathPen
     from fontTools.pens.transformPen import TransformPen
     from fontTools.ttLib import TTCollection, TTFont
@@ -58,6 +59,32 @@ def font_names(font: TTFont) -> set[str]:
     return names
 
 
+def numeric_weight(weight: str | None) -> float | None:
+    if not weight:
+        return None
+
+    try:
+        return float(weight)
+    except ValueError:
+        return None
+
+
+def apply_variable_weight(font: TTFont, weight: str | None) -> TTFont:
+    weight_value = numeric_weight(weight)
+
+    if weight_value is None or "fvar" not in font:
+        return font
+
+    axes = {axis.axisTag: axis for axis in font["fvar"].axes}
+    weight_axis = axes.get("wght")
+
+    if not weight_axis:
+        return font
+
+    clamped_weight = min(max(weight_value, weight_axis.minValue), weight_axis.maxValue)
+    return instantiateVariableFont(font, {"wght": clamped_weight}, inplace=False)
+
+
 def load_font(
     font_path: Path,
     face_index: int | None,
@@ -65,7 +92,7 @@ def load_font(
     weight: str | None,
 ) -> TTFont:
     if font_path.suffix.lower() not in {".ttc", ".otc"}:
-        return TTFont(font_path)
+        return apply_variable_weight(TTFont(font_path), weight)
 
     collection = TTCollection(font_path)
 
@@ -76,7 +103,7 @@ def load_font(
                 continue
 
             if not weight or weight in names or f"{face_name} {weight}" in names:
-                return font
+                return apply_variable_weight(font, weight)
 
         available = sorted({name for font in collection.fonts for name in font_names(font)})
         weight_message = f" with weight {weight!r}" if weight else ""
@@ -89,7 +116,7 @@ def load_font(
         raise SystemExit("TTC/OTC fonts require --face-index or --face-name")
 
     try:
-        return collection.fonts[face_index]
+        return apply_variable_weight(collection.fonts[face_index], weight)
     except IndexError as error:
         raise SystemExit(f"Face index out of range: {face_index}") from error
 
@@ -159,7 +186,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--face-name", help="Face name inside a TTC/OTC, e.g. 'Source Han Serif SC'")
     parser.add_argument("--face-index", type=int, help="Face index inside a TTC/OTC")
     weight_group = parser.add_mutually_exclusive_group()
-    weight_group.add_argument("--weight", help="Face weight inside a TTC/OTC, e.g. Bold, Medium, Heavy")
+    weight_group.add_argument(
+        "--weight",
+        help="Face weight name inside a TTC/OTC, or numeric variable-font wght value, e.g. Bold, 700",
+    )
     weight_group.add_argument("--bold", action="store_const", const="Bold", dest="weight")
     parser.add_argument(
         "--font-size",
