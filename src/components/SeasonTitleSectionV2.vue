@@ -37,22 +37,21 @@ const monthGlyphs = {
   10: '/season-title-glyphs/winter.svg'
 };
 
+const seasonCycle = [1, 4, 7, 10];
+
 const nextSeason = computed(() => {
-  if (!props.availableSeasons.length) return null;
+  const currentIndex = seasonCycle.indexOf(props.selectedMonth);
 
-  const currentIndex = props.availableSeasons.findIndex(
-    (season) => season.month === props.selectedMonth
-  );
-  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % props.availableSeasons.length;
+  if (currentIndex === -1) return null;
 
-  return props.availableSeasons[nextIndex];
+  return seasonCycle[(currentIndex + 1) % seasonCycle.length];
 });
 </script>
 
 <template>
   <div
     id="season-header"
-    class="flex min-h-[calc(100dvh-13rem)] w-full flex-col items-center justify-center gap-2 border border-foreground/10"
+    class="flex min-h-[calc(100dvh-13rem)] w-full flex-col items-center justify-center gap-2 border border-foreground"
   >
     <div>
       <select
@@ -72,11 +71,11 @@ const nextSeason = computed(() => {
           v-if="nextSeason"
           class="absolute inset-0 translate-y-8 bg-red bg-center bg-no-repeat opacity-25"
           :style="{
-            maskImage: `url(${monthGlyphs[nextSeason.month]})`,
+            maskImage: `url(${monthGlyphs[nextSeason]})`,
             maskRepeat: 'no-repeat',
             maskPosition: 'center',
             maskSize: 'contain',
-            WebkitMaskImage: `url(${monthGlyphs[nextSeason.month]})`,
+            WebkitMaskImage: `url(${monthGlyphs[nextSeason]})`,
             WebkitMaskRepeat: 'no-repeat',
             WebkitMaskPosition: 'center',
             WebkitMaskSize: 'contain'

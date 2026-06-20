@@ -26,7 +26,13 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              :class="[
+                'block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb',
+                {
+                  '!border !border-t-0 !border-foreground !text-muted-foreground':
+                    $route.name === 'season'
+                }
+              ]"
               to="/season"
               >{{ texts._season }}</RouterLink
             >
