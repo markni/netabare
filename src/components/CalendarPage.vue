@@ -1,7 +1,9 @@
 <script setup>
+import { computed } from 'vue';
+import MiniCalendar from '@/components/MiniCalendar.vue';
 import texts from '@/constants/texts';
 
-defineProps({
+const props = defineProps({
   year: {
     type: [Number, String],
     required: true
@@ -37,6 +39,10 @@ defineProps({
 });
 
 defineEmits(['year-change', 'season-change']);
+
+const seasonMonths = computed(() =>
+  Array.from({ length: 3 }, (_, index) => ((props.selectedMonth + index - 1) % 12) + 1)
+);
 </script>
 
 <template>
@@ -92,5 +98,14 @@ defineEmits(['year-change', 'season-change']);
     <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
 
     <h2 class="mt-4 text-xl text-gray-400">该季度最热门的作品对比</h2>
+
+    <div class="mt-8 flex w-full max-w-lg items-start justify-center gap-8">
+      <MiniCalendar
+        v-for="month in seasonMonths"
+        :key="`${year}-${month}`"
+        :year="year"
+        :month="month"
+      />
+    </div>
   </div>
 </template>

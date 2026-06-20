@@ -7,7 +7,7 @@ import BattleRankChart from '@/components/charts/BattleRankChart.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, watch, computed } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
-import SeasonTitleSectionV2 from '@/components/SeasonTitleSectionV2.vue';
+import SeasonTitleSection from '@/components/SeasonTitleSection.vue';
 import texts from '@/constants/texts';
 
 const store = useSeasonStore();
@@ -178,7 +178,7 @@ const handleSeasonChange = (event) => {
 
 <template>
   <div class="@container mt-14 flex flex-col gap-[7.5rem]">
-    <SeasonTitleSectionV2
+    <SeasonTitleSection
       :years="years"
       :selected-year="selectedYear"
       :selected-month="selectedMonth"

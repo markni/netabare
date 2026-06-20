@@ -303,7 +303,7 @@ onMounted(() => {
   fallLoaderTimer = window.setTimeout(() => {
     isUiContentVisible.value = true;
     isFallLoaderLoading.value = false;
-  }, 5000);
+  }, 2000);
 });
 
 onUnmounted(() => {
