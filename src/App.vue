@@ -127,7 +127,7 @@ console.log(`
       <GlobalHeader />
       <div
         :class="[
-          'bottom-0 mx-auto w-full max-w-6xl',
+          'bottom-0 mx-auto w-full max-w-5xl',
           route.path === '/art'
             ? 'px-0 pt-6 pb-0'
             : route.path === '/'
@@ -141,7 +141,7 @@ console.log(`
         v-if="route.path !== '/' && route.path !== '/art'"
         class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
       >
-        <div class="mx-auto w-full max-w-6xl px-4 py-24 sm:py-32">
+        <div class="mx-auto w-full max-w-5xl px-4 py-24 sm:py-32">
           <div class="flex flex-wrap items-center gap-4 text-sm">
             <RouterLink to="/" active-class="!text-white" exact-active-class="!text-white">{{
               texts._backToHome

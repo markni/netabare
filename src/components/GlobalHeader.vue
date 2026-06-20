@@ -15,7 +15,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
 
 <template>
   <header class="min-w-32 bg-background pt-0 pb-8 transition-[background-color] duration-300">
-    <div class="mx-auto w-full max-w-6xl px-4">
+    <div class="mx-auto w-full max-w-5xl px-4">
       <nav class="flex items-stretch">
         <div class="flex w-full flex-row flex-wrap items-stretch justify-start gap-4">
           <div

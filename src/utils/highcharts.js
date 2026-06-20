@@ -62,10 +62,10 @@ Highcharts.setOptions({
       }
     },
     line: {
-      lineWidth: 5
+      lineWidth: 3
     },
     spline: {
-      lineWidth: 5
+      lineWidth: 3
       // shadow: {
       //   color: 'rgba(255, 255, 255, 0.5)', // White shadow for glow
       //   width: 8,

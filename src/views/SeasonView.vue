@@ -208,7 +208,7 @@ const handleSeasonChange = (event) => {
       <h2 class="mt-4 text-3xl text-gray-400">该季度最热门的作品对比</h2>
     </div>
 
-    <div id="season-score-comparison" class="flex flex-col gap-4">
+    <div id="season-score-comparison" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
       <h2 class="text-3xl font-bold">{{ texts._top10ScoreComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
 
@@ -230,7 +230,7 @@ const handleSeasonChange = (event) => {
         </p>
       </div>
 
-      <div class="bleed-left-to-container-right sm:aspect-[16/8]">
+      <div class="bleed-left-to-container-right sm:aspect-[5/2]">
         <BattleChart
           :historyData="historyData"
           :animate-when-in-view="true"
@@ -239,7 +239,7 @@ const handleSeasonChange = (event) => {
       </div>
     </div>
 
-    <div id="season-ranking-comparison" class="flex flex-col gap-4">
+    <div id="season-ranking-comparison" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
       <h2 class="text-3xl font-bold">{{ texts._top10RankingComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
       <div
@@ -259,7 +259,7 @@ const handleSeasonChange = (event) => {
           </template>
         </p>
       </div>
-      <div class="bleed-right-to-container-left sm:aspect-[16/8]">
+      <div class="bleed-right-to-container-left sm:aspect-[5/2]">
         <BattleRankChart
           :historyData="historyData"
           :animate-when-in-view="true"
@@ -268,7 +268,7 @@ const handleSeasonChange = (event) => {
       </div>
     </div>
 
-    <div id="season-balance-chart" class="flex flex-col gap-4">
+    <div id="season-balance-chart" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
       <h2 class="text-3xl font-bold">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
@@ -288,12 +288,12 @@ const handleSeasonChange = (event) => {
           </template>
         </p>
       </div>
-      <div class="bleed-left-to-container-right sm:aspect-[10/5]">
+      <div class="bleed-left-to-container-right sm:aspect-[5/2]">
         <BattleBarChart :balanceData="balanceData" :animate-when-in-view="true" />
       </div>
     </div>
 
-    <div id="season-distribution-chart" class="flex flex-col gap-4">
+    <div id="season-distribution-chart" class="flex min-h-[calc(100dvh-8.75rem)] flex-col gap-4">
       <h2 class="text-3xl font-bold">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
@@ -315,7 +315,7 @@ const handleSeasonChange = (event) => {
           </template>
         </p>
       </div>
-      <div class="bleed-right-to-container-left sm:aspect-[10/5]">
+      <div class="bleed-right-to-container-left sm:aspect-[5/2]">
         <ScoreBubbleChart :subjects="subjectsData" :animate-when-in-view="true" />
       </div>
     </div>
