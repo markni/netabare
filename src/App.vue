@@ -142,7 +142,9 @@ console.log(`
         class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
       >
         <div class="mx-auto w-full max-w-5xl px-4 py-24 sm:py-32">
-          <div class="flex flex-wrap items-center gap-4 text-sm">
+          <div
+            class="flex flex-col items-start gap-4 text-sm sm:flex-row sm:flex-wrap sm:items-center"
+          >
             <RouterLink to="/" active-class="!text-white" exact-active-class="!text-white">{{
               texts._backToHome
             }}</RouterLink>

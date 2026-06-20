@@ -211,7 +211,7 @@ const handleSeasonChange = (event) => {
         </p>
       </div>
 
-      <div class="mt-6 bleed-left-to-container-right sm:aspect-[5/2]">
+      <div class="mt-6 bleed-left-to-container-right aspect-[2/3] sm:aspect-[5/2]">
         <BattleChart
           :historyData="historyData"
           :animate-when-in-view="true"
@@ -242,7 +242,7 @@ const handleSeasonChange = (event) => {
           </template>
         </p>
       </div>
-      <div class="mt-6 bleed-right-to-container-left sm:aspect-[5/2]">
+      <div class="mt-6 bleed-right-to-container-left aspect-[2/3] sm:aspect-[5/2]">
         <BattleRankChart
           :historyData="historyData"
           :animate-when-in-view="true"

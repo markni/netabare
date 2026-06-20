@@ -17,7 +17,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
   <header class="min-w-32 bg-background pt-0 pb-8 transition-[background-color] duration-300">
     <div class="mx-auto w-full max-w-5xl px-4">
       <nav class="flex items-stretch">
-        <div class="flex w-full flex-row flex-wrap items-stretch justify-start gap-4">
+        <div class="flex w-full flex-row flex-wrap items-stretch justify-start gap-2 sm:gap-4">
           <div
             :class="[
               'mx-1 border-0 text-[0.95rem] leading-[1.2] font-bold text-foreground sm:mx-0',
@@ -27,7 +27,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
               :class="[
-                'block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb',
+                'block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb',
                 {
                   '!border !border-t-0 !border-foreground !text-muted-foreground':
                     $route.name === 'season'
@@ -45,7 +45,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
               to="/trending"
               >{{ texts._trending }}</RouterLink
             >
@@ -58,7 +58,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
               to="/history"
               >{{ texts._history }}</RouterLink
             >
@@ -71,7 +71,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
               :to="userNavTarget"
               >{{ texts._user }}</RouterLink
             >
@@ -84,7 +84,7 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 pt-14 pb-2 text-center vertical-rl sm:horizontal-tb"
+              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
               to="/395378/vs/400602"
               >{{ texts._experimental }}</RouterLink
             >

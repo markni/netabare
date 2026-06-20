@@ -28,6 +28,7 @@ const endLabelsGroup = shallowRef(null);
 const endLabelsReady = ref(false);
 const pendingEndLabelSeriesIds = new Set();
 const endLabelElements = [];
+const useMobileLegend = ref(false);
 let endLabelsFallbackTimer = null;
 let resizeObserver = null;
 let resizeEndTimer = null;
@@ -37,6 +38,7 @@ const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateW
 const router = useRouter();
 const themeStore = useThemeStore();
 const rankColors = computed(() => COLORS10_VIVID);
+const MOBILE_LEGEND_WIDTH = 640;
 
 const getLatestRank = (rankHistory = []) => {
   if (!Array.isArray(rankHistory) || rankHistory.length === 0) return Number.POSITIVE_INFINITY;
@@ -168,7 +170,7 @@ const renderEndLabels = () => {
   if (!chart) return;
 
   destroyEndLabels();
-  if (!endLabelsReady.value) return;
+  if (!endLabelsReady.value || useMobileLegend.value) return;
 
   const labelX = chart.plotLeft + chart.plotWidth + 48;
   const minY = chart.plotTop + 8;
@@ -254,6 +256,10 @@ const renderEndLabels = () => {
 };
 
 const scheduleResizeRender = () => {
+  const shouldUseMobileLegend = (chartContainer.value?.clientWidth || 0) < MOBILE_LEGEND_WIDTH;
+  const legendModeChanged = shouldUseMobileLegend !== useMobileLegend.value;
+  useMobileLegend.value = shouldUseMobileLegend;
+
   destroyEndLabels();
 
   if (resizeEndTimer) {
@@ -262,7 +268,21 @@ const scheduleResizeRender = () => {
 
   resizeEndTimer = setTimeout(() => {
     resizeEndTimer = null;
+    chartInstance.value?.update(
+      {
+        chart: {
+          spacingRight: useMobileLegend.value ? 10 : 400
+        },
+        legend: {
+          enabled: useMobileLegend.value
+        }
+      },
+      false
+    );
     chartInstance.value?.reflow();
+    if (legendModeChanged) {
+      chartInstance.value?.redraw();
+    }
     renderEndLabels();
   }, 180);
 };
@@ -389,10 +409,12 @@ const initializeChart = () => {
     chartInstance.value.destroy(); // Destroy previous instance if exists
   }
   if (chartContainer.value) {
+    useMobileLegend.value = chartContainer.value.clientWidth < MOBILE_LEGEND_WIDTH;
+
     const chart = Highcharts.chart(chartContainer.value, {
       // Chart configuration options
       chart: {
-        spacingRight: 400,
+        spacingRight: useMobileLegend.value ? 10 : 400,
         zoomType: 'xy',
         events: {
           load: function () {
@@ -451,7 +473,7 @@ const initializeChart = () => {
         }
       },
       legend: {
-        enabled: false,
+        enabled: useMobileLegend.value,
         useHTML: true,
         labelFormatter: function () {
           const match = this.name.match(/^(#(?:\d+|N\/A))\s+(.*)$/);

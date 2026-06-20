@@ -46,10 +46,14 @@ const seasonMonths = computed(() =>
 </script>
 
 <template>
-  <div class="flex h-full w-full flex-col items-center justify-center gap-2">
-    <div>
+  <div
+    data-testid="calendar-page"
+    class="@container flex h-full w-full flex-col items-center justify-center gap-2 bg-background opacity-95"
+  >
+    <div data-testid="calendar-year">
       <select
         v-if="interactive"
+        data-testid="calendar-year-select"
         class="mr-2 cursor-pointer appearance-none bg-gold text-4xl font-bold sm:text-6xl"
         :value="year"
         @change="$emit('year-change', $event)"
@@ -64,13 +68,26 @@ const seasonMonths = computed(() =>
           {{ yearOption }}
         </option>
       </select>
-      <span v-else class="mr-2 bg-gold text-4xl font-bold sm:text-6xl">{{ year }}</span>
+      <span
+        v-else
+        data-testid="calendar-year-display"
+        class="mr-2 bg-gold text-4xl font-bold sm:text-6xl"
+      >
+        {{ year }}
+      </span>
     </div>
 
-    <div class="relative flex w-full justify-center">
-      <div class="relative aspect-square w-4/5 max-w-[40rem]">
+    <div
+      data-testid="calendar-glyph-section"
+      class="relative flex min-h-0 w-full flex-1 items-center justify-center"
+    >
+      <div
+        data-testid="calendar-glyph-frame"
+        class="relative aspect-square h-[min(100%,58cqw,32rem)] max-h-full"
+      >
         <div class="absolute inset-0 h-full w-full" aria-hidden="true">
           <div
+            data-testid="calendar-glyph"
             class="h-full w-full bg-center bg-no-repeat"
             :class="glyphClass"
             :style="glyphStyle"
@@ -79,6 +96,7 @@ const seasonMonths = computed(() =>
       </div>
       <select
         v-if="interactive"
+        data-testid="calendar-season-select"
         class="absolute inset-0 cursor-pointer appearance-none bg-transparent text-transparent"
         :value="selectedMonth"
         @change="$emit('season-change', $event)"
@@ -95,11 +113,17 @@ const seasonMonths = computed(() =>
       </select>
     </div>
 
-    <h1 class="text-4xl sm:text-6xl">{{ texts._seasonBattleStatus }}</h1>
+    <div data-testid="calendar-heading" class="flex flex-col items-center gap-1">
+      <h1 data-testid="calendar-title" class="text-[clamp(2rem,11cqw,4.5rem)]">
+        {{ texts._seasonBattleStatus }}
+      </h1>
+      <h2 data-testid="calendar-subtitle" class="text-xl text-gray-400">该季度最热门的作品对比</h2>
+    </div>
 
-    <h2 class="mt-4 text-xl text-gray-400">该季度最热门的作品对比</h2>
-
-    <div class="mt-8 flex w-full max-w-lg items-start justify-center gap-8">
+    <div
+      data-testid="calendar-mini-calendars"
+      class="mt-8 flex w-full max-w-lg items-start justify-center gap-8 pb-8"
+    >
       <MiniCalendar
         v-for="month in seasonMonths"
         :key="`${year}-${month}`"

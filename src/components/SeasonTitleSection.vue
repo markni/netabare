@@ -71,39 +71,38 @@ const glyphMaskStyle = (glyph) => ({
 </script>
 
 <template>
-  <div id="season-header" class="flex min-h-[calc(100dvh-13rem)] w-full justify-center">
+  <div
+    id="season-header"
+    class="relative mx-auto h-[calc(100dvh-13rem)] w-full max-w-2xl overflow-hidden border border-foreground"
+  >
     <div
-      class="relative h-[calc(100dvh-13rem)] w-[calc((100dvh-13rem)*9/16)] max-w-full overflow-hidden border border-foreground"
+      class="pointer-events-none absolute inset-0 h-full w-full"
+      aria-hidden="true"
+      data-layer="back"
     >
-      <div
-        class="pointer-events-none absolute inset-0 h-full w-full"
-        aria-hidden="true"
-        data-layer="back"
-      >
-        <CalendarPage
-          v-if="nextSeason"
-          :year="nextSeasonYear"
-          :selected-month="nextSeason"
-          :month-labels="monthLabels"
-          :glyph-class="'bg-red opacity-95'"
-          :glyph-style="glyphMaskStyle(monthGlyphs[nextSeason])"
-        />
-      </div>
+      <CalendarPage
+        v-if="nextSeason"
+        :year="nextSeasonYear"
+        :selected-month="nextSeason"
+        :month-labels="monthLabels"
+        :glyph-class="'bg-red'"
+        :glyph-style="glyphMaskStyle(monthGlyphs[nextSeason])"
+      />
+    </div>
 
-      <div class="absolute inset-0 h-full w-full bg-background opacity-95" data-layer="front">
-        <CalendarPage
-          :year="selectedYear"
-          :years="years"
-          :selected-month="selectedMonth"
-          :available-seasons="availableSeasons"
-          :month-labels="monthLabels"
-          :glyph-class="'bg-blue'"
-          :glyph-style="glyphMaskStyle(monthGlyphs[selectedMonth])"
-          interactive
-          @year-change="$emit('year-change', $event)"
-          @season-change="$emit('season-change', $event)"
-        />
-      </div>
+    <div class="absolute inset-0 h-full w-full" data-layer="front">
+      <CalendarPage
+        :year="selectedYear"
+        :years="years"
+        :selected-month="selectedMonth"
+        :available-seasons="availableSeasons"
+        :month-labels="monthLabels"
+        :glyph-class="'bg-blue'"
+        :glyph-style="glyphMaskStyle(monthGlyphs[selectedMonth])"
+        interactive
+        @year-change="$emit('year-change', $event)"
+        @season-change="$emit('season-change', $event)"
+      />
     </div>
   </div>
 </template>
