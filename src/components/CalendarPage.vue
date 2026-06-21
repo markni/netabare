@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
 import MiniCalendar from '@/components/MiniCalendar.vue';
-import texts from '@/constants/texts';
 
 const props = defineProps({
   year: {
@@ -80,12 +79,9 @@ const textureId = computed(() => `calendar-paper-${props.year}-${props.selectedM
 
     <div
       data-testid="calendar-glyph-section"
-      class="relative flex min-h-0 w-full flex-1 items-center justify-center"
+      class="relative flex min-h-0 w-full flex-1 items-center justify-center py-6"
     >
-      <div
-        data-testid="calendar-glyph-frame"
-        class="relative aspect-square h-[min(100%,58cqw,32rem)] max-h-full"
-      >
+      <div data-testid="calendar-glyph-frame" class="relative aspect-square w-[min(68cqw,38rem)]">
         <div class="absolute inset-0 h-full w-full" aria-hidden="true">
           <div
             data-testid="calendar-glyph"
@@ -112,13 +108,6 @@ const textureId = computed(() => `calendar-paper-${props.year}-${props.selectedM
           {{ monthLabels[season.month] }}
         </option>
       </select>
-    </div>
-
-    <div data-testid="calendar-heading" class="flex flex-col items-center gap-1">
-      <h1 data-testid="calendar-title" class="text-[clamp(2rem,11cqw,4.5rem)]">
-        {{ texts._seasonBattleStatus }}
-      </h1>
-      <h2 data-testid="calendar-subtitle" class="text-xl text-gray-400">该季度最热门的作品对比</h2>
     </div>
 
     <div

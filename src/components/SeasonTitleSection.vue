@@ -73,7 +73,7 @@ const glyphMaskStyle = (glyph) => ({
 <template>
   <div
     id="season-header"
-    class="relative mx-auto h-[calc(100dvh-13rem)] w-full max-w-2xl overflow-hidden border border-foreground"
+    class="relative mx-auto aspect-[3/4] w-full max-w-2xl overflow-hidden border border-foreground"
   >
     <div
       class="pointer-events-none absolute inset-0 h-full w-full"
