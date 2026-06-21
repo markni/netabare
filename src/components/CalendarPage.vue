@@ -43,12 +43,13 @@ defineEmits(['year-change', 'season-change']);
 const seasonMonths = computed(() =>
   Array.from({ length: 3 }, (_, index) => ((props.selectedMonth + index - 1) % 12) + 1)
 );
+const textureId = computed(() => `calendar-paper-${props.year}-${props.selectedMonth}`);
 </script>
 
 <template>
   <div
     data-testid="calendar-page"
-    class="@container flex h-full w-full flex-col items-center justify-center gap-2 bg-background opacity-95"
+    class="@container relative flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden bg-background opacity-95"
   >
     <div data-testid="calendar-year">
       <select
@@ -131,5 +132,69 @@ const seasonMonths = computed(() =>
         :month="month"
       />
     </div>
+
+    <svg
+      class="pointer-events-none absolute inset-0 z-20 h-full w-full opacity-80 mix-blend-soft-light dark:opacity-22 dark:mix-blend-screen"
+      viewBox="0 0 640 640"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter
+          :id="`${textureId}-cloud`"
+          x="0"
+          y="0"
+          width="640"
+          height="640"
+          filterUnits="userSpaceOnUse"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.018"
+            numOctaves="4"
+            seed="11"
+            result="noise"
+          />
+          <feColorMatrix
+            in="noise"
+            type="matrix"
+            values="
+              0 0 0 0 0.48
+              0 0 0 0 0.42
+              0 0 0 0 0.31
+              0.24 0.24 0.24 0 -0.1"
+          />
+        </filter>
+
+        <filter
+          :id="`${textureId}-grain`"
+          x="0"
+          y="0"
+          width="640"
+          height="640"
+          filterUnits="userSpaceOnUse"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.72"
+            numOctaves="3"
+            seed="7"
+            result="noise"
+          />
+          <feColorMatrix
+            in="noise"
+            type="matrix"
+            values="
+              0 0 0 0 0.35
+              0 0 0 0 0.31
+              0 0 0 0 0.24
+              0.28 0.28 0.28 0 -0.14"
+          />
+        </filter>
+      </defs>
+
+      <rect width="640" height="640" :filter="`url(#${textureId}-cloud)`" opacity="0.56" />
+      <rect width="640" height="640" :filter="`url(#${textureId}-grain)`" opacity="0.72" />
+    </svg>
   </div>
 </template>
