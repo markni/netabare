@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import MiniCalendar from '@/components/MiniCalendar.vue';
+import DotPattern from '@/components/DotPattern.vue';
 
 const props = defineProps({
   year: {
@@ -94,6 +95,9 @@ const tracingPaperStyle = {
       class="relative flex min-h-0 w-full flex-1 items-center justify-center py-6"
     >
       <div data-testid="calendar-glyph-frame" class="relative aspect-square w-[min(68cqw,38rem)]">
+        <div class="absolute inset-0 h-full w-full" aria-hidden="true">
+          <DotPattern />
+        </div>
         <div class="absolute inset-0 h-full w-full" aria-hidden="true">
           <div
             data-testid="calendar-glyph"
