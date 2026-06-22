@@ -61,8 +61,13 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
   /* Keep layout width stable when vertical scrollbar appears/disappears */
   scrollbar-gutter: stable;
+}
+
+body {
+  overscroll-behavior: none;
 }
 
 #app {
