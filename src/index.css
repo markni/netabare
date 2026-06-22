@@ -17,7 +17,7 @@
 
   --color-background: light-dark(#fafaf9, #171717);
   --color-foreground: light-dark(var(--color-neutral-900), var(--color-white));
-  --color-muted: light-dark(var(--color-stone-50), var(--color-neutral-800));
+  --color-muted: light-dark(var(--color-neutral-200), var(--color-neutral-700));
   --color-muted-foreground: light-dark(var(--color-neutral-500), var(--color-neutral-300));
   --color-border: light-dark(var(--color-neutral-500), var(--color-neutral-500));
   --color-ring: light-dark(var(--color-neutral-900), var(--color-white));

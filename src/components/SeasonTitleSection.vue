@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import CalendarPage from '@/components/CalendarPage.vue';
+import TearedPage from '@/components/TearedPage.vue';
 import texts from '@/constants/texts';
 
 const props = defineProps({
@@ -58,6 +59,13 @@ const nextSeasonYear = computed(() => {
   return currentIndex === seasonCycle.length - 1 ? year + 1 : year;
 });
 
+const lastSeasonYear = computed(() => {
+  const year = Number(props.selectedYear);
+  if (!Number.isFinite(year)) return props.selectedYear;
+
+  return props.selectedMonth === 4 ? year - 1 : year;
+});
+
 const glyphMaskStyle = (glyph) => ({
   maskImage: `url(${glyph})`,
   maskRepeat: 'no-repeat',
@@ -104,5 +112,7 @@ const glyphMaskStyle = (glyph) => ({
         @season-change="$emit('season-change', $event)"
       />
     </div>
+
+    <TearedPage :year="lastSeasonYear" />
   </div>
 </template>
