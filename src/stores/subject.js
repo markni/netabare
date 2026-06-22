@@ -16,6 +16,16 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+const getAirdateValue = (airdate) => {
+  if (typeof airdate === 'number') return airdate;
+  if (typeof airdate !== 'string') return null;
+
+  //  todo: remove this after api fix only return UTC time
+  return airdate.includes('T')
+    ? dayjs(airdate).valueOf()
+    : dayjs(airdate).tz('Asia/Shanghai').valueOf();
+};
+
 export const useSubjectStore = defineStore('subject', {
   state: () => ({
     subject: null,
@@ -25,12 +35,9 @@ export const useSubjectStore = defineStore('subject', {
     epsData: (state) => {
       if (!state.subject) return null;
       return state.subject.eps
-        .filter((ep) => ep.type === 0 && ep.airdate)
+        .filter((ep) => ep.type === 0 && getAirdateValue(ep.airdate))
         .reduce((acc, ep) => {
-          //  todo: remove this after api fix only return UTC time
-          const airdateValue = ep.airdate.includes('T')
-            ? dayjs(ep.airdate).valueOf()
-            : dayjs(ep.airdate).tz('Asia/Shanghai').valueOf();
+          const airdateValue = getAirdateValue(ep.airdate);
           if (!acc[airdateValue]) {
             acc[airdateValue] = [];
           }
