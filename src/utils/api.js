@@ -36,6 +36,10 @@ export const fetchHistory = () => {
   return axios.get(`${api_root}/history`);
 };
 
+export const fetchHistoryGaps = () => {
+  return axios.get(`${api_root}/history-gaps`);
+};
+
 export const fetchGuess = () => {
   return axios.get(`${api_root}/guess`);
 };

@@ -157,6 +157,12 @@ console.log(`
             <RouterLink to="/quiz" active-class="!text-white" exact-active-class="!text-white">{{
               texts._scoreChartRecognition
             }}</RouterLink>
+            <RouterLink
+              to="/unbanned"
+              active-class="!text-white"
+              exact-active-class="!text-white"
+              >{{ texts._recentlyUnbanned }}</RouterLink
+            >
             <RouterLink to="/ui" active-class="!text-white" exact-active-class="!text-white"
               >设计系统</RouterLink
             >

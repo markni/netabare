@@ -82,6 +82,12 @@ const router = createRouter({
       ]
     },
     {
+      path: '/unbanned',
+      name: 'unbanned',
+      component: () => import('../views/UnbannedView.vue'),
+      meta: { title: `${texts._unbannedSubjects} | netaba.re` }
+    },
+    {
       path: '/quiz',
       name: 'quiz',
       // route level code-splitting

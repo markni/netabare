@@ -52,6 +52,10 @@ const texts = {
   _popularEntries: '热门条目',
   _increasingRank: '涨幅排行',
   _decreasingRank: '跌幅排行',
+  // Unbanned view texts
+  _unbannedSubjects: '解禁条目',
+  _recentlyUnbanned: '最近解禁',
+  _firstDateAfterLongGap: '解禁日期',
   // Home view texts
   _currentSeason: '当季动画',
   _dragonVsTiger: '龙争虎斗',
