@@ -166,7 +166,7 @@ console.log(`
             <RouterLink to="/ui" active-class="!text-white" exact-active-class="!text-white"
               >设计系统</RouterLink
             >
-            <RouterLink to="/food" active-class="!text-white" exact-active-class="!text-white"
+            <RouterLink to="/tabemono" active-class="!text-white" exact-active-class="!text-white"
               >动画 x 食物</RouterLink
             >
           </div>

@@ -103,8 +103,9 @@ const router = createRouter({
       meta: { title: '设计系统 | netaba.re' }
     },
     {
-      path: '/food',
-      name: 'food',
+      path: '/tabemono',
+      name: 'tabemono',
+      alias: '/food',
       component: () => import('../views/FoodView.vue'),
       meta: { title: '动画 x 食物 | netaba.re' }
     },

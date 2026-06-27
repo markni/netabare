@@ -423,37 +423,43 @@ onMounted(fetchReport);
         </div>
 
         <div class="grid grid-cols-1 gap-px border border-foreground/25 bg-foreground/25">
-          <article
-            v-for="(food, index) in topFoods"
-            :key="food.name"
-            class="grid items-start gap-4 bg-background p-4 min-[720px]:grid-cols-[minmax(10rem,0.55fr)_minmax(0,1fr)]"
-          >
-            <div class="grid grid-cols-[2rem_1fr_auto] items-baseline gap-3">
-              <span class="text-xl text-muted-foreground">{{ food.rank || index + 1 }}</span>
-              <h3 class="text-3xl">{{ food.displayName }}</h3>
-              <b>{{ formatNumber(food.count) }} 次</b>
+          <template v-for="(food, index) in topFoods" :key="food.name">
+            <div
+              v-if="food.name === 'curry'"
+              class="bg-background px-4 py-6 text-center text-xl tracking-[0.35em] text-muted-foreground"
+            >
+              ......
             </div>
-            <div class="grid grid-cols-2 gap-2 min-[720px]:grid-cols-3">
-              <a
-                v-for="image in food.images"
-                :key="image.relativePath"
-                class="group relative aspect-video overflow-hidden"
-                :href="imageHref(image)"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
-                  :src="imageUrl(image.relativePath)"
-                  :alt="food.displayName"
-                />
-                <small
-                  class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
-                  >{{ image.title || image.subjectName }}</small
+            <article
+              class="grid items-start gap-4 bg-background p-4 min-[720px]:grid-cols-[minmax(10rem,0.55fr)_minmax(0,1fr)]"
+            >
+              <div class="grid grid-cols-[2rem_1fr_auto] items-baseline gap-3">
+                <span class="text-xl text-muted-foreground">{{ food.rank || index + 1 }}</span>
+                <h3 class="text-3xl">{{ food.displayName }}</h3>
+                <b>{{ formatNumber(food.count) }} 次</b>
+              </div>
+              <div class="grid grid-cols-2 gap-2 min-[720px]:grid-cols-3">
+                <a
+                  v-for="image in food.images"
+                  :key="image.relativePath"
+                  class="group relative aspect-video overflow-hidden"
+                  :href="imageHref(image)"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-              </a>
-            </div>
-          </article>
+                  <img
+                    class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
+                    :src="imageUrl(image.relativePath)"
+                    :alt="food.displayName"
+                  />
+                  <small
+                    class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
+                    >{{ image.title || image.subjectName }}</small
+                  >
+                </a>
+              </div>
+            </article>
+          </template>
         </div>
       </section>
 
