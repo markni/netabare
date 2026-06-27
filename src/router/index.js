@@ -102,6 +102,12 @@ const router = createRouter({
       component: () => import('../views/UIView.vue'),
       meta: { title: '设计系统 | netaba.re' }
     },
+    {
+      path: '/food',
+      name: 'food',
+      component: () => import('../views/FoodView.vue'),
+      meta: { title: '动画 x 食物 | netaba.re' }
+    },
     // Debug route - only available in development mode
     ...(import.meta.env.DEV
       ? [

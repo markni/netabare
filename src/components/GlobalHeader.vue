@@ -89,6 +89,19 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
               >{{ texts._experimental }}</RouterLink
             >
           </div>
+          <div
+            :class="[
+              'mx-1 border-0 text-[0.95rem] leading-[1.2] font-bold text-foreground sm:mx-0',
+              { invisible: $route.path === '/', 'pointer-events-none': $route.path === '/' }
+            ]"
+          >
+            <RouterLink
+              active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
+              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
+              to="/food"
+              >食物</RouterLink
+            >
+          </div>
           <div class="ml-auto flex items-end pb-2 pl-3">
             <EclipseToggle
               @toggle="themeStore.toggleDarkMode"
