@@ -154,9 +154,9 @@ console.log(`
             <a href="https://bgm.tv/group/topic/346147" target="_blank" rel="noopener noreferrer">{{
               texts._changeLog
             }}</a>
-            <RouterLink to="/quiz" active-class="!text-white" exact-active-class="!text-white">{{
-              texts._scoreChartRecognition
-            }}</RouterLink>
+            <RouterLink to="/quiz" active-class="!text-white" exact-active-class="!text-white"
+              >识图考试</RouterLink
+            >
             <RouterLink
               to="/unbanned"
               active-class="!text-white"
@@ -167,7 +167,7 @@ console.log(`
               >设计系统</RouterLink
             >
             <RouterLink to="/tabemono" active-class="!text-white" exact-active-class="!text-white"
-              >动画 x 食物</RouterLink
+              >动画 x 美食</RouterLink
             >
           </div>
         </div>
