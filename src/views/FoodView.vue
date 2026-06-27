@@ -142,34 +142,68 @@ onMounted(fetchReport);
     <section v-else-if="error" class="state-panel state-panel--error">{{ error }}</section>
 
     <template v-else-if="report">
-      <section class="food-section">
-        <div class="section-heading">
-          <p class="section-kicker">Ranking</p>
-          <h2>作品排行</h2>
-          <p>按入选食物画面数量排序，并同步显示作品评分。</p>
+      <section class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs font-bold tracking-[0.32em] text-muted-foreground uppercase">Ranking</p>
+          <h2 class="mt-2.5 max-w-[13em] text-[clamp(2.25rem,6vw,5.4rem)] leading-none font-bold">
+            作品排行
+          </h2>
+          <p
+            class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
+          >
+            按入选食物画面数量排序，并同步显示作品评分。
+          </p>
         </div>
 
-        <div class="leaderboard-table-wrap">
-          <table class="leaderboard-table">
+        <div class="overflow-x-auto border border-foreground/25 bg-background">
+          <table class="w-full border-collapse">
             <thead>
               <tr>
-                <th>名次</th>
-                <th>作品</th>
-                <th>食物</th>
-                <th>评分</th>
+                <th
+                  class="px-5 py-3.5 text-left text-xs font-extrabold tracking-[0.18em] text-muted-foreground uppercase"
+                >
+                  名次
+                </th>
+                <th
+                  class="px-5 py-3.5 text-left text-xs font-extrabold tracking-[0.18em] text-muted-foreground uppercase"
+                >
+                  作品
+                </th>
+                <th
+                  class="px-5 py-3.5 text-right text-xs font-extrabold tracking-[0.18em] whitespace-nowrap text-muted-foreground uppercase"
+                >
+                  食物
+                </th>
+                <th
+                  class="px-5 py-3.5 text-right text-xs font-extrabold tracking-[0.18em] whitespace-nowrap text-muted-foreground uppercase"
+                >
+                  评分
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(subject, index) in leaderboard" :key="subject.bgmId">
-                <td>{{ index + 1 }}</td>
-                <td>
-                  <RouterLink :to="`/subject/${subject.bgmId}`">
+                <td
+                  class="w-18 border-t border-foreground/15 px-5 py-4 align-middle text-xl text-muted-foreground"
+                >
+                  {{ index + 1 }}
+                </td>
+                <td class="border-t border-foreground/15 px-5 py-4 align-middle">
+                  <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
                     <strong>{{ subject.title }}</strong>
-                    <small>{{ subject.originalTitle }}</small>
+                    <small class="text-muted-foreground">{{ subject.originalTitle }}</small>
                   </RouterLink>
                 </td>
-                <td>{{ formatNumber(subject.frames) }}</td>
-                <td>{{ formatScore(subject.score) }}</td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-teal"
+                >
+                  {{ formatNumber(subject.frames) }}
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-pink"
+                >
+                  {{ formatScore(subject.score) }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -347,7 +381,6 @@ onMounted(fetchReport);
 }
 
 .density-row small,
-.leaderboard-table small,
 .most-card p,
 .most-row small,
 .taxonomy-card span {
@@ -368,7 +401,6 @@ onMounted(fetchReport);
   line-height: 1.02;
 }
 
-.leaderboard-table-wrap,
 .taxonomy-grid,
 .tag-board,
 .most-grid {
@@ -378,59 +410,11 @@ onMounted(fetchReport);
   background: color-mix(in srgb, var(--color-foreground) 24%, transparent);
 }
 
-.leaderboard-table-wrap,
 .taxonomy-card,
 .food-tag-card,
 .most-card,
 .density-panel {
   background: var(--color-background);
-}
-
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.leaderboard-table th {
-  padding: 0.85rem 1.25rem;
-  color: var(--color-muted-foreground);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-align: left;
-  text-transform: uppercase;
-}
-
-.leaderboard-table th:nth-child(3),
-.leaderboard-table th:nth-child(4),
-.leaderboard-table td:nth-child(3),
-.leaderboard-table td:nth-child(4) {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.leaderboard-table td {
-  padding: 1.05rem 1.25rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-  vertical-align: middle;
-}
-
-.leaderboard-table td:first-child {
-  width: 4.5rem;
-  color: var(--color-muted-foreground);
-  font-size: 1.35rem;
-}
-
-.leaderboard-table td:nth-child(3) {
-  color: var(--color-teal);
-  font-size: 1.3rem;
-  font-weight: 800;
-}
-
-.leaderboard-table td:nth-child(4) {
-  color: var(--color-pink);
-  font-size: 1.3rem;
-  font-weight: 800;
 }
 
 .most-row > span,
@@ -439,13 +423,8 @@ onMounted(fetchReport);
   font-size: 1.35rem;
 }
 
-.leaderboard-table a,
 .most-row b {
   display: grid;
-}
-
-.leaderboard-table a:hover {
-  color: var(--color-teal);
 }
 
 .most-row strong {
@@ -794,23 +773,6 @@ onMounted(fetchReport);
 
   .food-tag-images {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .leaderboard-table-wrap {
-    overflow-x: auto;
-  }
-
-  .leaderboard-table {
-    min-width: 34rem;
-  }
-
-  .leaderboard-table th,
-  .leaderboard-table td {
-    padding-inline: 0.85rem;
-  }
-
-  .leaderboard-table td:first-child {
-    width: 3rem;
   }
 }
 </style>
