@@ -19,14 +19,12 @@ const subjects = computed(() => report.value?.subjects || []);
 const stats = computed(() => report.value?.stats || {});
 const page = computed(() => report.value?.page || {});
 const heroImages = computed(() => page.value.heroImages?.slice(0, 30) || []);
+const heroImage = computed(() => heroImages.value[0] || null);
 const taxonomyGroups = computed(() => page.value.taxonomyGroups || []);
 const topFoodImages = computed(() => page.value.topFoodImages || []);
 const mostLists = computed(() => page.value.mostLists || []);
 const leaderboard = computed(() => subjects.value.slice(0, 10));
 const topFoods = computed(() => topFoodImages.value.slice(0, 8));
-const topSubjects = computed(() =>
-  [...subjects.value].sort((a, b) => b.score - a.score || b.frames - a.frames).slice(0, 5)
-);
 
 const scoreDensity = computed(() => {
   const sorted = [...subjects.value].sort((a, b) => a.frames - b.frames);
@@ -70,13 +68,8 @@ onMounted(fetchReport);
 <template>
   <main class="food-page">
     <section class="food-hero bleed-both-to-viewport">
-      <div class="hero-photo-grid" aria-hidden="true">
-        <img
-          v-for="(image, index) in heroImages.slice(0, 24)"
-          :key="`${image.relativePath}-${index}`"
-          :src="imageUrl(image.relativePath)"
-          alt=""
-        />
+      <div v-if="heroImage" class="hero-photo-grid" aria-hidden="true">
+        <img :src="imageUrl(heroImage.relativePath)" alt="" />
       </div>
 
       <div class="hero-inner">
@@ -115,29 +108,35 @@ onMounted(fetchReport);
     <template v-else-if="report">
       <section class="food-section">
         <div class="section-heading">
-          <p class="section-kicker">排行榜</p>
+          <p class="section-kicker">Leaderboard</p>
           <h2>最有食欲的作品</h2>
           <p>有些作品只是让角色吃饭，有些作品则把食物拍成节奏、情绪和生活质感。</p>
         </div>
 
-        <div class="leaderboard-grid">
-          <ol class="leaderboard">
-            <li v-for="(subject, index) in leaderboard" :key="subject.bgmId">
-              <span>{{ index + 1 }}</span>
-              <RouterLink :to="`/subject/${subject.bgmId}`">
-                <strong>{{ subject.title }}</strong>
-                <small>{{ subject.originalTitle }}</small>
-              </RouterLink>
-              <b>{{ formatNumber(subject.frames) }}</b>
-            </li>
-          </ol>
-
-          <div class="score-shelf">
-            <article v-for="subject in topSubjects" :key="subject.bgmId">
-              <span>{{ formatScore(subject.score) }}</span>
-              <RouterLink :to="`/subject/${subject.bgmId}`">{{ subject.title }}</RouterLink>
-            </article>
-          </div>
+        <div class="leaderboard-table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>名次</th>
+                <th>作品</th>
+                <th>食物</th>
+                <th>评分</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(subject, index) in leaderboard" :key="subject.bgmId">
+                <td>{{ index + 1 }}</td>
+                <td>
+                  <RouterLink :to="`/subject/${subject.bgmId}`">
+                    <strong>{{ subject.title }}</strong>
+                    <small>{{ subject.originalTitle }}</small>
+                  </RouterLink>
+                </td>
+                <td>{{ formatNumber(subject.frames) }}</td>
+                <td>{{ formatScore(subject.score) }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -148,28 +147,49 @@ onMounted(fetchReport);
         </div>
 
         <div class="most-grid">
-          <article v-for="list in mostLists" :key="list.title" class="most-card">
+          <article
+            v-for="list in mostLists"
+            :key="list.title"
+            :class="['most-card', { 'most-card--wide': list.wide }]"
+          >
             <h3>{{ list.title }}</h3>
-            <p>{{ list.note }}</p>
-            <div
-              v-for="(item, index) in list.items"
-              :key="`${list.title}-${item.subjectName}`"
-              class="most-row"
+            <a
+              v-if="list.items[0]?.relativePath"
+              class="most-feature"
+              :href="list.items[0].episodeUrl"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <span>{{ index + 1 }}</span>
-              <a
-                v-if="item.relativePath"
-                :href="item.episodeUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img :src="imageUrl(item.relativePath)" :alt="item.title" />
-              </a>
+              <img :src="imageUrl(list.items[0].relativePath)" :alt="list.items[0].title" />
+              <span>1</span>
               <div>
-                <b>{{ item.title }}</b>
-                <small>{{ item.meta }}</small>
+                <b>{{ list.items[0].title }}</b>
+                <small>{{ list.items[0].meta }}</small>
               </div>
-              <strong>{{ item.value }}</strong>
+              <strong>{{ list.items[0].value }}</strong>
+            </a>
+
+            <div class="most-runner-list">
+              <div
+                v-for="(item, index) in list.items.slice(1)"
+                :key="`${list.title}-${item.subjectName}`"
+                class="most-row"
+              >
+                <span>{{ index + 2 }}</span>
+                <a
+                  v-if="item.relativePath"
+                  :href="item.episodeUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img :src="imageUrl(item.relativePath)" :alt="item.title" />
+                </a>
+                <div>
+                  <b>{{ item.title }}</b>
+                  <small>{{ item.meta }}</small>
+                </div>
+                <strong>{{ item.value }}</strong>
+              </div>
             </div>
           </article>
         </div>
@@ -196,7 +216,7 @@ onMounted(fetchReport);
                 rel="noopener noreferrer"
               >
                 <img :src="imageUrl(image.relativePath)" :alt="group.displayName" />
-                <small>{{ image.groupFoodNames?.slice(0, 2).join('、') }}</small>
+                <small>{{ image.title || image.subjectName }}</small>
               </a>
             </div>
           </article>
@@ -212,7 +232,7 @@ onMounted(fetchReport);
         <div class="tag-board">
           <article v-for="(food, index) in topFoods" :key="food.name" class="food-tag-card">
             <div class="food-tag-card__head">
-              <span>{{ index + 1 }}</span>
+              <span>{{ food.rank || index + 1 }}</span>
               <h3>{{ food.displayName }}</h3>
               <b>{{ formatNumber(food.count) }} 次</b>
             </div>
@@ -225,6 +245,7 @@ onMounted(fetchReport);
                 rel="noopener noreferrer"
               >
                 <img :src="imageUrl(image.relativePath)" :alt="food.displayName" />
+                <small>{{ image.title || image.subjectName }}</small>
               </a>
             </div>
           </article>
@@ -290,9 +311,9 @@ onMounted(fetchReport);
   background:
     linear-gradient(
       90deg,
-      rgb(255 248 239 / 96%) 0%,
-      rgb(255 248 239 / 86%) 32%,
-      rgb(255 248 239 / 42%) 58%,
+      rgb(255 248 239 / 88%) 0%,
+      rgb(255 248 239 / 78%) 30%,
+      rgb(255 248 239 / 38%) 58%,
       rgb(255 248 239 / 12%) 100%
     ),
     linear-gradient(0deg, rgb(244 181 158 / 78%) 0%, rgb(244 181 158 / 25%) 38%, transparent 72%);
@@ -308,15 +329,11 @@ onMounted(fetchReport);
 
 .hero-photo-grid {
   position: absolute;
-  inset: -7vh -7vw -7vh 18vw;
+  inset: -6vh -5vw -6vh -5vw;
   z-index: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 0.625rem;
-  transform: rotate(-5deg) scale(1.06);
+  transform: rotate(-3deg) scale(1.08);
   transform-origin: center;
-  filter: saturate(1.08) contrast(1.02);
+  filter: saturate(1.05) contrast(1.02);
   pointer-events: none;
 }
 
@@ -330,25 +347,10 @@ onMounted(fetchReport);
 }
 
 .hero-photo-grid img {
-  flex: 0 0 calc((100% - 4.375rem) / 8);
-  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
   display: block;
-  border-radius: 0.45rem;
   object-fit: cover;
-  box-shadow: 0 0.9rem 2rem rgb(36 28 24 / 18%);
-}
-
-.hero-photo-grid img:nth-child(4n + 1) {
-  transform: translateY(1.05rem);
-}
-
-.hero-photo-grid img:nth-child(5n + 2) {
-  transform: translateY(-0.85rem);
-}
-
-.hero-photo-grid img:nth-child(9n) {
-  aspect-ratio: 16 / 9;
-  flex-basis: calc((100% - 4.375rem) / 4);
 }
 
 .hero-copy {
@@ -434,7 +436,7 @@ onMounted(fetchReport);
 }
 
 .density-row small,
-.leaderboard small,
+.leaderboard-table small,
 .most-card p,
 .most-row small,
 .taxonomy-card span {
@@ -455,7 +457,7 @@ onMounted(fetchReport);
   line-height: 1.02;
 }
 
-.leaderboard-grid,
+.leaderboard-table-wrap,
 .taxonomy-grid,
 .tag-board,
 .most-grid {
@@ -465,8 +467,7 @@ onMounted(fetchReport);
   background: color-mix(in srgb, var(--color-foreground) 24%, transparent);
 }
 
-.leaderboard,
-.score-shelf,
+.leaderboard-table-wrap,
 .taxonomy-card,
 .food-tag-card,
 .most-card,
@@ -474,65 +475,71 @@ onMounted(fetchReport);
   background: var(--color-background);
 }
 
-.leaderboard {
-  display: grid;
-  gap: 0;
-  padding: 0 1.25rem;
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.leaderboard li {
-  display: grid;
-  grid-template-columns: 2.5rem 1fr auto;
-  gap: 1rem;
-  align-items: center;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+.leaderboard-table th {
+  padding: 0.85rem 1.25rem;
+  color: var(--color-muted-foreground);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-align: left;
+  text-transform: uppercase;
 }
 
-.leaderboard li:last-child {
-  border-bottom: 0;
+.leaderboard-table th:nth-child(3),
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(3),
+.leaderboard-table td:nth-child(4) {
+  text-align: right;
+  white-space: nowrap;
 }
 
-.leaderboard span,
+.leaderboard-table td {
+  padding: 1.05rem 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+  vertical-align: middle;
+}
+
+.leaderboard-table td:first-child {
+  width: 4.5rem;
+  color: var(--color-muted-foreground);
+  font-size: 1.35rem;
+}
+
+.leaderboard-table td:nth-child(3) {
+  color: var(--color-teal);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.leaderboard-table td:nth-child(4) {
+  color: var(--color-pink);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
 .most-row > span,
 .food-tag-card__head span {
   color: var(--color-muted-foreground);
   font-size: 1.35rem;
 }
 
-.leaderboard a,
+.leaderboard-table a,
 .most-row b {
   display: grid;
 }
 
-.leaderboard a:hover,
-.score-shelf a:hover {
+.leaderboard-table a:hover {
   color: var(--color-teal);
 }
 
-.leaderboard b,
 .most-row strong {
   color: var(--color-teal);
   font-size: 1.25rem;
-}
-
-.score-shelf {
-  display: grid;
-  align-content: stretch;
-}
-
-.score-shelf article {
-  display: grid;
-  grid-template-columns: 4rem 1fr;
-  gap: 1rem;
-  align-items: center;
-  padding: 1.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-}
-
-.score-shelf span {
-  color: var(--color-pink);
-  font-size: 2rem;
 }
 
 .most-grid {
@@ -540,7 +547,33 @@ onMounted(fetchReport);
 }
 
 .most-card {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
   padding: 1.25rem;
+}
+
+.most-card--wide {
+  grid-column: 1 / -1;
+}
+
+.most-card--wide .most-feature,
+.most-card--wide .most-runner-list {
+  width: 100%;
+}
+
+.most-card--wide .most-feature {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.most-card--wide .most-runner-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.most-card--wide .most-row a {
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 .most-card h3 {
@@ -548,20 +581,92 @@ onMounted(fetchReport);
 }
 
 .most-card p {
-  margin-top: 0.45rem;
+  margin-top: -0.45rem;
   line-height: 1.8;
 }
 
-.most-row {
-  display: grid;
-  grid-template-columns: 2rem 5.5rem 1fr auto;
-  gap: 0.8rem;
-  align-items: center;
-  padding: 1rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+.most-feature {
+  position: relative;
+  display: block;
+  width: min(100%, 28rem);
+  height: 15.75rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-foreground) 8%, transparent);
 }
 
-.most-row img,
+.most-feature::after {
+  content: '';
+  position: absolute;
+  inset: 30% 0 0;
+  background: linear-gradient(transparent, rgb(0 0 0 / 78%));
+}
+
+.most-feature img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.most-feature:hover img {
+  transform: scale(1.035);
+}
+
+.most-feature > span {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 1;
+  display: grid;
+  width: 2.1rem;
+  aspect-ratio: 1;
+  place-items: center;
+  background: rgb(255 255 255 / 88%);
+  color: var(--color-foreground);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.most-feature div {
+  position: absolute;
+  inset: auto 4.75rem 0.85rem 0.9rem;
+  z-index: 1;
+  display: grid;
+  gap: 0.2rem;
+  color: white;
+}
+
+.most-feature small {
+  color: rgb(255 255 255 / 74%);
+}
+
+.most-feature strong {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.8rem;
+  z-index: 1;
+  color: var(--color-teal);
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.most-runner-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 13rem));
+  gap: 0.85rem;
+}
+
+.most-row {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+  padding-top: 0.85rem;
+}
+
 .taxonomy-images img,
 .food-tag-images img {
   width: 100%;
@@ -571,8 +676,32 @@ onMounted(fetchReport);
 }
 
 .most-row a {
-  aspect-ratio: 1.2;
+  width: 100%;
+  height: 7.3125rem;
   overflow: hidden;
+  background: color-mix(in srgb, var(--color-foreground) 8%, transparent);
+}
+
+.most-row img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.most-row > span {
+  position: absolute;
+  top: 1.3rem;
+  left: 0.45rem;
+  z-index: 1;
+  display: grid;
+  width: 1.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  background: rgb(255 255 255 / 88%);
+  color: var(--color-foreground);
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 .taxonomy-grid {
@@ -603,11 +732,26 @@ onMounted(fetchReport);
   overflow: hidden;
 }
 
-.taxonomy-images small {
+.taxonomy-images small,
+.food-tag-images small {
   position: absolute;
   inset: auto 0 0;
   padding: 2rem 0.55rem 0.45rem;
-  background: linear-gradient(transparent, rgb(0 0 0 / 72%));
+  background: linear-gradient(transparent, rgb(0 0 0 / 48%));
+  color: rgb(255 255 255 / 62%);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.25;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.taxonomy-images a:hover small,
+.taxonomy-images a:focus-visible small,
+.food-tag-images a:hover small,
+.food-tag-images a:focus-visible small {
+  background: linear-gradient(transparent, rgb(0 0 0 / 78%));
   color: white;
 }
 
@@ -616,6 +760,10 @@ onMounted(fetchReport);
 }
 
 .food-tag-card {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
   padding: 1.1rem;
 }
 
@@ -624,11 +772,10 @@ onMounted(fetchReport);
   grid-template-columns: 2rem 1fr auto;
   gap: 0.8rem;
   align-items: baseline;
-  margin-bottom: 1rem;
 }
 
 .food-tag-card__head h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .food-tag-images {
@@ -636,7 +783,8 @@ onMounted(fetchReport);
 }
 
 .food-tag-images a {
-  aspect-ratio: 1.15;
+  position: relative;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
@@ -682,32 +830,22 @@ onMounted(fetchReport);
 }
 
 @container (min-width: 720px) {
-  .leaderboard-grid {
-    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
-  }
-
   .most-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .taxonomy-grid,
-  .tag-board {
+  .most-card--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .taxonomy-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @container (min-width: 980px) {
   .most-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .most-card {
-    grid-column: span 2;
-  }
-
-  .most-card:nth-last-child(2),
-  .most-card:last-child {
-    grid-column: span 3;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -726,23 +864,9 @@ onMounted(fetchReport);
   }
 
   .hero-photo-grid {
-    inset: -2vh -16vw auto -16vw;
-    height: 50dvh;
-    gap: 0.45rem;
-    transform: rotate(-5deg) scale(1.04);
+    inset: -3vh -24vw -3vh -24vw;
+    transform: rotate(-3deg) scale(1.06);
     opacity: 0.95;
-  }
-
-  .hero-photo-grid img {
-    flex-basis: calc((100% - 3.125rem) / 6);
-  }
-
-  .hero-photo-grid img:nth-child(9n) {
-    flex-basis: calc((100% - 3.125rem) / 3);
-  }
-
-  .hero-photo-grid img:nth-child(n + 19) {
-    display: none;
   }
 
   .hero-stats {
@@ -750,11 +874,55 @@ onMounted(fetchReport);
   }
 
   .most-row {
-    grid-template-columns: 2rem 4.5rem 1fr;
+    grid-template-columns: 1fr;
   }
 
   .most-row strong {
-    grid-column: 3;
+    grid-column: auto;
+  }
+
+  .most-feature {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .most-runner-list {
+    grid-template-columns: 1fr;
+  }
+
+  .most-card--wide {
+    grid-column: auto;
+  }
+
+  .most-row a {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .food-tag-card {
+    grid-template-columns: 1fr;
+  }
+
+  .food-tag-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .leaderboard-table-wrap {
+    overflow-x: auto;
+  }
+
+  .leaderboard-table {
+    min-width: 34rem;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding-inline: 0.85rem;
+  }
+
+  .leaderboard-table td:first-child {
+    width: 3rem;
   }
 }
 </style>

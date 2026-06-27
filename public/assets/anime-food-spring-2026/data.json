@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T06:00:42.702Z",
+  "generatedAt": "2026-06-27T19:41:04.616Z",
   "startDate": "2026-03-20",
   "endDate": "2026-06-30",
   "subjects": [
@@ -100,6 +100,63 @@
       "episodeCount": 12
     },
     {
+      "bgmId": "609175",
+      "title": "神之水滴",
+      "originalTitle": "神の雫",
+      "subjectName": "Kami no Shizuku",
+      "airDate": "2026-04-10",
+      "score": 5.1,
+      "rank": 8612,
+      "votes": 101,
+      "collection": {
+        "wish": 81,
+        "collect": 26,
+        "doing": 268,
+        "on_hold": 20,
+        "dropped": 88
+      },
+      "episodeUrlsBySort": {
+        "1": "https://bgm.tv/ep/1653382",
+        "2": "https://bgm.tv/ep/1653383",
+        "3": "https://bgm.tv/ep/1653384",
+        "4": "https://bgm.tv/ep/1653385",
+        "5": "https://bgm.tv/ep/1653386",
+        "6": "https://bgm.tv/ep/1653387",
+        "7": "https://bgm.tv/ep/1653388",
+        "8": "https://bgm.tv/ep/1653389",
+        "9": "https://bgm.tv/ep/1653390",
+        "10": "https://bgm.tv/ep/1653391",
+        "11": "https://bgm.tv/ep/1653392",
+        "12": "https://bgm.tv/ep/1653393",
+        "13": "https://bgm.tv/ep/1653394",
+        "14": "https://bgm.tv/ep/1653395",
+        "15": "https://bgm.tv/ep/1653396",
+        "16": "https://bgm.tv/ep/1653397",
+        "17": "https://bgm.tv/ep/1653398",
+        "18": "https://bgm.tv/ep/1653399",
+        "19": "https://bgm.tv/ep/1653400",
+        "20": "https://bgm.tv/ep/1653401",
+        "21": "https://bgm.tv/ep/1653402",
+        "22": "https://bgm.tv/ep/1653403",
+        "23": "https://bgm.tv/ep/1653404",
+        "24": "https://bgm.tv/ep/1653405"
+      },
+      "frames": 68,
+      "savedFrames": 3,
+      "uniqueFoods": {},
+      "groupMentions": {},
+      "episodes": {},
+      "uniqueFoodCount": 42,
+      "groupMentionCounts": {
+        "Drinks": 46,
+        "Produce": 27,
+        "Meat": 6,
+        "Seafood": 1,
+        "Sweets": 1
+      },
+      "episodeCount": 11
+    },
+    {
       "bgmId": "543360",
       "title": "上伊那牡丹，酒醉身姿似百合花般",
       "originalTitle": "上伊那ぼたん、酔へる姿は百合の花",
@@ -146,63 +203,6 @@
       "episodeCount": 12
     },
     {
-      "bgmId": "609175",
-      "title": "神之水滴",
-      "originalTitle": "神の雫",
-      "subjectName": "Kami no Shizuku",
-      "airDate": "2026-04-10",
-      "score": 5.1,
-      "rank": 8612,
-      "votes": 101,
-      "collection": {
-        "wish": 81,
-        "collect": 26,
-        "doing": 268,
-        "on_hold": 20,
-        "dropped": 88
-      },
-      "episodeUrlsBySort": {
-        "1": "https://bgm.tv/ep/1653382",
-        "2": "https://bgm.tv/ep/1653383",
-        "3": "https://bgm.tv/ep/1653384",
-        "4": "https://bgm.tv/ep/1653385",
-        "5": "https://bgm.tv/ep/1653386",
-        "6": "https://bgm.tv/ep/1653387",
-        "7": "https://bgm.tv/ep/1653388",
-        "8": "https://bgm.tv/ep/1653389",
-        "9": "https://bgm.tv/ep/1653390",
-        "10": "https://bgm.tv/ep/1653391",
-        "11": "https://bgm.tv/ep/1653392",
-        "12": "https://bgm.tv/ep/1653393",
-        "13": "https://bgm.tv/ep/1653394",
-        "14": "https://bgm.tv/ep/1653395",
-        "15": "https://bgm.tv/ep/1653396",
-        "16": "https://bgm.tv/ep/1653397",
-        "17": "https://bgm.tv/ep/1653398",
-        "18": "https://bgm.tv/ep/1653399",
-        "19": "https://bgm.tv/ep/1653400",
-        "20": "https://bgm.tv/ep/1653401",
-        "21": "https://bgm.tv/ep/1653402",
-        "22": "https://bgm.tv/ep/1653403",
-        "23": "https://bgm.tv/ep/1653404",
-        "24": "https://bgm.tv/ep/1653405"
-      },
-      "frames": 61,
-      "savedFrames": 3,
-      "uniqueFoods": {},
-      "groupMentions": {},
-      "episodes": {},
-      "uniqueFoodCount": 39,
-      "groupMentionCounts": {
-        "Drinks": 41,
-        "Produce": 23,
-        "Meat": 6,
-        "Seafood": 1,
-        "Sweets": 1
-      },
-      "episodeCount": 10
-    },
-    {
       "bgmId": "610703",
       "title": "当前、正被打扰中！",
       "originalTitle": "ただいま、おじゃまされます！",
@@ -232,12 +232,12 @@
         "11": "https://bgm.tv/ep/1656030",
         "12": "https://bgm.tv/ep/1656031"
       },
-      "frames": 52,
+      "frames": 54,
       "savedFrames": 2,
       "uniqueFoods": {},
       "groupMentions": {},
       "episodes": {},
-      "uniqueFoodCount": 77,
+      "uniqueFoodCount": 79,
       "groupMentionCounts": {
         "Produce": 16,
         "Meat": 13,
@@ -245,10 +245,10 @@
         "Drinks": 10,
         "Rice": 6,
         "Bread": 4,
-        "Sweets": 11,
+        "Sweets": 13,
         "Seafood": 3
       },
-      "episodeCount": 11
+      "episodeCount": 12
     },
     {
       "bgmId": "564289",
@@ -1300,6 +1300,53 @@
       "episodeCount": 9
     },
     {
+      "bgmId": "590353",
+      "title": "婚姻剧毒",
+      "originalTitle": "マリッジトキシン",
+      "subjectName": "Marriagetoxin",
+      "airDate": "2026-04-07",
+      "score": 6.6,
+      "rank": 4794,
+      "votes": 1796,
+      "collection": {
+        "wish": 1490,
+        "collect": 415,
+        "doing": 6551,
+        "on_hold": 161,
+        "dropped": 348
+      },
+      "episodeUrlsBySort": {
+        "1": "https://bgm.tv/ep/1656008",
+        "2": "https://bgm.tv/ep/1656009",
+        "3": "https://bgm.tv/ep/1656010",
+        "4": "https://bgm.tv/ep/1656011",
+        "5": "https://bgm.tv/ep/1656012",
+        "6": "https://bgm.tv/ep/1656013",
+        "7": "https://bgm.tv/ep/1656014",
+        "8": "https://bgm.tv/ep/1656015",
+        "9": "https://bgm.tv/ep/1656016",
+        "10": "https://bgm.tv/ep/1656017",
+        "11": "https://bgm.tv/ep/1656018",
+        "12": "https://bgm.tv/ep/1656019",
+        "13": "https://bgm.tv/ep/1669123"
+      },
+      "frames": 19,
+      "savedFrames": 0,
+      "uniqueFoods": {},
+      "groupMentions": {},
+      "episodes": {},
+      "uniqueFoodCount": 30,
+      "groupMentionCounts": {
+        "Drinks": 5,
+        "Sweets": 2,
+        "Meat": 10,
+        "Rice": 1,
+        "Produce": 8,
+        "Noodles": 1
+      },
+      "episodeCount": 4
+    },
+    {
       "bgmId": "505258",
       "title": "公鸡斗士",
       "originalTitle": "ニワトリ・ファイター",
@@ -1578,53 +1625,6 @@
         "Sweets": 2
       },
       "episodeCount": 7
-    },
-    {
-      "bgmId": "590353",
-      "title": "婚姻剧毒",
-      "originalTitle": "マリッジトキシン",
-      "subjectName": "Marriagetoxin",
-      "airDate": "2026-04-07",
-      "score": 6.6,
-      "rank": 4794,
-      "votes": 1796,
-      "collection": {
-        "wish": 1490,
-        "collect": 415,
-        "doing": 6551,
-        "on_hold": 161,
-        "dropped": 348
-      },
-      "episodeUrlsBySort": {
-        "1": "https://bgm.tv/ep/1656008",
-        "2": "https://bgm.tv/ep/1656009",
-        "3": "https://bgm.tv/ep/1656010",
-        "4": "https://bgm.tv/ep/1656011",
-        "5": "https://bgm.tv/ep/1656012",
-        "6": "https://bgm.tv/ep/1656013",
-        "7": "https://bgm.tv/ep/1656014",
-        "8": "https://bgm.tv/ep/1656015",
-        "9": "https://bgm.tv/ep/1656016",
-        "10": "https://bgm.tv/ep/1656017",
-        "11": "https://bgm.tv/ep/1656018",
-        "12": "https://bgm.tv/ep/1656019",
-        "13": "https://bgm.tv/ep/1669123"
-      },
-      "frames": 16,
-      "savedFrames": 0,
-      "uniqueFoods": {},
-      "groupMentions": {},
-      "episodes": {},
-      "uniqueFoodCount": 26,
-      "groupMentionCounts": {
-        "Drinks": 5,
-        "Sweets": 2,
-        "Meat": 9,
-        "Rice": 1,
-        "Produce": 8,
-        "Noodles": 1
-      },
-      "episodeCount": 3
     },
     {
       "bgmId": "590393",
@@ -2506,7 +2506,7 @@
     {
       "name": "meat",
       "displayName": "肉",
-      "count": 61
+      "count": 62
     },
     {
       "name": "cake",
@@ -2536,12 +2536,12 @@
     {
       "name": "wine",
       "displayName": "葡萄酒",
-      "count": 38
+      "count": 42
     },
     {
       "name": "stew",
       "displayName": "炖菜",
-      "count": 37
+      "count": 39
     },
     {
       "name": "strawberry",
@@ -2569,13 +2569,13 @@
       "count": 30
     },
     {
-      "name": "broccoli",
-      "displayName": "西兰花",
-      "count": 29
-    },
-    {
       "name": "carrot",
       "displayName": "胡萝卜",
+      "count": 30
+    },
+    {
+      "name": "broccoli",
+      "displayName": "西兰花",
       "count": 29
     },
     {
@@ -2586,6 +2586,11 @@
     {
       "name": "salad",
       "displayName": "沙拉",
+      "count": 27
+    },
+    {
+      "name": "potato",
+      "displayName": "土豆",
       "count": 27
     },
     {
@@ -2601,11 +2606,6 @@
     {
       "name": "miso soup",
       "displayName": "味噌汤",
-      "count": 26
-    },
-    {
-      "name": "potato",
-      "displayName": "土豆",
       "count": 26
     },
     {
@@ -2714,9 +2714,19 @@
       "count": 15
     },
     {
+      "name": "grapes",
+      "displayName": "葡萄",
+      "count": 15
+    },
+    {
       "name": "soda",
       "displayName": "汽水",
       "count": 15
+    },
+    {
+      "name": "mushroom",
+      "displayName": "蘑菇",
+      "count": 14
     },
     {
       "name": "pork",
@@ -2726,11 +2736,6 @@
     {
       "name": "ramen",
       "displayName": "拉面",
-      "count": 14
-    },
-    {
-      "name": "grapes",
-      "displayName": "葡萄",
       "count": 14
     },
     {
@@ -2749,13 +2754,13 @@
       "count": 13
     },
     {
-      "name": "mushroom",
-      "displayName": "蘑菇",
+      "name": "juice",
+      "displayName": "果汁",
       "count": 13
     },
     {
-      "name": "juice",
-      "displayName": "果汁",
+      "name": "red wine",
+      "displayName": "红酒",
       "count": 13
     },
     {
@@ -2786,11 +2791,6 @@
     {
       "name": "apple",
       "displayName": "苹果",
-      "count": 12
-    },
-    {
-      "name": "red wine",
-      "displayName": "红酒",
       "count": 12
     },
     {
@@ -2984,6 +2984,11 @@
       "count": 8
     },
     {
+      "name": "pudding",
+      "displayName": "布丁",
+      "count": 8
+    },
+    {
       "name": "pasta",
       "displayName": "意面",
       "count": 8
@@ -3026,11 +3031,6 @@
     {
       "name": "pear",
       "displayName": "梨",
-      "count": 7
-    },
-    {
-      "name": "pudding",
-      "displayName": "布丁",
       "count": 7
     },
     {
@@ -3334,6 +3334,11 @@
       "count": 4
     },
     {
+      "name": "greens",
+      "displayName": "greens",
+      "count": 4
+    },
+    {
       "name": "parsley",
       "displayName": "欧芹",
       "count": 4
@@ -3354,6 +3359,11 @@
       "count": 4
     },
     {
+      "name": "strawberry shortcake",
+      "displayName": "strawberry shortcake",
+      "count": 4
+    },
+    {
       "name": "persimmon",
       "displayName": "persimmon",
       "count": 4
@@ -3361,6 +3371,16 @@
     {
       "name": "biscuits",
       "displayName": "biscuits",
+      "count": 4
+    },
+    {
+      "name": "herbs",
+      "displayName": "herbs",
+      "count": 4
+    },
+    {
+      "name": "jelly",
+      "displayName": "jelly",
       "count": 4
     },
     {
@@ -3479,11 +3499,6 @@
       "count": 3
     },
     {
-      "name": "greens",
-      "displayName": "greens",
-      "count": 3
-    },
-    {
       "name": "tomatoes",
       "displayName": "tomatoes",
       "count": 3
@@ -3516,11 +3531,6 @@
     {
       "name": "bun",
       "displayName": "bun",
-      "count": 3
-    },
-    {
-      "name": "strawberry shortcake",
-      "displayName": "strawberry shortcake",
       "count": 3
     },
     {
@@ -3564,18 +3574,8 @@
       "count": 3
     },
     {
-      "name": "jelly",
-      "displayName": "jelly",
-      "count": 3
-    },
-    {
       "name": "strawberry cake",
       "displayName": "strawberry cake",
-      "count": 3
-    },
-    {
-      "name": "herbs",
-      "displayName": "herbs",
       "count": 3
     },
     {
@@ -3856,6 +3856,16 @@
     {
       "name": "kamaboko",
       "displayName": "kamaboko",
+      "count": 2
+    },
+    {
+      "name": "porridge",
+      "displayName": "porridge",
+      "count": 2
+    },
+    {
+      "name": "nuts",
+      "displayName": "nuts",
       "count": 2
     },
     {
@@ -4809,11 +4819,6 @@
       "count": 1
     },
     {
-      "name": "nuts",
-      "displayName": "nuts",
-      "count": 1
-    },
-    {
       "name": "protein drink",
       "displayName": "protein drink",
       "count": 1
@@ -5116,6 +5121,11 @@
     {
       "name": "mapo tofu",
       "displayName": "mapo tofu",
+      "count": 1
+    },
+    {
+      "name": "yogurt",
+      "displayName": "yogurt",
       "count": 1
     },
     {
@@ -15685,6 +15695,19 @@
           "episodeUrl": "https://bgm.tv/ep/1656011"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.13.52.000-o57oup.png",
+          "foodNames": [
+            "meat"
+          ],
+          "foodName": "meat",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:13:52.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 02 (CR 1920x1080 AVC AAC MKV) [EBD47457]\\00.15.03.000-qaa0nv.png",
           "foodNames": [
             "stew",
@@ -16905,6 +16928,20 @@
           "episodeUrl": "https://bgm.tv/ep/1625749"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.03.38.000-2ecp4b.png",
+          "foodNames": [
+            "porridge",
+            "stew"
+          ],
+          "foodName": "stew",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:03:38.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 02 (CR 1920x1080 AVC AAC MKV) [EBD47457]\\00.15.03.000-qaa0nv.png",
           "foodNames": [
             "stew",
@@ -17212,6 +17249,23 @@
           "timestamp": "00:14:59.000",
           "subjectName": "Jihanki 3rd Season",
           "episodeUrl": "https://bgm.tv/ep/1663137"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "foodName": "stew",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Kanteishi (Kari) - 04 [WebRip 1080p HEVC-10bit AAC]\\00.15.30.000-ph2q0t.png",
@@ -17726,6 +17780,23 @@
           "episodeUrl": "https://bgm.tv/ep/1656020"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "foodName": "carrot",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Iseleve - TVSP [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.28.46.000-0e9hvb.png",
           "foodNames": [
             "stew",
@@ -18149,6 +18220,23 @@
           "timestamp": "00:15:13.000",
           "subjectName": "Kami no Shizuku",
           "episodeUrl": "https://bgm.tv/ep/1653384"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "foodName": "potato",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Iseleve - TVSP [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.28.46.000-0e9hvb.png",
@@ -28747,6 +28835,23 @@
           "episodeUrl": "https://bgm.tv/ep/1663101"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "foodName": "mushroom",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Kanteishi (Kari) - 04 [WebRip 1080p HEVC-10bit AAC]\\00.16.22.000-2j9ijz.png",
           "foodNames": [
             "stew",
@@ -33858,6 +33963,58 @@
           "episodeUrl": "https://bgm.tv/ep/1653392"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.04.31.000-1kfc5d.png",
+          "foodNames": [
+            "wine"
+          ],
+          "foodName": "wine",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:04:31.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.15.000-doalrk.png",
+          "foodNames": [
+            "wine"
+          ],
+          "foodName": "wine",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:15.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.11.34.000-cxurpd.png",
+          "foodNames": [
+            "wine"
+          ],
+          "foodName": "wine",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:11:34.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.21.48.000-amm6rs.png",
+          "foodNames": [
+            "wine"
+          ],
+          "foodName": "wine",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:21:48.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ghost Concert_ Missing Songs - 12 (CR 1920x1080 AVC AAC MKV) [D12FB3D7]\\00.15.38.000-4wjr3f.png",
           "foodNames": [
             "cake",
@@ -35631,6 +35788,19 @@
           "timestamp": "00:19:49.000",
           "subjectName": "Kami no Shizuku",
           "episodeUrl": "https://bgm.tv/ep/1653390"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.18.01.000-pa4wic.png",
+          "foodNames": [
+            "grapes"
+          ],
+          "foodName": "grapes",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:18:01.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         }
       ]
     },
@@ -41009,6 +41179,19 @@
           "timestamp": "00:00:12.000",
           "subjectName": "Kami no Shizuku",
           "episodeUrl": "https://bgm.tv/ep/1653392"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.39.000-0br77a.png",
+          "foodNames": [
+            "red wine"
+          ],
+          "foodName": "red wine",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:39.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         }
       ]
     },
@@ -41412,6 +41595,23 @@
           "timestamp": "00:19:38.000",
           "subjectName": "Maid-san wa Taberu dake",
           "episodeUrl": "https://bgm.tv/ep/1663110"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "foodName": "greens",
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         }
       ]
     },
@@ -42615,6 +42815,21 @@
           "timestamp": "00:13:30.000",
           "subjectName": "Tadaima, Ojamasaremasu!",
           "episodeUrl": "https://bgm.tv/ep/1656029"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.18.51.000-ckjmtb.png",
+          "foodNames": [
+            "jelly",
+            "pudding",
+            "yogurt"
+          ],
+          "foodName": "pudding",
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:18:51.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
         }
       ]
     },
@@ -44860,6 +45075,19 @@
           "timestamp": "00:20:48.000",
           "subjectName": "Maid-san wa Taberu dake",
           "episodeUrl": "https://bgm.tv/ep/1663109"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.13.06.000-6yhzkn.png",
+          "foodNames": [
+            "strawberry shortcake"
+          ],
+          "foodName": "strawberry shortcake",
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:13:06.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
         }
       ]
     },
@@ -47078,6 +47306,135 @@
       ]
     },
     {
+      "name": "porridge",
+      "candidates": [
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.03.38.000-2ecp4b.png",
+          "foodNames": [
+            "porridge",
+            "stew"
+          ],
+          "foodName": "porridge",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:03:38.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.04.50.000-pnrw7d.png",
+          "foodNames": [
+            "porridge",
+            "nuts",
+            "herbs"
+          ],
+          "foodName": "porridge",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:04:50.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        }
+      ]
+    },
+    {
+      "name": "nuts",
+      "candidates": [
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.04.50.000-pnrw7d.png",
+          "foodNames": [
+            "porridge",
+            "nuts",
+            "herbs"
+          ],
+          "foodName": "nuts",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:04:50.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta - 05 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.19.46.000-rh0szh.png",
+          "foodNames": [
+            "nuts"
+          ],
+          "foodName": "nuts",
+          "saved": false,
+          "title": "和班上第二可爱的女孩成为朋友",
+          "score": 5.8,
+          "timestamp": "00:19:46.000",
+          "subjectName": "Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta",
+          "episodeUrl": "https://bgm.tv/ep/1655973"
+        }
+      ]
+    },
+    {
+      "name": "herbs",
+      "candidates": [
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.04.50.000-pnrw7d.png",
+          "foodNames": [
+            "porridge",
+            "nuts",
+            "herbs"
+          ],
+          "foodName": "herbs",
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:04:50.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] MAO - 05 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.07.45.000-xrggy1.png",
+          "foodNames": [
+            "herbs",
+            "berries"
+          ],
+          "foodName": "herbs",
+          "saved": false,
+          "title": "摩绪",
+          "score": 6.1,
+          "timestamp": "00:07:45.000",
+          "subjectName": "MAO",
+          "episodeUrl": "https://bgm.tv/ep/1654372"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Yowayowa Sensei - 08 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.48.000-tsqpcy.png",
+          "foodNames": [
+            "rice porridge",
+            "herbs"
+          ],
+          "foodName": "herbs",
+          "saved": false,
+          "title": "弱弱老师",
+          "score": 5.9,
+          "timestamp": "00:12:48.000",
+          "subjectName": "Yowayowa Sensei",
+          "episodeUrl": "https://bgm.tv/ep/1655907"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Kanteishi (Kari) - 05 [WebRip 1080p HEVC-10bit AAC]\\00.03.52.000-o09tqe.png",
+          "foodNames": [
+            "sweet potato",
+            "herbs"
+          ],
+          "foodName": "herbs",
+          "saved": false,
+          "title": "最强的职业不是勇者也不是贤者好像是鉴定士(伪)的样子?",
+          "score": 4.8,
+          "timestamp": "00:03:52.000",
+          "subjectName": "Kanteishi",
+          "episodeUrl": "https://bgm.tv/ep/1656180"
+        }
+      ]
+    },
+    {
       "name": "jelly",
       "candidates": [
         {
@@ -47107,6 +47464,21 @@
           "timestamp": "00:02:17.000",
           "subjectName": "Tadaima, Ojamasaremasu!",
           "episodeUrl": "https://bgm.tv/ep/1656020"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.18.51.000-ckjmtb.png",
+          "foodNames": [
+            "jelly",
+            "pudding",
+            "yogurt"
+          ],
+          "foodName": "jelly",
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:18:51.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Needy Girl Overdose - 02 (CR 1920x1080 AVC AAC MKV) [3C56A9EC]\\00.05.23.000-7suw4n.png",
@@ -49123,24 +49495,6 @@
       ]
     },
     {
-      "name": "nuts",
-      "candidates": [
-        {
-          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta - 05 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.19.46.000-rh0szh.png",
-          "foodNames": [
-            "nuts"
-          ],
-          "foodName": "nuts",
-          "saved": false,
-          "title": "和班上第二可爱的女孩成为朋友",
-          "score": 5.8,
-          "timestamp": "00:19:46.000",
-          "subjectName": "Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta",
-          "episodeUrl": "https://bgm.tv/ep/1655973"
-        }
-      ]
-    },
-    {
       "name": "protein drink",
       "candidates": [
         {
@@ -49481,53 +49835,6 @@
           "timestamp": "00:00:25.000",
           "subjectName": "Ganbare! Nakamura-kun!!",
           "episodeUrl": "https://bgm.tv/ep/1656223"
-        }
-      ]
-    },
-    {
-      "name": "herbs",
-      "candidates": [
-        {
-          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] MAO - 05 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.07.45.000-xrggy1.png",
-          "foodNames": [
-            "herbs",
-            "berries"
-          ],
-          "foodName": "herbs",
-          "saved": false,
-          "title": "摩绪",
-          "score": 6.1,
-          "timestamp": "00:07:45.000",
-          "subjectName": "MAO",
-          "episodeUrl": "https://bgm.tv/ep/1654372"
-        },
-        {
-          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Yowayowa Sensei - 08 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.48.000-tsqpcy.png",
-          "foodNames": [
-            "rice porridge",
-            "herbs"
-          ],
-          "foodName": "herbs",
-          "saved": false,
-          "title": "弱弱老师",
-          "score": 5.9,
-          "timestamp": "00:12:48.000",
-          "subjectName": "Yowayowa Sensei",
-          "episodeUrl": "https://bgm.tv/ep/1655907"
-        },
-        {
-          "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Kanteishi (Kari) - 05 [WebRip 1080p HEVC-10bit AAC]\\00.03.52.000-o09tqe.png",
-          "foodNames": [
-            "sweet potato",
-            "herbs"
-          ],
-          "foodName": "herbs",
-          "saved": false,
-          "title": "最强的职业不是勇者也不是贤者好像是鉴定士(伪)的样子?",
-          "score": 4.8,
-          "timestamp": "00:03:52.000",
-          "subjectName": "Kanteishi",
-          "episodeUrl": "https://bgm.tv/ep/1656180"
         }
       ]
     },
@@ -50862,6 +51169,26 @@
       ]
     },
     {
+      "name": "yogurt",
+      "candidates": [
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.18.51.000-ckjmtb.png",
+          "foodNames": [
+            "jelly",
+            "pudding",
+            "yogurt"
+          ],
+          "foodName": "yogurt",
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:18:51.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
+        }
+      ]
+    },
+    {
       "name": "pastries",
       "candidates": [
         {
@@ -50924,22 +51251,22 @@
     {
       "name": "Produce",
       "displayName": "蔬果",
-      "count": 478
+      "count": 482
     },
     {
       "name": "Drinks",
       "displayName": "饮品",
-      "count": 347
+      "count": 352
     },
     {
       "name": "Meat",
       "displayName": "肉类",
-      "count": 325
+      "count": 326
     },
     {
       "name": "Sweets",
       "displayName": "甜点",
-      "count": 282
+      "count": 284
     },
     {
       "name": "Rice",
@@ -55120,6 +55447,91 @@
           "timestamp": "00:01:37.000",
           "subjectName": "Kami no Shizuku",
           "episodeUrl": "https://bgm.tv/ep/1653392"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.04.31.000-1kfc5d.png",
+          "foodNames": [
+            "wine"
+          ],
+          "groupFoodNames": [
+            "wine"
+          ],
+          "group": "Drinks",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:04:31.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.15.000-doalrk.png",
+          "foodNames": [
+            "wine"
+          ],
+          "groupFoodNames": [
+            "wine"
+          ],
+          "group": "Drinks",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:15.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.39.000-0br77a.png",
+          "foodNames": [
+            "red wine"
+          ],
+          "groupFoodNames": [
+            "red wine"
+          ],
+          "group": "Drinks",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:39.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.11.34.000-cxurpd.png",
+          "foodNames": [
+            "wine"
+          ],
+          "groupFoodNames": [
+            "wine"
+          ],
+          "group": "Drinks",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:11:34.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.21.48.000-amm6rs.png",
+          "foodNames": [
+            "wine"
+          ],
+          "groupFoodNames": [
+            "wine"
+          ],
+          "group": "Drinks",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:21:48.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Needy Girl Overdose - 01 (CR 1920x1080 AVC AAC MKV) [C0A53AEA]\\00.05.48.000-bth2rj.png",
@@ -60279,6 +60691,23 @@
           "timestamp": "00:09:18.000",
           "subjectName": "Marriagetoxin",
           "episodeUrl": "https://bgm.tv/ep/1656009"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.13.52.000-o57oup.png",
+          "foodNames": [
+            "meat"
+          ],
+          "groupFoodNames": [
+            "meat"
+          ],
+          "group": "Meat",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "婚姻剧毒",
+          "score": 6.6,
+          "timestamp": "00:13:52.000",
+          "subjectName": "Marriagetoxin",
+          "episodeUrl": "https://bgm.tv/ep/1656017"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 06 (CR 1920x1080 AVC AAC MKV) [255F9404]\\00.08.21.000-8xpj0a.png",
@@ -66439,6 +66868,23 @@
           "episodeUrl": "https://bgm.tv/ep/1653390"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.18.01.000-pa4wic.png",
+          "foodNames": [
+            "grapes"
+          ],
+          "groupFoodNames": [
+            "grapes"
+          ],
+          "group": "Produce",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:18:01.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Needy Girl Overdose - 03 (CR 1920x1080 AVC AAC MKV) [9A47250B]\\00.04.34.000-gyzr1s.png",
           "foodNames": [
             "orange"
@@ -67093,6 +67539,29 @@
           "timestamp": "00:21:06.000",
           "subjectName": "Tadaima, Ojamasaremasu!",
           "episodeUrl": "https://bgm.tv/ep/1656020"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+          "foodNames": [
+            "stew",
+            "mushroom",
+            "carrot",
+            "potato",
+            "greens"
+          ],
+          "groupFoodNames": [
+            "mushroom",
+            "carrot",
+            "potato"
+          ],
+          "group": "Produce",
+          "firstGroupFoodIndex": 1,
+          "saved": false,
+          "title": "神之水滴",
+          "score": 5.1,
+          "timestamp": "00:08:13.000",
+          "subjectName": "Kami no Shizuku",
+          "episodeUrl": "https://bgm.tv/ep/1653393"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 04 (CR 1920x1080 AVC AAC MKV) [18EA8F95]\\00.10.51.000-5de9aw.png",
@@ -73174,6 +73643,23 @@
           "episodeUrl": "https://bgm.tv/ep/1656029"
         },
         {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.13.06.000-6yhzkn.png",
+          "foodNames": [
+            "strawberry shortcake"
+          ],
+          "groupFoodNames": [
+            "strawberry shortcake"
+          ],
+          "group": "Sweets",
+          "firstGroupFoodIndex": 0,
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:13:06.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
+        },
+        {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 04 (CR 1920x1080 AVC AAC MKV) [B7D7210B]\\00.02.05.000-czb16e.png",
           "foodNames": [
             "parfait",
@@ -74108,6 +74594,25 @@
           "timestamp": "00:04:39.000",
           "subjectName": "Tadaima, Ojamasaremasu!",
           "episodeUrl": "https://bgm.tv/ep/1656026"
+        },
+        {
+          "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.18.51.000-ckjmtb.png",
+          "foodNames": [
+            "jelly",
+            "pudding",
+            "yogurt"
+          ],
+          "groupFoodNames": [
+            "pudding"
+          ],
+          "group": "Sweets",
+          "firstGroupFoodIndex": 1,
+          "saved": false,
+          "title": "当前、正被打扰中！",
+          "score": 5.3,
+          "timestamp": "00:18:51.000",
+          "subjectName": "Tadaima, Ojamasaremasu!",
+          "episodeUrl": "https://bgm.tv/ep/1656024"
         },
         {
           "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] TBATE Season 2 - 04 (CR 1920x1080 AVC AAC MKV) [61A73D5A]\\00.06.01.000-hkvno7.png",
@@ -85613,6 +86118,45 @@
       "episodeUrl": "https://bgm.tv/ep/1656011"
     },
     {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.03.38.000-2ecp4b.png",
+      "foodNames": [
+        "porridge",
+        "stew"
+      ],
+      "saved": false,
+      "title": "婚姻剧毒",
+      "score": 6.6,
+      "timestamp": "00:03:38.000",
+      "subjectName": "Marriagetoxin",
+      "episodeUrl": "https://bgm.tv/ep/1656017"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.04.50.000-pnrw7d.png",
+      "foodNames": [
+        "porridge",
+        "nuts",
+        "herbs"
+      ],
+      "saved": false,
+      "title": "婚姻剧毒",
+      "score": 6.6,
+      "timestamp": "00:04:50.000",
+      "subjectName": "Marriagetoxin",
+      "episodeUrl": "https://bgm.tv/ep/1656017"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF]\\00.13.52.000-o57oup.png",
+      "foodNames": [
+        "meat"
+      ],
+      "saved": false,
+      "title": "婚姻剧毒",
+      "score": 6.6,
+      "timestamp": "00:13:52.000",
+      "subjectName": "Marriagetoxin",
+      "episodeUrl": "https://bgm.tv/ep/1656017"
+    },
+    {
       "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Otaku ni Yasashii Gal wa Inai!_ - 03 (CR 1920x1080 AVC AAC MKV) [7CCF6930]\\00.04.52.000-t54wo5.png",
       "foodNames": [
         "coffee"
@@ -95498,6 +96042,32 @@
       "episodeUrl": "https://bgm.tv/ep/1656031"
     },
     {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.13.06.000-6yhzkn.png",
+      "foodNames": [
+        "strawberry shortcake"
+      ],
+      "saved": false,
+      "title": "当前、正被打扰中！",
+      "score": 5.3,
+      "timestamp": "00:13:06.000",
+      "subjectName": "Tadaima, Ojamasaremasu!",
+      "episodeUrl": "https://bgm.tv/ep/1656024"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436]\\00.18.51.000-ckjmtb.png",
+      "foodNames": [
+        "jelly",
+        "pudding",
+        "yogurt"
+      ],
+      "saved": false,
+      "title": "当前、正被打扰中！",
+      "score": 5.3,
+      "timestamp": "00:18:51.000",
+      "subjectName": "Tadaima, Ojamasaremasu!",
+      "episodeUrl": "https://bgm.tv/ep/1656024"
+    },
+    {
       "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 02 (CR 1920x1080 AVC AAC MKV) [16A40C03]\\00.03.40.000-j64cxi.png",
       "foodNames": [
         "flan",
@@ -96908,6 +97478,94 @@
       "timestamp": "00:01:37.000",
       "subjectName": "Kami no Shizuku",
       "episodeUrl": "https://bgm.tv/ep/1653392"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.04.31.000-1kfc5d.png",
+      "foodNames": [
+        "wine"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:04:31.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.13.000-ohc68u.png",
+      "foodNames": [
+        "stew",
+        "mushroom",
+        "carrot",
+        "potato",
+        "greens"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:08:13.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.15.000-doalrk.png",
+      "foodNames": [
+        "wine"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:08:15.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.08.39.000-0br77a.png",
+      "foodNames": [
+        "red wine"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:08:39.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.11.34.000-cxurpd.png",
+      "foodNames": [
+        "wine"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:11:34.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.18.01.000-pa4wic.png",
+      "foodNames": [
+        "grapes"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:18:01.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
+    },
+    {
+      "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD]\\00.21.48.000-amm6rs.png",
+      "foodNames": [
+        "wine"
+      ],
+      "saved": false,
+      "title": "神之水滴",
+      "score": 5.1,
+      "timestamp": "00:21:48.000",
+      "subjectName": "Kami no Shizuku",
+      "episodeUrl": "https://bgm.tv/ep/1653393"
     },
     {
       "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Needy Girl Overdose - 01 (CR 1920x1080 AVC AAC MKV) [C0A53AEA]\\00.05.48.000-bth2rj.png",
@@ -98734,6 +99392,10 @@
       "count": 7
     },
     {
+      "episode": "[Dynamis One] Kami no Shizuku - 12 (CR 1920x1080 AVC AAC MKV) [CA6342CD].mkv",
+      "count": 7
+    },
+    {
       "episode": "[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 02 (CR 1920x1080 AVC AAC MKV) [3D11CBF2].mkv",
       "count": 7
     },
@@ -99306,6 +99968,10 @@
       "count": 3
     },
     {
+      "episode": "[Dynamis One] Marriagetoxin - 10 (B-Global 1920x1080 HEVC AAC MKV) [E38C24DF].mkv",
+      "count": 3
+    },
+    {
       "episode": "[Dynamis One] Needy Girl Overdose - 03 (CR 1920x1080 AVC AAC MKV) [9A47250B].mkv",
       "count": 3
     },
@@ -99782,6 +100448,10 @@
       "count": 2
     },
     {
+      "episode": "[SubsPlease] Tadaima, Ojamasaremasu! - 05 (1080p) [E638B436].mkv",
+      "count": 2
+    },
+    {
       "episode": "[SweetSub&LoliHouse] Honzuki no Gekokujou S04 - 04 [WebRip 1080p HEVC-10bit AAC ASSx2].mkv",
       "count": 2
     },
@@ -100223,10 +100893,10 @@
     }
   ],
   "stats": {
-    "verifiedFrames": 1378,
+    "verifiedFrames": 1390,
     "subjectCount": 52,
-    "foodMentionCount": 2824,
-    "uniqueFoodCount": 526,
+    "foodMentionCount": 2845,
+    "uniqueFoodCount": 528,
     "avgScore": 5.949999999999999,
     "highFoodAvgScore": 6.084615384615385,
     "lowFoodAvgScore": 5.905128205128205,
@@ -100235,6 +100905,58 @@
   "page": {
     "assetBasePath": "/assets/anime-food-spring-2026/",
     "heroImages": [
+      {
+        "imagePath": "E:\\tabemono\\backend\\dist\\anime-food-spring-2026\\assets\\hero-collage-cab5e88759.webp",
+        "foodNames": [
+          "ice cream",
+          "cookie",
+          "tea",
+          "chocolate chip cookie",
+          "red bean bun",
+          "eel",
+          "rice",
+          "sauce",
+          "curry",
+          "takoyaki",
+          "edamame",
+          "yakisoba",
+          "fried chicken",
+          "onigiri",
+          "strawberry",
+          "crepe",
+          "whipped cream",
+          "chocolate sauce",
+          "strawberry shortcake",
+          "cake",
+          "pastry",
+          "sandwich",
+          "jam",
+          "steak",
+          "potato",
+          "lettuce",
+          "tomato",
+          "cheese",
+          "carrot",
+          "tart",
+          "peach",
+          "thyme",
+          "naan",
+          "fish",
+          "lobster",
+          "octopus",
+          "clams",
+          "noodles"
+        ],
+        "saved": true,
+        "title": "女仆小姐的贪吃日常",
+        "score": 5.8,
+        "timestamp": "00:03:41.000",
+        "subjectName": "Maid-san wa Taberu dake",
+        "episodeUrl": "https://bgm.tv/ep/1663103",
+        "foodName": "collage",
+        "relativePath": "assets/hero-collage-cab5e88759.webp",
+        "collage": true
+      },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 05 (CR 1920x1080 AVC AAC MKV) [28D551BA]\\00.03.41.000-lejm5q.png",
         "foodNames": [
@@ -100246,7 +100968,7 @@
         "timestamp": "00:03:41.000",
         "subjectName": "Maid-san wa Taberu dake",
         "episodeUrl": "https://bgm.tv/ep/1663103",
-        "relativePath": "assets/01-maid-san-wa-taberu-dake-79ce1a17fa.png"
+        "relativePath": "assets/02-maid-san-wa-taberu-dake-ded33284f5.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 10 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.06.34.000-eut347.png",
@@ -100263,7 +100985,7 @@
         "timestamp": "00:06:34.000",
         "subjectName": "Nigetsuri",
         "episodeUrl": "https://bgm.tv/ep/1656233",
-        "relativePath": "assets/02-nigetsuri-a2340b7e0b.png"
+        "relativePath": "assets/03-nigetsuri-00e9a06d65.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 27 (CR 1920x1080 AVC AAC MKV) [8528F348]\\00.06.36.000-s5nrwk.png",
@@ -100277,7 +100999,7 @@
         "timestamp": "00:06:36.000",
         "subjectName": "Dr. Stone: Science Future Part 3",
         "episodeUrl": "https://bgm.tv/ep/1656189",
-        "relativePath": "assets/03-dr-stone-science-future-part-3-a23ab38220.png"
+        "relativePath": "assets/04-dr-stone-science-future-part-3-06fe16a27b.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Rooster Fighter - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.00.32.000-iq3tpr.png",
@@ -100290,7 +101012,7 @@
         "timestamp": "00:00:32.000",
         "subjectName": "Rooster Fighter",
         "episodeUrl": "https://bgm.tv/ep/1656081",
-        "relativePath": "assets/04-rooster-fighter-b189d2c92a.png"
+        "relativePath": "assets/05-rooster-fighter-fd3ab66856.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Niwatsuki Kusunoki-tei - 02 (CR 1920x1080 AVC AAC MKV) [0DF1FD3F]\\00.00.46.000-m3fi2e.png",
@@ -100303,7 +101025,7 @@
         "timestamp": "00:00:46.000",
         "subjectName": "Kami no Niwatsuki Kusunoki-tei",
         "episodeUrl": "https://bgm.tv/ep/1656153",
-        "relativePath": "assets/05-kami-no-niwatsuki-kusunoki-tei-2e29aeb3a5.png"
+        "relativePath": "assets/06-kami-no-niwatsuki-kusunoki-tei-2fd9ae450b.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 05 (CR 1920x1080 AVC AAC MKV) [7A2058E9]\\00.08.14.000-s32zaz.png",
@@ -100317,7 +101039,7 @@
         "timestamp": "00:08:14.000",
         "subjectName": "Jihanki 3rd Season",
         "episodeUrl": "https://bgm.tv/ep/1663137",
-        "relativePath": "assets/06-jihanki-3rd-season-06a20c237a.png"
+        "relativePath": "assets/07-jihanki-3rd-season-61557c59df.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 04 (CR 1920x1080 AVC AAC MKV) [CCBECDAB]\\00.00.38.000-1fk3bs.png",
@@ -100333,7 +101055,7 @@
         "timestamp": "00:00:38.000",
         "subjectName": "Kami no Shizuku",
         "episodeUrl": "https://bgm.tv/ep/1653385",
-        "relativePath": "assets/07-kami-no-shizuku-d394860565.png"
+        "relativePath": "assets/08-kami-no-shizuku-c72b2418dd.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kanojo, Okarishimasu 5th Season - 52 (CR 1920x1080 AVC AAC MKV) [16FF5977]\\00.09.59.000-mf9azi.png",
@@ -100348,7 +101070,7 @@
         "timestamp": "00:09:59.000",
         "subjectName": "Kanojo, Okarishimasu 5th Season",
         "episodeUrl": "https://bgm.tv/ep/1663066",
-        "relativePath": "assets/08-kanojo-okarishimasu-5th-season-691bec4e4c.png"
+        "relativePath": "assets/09-kanojo-okarishimasu-5th-season-0f14db46b0.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 06 (CR 1920x1080 AVC AAC MKV) [255F9404]\\00.08.29.000-6uubic.png",
@@ -100361,7 +101083,7 @@
         "timestamp": "00:08:29.000",
         "subjectName": "Tongari Boushi no Atelier",
         "episodeUrl": "https://bgm.tv/ep/1656037",
-        "relativePath": "assets/09-tongari-boushi-no-atelier-83821ae3ef.png"
+        "relativePath": "assets/10-tongari-boushi-no-atelier-01caf146b2.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Aishiteru Game wo Owarasetai - 03 (CR 1920x1080 AVC AAC MKV) [DD96042C]\\00.13.21.000-rkf4op.png",
@@ -100376,7 +101098,7 @@
         "timestamp": "00:13:21.000",
         "subjectName": "Aishiteru Game wo Owarasetai",
         "episodeUrl": "https://bgm.tv/ep/1665050",
-        "relativePath": "assets/10-aishiteru-game-wo-owarasetai-9ca9982bce.png"
+        "relativePath": "assets/11-aishiteru-game-wo-owarasetai-0bd5990224.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Magical Sisters LuluttoLilly - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.08.58.000-2g9o69.png",
@@ -100392,7 +101114,7 @@
         "timestamp": "00:08:58.000",
         "subjectName": "Magical Sisters LuluttoLilly",
         "episodeUrl": "https://bgm.tv/ep/1669367",
-        "relativePath": "assets/11-magical-sisters-luluttolilly-ed0367e0f8.png"
+        "relativePath": "assets/12-magical-sisters-luluttolilly-5315503a22.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kill Ao - 02 (CR 1920x1080 AVC AAC MKV) [C570AEF4]\\00.07.58.000-2m74kj.png",
@@ -100410,7 +101132,7 @@
         "timestamp": "00:07:58.000",
         "subjectName": "Kill Ao",
         "episodeUrl": "https://bgm.tv/ep/1655889",
-        "relativePath": "assets/12-kill-ao-1f7c9bcbb0.png"
+        "relativePath": "assets/13-kill-ao-c9fa6ab1e5.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kujima Utaeba Ie Hororo - 05 (CR 1920x1080 AVC AAC MKV) [F3978680]\\00.14.11.000-tdl7mt.png",
@@ -100425,7 +101147,7 @@
         "timestamp": "00:14:11.000",
         "subjectName": "Kujima Utaeba Ie Hororo",
         "episodeUrl": "https://bgm.tv/ep/1657955",
-        "relativePath": "assets/13-kujima-utaeba-ie-hororo-36e29dacf3.png"
+        "relativePath": "assets/14-kujima-utaeba-ie-hororo-64e96a5581.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.09.27.000-d7kfrz.png",
@@ -100438,7 +101160,7 @@
         "timestamp": "00:09:27.000",
         "subjectName": "Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta",
         "episodeUrl": "https://bgm.tv/ep/1655973",
-        "relativePath": "assets/14-class-de-2-banme-ni-kawaii-onnanoko-to-tomodachi-ni-natta-e659f6b32c.png"
+        "relativePath": "assets/15-class-de-2-banme-ni-kawaii-onnanoko-to-tomodachi-ni-natta-fd46aad4c3.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Liar Game - 04 (CR 1920x1080 AVC AAC MKV) [1C647371]\\00.03.45.000-hcoyvm.png",
@@ -100454,7 +101176,7 @@
         "timestamp": "00:03:45.000",
         "subjectName": "Liar Game",
         "episodeUrl": "https://bgm.tv/ep/1663090",
-        "relativePath": "assets/15-liar-game-9761aa54ba.png"
+        "relativePath": "assets/16-liar-game-6b1787a2f1.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Otonari no Tenshi-sama S2 - 04 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.04.52.000-u7w8sd.png",
@@ -100470,7 +101192,7 @@
         "timestamp": "00:04:52.000",
         "subjectName": "Otonari no Tenshi-sama S2",
         "episodeUrl": "https://bgm.tv/ep/1617416",
-        "relativePath": "assets/16-otonari-no-tenshi-sama-s2-b80fc1a2aa.png"
+        "relativePath": "assets/17-otonari-no-tenshi-sama-s2-79ae49db33.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tadaima, Ojamasaremasu! - 02 (CR 1920x1080 AVC AAC MKV) [6B75FDF5]\\00.04.02.000-hpdenf.png",
@@ -100484,7 +101206,7 @@
         "timestamp": "00:04:02.000",
         "subjectName": "Tadaima, Ojamasaremasu!",
         "episodeUrl": "https://bgm.tv/ep/1656021",
-        "relativePath": "assets/17-tadaima-ojamasaremasu-e62cd6e35c.png"
+        "relativePath": "assets/18-tadaima-ojamasaremasu-30b0fa618d.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 02 (CR 1920x1080 AVC AAC MKV) [3D11CBF2]\\00.08.04.000-i7t5qm.png",
@@ -100501,7 +101223,7 @@
         "timestamp": "00:08:04.000",
         "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
         "episodeUrl": "https://bgm.tv/ep/1655877",
-        "relativePath": "assets/18-kamiina-botan-yoeru-sugata-wa-yuri-no-hana-04ddb6a1d0.png"
+        "relativePath": "assets/19-kamiina-botan-yoeru-sugata-wa-yuri-no-hana-93272418c1.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 02 (CR 1920x1080 AVC AAC MKV) [A93E4362]\\00.19.30.000-m18zr8.png",
@@ -100517,7 +101239,7 @@
         "timestamp": "00:19:30.000",
         "subjectName": "Rokkotsu",
         "episodeUrl": "https://bgm.tv/ep/1670641",
-        "relativePath": "assets/19-rokkotsu-831460e234.png"
+        "relativePath": "assets/20-rokkotsu-df26160733.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Yomi no Tsugai - 04 (CR 1920x1080 AVC AAC MKV) [68C715DD]\\00.05.58.000-149pex.png",
@@ -100532,7 +101254,7 @@
         "timestamp": "00:05:58.000",
         "subjectName": "Yomi no Tsugai",
         "episodeUrl": "https://bgm.tv/ep/1575778",
-        "relativePath": "assets/20-yomi-no-tsugai-67ddcdef3a.png"
+        "relativePath": "assets/21-yomi-no-tsugai-5635322918.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Otaku ni Yasashii Gal wa Inai!_ - 05 (CR 1920x1080 AVC AAC MKV) [682EC0E5]\\00.04.56.000-24ww9i.png",
@@ -100553,7 +101275,7 @@
         "timestamp": "00:04:56.000",
         "subjectName": "Otaku ni Yasashii Gal wa Inai!",
         "episodeUrl": "https://bgm.tv/ep/1655952",
-        "relativePath": "assets/21-otaku-ni-yasashii-gal-wa-inai-25b91d1470.png"
+        "relativePath": "assets/22-otaku-ni-yasashii-gal-wa-inai-3200923235.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jisho Akuyaku - 01 (CR 1920x1080 AVC AAC MKV) [7A994296]\\00.10.12.000-9xl0o1.png",
@@ -100566,7 +101288,7 @@
         "timestamp": "00:10:12.000",
         "subjectName": "Jisho Akuyaku",
         "episodeUrl": "https://bgm.tv/ep/1656056",
-        "relativePath": "assets/22-jisho-akuyaku-08c9ff55ae.png"
+        "relativePath": "assets/23-jisho-akuyaku-11b14e2c1b.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Hidarikiki no Eren - 05 (CR 1920x1080 AVC AAC MKV) [EE42DC1A]\\00.08.55.000-yuinws.png",
@@ -100585,7 +101307,7 @@
         "timestamp": "00:08:55.000",
         "subjectName": "Hidarikiki no Eren",
         "episodeUrl": "https://bgm.tv/ep/1655964",
-        "relativePath": "assets/23-hidarikiki-no-eren-dede14c905.png"
+        "relativePath": "assets/24-hidarikiki-no-eren-633560721e.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kanan-sama wa Akumade Choroi - 03 (CR 1920x1080 AVC AAC MKV) [D6D257A3]\\00.21.38.000-q1zwlo.png",
@@ -100598,7 +101320,7 @@
         "timestamp": "00:21:38.000",
         "subjectName": "Kanan-sama wa Akumade Choroi",
         "episodeUrl": "https://bgm.tv/ep/1632732",
-        "relativePath": "assets/24-kanan-sama-wa-akumade-choroi-d3e8561889.png"
+        "relativePath": "assets/25-kanan-sama-wa-akumade-choroi-b8ee1321bb.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[BeanSub&LoliHouse] Tensei Shitara Slime Datta Ken 4th Season - 02(74) [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.08.37.000-1vwxkn.png",
@@ -100614,7 +101336,7 @@
         "timestamp": "00:08:37.000",
         "subjectName": "Tensei Shitara Slime Datta Ken 4th Season",
         "episodeUrl": "https://bgm.tv/ep/1624220",
-        "relativePath": "assets/25-tensei-shitara-slime-datta-ken-4th-season-80d18f8e2a.png"
+        "relativePath": "assets/26-tensei-shitara-slime-datta-ken-4th-season-c61291574f.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Nekomoe kissaten&LoliHouse] Shunkashuutou Daikousha - Haru no Mai - 07 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.16.22.000-tvgmur.png",
@@ -100627,7 +101349,7 @@
         "timestamp": "00:16:22.000",
         "subjectName": "Shunkashuutou Daikousha - Haru no Mai",
         "episodeUrl": "https://bgm.tv/ep/1661194",
-        "relativePath": "assets/26-shunkashuutou-daikousha-haru-no-mai-9b7dc24075.png"
+        "relativePath": "assets/27-shunkashuutou-daikousha-haru-no-mai-9413be858f.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Kanteishi (Kari) - 05 [WebRip 1080p HEVC-10bit AAC]\\00.10.00.000-pwzyrt.png",
@@ -100642,7 +101364,7 @@
         "timestamp": "00:10:00.000",
         "subjectName": "Kanteishi",
         "episodeUrl": "https://bgm.tv/ep/1656180",
-        "relativePath": "assets/27-kanteishi-b54979c1f9.png"
+        "relativePath": "assets/28-kanteishi-6cf1570a9b.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Iseleve - TVSP [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.25.57.000-3dm1kx.png",
@@ -100659,7 +101381,7 @@
         "timestamp": "00:25:57.000",
         "subjectName": "Iseleve - TVSP",
         "episodeUrl": null,
-        "relativePath": "assets/28-iseleve-tvsp-3b442790ce.png"
+        "relativePath": "assets/29-iseleve-tvsp-2652be4cea.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Mata Korosarete Shimatta no desu ne, Tantei-sama - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.18.46.000-y37gmm.png",
@@ -100672,7 +101394,7 @@
         "timestamp": "00:18:46.000",
         "subjectName": "Mata Korosarete Shimatta no desu ne, Tantei-sama",
         "episodeUrl": "https://bgm.tv/ep/1663125",
-        "relativePath": "assets/29-mata-korosarete-shimatta-no-desu-ne-tantei-sama-2348071c64.png"
+        "relativePath": "assets/30-mata-korosarete-shimatta-no-desu-ne-tantei-sama-8e83d87f30.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ghost Concert_ Missing Songs - 04 (CR 1920x1080 AVC AAC MKV) [55597FBD]\\00.08.27.000-wffm5e.png",
@@ -100690,7 +101412,7 @@
         "timestamp": "00:08:27.000",
         "subjectName": "Ghost Concert: Missing Songs",
         "episodeUrl": "https://bgm.tv/ep/1656095",
-        "relativePath": "assets/30-ghost-concert-missing-songs-0e9328bab6.png"
+        "relativePath": "assets/31-ghost-concert-missing-songs-a2fc347e8c.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 04 (CR 1920x1080 AVC AAC MKV) [9397F329]\\00.04.21.000-1af3ou.png",
@@ -100704,7 +101426,7 @@
         "timestamp": "00:04:21.000",
         "subjectName": "Maid-san wa Taberu dake",
         "episodeUrl": "https://bgm.tv/ep/1663102",
-        "relativePath": "assets/31-maid-san-wa-taberu-dake-9cf687f7c3.png"
+        "relativePath": "assets/32-maid-san-wa-taberu-dake-30d4cd5786.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.34.000-ev35vp.png",
@@ -100719,7 +101441,7 @@
         "timestamp": "00:12:34.000",
         "subjectName": "Nigetsuri",
         "episodeUrl": "https://bgm.tv/ep/1656225",
-        "relativePath": "assets/32-nigetsuri-38abd05f93.png"
+        "relativePath": "assets/33-nigetsuri-8f9a1f4d04.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 26 (CR 1920x1080 AVC AAC MKV) [E9215E30]\\00.07.32.000-z91ixl.png",
@@ -100736,7 +101458,7 @@
         "timestamp": "00:07:32.000",
         "subjectName": "Dr. Stone: Science Future Part 3",
         "episodeUrl": "https://bgm.tv/ep/1656188",
-        "relativePath": "assets/33-dr-stone-science-future-part-3-798120dd5b.png"
+        "relativePath": "assets/34-dr-stone-science-future-part-3-5ebbcece7a.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Rooster Fighter - 04 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.05.45.000-r76q21.png",
@@ -100750,7 +101472,7 @@
         "timestamp": "00:05:45.000",
         "subjectName": "Rooster Fighter",
         "episodeUrl": "https://bgm.tv/ep/1656083",
-        "relativePath": "assets/34-rooster-fighter-6b9ed39c2f.png"
+        "relativePath": "assets/35-rooster-fighter-e509d28258.webp"
       },
       {
         "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Niwatsuki Kusunoki-tei - 10 (CR 1920x1080 AVC AAC MKV) [F0438E67]\\00.17.30.000-5p6kry.png",
@@ -100767,33 +101489,45 @@
         "timestamp": "00:17:30.000",
         "subjectName": "Kami no Niwatsuki Kusunoki-tei",
         "episodeUrl": "https://bgm.tv/ep/1656161",
-        "relativePath": "assets/35-kami-no-niwatsuki-kusunoki-tei-f747c156df.png"
-      },
-      {
-        "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 10 (CR 1920x1080 AVC AAC MKV) [7E5F344E]\\00.10.31.000-c6dhly.png",
-        "foodNames": [
-          "grapes",
-          "peach",
-          "strawberry",
-          "apple",
-          "orange",
-          "banana"
-        ],
-        "saved": true,
-        "title": "转生成自动贩卖机的我今天也在迷宫徘徊 第三季",
-        "score": 5.2,
-        "timestamp": "00:10:31.000",
-        "subjectName": "Jihanki 3rd Season",
-        "episodeUrl": "https://bgm.tv/ep/1663137",
-        "relativePath": "assets/36-jihanki-3rd-season-433c024188.png"
+        "relativePath": "assets/36-kami-no-niwatsuki-kusunoki-tei-2287e08ce4.webp"
       }
     ],
     "taxonomyGroups": [
       {
         "name": "Produce",
         "displayName": "蔬果",
-        "count": 478,
+        "count": 482,
         "images": [
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Otaku ni Yasashii Gal wa Inai!_ - 05 (CR 1920x1080 AVC AAC MKV) [682EC0E5]\\00.04.56.000-24ww9i.png",
+            "foodNames": [
+              "lettuce",
+              "corn",
+              "carrot",
+              "bell pepper",
+              "onion",
+              "mushroom",
+              "beef",
+              "yakisoba",
+              "meat skewer"
+            ],
+            "groupFoodNames": [
+              "lettuce",
+              "corn",
+              "carrot",
+              "onion",
+              "mushroom"
+            ],
+            "group": "Produce",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "没有辣妹会对阿宅温柔!?",
+            "score": 6.6,
+            "timestamp": "00:04:56.000",
+            "subjectName": "Otaku ni Yasashii Gal wa Inai!",
+            "episodeUrl": "https://bgm.tv/ep/1655952",
+            "relativePath": "assets/taxonomy-produce-01-3200923235.webp"
+          },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 08 (CR 1920x1080 AVC AAC MKV) [34A50C2C]\\00.15.03.000-pgtyf9.png",
             "foodNames": [
@@ -100820,7 +101554,7 @@
             "timestamp": "00:15:03.000",
             "subjectName": "Jihanki 3rd Season",
             "episodeUrl": "https://bgm.tv/ep/1663137",
-            "relativePath": "assets/taxonomy-produce-01-3f2420a83c.png"
+            "relativePath": "assets/taxonomy-produce-02-3bec6b750f.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta - 09 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.09.39.000-bhhr3e.png",
@@ -100846,60 +101580,99 @@
             "timestamp": "00:09:39.000",
             "subjectName": "Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta",
             "episodeUrl": "https://bgm.tv/ep/1655973",
-            "relativePath": "assets/taxonomy-produce-02-32bf963adc.png"
+            "relativePath": "assets/taxonomy-produce-03-15ab054243.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 05 (CR 1920x1080 AVC AAC MKV) [3C274010]\\00.07.34.000-bygtt8.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 02 (CR 1920x1080 AVC AAC MKV) [A93E4362]\\00.19.30.000-m18zr8.png",
             "foodNames": [
-              "asparagus",
-              "sauce"
+              "lettuce",
+              "tomato",
+              "cucumber",
+              "mayonnaise"
             ],
             "groupFoodNames": [
-              "asparagus"
+              "lettuce",
+              "tomato",
+              "cucumber"
             ],
             "group": "Produce",
             "firstGroupFoodIndex": 0,
             "saved": true,
-            "title": "神之水滴",
-            "score": 5.1,
-            "timestamp": "00:07:34.000",
-            "subjectName": "Kami no Shizuku",
-            "episodeUrl": "https://bgm.tv/ep/1653386",
-            "relativePath": "assets/taxonomy-produce-03-6c7139f7a6.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 01 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.55.000-6odx94.png",
-            "foodNames": [
-              "steak",
-              "lettuce",
-              "tomato",
-              "cheese",
-              "potato",
-              "carrot"
-            ],
-            "groupFoodNames": [
-              "lettuce",
-              "tomato",
-              "potato",
-              "carrot"
-            ],
-            "group": "Produce",
-            "firstGroupFoodIndex": 1,
-            "saved": true,
-            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
-            "score": 5.9,
-            "timestamp": "00:12:55.000",
-            "subjectName": "Nigetsuri",
-            "episodeUrl": "https://bgm.tv/ep/1656224",
-            "relativePath": "assets/taxonomy-produce-04-4fcc6cca35.png"
+            "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
+            "score": 7.2,
+            "timestamp": "00:19:30.000",
+            "subjectName": "Rokkotsu",
+            "episodeUrl": "https://bgm.tv/ep/1670641",
+            "relativePath": "assets/taxonomy-produce-04-df26160733.webp"
           }
         ]
       },
       {
         "name": "Drinks",
         "displayName": "饮品",
-        "count": 347,
+        "count": 352,
         "images": [
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 04 (CR 1920x1080 AVC AAC MKV) [9397F329]\\00.04.21.000-1af3ou.png",
+            "foodNames": [
+              "cookie",
+              "tea"
+            ],
+            "groupFoodNames": [
+              "tea"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 1,
+            "saved": true,
+            "title": "女仆小姐的贪吃日常",
+            "score": 5.8,
+            "timestamp": "00:04:21.000",
+            "subjectName": "Maid-san wa Taberu dake",
+            "episodeUrl": "https://bgm.tv/ep/1663102",
+            "relativePath": "assets/taxonomy-drinks-01-30d4cd5786.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Yomi no Tsugai - 04 (CR 1920x1080 AVC AAC MKV) [68C715DD]\\00.05.58.000-149pex.png",
+            "foodNames": [
+              "apple",
+              "dango",
+              "green tea"
+            ],
+            "groupFoodNames": [
+              "green tea"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 2,
+            "saved": true,
+            "title": "黄泉使者",
+            "score": 7,
+            "timestamp": "00:05:58.000",
+            "subjectName": "Yomi no Tsugai",
+            "episodeUrl": "https://bgm.tv/ep/1575778",
+            "relativePath": "assets/taxonomy-drinks-02-5635322918.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 10 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.06.34.000-eut347.png",
+            "foodNames": [
+              "cake",
+              "pastry",
+              "sandwich",
+              "jam",
+              "tea"
+            ],
+            "groupFoodNames": [
+              "tea"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 4,
+            "saved": true,
+            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
+            "score": 5.9,
+            "timestamp": "00:06:34.000",
+            "subjectName": "Nigetsuri",
+            "episodeUrl": "https://bgm.tv/ep/1656233",
+            "relativePath": "assets/taxonomy-drinks-03-00e9a06d65.webp"
+          },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tadaima, Ojamasaremasu! - 04 (CR 1920x1080 AVC AAC MKV) [FB3CEA52]\\00.08.11.000-wia8g3.png",
             "foodNames": [
@@ -100921,8 +101694,15 @@
             "timestamp": "00:08:11.000",
             "subjectName": "Tadaima, Ojamasaremasu!",
             "episodeUrl": "https://bgm.tv/ep/1656023",
-            "relativePath": "assets/taxonomy-drinks-01-d82448a376.png"
-          },
+            "relativePath": "assets/taxonomy-drinks-04-d9a25f7f2b.webp"
+          }
+        ]
+      },
+      {
+        "name": "Meat",
+        "displayName": "肉类",
+        "count": 326,
+        "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kanojo, Okarishimasu 5th Season - 50 (CR 1920x1080 AVC AAC MKV) [C2BDF383]\\00.15.41.000-odpdia.png",
             "foodNames": [
@@ -100934,143 +101714,46 @@
               "iced tea"
             ],
             "groupFoodNames": [
-              "iced tea"
+              "hamburger steak",
+              "fried egg"
             ],
-            "group": "Drinks",
-            "firstGroupFoodIndex": 5,
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
             "saved": true,
             "title": "租借女友 第五季",
             "score": 3.7,
             "timestamp": "00:15:41.000",
             "subjectName": "Kanojo, Okarishimasu 5th Season",
             "episodeUrl": "https://bgm.tv/ep/1663064",
-            "relativePath": "assets/taxonomy-drinks-02-ea346bd319.png"
+            "relativePath": "assets/taxonomy-meat-01-03e781ed84.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Liar Game - 04 (CR 1920x1080 AVC AAC MKV) [1C647371]\\00.04.01.000-qown8j.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 06 (CR 1920x1080 AVC AAC MKV) [255F9404]\\00.08.29.000-6uubic.png",
             "foodNames": [
-              "steak",
-              "lettuce",
-              "tomato",
-              "carrot",
-              "shrimp",
-              "cauliflower",
-              "orange juice"
+              "bacon"
             ],
             "groupFoodNames": [
-              "orange juice"
-            ],
-            "group": "Drinks",
-            "firstGroupFoodIndex": 6,
-            "saved": true,
-            "title": "欺诈游戏",
-            "score": 5.8,
-            "timestamp": "00:04:01.000",
-            "subjectName": "Liar Game",
-            "episodeUrl": "https://bgm.tv/ep/1663090",
-            "relativePath": "assets/taxonomy-drinks-03-51418510c6.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 05 (CR 1920x1080 AVC AAC MKV) [7A2058E9]\\00.06.50.000-niete6.png",
-            "foodNames": [
-              "water",
-              "sports drink",
-              "milk",
-              "juice",
-              "tea"
-            ],
-            "groupFoodNames": [
-              "water",
-              "sports drink",
-              "milk",
-              "juice",
-              "tea"
-            ],
-            "group": "Drinks",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "转生成自动贩卖机的我今天也在迷宫徘徊 第三季",
-            "score": 5.2,
-            "timestamp": "00:06:50.000",
-            "subjectName": "Jihanki 3rd Season",
-            "episodeUrl": "https://bgm.tv/ep/1663137",
-            "relativePath": "assets/taxonomy-drinks-04-11c8055464.png"
-          }
-        ]
-      },
-      {
-        "name": "Meat",
-        "displayName": "肉类",
-        "count": 325,
-        "images": [
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 06 (CR 1920x1080 AVC AAC MKV) [255F9404]\\00.08.42.000-3s5thj.png",
-            "foodNames": [
-              "burger",
-              "soup",
-              "dumplings"
-            ],
-            "groupFoodNames": [
-              "burger"
+              "bacon"
             ],
             "group": "Meat",
             "firstGroupFoodIndex": 0,
             "saved": true,
             "title": "尖帽子的魔法工房",
             "score": 6.5,
-            "timestamp": "00:08:42.000",
+            "timestamp": "00:08:29.000",
             "subjectName": "Tongari Boushi no Atelier",
             "episodeUrl": "https://bgm.tv/ep/1656037",
-            "relativePath": "assets/taxonomy-meat-01-e25a7ce1f8.png"
+            "relativePath": "assets/taxonomy-meat-02-01caf146b2.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 04 (CR 1920x1080 AVC AAC MKV) [9397F329]\\00.18.28.000-3ty6ju.png",
-            "foodNames": [
-              "fried chicken"
-            ],
-            "groupFoodNames": [
-              "fried chicken"
-            ],
-            "group": "Meat",
-            "firstGroupFoodIndex": 0,
-            "saved": true,
-            "title": "女仆小姐的贪吃日常",
-            "score": 5.8,
-            "timestamp": "00:18:28.000",
-            "subjectName": "Maid-san wa Taberu dake",
-            "episodeUrl": "https://bgm.tv/ep/1663102",
-            "relativePath": "assets/taxonomy-meat-02-8a808f5ea8.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Niwatsuki Kusunoki-tei - 04 (CR 1920x1080 AVC AAC MKV) [3F3E22C8]\\00.19.48.000-b7a6su.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 01 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.55.000-6odx94.png",
             "foodNames": [
               "steak",
-              "corn",
-              "shrimp",
-              "onion",
-              "bell pepper",
-              "pumpkin",
-              "shiitake mushroom"
-            ],
-            "groupFoodNames": [
-              "steak"
-            ],
-            "group": "Meat",
-            "firstGroupFoodIndex": 0,
-            "saved": true,
-            "title": "楠木邸的神明庭院",
-            "score": 5.4,
-            "timestamp": "00:19:48.000",
-            "subjectName": "Kami no Niwatsuki Kusunoki-tei",
-            "episodeUrl": "https://bgm.tv/ep/1656155",
-            "relativePath": "assets/taxonomy-meat-03-84cde87c90.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 05 (CR 1920x1080 AVC AAC MKV) [3C274010]\\00.18.15.000-acwq3o.png",
-            "foodNames": [
-              "steak",
+              "lettuce",
+              "tomato",
+              "cheese",
               "potato",
-              "greens"
+              "carrot"
             ],
             "groupFoodNames": [
               "steak"
@@ -101078,19 +101761,37 @@
             "group": "Meat",
             "firstGroupFoodIndex": 0,
             "saved": true,
-            "title": "神之水滴",
-            "score": 5.1,
-            "timestamp": "00:18:15.000",
-            "subjectName": "Kami no Shizuku",
-            "episodeUrl": "https://bgm.tv/ep/1653386",
-            "relativePath": "assets/taxonomy-meat-04-93e12e45b1.png"
+            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
+            "score": 5.9,
+            "timestamp": "00:12:55.000",
+            "subjectName": "Nigetsuri",
+            "episodeUrl": "https://bgm.tv/ep/1656224",
+            "relativePath": "assets/taxonomy-meat-03-7020d61cce.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.09.27.000-d7kfrz.png",
+            "foodNames": [
+              "hamburger"
+            ],
+            "groupFoodNames": [
+              "hamburger"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "和班上第二可爱的女孩成为朋友",
+            "score": 5.8,
+            "timestamp": "00:09:27.000",
+            "subjectName": "Class de 2-banme ni Kawaii Onnanoko to Tomodachi ni Natta",
+            "episodeUrl": "https://bgm.tv/ep/1655973",
+            "relativePath": "assets/taxonomy-meat-04-fd46aad4c3.webp"
           }
         ]
       },
       {
         "name": "Sweets",
         "displayName": "甜点",
-        "count": 282,
+        "count": 284,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Magical Sisters LuluttoLilly - 09 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.13.21.000-zhkax8.png",
@@ -101110,7 +101811,25 @@
             "timestamp": "00:13:21.000",
             "subjectName": "Magical Sisters LuluttoLilly",
             "episodeUrl": "https://bgm.tv/ep/1669373",
-            "relativePath": "assets/taxonomy-sweets-01-c4d4b6402a.png"
+            "relativePath": "assets/taxonomy-sweets-01-3fd940692f.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jisho Akuyaku - 01 (CR 1920x1080 AVC AAC MKV) [7A994296]\\00.10.12.000-9xl0o1.png",
+            "foodNames": [
+              "cake"
+            ],
+            "groupFoodNames": [
+              "cake"
+            ],
+            "group": "Sweets",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "自称恶役大小姐的婚约者观察记录。",
+            "score": 6.5,
+            "timestamp": "00:10:12.000",
+            "subjectName": "Jisho Akuyaku",
+            "episodeUrl": "https://bgm.tv/ep/1656056",
+            "relativePath": "assets/taxonomy-sweets-02-11b14e2c1b.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 10 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.23.29.000-inhoc1.png",
@@ -101128,7 +101847,7 @@
             "timestamp": "00:23:29.000",
             "subjectName": "Nigetsuri",
             "episodeUrl": "https://bgm.tv/ep/1656233",
-            "relativePath": "assets/taxonomy-sweets-02-076792506e.png"
+            "relativePath": "assets/taxonomy-sweets-03-6bcfedd6fd.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 04 (CR 1920x1080 AVC AAC MKV) [9397F329]\\00.04.41.000-n6e3zz.png",
@@ -101146,33 +101865,7 @@
             "timestamp": "00:04:41.000",
             "subjectName": "Maid-san wa Taberu dake",
             "episodeUrl": "https://bgm.tv/ep/1663102",
-            "relativePath": "assets/taxonomy-sweets-03-dd49bad840.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kanojo, Okarishimasu 5th Season - 55 (CR 1920x1080 AVC AAC MKV) [1ADC82F8]\\00.10.58.000-65g4xk.png",
-            "foodNames": [
-              "strawberry",
-              "pudding",
-              "cake",
-              "tart",
-              "mochi",
-              "pastry"
-            ],
-            "groupFoodNames": [
-              "pudding",
-              "cake",
-              "tart",
-              "mochi"
-            ],
-            "group": "Sweets",
-            "firstGroupFoodIndex": 1,
-            "saved": true,
-            "title": "租借女友 第五季",
-            "score": 3.7,
-            "timestamp": "00:10:58.000",
-            "subjectName": "Kanojo, Okarishimasu 5th Season",
-            "episodeUrl": "https://bgm.tv/ep/1663069",
-            "relativePath": "assets/taxonomy-sweets-04-7c7af6cf29.png"
+            "relativePath": "assets/taxonomy-sweets-04-6e9f5db255.webp"
           }
         ]
       },
@@ -101201,7 +101894,7 @@
             "timestamp": "00:13:39.000",
             "subjectName": "Aishiteru Game wo Owarasetai",
             "episodeUrl": "https://bgm.tv/ep/1665049",
-            "relativePath": "assets/taxonomy-rice-01-ee14bcd4ee.png"
+            "relativePath": "assets/taxonomy-rice-01-a8591affc6.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kill Ao - 03 (CR 1920x1080 AVC AAC MKV) [F1C087F4]\\00.13.38.000-1z3mzo.png",
@@ -101222,7 +101915,7 @@
             "timestamp": "00:13:38.000",
             "subjectName": "Kill Ao",
             "episodeUrl": "https://bgm.tv/ep/1655890",
-            "relativePath": "assets/taxonomy-rice-02-89e33b5f29.png"
+            "relativePath": "assets/taxonomy-rice-02-18f98fc5b5.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 01 (CR 1920x1080 AVC AAC MKV) [3AE115AC]\\00.15.34.000-xdxciz.png",
@@ -101240,7 +101933,7 @@
             "timestamp": "00:15:34.000",
             "subjectName": "Maid-san wa Taberu dake",
             "episodeUrl": "https://bgm.tv/ep/1663099",
-            "relativePath": "assets/taxonomy-rice-03-9624a622f3.png"
+            "relativePath": "assets/taxonomy-rice-03-bf232f384e.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Otonari no Tenshi-sama S2 - 01 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.14.32.000-m4tp0l.png",
@@ -101263,7 +101956,7 @@
             "timestamp": "00:14:32.000",
             "subjectName": "Otonari no Tenshi-sama S2",
             "episodeUrl": "https://bgm.tv/ep/1617416",
-            "relativePath": "assets/taxonomy-rice-04-c984d7fd27.png"
+            "relativePath": "assets/taxonomy-rice-04-cdb221a67c.webp"
           }
         ]
       },
@@ -101272,6 +101965,46 @@
         "displayName": "面包与烘焙",
         "count": 109,
         "images": [
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 27 (CR 1920x1080 AVC AAC MKV) [8528F348]\\00.06.36.000-s5nrwk.png",
+            "foodNames": [
+              "naan",
+              "curry"
+            ],
+            "groupFoodNames": [
+              "naan"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "石纪元 科学与未来 第3部分",
+            "score": 7.2,
+            "timestamp": "00:06:36.000",
+            "subjectName": "Dr. Stone: Science Future Part 3",
+            "episodeUrl": "https://bgm.tv/ep/1656189",
+            "relativePath": "assets/taxonomy-bread-01-06fe16a27b.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[BeanSub&LoliHouse] Tensei Shitara Slime Datta Ken 4th Season - 02(74) [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.08.37.000-1vwxkn.png",
+            "foodNames": [
+              "sandwich",
+              "ham",
+              "lettuce",
+              "egg"
+            ],
+            "groupFoodNames": [
+              "sandwich"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "关于我转生变成史莱姆这档事 第四季",
+            "score": 6.3,
+            "timestamp": "00:08:37.000",
+            "subjectName": "Tensei Shitara Slime Datta Ken 4th Season",
+            "episodeUrl": "https://bgm.tv/ep/1624220",
+            "relativePath": "assets/taxonomy-bread-02-c61291574f.webp"
+          },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 01 (CR 1920x1080 AVC AAC MKV) [3AE115AC]\\00.04.55.000-sk1hs2.png",
             "foodNames": [
@@ -101288,68 +102021,26 @@
             "timestamp": "00:04:55.000",
             "subjectName": "Maid-san wa Taberu dake",
             "episodeUrl": "https://bgm.tv/ep/1663099",
-            "relativePath": "assets/taxonomy-bread-01-502a459d1b.png"
+            "relativePath": "assets/taxonomy-bread-03-d5878e926c.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Sakurato] Koori no Jouheki [02][HEVC-10bit 1080P AAC][CHS&CHT]\\00.15.31.000-lojv33.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tadaima, Ojamasaremasu! - 02 (CR 1920x1080 AVC AAC MKV) [6B75FDF5]\\00.04.02.000-hpdenf.png",
             "foodNames": [
-              "bread",
-              "sandwich"
+              "toast",
+              "butter"
             ],
             "groupFoodNames": [
-              "bread",
-              "sandwich"
+              "toast"
             ],
             "group": "Bread",
             "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "冰之城墙",
-            "score": 7,
-            "timestamp": "00:15:31.000",
-            "subjectName": "Koori no Jouheki",
-            "episodeUrl": "https://bgm.tv/ep/1621457",
-            "relativePath": "assets/taxonomy-bread-02-81e58a60cb.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Aishiteru Game wo Owarasetai - 04 (CR 1920x1080 AVC AAC MKV) [8CE63EC9]\\00.18.30.000-pno9ow.png",
-            "foodNames": [
-              "sandwich",
-              "bread"
-            ],
-            "groupFoodNames": [
-              "sandwich",
-              "bread"
-            ],
-            "group": "Bread",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "想结束这场“我爱你”的游戏",
-            "score": 6.5,
-            "timestamp": "00:18:30.000",
-            "subjectName": "Aishiteru Game wo Owarasetai",
-            "episodeUrl": "https://bgm.tv/ep/1665051",
-            "relativePath": "assets/taxonomy-bread-03-8682354919.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 10 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.14.43.000-kdsw7w.png",
-            "foodNames": [
-              "sandwich",
-              "broccoli",
-              "olives",
-              "fruit"
-            ],
-            "groupFoodNames": [
-              "sandwich"
-            ],
-            "group": "Bread",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "加油吧！中村君！！",
-            "score": 7.3,
-            "timestamp": "00:14:43.000",
-            "subjectName": "Ganbare! Nakamura-kun!!",
-            "episodeUrl": "https://bgm.tv/ep/1656221",
-            "relativePath": "assets/taxonomy-bread-04-1d3b74e2f4.png"
+            "saved": true,
+            "title": "当前、正被打扰中！",
+            "score": 5.3,
+            "timestamp": "00:04:02.000",
+            "subjectName": "Tadaima, Ojamasaremasu!",
+            "episodeUrl": "https://bgm.tv/ep/1656021",
+            "relativePath": "assets/taxonomy-bread-04-30b0fa618d.webp"
           }
         ]
       },
@@ -101359,100 +102050,97 @@
         "count": 105,
         "images": [
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.11.42.000-39mfd3.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 26 (CR 1920x1080 AVC AAC MKV) [E9215E30]\\00.07.32.000-z91ixl.png",
             "foodNames": [
+              "fish",
               "lobster",
-              "corn",
-              "scallop",
-              "shrimp",
-              "squid",
-              "steak",
-              "abalone",
-              "vegetable skewer"
+              "octopus",
+              "clams",
+              "noodles"
             ],
             "groupFoodNames": [
+              "fish",
               "lobster",
-              "shrimp",
-              "squid"
+              "octopus"
             ],
             "group": "Seafood",
             "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
-            "score": 5.9,
-            "timestamp": "00:11:42.000",
-            "subjectName": "Nigetsuri",
-            "episodeUrl": "https://bgm.tv/ep/1656226",
-            "relativePath": "assets/taxonomy-seafood-01-d7c9bdb7ba.png"
+            "saved": true,
+            "title": "石纪元 科学与未来 第3部分",
+            "score": 7.2,
+            "timestamp": "00:07:32.000",
+            "subjectName": "Dr. Stone: Science Future Part 3",
+            "episodeUrl": "https://bgm.tv/ep/1656188",
+            "relativePath": "assets/taxonomy-seafood-01-5ebbcece7a.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 17 (CR 1920x1080 AVC AAC MKV) [60FBAD2C]\\00.19.56.000-odoqw8.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Hidarikiki no Eren - 05 (CR 1920x1080 AVC AAC MKV) [EE42DC1A]\\00.08.55.000-yuinws.png",
             "foodNames": [
+              "sashimi",
               "shrimp",
               "salmon roe",
-              "beef",
-              "peas",
-              "tamagoyaki"
+              "sea urchin",
+              "lime",
+              "wasabi",
+              "cucumber"
             ],
             "groupFoodNames": [
+              "sashimi",
               "shrimp",
               "salmon roe"
             ],
             "group": "Seafood",
             "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "异兽魔都 第二季",
-            "score": 7.6,
-            "timestamp": "00:19:56.000",
-            "subjectName": "Dorohedoro Season 2",
-            "episodeUrl": "https://bgm.tv/ep/1288940",
-            "relativePath": "assets/taxonomy-seafood-02-51f4f0bc8f.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 25 (CR 1920x1080 AVC AAC MKV) [323BB689]\\00.05.27.000-a899ri.png",
-            "foodNames": [
-              "fish",
-              "sashimi"
-            ],
-            "groupFoodNames": [
-              "fish",
-              "sashimi"
-            ],
-            "group": "Seafood",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "石纪元 科学与未来 第3部分",
-            "score": 7.2,
-            "timestamp": "00:05:27.000",
-            "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1656199",
-            "relativePath": "assets/taxonomy-seafood-03-af5c376f20.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Replica datte, Koi wo Suru. - 10 (CR 1920x1080 AVC AAC MKV) [BB52E3DE]\\00.16.05.000-mvsw9o.png",
-            "foodNames": [
-              "sashimi",
-              "rice",
-              "shrimp",
-              "tuna",
-              "tamagoyaki",
-              "miso soup",
-              "tea",
-              "shirasu"
-            ],
-            "groupFoodNames": [
-              "sashimi",
-              "shrimp"
-            ],
-            "group": "Seafood",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "复制品的我也会谈恋爱。",
+            "saved": true,
+            "title": "左撇子艾伦",
             "score": 6.4,
-            "timestamp": "00:16:05.000",
-            "subjectName": "Replica datte, Koi wo Suru.",
-            "episodeUrl": "https://bgm.tv/ep/1655993",
-            "relativePath": "assets/taxonomy-seafood-04-14c8a3a9f3.png"
+            "timestamp": "00:08:55.000",
+            "subjectName": "Hidarikiki no Eren",
+            "episodeUrl": "https://bgm.tv/ep/1655964",
+            "relativePath": "assets/taxonomy-seafood-02-633560721e.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Aishiteru Game wo Owarasetai - 03 (CR 1920x1080 AVC AAC MKV) [DD96042C]\\00.13.21.000-rkf4op.png",
+            "foodNames": [
+              "salmon",
+              "dill",
+              "sauce"
+            ],
+            "groupFoodNames": [
+              "salmon"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "想结束这场“我爱你”的游戏",
+            "score": 6.5,
+            "timestamp": "00:13:21.000",
+            "subjectName": "Aishiteru Game wo Owarasetai",
+            "episodeUrl": "https://bgm.tv/ep/1665050",
+            "relativePath": "assets/taxonomy-seafood-03-0bd5990224.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ghost Concert_ Missing Songs - 04 (CR 1920x1080 AVC AAC MKV) [55597FBD]\\00.08.27.000-wffm5e.png",
+            "foodNames": [
+              "fish",
+              "rice",
+              "soup",
+              "eggplant",
+              "pickles",
+              "lotus root"
+            ],
+            "groupFoodNames": [
+              "fish"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "幽灵音乐会",
+            "score": 3.5,
+            "timestamp": "00:08:27.000",
+            "subjectName": "Ghost Concert: Missing Songs",
+            "episodeUrl": "https://bgm.tv/ep/1656095",
+            "relativePath": "assets/taxonomy-seafood-04-a2fc347e8c.webp"
           }
         ]
       },
@@ -101461,6 +102149,69 @@
         "displayName": "面食",
         "count": 85,
         "images": [
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Magical Sisters LuluttoLilly - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.08.58.000-2g9o69.png",
+            "foodNames": [
+              "spaghetti",
+              "ice cream",
+              "tomato",
+              "basil"
+            ],
+            "groupFoodNames": [
+              "spaghetti"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "魔法姐妹露露特莉莉",
+            "score": 6.5,
+            "timestamp": "00:08:58.000",
+            "subjectName": "Magical Sisters LuluttoLilly",
+            "episodeUrl": "https://bgm.tv/ep/1669367",
+            "relativePath": "assets/taxonomy-noodles-01-5315503a22.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Rooster Fighter - 04 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.05.45.000-r76q21.png",
+            "foodNames": [
+              "noodle soup",
+              "omelet"
+            ],
+            "groupFoodNames": [
+              "noodle soup"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "公鸡斗士",
+            "score": 6.2,
+            "timestamp": "00:05:45.000",
+            "subjectName": "Rooster Fighter",
+            "episodeUrl": "https://bgm.tv/ep/1656083",
+            "relativePath": "assets/taxonomy-noodles-02-e509d28258.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kill Ao - 02 (CR 1920x1080 AVC AAC MKV) [C570AEF4]\\00.07.58.000-2m74kj.png",
+            "foodNames": [
+              "ramen",
+              "pork",
+              "nori",
+              "egg",
+              "scallions",
+              "fish cake"
+            ],
+            "groupFoodNames": [
+              "ramen"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "杀手青春",
+            "score": 6.2,
+            "timestamp": "00:07:58.000",
+            "subjectName": "Kill Ao",
+            "episodeUrl": "https://bgm.tv/ep/1655889",
+            "relativePath": "assets/taxonomy-noodles-03-c9fa6ab1e5.webp"
+          },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 06 (CR 1920x1080 AVC AAC MKV) [D34B57C8]\\00.14.35.000-tfxyzm.png",
             "foodNames": [
@@ -101478,71 +102229,7 @@
             "timestamp": "00:14:35.000",
             "subjectName": "Maid-san wa Taberu dake",
             "episodeUrl": "https://bgm.tv/ep/1663104",
-            "relativePath": "assets/taxonomy-noodles-01-4c40311108.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Otaku ni Yasashii Gal wa Inai!_ - 05 (CR 1920x1080 AVC AAC MKV) [682EC0E5]\\00.10.11.000-1lr1x0.png",
-            "foodNames": [
-              "yakisoba",
-              "noodles",
-              "cabbage",
-              "ginger"
-            ],
-            "groupFoodNames": [
-              "yakisoba",
-              "noodles"
-            ],
-            "group": "Noodles",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "没有辣妹会对阿宅温柔!?",
-            "score": 6.6,
-            "timestamp": "00:10:11.000",
-            "subjectName": "Otaku ni Yasashii Gal wa Inai!",
-            "episodeUrl": "https://bgm.tv/ep/1655952",
-            "relativePath": "assets/taxonomy-noodles-02-115b7f2f92.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Nekomoe kissaten&LoliHouse] Haibara-kun no Tsuyokute Seishun New Game - 06 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.16.08.000-1ysm4a.png",
-            "foodNames": [
-              "yakisoba",
-              "noodles",
-              "cabbage",
-              "ginger"
-            ],
-            "groupFoodNames": [
-              "yakisoba",
-              "noodles"
-            ],
-            "group": "Noodles",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "灰原同学重返过去，开启所向无敌的第二轮青春游戏",
-            "score": 4.5,
-            "timestamp": "00:16:08.000",
-            "subjectName": "Haibara-kun no Tsuyokute Seishun New Game",
-            "episodeUrl": "https://bgm.tv/ep/1660248",
-            "relativePath": "assets/taxonomy-noodles-03-17812d875e.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ghost Concert_ Missing Songs - 10 (CR 1920x1080 AVC AAC MKV) [711938B0]\\00.16.38.000-mp4g9e.png",
-            "foodNames": [
-              "ramen",
-              "noodles"
-            ],
-            "groupFoodNames": [
-              "ramen",
-              "noodles"
-            ],
-            "group": "Noodles",
-            "firstGroupFoodIndex": 0,
-            "saved": false,
-            "title": "幽灵音乐会",
-            "score": 3.5,
-            "timestamp": "00:16:38.000",
-            "subjectName": "Ghost Concert: Missing Songs",
-            "episodeUrl": "https://bgm.tv/ep/1656101",
-            "relativePath": "assets/taxonomy-noodles-04-d366df832a.png"
+            "relativePath": "assets/taxonomy-noodles-04-e4a91c9b87.webp"
           }
         ]
       }
@@ -101552,6 +102239,7 @@
         "name": "rice",
         "displayName": "米饭",
         "count": 88,
+        "rank": 1,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 03 (CR 1920x1080 AVC AAC MKV) [04D775E2]\\00.08.25.000-69k6rb.png",
@@ -101566,7 +102254,43 @@
             "timestamp": "00:08:25.000",
             "subjectName": "Maid-san wa Taberu dake",
             "episodeUrl": "https://bgm.tv/ep/1663101",
-            "relativePath": "assets/top-food-rice-01-b40bbc4ca0.png"
+            "relativePath": "assets/top-food-rice-01-10afc8504b.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Niwatsuki Kusunoki-tei - 10 (CR 1920x1080 AVC AAC MKV) [F0438E67]\\00.17.30.000-5p6kry.png",
+            "foodNames": [
+              "fried chicken",
+              "lettuce",
+              "lemon",
+              "eggplant",
+              "rice"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "楠木邸的神明庭院",
+            "score": 5.4,
+            "timestamp": "00:17:30.000",
+            "subjectName": "Kami no Niwatsuki Kusunoki-tei",
+            "episodeUrl": "https://bgm.tv/ep/1656161",
+            "relativePath": "assets/top-food-rice-02-2287e08ce4.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Iseleve - TVSP [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.25.57.000-3dm1kx.png",
+            "foodNames": [
+              "curry",
+              "rice",
+              "salad",
+              "tomato",
+              "egg"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "在异世界获得超强能力的我，在现实世界照样无敌～等级提升改变人生命运～ SP",
+            "score": 4.7,
+            "timestamp": "00:25:57.000",
+            "subjectName": "Iseleve - TVSP",
+            "episodeUrl": null,
+            "relativePath": "assets/top-food-rice-03-2652be4cea.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 20 (CR 1920x1080 AVC AAC MKV) [A08056E0]\\00.15.40.000-u1hrv2.png",
@@ -101581,7 +102305,7 @@
             "timestamp": "00:15:40.000",
             "subjectName": "Dorohedoro Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288943",
-            "relativePath": "assets/top-food-rice-02-8bbf05e8ab.png"
+            "relativePath": "assets/top-food-rice-04-9b28c9b2a3.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 05 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.16.01.000-pg53jz.png",
@@ -101600,7 +102324,7 @@
             "timestamp": "00:16:01.000",
             "subjectName": "Ganbare! Nakamura-kun!!",
             "episodeUrl": "https://bgm.tv/ep/1656216",
-            "relativePath": "assets/top-food-rice-03-124d962644.png"
+            "relativePath": "assets/top-food-rice-05-25a9025678.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 03 (CR 1920x1080 AVC AAC MKV) [DD4E2E49]\\00.01.25.000-9wcrjw.png",
@@ -101615,40 +102339,7 @@
             "timestamp": "00:01:25.000",
             "subjectName": "Rokkotsu",
             "episodeUrl": "https://bgm.tv/ep/1670642",
-            "relativePath": "assets/top-food-rice-04-7b43913ec9.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 30 (CR 1920x1080 AVC AAC MKV) [F4CB36BD]\\00.12.12.000-fxt7xq.png",
-            "foodNames": [
-              "rice"
-            ],
-            "foodName": "rice",
-            "saved": false,
-            "title": "石纪元 科学与未来 第3部分",
-            "score": 7.2,
-            "timestamp": "00:12:12.000",
-            "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1656192",
-            "relativePath": "assets/top-food-rice-05-5c644c4866.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ponsuka - 02 (CR 1920x1080 AVC AAC MKV) [A29F7F08]\\00.20.38.000-bkv8az.png",
-            "foodNames": [
-              "rice",
-              "fried chicken",
-              "broccoli",
-              "hamburger steak",
-              "lettuce",
-              "tomato"
-            ],
-            "foodName": "rice",
-            "saved": false,
-            "title": "木头风纪委员和迷你裙JK的故事",
-            "score": 7.1,
-            "timestamp": "00:20:38.000",
-            "subjectName": "Ponsuka",
-            "episodeUrl": "https://bgm.tv/ep/1656045",
-            "relativePath": "assets/top-food-rice-06-de33dd8c4b.png"
+            "relativePath": "assets/top-food-rice-06-5d044710ea.webp"
           }
         ]
       },
@@ -101656,6 +102347,7 @@
         "name": "tea",
         "displayName": "茶",
         "count": 74,
+        "rank": 2,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Re_Zero 4th Season - 67 (CR 1920x1080 AVC AAC MKV) [E250FF03]\\00.18.50.000-37e986.png",
@@ -101669,7 +102361,7 @@
             "timestamp": "00:18:50.000",
             "subjectName": "Re: Zero 4th Season",
             "episodeUrl": "https://bgm.tv/ep/1656866",
-            "relativePath": "assets/top-food-tea-01-b9494507a4.png"
+            "relativePath": "assets/top-food-tea-01-a5ecd06569.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 18 (CR 1920x1080 AVC AAC MKV) [041DFC67]\\00.21.18.000-0no975.png",
@@ -101683,7 +102375,7 @@
             "timestamp": "00:21:18.000",
             "subjectName": "Dorohedoro Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288941",
-            "relativePath": "assets/top-food-tea-02-57b3bbcb7f.png"
+            "relativePath": "assets/top-food-tea-02-78488f9645.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 01 (CR 1920x1080 AVC AAC MKV) [9D959467]\\00.03.34.000-uo0f6v.png",
@@ -101697,7 +102389,7 @@
             "timestamp": "00:03:34.000",
             "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
             "episodeUrl": "https://bgm.tv/ep/1676560",
-            "relativePath": "assets/top-food-tea-03-5d32dd0b55.png"
+            "relativePath": "assets/top-food-tea-03-3c364ff5e0.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 09 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.20.44.000-vtdx87.png",
@@ -101712,7 +102404,7 @@
             "timestamp": "00:20:44.000",
             "subjectName": "Ganbare! Nakamura-kun!!",
             "episodeUrl": "https://bgm.tv/ep/1656220",
-            "relativePath": "assets/top-food-tea-04-297f535ff5.png"
+            "relativePath": "assets/top-food-tea-04-d507a76d45.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[SweetSub&LoliHouse] Honzuki no Gekokujou S04 - 01 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.06.52.000-y2sdxn.png",
@@ -101727,7 +102419,7 @@
             "timestamp": "00:06:52.000",
             "subjectName": "Honzuki no Gekokujou S04",
             "episodeUrl": "https://bgm.tv/ep/1625749",
-            "relativePath": "assets/top-food-tea-05-2573fe8afb.png"
+            "relativePath": "assets/top-food-tea-05-5fc74508a4.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Akane-banashi - 05 (ABEMA 1920x1080 AVC AAC MKV) [CA752356]\\00.13.48.000-wn39ci.png",
@@ -101741,111 +102433,142 @@
             "timestamp": "00:13:48.000",
             "subjectName": "Akane-banashi",
             "episodeUrl": "https://bgm.tv/ep/1656168",
-            "relativePath": "assets/top-food-tea-06-8a3387192e.png"
+            "relativePath": "assets/top-food-tea-06-32d1461f5f.webp"
           }
         ]
       },
       {
         "name": "meat",
         "displayName": "肉",
-        "count": 61,
+        "count": 62,
+        "rank": 3,
         "images": [
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 04 (CR 1920x1080 AVC AAC MKV) [18EA8F95]\\00.09.44.000-onq1mg.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 06 (CR 1920x1080 AVC AAC MKV) [255F9404]\\00.08.42.000-3s5thj.png",
             "foodNames": [
-              "meat"
+              "burger",
+              "soup",
+              "dumplings"
             ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "异兽魔都 第二季",
-            "score": 7.6,
-            "timestamp": "00:09:44.000",
-            "subjectName": "Dorohedoro Season 2",
-            "episodeUrl": "https://bgm.tv/ep/1288941",
-            "relativePath": "assets/top-food-meat-01-52e7590a04.png"
+            "groupFoodNames": [
+              "burger"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "尖帽子的魔法工房",
+            "score": 6.5,
+            "timestamp": "00:08:42.000",
+            "subjectName": "Tongari Boushi no Atelier",
+            "episodeUrl": "https://bgm.tv/ep/1656037",
+            "relativePath": "assets/top-food-meat-01-f69e7819ae.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 09 (CR 1920x1080 AVC AAC MKV) [C4FF0D99]\\00.15.51.000-7ugses.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.34.000-ev35vp.png",
             "foodNames": [
-              "meat",
-              "sausage",
-              "bell pepper"
-            ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "上伊那牡丹，酒醉身姿似百合花般",
-            "score": 7.4,
-            "timestamp": "00:15:51.000",
-            "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
-            "episodeUrl": "https://bgm.tv/ep/1655884",
-            "relativePath": "assets/top-food-meat-02-545c67718d.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 05 (CR 1920x1080 AVC AAC MKV) [77A5D0A8]\\00.20.32.000-cayvij.png",
-            "foodNames": [
-              "rice",
-              "meat"
-            ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
-            "score": 7.2,
-            "timestamp": "00:20:32.000",
-            "subjectName": "Rokkotsu",
-            "episodeUrl": "https://bgm.tv/ep/1670644",
-            "relativePath": "assets/top-food-meat-03-9b514fc52f.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 26 (CR 1920x1080 AVC AAC MKV) [E9215E30]\\00.08.16.000-ek5kao.png",
-            "foodNames": [
-              "bread",
-              "sausage",
-              "meat",
-              "stew"
-            ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "石纪元 科学与未来 第3部分",
-            "score": 7.2,
-            "timestamp": "00:08:16.000",
-            "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1656188",
-            "relativePath": "assets/top-food-meat-04-274a02e79c.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[SweetSub&LoliHouse] Honzuki no Gekokujou S04 - 03 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.08.29.000-jlbz1q.png",
-            "foodNames": [
-              "stew",
+              "steak",
               "potato",
-              "meat",
-              "carrot"
+              "sauce"
             ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "小书痴的下克上 〜为了成为图书管理员而不择手段〜 领主的养女",
-            "score": 7,
-            "timestamp": "00:08:29.000",
-            "subjectName": "Honzuki no Gekokujou S04",
-            "episodeUrl": "https://bgm.tv/ep/1625749",
-            "relativePath": "assets/top-food-meat-05-742fef7251.png"
+            "groupFoodNames": [
+              "steak"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
+            "score": 5.9,
+            "timestamp": "00:12:34.000",
+            "subjectName": "Nigetsuri",
+            "episodeUrl": "https://bgm.tv/ep/1656225",
+            "relativePath": "assets/top-food-meat-02-8f9a1f4d04.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Mairimashita! Iruma-kun S4 - 09 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.17.38.000-4eak1v.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 04 (CR 1920x1080 AVC AAC MKV) [9397F329]\\00.18.28.000-3ty6ju.png",
             "foodNames": [
-              "bread",
-              "meat",
-              "lobster",
-              "pudding",
-              "mushrooms"
+              "fried chicken"
             ],
-            "foodName": "meat",
-            "saved": false,
-            "title": "入间同学入魔了 第四季",
-            "score": 6.6,
-            "timestamp": "00:17:38.000",
-            "subjectName": "Mairimashita! Iruma-kun S4",
-            "episodeUrl": "https://bgm.tv/ep/1654746",
-            "relativePath": "assets/top-food-meat-06-bc29444f13.png"
+            "groupFoodNames": [
+              "fried chicken"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "女仆小姐的贪吃日常",
+            "score": 5.8,
+            "timestamp": "00:18:28.000",
+            "subjectName": "Maid-san wa Taberu dake",
+            "episodeUrl": "https://bgm.tv/ep/1663102",
+            "relativePath": "assets/top-food-meat-03-5dc1a23111.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Liar Game - 04 (CR 1920x1080 AVC AAC MKV) [1C647371]\\00.04.01.000-qown8j.png",
+            "foodNames": [
+              "steak",
+              "lettuce",
+              "tomato",
+              "carrot",
+              "shrimp",
+              "cauliflower",
+              "orange juice"
+            ],
+            "groupFoodNames": [
+              "steak"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "欺诈游戏",
+            "score": 5.8,
+            "timestamp": "00:04:01.000",
+            "subjectName": "Liar Game",
+            "episodeUrl": "https://bgm.tv/ep/1663090",
+            "relativePath": "assets/top-food-meat-04-fda856bef1.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Niwatsuki Kusunoki-tei - 04 (CR 1920x1080 AVC AAC MKV) [3F3E22C8]\\00.19.48.000-b7a6su.png",
+            "foodNames": [
+              "steak",
+              "corn",
+              "shrimp",
+              "onion",
+              "bell pepper",
+              "pumpkin",
+              "shiitake mushroom"
+            ],
+            "groupFoodNames": [
+              "steak"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "楠木邸的神明庭院",
+            "score": 5.4,
+            "timestamp": "00:19:48.000",
+            "subjectName": "Kami no Niwatsuki Kusunoki-tei",
+            "episodeUrl": "https://bgm.tv/ep/1656155",
+            "relativePath": "assets/top-food-meat-05-efee4bd4b3.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Otonari no Tenshi-sama S2 - 04 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.04.52.000-u7w8sd.png",
+            "foodNames": [
+              "omelet",
+              "parsley",
+              "miso soup",
+              "edamame"
+            ],
+            "groupFoodNames": [
+              "omelet"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "关于邻家的天使大人不知不觉把我惯成了废人这档子事 第二季",
+            "score": 5.3,
+            "timestamp": "00:04:52.000",
+            "subjectName": "Otonari no Tenshi-sama S2",
+            "episodeUrl": "https://bgm.tv/ep/1617416",
+            "relativePath": "assets/top-food-meat-06-79ae49db33.webp"
           }
         ]
       },
@@ -101853,7 +102576,24 @@
         "name": "cake",
         "displayName": "蛋糕",
         "count": 58,
+        "rank": 4,
         "images": [
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kujima Utaeba Ie Hororo - 05 (CR 1920x1080 AVC AAC MKV) [F3978680]\\00.14.11.000-tdl7mt.png",
+            "foodNames": [
+              "strawberry",
+              "cake",
+              "chocolate"
+            ],
+            "foodName": "cake",
+            "saved": true,
+            "title": "库兹马唱歌的话家里哆啰啰",
+            "score": 6.1,
+            "timestamp": "00:14:11.000",
+            "subjectName": "Kujima Utaeba Ie Hororo",
+            "episodeUrl": "https://bgm.tv/ep/1657955",
+            "relativePath": "assets/top-food-cake-01-64e96a5581.webp"
+          },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 10 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.23.31.000-jii835.png",
             "foodNames": [
@@ -101868,7 +102608,23 @@
             "timestamp": "00:23:31.000",
             "subjectName": "Nigetsuri",
             "episodeUrl": "https://bgm.tv/ep/1656233",
-            "relativePath": "assets/top-food-cake-01-ab21f5a3e4.png"
+            "relativePath": "assets/top-food-cake-02-d84027c68c.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kanojo, Okarishimasu 5th Season - 52 (CR 1920x1080 AVC AAC MKV) [16FF5977]\\00.09.59.000-mf9azi.png",
+            "foodNames": [
+              "cake",
+              "strawberry",
+              "whipped cream"
+            ],
+            "foodName": "cake",
+            "saved": true,
+            "title": "租借女友 第五季",
+            "score": 3.7,
+            "timestamp": "00:09:59.000",
+            "subjectName": "Kanojo, Okarishimasu 5th Season",
+            "episodeUrl": "https://bgm.tv/ep/1663066",
+            "relativePath": "assets/top-food-cake-03-0f14db46b0.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 23 (CR 1920x1080 AVC AAC MKV) [372D1689]\\00.00.13.000-jvtibx.png",
@@ -101887,7 +102643,7 @@
             "timestamp": "00:00:13.000",
             "subjectName": "Dorohedoro Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288946",
-            "relativePath": "assets/top-food-cake-02-189173836c.png"
+            "relativePath": "assets/top-food-cake-04-98b15e6aa6.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 08 (CR 1920x1080 AVC AAC MKV) [CD8A77AC]\\00.04.32.000-1x68u8.png",
@@ -101902,7 +102658,7 @@
             "timestamp": "00:04:32.000",
             "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
             "episodeUrl": "https://bgm.tv/ep/1655883",
-            "relativePath": "assets/top-food-cake-03-fe01eb759c.png"
+            "relativePath": "assets/top-food-cake-05-706c96cfa8.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 04 (CR 1920x1080 AVC AAC MKV) [804877CD]\\00.14.49.000-rb6dd8.png",
@@ -101918,39 +102674,7 @@
             "timestamp": "00:14:49.000",
             "subjectName": "Rokkotsu",
             "episodeUrl": "https://bgm.tv/ep/1670643",
-            "relativePath": "assets/top-food-cake-04-972fb26196.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 37 (CR 1920x1080 AVC AAC MKV) [08A5CEAB]\\00.18.47.000-cotcjh.png",
-            "foodNames": [
-              "cake"
-            ],
-            "foodName": "cake",
-            "saved": false,
-            "title": "石纪元 科学与未来 第3部分",
-            "score": 7.2,
-            "timestamp": "00:18:47.000",
-            "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1670244",
-            "relativePath": "assets/top-food-cake-05-8a8bbfb112.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Mairimashita! Iruma-kun S4 - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.16.30.000-qboq5o.png",
-            "foodNames": [
-              "roasted chicken",
-              "lobster",
-              "cake",
-              "pastry",
-              "fruit"
-            ],
-            "foodName": "cake",
-            "saved": false,
-            "title": "入间同学入魔了 第四季",
-            "score": 6.6,
-            "timestamp": "00:16:30.000",
-            "subjectName": "Mairimashita! Iruma-kun S4",
-            "episodeUrl": "https://bgm.tv/ep/1654746",
-            "relativePath": "assets/top-food-cake-06-5886c4a9d3.png"
+            "relativePath": "assets/top-food-cake-06-79f85d9806.webp"
           }
         ]
       },
@@ -101958,6 +102682,7 @@
         "name": "sausage",
         "displayName": "香肠",
         "count": 52,
+        "rank": 5,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Rooster Fighter - 07 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.15.11.000-tvykl1.png",
@@ -101972,7 +102697,7 @@
             "timestamp": "00:15:11.000",
             "subjectName": "Rooster Fighter",
             "episodeUrl": "https://bgm.tv/ep/1656086",
-            "relativePath": "assets/top-food-sausage-01-40619cdf2b.png"
+            "relativePath": "assets/top-food-sausage-01-976ed8bf63.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Re_Zero 4th Season - 73 (CR 1920x1080 AVC AAC MKV) [9D3886E3]\\00.03.40.000-qkg5na.png",
@@ -101989,7 +102714,7 @@
             "timestamp": "00:03:40.000",
             "subjectName": "Re: Zero 4th Season",
             "episodeUrl": "https://bgm.tv/ep/1656872",
-            "relativePath": "assets/top-food-sausage-02-29b48d9d83.png"
+            "relativePath": "assets/top-food-sausage-02-43f5ee7885.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 03 (CR 1920x1080 AVC AAC MKV) [A7B54542]\\00.04.08.000-sd9t8w.png",
@@ -102004,7 +102729,7 @@
             "timestamp": "00:04:08.000",
             "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
             "episodeUrl": "https://bgm.tv/ep/1682470",
-            "relativePath": "assets/top-food-sausage-03-af872ba817.png"
+            "relativePath": "assets/top-food-sausage-03-24118e2ed8.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 02 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.13.28.000-kgtmsq.png",
@@ -102018,7 +102743,7 @@
             "timestamp": "00:13:28.000",
             "subjectName": "Ganbare! Nakamura-kun!!",
             "episodeUrl": "https://bgm.tv/ep/1656213",
-            "relativePath": "assets/top-food-sausage-04-152f30d3f2.png"
+            "relativePath": "assets/top-food-sausage-04-303bca1b62.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 05 (CR 1920x1080 AVC AAC MKV) [77A5D0A8]\\00.14.33.000-so8r6p.png",
@@ -102037,21 +102762,24 @@
             "timestamp": "00:14:33.000",
             "subjectName": "Rokkotsu",
             "episodeUrl": "https://bgm.tv/ep/1670644",
-            "relativePath": "assets/top-food-sausage-05-c09c36846c.png"
+            "relativePath": "assets/top-food-sausage-05-02f8463ed3.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 27 (CR 1920x1080 AVC AAC MKV) [8528F348]\\00.06.02.000-231yt5.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 26 (CR 1920x1080 AVC AAC MKV) [E9215E30]\\00.08.16.000-ek5kao.png",
             "foodNames": [
-              "sausage"
+              "bread",
+              "sausage",
+              "meat",
+              "stew"
             ],
             "foodName": "sausage",
             "saved": false,
             "title": "石纪元 科学与未来 第3部分",
             "score": 7.2,
-            "timestamp": "00:06:02.000",
+            "timestamp": "00:08:16.000",
             "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1656189",
-            "relativePath": "assets/top-food-sausage-06-4c70929bed.png"
+            "episodeUrl": "https://bgm.tv/ep/1656188",
+            "relativePath": "assets/top-food-sausage-06-4d8d76b2a2.webp"
           }
         ]
       },
@@ -102059,6 +102787,7 @@
         "name": "coffee",
         "displayName": "咖啡",
         "count": 50,
+        "rank": 6,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 08 (CR 1920x1080 AVC AAC MKV) [CD8A77AC]\\00.04.30.000-pha8vf.png",
@@ -102073,7 +102802,7 @@
             "timestamp": "00:04:30.000",
             "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
             "episodeUrl": "https://bgm.tv/ep/1655883",
-            "relativePath": "assets/top-food-coffee-01-4b9ef0b0ad.png"
+            "relativePath": "assets/top-food-coffee-01-c2a8afe80e.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 01 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.12.21.000-6f41jf.png",
@@ -102087,7 +102816,7 @@
             "timestamp": "00:12:21.000",
             "subjectName": "Ganbare! Nakamura-kun!!",
             "episodeUrl": "https://bgm.tv/ep/1656212",
-            "relativePath": "assets/top-food-coffee-02-541da773e5.png"
+            "relativePath": "assets/top-food-coffee-02-b0d9406370.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ponsuka - 01 (ABEMA 1920x1080 AVC AAC MKV) [AD9A4F28]\\00.14.49.000-h72yi5.png",
@@ -102101,7 +102830,7 @@
             "timestamp": "00:14:49.000",
             "subjectName": "Ponsuka",
             "episodeUrl": "https://bgm.tv/ep/1656044",
-            "relativePath": "assets/top-food-coffee-03-1d81721bf1.png"
+            "relativePath": "assets/top-food-coffee-03-699456c954.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Sakurato] Koori no Jouheki [02][HEVC-10bit 1080P AAC][CHS&CHT]\\00.09.52.000-2d9xph.png",
@@ -102119,7 +102848,7 @@
             "timestamp": "00:09:52.000",
             "subjectName": "Koori no Jouheki",
             "episodeUrl": "https://bgm.tv/ep/1621457",
-            "relativePath": "assets/top-food-coffee-04-6619f404b3.png"
+            "relativePath": "assets/top-food-coffee-04-b65baf8406.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Akane-banashi - 08 (ABEMA 1920x1080 AVC AAC MKV) [F56288E8]\\00.15.38.000-kfdcj5.png",
@@ -102133,7 +102862,7 @@
             "timestamp": "00:15:38.000",
             "subjectName": "Akane-banashi",
             "episodeUrl": "https://bgm.tv/ep/1656171",
-            "relativePath": "assets/top-food-coffee-05-74e865e6c3.png"
+            "relativePath": "assets/top-food-coffee-05-aaabcd749e.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Yomi no Tsugai - 11 (CR 1920x1080 AVC AAC MKV) [6FDB6437]\\00.18.19.000-1kthe3.png",
@@ -102147,7 +102876,7 @@
             "timestamp": "00:18:19.000",
             "subjectName": "Yomi no Tsugai",
             "episodeUrl": "https://bgm.tv/ep/1575785",
-            "relativePath": "assets/top-food-coffee-06-144b294616.png"
+            "relativePath": "assets/top-food-coffee-06-43b7868af0.webp"
           }
         ]
       },
@@ -102155,6 +102884,7 @@
         "name": "tomato",
         "displayName": "番茄",
         "count": 49,
+        "rank": 7,
         "images": [
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dorohedoro Season 2 - 20 (CR 1920x1080 AVC AAC MKV) [A08056E0]\\00.15.48.000-jueset.png",
@@ -102174,7 +102904,7 @@
             "timestamp": "00:15:48.000",
             "subjectName": "Dorohedoro Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288943",
-            "relativePath": "assets/top-food-tomato-01-fb9362dd49.png"
+            "relativePath": "assets/top-food-tomato-01-d6fcb0b2f5.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Ganbare! Nakamura-kun!! - 13 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.03.26.000-i450qu.png",
@@ -102192,7 +102922,26 @@
             "timestamp": "00:03:26.000",
             "subjectName": "Ganbare! Nakamura-kun!!",
             "episodeUrl": "https://bgm.tv/ep/1667950",
-            "relativePath": "assets/top-food-tomato-02-bbd5b379ca.png"
+            "relativePath": "assets/top-food-tomato-02-e0a5e190e3.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Ponsuka - 02 (CR 1920x1080 AVC AAC MKV) [A29F7F08]\\00.20.38.000-bkv8az.png",
+            "foodNames": [
+              "rice",
+              "fried chicken",
+              "broccoli",
+              "hamburger steak",
+              "lettuce",
+              "tomato"
+            ],
+            "foodName": "tomato",
+            "saved": false,
+            "title": "木头风纪委员和迷你裙JK的故事",
+            "score": 7.1,
+            "timestamp": "00:20:38.000",
+            "subjectName": "Ponsuka",
+            "episodeUrl": "https://bgm.tv/ep/1656045",
+            "relativePath": "assets/top-food-tomato-03-0d86093b60.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Sakurato] Koori no Jouheki [06][HEVC-10bit 1080P AAC][CHS&CHT]\\00.09.43.000-xy8cla.png",
@@ -102210,7 +102959,7 @@
             "timestamp": "00:09:43.000",
             "subjectName": "Koori no Jouheki",
             "episodeUrl": "https://bgm.tv/ep/1621461",
-            "relativePath": "assets/top-food-tomato-03-90bbf88186.png"
+            "relativePath": "assets/top-food-tomato-04-31c42aa840.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[SweetSub&LoliHouse] Honzuki no Gekokujou S04 - 03 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.08.44.000-z5fy24.png",
@@ -102225,7 +102974,7 @@
             "timestamp": "00:08:44.000",
             "subjectName": "Honzuki no Gekokujou S04",
             "episodeUrl": "https://bgm.tv/ep/1625749",
-            "relativePath": "assets/top-food-tomato-04-25da390a11.png"
+            "relativePath": "assets/top-food-tomato-05-fb3f87935d.webp"
           },
           {
             "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Aishiteru Game wo Owarasetai - 06 (CR 1920x1080 AVC AAC MKV) [DE47E570]\\00.19.58.000-cfd67l.png",
@@ -102247,130 +102996,230 @@
             "timestamp": "00:19:58.000",
             "subjectName": "Aishiteru Game wo Owarasetai",
             "episodeUrl": "https://bgm.tv/ep/1665053",
-            "relativePath": "assets/top-food-tomato-05-1882eff341.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Magical Sisters LuluttoLilly - 03 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.14.30.000-24w8cp.png",
-            "foodNames": [
-              "toast",
-              "red bean paste",
-              "cucumber",
-              "tomato",
-              "scrambled eggs"
-            ],
-            "foodName": "tomato",
-            "saved": false,
-            "title": "魔法姐妹露露特莉莉",
-            "score": 6.5,
-            "timestamp": "00:14:30.000",
-            "subjectName": "Magical Sisters LuluttoLilly",
-            "episodeUrl": "https://bgm.tv/ep/1669367",
-            "relativePath": "assets/top-food-tomato-06-c3c8b3e329.png"
+            "relativePath": "assets/top-food-tomato-06-a4f48acace.webp"
           }
         ]
       },
       {
-        "name": "bread",
-        "displayName": "面包",
-        "count": 42,
+        "name": "curry",
+        "displayName": "咖喱",
+        "count": 21,
+        "rank": 32,
         "images": [
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 30 (CR 1920x1080 AVC AAC MKV) [F4CB36BD]\\00.08.10.000-fk9seg.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Rokkotsu - 08 (CR 1920x1080 AVC AAC MKV) [EA954695]\\00.06.25.000-m0twvh.png",
             "foodNames": [
-              "bread",
-              "sausage",
-              "meat",
-              "stew",
-              "vegetables"
+              "rice",
+              "curry"
             ],
-            "foodName": "bread",
+            "foodName": "curry",
+            "saved": false,
+            "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
+            "score": 7.2,
+            "timestamp": "00:06:25.000",
+            "subjectName": "Rokkotsu",
+            "episodeUrl": "https://bgm.tv/ep/1670647",
+            "relativePath": "assets/top-food-curry-01-196d9ce769.webp"
+          },
+          {
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 27 (CR 1920x1080 AVC AAC MKV) [8528F348]\\00.19.04.000-n6ehqw.png",
+            "foodNames": [
+              "chicken",
+              "curry",
+              "mashed potatoes"
+            ],
+            "foodName": "curry",
             "saved": false,
             "title": "石纪元 科学与未来 第3部分",
             "score": 7.2,
-            "timestamp": "00:08:10.000",
+            "timestamp": "00:19:04.000",
             "subjectName": "Dr. Stone: Science Future Part 3",
-            "episodeUrl": "https://bgm.tv/ep/1656192",
-            "relativePath": "assets/top-food-bread-01-8db1e6f0e3.png"
+            "episodeUrl": "https://bgm.tv/ep/1656189",
+            "relativePath": "assets/top-food-curry-02-c4f2b29962.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Sakurato] Koori no Jouheki [07][HEVC-10bit 1080P AAC][CHS&CHT]\\00.18.25.000-gp5829.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Sakurato] Koori no Jouheki [12][HEVC-10bit 1080P AAC][CHS&CHT]\\00.10.25.000-emppwp.png",
             "foodNames": [
-              "bread"
+              "curry",
+              "rice",
+              "broccoli",
+              "sausage",
+              "potato",
+              "carrot"
             ],
-            "foodName": "bread",
+            "foodName": "curry",
             "saved": false,
             "title": "冰之城墙",
             "score": 7,
-            "timestamp": "00:18:25.000",
+            "timestamp": "00:10:25.000",
             "subjectName": "Koori no Jouheki",
-            "episodeUrl": "https://bgm.tv/ep/1621462",
-            "relativePath": "assets/top-food-bread-02-70465c4124.png"
+            "episodeUrl": "https://bgm.tv/ep/1621467",
+            "relativePath": "assets/top-food-curry-03-47ad4a9658.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[SweetSub&LoliHouse] Honzuki no Gekokujou S04 - 03 [WebRip 1080p HEVC-10bit AAC ASSx2]\\00.15.47.000-ebfxjb.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kill Ao - 03 (CR 1920x1080 AVC AAC MKV) [F1C087F4]\\00.01.57.000-yc8ss0.png",
             "foodNames": [
-              "bread",
-              "mashed potatoes",
-              "vegetables",
-              "lemon"
+              "curry",
+              "rice",
+              "potato",
+              "carrot",
+              "meat"
             ],
-            "foodName": "bread",
+            "foodName": "curry",
             "saved": false,
-            "title": "小书痴的下克上 〜为了成为图书管理员而不择手段〜 领主的养女",
-            "score": 7,
-            "timestamp": "00:15:47.000",
-            "subjectName": "Honzuki no Gekokujou S04",
-            "episodeUrl": "https://bgm.tv/ep/1625749",
-            "relativePath": "assets/top-food-bread-03-8557cd2df5.png"
+            "title": "杀手青春",
+            "score": 6.2,
+            "timestamp": "00:01:57.000",
+            "subjectName": "Kill Ao",
+            "episodeUrl": "https://bgm.tv/ep/1655890",
+            "relativePath": "assets/top-food-curry-04-bb47d9b914.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Akane-banashi - 05 (ABEMA 1920x1080 AVC AAC MKV) [CA752356]\\00.07.05.000-ho8e09.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kujima Utaeba Ie Hororo - 04 (CR 1920x1080 AVC AAC MKV) [E37D9C71]\\00.20.24.000-cphp2r.png",
             "foodNames": [
-              "bread"
+              "stew",
+              "curry"
             ],
-            "foodName": "bread",
+            "foodName": "curry",
             "saved": false,
-            "title": "落语朱音",
-            "score": 7,
-            "timestamp": "00:07:05.000",
-            "subjectName": "Akane-banashi",
-            "episodeUrl": "https://bgm.tv/ep/1656168",
-            "relativePath": "assets/top-food-bread-04-08bdfebf71.png"
+            "title": "库兹马唱歌的话家里哆啰啰",
+            "score": 6.1,
+            "timestamp": "00:20:24.000",
+            "subjectName": "Kujima Utaeba Ie Hororo",
+            "episodeUrl": "https://bgm.tv/ep/1657954",
+            "relativePath": "assets/top-food-curry-05-bf31266d9c.webp"
           },
           {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Tongari Boushi no Atelier - 01 (CR 1920x1080 AVC AAC MKV) [B924E8BC]\\00.15.34.000-2pneqx.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 03 (CR 1920x1080 AVC AAC MKV) [04D775E2]\\00.05.58.000-k89w8i.png",
             "foodNames": [
-              "mushroom soup",
-              "bread"
+              "curry",
+              "rice"
             ],
-            "foodName": "bread",
+            "foodName": "curry",
             "saved": false,
-            "title": "尖帽子的魔法工房",
-            "score": 6.5,
-            "timestamp": "00:15:34.000",
-            "subjectName": "Tongari Boushi no Atelier",
-            "episodeUrl": "https://bgm.tv/ep/1656032",
-            "relativePath": "assets/top-food-bread-05-03d956c0c1.png"
-          },
-          {
-            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Magical Sisters LuluttoLilly - 04 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.07.55.000-7wdvgq.png",
-            "foodNames": [
-              "bread",
-              "iced coffee"
-            ],
-            "foodName": "bread",
-            "saved": false,
-            "title": "魔法姐妹露露特莉莉",
-            "score": 6.5,
-            "timestamp": "00:07:55.000",
-            "subjectName": "Magical Sisters LuluttoLilly",
-            "episodeUrl": "https://bgm.tv/ep/1669368",
-            "relativePath": "assets/top-food-bread-06-1478ea08fc.png"
+            "title": "女仆小姐的贪吃日常",
+            "score": 5.8,
+            "timestamp": "00:05:58.000",
+            "subjectName": "Maid-san wa Taberu dake",
+            "episodeUrl": "https://bgm.tv/ep/1663101",
+            "relativePath": "assets/top-food-curry-06-2cd9ee139f.webp"
           }
         ]
       }
     ],
     "mostLists": [
+      {
+        "title": "菜单最丰富",
+        "note": "不是单纯吃得多，而是吃得杂；食物种类越多，世界越像真的在运转。",
+        "wide": true,
+        "items": [
+          {
+            "title": "女仆小姐的贪吃日常",
+            "subjectName": "Maid-san wa Taberu dake",
+            "meta": "食物种类",
+            "value": 137,
+            "imagePath": "E:\\tabemono\\backend\\dist\\anime-food-spring-2026\\assets\\most-collage-maid-san-wa-taberu-dake-8300b8d39c.webp",
+            "foodNames": [
+              "takoyaki",
+              "edamame",
+              "ice cream",
+              "strawberry",
+              "crepe",
+              "whipped cream",
+              "chocolate sauce",
+              "eel",
+              "rice",
+              "sauce",
+              "strawberry shortcake",
+              "taiyaki",
+              "dango",
+              "onigiri"
+            ],
+            "foodName": "collage",
+            "saved": true,
+            "relativePath": "assets/most-collage-maid-san-wa-taberu-dake-8300b8d39c.webp",
+            "episodeUrl": "https://bgm.tv/ep/1663099",
+            "collage": true
+          },
+          {
+            "title": "库兹马唱歌的话家里哆啰啰",
+            "subjectName": "Kujima Utaeba Ie Hororo",
+            "meta": "食物种类",
+            "value": 100,
+            "imagePath": "E:\\tabemono\\backend\\dist\\anime-food-spring-2026\\assets\\most-collage-kujima-utaeba-ie-hororo-a820ccb19d.webp",
+            "foodNames": [
+              "stew",
+              "carrot",
+              "sour cream",
+              "dill",
+              "omelet",
+              "pancake",
+              "ham",
+              "tomato",
+              "mashed potato",
+              "soup",
+              "tofu",
+              "spinach",
+              "miso soup",
+              "seaweed",
+              "noodles",
+              "dumplings",
+              "fried egg",
+              "sausage",
+              "green beans",
+              "onigiri",
+              "bread",
+              "strawberry"
+            ],
+            "foodName": "collage",
+            "saved": true,
+            "relativePath": "assets/most-collage-kujima-utaeba-ie-hororo-a820ccb19d.webp",
+            "episodeUrl": "https://bgm.tv/ep/1657954",
+            "collage": true
+          },
+          {
+            "title": "当前、正被打扰中！",
+            "subjectName": "Tadaima, Ojamasaremasu!",
+            "meta": "食物种类",
+            "value": 79,
+            "imagePath": "E:\\tabemono\\backend\\dist\\anime-food-spring-2026\\assets\\most-collage-tadaima-ojamasaremasu-210d339706.webp",
+            "foodNames": [
+              "crackers",
+              "potato",
+              "french fries",
+              "hamburger",
+              "fried chicken",
+              "mustard",
+              "soba",
+              "tempura",
+              "green tea",
+              "scallions",
+              "wasabi",
+              "katsu curry",
+              "rice",
+              "pickles",
+              "french fry",
+              "sauce",
+              "jelly",
+              "coffee",
+              "egg",
+              "risotto",
+              "tea",
+              "stew",
+              "broccoli",
+              "carrot",
+              "toast",
+              "strawberry jam",
+              "meat"
+            ],
+            "foodName": "collage",
+            "saved": false,
+            "relativePath": "assets/most-collage-tadaima-ojamasaremasu-210d339706.webp",
+            "episodeUrl": "https://bgm.tv/ep/1656020",
+            "collage": true
+          }
+        ]
+      },
       {
         "title": "最会出片",
         "note": "高质量画面更集中：构图干净、颜色耐看，食物本身也更有记忆点。",
@@ -102381,7 +103230,12 @@
             "subjectName": "Maid-san wa Taberu dake",
             "meta": "高质量图",
             "value": 13,
-            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-7ac6df34bb.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 01 (CR 1920x1080 AVC AAC MKV) [3AE115AC]\\00.15.15.000-r164yc.png",
+            "foodNames": [
+              "onigiri"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-087f20476b.webp",
             "episodeUrl": "https://bgm.tv/ep/1663099"
           },
           {
@@ -102389,7 +103243,12 @@
             "subjectName": "Nigetsuri",
             "meta": "高质量图",
             "value": 5,
-            "relativePath": "assets/most--02-nigetsuri-0dc6e3c7b1.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[LoliHouse] Nigetsuri - 01 [WebRip 1080p HEVC-10bit AAC SRTx2]\\00.02.48.000-7dsac5.png",
+            "foodNames": [
+              "tea"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--02-nigetsuri-467c5177fb.webp",
             "episodeUrl": "https://bgm.tv/ep/1656224"
           },
           {
@@ -102397,38 +103256,13 @@
             "subjectName": "Dr. Stone: Science Future Part 3",
             "meta": "高质量图",
             "value": 3,
-            "relativePath": "assets/most--03-dr-stone-science-future-part-3-733f2d3c96.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Dr. Stone_ Science Future Part 3 - 26 (CR 1920x1080 AVC AAC MKV) [E9215E30]\\00.10.59.000-pjnto4.png",
+            "foodNames": [
+              "churros"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--03-dr-stone-science-future-part-3-1f96050dcf.webp",
             "episodeUrl": "https://bgm.tv/ep/1656188"
-          }
-        ]
-      },
-      {
-        "title": "菜单最丰富",
-        "note": "不是单纯吃得多，而是吃得杂；食物种类越多，世界越像真的在运转。",
-        "items": [
-          {
-            "title": "女仆小姐的贪吃日常",
-            "subjectName": "Maid-san wa Taberu dake",
-            "meta": "食物种类",
-            "value": 137,
-            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-7b39c29031.png",
-            "episodeUrl": "https://bgm.tv/ep/1663101"
-          },
-          {
-            "title": "库兹马唱歌的话家里哆啰啰",
-            "subjectName": "Kujima Utaeba Ie Hororo",
-            "meta": "食物种类",
-            "value": 100,
-            "relativePath": "assets/most--02-kujima-utaeba-ie-hororo-036aa9952d.png",
-            "episodeUrl": "https://bgm.tv/ep/1657954"
-          },
-          {
-            "title": "当前、正被打扰中！",
-            "subjectName": "Tadaima, Ojamasaremasu!",
-            "meta": "食物种类",
-            "value": 77,
-            "relativePath": "assets/most--03-tadaima-ojamasaremasu-72f13d0d5c.png",
-            "episodeUrl": "https://bgm.tv/ep/1656020"
           }
         ]
       },
@@ -102441,24 +103275,45 @@
             "subjectName": "Maid-san wa Taberu dake",
             "meta": "平均每集食物图",
             "value": "13.6",
-            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-d36ef9f8e2.png",
-            "episodeUrl": "https://bgm.tv/ep/1663103"
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 01 (CR 1920x1080 AVC AAC MKV) [3AE115AC]\\00.15.22.000-55kgon.png",
+            "foodNames": [
+              "onigiri"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-afa9341d07.webp",
+            "episodeUrl": "https://bgm.tv/ep/1663099"
           },
           {
             "title": "神之水滴",
             "subjectName": "Kami no Shizuku",
             "meta": "平均每集食物图",
-            "value": "6.1",
-            "relativePath": "assets/most--02-kami-no-shizuku-db47b073f2.png",
-            "episodeUrl": "https://bgm.tv/ep/1653383"
+            "value": "6.2",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 04 (CR 1920x1080 AVC AAC MKV) [CCBECDAB]\\00.00.38.000-1fk3bs.png",
+            "foodNames": [
+              "steak",
+              "sauce",
+              "berries",
+              "arugula"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--02-kami-no-shizuku-c72b2418dd.webp",
+            "episodeUrl": "https://bgm.tv/ep/1653385"
           },
           {
             "title": "库兹马唱歌的话家里哆啰啰",
             "subjectName": "Kujima Utaeba Ie Hororo",
             "meta": "平均每集食物图",
             "value": "5.9",
-            "relativePath": "assets/most--03-kujima-utaeba-ie-hororo-9ac4f40502.png",
-            "episodeUrl": "https://bgm.tv/ep/1657951"
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kujima Utaeba Ie Hororo - 02 (CR 1920x1080 AVC AAC MKV) [EDDD76B0]\\00.06.48.000-w2hy78.png",
+            "foodNames": [
+              "noodles",
+              "carrot",
+              "cabbage",
+              "pork"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--03-kujima-utaeba-ie-hororo-48c3509e87.webp",
+            "episodeUrl": "https://bgm.tv/ep/1657952"
           }
         ]
       },
@@ -102466,13 +103321,19 @@
         "title": "最爱喝点什么",
         "note": "茶、咖啡、果汁、酒与各种饮品，往往是气氛开始流动的地方。",
         "preferredGroup": "Drinks",
+        "strictPreferredGroup": true,
         "items": [
           {
             "title": "神之水滴",
             "subjectName": "Kami no Shizuku",
             "meta": "饮品提及",
-            "value": 41,
-            "relativePath": "assets/most--01-kami-no-shizuku-adcda15827.png",
+            "value": 46,
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kami no Shizuku - 02 (CR 1920x1080 AVC AAC MKV) [60499A0F]\\00.00.28.000-ndvpp1.png",
+            "foodNames": [
+              "wine"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01-kami-no-shizuku-affbab5f91.webp",
             "episodeUrl": "https://bgm.tv/ep/1653383"
           },
           {
@@ -102480,7 +103341,12 @@
             "subjectName": "Kamiina Botan, Yoeru Sugata wa Yuri no Hana",
             "meta": "饮品提及",
             "value": 34,
-            "relativePath": "assets/most--02-kamiina-botan-yoeru-sugata-wa-yuri-no-hana-36f0b89ec3.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kamiina Botan, Yoeru Sugata wa Yuri no Hana - 01 (CR 1920x1080 AVC AAC MKV) [9D959467]\\00.02.59.000-sj0soa.png",
+            "foodNames": [
+              "iced tea"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--02-kamiina-botan-yoeru-sugata-wa-yuri-no-hana-4b2c1cb92a.webp",
             "episodeUrl": "https://bgm.tv/ep/1676560"
           },
           {
@@ -102488,7 +103354,12 @@
             "subjectName": "Jihanki 3rd Season",
             "meta": "饮品提及",
             "value": 19,
-            "relativePath": "assets/most--03-jihanki-3rd-season-c5a68bf7b7.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Jihanki 3rd Season - 02 (CR 1920x1080 AVC AAC MKV) [16A40C03]\\00.19.53.000-iz0ulj.png",
+            "foodNames": [
+              "soda"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--03-jihanki-3rd-season-4df0aff15d.webp",
             "episodeUrl": "https://bgm.tv/ep/1663137"
           }
         ]
@@ -102497,29 +103368,47 @@
         "title": "甜党主场",
         "note": "甜点出现得越多，作品越容易带上一点约会、奖励或小小逃避的味道。",
         "preferredGroup": "Sweets",
+        "strictPreferredGroup": true,
         "items": [
           {
             "title": "女仆小姐的贪吃日常",
             "subjectName": "Maid-san wa Taberu dake",
             "meta": "甜点提及",
             "value": 44,
-            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-37b72e021d.png",
-            "episodeUrl": "https://bgm.tv/ep/1663109"
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Maid-san wa Taberu dake - 02 (CR 1920x1080 AVC AAC MKV) [FC6C47C8]\\00.02.25.000-0yuwgw.png",
+            "foodNames": [
+              "ice cream"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01-maid-san-wa-taberu-dake-125e79c96f.webp",
+            "episodeUrl": "https://bgm.tv/ep/1663100"
           },
           {
             "title": "库兹马唱歌的话家里哆啰啰",
             "subjectName": "Kujima Utaeba Ie Hororo",
             "meta": "甜点提及",
             "value": 16,
-            "relativePath": "assets/most--02-kujima-utaeba-ie-hororo-0d5ce4251d.png",
-            "episodeUrl": "https://bgm.tv/ep/1657951"
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[Dynamis One] Kujima Utaeba Ie Hororo - 03 (CR 1920x1080 AVC AAC MKV) [A5BF8B1E]\\00.00.34.000-8r7xv8.png",
+            "foodNames": [
+              "cookie"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--02-kujima-utaeba-ie-hororo-e5b0789e98.webp",
+            "episodeUrl": "https://bgm.tv/ep/1657953"
           },
           {
             "title": "拜托了偶像公主",
             "subjectName": "Onegai: Aipri",
             "meta": "甜点提及",
             "value": 16,
-            "relativePath": "assets/most--03-onegai-aipri-9445f12cc7.png",
+            "imagePath": "E:\\tabemono\\backend\\output\\images\\[FLsnow.feat.PO][Onegai_Aipri][1080P][04]\\00.03.48.000-sy7n9v.png",
+            "foodNames": [
+              "cake",
+              "strawberry cake",
+              "chocolate cake"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--03-onegai-aipri-b858613d8e.webp",
             "episodeUrl": "https://bgm.tv/ep/1656131"
           }
         ]
