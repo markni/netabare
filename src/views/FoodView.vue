@@ -25,6 +25,18 @@ const topFoodImages = computed(() => page.value.topFoodImages || []);
 const mostLists = computed(() => page.value.mostLists || []);
 const leaderboard = computed(() => subjects.value.slice(0, 10));
 const topFoods = computed(() => topFoodImages.value.slice(0, 8));
+const subjectByName = computed(
+  () => new Map(subjects.value.map((subject) => [subject.subjectName, subject]))
+);
+
+const imageHref = (item) => {
+  if (item?.collage) {
+    const subject = subjectByName.value.get(item.subjectName);
+    if (subject?.bgmId) return `/subject/${subject.bgmId}`;
+  }
+
+  return item?.episodeUrl || 'about:blank';
+};
 
 const scoreDensity = computed(() => {
   const sorted = [...subjects.value].sort((a, b) => a.frames - b.frames);
@@ -66,7 +78,7 @@ onMounted(fetchReport);
 </script>
 
 <template>
-  <main class="food-page">
+  <main class="[container-type:inline-size] flex flex-col gap-[clamp(4rem,8vw,7rem)] pb-28">
     <section
       class="relative isolate bleed-both-to-viewport grid min-h-[96dvh] items-center overflow-hidden border-y border-foreground/20 bg-[#f9dfbd] px-0 py-12 text-[#241c18] before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:bg-[linear-gradient(90deg,rgb(255_248_239_/_0.88)_0%,rgb(255_248_239_/_0.78)_30%,rgb(255_248_239_/_0.38)_58%,rgb(255_248_239_/_0.12)_100%),linear-gradient(0deg,rgb(244_181_158_/_0.78)_0%,rgb(244_181_158_/_0.25)_38%,transparent_72%)] md:py-16"
     >
@@ -138,8 +150,12 @@ onMounted(fetchReport);
       </div>
     </section>
 
-    <section v-if="loading" class="state-panel">正在上菜…</section>
-    <section v-else-if="error" class="state-panel state-panel--error">{{ error }}</section>
+    <section v-if="loading" class="border border-foreground/25 p-8 text-muted-foreground">
+      正在上菜…
+    </section>
+    <section v-else-if="error" class="border border-foreground/25 p-8 text-red">
+      {{ error }}
+    </section>
 
     <template v-else-if="report">
       <section class="flex flex-col gap-8">
@@ -243,7 +259,7 @@ onMounted(fetchReport);
                 'group relative block w-full max-w-[28rem] overflow-hidden bg-foreground/10 after:absolute after:inset-x-0 after:top-[30%] after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black/80',
                 list.wide ? 'aspect-video max-w-none' : 'h-[15.75rem]'
               ]"
-              :href="list.items[0].episodeUrl"
+              :href="imageHref(list.items[0])"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -284,17 +300,17 @@ onMounted(fetchReport);
                 <a
                   v-if="item.relativePath"
                   :class="[
-                    'block w-full overflow-hidden bg-foreground/10',
+                    'group block w-full overflow-hidden bg-foreground/10',
                     list.wide
                       ? 'aspect-video'
                       : 'h-[7.3125rem] max-[720px]:aspect-video max-[720px]:h-auto'
                   ]"
-                  :href="item.episodeUrl"
+                  :href="imageHref(item)"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    class="block size-full object-cover"
+                    class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
                     :src="imageUrl(item.relativePath)"
                     :alt="item.title"
                   />
@@ -342,12 +358,12 @@ onMounted(fetchReport);
                 v-for="image in group.images"
                 :key="image.relativePath"
                 class="group relative min-h-34 overflow-hidden"
-                :href="image.episodeUrl"
+                :href="imageHref(image)"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
-                  class="block size-full object-cover"
+                  class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
                   :src="imageUrl(image.relativePath)"
                   :alt="group.displayName"
                 />
@@ -390,12 +406,12 @@ onMounted(fetchReport);
                 v-for="image in food.images"
                 :key="image.relativePath"
                 class="group relative aspect-video overflow-hidden"
-                :href="image.episodeUrl"
+                :href="imageHref(image)"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
-                  class="block size-full object-cover"
+                  class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
                   :src="imageUrl(image.relativePath)"
                   :alt="food.displayName"
                 />
@@ -409,121 +425,42 @@ onMounted(fetchReport);
         </div>
       </section>
 
-      <section class="food-section score-section">
-        <div class="section-heading">
-          <p class="section-kicker">Score</p>
-          <h2>评分关系</h2>
-          <p>按食物数量分组，比较各组平均评分。</p>
+      <section class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs font-bold tracking-[0.32em] text-muted-foreground uppercase">Score</p>
+          <h2 class="mt-2.5 max-w-[13em] text-[clamp(2.25rem,6vw,5.4rem)] leading-none font-bold">
+            评分关系
+          </h2>
+          <p
+            class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
+          >
+            按食物数量分组，比较各组平均评分。
+          </p>
         </div>
 
-        <div class="density-panel">
-          <div v-for="row in scoreDensity" :key="row.label" class="density-row">
+        <div class="grid border border-foreground/25 bg-background px-5">
+          <div
+            v-for="row in scoreDensity"
+            :key="row.label"
+            class="grid grid-cols-[4rem_1fr_4rem] items-center gap-4 border-b border-foreground/15 py-4 last:border-b-0"
+          >
             <span>{{ row.label }}</span>
-            <i><b :style="{ width: row.width }"></b></i>
-            <strong>{{ formatScore(row.avgScore) }}</strong>
-            <small>平均 {{ formatNumber(Math.round(row.avgFood)) }} 个食物瞬间</small>
+            <i class="h-3.5 bg-foreground/10"
+              ><b
+                class="block h-full"
+                :style="{
+                  width: row.width,
+                  background: `linear-gradient(90deg, ${TEAL}, ${GOLD}, ${PINK}, ${BLUE})`
+                }"
+              ></b
+            ></i>
+            <strong class="text-right">{{ formatScore(row.avgScore) }}</strong>
+            <small class="col-start-2 col-end-4 text-muted-foreground"
+              >平均 {{ formatNumber(Math.round(row.avgFood)) }} 个食物瞬间</small
+            >
           </div>
         </div>
       </section>
     </template>
   </main>
 </template>
-
-<style scoped>
-.food-page {
-  container-type: inline-size;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4rem, 8vw, 7rem);
-  padding-bottom: 7rem;
-}
-
-.section-kicker {
-  color: var(--color-muted-foreground);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-
-.section-heading p:last-child {
-  max-width: 64rem;
-  margin-top: 1.2rem;
-  color: var(--color-muted-foreground);
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  line-height: 1.8;
-}
-
-.state-panel {
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
-  padding: 2rem;
-  color: var(--color-muted-foreground);
-}
-
-.state-panel--error {
-  color: var(--color-red);
-}
-
-.density-row small {
-  color: var(--color-muted-foreground);
-}
-
-.food-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.section-heading h2 {
-  max-width: 13em;
-  margin-top: 0.6rem;
-  font-size: clamp(2.25rem, 6vw, 5.4rem);
-  font-weight: 700;
-  line-height: 1.02;
-}
-
-.density-panel {
-  background: var(--color-background);
-}
-
-.density-panel {
-  display: grid;
-  gap: 0;
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
-  padding: 0 1.25rem;
-}
-
-.density-row {
-  display: grid;
-  grid-template-columns: 4rem 1fr 4rem;
-  gap: 1rem;
-  align-items: center;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-}
-
-.density-row:last-child {
-  border-bottom: 0;
-}
-
-.density-row i {
-  height: 0.9rem;
-  background: color-mix(in srgb, var(--color-foreground) 10%, transparent);
-}
-
-.density-row b {
-  display: block;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    v-bind('TEAL'),
-    v-bind('GOLD'),
-    v-bind('PINK'),
-    v-bind('BLUE')
-  );
-}
-
-.density-row small {
-  grid-column: 2 / 4;
-}
-</style>
