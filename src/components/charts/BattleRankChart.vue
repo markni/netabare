@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted, watch, shallowRef } from 'vue';
 import Highcharts from '@/utils/highcharts';
-import { BLACK, BLUE, COLORS10_VIVID, IVORY } from '@/constants/colors';
+import { BLACK, BLUE, COLORS10_VIVID_SORTED, IVORY } from '@/constants/colors';
 import { useRouter } from 'vue-router';
 import { useChartTheme } from '@/composables/useChartTheme';
 import { useInViewOnce } from '@/composables/useInViewOnce';
@@ -37,7 +37,7 @@ const { isInViewOnce } = useInViewOnce(chartContainer, { enabled: props.animateW
 
 const router = useRouter();
 const themeStore = useThemeStore();
-const rankColors = computed(() => COLORS10_VIVID);
+const rankColors = computed(() => COLORS10_VIVID_SORTED);
 const MOBILE_LEGEND_WIDTH = 640;
 
 const getLatestRank = (rankHistory = []) => {

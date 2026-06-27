@@ -9,6 +9,7 @@ import { onMounted, watch, computed } from 'vue';
 import ScoreBubbleChart from '@/components/charts/ScoreBubbleChart.vue';
 import SeasonTitleSection from '@/components/SeasonTitleSection.vue';
 import texts from '@/constants/texts';
+import { COLORS10_VIVID_SORTED } from '@/constants/colors';
 
 const store = useSeasonStore();
 const route = useRoute();
@@ -49,7 +50,50 @@ const findBgmIdByNameCn = (nameCn) => {
   return subject?.bgmId || null;
 };
 
-const linkSubjectNames = (text) => {
+const getLatestScore = (scoreHistory = []) => {
+  if (!Array.isArray(scoreHistory) || scoreHistory.length === 0) return Number.NEGATIVE_INFINITY;
+  const latest = Number(scoreHistory[scoreHistory.length - 1]?.[1]);
+  return Number.isFinite(latest) ? latest : Number.NEGATIVE_INFINITY;
+};
+
+const getLatestRank = (rankHistory = []) => {
+  if (!Array.isArray(rankHistory) || rankHistory.length === 0) return Number.POSITIVE_INFINITY;
+  const latest = Number(rankHistory[rankHistory.length - 1]?.[1]);
+  return Number.isFinite(latest) ? latest : Number.POSITIVE_INFINITY;
+};
+
+const createChartColorMap = (sortedSeries) =>
+  sortedSeries.reduce((colorMap, seriesData, index) => {
+    colorMap[String(seriesData.bgmId)] =
+      seriesData.color || COLORS10_VIVID_SORTED[index % COLORS10_VIVID_SORTED.length];
+    return colorMap;
+  }, {});
+
+const scoreChartColorMap = computed(() => {
+  const sortedHistoryData = [...(historyData.value || [])].sort((a, b) => {
+    const scoreDiff = getLatestScore(b.scoreHistory) - getLatestScore(a.scoreHistory);
+    if (scoreDiff !== 0) return scoreDiff;
+    const nameA = a?.name || '';
+    const nameB = b?.name || '';
+    return nameA.localeCompare(nameB, 'zh-Hans-CN');
+  });
+
+  return createChartColorMap(sortedHistoryData);
+});
+
+const rankChartColorMap = computed(() => {
+  const sortedHistoryData = [...(historyData.value || [])].sort((a, b) => {
+    const rankDiff = getLatestRank(a.rankHistory) - getLatestRank(b.rankHistory);
+    if (rankDiff !== 0) return rankDiff;
+    const nameA = a?.name || '';
+    const nameB = b?.name || '';
+    return nameA.localeCompare(nameB, 'zh-Hans-CN');
+  });
+
+  return createChartColorMap(sortedHistoryData);
+});
+
+const linkSubjectNames = (text, colorMap = {}) => {
   const segments = [];
   const subjectNamePattern = /《([^》]+)》/g;
   let lastIndex = 0;
@@ -60,24 +104,29 @@ const linkSubjectNames = (text) => {
     const bgmId = findBgmIdByNameCn(nameCn);
 
     if (match.index > lastIndex) {
-      segments.push({ text: text.slice(lastIndex, match.index), bgmId: null });
+      segments.push({ text: text.slice(lastIndex, match.index), bgmId: null, color: null });
     }
 
-    segments.push({ text: quotedName, bgmId });
+    segments.push({ text: quotedName, bgmId, color: bgmId ? colorMap[String(bgmId)] : null });
     lastIndex = match.index + quotedName.length;
   }
 
   if (lastIndex < text.length) {
-    segments.push({ text: text.slice(lastIndex), bgmId: null });
+    segments.push({ text: text.slice(lastIndex), bgmId: null, color: null });
   }
 
-  return segments.length ? segments : [{ text, bgmId: null }];
+  return segments.length ? segments : [{ text, bgmId: null, color: null }];
 };
 
-const splitAndLinkAnalysis = (text) => splitIntoTwoParagraphs(text).map(linkSubjectNames);
+const splitAndLinkAnalysis = (text, colorMap) =>
+  splitIntoTwoParagraphs(text).map((paragraph) => linkSubjectNames(paragraph, colorMap));
 
-const scoreAnalysisParagraphs = computed(() => splitAndLinkAnalysis(analysis.value?.score || ''));
-const rankAnalysisParagraphs = computed(() => splitAndLinkAnalysis(analysis.value?.rank || ''));
+const scoreAnalysisParagraphs = computed(() =>
+  splitAndLinkAnalysis(analysis.value?.score || '', scoreChartColorMap.value)
+);
+const rankAnalysisParagraphs = computed(() =>
+  splitAndLinkAnalysis(analysis.value?.rank || '', rankChartColorMap.value)
+);
 const divisiveAnalysisParagraphs = computed(() =>
   splitAndLinkAnalysis(analysis.value?.divisive || '')
 );
@@ -190,21 +239,23 @@ const handleSeasonChange = (event) => {
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
     <div id="season-score-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-4xl">{{ texts._top10ScoreComparison }}</h2>
+      <h2 class="text-5xl">{{ texts._top10ScoreComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
 
       <div
         v-if="scoreAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in scoreAnalysisParagraphs" :key="`score-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink
-              v-if="segment.bgmId"
-              :to="`/subject/${segment.bgmId}`"
-              class="underline underline-offset-4"
-            >
-              {{ segment.text }}
+            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+              <span
+                v-if="segment.color"
+                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                :style="{ backgroundColor: segment.color }"
+                aria-hidden="true"
+              ></span>
+              <span class="underline underline-offset-4">{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -223,20 +274,22 @@ const handleSeasonChange = (event) => {
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
     <div id="season-ranking-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-4xl">{{ texts._top10RankingComparison }}</h2>
+      <h2 class="text-5xl">{{ texts._top10RankingComparison }}</h2>
       <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
       <div
         v-if="rankAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in rankAnalysisParagraphs" :key="`rank-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink
-              v-if="segment.bgmId"
-              :to="`/subject/${segment.bgmId}`"
-              class="underline underline-offset-4"
-            >
-              {{ segment.text }}
+            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+              <span
+                v-if="segment.color"
+                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                :style="{ backgroundColor: segment.color }"
+                aria-hidden="true"
+              ></span>
+              <span class="underline underline-offset-4">{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -254,20 +307,22 @@ const handleSeasonChange = (event) => {
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
     <div id="season-balance-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-4xl">{{ texts._balanceChart }}</h2>
+      <h2 class="text-5xl">{{ texts._balanceChart }}</h2>
       <p class="text-gray-400">{{ texts._scoreComparison }}</p>
       <div
         v-if="divisiveAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in divisiveAnalysisParagraphs" :key="`divisive-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink
-              v-if="segment.bgmId"
-              :to="`/subject/${segment.bgmId}`"
-              class="underline underline-offset-4"
-            >
-              {{ segment.text }}
+            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+              <span
+                v-if="segment.color"
+                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                :style="{ backgroundColor: segment.color }"
+                aria-hidden="true"
+              ></span>
+              <span class="underline underline-offset-4">{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -281,22 +336,24 @@ const handleSeasonChange = (event) => {
     <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
 
     <div id="season-distribution-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-4xl">{{ texts._distributionChart }}</h2>
+      <h2 class="text-5xl">{{ texts._distributionChart }}</h2>
       <p class="cursor-help text-gray-400" :title="texts._chartLegend">
         {{ texts._chartLegend }}
       </p>
       <div
         v-if="popularityAnalysisParagraphs.length"
-        class="mt-3 space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
       >
         <p v-for="(paragraph, index) in popularityAnalysisParagraphs" :key="`popularity-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink
-              v-if="segment.bgmId"
-              :to="`/subject/${segment.bgmId}`"
-              class="underline underline-offset-4"
-            >
-              {{ segment.text }}
+            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+              <span
+                v-if="segment.color"
+                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                :style="{ backgroundColor: segment.color }"
+                aria-hidden="true"
+              ></span>
+              <span class="underline underline-offset-4">{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
