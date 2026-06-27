@@ -74,8 +74,8 @@ onMounted(fetchReport);
 
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="hero-stamp">2026 春季动画 · 食物、甜点与热气</p>
-          <h1>动画 x 食物</h1>
+          <p class="hero-stamp">2026春季动画本季美食</p>
+          <h1>动画 x 美食</h1>
           <p>
             这一季的动画把饭菜摆到了叙事前景：有人用甜点制造暧昧，有人靠热汤缓一口气，也有人把一桌饭拍成角色关系的温度计。
           </p>
@@ -108,9 +108,9 @@ onMounted(fetchReport);
     <template v-else-if="report">
       <section class="food-section">
         <div class="section-heading">
-          <p class="section-kicker">Leaderboard</p>
-          <h2>最有食欲的作品</h2>
-          <p>有些作品只是让角色吃饭，有些作品则把食物拍成节奏、情绪和生活质感。</p>
+          <p class="section-kicker">Ranking</p>
+          <h2>作品排行</h2>
+          <p>按入选食物画面数量排序，并同步显示作品评分。</p>
         </div>
 
         <div class="leaderboard-table-wrap">
@@ -142,8 +142,9 @@ onMounted(fetchReport);
 
       <section class="food-section">
         <div class="section-heading">
-          <p class="section-kicker">Most</p>
-          <h2>这一季的 Top 3 小榜</h2>
+          <p class="section-kicker">Highlights</p>
+          <h2>亮点排行</h2>
+          <p>按画面质量、食物种类、单集密度、饮品和甜点提取前三名。</p>
         </div>
 
         <div class="most-grid">
@@ -197,8 +198,9 @@ onMounted(fetchReport);
 
       <section class="food-section">
         <div class="section-heading">
-          <p class="section-kicker">Taxonomy</p>
-          <h2>食物家族</h2>
+          <p class="section-kicker">Categories</p>
+          <h2>食物分类</h2>
+          <p>将食物标签归入主要类别后统计分布。</p>
         </div>
 
         <div class="taxonomy-grid">
@@ -226,7 +228,8 @@ onMounted(fetchReport);
       <section class="food-section">
         <div class="section-heading">
           <p class="section-kicker">Tags</p>
-          <h2>高频食物标签</h2>
+          <h2>高频食物</h2>
+          <p>统计食物标签出现次数，展示频次最高的代表条目。</p>
         </div>
 
         <div class="tag-board">
@@ -255,8 +258,8 @@ onMounted(fetchReport);
       <section class="food-section score-section">
         <div class="section-heading">
           <p class="section-kicker">Score</p>
-          <h2>食物越多，评分越高吗？</h2>
-          <p>把作品按食物数量分成四组，再看每组的平均评分。</p>
+          <h2>评分关系</h2>
+          <p>按食物数量分组，比较各组平均评分。</p>
         </div>
 
         <div class="density-panel">
@@ -362,6 +365,7 @@ onMounted(fetchReport);
 
 .hero-stamp {
   width: fit-content;
+  margin-bottom: 0.9rem;
   border: 1px solid rgb(36 28 24 / 14%);
   border-radius: 999px;
   background: rgb(255 255 255 / 58%);
@@ -386,13 +390,20 @@ onMounted(fetchReport);
   line-height: 0.88;
 }
 
-.hero-copy > p:not(.hero-stamp),
-.section-heading p:last-child {
+.hero-copy > p:not(.hero-stamp) {
   max-width: 44rem;
   margin-top: 1.2rem;
   color: rgb(71 55 46 / 92%);
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 2;
+}
+
+.section-heading p:last-child {
+  max-width: 64rem;
+  margin-top: 1.2rem;
+  color: var(--color-muted-foreground);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
 }
 
 .hero-stats {
