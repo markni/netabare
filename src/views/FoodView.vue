@@ -70,22 +70,42 @@ onMounted(fetchReport);
 <template>
   <main class="food-page">
     <section class="food-hero bleed-both-to-viewport">
-      <div class="hero-collage" aria-hidden="true">
+      <div class="hero-photo-grid" aria-hidden="true">
         <img
-          v-for="(image, index) in heroImages"
+          v-for="(image, index) in heroImages.slice(0, 24)"
           :key="`${image.relativePath}-${index}`"
           :src="imageUrl(image.relativePath)"
           alt=""
-          :style="{ '--tile-index': index }"
         />
       </div>
 
-      <div class="hero-copy">
-        <p class="section-kicker">2026 春季动画 · 食物报告</p>
-        <h1>动画里的<br />一口热气</h1>
-        <p>
-          这一季的动画把饭菜放进人物关系、生活节奏和情绪转场里。这里把食物画面、评分与作品分布重新排成一张可以随数据更新的菜单。
-        </p>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-stamp">2026 春季动画 · 食物、甜点与热气</p>
+          <h1>动画 x 食物</h1>
+          <p>
+            这一季的动画把饭菜摆到了叙事前景：有人用甜点制造暧昧，有人靠热汤缓一口气，也有人把一桌饭拍成角色关系的温度计。
+          </p>
+
+          <div v-if="report" class="hero-stats" aria-label="核心数字">
+            <div>
+              <strong>{{ formatNumber(stats.verifiedFrames) }}</strong>
+              <span>入选食物瞬间</span>
+            </div>
+            <div>
+              <strong>{{ formatNumber(stats.subjectCount) }}</strong>
+              <span>2026 春季动画</span>
+            </div>
+            <div>
+              <strong>{{ formatNumber(stats.foodMentionCount) }}</strong>
+              <span>菜名与饮品</span>
+            </div>
+            <div>
+              <strong>{{ formatScore(stats.avgScore) }}</strong>
+              <span>平均评分</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -93,25 +113,6 @@ onMounted(fetchReport);
     <section v-else-if="error" class="state-panel state-panel--error">{{ error }}</section>
 
     <template v-else-if="report">
-      <section class="metric-strip" aria-label="核心数字">
-        <div>
-          <span>入选食物瞬间</span>
-          <strong>{{ formatNumber(stats.verifiedFrames) }}</strong>
-        </div>
-        <div>
-          <span>2026 春季动画</span>
-          <strong>{{ formatNumber(stats.subjectCount) }}</strong>
-        </div>
-        <div>
-          <span>菜名与饮品</span>
-          <strong>{{ formatNumber(stats.foodMentionCount) }}</strong>
-        </div>
-        <div>
-          <span>平均评分</span>
-          <strong>{{ formatScore(stats.avgScore) }}</strong>
-        </div>
-      </section>
-
       <section class="food-section">
         <div class="section-heading">
           <p class="section-kicker">排行榜</p>
@@ -261,45 +262,110 @@ onMounted(fetchReport);
 
 .food-hero {
   position: relative;
-  min-height: min(78dvh, 780px);
+  min-height: 96dvh;
   display: grid;
   align-items: end;
   overflow: hidden;
+  isolation: isolate;
+  padding: 4rem 0 2.875rem;
   border-block: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  color: #241c18;
   background:
-    linear-gradient(90deg, var(--color-background) 0 34%, transparent 68%),
-    color-mix(in srgb, var(--color-gold) 18%, var(--color-background));
+    repeating-linear-gradient(90deg, rgb(36 28 24 / 8%) 0 1px, transparent 1px 74px) 0 100% / 100%
+      48% no-repeat,
+    linear-gradient(
+      115deg,
+      rgb(255 248 239 / 98%) 0%,
+      rgb(255 237 205 / 90%) 45%,
+      rgb(244 181 158 / 78%) 100%
+    ),
+    #f9dfbd;
 }
 
-.hero-collage {
+.food-hero::before {
+  content: '';
   position: absolute;
-  inset: -6rem -8rem -4rem 22%;
-  display: grid;
-  grid-template-columns: repeat(10, minmax(4.5rem, 1fr));
-  gap: 0.55rem;
-  transform: rotate(-7deg);
-  opacity: 0.92;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(255 248 239 / 96%) 0%,
+      rgb(255 248 239 / 86%) 32%,
+      rgb(255 248 239 / 42%) 58%,
+      rgb(255 248 239 / 12%) 100%
+    ),
+    linear-gradient(0deg, rgb(244 181 158 / 78%) 0%, rgb(244 181 158 / 25%) 38%, transparent 72%);
+  pointer-events: none;
 }
 
-.hero-collage img {
-  width: 100%;
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 2rem));
+  margin: auto;
+}
+
+.hero-photo-grid {
+  position: absolute;
+  inset: -7vh -7vw -7vh 18vw;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.625rem;
+  transform: rotate(-5deg) scale(1.06);
+  transform-origin: center;
+  filter: saturate(1.08) contrast(1.02);
+  pointer-events: none;
+}
+
+.hero-photo-grid::before {
+  content: '';
+  position: absolute;
+  inset: 8% -8% -10% 18%;
+  z-index: -1;
+  background: rgb(255 255 255 / 20%);
+  filter: blur(28px);
+}
+
+.hero-photo-grid img {
+  flex: 0 0 calc((100% - 4.375rem) / 8);
   aspect-ratio: 1;
+  display: block;
+  border-radius: 0.45rem;
   object-fit: cover;
-  filter: saturate(1.08) contrast(1.04);
-  box-shadow: 0 1rem 2rem rgb(0 0 0 / 18%);
-  transform: translateY(calc((var(--tile-index) % 5) * 0.45rem));
+  box-shadow: 0 0.9rem 2rem rgb(36 28 24 / 18%);
 }
 
-.hero-collage img:nth-child(7n) {
+.hero-photo-grid img:nth-child(4n + 1) {
+  transform: translateY(1.05rem);
+}
+
+.hero-photo-grid img:nth-child(5n + 2) {
+  transform: translateY(-0.85rem);
+}
+
+.hero-photo-grid img:nth-child(9n) {
   aspect-ratio: 16 / 9;
-  grid-column: span 2;
+  flex-basis: calc((100% - 4.375rem) / 4);
 }
 
 .hero-copy {
   position: relative;
-  z-index: 1;
-  max-width: 48rem;
-  padding: clamp(3rem, 8vw, 6rem) max(1rem, calc((100vw - 64rem) / 2));
+  z-index: 2;
+  max-width: 47rem;
+  margin-inline: clamp(0rem, 16vw, 13rem) auto;
+}
+
+.hero-stamp {
+  width: fit-content;
+  border: 1px solid rgb(36 28 24 / 14%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 58%);
+  padding: 0.6rem 0.9rem;
+  font-size: clamp(0.78rem, 1.7vw, 0.98rem);
+  font-weight: 800;
 }
 
 .section-kicker {
@@ -311,19 +377,50 @@ onMounted(fetchReport);
 }
 
 .hero-copy h1 {
-  margin-top: 1rem;
-  font-size: clamp(4rem, 13vw, 10rem);
-  font-weight: 700;
+  max-width: 48.75rem;
+  margin: 0 0 1.25rem;
+  font-size: clamp(3rem, 8vw, 7.25rem);
+  font-weight: 950;
   line-height: 0.88;
 }
 
-.hero-copy p:last-child,
+.hero-copy > p:not(.hero-stamp),
 .section-heading p:last-child {
   max-width: 44rem;
   margin-top: 1.2rem;
-  color: var(--color-muted-foreground);
+  color: rgb(71 55 46 / 92%);
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 2;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hero-stats div {
+  border: 1px solid rgb(36 28 24 / 14%);
+  border-radius: 0.5rem;
+  background: rgb(255 255 255 / 62%);
+  padding: 1rem;
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hero-stats span {
+  display: block;
+  margin-top: 0.45rem;
+  color: rgb(71 55 46 / 78%);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .state-panel {
@@ -336,34 +433,12 @@ onMounted(fetchReport);
   color: var(--color-red);
 }
 
-.metric-strip {
-  display: grid;
-  border-block: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
-}
-
-.metric-strip div {
-  display: grid;
-  gap: 0.8rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-}
-
-.metric-strip div:last-child {
-  border-bottom: 0;
-}
-
-.metric-strip span,
 .density-row small,
 .leaderboard small,
 .most-card p,
 .most-row small,
 .taxonomy-card span {
   color: var(--color-muted-foreground);
-}
-
-.metric-strip strong {
-  font-size: clamp(2.2rem, 7vw, 5rem);
-  line-height: 1;
 }
 
 .food-section {
@@ -607,20 +682,6 @@ onMounted(fetchReport);
 }
 
 @container (min-width: 720px) {
-  .metric-strip {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .metric-strip div {
-    padding: 1.25rem;
-    border-right: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-    border-bottom: 0;
-  }
-
-  .metric-strip div:last-child {
-    border-right: 0;
-  }
-
   .leaderboard-grid {
     grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
   }
@@ -651,18 +712,41 @@ onMounted(fetchReport);
 }
 
 @media (max-width: 720px) {
-  .hero-collage {
-    inset: -3rem -4rem auto -4rem;
-    height: 45%;
-    grid-template-columns: repeat(7, minmax(3.8rem, 1fr));
+  .food-hero {
+    min-height: 94dvh;
+    padding-top: 2.875rem;
   }
 
-  .food-hero {
-    align-items: end;
+  .hero-inner {
+    align-self: end;
   }
 
   .hero-copy {
-    padding-top: 52dvh;
+    margin-inline: 0;
+  }
+
+  .hero-photo-grid {
+    inset: -2vh -16vw auto -16vw;
+    height: 50dvh;
+    gap: 0.45rem;
+    transform: rotate(-5deg) scale(1.04);
+    opacity: 0.95;
+  }
+
+  .hero-photo-grid img {
+    flex-basis: calc((100% - 3.125rem) / 6);
+  }
+
+  .hero-photo-grid img:nth-child(9n) {
+    flex-basis: calc((100% - 3.125rem) / 3);
+  }
+
+  .hero-photo-grid img:nth-child(n + 19) {
+    display: none;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .most-row {
