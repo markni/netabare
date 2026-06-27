@@ -310,29 +310,51 @@ onMounted(fetchReport);
         </div>
       </section>
 
-      <section class="food-section">
-        <div class="section-heading">
-          <p class="section-kicker">Categories</p>
-          <h2>食物分类</h2>
-          <p>将食物标签归入主要类别后统计分布。</p>
+      <section class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs font-bold tracking-[0.32em] text-muted-foreground uppercase">
+            Categories
+          </p>
+          <h2 class="mt-2.5 max-w-[13em] text-[clamp(2.25rem,6vw,5.4rem)] leading-none font-bold">
+            食物分类
+          </h2>
+          <p
+            class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
+          >
+            将食物标签归入主要类别后统计分布。
+          </p>
         </div>
 
-        <div class="taxonomy-grid">
-          <article v-for="group in taxonomyGroups" :key="group.name" class="taxonomy-card">
+        <div
+          class="grid grid-cols-1 gap-px border border-foreground/25 bg-foreground/25 min-[720px]:grid-cols-2"
+        >
+          <article
+            v-for="group in taxonomyGroups"
+            :key="group.name"
+            class="grid gap-5 bg-background p-4"
+          >
             <div>
-              <span>{{ formatNumber(group.count) }} 次提及</span>
-              <h3>{{ group.displayName }}</h3>
+              <span class="text-muted-foreground">{{ formatNumber(group.count) }} 次提及</span>
+              <h3 class="mt-1 text-3xl">{{ group.displayName }}</h3>
             </div>
-            <div class="taxonomy-images">
+            <div class="grid grid-cols-2 gap-2">
               <a
                 v-for="image in group.images"
                 :key="image.relativePath"
+                class="group relative min-h-34 overflow-hidden"
                 :href="image.episodeUrl"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img :src="imageUrl(image.relativePath)" :alt="group.displayName" />
-                <small>{{ image.title || image.subjectName }}</small>
+                <img
+                  class="block size-full object-cover"
+                  :src="imageUrl(image.relativePath)"
+                  :alt="group.displayName"
+                />
+                <small
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
+                  >{{ image.title || image.subjectName }}</small
+                >
               </a>
             </div>
           </article>
@@ -424,8 +446,7 @@ onMounted(fetchReport);
   color: var(--color-red);
 }
 
-.density-row small,
-.taxonomy-card span {
+.density-row small {
   color: var(--color-muted-foreground);
 }
 
@@ -443,7 +464,6 @@ onMounted(fetchReport);
   line-height: 1.02;
 }
 
-.taxonomy-grid,
 .tag-board {
   display: grid;
   gap: 1px;
@@ -451,7 +471,6 @@ onMounted(fetchReport);
   background: color-mix(in srgb, var(--color-foreground) 24%, transparent);
 }
 
-.taxonomy-card,
 .food-tag-card,
 .density-panel {
   background: var(--color-background);
@@ -462,7 +481,6 @@ onMounted(fetchReport);
   font-size: 1.35rem;
 }
 
-.taxonomy-images img,
 .food-tag-images img {
   width: 100%;
   height: 100%;
@@ -470,35 +488,12 @@ onMounted(fetchReport);
   object-fit: cover;
 }
 
-.taxonomy-grid {
-  grid-template-columns: 1fr;
-}
-
-.taxonomy-card {
-  display: grid;
-  gap: 1.2rem;
-  padding: 1.1rem;
-}
-
-.taxonomy-card h3 {
-  margin-top: 0.35rem;
-  font-size: 2rem;
-}
-
-.taxonomy-images,
 .food-tag-images {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
-.taxonomy-images a {
-  position: relative;
-  min-height: 8.5rem;
-  overflow: hidden;
-}
-
-.taxonomy-images small,
 .food-tag-images small {
   position: absolute;
   inset: auto 0 0;
@@ -513,8 +508,6 @@ onMounted(fetchReport);
     color 180ms ease;
 }
 
-.taxonomy-images a:hover small,
-.taxonomy-images a:focus-visible small,
 .food-tag-images a:hover small,
 .food-tag-images a:focus-visible small {
   background: linear-gradient(transparent, rgb(0 0 0 / 78%));
@@ -593,12 +586,6 @@ onMounted(fetchReport);
 
 .density-row small {
   grid-column: 2 / 4;
-}
-
-@container (min-width: 720px) {
-  .taxonomy-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 720px) {
