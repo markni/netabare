@@ -67,35 +67,71 @@ onMounted(fetchReport);
 
 <template>
   <main class="food-page">
-    <section class="food-hero bleed-both-to-viewport">
-      <div v-if="heroImage" class="hero-photo-grid" aria-hidden="true">
-        <img :src="imageUrl(heroImage.relativePath)" alt="" />
+    <section
+      class="relative isolate bleed-both-to-viewport grid min-h-[96dvh] items-center overflow-hidden border-y border-foreground/20 bg-[#f9dfbd] px-0 py-12 text-[#241c18] before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:bg-[linear-gradient(90deg,rgb(255_248_239_/_0.88)_0%,rgb(255_248_239_/_0.78)_30%,rgb(255_248_239_/_0.38)_58%,rgb(255_248_239_/_0.12)_100%),linear-gradient(0deg,rgb(244_181_158_/_0.78)_0%,rgb(244_181_158_/_0.25)_38%,transparent_72%)] md:py-16"
+    >
+      <div
+        v-if="heroImage"
+        class="pointer-events-none absolute inset-x-[-24vw] inset-y-[-6vh] z-0 origin-center scale-[1.06] rotate-[-3deg] opacity-95 contrast-[1.02] saturate-[1.05] md:inset-x-[-5vw] md:scale-[1.08]"
+        aria-hidden="true"
+      >
+        <img class="block size-full object-cover" :src="imageUrl(heroImage.relativePath)" alt="" />
       </div>
 
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="hero-stamp">2026春季动画本季美食</p>
-          <h1>动画 x 美食</h1>
-          <p>
+      <div class="relative z-[2] mx-auto w-[min(1180px,calc(100%-2rem))]">
+        <div class="relative z-[2] max-w-[47rem] md:ml-[clamp(0rem,16vw,13rem)]">
+          <p
+            class="mb-4 w-fit rounded-full border border-[#241c18]/15 bg-white/60 px-3.5 py-2 text-[clamp(0.78rem,1.7vw,0.98rem)] font-extrabold"
+          >
+            2026春季动画本季美食
+          </p>
+          <h1
+            class="mb-5 max-w-[48.75rem] text-[clamp(3rem,8vw,7.25rem)] leading-[0.88] font-black"
+          >
+            动画 x 美食
+          </h1>
+          <p
+            class="mt-5 max-w-[44rem] text-[clamp(1rem,2vw,1.25rem)] leading-loose text-[#47372e]/90"
+          >
             这一季的动画把饭菜摆到了叙事前景：有人用甜点制造暧昧，有人靠热汤缓一口气，也有人把一桌饭拍成角色关系的温度计。
           </p>
 
-          <div v-if="report" class="hero-stats" aria-label="核心数字">
-            <div>
-              <strong>{{ formatNumber(stats.verifiedFrames) }}</strong>
-              <span>入选食物瞬间</span>
+          <div
+            v-if="report"
+            class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4"
+            aria-label="核心数字"
+          >
+            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+              <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
+                formatNumber(stats.verifiedFrames)
+              }}</strong>
+              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80"
+                >入选食物瞬间</span
+              >
             </div>
-            <div>
-              <strong>{{ formatNumber(stats.subjectCount) }}</strong>
-              <span>2026 春季动画</span>
+            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+              <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
+                formatNumber(stats.subjectCount)
+              }}</strong>
+              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80"
+                >2026 春季动画</span
+              >
             </div>
-            <div>
-              <strong>{{ formatNumber(stats.foodMentionCount) }}</strong>
-              <span>菜名与饮品</span>
+            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+              <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
+                formatNumber(stats.foodMentionCount)
+              }}</strong>
+              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80"
+                >菜名与饮品</span
+              >
             </div>
-            <div>
-              <strong>{{ formatScore(stats.avgScore) }}</strong>
-              <span>平均评分</span>
+            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+              <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
+                formatScore(stats.avgScore)
+              }}</strong>
+              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80"
+                >平均评分</span
+              >
             </div>
           </div>
         </div>
@@ -284,96 +320,6 @@ onMounted(fetchReport);
   padding-bottom: 7rem;
 }
 
-.food-hero {
-  position: relative;
-  min-height: 96dvh;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-  isolation: isolate;
-  padding: 4rem 0 2.875rem;
-  border-block: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
-  color: #241c18;
-  background:
-    repeating-linear-gradient(90deg, rgb(36 28 24 / 8%) 0 1px, transparent 1px 74px) 0 100% / 100%
-      48% no-repeat,
-    linear-gradient(
-      115deg,
-      rgb(255 248 239 / 98%) 0%,
-      rgb(255 237 205 / 90%) 45%,
-      rgb(244 181 158 / 78%) 100%
-    ),
-    #f9dfbd;
-}
-
-.food-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgb(255 248 239 / 88%) 0%,
-      rgb(255 248 239 / 78%) 30%,
-      rgb(255 248 239 / 38%) 58%,
-      rgb(255 248 239 / 12%) 100%
-    ),
-    linear-gradient(0deg, rgb(244 181 158 / 78%) 0%, rgb(244 181 158 / 25%) 38%, transparent 72%);
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  width: min(1180px, calc(100% - 2rem));
-  margin: auto;
-}
-
-.hero-photo-grid {
-  position: absolute;
-  inset: -6vh -5vw -6vh -5vw;
-  z-index: 0;
-  transform: rotate(-3deg) scale(1.08);
-  transform-origin: center;
-  filter: saturate(1.05) contrast(1.02);
-  pointer-events: none;
-}
-
-.hero-photo-grid::before {
-  content: '';
-  position: absolute;
-  inset: 8% -8% -10% 18%;
-  z-index: -1;
-  background: rgb(255 255 255 / 20%);
-  filter: blur(28px);
-}
-
-.hero-photo-grid img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.hero-copy {
-  position: relative;
-  z-index: 2;
-  max-width: 47rem;
-  margin-inline: clamp(0rem, 16vw, 13rem) auto;
-}
-
-.hero-stamp {
-  width: fit-content;
-  margin-bottom: 0.9rem;
-  border: 1px solid rgb(36 28 24 / 14%);
-  border-radius: 999px;
-  background: rgb(255 255 255 / 58%);
-  padding: 0.6rem 0.9rem;
-  font-size: clamp(0.78rem, 1.7vw, 0.98rem);
-  font-weight: 800;
-}
-
 .section-kicker {
   color: var(--color-muted-foreground);
   font-size: 0.78rem;
@@ -382,58 +328,12 @@ onMounted(fetchReport);
   text-transform: uppercase;
 }
 
-.hero-copy h1 {
-  max-width: 48.75rem;
-  margin: 0 0 1.25rem;
-  font-size: clamp(3rem, 8vw, 7.25rem);
-  font-weight: 950;
-  line-height: 0.88;
-}
-
-.hero-copy > p:not(.hero-stamp) {
-  max-width: 44rem;
-  margin-top: 1.2rem;
-  color: rgb(71 55 46 / 92%);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 2;
-}
-
 .section-heading p:last-child {
   max-width: 64rem;
   margin-top: 1.2rem;
   color: var(--color-muted-foreground);
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.8;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin-top: 2rem;
-}
-
-.hero-stats div {
-  border: 1px solid rgb(36 28 24 / 14%);
-  border-radius: 0.5rem;
-  background: rgb(255 255 255 / 62%);
-  padding: 1rem;
-}
-
-.hero-stats strong {
-  display: block;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.hero-stats span {
-  display: block;
-  margin-top: 0.45rem;
-  color: rgb(71 55 46 / 78%);
-  font-size: 0.88rem;
-  font-weight: 800;
-  line-height: 1.35;
 }
 
 .state-panel {
@@ -861,29 +761,6 @@ onMounted(fetchReport);
 }
 
 @media (max-width: 720px) {
-  .food-hero {
-    min-height: 94dvh;
-    padding-top: 2.875rem;
-  }
-
-  .hero-inner {
-    align-self: end;
-  }
-
-  .hero-copy {
-    margin-inline: 0;
-  }
-
-  .hero-photo-grid {
-    inset: -3vh -24vw -3vh -24vw;
-    transform: rotate(-3deg) scale(1.06);
-    opacity: 0.95;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .most-row {
     grid-template-columns: 1fr;
   }
