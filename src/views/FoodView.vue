@@ -361,30 +361,48 @@ onMounted(fetchReport);
         </div>
       </section>
 
-      <section class="food-section">
-        <div class="section-heading">
-          <p class="section-kicker">Tags</p>
-          <h2>高频食物</h2>
-          <p>统计食物标签出现次数，展示频次最高的代表条目。</p>
+      <section class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs font-bold tracking-[0.32em] text-muted-foreground uppercase">Tags</p>
+          <h2 class="mt-2.5 max-w-[13em] text-[clamp(2.25rem,6vw,5.4rem)] leading-none font-bold">
+            高频食物
+          </h2>
+          <p
+            class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
+          >
+            统计食物标签出现次数，展示频次最高的代表条目。
+          </p>
         </div>
 
-        <div class="tag-board">
-          <article v-for="(food, index) in topFoods" :key="food.name" class="food-tag-card">
-            <div class="food-tag-card__head">
-              <span>{{ food.rank || index + 1 }}</span>
-              <h3>{{ food.displayName }}</h3>
+        <div class="grid grid-cols-1 gap-px border border-foreground/25 bg-foreground/25">
+          <article
+            v-for="(food, index) in topFoods"
+            :key="food.name"
+            class="grid items-start gap-4 bg-background p-4 min-[720px]:grid-cols-[minmax(10rem,0.55fr)_minmax(0,1fr)]"
+          >
+            <div class="grid grid-cols-[2rem_1fr_auto] items-baseline gap-3">
+              <span class="text-xl text-muted-foreground">{{ food.rank || index + 1 }}</span>
+              <h3 class="text-3xl">{{ food.displayName }}</h3>
               <b>{{ formatNumber(food.count) }} 次</b>
             </div>
-            <div class="food-tag-images">
+            <div class="grid grid-cols-2 gap-2 min-[720px]:grid-cols-3">
               <a
                 v-for="image in food.images"
                 :key="image.relativePath"
+                class="group relative aspect-video overflow-hidden"
                 :href="image.episodeUrl"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img :src="imageUrl(image.relativePath)" :alt="food.displayName" />
-                <small>{{ image.title || image.subjectName }}</small>
+                <img
+                  class="block size-full object-cover"
+                  :src="imageUrl(image.relativePath)"
+                  :alt="food.displayName"
+                />
+                <small
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
+                  >{{ image.title || image.subjectName }}</small
+                >
               </a>
             </div>
           </article>
@@ -464,87 +482,8 @@ onMounted(fetchReport);
   line-height: 1.02;
 }
 
-.tag-board {
-  display: grid;
-  gap: 1px;
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
-  background: color-mix(in srgb, var(--color-foreground) 24%, transparent);
-}
-
-.food-tag-card,
 .density-panel {
   background: var(--color-background);
-}
-
-.food-tag-card__head span {
-  color: var(--color-muted-foreground);
-  font-size: 1.35rem;
-}
-
-.food-tag-images img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.food-tag-images {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
-}
-
-.food-tag-images small {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 2rem 0.55rem 0.45rem;
-  background: linear-gradient(transparent, rgb(0 0 0 / 48%));
-  color: rgb(255 255 255 / 62%);
-  font-size: 0.76rem;
-  font-weight: 700;
-  line-height: 1.25;
-  transition:
-    background 180ms ease,
-    color 180ms ease;
-}
-
-.food-tag-images a:hover small,
-.food-tag-images a:focus-visible small {
-  background: linear-gradient(transparent, rgb(0 0 0 / 78%));
-  color: white;
-}
-
-.tag-board {
-  grid-template-columns: 1fr;
-}
-
-.food-tag-card {
-  display: grid;
-  grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-  padding: 1.1rem;
-}
-
-.food-tag-card__head {
-  display: grid;
-  grid-template-columns: 2rem 1fr auto;
-  gap: 0.8rem;
-  align-items: baseline;
-}
-
-.food-tag-card__head h3 {
-  font-size: 2rem;
-}
-
-.food-tag-images {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.food-tag-images a {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
 }
 
 .density-panel {
@@ -586,15 +525,5 @@ onMounted(fetchReport);
 
 .density-row small {
   grid-column: 2 / 4;
-}
-
-@media (max-width: 720px) {
-  .food-tag-card {
-    grid-template-columns: 1fr;
-  }
-
-  .food-tag-images {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 </style>
