@@ -210,56 +210,100 @@ onMounted(fetchReport);
         </div>
       </section>
 
-      <section class="food-section">
-        <div class="section-heading">
-          <p class="section-kicker">Highlights</p>
-          <h2>亮点排行</h2>
-          <p>按画面质量、食物种类、单集密度、饮品和甜点提取前三名。</p>
+      <section class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs font-bold tracking-[0.32em] text-muted-foreground uppercase">
+            Highlights
+          </p>
+          <h2 class="mt-2.5 max-w-[13em] text-[clamp(2.25rem,6vw,5.4rem)] leading-none font-bold">
+            亮点排行
+          </h2>
+          <p
+            class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
+          >
+            按画面质量、食物种类、单集密度、饮品和甜点提取前三名。
+          </p>
         </div>
 
-        <div class="most-grid">
+        <div
+          class="grid grid-cols-1 gap-px border border-foreground/25 bg-foreground/25 min-[720px]:grid-cols-2"
+        >
           <article
             v-for="list in mostLists"
             :key="list.title"
-            :class="['most-card', { 'most-card--wide': list.wide }]"
+            :class="[
+              'grid content-start gap-4 bg-background p-5',
+              { 'min-[720px]:col-span-2': list.wide }
+            ]"
           >
-            <h3>{{ list.title }}</h3>
+            <h3 class="text-[1.7rem] leading-tight">{{ list.title }}</h3>
             <a
               v-if="list.items[0]?.relativePath"
-              class="most-feature"
+              :class="[
+                'group relative block w-full max-w-[28rem] overflow-hidden bg-foreground/10 after:absolute after:inset-x-0 after:top-[30%] after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black/80',
+                list.wide ? 'aspect-video max-w-none' : 'h-[15.75rem]'
+              ]"
               :href="list.items[0].episodeUrl"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img :src="imageUrl(list.items[0].relativePath)" :alt="list.items[0].title" />
-              <span>1</span>
-              <div>
+              <img
+                class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
+                :src="imageUrl(list.items[0].relativePath)"
+                :alt="list.items[0].title"
+              />
+              <span
+                class="absolute top-3 left-3 z-[1] grid aspect-square w-8 place-items-center bg-white/90 text-lg font-extrabold text-foreground"
+                >1</span
+              >
+              <div class="absolute right-19 bottom-3.5 left-3.5 z-[1] grid gap-1 text-white">
                 <b>{{ list.items[0].title }}</b>
-                <small>{{ list.items[0].meta }}</small>
+                <small class="text-white/75">{{ list.items[0].meta }}</small>
               </div>
-              <strong>{{ list.items[0].value }}</strong>
+              <strong
+                class="absolute right-3.5 bottom-3 z-[1] text-[1.7rem] font-black text-teal"
+                >{{ list.items[0].value }}</strong
+              >
             </a>
 
-            <div class="most-runner-list">
+            <div
+              :class="[
+                'grid gap-3.5',
+                list.wide ? 'grid-cols-1 min-[720px]:grid-cols-2' : 'grid-cols-2'
+              ]"
+            >
               <div
                 v-for="(item, index) in list.items.slice(1)"
                 :key="`${list.title}-${item.subjectName}`"
-                class="most-row"
+                class="relative grid content-start gap-2 border-t border-foreground/15 pt-3.5 max-[720px]:grid-cols-1"
               >
-                <span>{{ index + 2 }}</span>
+                <span
+                  class="absolute top-5 left-2 z-[1] grid aspect-square w-7 place-items-center bg-white/90 text-base font-extrabold text-foreground"
+                  >{{ index + 2 }}</span
+                >
                 <a
                   v-if="item.relativePath"
+                  :class="[
+                    'block w-full overflow-hidden bg-foreground/10',
+                    list.wide
+                      ? 'aspect-video'
+                      : 'h-[7.3125rem] max-[720px]:aspect-video max-[720px]:h-auto'
+                  ]"
                   :href="item.episodeUrl"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img :src="imageUrl(item.relativePath)" :alt="item.title" />
+                  <img
+                    class="block size-full object-cover"
+                    :src="imageUrl(item.relativePath)"
+                    :alt="item.title"
+                  />
                 </a>
-                <div>
+                <div class="grid">
                   <b>{{ item.title }}</b>
-                  <small>{{ item.meta }}</small>
+                  <small class="text-muted-foreground">{{ item.meta }}</small>
                 </div>
-                <strong>{{ item.value }}</strong>
+                <strong class="text-xl font-bold text-teal">{{ item.value }}</strong>
               </div>
             </div>
           </article>
@@ -381,8 +425,6 @@ onMounted(fetchReport);
 }
 
 .density-row small,
-.most-card p,
-.most-row small,
 .taxonomy-card span {
   color: var(--color-muted-foreground);
 }
@@ -402,8 +444,7 @@ onMounted(fetchReport);
 }
 
 .taxonomy-grid,
-.tag-board,
-.most-grid {
+.tag-board {
   display: grid;
   gap: 1px;
   border: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
@@ -412,149 +453,13 @@ onMounted(fetchReport);
 
 .taxonomy-card,
 .food-tag-card,
-.most-card,
 .density-panel {
   background: var(--color-background);
 }
 
-.most-row > span,
 .food-tag-card__head span {
   color: var(--color-muted-foreground);
   font-size: 1.35rem;
-}
-
-.most-row b {
-  display: grid;
-}
-
-.most-row strong {
-  color: var(--color-teal);
-  font-size: 1.25rem;
-}
-
-.most-grid {
-  grid-template-columns: 1fr;
-}
-
-.most-card {
-  display: grid;
-  align-content: start;
-  gap: 1rem;
-  padding: 1.25rem;
-}
-
-.most-card--wide {
-  grid-column: 1 / -1;
-}
-
-.most-card--wide .most-feature,
-.most-card--wide .most-runner-list {
-  width: 100%;
-}
-
-.most-card--wide .most-feature {
-  height: auto;
-  aspect-ratio: 16 / 9;
-}
-
-.most-card--wide .most-runner-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.most-card--wide .most-row a {
-  height: auto;
-  aspect-ratio: 16 / 9;
-}
-
-.most-card h3 {
-  font-size: 1.7rem;
-}
-
-.most-card p {
-  margin-top: -0.45rem;
-  line-height: 1.8;
-}
-
-.most-feature {
-  position: relative;
-  display: block;
-  width: min(100%, 28rem);
-  height: 15.75rem;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--color-foreground) 8%, transparent);
-}
-
-.most-feature::after {
-  content: '';
-  position: absolute;
-  inset: 30% 0 0;
-  background: linear-gradient(transparent, rgb(0 0 0 / 78%));
-}
-
-.most-feature img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  transition: transform 220ms ease;
-}
-
-.most-feature:hover img {
-  transform: scale(1.035);
-}
-
-.most-feature > span {
-  position: absolute;
-  top: 0.7rem;
-  left: 0.7rem;
-  z-index: 1;
-  display: grid;
-  width: 2.1rem;
-  aspect-ratio: 1;
-  place-items: center;
-  background: rgb(255 255 255 / 88%);
-  color: var(--color-foreground);
-  font-size: 1.1rem;
-  font-weight: 800;
-}
-
-.most-feature div {
-  position: absolute;
-  inset: auto 4.75rem 0.85rem 0.9rem;
-  z-index: 1;
-  display: grid;
-  gap: 0.2rem;
-  color: white;
-}
-
-.most-feature small {
-  color: rgb(255 255 255 / 74%);
-}
-
-.most-feature strong {
-  position: absolute;
-  right: 0.9rem;
-  bottom: 0.8rem;
-  z-index: 1;
-  color: var(--color-teal);
-  font-size: 1.7rem;
-  font-weight: 900;
-}
-
-.most-runner-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 13rem));
-  gap: 0.85rem;
-}
-
-.most-row {
-  position: relative;
-  display: grid;
-  gap: 0.55rem;
-  align-content: start;
-  padding: 0;
-  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-  padding-top: 0.85rem;
 }
 
 .taxonomy-images img,
@@ -563,35 +468,6 @@ onMounted(fetchReport);
   height: 100%;
   display: block;
   object-fit: cover;
-}
-
-.most-row a {
-  width: 100%;
-  height: 7.3125rem;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--color-foreground) 8%, transparent);
-}
-
-.most-row img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.most-row > span {
-  position: absolute;
-  top: 1.3rem;
-  left: 0.45rem;
-  z-index: 1;
-  display: grid;
-  width: 1.8rem;
-  aspect-ratio: 1;
-  place-items: center;
-  background: rgb(255 255 255 / 88%);
-  color: var(--color-foreground);
-  font-size: 0.95rem;
-  font-weight: 800;
 }
 
 .taxonomy-grid {
@@ -720,53 +596,12 @@ onMounted(fetchReport);
 }
 
 @container (min-width: 720px) {
-  .most-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .most-card--wide {
-    grid-template-columns: 1fr;
-  }
-
   .taxonomy-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@container (min-width: 980px) {
-  .most-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 720px) {
-  .most-row {
-    grid-template-columns: 1fr;
-  }
-
-  .most-row strong {
-    grid-column: auto;
-  }
-
-  .most-feature {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  .most-runner-list {
-    grid-template-columns: 1fr;
-  }
-
-  .most-card--wide {
-    grid-column: auto;
-  }
-
-  .most-row a {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
   .food-tag-card {
     grid-template-columns: 1fr;
   }
