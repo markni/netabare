@@ -24,6 +24,7 @@ const taxonomyGroups = computed(() => page.value.taxonomyGroups || []);
 const topFoodImages = computed(() => page.value.topFoodImages || []);
 const mostLists = computed(() => page.value.mostLists || []);
 const leaderboard = computed(() => subjects.value.slice(0, 10));
+const bottomLeaderboard = computed(() => subjects.value.slice(-5));
 const topFoods = computed(() => topFoodImages.value.slice(0, 8));
 const subjectByName = computed(
   () => new Map(subjects.value.map((subject) => [subject.subjectName, subject]))
@@ -203,6 +204,37 @@ onMounted(fetchReport);
                   class="w-18 border-t border-foreground/15 px-5 py-4 align-middle text-xl text-muted-foreground"
                 >
                   {{ index + 1 }}
+                </td>
+                <td class="border-t border-foreground/15 px-5 py-4 align-middle">
+                  <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
+                    <strong>{{ subject.title }}</strong>
+                    <small class="text-muted-foreground">{{ subject.originalTitle }}</small>
+                  </RouterLink>
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-teal"
+                >
+                  {{ formatNumber(subject.frames) }}
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-pink"
+                >
+                  {{ formatScore(subject.score) }}
+                </td>
+              </tr>
+              <tr v-if="bottomLeaderboard.length">
+                <td
+                  colspan="4"
+                  class="border-t border-foreground/15 px-5 py-4 text-center text-xl tracking-[0.5em] text-muted-foreground"
+                >
+                  ......
+                </td>
+              </tr>
+              <tr v-for="(subject, index) in bottomLeaderboard" :key="`bottom-${subject.bgmId}`">
+                <td
+                  class="w-18 border-t border-foreground/15 px-5 py-4 align-middle text-xl text-muted-foreground"
+                >
+                  {{ subjects.length - bottomLeaderboard.length + index + 1 }}
                 </td>
                 <td class="border-t border-foreground/15 px-5 py-4 align-middle">
                   <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
