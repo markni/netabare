@@ -146,15 +146,15 @@ onMounted(fetchReport);
           <p
             class="mb-4 w-fit rounded-full border border-[#241c18]/15 bg-white/60 px-3.5 py-2 text-[clamp(0.78rem,1.7vw,0.98rem)] font-extrabold"
           >
-            2026春季动画本季美食
+            2026春季动画
           </p>
           <h1
             class="mb-5 max-w-[48.75rem] text-[clamp(3rem,8vw,7.25rem)] leading-[0.88] font-black"
           >
-            动画 x 美食
+            本季美食
           </h1>
           <p
-            class="mt-5 max-w-[50rem] text-[clamp(1rem,1.55vw,1.18rem)] leading-loose text-[#47372e]/90 [&_a]:font-bold [&_a]:underline [&_a]:decoration-[#241c18]/25 [&_a]:underline-offset-4 [&_a:hover]:decoration-[#241c18]"
+            class="mt-5 max-w-[50rem] text-[clamp(1rem,1.55vw,1.18rem)] leading-loose text-[#2a211d] [&_a]:font-bold [&_a]:underline [&_a]:decoration-[#241c18]/35 [&_a]:underline-offset-4 [&_a:hover]:decoration-[#241c18]"
           >
             2026年春季新番里，食物不再只是餐桌上的道具，而像一层温柔的滤镜，照出角色各自的生活质感。<RouterLink
               to="/subject/580473"

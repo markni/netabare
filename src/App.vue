@@ -5,6 +5,7 @@ import { useAppStore } from '@/stores/app.js';
 import FullscreenOverlay from '@/components/FullscreenOverlay.vue';
 import FallPageLoading from '@/components/FallPageLoading.vue';
 import GlobalHeader from '@/components/GlobalHeader.vue';
+import FooterCornerTriangle from '@/components/FooterCornerTriangle.vue';
 import texts from '@/constants/texts.js';
 import { useThemeStore } from './stores/theme';
 import { computed, onMounted, ref, watch } from 'vue';
@@ -16,6 +17,7 @@ const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = s
 const themeStore = useThemeStore();
 const route = useRoute();
 const isUiRoute = computed(() => route.path === '/ui');
+const showFooterCornerTriangle = computed(() => !['/tabemono', '/food'].includes(route.path));
 const showFallLoader = ref(!isUiRoute.value);
 const isFallLoaderLoading = ref(!isUiRoute.value);
 const isAppContentVisible = ref(isUiRoute.value);
@@ -139,7 +141,7 @@ console.log(`
       </div>
       <footer
         v-if="route.path !== '/' && route.path !== '/art'"
-        class="mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
+        class="page-peel-footer mt-auto bg-black text-white dark:bg-neutral-800 dark:text-white"
       >
         <div class="mx-auto w-full max-w-5xl px-4 py-24 sm:py-32">
           <div
@@ -167,10 +169,11 @@ console.log(`
               >设计系统</RouterLink
             >
             <RouterLink to="/tabemono" active-class="!text-white" exact-active-class="!text-white"
-              >动画 x 美食</RouterLink
+              >本季美食</RouterLink
             >
           </div>
         </div>
+        <FooterCornerTriangle v-if="showFooterCornerTriangle" />
       </footer>
     </div>
 
@@ -198,5 +201,11 @@ console.log(`
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-color);
+}
+
+.page-peel-footer {
+  position: relative;
+  overflow: hidden;
+  --footer-corner-size: clamp(6rem, 16vw, 10rem);
 }
 </style>
