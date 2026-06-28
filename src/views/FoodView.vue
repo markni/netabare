@@ -22,7 +22,13 @@ const heroImages = computed(() => page.value.heroImages?.slice(0, 30) || []);
 const heroImage = computed(() => heroImages.value[0] || null);
 const taxonomyGroups = computed(() => page.value.taxonomyGroups || []);
 const topFoodImages = computed(() => page.value.topFoodImages || []);
-const mostLists = computed(() => page.value.mostLists || []);
+const mostListTitles = ['菜单最丰富', '最会出片', '单集最密', '一醉方休', '甜党主场'];
+const mostLists = computed(() =>
+  (page.value.mostLists || []).map((list, index) => ({
+    ...list,
+    displayTitle: mostListTitles[index] || ''
+  }))
+);
 const leaderboard = computed(() => subjects.value.slice(0, 10));
 const bottomLeaderboard = computed(() => subjects.value.slice(-5));
 const topFoods = computed(() => topFoodImages.value.slice(0, 8));
@@ -144,40 +150,21 @@ onMounted(fetchReport);
       <div class="relative z-[2] mx-auto w-[min(1180px,calc(100%-2rem))]">
         <div class="relative z-[2] max-w-[47rem] md:ml-[clamp(0rem,16vw,13rem)]">
           <p
-            class="mb-4 w-fit rounded-full border border-[#241c18]/15 bg-white/60 px-3.5 py-2 text-[clamp(0.78rem,1.7vw,0.98rem)] font-extrabold"
+            class="mb-4 w-fit border border-[#241c18]/15 bg-white/60 px-3.5 py-2 text-[clamp(0.78rem,1.7vw,0.98rem)] font-extrabold"
           >
-            2026春季动画
+            2026年春季动画
           </p>
           <h1
             class="mb-5 max-w-[48.75rem] text-[clamp(3rem,8vw,7.25rem)] leading-[0.88] font-black"
           >
-            本季美食
+            本季美食报告
           </h1>
-          <p
-            class="mt-5 max-w-[50rem] text-[clamp(1rem,1.55vw,1.18rem)] leading-loose text-[#2a211d] [&_a]:font-bold [&_a]:underline [&_a]:decoration-[#241c18]/35 [&_a]:underline-offset-4 [&_a:hover]:decoration-[#241c18]"
-          >
-            2026年春季新番里，食物不再只是餐桌上的道具，而像一层温柔的滤镜，照出角色各自的生活质感。<RouterLink
-              to="/subject/580473"
-              >《女仆小姐的贪吃日常》</RouterLink
-            >把章鱼烧、饭团与街边点心化成初到异国的惊喜，每一口都像小小的旅行；<RouterLink
-              to="/subject/493804"
-              >《库兹马唱歌的话家里哆啰啰》</RouterLink
-            >则让家常料理带着奇妙生物的闯入感，在烟火气里慢慢长出家庭的温度。<RouterLink
-              to="/subject/609175"
-              >《神之水滴》</RouterLink
-            >把葡萄酒写成记忆、知识与命运的语言，<RouterLink to="/subject/543360"
-              >《上伊那牡丹，酒醉身姿似百合花般》</RouterLink
-            >则借微醺的酒杯描摹少女之间若即若离的距离。至于<RouterLink to="/subject/610703"
-              >《当前、正被打扰中！》</RouterLink
-            >，食物更像生活背景里的一点香气，不抢戏，却让恋爱喜剧的日常多了几分真实的热度。
-          </p>
-
           <div
             v-if="report"
-            class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4"
+            class="mt-14 grid grid-cols-2 gap-3 md:mt-16 md:grid-cols-4"
             aria-label="核心数字"
           >
-            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+            <div class="border border-[#241c18]/15 bg-white/60 p-4">
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
                 formatNumber(stats.verifiedFrames)
               }}</strong>
@@ -185,7 +172,7 @@ onMounted(fetchReport);
                 >入选食物瞬间</span
               >
             </div>
-            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+            <div class="border border-[#241c18]/15 bg-white/60 p-4">
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
                 formatNumber(stats.subjectCount)
               }}</strong>
@@ -193,7 +180,7 @@ onMounted(fetchReport);
                 >2026 春季动画</span
               >
             </div>
-            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+            <div class="border border-[#241c18]/15 bg-white/60 p-4">
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
                 formatNumber(stats.foodMentionCount)
               }}</strong>
@@ -201,7 +188,7 @@ onMounted(fetchReport);
                 >菜名与饮品</span
               >
             </div>
-            <div class="rounded-lg border border-[#241c18]/15 bg-white/60 p-4">
+            <div class="border border-[#241c18]/15 bg-white/60 p-4">
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
                 formatScore(stats.avgScore)
               }}</strong>
@@ -341,18 +328,20 @@ onMounted(fetchReport);
         >
           <article
             v-for="list in mostLists"
-            :key="list.title"
+            :key="list.displayTitle"
             :class="[
               'grid content-start gap-4 bg-background p-5',
               { 'min-[720px]:col-span-2': list.wide }
             ]"
           >
-            <h3 class="text-[1.7rem] leading-tight">{{ list.title }}</h3>
+            <h3 class="text-[1.7rem] leading-tight">{{ list.displayTitle }}</h3>
             <a
               v-if="list.items[0]?.relativePath"
               :class="[
-                'group relative block w-full max-w-[28rem] overflow-hidden bg-foreground/10 after:absolute after:inset-x-0 after:top-[30%] after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black/80',
-                list.wide ? 'aspect-video max-w-none' : 'h-[15.75rem]'
+                'group relative block w-full overflow-hidden bg-foreground/10 after:absolute after:inset-x-0 after:top-[30%] after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black/80',
+                list.wide
+                  ? 'aspect-video'
+                  : 'aspect-video min-[720px]:aspect-auto min-[720px]:h-[15.75rem] min-[720px]:max-w-[28rem]'
               ]"
               :href="imageHref(list.items[0])"
               target="_blank"
@@ -385,7 +374,7 @@ onMounted(fetchReport);
             >
               <div
                 v-for="(item, index) in list.items.slice(1)"
-                :key="`${list.title}-${item.subjectName}`"
+                :key="`${list.displayTitle}-${item.subjectName}`"
                 class="relative grid content-start gap-2 border-t border-foreground/15 pt-3.5 max-[720px]:grid-cols-1"
               >
                 <span
