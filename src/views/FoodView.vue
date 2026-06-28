@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import { BLUE, GOLD, PINK, TEAL } from '@/constants/colors.js';
+import { GOLD, RED, TEAL } from '@/constants/colors.js';
 
 const DATA_PATH = `${import.meta.env.BASE_URL}assets/anime-food-spring-2026/data.json`;
 const ASSET_BASE_PATH = `${import.meta.env.BASE_URL}assets/anime-food-spring-2026/`;
@@ -40,25 +40,75 @@ const imageHref = (item) => {
 };
 
 const scoreDensity = computed(() => {
-  const sorted = [...subjects.value].sort((a, b) => a.frames - b.frames);
-  if (!sorted.length) return [];
+  const rows = subjects.value
+    .filter((subject) => subject.episodeCount && Number.isFinite(Number(subject.score)))
+    .map((subject) => ({
+      ...subject,
+      foodPerEpisode: subject.frames / subject.episodeCount
+    }));
 
-  const size = Math.ceil(sorted.length / 4);
-  const rows = [];
-  for (let index = 0; index < 4; index += 1) {
-    const group = sorted.slice(index * size, (index + 1) * size);
-    if (!group.length) continue;
-    const avgFood = group.reduce((sum, subject) => sum + subject.frames, 0) / group.length;
-    const avgScore = group.reduce((sum, subject) => sum + subject.score, 0) / group.length;
-    rows.push({
-      label: ['少量', '偏少', '偏多', '很多'][index],
-      avgFood,
-      avgScore
+  if (!rows.length) return [];
+
+  const sorted = rows.sort((a, b) => a.foodPerEpisode - b.foodPerEpisode);
+  const minFoodPerEpisode = sorted[0].foodPerEpisode;
+  const maxFoodPerEpisode = sorted[sorted.length - 1].foodPerEpisode;
+  const groupCount = 3;
+  const rangeSize = Math.max((maxFoodPerEpisode - minFoodPerEpisode) / groupCount, 0.01);
+  const groups = [];
+
+  for (let index = 0; index < groupCount; index += 1) {
+    const rangeStart = minFoodPerEpisode + rangeSize * index;
+    const rangeEnd =
+      index === groupCount - 1 ? maxFoodPerEpisode : minFoodPerEpisode + rangeSize * (index + 1);
+    const displayStart = Math.round(rangeStart);
+    const displayEnd = Math.round(rangeEnd);
+    const group = sorted.filter((subject) =>
+      index === groupCount - 1
+        ? subject.foodPerEpisode >= rangeStart && subject.foodPerEpisode <= rangeEnd
+        : subject.foodPerEpisode >= rangeStart && subject.foodPerEpisode < rangeEnd
+    );
+    const avgFoodPerEpisode =
+      group.length > 0
+        ? group.reduce((sum, subject) => sum + subject.foodPerEpisode, 0) / group.length
+        : (rangeStart + rangeEnd) / 2;
+    const avgScore =
+      group.length > 0
+        ? group.reduce((sum, subject) => sum + subject.score, 0) / group.length
+        : null;
+    const samples = [...group]
+      .sort((a, b) => b.frames - a.frames)
+      .slice(0, 3)
+      .map((subject) => ({
+        title: subject.title || subject.subjectName,
+        href: `/subject/${subject.bgmId}`
+      }));
+    groups.push({
+      label: ['低密度', '中密度', '高密度'][index],
+      count: group.length,
+      rangeStart,
+      rangeEnd,
+      displayStart,
+      displayEnd,
+      avgFoodPerEpisode,
+      avgScore,
+      samples
     });
   }
 
-  const maxScore = Math.max(...rows.map((row) => row.avgScore), 1);
-  return rows.map((row) => ({ ...row, width: `${Math.max(6, (row.avgScore / maxScore) * 100)}%` }));
+  const scoredGroups = groups.filter((group) => group.avgScore !== null);
+  const scoreBase = Math.max(0, Math.min(...scoredGroups.map((group) => group.avgScore)) - 0.2, 5);
+  const maxScore = Math.max(...scoredGroups.map((group) => group.avgScore), scoreBase + 1);
+  const scoreRange = Math.max(maxScore - scoreBase, 0.8);
+  return groups.map((group, index) => ({
+    ...group,
+    color: [RED, TEAL, GOLD][index],
+    scoreBase,
+    scoreTop: scoreBase + scoreRange,
+    scoreWidth:
+      group.avgScore === null
+        ? '0%'
+        : `${Math.max(8, ((group.avgScore - scoreBase) / scoreRange) * 100)}%`
+  }));
 });
 
 const fetchReport = async () => {
@@ -472,30 +522,65 @@ onMounted(fetchReport);
           <p
             class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
           >
-            按食物数量分组，比较各组平均评分。
+            按单集平均食物数量分组，比较各组平均评分。
           </p>
         </div>
 
-        <div class="grid border border-foreground/25 bg-background px-5">
-          <div
-            v-for="row in scoreDensity"
-            :key="row.label"
-            class="grid grid-cols-[4rem_1fr_4rem] items-center gap-4 border-b border-foreground/15 py-4 last:border-b-0"
-          >
-            <span>{{ row.label }}</span>
-            <i class="h-3.5 bg-foreground/10"
-              ><b
-                class="block h-full"
-                :style="{
-                  width: row.width,
-                  background: `linear-gradient(90deg, ${TEAL}, ${GOLD}, ${PINK}, ${BLUE})`
-                }"
-              ></b
-            ></i>
-            <strong class="text-right">{{ formatScore(row.avgScore) }}</strong>
-            <small class="col-start-2 col-end-4 text-muted-foreground"
-              >平均 {{ formatNumber(Math.round(row.avgFood)) }} 个食物瞬间</small
+        <div class="border border-foreground/25 bg-background p-5 sm:p-7">
+          <div class="grid gap-3">
+            <div
+              class="grid grid-cols-[6.5rem_1fr_4rem] items-end gap-4 text-sm text-muted-foreground"
             >
+              <span>食物密度</span>
+              <div class="flex justify-between border-b border-foreground/25 pb-1">
+                <span>{{ scoreDensity[0]?.scoreBase.toFixed(1) }}</span>
+                <span>评分</span>
+                <span>{{ scoreDensity[0]?.scoreTop.toFixed(1) }}</span>
+              </div>
+              <span class="text-right">均分</span>
+            </div>
+
+            <article
+              v-for="row in scoreDensity"
+              :key="row.label"
+              class="grid grid-cols-[6.5rem_1fr_4rem] items-center gap-4 border-b border-foreground/15 py-4 last:border-b-0"
+            >
+              <div>
+                <h3 class="text-2xl leading-tight">{{ row.label }}</h3>
+                <p class="mt-1 text-sm text-muted-foreground">
+                  {{ row.displayStart }}-{{ row.displayEnd }} / 集
+                </p>
+                <p class="text-sm text-muted-foreground">{{ row.count }} 部</p>
+              </div>
+              <div class="grid gap-2">
+                <div class="h-12 bg-foreground/10">
+                  <i
+                    class="block h-full"
+                    :style="{
+                      width: row.scoreWidth,
+                      background: row.color
+                    }"
+                  ></i>
+                </div>
+                <p class="truncate text-sm text-muted-foreground">
+                  <template v-if="row.samples.length">
+                    <template v-for="(sample, index) in row.samples" :key="sample.href">
+                      <a
+                        class="hover:text-foreground"
+                        :href="sample.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ sample.title }}</a
+                      ><span v-if="index < row.samples.length - 1"> / </span>
+                    </template>
+                  </template>
+                  <span v-else>该区间暂无作品</span>
+                </p>
+              </div>
+              <strong class="text-right text-3xl leading-none">{{
+                row.avgScore === null ? '—' : formatScore(row.avgScore)
+              }}</strong>
+            </article>
           </div>
         </div>
       </section>
