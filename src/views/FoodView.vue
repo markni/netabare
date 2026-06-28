@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import { GOLD, RED, TEAL } from '@/constants/colors.js';
 
 const DATA_PATH = `${import.meta.env.BASE_URL}assets/anime-food-spring-2026/data.json`;
@@ -44,6 +45,11 @@ const imageHref = (item) => {
 
   return item?.episodeUrl || 'about:blank';
 };
+
+const isExternalHref = (href) => /^https?:\/\//.test(href || '');
+const isInternalHref = (href) => /^\//.test(href || '');
+const linkTarget = (href) => (isExternalHref(href) ? '_blank' : undefined);
+const linkRel = (href) => (isExternalHref(href) ? 'noopener noreferrer' : undefined);
 
 const scoreDensity = computed(() => {
   const rows = subjects.value
@@ -201,7 +207,7 @@ onMounted(fetchReport);
       </div>
     </section>
 
-    <section v-if="loading" class="border border-foreground/25 p-8 text-muted-foreground">
+    <section v-if="false && loading" class="border border-foreground/25 p-8 text-muted-foreground">
       正在上菜…
     </section>
     <section v-else-if="error" class="border border-foreground/25 p-8 text-red">
@@ -335,7 +341,8 @@ onMounted(fetchReport);
             ]"
           >
             <h3 class="text-[1.7rem] leading-tight">{{ list.displayTitle }}</h3>
-            <a
+            <component
+              :is="isInternalHref(imageHref(list.items[0])) ? RouterLink : 'a'"
               v-if="list.items[0]?.relativePath"
               :class="[
                 'group relative block w-full overflow-hidden bg-foreground/10 after:absolute after:inset-x-0 after:top-[30%] after:bottom-0 after:bg-gradient-to-b after:from-transparent after:to-black/80',
@@ -343,9 +350,12 @@ onMounted(fetchReport);
                   ? 'aspect-video'
                   : 'aspect-video min-[720px]:aspect-auto min-[720px]:h-[15.75rem] min-[720px]:max-w-[28rem]'
               ]"
-              :href="imageHref(list.items[0])"
-              target="_blank"
-              rel="noopener noreferrer"
+              :to="isInternalHref(imageHref(list.items[0])) ? imageHref(list.items[0]) : undefined"
+              :href="
+                !isInternalHref(imageHref(list.items[0])) ? imageHref(list.items[0]) : undefined
+              "
+              :target="linkTarget(imageHref(list.items[0]))"
+              :rel="linkRel(imageHref(list.items[0]))"
             >
               <img
                 class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
@@ -364,7 +374,7 @@ onMounted(fetchReport);
                 class="absolute right-3.5 bottom-3 z-[1] text-[1.7rem] font-black text-teal"
                 >{{ list.items[0].value }}</strong
               >
-            </a>
+            </component>
 
             <div
               :class="[
@@ -381,7 +391,8 @@ onMounted(fetchReport);
                   class="absolute top-5 left-2 z-[1] grid aspect-square w-7 place-items-center bg-white/90 text-base font-extrabold text-foreground"
                   >{{ index + 2 }}</span
                 >
-                <a
+                <component
+                  :is="isInternalHref(imageHref(item)) ? RouterLink : 'a'"
                   v-if="item.relativePath"
                   :class="[
                     'group block w-full overflow-hidden bg-foreground/10',
@@ -389,16 +400,17 @@ onMounted(fetchReport);
                       ? 'aspect-video'
                       : 'h-[7.3125rem] max-[720px]:aspect-video max-[720px]:h-auto'
                   ]"
-                  :href="imageHref(item)"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  :to="isInternalHref(imageHref(item)) ? imageHref(item) : undefined"
+                  :href="!isInternalHref(imageHref(item)) ? imageHref(item) : undefined"
+                  :target="linkTarget(imageHref(item))"
+                  :rel="linkRel(imageHref(item))"
                 >
                   <img
                     class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
                     :src="imageUrl(item.relativePath)"
                     :alt="item.title"
                   />
-                </a>
+                </component>
                 <div class="grid">
                   <b>{{ item.title }}</b>
                   <small class="text-muted-foreground">{{ item.meta }}</small>
@@ -438,13 +450,15 @@ onMounted(fetchReport);
               <h3 class="mt-1 text-3xl">{{ group.displayName }}</h3>
             </div>
             <div class="grid grid-cols-2 gap-2">
-              <a
+              <component
+                :is="isInternalHref(imageHref(image)) ? RouterLink : 'a'"
                 v-for="image in group.images"
                 :key="image.relativePath"
                 class="group relative min-h-34 overflow-hidden"
-                :href="imageHref(image)"
-                target="_blank"
-                rel="noopener noreferrer"
+                :to="isInternalHref(imageHref(image)) ? imageHref(image) : undefined"
+                :href="!isInternalHref(imageHref(image)) ? imageHref(image) : undefined"
+                :target="linkTarget(imageHref(image))"
+                :rel="linkRel(imageHref(image))"
               >
                 <img
                   class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
@@ -455,7 +469,7 @@ onMounted(fetchReport);
                   class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
                   >{{ image.title || image.subjectName }}</small
                 >
-              </a>
+              </component>
             </div>
           </article>
         </div>
@@ -491,13 +505,15 @@ onMounted(fetchReport);
                 <b class="text-[#0f9f9a]">{{ formatNumber(food.count) }} 次</b>
               </div>
               <div class="grid grid-cols-2 gap-2 min-[720px]:grid-cols-3">
-                <a
+                <component
+                  :is="isInternalHref(imageHref(image)) ? RouterLink : 'a'"
                   v-for="image in food.images"
                   :key="image.relativePath"
                   class="group relative aspect-video overflow-hidden"
-                  :href="imageHref(image)"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  :to="isInternalHref(imageHref(image)) ? imageHref(image) : undefined"
+                  :href="!isInternalHref(imageHref(image)) ? imageHref(image) : undefined"
+                  :target="linkTarget(imageHref(image))"
+                  :rel="linkRel(imageHref(image))"
                 >
                   <img
                     class="block size-full object-cover transition-transform duration-200 group-hover:scale-[1.035]"
@@ -508,7 +524,7 @@ onMounted(fetchReport);
                     class="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-black/50 px-2 pt-8 pb-2 text-xs leading-tight font-bold text-white/65 transition-colors transition-discrete group-hover:to-black/80 group-hover:text-white group-focus-visible:to-black/80 group-focus-visible:text-white"
                     >{{ image.title || image.subjectName }}</small
                   >
-                </a>
+                </component>
               </div>
             </article>
           </template>
@@ -567,12 +583,9 @@ onMounted(fetchReport);
                 <p class="truncate text-sm text-muted-foreground">
                   <template v-if="row.samples.length">
                     <template v-for="(sample, index) in row.samples" :key="sample.href">
-                      <a
-                        class="hover:text-foreground"
-                        :href="sample.href"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >{{ sample.title }}</a
+                      <RouterLink class="hover:text-foreground" :to="sample.href">{{
+                        sample.title
+                      }}</RouterLink
                       ><span v-if="index < row.samples.length - 1"> / </span>
                     </template>
                   </template>

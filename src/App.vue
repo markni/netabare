@@ -17,10 +17,11 @@ const { networkError, longPolling, notFoundUserError, notFoundSubjectError } = s
 const themeStore = useThemeStore();
 const route = useRoute();
 const isUiRoute = computed(() => route.path === '/ui');
+const isFallLoaderRoute = computed(() => route.path === '/' || isUiRoute.value);
 const showFooterCornerTriangle = computed(() => !['/tabemono', '/food'].includes(route.path));
-const showFallLoader = ref(!isUiRoute.value);
-const isFallLoaderLoading = ref(!isUiRoute.value);
-const isAppContentVisible = ref(isUiRoute.value);
+const showFallLoader = ref(isFallLoaderRoute.value);
+const isFallLoaderLoading = ref(isFallLoaderRoute.value);
+const isAppContentVisible = ref(!isFallLoaderRoute.value);
 
 useScrollToAnchor();
 
@@ -49,7 +50,7 @@ const waitForAdobeFonts = () => {
 onMounted(() => {
   themeStore.initTheme();
 
-  if (isUiRoute.value) return;
+  if (!isFallLoaderRoute.value) return;
 
   waitForAdobeFonts().finally(() => {
     isAppContentVisible.value = true;
@@ -122,7 +123,7 @@ console.log(`
       annotation="loading"
     />
     <div
-      v-if="isAppContentVisible || isUiRoute"
+      v-if="isAppContentVisible"
       id="main"
       class="flex min-h-screen flex-col bg-background font-serif text-black transition-[background-color] duration-300 dark:text-white"
     >
@@ -182,7 +183,7 @@ console.log(`
     </div>
 
     <FallPageLoading
-      v-if="showFallLoader && !isUiRoute"
+      v-if="showFallLoader && isFallLoaderRoute"
       :loading="isFallLoaderLoading"
       @after-exit="handleFallLoaderExit"
     />
