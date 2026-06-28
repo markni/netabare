@@ -154,9 +154,22 @@ onMounted(fetchReport);
             动画 x 美食
           </h1>
           <p
-            class="mt-5 max-w-[44rem] text-[clamp(1rem,2vw,1.25rem)] leading-loose text-[#47372e]/90"
+            class="mt-5 max-w-[50rem] text-[clamp(1rem,1.55vw,1.18rem)] leading-loose text-[#47372e]/90 [&_a]:font-bold [&_a]:underline [&_a]:decoration-[#241c18]/25 [&_a]:underline-offset-4 [&_a:hover]:decoration-[#241c18]"
           >
-            这一季的动画把饭菜摆到了叙事前景：有人用甜点制造暧昧，有人靠热汤缓一口气，也有人把一桌饭拍成角色关系的温度计。
+            2026年春季新番里，食物不再只是餐桌上的道具，而像一层温柔的滤镜，照出角色各自的生活质感。<RouterLink
+              to="/subject/580473"
+              >《女仆小姐的贪吃日常》</RouterLink
+            >把章鱼烧、饭团与街边点心化成初到异国的惊喜，每一口都像小小的旅行；<RouterLink
+              to="/subject/493804"
+              >《库兹马唱歌的话家里哆啰啰》</RouterLink
+            >则让家常料理带着奇妙生物的闯入感，在烟火气里慢慢长出家庭的温度。<RouterLink
+              to="/subject/609175"
+              >《神之水滴》</RouterLink
+            >把葡萄酒写成记忆、知识与命运的语言，<RouterLink to="/subject/543360"
+              >《上伊那牡丹，酒醉身姿似百合花般》</RouterLink
+            >则借微醺的酒杯描摹少女之间若即若离的距离。至于<RouterLink to="/subject/610703"
+              >《当前、正被打扰中！》</RouterLink
+            >，食物更像生活背景里的一点香气，不抢戏，却让恋爱喜剧的日常多了几分真实的热度。
           </p>
 
           <div
@@ -257,7 +270,7 @@ onMounted(fetchReport);
                 </td>
                 <td class="border-t border-foreground/15 px-5 py-4 align-middle">
                   <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
-                    <strong>{{ subject.title }}</strong>
+                    <strong class="text-xl">{{ subject.title }}</strong>
                     <small class="text-muted-foreground">{{ subject.originalTitle }}</small>
                   </RouterLink>
                 </td>
@@ -288,7 +301,7 @@ onMounted(fetchReport);
                 </td>
                 <td class="border-t border-foreground/15 px-5 py-4 align-middle">
                   <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
-                    <strong>{{ subject.title }}</strong>
+                    <strong class="text-xl">{{ subject.title }}</strong>
                     <small class="text-muted-foreground">{{ subject.originalTitle }}</small>
                   </RouterLink>
                 </td>
