@@ -432,7 +432,7 @@ onMounted(fetchReport);
             class="grid gap-5 bg-background p-4"
           >
             <div>
-              <span class="text-muted-foreground">{{ formatNumber(group.count) }} 次提及</span>
+              <span class="font-bold text-[#0f9f9a]">{{ formatNumber(group.count) }} 次提及</span>
               <h3 class="mt-1 text-3xl">{{ group.displayName }}</h3>
             </div>
             <div class="grid grid-cols-2 gap-2">
@@ -486,7 +486,7 @@ onMounted(fetchReport);
               <div class="grid grid-cols-[2rem_1fr_auto] items-baseline gap-3">
                 <span class="text-xl text-muted-foreground">{{ food.rank || index + 1 }}</span>
                 <h3 class="text-3xl">{{ food.displayName }}</h3>
-                <b>{{ formatNumber(food.count) }} 次</b>
+                <b class="text-[#0f9f9a]">{{ formatNumber(food.count) }} 次</b>
               </div>
               <div class="grid grid-cols-2 gap-2 min-[720px]:grid-cols-3">
                 <a
@@ -550,7 +550,7 @@ onMounted(fetchReport);
                 <p class="mt-1 text-sm text-muted-foreground">
                   {{ row.displayStart }}-{{ row.displayEnd }} / 集
                 </p>
-                <p class="text-sm text-muted-foreground">{{ row.count }} 部</p>
+                <p class="text-sm font-bold" :style="{ color: row.color }">{{ row.count }} 部</p>
               </div>
               <div class="grid gap-2">
                 <div class="h-12 bg-foreground/10">
@@ -577,7 +577,7 @@ onMounted(fetchReport);
                   <span v-else>该区间暂无作品</span>
                 </p>
               </div>
-              <strong class="text-right text-3xl leading-none">{{
+              <strong class="text-right text-3xl leading-none" :style="{ color: row.color }">{{
                 row.avgScore === null ? '—' : formatScore(row.avgScore)
               }}</strong>
             </article>
