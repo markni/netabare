@@ -1,9 +1,9 @@
 <template>
   <main class="typography-page">
     <header class="type-hero">
-      <p class="type-kicker">Typography</p>
-      <h1>文字先于界面</h1>
-      <p>
+      <p class="type-display-kicker">Typography</p>
+      <h1 class="type-display-title">文字先于界面</h1>
+      <p class="type-display-subtitle">
         netabare
         的界面依靠中文衬线、竖排导航、大号数据和克制的说明文字建立秩序。这里先把排版本身调清楚。
       </p>
@@ -11,8 +11,8 @@
 
     <section class="type-section type-scale" aria-labelledby="scale-title">
       <div class="section-head">
-        <p class="type-kicker">Scale</p>
-        <h2 id="scale-title">字号层级</h2>
+        <p class="type-section-kicker">Scale</p>
+        <h2 id="scale-title" class="type-section-title">字号层级</h2>
       </div>
 
       <div class="scale-list">
@@ -22,9 +22,9 @@
             <code>{{ sample.note }}</code>
           </div>
           <div :class="['heading-lockup', sample.className]">
-            <p class="lockup-kicker">{{ sample.kicker }}</p>
-            <p class="lockup-title">{{ sample.text }}</p>
-            <p class="lockup-subtitle">{{ sample.subtitle }}</p>
+            <p :class="sample.kickerClass">{{ sample.kicker }}</p>
+            <p :class="sample.titleClass">{{ sample.text }}</p>
+            <p :class="sample.subtitleClass">{{ sample.subtitle }}</p>
           </div>
         </article>
       </div>
@@ -32,8 +32,8 @@
 
     <section class="type-section type-reading" aria-labelledby="reading-title">
       <div class="section-head">
-        <p class="type-kicker">Reading</p>
-        <h2 id="reading-title">正文与说明</h2>
+        <p class="type-section-kicker">Reading</p>
+        <h2 id="reading-title" class="type-section-title">正文与说明</h2>
       </div>
 
       <div class="reading-grid">
@@ -43,7 +43,7 @@
             趋势图适合使用短段落说明交互方式，行高需要留出呼吸，避免和图表标注抢夺注意力。
             正文不承担装饰任务，只解释用户下一步会怎样读图。
           </p>
-          <div class="analysis-copy">
+          <div class="type-analysis-copy">
             <p>
               《葬送之旅》在高分段保持稳定，《星间列车》的排名曲线更陡，适合作为本季热度上升的观察样本。
             </p>
@@ -64,8 +64,8 @@
 
     <section class="type-section type-navigation" aria-labelledby="navigation-title">
       <div class="section-head">
-        <p class="type-kicker">Navigation</p>
-        <h2 id="navigation-title">竖排导航</h2>
+        <p class="type-section-kicker">Navigation</p>
+        <h2 id="navigation-title" class="type-section-title">竖排导航</h2>
       </div>
 
       <div class="nav-strip">
@@ -79,8 +79,8 @@
 
     <section class="type-section type-data" aria-labelledby="data-title">
       <div class="section-head">
-        <p class="type-kicker">Data</p>
-        <h2 id="data-title">数字与标签</h2>
+        <p class="type-section-kicker">Data</p>
+        <h2 id="data-title" class="type-section-title">数字与标签</h2>
       </div>
 
       <div class="metric-specimen">
@@ -89,8 +89,21 @@
             <span>{{ metric.name }}</span>
             <code>{{ metric.note }}</code>
           </div>
-          <strong>{{ metric.value }}</strong>
+          <strong :class="metric.valueClass">{{ metric.value }}</strong>
           <small>{{ metric.label }}</small>
+        </article>
+      </div>
+
+      <div class="control-specimen">
+        <article>
+          <div>
+            <span>Control label</span>
+            <code>0.78rem / 700</code>
+          </div>
+          <label for="type-control-example" class="type-control-label">开始年份</label>
+          <select id="type-control-example" class="metric-value" aria-label="开始年份示例">
+            <option>2026</option>
+          </select>
         </article>
       </div>
     </section>
@@ -105,7 +118,10 @@ const scaleSamples = [
     kicker: 'Netabare',
     text: '龙争虎斗',
     subtitle: '用于首页或专题开场，只在页面需要强主视觉时使用。',
-    className: 'lockup-display'
+    className: 'lockup-display',
+    kickerClass: 'type-display-kicker',
+    titleClass: 'type-display-title',
+    subtitleClass: 'type-display-subtitle'
   },
   {
     name: 'Page title',
@@ -113,7 +129,10 @@ const scaleSamples = [
     kicker: 'Season',
     text: '当季动画',
     subtitle: '用于页面主标题，说明当前视图的范围与入口。',
-    className: 'lockup-page'
+    className: 'lockup-page',
+    kickerClass: 'type-page-kicker',
+    titleClass: 'type-page-title',
+    subtitleClass: 'type-page-subtitle'
   },
   {
     name: 'Section',
@@ -121,7 +140,10 @@ const scaleSamples = [
     kicker: 'Score',
     text: '评分趋势',
     subtitle: '用于图表章节标题下方的简短说明，保持低对比度。',
-    className: 'lockup-section'
+    className: 'lockup-section',
+    kickerClass: 'type-section-kicker',
+    titleClass: 'type-section-title',
+    subtitleClass: 'type-section-subtitle'
   },
   {
     name: 'List heading',
@@ -129,7 +151,10 @@ const scaleSamples = [
     kicker: 'Trending',
     text: '排名上升',
     subtitle: '用于列表、榜单或双栏内容组的标题。',
-    className: 'lockup-list-heading'
+    className: 'lockup-list-heading',
+    kickerClass: 'type-list-heading-kicker',
+    titleClass: 'type-list-heading-title',
+    subtitleClass: 'type-list-heading-subtitle'
   },
   {
     name: 'Item title',
@@ -137,7 +162,10 @@ const scaleSamples = [
     kicker: 'Subject',
     text: '葬送之旅',
     subtitle: 'Sousou no Frieren',
-    className: 'lockup-item-title'
+    className: 'lockup-item-title',
+    kickerClass: 'type-item-kicker',
+    titleClass: 'type-item-title',
+    subtitleClass: 'type-item-subtitle'
   }
 ];
 
@@ -147,21 +175,24 @@ const metrics = [
     note: 'clamp(2.5rem, 8vw, 5rem) / 400',
     value: '12,000',
     label: '专题页主数字、核心统计',
-    className: 'metric-display'
+    className: 'metric-display-sample',
+    valueClass: 'metric-display'
   },
   {
     name: 'Metric value',
     note: 'clamp(1.35rem, 3vw, 2rem) / 700',
     value: '8.42',
     label: '表格数值、卡片数值、筛选当前值',
-    className: 'metric-value'
+    className: 'metric-value-sample',
+    valueClass: 'metric-value'
   },
   {
     name: 'Metric delta',
     note: 'clamp(0.95rem, 1.8vw, 1.2rem) / 700',
     value: '▴0.31',
     label: '变化值、小型评分、趋势行内数字',
-    className: 'metric-delta'
+    className: 'metric-delta-sample',
+    valueClass: 'metric-delta text-pink'
   }
 ];
 </script>
@@ -181,23 +212,6 @@ const metrics = [
   padding-top: clamp(2rem, 5vw, 4rem);
 }
 
-.type-kicker {
-  color: var(--color-muted-foreground);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.type-hero h1 {
-  font-size: clamp(3.5rem, 12vw, 8rem);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 0.95;
-}
-
-.type-hero p,
 .reading-grid p {
   color: var(--color-muted-foreground);
   font-size: 1.08rem;
@@ -214,12 +228,6 @@ const metrics = [
 .section-head {
   display: grid;
   gap: 0.35rem;
-}
-
-.section-head h2 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.1;
 }
 
 .scale-list {
@@ -250,7 +258,6 @@ const metrics = [
 
 .scale-row code {
   color: var(--color-muted-foreground);
-  font-family: var(--font-sans);
   font-size: 0.78rem;
 }
 
@@ -260,101 +267,12 @@ const metrics = [
   padding-inline: 1rem;
 }
 
-.lockup-kicker {
-  color: var(--color-muted-foreground);
-  font-family: var(--font-sans);
-  font-weight: 700;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.lockup-title {
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.lockup-subtitle {
+.heading-lockup p:last-child {
   max-width: 36rem;
-  color: var(--color-muted-foreground);
-}
-
-.lockup-display .lockup-kicker {
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-}
-
-.lockup-display .lockup-title {
-  font-size: clamp(3.5rem, 12vw, 8rem);
-  line-height: 0.95;
-}
-
-.lockup-display .lockup-subtitle {
-  font-size: clamp(1.15rem, 2.4cqw, 1.45rem);
-  line-height: 1.85;
-}
-
-.lockup-page .lockup-kicker {
-  font-size: 0.76rem;
-  letter-spacing: 0.16em;
-}
-
-.lockup-page .lockup-title {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  line-height: 1;
-}
-
-.lockup-page .lockup-subtitle {
-  font-size: clamp(1.05rem, 2.2cqw, 1.3rem);
-  line-height: 1.85;
-}
-
-.lockup-section .lockup-kicker {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-}
-
-.lockup-section .lockup-title {
-  font-size: clamp(2.4rem, 7vw, 5rem);
-  line-height: 1;
-}
-
-.lockup-section .lockup-subtitle {
-  font-size: clamp(1rem, 2cqw, 1.2rem);
-  line-height: 1.8;
-}
-
-.lockup-list-heading .lockup-kicker {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-}
-
-.lockup-list-heading .lockup-title {
-  font-size: clamp(1.55rem, 3.2vw, 2.4rem);
-  line-height: 1.12;
-}
-
-.lockup-list-heading .lockup-subtitle {
-  font-size: 0.95rem;
-  line-height: 1.7;
 }
 
 .lockup-item-title {
   gap: 0.35rem;
-}
-
-.lockup-item-title .lockup-kicker {
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-}
-
-.lockup-item-title .lockup-title {
-  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
-  line-height: 1.18;
-}
-
-.lockup-item-title .lockup-subtitle {
-  font-size: 0.92rem;
-  line-height: 1.45;
 }
 
 .reading-grid {
@@ -376,14 +294,7 @@ const metrics = [
   font-weight: 700;
 }
 
-.analysis-copy {
-  display: grid;
-  gap: 0.75rem;
-  border-left: 3px solid var(--color-gold);
-  padding-left: 1rem;
-}
-
-.analysis-copy p {
+.type-analysis-copy p {
   margin: 0;
 }
 
@@ -431,7 +342,8 @@ const metrics = [
   background: color-mix(in srgb, var(--color-foreground) 22%, transparent);
 }
 
-.metric-specimen article {
+.metric-specimen article,
+.control-specimen article {
   display: grid;
   gap: 0.4rem 1rem;
   align-items: baseline;
@@ -452,31 +364,34 @@ const metrics = [
 
 .metric-specimen code,
 .metric-specimen small {
-  font-family: var(--font-sans);
   font-size: 0.78rem;
 }
 
-.metric-specimen strong {
-  font-variant-numeric: tabular-nums;
+.control-specimen {
+  display: grid;
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
 }
 
-.metric-display strong {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 400;
-  line-height: 1;
+.control-specimen article > div {
+  display: grid;
+  gap: 0.2rem;
 }
 
-.metric-value strong {
-  font-size: clamp(1.35rem, 3vw, 2rem);
-  font-weight: 700;
-  line-height: 1;
+.control-specimen span,
+.control-specimen code {
+  color: var(--color-muted-foreground);
 }
 
-.metric-delta strong {
-  color: var(--color-pink);
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  font-weight: 700;
-  line-height: 1;
+.control-specimen code {
+  font-size: 0.78rem;
+}
+
+.control-specimen select {
+  width: fit-content;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-foreground);
 }
 
 @container (min-width: 760px) {

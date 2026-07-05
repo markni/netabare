@@ -240,12 +240,15 @@ const handleSeasonChange = (event) => {
 
     <section id="season-score-comparison" class="season-chart-section">
       <div class="season-section-head">
-        <p class="season-kicker">Score</p>
-        <h2>{{ texts._top10ScoreComparison }}</h2>
-        <p>{{ texts._top10ScoreComparisonSubtitle }}</p>
+        <p class="type-section-kicker">Score</p>
+        <h2 class="type-section-title">{{ texts._top10ScoreComparison }}</h2>
+        <p class="type-section-subtitle">{{ texts._top10ScoreComparisonSubtitle }}</p>
       </div>
 
-      <div v-if="scoreAnalysisParagraphs.length" class="season-analysis season-analysis--score">
+      <div
+        v-if="scoreAnalysisParagraphs.length"
+        class="season-analysis season-analysis--score type-analysis-copy"
+      >
         <p v-for="(paragraph, index) in scoreAnalysisParagraphs" :key="`score-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
             <RouterLink
@@ -279,11 +282,14 @@ const handleSeasonChange = (event) => {
 
     <section id="season-ranking-comparison" class="season-chart-section">
       <div class="season-section-head">
-        <p class="season-kicker">Rank</p>
-        <h2>{{ texts._top10RankingComparison }}</h2>
-        <p>{{ texts._top10RankingComparisonSubtitle }}</p>
+        <p class="type-section-kicker">Rank</p>
+        <h2 class="type-section-title">{{ texts._top10RankingComparison }}</h2>
+        <p class="type-section-subtitle">{{ texts._top10RankingComparisonSubtitle }}</p>
       </div>
-      <div v-if="rankAnalysisParagraphs.length" class="season-analysis season-analysis--rank">
+      <div
+        v-if="rankAnalysisParagraphs.length"
+        class="season-analysis season-analysis--rank type-analysis-copy"
+      >
         <p v-for="(paragraph, index) in rankAnalysisParagraphs" :key="`rank-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
             <RouterLink
@@ -316,13 +322,13 @@ const handleSeasonChange = (event) => {
 
     <section id="season-balance-chart" class="season-chart-section">
       <div class="season-section-head">
-        <p class="season-kicker">Balance</p>
-        <h2>{{ texts._balanceChart }}</h2>
-        <p>{{ texts._scoreComparison }}</p>
+        <p class="type-section-kicker">Balance</p>
+        <h2 class="type-section-title">{{ texts._balanceChart }}</h2>
+        <p class="type-section-subtitle">{{ texts._scoreComparison }}</p>
       </div>
       <div
         v-if="divisiveAnalysisParagraphs.length"
-        class="season-analysis season-analysis--balance"
+        class="season-analysis season-analysis--balance type-analysis-copy"
       >
         <p v-for="(paragraph, index) in divisiveAnalysisParagraphs" :key="`divisive-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
@@ -352,15 +358,15 @@ const handleSeasonChange = (event) => {
 
     <section id="season-distribution-chart" class="season-chart-section">
       <div class="season-section-head">
-        <p class="season-kicker">Distribution</p>
-        <h2>{{ texts._distributionChart }}</h2>
-        <p class="cursor-help" :title="texts._chartLegend">
+        <p class="type-section-kicker">Distribution</p>
+        <h2 class="type-section-title">{{ texts._distributionChart }}</h2>
+        <p class="cursor-help type-section-subtitle" :title="texts._chartLegend">
           {{ texts._chartLegend }}
         </p>
       </div>
       <div
         v-if="popularityAnalysisParagraphs.length"
-        class="season-analysis season-analysis--distribution"
+        class="season-analysis season-analysis--distribution type-analysis-copy"
       >
         <p v-for="(paragraph, index) in popularityAnalysisParagraphs" :key="`popularity-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
@@ -414,53 +420,24 @@ const handleSeasonChange = (event) => {
   gap: 0.55rem;
 }
 
-.season-kicker {
-  color: var(--color-muted-foreground);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.season-section-head h2 {
-  font-size: clamp(2.4rem, 7vw, 5rem);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
-.season-section-head p:not(.season-kicker) {
-  color: var(--color-muted-foreground);
-  font-size: clamp(1rem, 2cqw, 1.2rem);
-  line-height: 1.8;
-}
-
 .season-analysis {
   max-width: 43rem;
-  display: grid;
-  gap: 0.9rem;
-  border-left: 3px solid var(--season-analysis-color, var(--color-gold));
-  padding-left: 1rem;
-  color: color-mix(in srgb, var(--color-foreground) 76%, transparent);
-  font-size: 1.02rem;
-  line-height: 1.95;
 }
 
 .season-analysis--score {
-  --season-analysis-color: var(--color-teal);
+  --analysis-color: var(--color-teal);
 }
 
 .season-analysis--rank {
-  --season-analysis-color: var(--color-blue);
+  --analysis-color: var(--color-blue);
 }
 
 .season-analysis--balance {
-  --season-analysis-color: var(--color-pink);
+  --analysis-color: var(--color-pink);
 }
 
 .season-analysis--distribution {
-  --season-analysis-color: var(--color-gold);
+  --analysis-color: var(--color-gold);
 }
 
 .season-analysis p {

@@ -51,6 +51,154 @@
   margin-right: calc((100dvw - 100cqw) / -2);
 }
 
+@utility type-display-kicker {
+  color: var(--color-muted-foreground);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility type-display-title {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+@utility type-display-subtitle {
+  color: var(--color-muted-foreground);
+  font-size: clamp(1.15rem, 2.4cqw, 1.45rem);
+  line-height: 1.85;
+}
+
+@utility type-page-kicker {
+  color: var(--color-muted-foreground);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility type-page-title {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+@utility type-page-subtitle {
+  color: var(--color-muted-foreground);
+  font-size: clamp(1.05rem, 2.2cqw, 1.3rem);
+  line-height: 1.85;
+}
+
+@utility type-section-kicker {
+  color: var(--color-muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility type-section-title {
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+@utility type-section-subtitle {
+  color: var(--color-muted-foreground);
+  font-size: clamp(1rem, 2cqw, 1.2rem);
+  line-height: 1.8;
+}
+
+@utility type-list-heading-kicker {
+  color: var(--color-muted-foreground);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility type-list-heading-title {
+  font-size: clamp(1.55rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+@utility type-list-heading-subtitle {
+  color: var(--color-muted-foreground);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@utility type-item-kicker {
+  color: var(--color-muted-foreground);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility type-item-title {
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+@utility type-item-subtitle {
+  color: var(--color-muted-foreground);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@utility type-control-label {
+  color: var(--color-muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@utility metric-display {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@utility metric-value {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@utility metric-delta {
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@utility type-analysis-copy {
+  display: grid;
+  gap: 0.9rem;
+  border-left: 3px solid var(--analysis-color, var(--color-gold));
+  padding-left: 1rem;
+  color: color-mix(in srgb, var(--color-foreground) 76%, transparent);
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
 :root {
   color-scheme: only light;
 }

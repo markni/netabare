@@ -2,22 +2,22 @@
   <main v-if="isUiContentVisible" class="ui-showcase">
     <section class="hero-grid">
       <div class="hero-copy">
-        <p class="section-kicker">界面谱系</p>
-        <h1>
+        <p class="type-display-kicker">界面谱系</p>
+        <h1 class="type-display-title">
           <GlowTextBlock
             tag="span"
             text="从纸面、夜色与评分曲线里长出来的设计系统"
             glow-rgb="0,167,216"
           />
         </h1>
-        <p class="hero-lede">
+        <p class="hero-lede type-display-subtitle">
           将站内的番组数据、竖排导航、扇形色带、微光文字与克制控件整理成可复用的界面样张。
         </p>
       </div>
 
       <div class="hero-specimen" aria-label="色彩扇面">
         <ColorFan :animated="isUiAnimationEnabled" />
-        <div class="hero-specimen__mark">
+        <div class="hero-specimen__mark type-display-title text-white">
           <span>10色</span>
           <span>扇面</span>
         </div>
@@ -26,16 +26,16 @@
 
     <section class="meter-strip" aria-label="核心指标">
       <div v-for="metric in metrics" :key="metric.label" class="metric-cell">
-        <span>{{ metric.label }}</span>
-        <strong>{{ metric.value }}</strong>
+        <span class="type-control-label">{{ metric.label }}</span>
+        <strong class="metric-display">{{ metric.value }}</strong>
         <DeltaDisplay :delta="metric.delta" :precision="1" :title="metric.title" />
       </div>
     </section>
 
     <section class="showcase-section">
       <div class="section-heading">
-        <p class="section-kicker">色彩</p>
-        <h2>高饱和信号，低噪声底色</h2>
+        <p class="type-section-kicker">色彩</p>
+        <h2 class="type-section-title">高饱和信号，低噪声底色</h2>
       </div>
 
       <div class="color-layout">
@@ -43,16 +43,16 @@
           <div
             v-for="swatch in swatches"
             :key="swatch.name"
-            class="swatch"
+            class="swatch text-white"
             :style="{ '--swatch-color': swatch.color }"
           >
-            <span>{{ swatch.name }}</span>
-            <strong>{{ swatch.role }}</strong>
+            <span class="type-list-heading-title">{{ swatch.name }}</span>
+            <strong class="type-item-subtitle">{{ swatch.role }}</strong>
           </div>
         </div>
 
         <div class="signal-panel" aria-label="色彩信号">
-          <div class="signal-panel__number">10</div>
+          <div class="signal-panel__number type-display-title">10</div>
           <div class="signal-panel__rails">
             <span
               v-for="(color, index) in colorSignals"
@@ -64,77 +64,51 @@
               }"
             ></span>
           </div>
-          <p>同组颜色贯穿线、点、柱和状态，在不同图表密度中保持清晰识别。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="showcase-section type-section">
-      <div class="section-heading">
-        <p class="section-kicker">排版</p>
-        <h2>中文衬线作为信息的主声部</h2>
-      </div>
-
-      <div class="type-grid">
-        <div class="vertical-sample vertical-rl">
-          <span>当季动画</span>
-          <span>评分趋势</span>
-          <span>历史分布</span>
-          <span>个人评分</span>
-        </div>
-        <div class="type-stack">
-          <p class="type-label">标题</p>
-          <p class="type-display">龙争虎斗</p>
-          <p class="type-label">正文</p>
-          <p class="type-body">
-            文字保留纸面感，字号层级明确，留白偏宽，适合承载图表、番组标题与解释性注释。
+          <p class="type-section-subtitle">
+            同组颜色贯穿线、点、柱和状态，在不同图表密度中保持清晰识别。
           </p>
-          <p class="type-label">微光</p>
-          <GlowTextBlock
-            class="type-glow"
-            text="悬停、滚动与夜间模式中，文字可以像屏幕余辉那样慢慢亮起。"
-            glow-rgb="245,178,27"
-          />
         </div>
       </div>
     </section>
 
     <section class="showcase-section">
       <div class="section-heading">
-        <p class="section-kicker">组件</p>
-        <h2>状态清楚，边界轻薄</h2>
+        <p class="type-section-kicker">组件</p>
+        <h2 class="type-section-title">状态清楚，边界轻薄</h2>
       </div>
 
       <div class="component-grid">
         <div class="component-panel control-panel">
           <div class="panel-head">
-            <span>明暗切换</span>
+            <span class="type-item-title">明暗切换</span>
             <EclipseToggle
               :mode="themeStore.isDarkMode ? 'dark' : 'light'"
               @toggle="themeStore.toggleDarkMode"
             />
           </div>
           <div class="toggle-row">
-            <button class="state-button state-button--active">已选择</button>
-            <button class="state-button">可操作</button>
-            <button class="state-button state-button--quiet">弱提示</button>
+            <button class="state-button state-button--active type-control-label text-white">
+              已选择
+            </button>
+            <button class="state-button type-control-label">可操作</button>
+            <button class="state-button state-button--quiet type-control-label">弱提示</button>
           </div>
           <div class="tag-row">
-            <span v-for="tag in tags" :key="tag">{{ tag }}</span>
+            <span v-for="tag in tags" :key="tag" class="type-control-label">{{ tag }}</span>
           </div>
         </div>
 
         <div class="component-panel ranking-panel">
           <div class="panel-head">
-            <span>榜单条目</span>
-            <strong>本季</strong>
+            <span class="type-item-title">榜单条目</span>
+            <strong class="type-control-label">本季</strong>
           </div>
           <ol>
             <li v-for="item in ranking" :key="item.name">
-              <span>{{ item.rank }}</span>
+              <span class="metric-value">{{ item.rank }}</span>
               <div>
-                <strong>{{ item.name }}</strong>
-                <small>{{ item.note }}</small>
+                <strong class="type-item-title">{{ item.name }}</strong>
+                <small class="type-item-subtitle">{{ item.note }}</small>
               </div>
               <DeltaDisplay :delta="item.delta" :precision="2" :title="item.title" />
             </li>
@@ -143,8 +117,8 @@
 
         <div class="component-panel overlay-panel">
           <div class="panel-head">
-            <span>读取状态</span>
-            <strong>秋色展开</strong>
+            <span class="type-item-title">读取状态</span>
+            <strong class="type-control-label">秋色展开</strong>
           </div>
           <div class="fall-preview" aria-label="秋季读取动画预览">
             <span
@@ -156,15 +130,15 @@
               }"
             ></span>
           </div>
-          <p>加载时落色循环，结束时色幕收起，把后面的界面露出来。</p>
+          <p class="type-section-subtitle">加载时落色循环，结束时色幕收起，把后面的界面露出来。</p>
         </div>
       </div>
     </section>
 
     <section class="showcase-section">
       <div class="section-heading">
-        <p class="section-kicker">图表</p>
-        <h2>让分布、波动与争议快速可辨</h2>
+        <p class="type-section-kicker">图表</p>
+        <h2 class="type-section-title">让分布、波动与争议快速可辨</h2>
       </div>
 
       <div class="chart-board">
@@ -176,7 +150,7 @@
             :style="{ '--bar-height': `${bar.value}%`, '--bar-color': bar.color }"
           >
             <span></span>
-            <small>{{ bar.score }}</small>
+            <small class="text-center type-control-label">{{ bar.score }}</small>
           </div>
         </div>
 
@@ -199,7 +173,7 @@
               :fill="point.color"
             />
           </svg>
-          <div class="trend-legend">
+          <div class="trend-legend type-control-label">
             <span v-for="line in trendLegend" :key="line.name">
               <i :style="{ backgroundColor: line.color }"></i>{{ line.name }}
             </span>
@@ -337,25 +311,12 @@ onUnmounted(() => {
   gap: 1.25rem;
 }
 
-.section-kicker {
-  color: var(--color-muted-foreground);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-}
-
 .hero-copy h1 {
   max-width: 13em;
-  font-size: clamp(2.5rem, 8vw, 7.6rem);
-  font-weight: 700;
-  line-height: 0.98;
 }
 
 .hero-lede {
   max-width: 42rem;
-  color: var(--color-muted-foreground);
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  line-height: 2;
 }
 
 .hero-specimen {
@@ -372,10 +333,6 @@ onUnmounted(() => {
   bottom: 1rem;
   display: flex;
   gap: 0.35rem;
-  color: white;
-  font-size: clamp(2.25rem, 7vw, 6rem);
-  font-weight: 700;
-  line-height: 0.95;
   mix-blend-mode: difference;
   writing-mode: vertical-rl;
 }
@@ -398,16 +355,6 @@ onUnmounted(() => {
   border-bottom: 0;
 }
 
-.metric-cell span {
-  color: var(--color-muted-foreground);
-  font-size: 0.9rem;
-}
-
-.metric-cell strong {
-  font-size: clamp(1.8rem, 6vw, 4.6rem);
-  line-height: 1;
-}
-
 .showcase-section {
   display: flex;
   flex-direction: column;
@@ -421,9 +368,6 @@ onUnmounted(() => {
 
 .section-heading h2 {
   max-width: 13em;
-  font-size: clamp(2rem, 4.5vw, 4.8rem);
-  font-weight: 700;
-  line-height: 1.05;
 }
 
 .color-layout {
@@ -447,23 +391,15 @@ onUnmounted(() => {
   background:
     linear-gradient(to bottom, transparent, color-mix(in srgb, black 12%, transparent)),
     var(--swatch-color);
-  color: white;
   text-shadow: 0 1px 14px rgba(0, 0, 0, 0.28);
 }
 
 .swatch:nth-last-child(-n + 2) {
-  color: var(--color-foreground);
   text-shadow: none;
-}
-
-.swatch span {
-  font-size: 2.3rem;
-  font-weight: 700;
 }
 
 .swatch strong {
   align-self: flex-end;
-  font-size: 0.95rem;
 }
 
 .signal-panel {
@@ -494,9 +430,6 @@ onUnmounted(() => {
   right: 0.8rem;
   top: -0.25rem;
   color: color-mix(in srgb, var(--color-foreground) 9%, transparent);
-  font-size: clamp(8rem, 26vw, 20rem);
-  font-weight: 700;
-  line-height: 0.8;
   pointer-events: none;
 }
 
@@ -550,57 +483,6 @@ onUnmounted(() => {
 .signal-panel p {
   position: relative;
   padding: 0 1rem 1rem;
-  color: var(--color-muted-foreground);
-  line-height: 1.8;
-}
-
-.type-grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.vertical-sample {
-  min-height: 24rem;
-  display: flex;
-  gap: 1.4rem;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 2rem;
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 26%, transparent);
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  font-weight: 700;
-}
-
-.vertical-sample span {
-  border-inline-start: 1px solid color-mix(in srgb, var(--color-foreground) 24%, transparent);
-  padding-inline-start: 0.55rem;
-}
-
-.type-stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.9rem;
-  padding-block: 1rem;
-}
-
-.type-label {
-  color: var(--color-muted-foreground);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.type-display {
-  font-size: clamp(3rem, 8vw, 8rem);
-  font-weight: 700;
-  line-height: 0.95;
-}
-
-.type-body,
-.type-glow {
-  max-width: 38rem;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 2;
 }
 
 .component-grid,
@@ -633,16 +515,6 @@ onUnmounted(() => {
   gap: 1rem;
 }
 
-.panel-head span {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.panel-head strong {
-  color: var(--color-muted-foreground);
-  font-size: 0.85rem;
-}
-
 .toggle-row,
 .tag-row {
   display: flex;
@@ -670,18 +542,14 @@ onUnmounted(() => {
 .state-button--active {
   border-color: var(--color-teal);
   background: var(--color-teal);
-  color: white;
 }
 
 .state-button--quiet {
-  color: var(--color-muted-foreground);
 }
 
 .tag-row span {
   border: 1px solid color-mix(in srgb, var(--color-foreground) 26%, transparent);
   padding: 0.35rem 0.7rem;
-  color: var(--color-muted-foreground);
-  font-size: 0.9rem;
 }
 
 .ranking-panel ol {
@@ -699,18 +567,8 @@ onUnmounted(() => {
   border-top: 1px solid color-mix(in srgb, var(--color-foreground) 18%, transparent);
 }
 
-.ranking-panel li > span {
-  color: var(--color-muted-foreground);
-  font-size: 1.35rem;
-}
-
 .ranking-panel li strong {
   display: block;
-  font-size: 1.08rem;
-}
-
-.ranking-panel li small {
-  color: var(--color-muted-foreground);
 }
 
 .fall-preview {
@@ -752,8 +610,6 @@ onUnmounted(() => {
 
 .overlay-panel p {
   margin-top: auto;
-  color: var(--color-muted-foreground);
-  line-height: 1.8;
 }
 
 .score-bars {
@@ -782,11 +638,6 @@ onUnmounted(() => {
 
 .score-bar:hover span {
   height: min(100%, calc(var(--bar-height) + 6%));
-}
-
-.score-bar small {
-  color: var(--color-muted-foreground);
-  text-align: center;
 }
 
 .trend-panel {
@@ -821,7 +672,6 @@ onUnmounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--color-muted-foreground);
 }
 
 .trend-legend span {
@@ -856,7 +706,6 @@ onUnmounted(() => {
   }
 
   .color-layout,
-  .type-grid,
   .chart-board {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }

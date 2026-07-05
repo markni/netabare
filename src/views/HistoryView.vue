@@ -114,11 +114,11 @@ watch(
 </script>
 
 <template>
-  <div class="@container">
-    <div class="flex justify-end gap-4 text-3xl">
-      <div class="flex flex-col">
-        <label for="startingYear" class="text-xl">{{ texts._startingYear }}</label>
-        <select class="w-40 bg-transparent" id="startingYear" v-model="startingYear">
+  <div class="history-page">
+    <div class="history-filter-bar">
+      <div class="history-filter">
+        <label for="startingYear" class="type-control-label">{{ texts._startingYear }}</label>
+        <select id="startingYear" v-model="startingYear" class="metric-value">
           <option
             class="bg-background transition-[background-color] duration-300"
             v-for="year in validStartYears"
@@ -129,9 +129,9 @@ watch(
           </option>
         </select>
       </div>
-      <div class="flex flex-col">
-        <label for="endingYear" class="text-xl">{{ texts._endingYear }}</label>
-        <select class="w-40 bg-transparent" id="endingYear" v-model="endingYear">
+      <div class="history-filter">
+        <label for="endingYear" class="type-control-label">{{ texts._endingYear }}</label>
+        <select id="endingYear" v-model="endingYear" class="metric-value">
           <option
             class="bg-background transition-[background-color] duration-300"
             v-for="year in validEndYears"
@@ -142,9 +142,9 @@ watch(
           </option>
         </select>
       </div>
-      <div class="flex flex-col">
-        <label for="minScore" class="text-xl">{{ texts._minScore }}</label>
-        <select class="w-40 bg-transparent" id="minScore" v-model="minScore">
+      <div class="history-filter">
+        <label for="minScore" class="type-control-label">{{ texts._minScore }}</label>
+        <select id="minScore" v-model="minScore" class="metric-value">
           <option
             class="bg-background transition-[background-color] duration-300"
             v-for="score in validMinScores"
@@ -155,9 +155,9 @@ watch(
           </option>
         </select>
       </div>
-      <div class="flex flex-col">
-        <label for="maxScore" class="text-xl">{{ texts._maxScore }}</label>
-        <select class="w-40 bg-transparent" id="maxScore" v-model="maxScore">
+      <div class="history-filter">
+        <label for="maxScore" class="type-control-label">{{ texts._maxScore }}</label>
+        <select id="maxScore" v-model="maxScore" class="metric-value">
           <option
             class="bg-background transition-[background-color] duration-300"
             v-for="score in validMaxScores"
@@ -186,4 +186,33 @@ watch(
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.history-page {
+  container-type: inline-size;
+}
+
+.history-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.history-filter {
+  display: grid;
+  min-width: 8rem;
+  gap: 0.25rem;
+}
+
+.history-filter select {
+  width: 100%;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-foreground);
+}
+
+.history-filter select:focus {
+  outline: 0;
+}
+</style>
