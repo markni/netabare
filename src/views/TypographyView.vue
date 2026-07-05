@@ -83,11 +83,14 @@
         <h2 id="data-title">数字与标签</h2>
       </div>
 
-      <div class="data-specimen">
-        <article v-for="metric in metrics" :key="metric.label">
-          <span>{{ metric.label }}</span>
+      <div class="metric-specimen">
+        <article v-for="metric in metrics" :key="metric.name" :class="metric.className">
+          <div>
+            <span>{{ metric.name }}</span>
+            <code>{{ metric.note }}</code>
+          </div>
           <strong>{{ metric.value }}</strong>
-          <small>{{ metric.note }}</small>
+          <small>{{ metric.label }}</small>
         </article>
       </div>
     </section>
@@ -119,13 +122,47 @@ const scaleSamples = [
     text: '评分趋势',
     subtitle: '用于图表章节标题下方的简短说明，保持低对比度。',
     className: 'lockup-section'
+  },
+  {
+    name: 'List heading',
+    note: 'List heading + compact note',
+    kicker: 'Trending',
+    text: '排名上升',
+    subtitle: '用于列表、榜单或双栏内容组的标题。',
+    className: 'lockup-list-heading'
+  },
+  {
+    name: 'Item title',
+    note: 'Item title + item subtitle',
+    kicker: 'Subject',
+    text: '葬送之旅',
+    subtitle: 'Sousou no Frieren',
+    className: 'lockup-item-title'
   }
 ];
 
 const metrics = [
-  { label: '均分', value: '8.42', note: 'score' },
-  { label: '排名', value: '024', note: 'rank' },
-  { label: '收藏', value: '12000', note: 'collections' }
+  {
+    name: 'Metric display',
+    note: 'clamp(2.5rem, 8vw, 5rem) / 400',
+    value: '12,000',
+    label: '专题页主数字、核心统计',
+    className: 'metric-display'
+  },
+  {
+    name: 'Metric value',
+    note: 'clamp(1.35rem, 3vw, 2rem) / 700',
+    value: '8.42',
+    label: '表格数值、卡片数值、筛选当前值',
+    className: 'metric-value'
+  },
+  {
+    name: 'Metric delta',
+    note: 'clamp(0.95rem, 1.8vw, 1.2rem) / 700',
+    value: '▴0.31',
+    label: '变化值、小型评分、趋势行内数字',
+    className: 'metric-delta'
+  }
 ];
 </script>
 
@@ -286,6 +323,40 @@ const metrics = [
   line-height: 1.8;
 }
 
+.lockup-list-heading .lockup-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.lockup-list-heading .lockup-title {
+  font-size: clamp(1.55rem, 3.2vw, 2.4rem);
+  line-height: 1.12;
+}
+
+.lockup-list-heading .lockup-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.lockup-item-title {
+  gap: 0.35rem;
+}
+
+.lockup-item-title .lockup-kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
+
+.lockup-item-title .lockup-title {
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  line-height: 1.18;
+}
+
+.lockup-item-title .lockup-subtitle {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .reading-grid {
   display: grid;
   gap: 1px;
@@ -353,37 +424,59 @@ const metrics = [
   color: var(--color-muted-foreground);
 }
 
-.data-specimen {
+.metric-specimen {
   display: grid;
   gap: 1px;
   border: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
   background: color-mix(in srgb, var(--color-foreground) 22%, transparent);
 }
 
-.data-specimen article {
+.metric-specimen article {
   display: grid;
-  grid-template-columns: 1fr auto;
   gap: 0.4rem 1rem;
   align-items: baseline;
   background: var(--color-background);
   padding: 1rem;
 }
 
-.data-specimen span,
-.data-specimen small {
+.metric-specimen article > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.metric-specimen span,
+.metric-specimen code,
+.metric-specimen small {
   color: var(--color-muted-foreground);
 }
 
-.data-specimen strong {
+.metric-specimen code,
+.metric-specimen small {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+}
+
+.metric-specimen strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-display strong {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 400;
   line-height: 1;
 }
 
-.data-specimen small {
-  grid-column: 1 / -1;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+.metric-value strong {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metric-delta strong {
+  color: var(--color-pink);
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1;
 }
 
 @container (min-width: 760px) {
@@ -396,7 +489,7 @@ const metrics = [
     grid-template-columns: 1.2fr 0.8fr;
   }
 
-  .data-specimen {
+  .metric-specimen {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
