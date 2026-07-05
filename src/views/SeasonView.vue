@@ -226,7 +226,7 @@ const handleSeasonChange = (event) => {
 </script>
 
 <template>
-  <div class="@container mt-14 flex flex-col gap-[7.5rem]">
+  <div class="season-page">
     <SeasonTitleSection
       :years="years"
       :selected-year="selectedYear"
@@ -236,26 +236,30 @@ const handleSeasonChange = (event) => {
       @season-change="handleSeasonChange"
     />
 
-    <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
+    <div class="season-divider bleed-both-to-viewport" aria-hidden="true"></div>
 
-    <div id="season-score-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-5xl">{{ texts._top10ScoreComparison }}</h2>
-      <p class="text-gray-400">{{ texts._top10ScoreComparisonSubtitle }}</p>
+    <section id="season-score-comparison" class="season-chart-section">
+      <div class="season-section-head">
+        <p class="season-kicker">Score</p>
+        <h2>{{ texts._top10ScoreComparison }}</h2>
+        <p>{{ texts._top10ScoreComparisonSubtitle }}</p>
+      </div>
 
-      <div
-        v-if="scoreAnalysisParagraphs.length"
-        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
-      >
+      <div v-if="scoreAnalysisParagraphs.length" class="season-analysis season-analysis--score">
         <p v-for="(paragraph, index) in scoreAnalysisParagraphs" :key="`score-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="season-subject-link"
+            >
               <span
                 v-if="segment.color"
-                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                class="season-subject-dot"
                 :style="{ backgroundColor: segment.color }"
                 aria-hidden="true"
               ></span>
-              <span class="underline underline-offset-4">{{ segment.text }}</span>
+              <span>{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -269,27 +273,31 @@ const handleSeasonChange = (event) => {
           :use-theme-palette="true"
         />
       </div>
-    </div>
+    </section>
 
-    <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
+    <div class="season-divider bleed-both-to-viewport" aria-hidden="true"></div>
 
-    <div id="season-ranking-comparison" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-5xl">{{ texts._top10RankingComparison }}</h2>
-      <p class="text-gray-400">{{ texts._top10RankingComparisonSubtitle }}</p>
-      <div
-        v-if="rankAnalysisParagraphs.length"
-        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
-      >
+    <section id="season-ranking-comparison" class="season-chart-section">
+      <div class="season-section-head">
+        <p class="season-kicker">Rank</p>
+        <h2>{{ texts._top10RankingComparison }}</h2>
+        <p>{{ texts._top10RankingComparisonSubtitle }}</p>
+      </div>
+      <div v-if="rankAnalysisParagraphs.length" class="season-analysis season-analysis--rank">
         <p v-for="(paragraph, index) in rankAnalysisParagraphs" :key="`rank-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="season-subject-link"
+            >
               <span
                 v-if="segment.color"
-                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                class="season-subject-dot"
                 :style="{ backgroundColor: segment.color }"
                 aria-hidden="true"
               ></span>
-              <span class="underline underline-offset-4">{{ segment.text }}</span>
+              <span>{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -302,27 +310,34 @@ const handleSeasonChange = (event) => {
           :use-theme-palette="true"
         />
       </div>
-    </div>
+    </section>
 
-    <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
+    <div class="season-divider bleed-both-to-viewport" aria-hidden="true"></div>
 
-    <div id="season-balance-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-5xl">{{ texts._balanceChart }}</h2>
-      <p class="text-gray-400">{{ texts._scoreComparison }}</p>
+    <section id="season-balance-chart" class="season-chart-section">
+      <div class="season-section-head">
+        <p class="season-kicker">Balance</p>
+        <h2>{{ texts._balanceChart }}</h2>
+        <p>{{ texts._scoreComparison }}</p>
+      </div>
       <div
         v-if="divisiveAnalysisParagraphs.length"
-        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="season-analysis season-analysis--balance"
       >
         <p v-for="(paragraph, index) in divisiveAnalysisParagraphs" :key="`divisive-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="season-subject-link"
+            >
               <span
                 v-if="segment.color"
-                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                class="season-subject-dot"
                 :style="{ backgroundColor: segment.color }"
                 aria-hidden="true"
               ></span>
-              <span class="underline underline-offset-4">{{ segment.text }}</span>
+              <span>{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -331,29 +346,36 @@ const handleSeasonChange = (event) => {
       <div class="mt-6 bleed-left-to-container-right sm:aspect-[5/2]">
         <BattleBarChart :balanceData="balanceData" :animate-when-in-view="true" />
       </div>
-    </div>
+    </section>
 
-    <div class="bleed-both-to-viewport border-t border-foreground/10" aria-hidden="true"></div>
+    <div class="season-divider bleed-both-to-viewport" aria-hidden="true"></div>
 
-    <div id="season-distribution-chart" class="flex min-h-[calc(100dvh-13rem)] flex-col gap-4">
-      <h2 class="text-5xl">{{ texts._distributionChart }}</h2>
-      <p class="cursor-help text-gray-400" :title="texts._chartLegend">
-        {{ texts._chartLegend }}
-      </p>
+    <section id="season-distribution-chart" class="season-chart-section">
+      <div class="season-section-head">
+        <p class="season-kicker">Distribution</p>
+        <h2>{{ texts._distributionChart }}</h2>
+        <p class="cursor-help" :title="texts._chartLegend">
+          {{ texts._chartLegend }}
+        </p>
+      </div>
       <div
         v-if="popularityAnalysisParagraphs.length"
-        class="mt-3 max-w-2xl space-y-4 text-base leading-relaxed text-gray-700 dark:text-gray-300"
+        class="season-analysis season-analysis--distribution"
       >
         <p v-for="(paragraph, index) in popularityAnalysisParagraphs" :key="`popularity-${index}`">
           <template v-for="(segment, segmentIndex) in paragraph" :key="segmentIndex">
-            <RouterLink v-if="segment.bgmId" :to="`/subject/${segment.bgmId}`" class="inline">
+            <RouterLink
+              v-if="segment.bgmId"
+              :to="`/subject/${segment.bgmId}`"
+              class="season-subject-link"
+            >
               <span
                 v-if="segment.color"
-                class="relative -top-0.5 mx-1 inline-block size-3 rounded-full align-middle"
+                class="season-subject-dot"
                 :style="{ backgroundColor: segment.color }"
                 aria-hidden="true"
               ></span>
-              <span class="underline underline-offset-4">{{ segment.text }}</span>
+              <span>{{ segment.text }}</span>
             </RouterLink>
             <span v-else>{{ segment.text }}</span>
           </template>
@@ -362,8 +384,108 @@ const handleSeasonChange = (event) => {
       <div class="mt-6 bleed-right-to-container-left sm:aspect-[5/2]">
         <ScoreBubbleChart :subjects="subjectsData" :animate-when-in-view="true" />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.season-page {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5rem, 10vw, 7.5rem);
+  margin-top: 3.5rem;
+}
+
+.season-divider {
+  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+}
+
+.season-chart-section {
+  min-height: calc(100dvh - 13rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.season-section-head {
+  display: grid;
+  max-width: 46rem;
+  gap: 0.55rem;
+}
+
+.season-kicker {
+  color: var(--color-muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.season-section-head h2 {
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.season-section-head p:not(.season-kicker) {
+  color: var(--color-muted-foreground);
+  font-size: clamp(1rem, 2cqw, 1.2rem);
+  line-height: 1.8;
+}
+
+.season-analysis {
+  max-width: 43rem;
+  display: grid;
+  gap: 0.9rem;
+  border-left: 3px solid var(--season-analysis-color, var(--color-gold));
+  padding-left: 1rem;
+  color: color-mix(in srgb, var(--color-foreground) 76%, transparent);
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.season-analysis--score {
+  --season-analysis-color: var(--color-teal);
+}
+
+.season-analysis--rank {
+  --season-analysis-color: var(--color-blue);
+}
+
+.season-analysis--balance {
+  --season-analysis-color: var(--color-pink);
+}
+
+.season-analysis--distribution {
+  --season-analysis-color: var(--color-gold);
+}
+
+.season-analysis p {
+  margin: 0;
+}
+
+.season-subject-link {
+  color: var(--color-foreground);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+}
+
+.season-subject-link:hover {
+  text-decoration-color: var(--color-gold);
+}
+
+.season-subject-dot {
+  position: relative;
+  top: -0.08em;
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-inline: 0.35rem;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+</style>

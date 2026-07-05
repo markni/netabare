@@ -103,6 +103,12 @@ const router = createRouter({
       meta: { title: '设计系统 | netaba.re' }
     },
     {
+      path: '/typography',
+      name: 'typography',
+      component: () => import('../views/TypographyView.vue'),
+      meta: { title: 'Typography | netaba.re' }
+    },
+    {
       path: '/tabemono',
       name: 'tabemono',
       alias: '/food',
