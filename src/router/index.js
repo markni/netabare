@@ -50,6 +50,12 @@ const router = createRouter({
       meta: { title: `${texts._trending} | netaba.re` }
     },
     {
+      path: '/reputation-gains',
+      name: 'reputation-gains',
+      component: () => import('../views/ScoreIncreasesView.vue'),
+      meta: { title: `${texts._scoreIncreases} | netaba.re` }
+    },
+    {
       path: '/season/:year?/:month?',
       name: 'season',
       // route level code-splitting

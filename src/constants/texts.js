@@ -15,6 +15,10 @@ const texts = {
   _backToHome: '返回首页',
   _season: '当季动画',
   _trending: '评分趋势',
+  _scoreIncreases: '口碑提升排行',
+  _scoreIncreasesFooter: '口碑提升',
+  _scoreIncreasesKicker: 'Reputation gains',
+  _scoreIncreasesSubtitle: '开播以来评分提升最高的动画（2018年至今）',
   _history: '历史分布',
   _user: '个人评分',
   _experimental: '实验功能',
@@ -52,6 +56,7 @@ const texts = {
   _popularEntries: '热门条目',
   _increasingRank: '涨幅排行',
   _decreasingRank: '跌幅排行',
+  _scoreIncreaseRank: '口碑提升排行',
   // Unbanned view texts
   _unbannedSubjects: '解禁条目',
   _recentlyUnbanned: '最近解禁',

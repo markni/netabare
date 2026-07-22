@@ -166,6 +166,12 @@ console.log(`
               exact-active-class="!text-white"
               >{{ texts._recentlyUnbanned }}</RouterLink
             >
+            <RouterLink
+              to="/reputation-gains"
+              active-class="!text-white"
+              exact-active-class="!text-white"
+              >{{ texts._scoreIncreasesFooter }}</RouterLink
+            >
             <RouterLink to="/ui" active-class="!text-white" exact-active-class="!text-white"
               >设计系统</RouterLink
             >

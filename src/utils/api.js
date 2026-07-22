@@ -18,6 +18,10 @@ export const fetchTrending = () => {
   return axios.get(`${api_root}/trending`);
 };
 
+export const fetchScoreIncreases = () => {
+  return axios.get(`${api_root}/score-increases`);
+};
+
 export const fetchSeason = (year, month) => {
   if (!year || !month) {
     throw new Error('fetchSeason requires both year and month');

@@ -84,7 +84,18 @@ const userNavTarget = computed(() => (username.value ? `/user/${username.value}`
           >
             <RouterLink
               active-class="!border !border-foreground !border-t-0 !text-muted-foreground"
-              class="block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb"
+              :class="[
+                'block border border-t-0 border-transparent px-3 py-2 pt-14 pb-3 text-center vertical-rl sm:pt-14 sm:pb-2 sm:horizontal-tb',
+                {
+                  '!border !border-t-0 !border-foreground !text-muted-foreground': ![
+                    'season',
+                    'trending',
+                    'history',
+                    'history-filtered',
+                    'user'
+                  ].includes($route.name)
+                }
+              ]"
               to="/395378/vs/400602"
               >{{ texts._experimental }}</RouterLink
             >
