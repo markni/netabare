@@ -18,10 +18,17 @@ const themeStore = useThemeStore();
 const route = useRoute();
 const isUiRoute = computed(() => route.path === '/ui');
 const isFallLoaderRoute = computed(() => route.path === '/' || isUiRoute.value);
-const showFooterCornerTriangle = computed(() => !['/tabemono', '/food'].includes(route.path));
+const showFooterCornerTriangle = computed(() => !/^\/(tabemono|food)(\/|$)/.test(route.path));
 const showFallLoader = ref(isFallLoaderRoute.value);
 const isFallLoaderLoading = ref(isFallLoaderRoute.value);
 const isAppContentVisible = ref(!isFallLoaderRoute.value);
+
+watch(isFallLoaderRoute, (usesFallLoader) => {
+  if (!usesFallLoader) {
+    isAppContentVisible.value = true;
+    isFallLoaderLoading.value = false;
+  }
+});
 
 useScrollToAnchor();
 

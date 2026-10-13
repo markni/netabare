@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T09:04:32.862Z",
+  "generatedAt": "2026-10-04T18:15:11.965Z",
   "startDate": "2026-03-20",
   "endDate": "2026-06-30",
   "subjects": [
@@ -25,7 +25,10 @@
         "Noodles": 12,
         "Seafood": 6
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "609175",
@@ -37,7 +40,7 @@
       "rank": 8756,
       "votes": 110,
       "frames": 135,
-      "savedFrames": 3,
+      "savedFrames": 5,
       "uniqueFoodCount": 82,
       "groupMentionCounts": {
         "Drinks": 91,
@@ -48,7 +51,10 @@
         "Seafood": 2,
         "Rice": 1
       },
-      "episodeCount": 24
+      "episodeCount": 24,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 24,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "493804",
@@ -72,7 +78,10 @@
         "Drinks": 7,
         "Seafood": 5
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "543360",
@@ -94,7 +103,10 @@
         "Bread": 1,
         "Seafood": 1
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "575057",
@@ -106,7 +118,7 @@
       "rank": 5243,
       "votes": 1193,
       "frames": 65,
-      "savedFrames": 3,
+      "savedFrames": 8,
       "uniqueFoodCount": 76,
       "groupMentionCounts": {
         "Rice": 8,
@@ -118,7 +130,10 @@
         "Noodles": 1,
         "Drinks": 2
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "610703",
@@ -142,7 +157,10 @@
         "Sweets": 13,
         "Seafood": 3
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "564289",
@@ -165,7 +183,10 @@
         "Seafood": 1,
         "Bread": 4
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "585790",
@@ -189,7 +210,10 @@
         "Noodles": 3,
         "Bread": 1
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "570584",
@@ -213,7 +237,10 @@
         "Rice": 2,
         "Noodles": 1
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "581284",
@@ -237,7 +264,10 @@
         "Produce": 10,
         "Bread": 1
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
     },
     {
       "bgmId": "623854",
@@ -261,7 +291,10 @@
         "Sweets": 7,
         "Bread": 1
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "456079",
@@ -284,7 +317,10 @@
         "Seafood": 3,
         "Bread": 1
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "535669",
@@ -307,7 +343,10 @@
         "Noodles": 2,
         "Rice": 5
       },
-      "episodeCount": 13
+      "episodeCount": 13,
+      "totalEpisodeCount": 14,
+      "verifiedEpisodeCount": 13,
+      "verifiedEpisodePercent": 92.86
     },
     {
       "bgmId": "604307",
@@ -329,7 +368,10 @@
         "Seafood": 5,
         "Bread": 6
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "552589",
@@ -353,7 +395,10 @@
         "Rice": 2,
         "Drinks": 4
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
     },
     {
       "bgmId": "469104",
@@ -374,7 +419,10 @@
         "Meat": 10,
         "Bread": 5
       },
-      "episodeCount": 17
+      "episodeCount": 17,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 18,
+      "verifiedEpisodePercent": 75
     },
     {
       "bgmId": "474371",
@@ -398,7 +446,10 @@
         "Rice": 1,
         "Bread": 1
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 11,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 63.64
     },
     {
       "bgmId": "590353",
@@ -421,7 +472,10 @@
         "Produce": 12,
         "Noodles": 3
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 84.62
     },
     {
       "bgmId": "567418",
@@ -444,7 +498,10 @@
         "Rice": 4,
         "Sweets": 3
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "569161",
@@ -456,7 +513,7 @@
       "rank": 7439,
       "votes": 1059,
       "frames": 29,
-      "savedFrames": 0,
+      "savedFrames": 3,
       "uniqueFoodCount": 50,
       "groupMentionCounts": {
         "Sweets": 4,
@@ -467,7 +524,10 @@
         "Rice": 5,
         "Produce": 12
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 11,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 90.91
     },
     {
       "bgmId": "515594",
@@ -479,7 +539,7 @@
       "rank": 6077,
       "votes": 743,
       "frames": 29,
-      "savedFrames": 2,
+      "savedFrames": 4,
       "uniqueFoodCount": 44,
       "groupMentionCounts": {
         "Drinks": 9,
@@ -491,7 +551,10 @@
         "Seafood": 3,
         "Rice": 2
       },
-      "episodeCount": 13
+      "episodeCount": 13,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 25
     },
     {
       "bgmId": "501796",
@@ -514,7 +577,36 @@
         "Meat": 1,
         "Seafood": 1
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "570448",
+      "title": "摩绪",
+      "originalTitle": "MAO",
+      "subjectName": "MAO",
+      "airDate": "2026-04-04",
+      "score": 6.1,
+      "rank": 6573,
+      "votes": 251,
+      "frames": 28,
+      "savedFrames": 0,
+      "uniqueFoodCount": 32,
+      "groupMentionCounts": {
+        "Drinks": 17,
+        "Sweets": 7,
+        "Noodles": 1,
+        "Rice": 5,
+        "Produce": 2,
+        "Seafood": 1,
+        "Bread": 1
+      },
+      "episodeCount": 15,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 16,
+      "verifiedEpisodePercent": 66.67
     },
     {
       "bgmId": "576121",
@@ -526,7 +618,7 @@
       "rank": 2662,
       "votes": 2144,
       "frames": 28,
-      "savedFrames": 1,
+      "savedFrames": 2,
       "uniqueFoodCount": 52,
       "groupMentionCounts": {
         "Meat": 6,
@@ -537,30 +629,10 @@
         "Bread": 2,
         "Seafood": 2
       },
-      "episodeCount": 8
-    },
-    {
-      "bgmId": "570448",
-      "title": "摩绪",
-      "originalTitle": "MAO",
-      "subjectName": "MAO",
-      "airDate": "2026-04-04",
-      "score": 6.1,
-      "rank": 6573,
-      "votes": 251,
-      "frames": 27,
-      "savedFrames": 0,
-      "uniqueFoodCount": 28,
-      "groupMentionCounts": {
-        "Drinks": 17,
-        "Sweets": 5,
-        "Noodles": 1,
-        "Rice": 5,
-        "Produce": 1,
-        "Seafood": 1,
-        "Bread": 1
-      },
-      "episodeCount": 14
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
     },
     {
       "bgmId": "458684",
@@ -583,7 +655,10 @@
         "Sweets": 4,
         "Noodles": 1
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
     },
     {
       "bgmId": "606263",
@@ -606,7 +681,10 @@
         "Noodles": 2,
         "Seafood": 2
       },
-      "episodeCount": 12
+      "episodeCount": 12,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 92.31
     },
     {
       "bgmId": "533027",
@@ -630,7 +708,10 @@
         "Noodles": 1,
         "Seafood": 1
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
     },
     {
       "bgmId": "377130",
@@ -650,7 +731,10 @@
         "Meat": 7,
         "Drinks": 2
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 69.23
     },
     {
       "bgmId": "508004",
@@ -673,7 +757,10 @@
         "Rice": 4,
         "Sweets": 3
       },
-      "episodeCount": 8
+      "episodeCount": 8,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 61.54
     },
     {
       "bgmId": "508455",
@@ -697,7 +784,10 @@
         "Noodles": 1,
         "Bread": 2
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 69.23
     },
     {
       "bgmId": "537722",
@@ -720,7 +810,10 @@
         "Sweets": 2,
         "Rice": 2
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 69.23
     },
     {
       "bgmId": "516543",
@@ -742,7 +835,10 @@
         "Drinks": 2,
         "Sweets": 2
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
     },
     {
       "bgmId": "622634",
@@ -763,7 +859,10 @@
         "Meat": 2,
         "Bread": 3
       },
-      "episodeCount": 7
+      "episodeCount": 7,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 53.85
     },
     {
       "bgmId": "551455",
@@ -785,7 +884,10 @@
         "Noodles": 1,
         "Sweets": 2
       },
-      "episodeCount": 8
+      "episodeCount": 8,
+      "totalEpisodeCount": 14,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 64.29
     },
     {
       "bgmId": "551123",
@@ -807,7 +909,10 @@
         "Sweets": 5,
         "Bread": 1
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
     },
     {
       "bgmId": "409468",
@@ -830,7 +935,10 @@
         "Seafood": 7,
         "Sweets": 4
       },
-      "episodeCount": 10
+      "episodeCount": 10,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 84.62
     },
     {
       "bgmId": "505258",
@@ -851,7 +959,10 @@
         "Drinks": 1,
         "Seafood": 3
       },
-      "episodeCount": 5
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
     },
     {
       "bgmId": "510710",
@@ -872,7 +983,10 @@
         "Bread": 1,
         "Rice": 1
       },
-      "episodeCount": 9
+      "episodeCount": 9,
+      "totalEpisodeCount": 16,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 68.75
     },
     {
       "bgmId": "558088",
@@ -892,7 +1006,10 @@
         "Drinks": 6,
         "Meat": 1
       },
-      "episodeCount": 8
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
     },
     {
       "bgmId": "568572",
@@ -914,7 +1031,10 @@
         "Drinks": 6,
         "Meat": 2
       },
-      "episodeCount": 11
+      "episodeCount": 11,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 45.83
     },
     {
       "bgmId": "621358",
@@ -936,7 +1056,10 @@
         "Produce": 4,
         "Noodles": 1
       },
-      "episodeCount": 7
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
     },
     {
       "bgmId": "576351",
@@ -947,17 +1070,20 @@
       "score": 5.9,
       "rank": 7824,
       "votes": 426,
-      "frames": 16,
+      "frames": 17,
       "savedFrames": 0,
-      "uniqueFoodCount": 27,
+      "uniqueFoodCount": 31,
       "groupMentionCounts": {
         "Drinks": 5,
-        "Produce": 13,
+        "Produce": 17,
         "Sweets": 3,
         "Meat": 5,
         "Bread": 1
       },
-      "episodeCount": 9
+      "episodeCount": 10,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 13,
+      "verifiedEpisodePercent": 54.17
     },
     {
       "bgmId": "524486",
@@ -981,7 +1107,10 @@
         "Noodles": 1,
         "Rice": 2
       },
-      "episodeCount": 7
+      "episodeCount": 7,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 33.33
     },
     {
       "bgmId": "599171",
@@ -1002,7 +1131,10 @@
         "Bread": 3,
         "Sweets": 2
       },
-      "episodeCount": 7
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
     },
     {
       "bgmId": "571555",
@@ -1023,7 +1155,10 @@
         "Sweets": 1,
         "Seafood": 3
       },
-      "episodeCount": 4
+      "episodeCount": 4,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 30.77
     },
     {
       "bgmId": "571910",
@@ -1035,7 +1170,7 @@
       "rank": 0,
       "votes": 7,
       "frames": 11,
-      "savedFrames": 0,
+      "savedFrames": 1,
       "uniqueFoodCount": 27,
       "groupMentionCounts": {
         "Produce": 18,
@@ -1044,7 +1179,10 @@
         "Bread": 2,
         "Meat": 1
       },
-      "episodeCount": 5
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
     },
     {
       "bgmId": "520633",
@@ -1067,7 +1205,10 @@
         "Seafood": 1,
         "Meat": 1
       },
-      "episodeCount": 5
+      "episodeCount": 5,
+      "totalEpisodeCount": 14,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 28.57
     },
     {
       "bgmId": "608227",
@@ -1089,7 +1230,10 @@
         "Bread": 1,
         "Seafood": 1
       },
-      "episodeCount": 5
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 50
     },
     {
       "bgmId": "526789",
@@ -1110,7 +1254,10 @@
         "Meat": 1,
         "Rice": 1
       },
-      "episodeCount": 6
+      "episodeCount": 6,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
     },
     {
       "bgmId": "506149",
@@ -1128,7 +1275,10 @@
         "Produce": 5,
         "Drinks": 1
       },
-      "episodeCount": 7
+      "episodeCount": 7,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 76.92
     },
     {
       "bgmId": "583746",
@@ -1148,7 +1298,10 @@
         "Sweets": 1,
         "Noodles": 2
       },
-      "episodeCount": 1
+      "episodeCount": 1,
+      "totalEpisodeCount": 1,
+      "verifiedEpisodeCount": 0,
+      "verifiedEpisodePercent": 0
     },
     {
       "bgmId": "565304",
@@ -1170,7 +1323,10 @@
         "Bread": 1,
         "Meat": 1
       },
-      "episodeCount": 6
+      "episodeCount": 6,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 50
     },
     {
       "bgmId": "515856",
@@ -1192,7 +1348,10 @@
         "Meat": 3,
         "Noodles": 1
       },
-      "episodeCount": 3
+      "episodeCount": 3,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 33.33
     },
     {
       "bgmId": "609183",
@@ -1213,7 +1372,10 @@
         "Meat": 4,
         "Sweets": 1
       },
-      "episodeCount": 3
+      "episodeCount": 3,
+      "totalEpisodeCount": 8,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 50
     },
     {
       "bgmId": "580133",
@@ -1235,7 +1397,10 @@
         "Produce": 3,
         "Seafood": 1
       },
-      "episodeCount": 3
+      "episodeCount": 3,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 16.67
     },
     {
       "bgmId": "616453",
@@ -1256,7 +1421,10 @@
         "Sweets": 1,
         "Drinks": 2
       },
-      "episodeCount": 4
+      "episodeCount": 4,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 50
     },
     {
       "bgmId": "459601",
@@ -1276,7 +1444,10 @@
         "Produce": 5,
         "Rice": 1
       },
-      "episodeCount": 1
+      "episodeCount": 1,
+      "totalEpisodeCount": 1,
+      "verifiedEpisodeCount": 0,
+      "verifiedEpisodePercent": 0
     },
     {
       "bgmId": "621602",
@@ -1293,13 +1464,16 @@
       "groupMentionCounts": {
         "Meat": 1
       },
-      "episodeCount": 1
+      "episodeCount": 1,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 1,
+      "verifiedEpisodePercent": 8.33
     }
   ],
   "stats": {
-    "verifiedFrames": 1738,
+    "verifiedFrames": 1740,
     "subjectCount": 58,
-    "foodMentionCount": 3542,
+    "foodMentionCount": 3552,
     "uniqueFoodCount": 566,
     "avgScore": 5.856896551724139,
     "highFoodAvgScore": 6.093333333333334,
@@ -1331,25 +1505,23 @@
           "whipped cream",
           "chocolate sauce",
           "strawberry shortcake",
-          "cake",
-          "pastry",
-          "sandwich",
-          "jam",
-          "steak",
-          "potato",
+          "cheese",
+          "bread",
           "lettuce",
           "tomato",
-          "cheese",
-          "carrot",
-          "tart",
-          "peach",
-          "thyme",
-          "naan",
+          "corn",
+          "broccoli",
+          "cauliflower",
+          "scallop",
+          "sausage",
           "fish",
-          "lobster",
-          "octopus",
-          "clams",
-          "noodles"
+          "omelet",
+          "cucumber",
+          "eggplant",
+          "almond",
+          "cashew",
+          "walnut",
+          "spam musubi"
         ],
         "saved": true,
         "title": "女仆小姐的贪吃日常",
@@ -1358,7 +1530,7 @@
         "subjectName": "メイドさんは食べるだけ",
         "episodeUrl": "https://bgm.tv/ep/1663103",
         "foodName": "collage",
-        "relativePath": "assets/hero-collage-cab5e88759.webp",
+        "relativePath": "assets/hero-collage-d87888e1bf.webp",
         "collage": true
       },
       {
@@ -1376,6 +1548,19 @@
       },
       {
         "foodNames": [
+          "cheese",
+          "bread"
+        ],
+        "saved": true,
+        "title": "异世界悠闲农家 第二季",
+        "score": 6.5,
+        "timestamp": "00:00:24.000",
+        "subjectName": "異世界のんびり農家２",
+        "episodeUrl": "https://bgm.tv/ep/1663077",
+        "relativePath": "assets/03--c900bf9cef.webp"
+      },
+      {
+        "foodNames": [
           "cake",
           "pastry",
           "sandwich",
@@ -1388,73 +1573,7 @@
         "timestamp": "00:06:34.000",
         "subjectName": "逃がした魚は大きかったが釣りあげた魚が大きすぎた件",
         "episodeUrl": "https://bgm.tv/ep/1656233",
-        "relativePath": "assets/03--00e9a06d65.webp"
-      },
-      {
-        "foodNames": [
-          "naan",
-          "curry"
-        ],
-        "saved": true,
-        "title": "石纪元 科学与未来 第3部分",
-        "score": 7.2,
-        "timestamp": "00:06:36.000",
-        "subjectName": "Dr.STONE SCIENCE FUTURE 第3クール",
-        "episodeUrl": "https://bgm.tv/ep/1656189",
-        "relativePath": "assets/04-dr-stone-science-future-3-06fe16a27b.webp"
-      },
-      {
-        "foodNames": [
-          "lettuce",
-          "tomato",
-          "corn",
-          "broccoli",
-          "cauliflower"
-        ],
-        "saved": true,
-        "title": "异世界悠闲农家 第二季",
-        "score": 6.5,
-        "timestamp": "00:02:32.000",
-        "subjectName": "異世界のんびり農家２",
-        "episodeUrl": "https://bgm.tv/ep/1663075",
-        "relativePath": "assets/05--2dcb803371.webp"
-      },
-      {
-        "foodNames": [
-          "sea urchin"
-        ],
-        "saved": true,
-        "title": "公鸡斗士",
-        "score": 6.2,
-        "timestamp": "00:00:32.000",
-        "subjectName": "ニワトリ・ファイター",
-        "episodeUrl": "https://bgm.tv/ep/1656081",
-        "relativePath": "assets/06--fd3ab66856.webp"
-      },
-      {
-        "foodNames": [
-          "red bean cake"
-        ],
-        "saved": true,
-        "title": "楠木邸的神明庭院",
-        "score": 5.3,
-        "timestamp": "00:00:46.000",
-        "subjectName": "神の庭付き楠木邸",
-        "episodeUrl": "https://bgm.tv/ep/1656153",
-        "relativePath": "assets/07--2fd9ae450b.webp"
-      },
-      {
-        "foodNames": [
-          "omelet",
-          "ketchup"
-        ],
-        "saved": true,
-        "title": "转生成自动贩卖机的我今天也在迷宫徘徊 第三季",
-        "score": 5.3,
-        "timestamp": "00:08:14.000",
-        "subjectName": "自動販売機に生まれ変わった俺は迷宮を彷徨う 3rd season",
-        "episodeUrl": "https://bgm.tv/ep/1663137",
-        "relativePath": "assets/08-3rd-season-61557c59df.webp"
+        "relativePath": "assets/04--00e9a06d65.webp"
       },
       {
         "foodNames": [
@@ -1469,62 +1588,7 @@
         "timestamp": "00:00:38.000",
         "subjectName": "神の雫",
         "episodeUrl": "https://bgm.tv/ep/1653385",
-        "relativePath": "assets/09--c72b2418dd.webp"
-      },
-      {
-        "foodNames": [
-          "cake",
-          "strawberry",
-          "whipped cream"
-        ],
-        "saved": true,
-        "title": "租借女友 第五季",
-        "score": 3.9,
-        "timestamp": "00:09:59.000",
-        "subjectName": "彼女、お借りします 第5期",
-        "episodeUrl": "https://bgm.tv/ep/1663066",
-        "relativePath": "assets/10-5-0f14db46b0.webp"
-      },
-      {
-        "foodNames": [
-          "salmon",
-          "dill",
-          "sauce"
-        ],
-        "saved": true,
-        "title": "想结束这场“我爱你”的游戏",
-        "score": 6.5,
-        "timestamp": "00:13:21.000",
-        "subjectName": "愛してるゲームを終わらせたい",
-        "episodeUrl": "https://bgm.tv/ep/1665050",
-        "relativePath": "assets/11--0bd5990224.webp"
-      },
-      {
-        "foodNames": [
-          "spaghetti",
-          "ice cream",
-          "tomato",
-          "basil"
-        ],
-        "saved": true,
-        "title": "魔法姐妹露露特莉莉",
-        "score": 6.5,
-        "timestamp": "00:08:58.000",
-        "subjectName": "魔法の姉妹ルルットリリィ",
-        "episodeUrl": "https://bgm.tv/ep/1669367",
-        "relativePath": "assets/12--5315503a22.webp"
-      },
-      {
-        "foodNames": [
-          "bacon"
-        ],
-        "saved": true,
-        "title": "尖帽子的魔法工房",
-        "score": 6.4,
-        "timestamp": "00:08:29.000",
-        "subjectName": "とんがり帽子のアトリエ",
-        "episodeUrl": "https://bgm.tv/ep/1656037",
-        "relativePath": "assets/13--01caf146b2.webp"
+        "relativePath": "assets/05--c72b2418dd.webp"
       },
       {
         "foodNames": [
@@ -1538,124 +1602,89 @@
         "timestamp": "00:03:36.000",
         "subjectName": "転生したらスライムだった件 第4期",
         "episodeUrl": "https://bgm.tv/ep/1654619",
-        "relativePath": "assets/14-4-a06724304e.webp"
+        "relativePath": "assets/06-4-a06724304e.webp"
       },
       {
         "foodNames": [
-          "strawberry",
-          "cake",
-          "chocolate"
+          "naan",
+          "curry"
         ],
         "saved": true,
-        "title": "库兹马唱歌的话家里哆啰啰",
+        "title": "石纪元 科学与未来 第3部分",
+        "score": 7.2,
+        "timestamp": "00:06:36.000",
+        "subjectName": "Dr.STONE SCIENCE FUTURE 第3クール",
+        "episodeUrl": "https://bgm.tv/ep/1656189",
+        "relativePath": "assets/07-dr-stone-science-future-3-06fe16a27b.webp"
+      },
+      {
+        "foodNames": [
+          "sea urchin"
+        ],
+        "saved": true,
+        "title": "公鸡斗士",
         "score": 6.2,
-        "timestamp": "00:14:11.000",
-        "subjectName": "クジマ歌えば家ほろろ",
-        "episodeUrl": "https://bgm.tv/ep/1657955",
-        "relativePath": "assets/15--64e96a5581.webp"
+        "timestamp": "00:00:32.000",
+        "subjectName": "ニワトリ・ファイター",
+        "episodeUrl": "https://bgm.tv/ep/1656081",
+        "relativePath": "assets/08--fd3ab66856.webp"
       },
       {
         "foodNames": [
-          "ramen",
-          "pork",
-          "nori",
-          "egg",
-          "scallions",
-          "fish cake"
+          "roasted chicken",
+          "french fries",
+          "pizza",
+          "tomato",
+          "lettuce",
+          "ketchup",
+          "mayonnaise"
         ],
         "saved": true,
-        "title": "杀手青春",
-        "score": 6,
-        "timestamp": "00:07:58.000",
-        "subjectName": "キルアオ",
-        "episodeUrl": "https://bgm.tv/ep/1655889",
-        "relativePath": "assets/16--c9fa6ab1e5.webp"
+        "title": "一叠间漫画咖啡屋生活！",
+        "score": 6.1,
+        "timestamp": "00:00:44.000",
+        "subjectName": "一畳間まんきつ暮らし！",
+        "episodeUrl": "https://bgm.tv/ep/1658262",
+        "relativePath": "assets/09--daca1a5f68.webp"
       },
       {
         "foodNames": [
-          "hamburger"
+          "red bean cake"
         ],
         "saved": true,
-        "title": "和班上第二可爱的女孩成为朋友",
-        "score": 5.8,
-        "timestamp": "00:09:27.000",
-        "subjectName": "クラスで2番目に可愛い女の子と友だちになった",
-        "episodeUrl": "https://bgm.tv/ep/1655973",
-        "relativePath": "assets/17-2-fd46aad4c3.webp"
-      },
-      {
-        "foodNames": [
-          "sliders",
-          "sandwiches",
-          "sliced meat",
-          "bread"
-        ],
-        "saved": true,
-        "title": "欺诈游戏",
-        "score": 5.8,
-        "timestamp": "00:03:45.000",
-        "subjectName": "LIAR GAME",
-        "episodeUrl": "https://bgm.tv/ep/1663090",
-        "relativePath": "assets/18-liar-game-6b1787a2f1.webp"
+        "title": "楠木邸的神明庭院",
+        "score": 5.3,
+        "timestamp": "00:00:46.000",
+        "subjectName": "神の庭付き楠木邸",
+        "episodeUrl": "https://bgm.tv/ep/1656153",
+        "relativePath": "assets/10--2fd9ae450b.webp"
       },
       {
         "foodNames": [
           "omelet",
-          "parsley",
-          "miso soup",
-          "edamame"
+          "ketchup"
         ],
         "saved": true,
-        "title": "关于邻家的天使大人不知不觉把我惯成了废人这档子事 第二季",
+        "title": "转生成自动贩卖机的我今天也在迷宫徘徊 第三季",
         "score": 5.3,
-        "timestamp": "00:04:52.000",
-        "subjectName": "お隣の天使様にいつの間にか駄目人間にされていた件2",
-        "episodeUrl": "https://bgm.tv/ep/1617416",
-        "relativePath": "assets/19-2-79ae49db33.webp"
+        "timestamp": "00:08:14.000",
+        "subjectName": "自動販売機に生まれ変わった俺は迷宮を彷徨う 3rd season",
+        "episodeUrl": "https://bgm.tv/ep/1663137",
+        "relativePath": "assets/11-3rd-season-61557c59df.webp"
       },
       {
         "foodNames": [
-          "toast",
-          "butter"
+          "cake",
+          "strawberry",
+          "whipped cream"
         ],
         "saved": true,
-        "title": "当前、正被打扰中！",
-        "score": 5.3,
-        "timestamp": "00:04:02.000",
-        "subjectName": "ただいま、おじゃまされます！",
-        "episodeUrl": "https://bgm.tv/ep/1656021",
-        "relativePath": "assets/20--30b0fa618d.webp"
-      },
-      {
-        "foodNames": [
-          "tofu",
-          "shiitake mushroom",
-          "beef",
-          "enoki mushroom",
-          "greens"
-        ],
-        "saved": true,
-        "title": "上伊那牡丹，酒醉身姿似百合花般",
-        "score": 7.2,
-        "timestamp": "00:08:04.000",
-        "subjectName": "上伊那ぼたん、酔へる姿は百合の花",
-        "episodeUrl": "https://bgm.tv/ep/1655877",
-        "relativePath": "assets/21--93272418c1.webp"
-      },
-      {
-        "foodNames": [
-          "lettuce",
-          "tomato",
-          "cucumber",
-          "mayonnaise"
-        ],
-        "saved": true,
-        "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
-        "score": 7.1,
-        "timestamp": "00:19:30.000",
-        "subjectName": "女神『異世界転生何になりたいですか』俺「勇者の肋骨で」",
-        "episodeUrl": "https://bgm.tv/ep/1670641",
-        "relativePath": "assets/22--df26160733.webp"
+        "title": "租借女友 第五季",
+        "score": 3.9,
+        "timestamp": "00:09:59.000",
+        "subjectName": "彼女、お借りします 第5期",
+        "episodeUrl": "https://bgm.tv/ep/1663066",
+        "relativePath": "assets/12-5-0f14db46b0.webp"
       },
       {
         "foodNames": [
@@ -1675,7 +1704,165 @@
         "timestamp": "00:08:27.000",
         "subjectName": "あかね噺",
         "episodeUrl": "https://bgm.tv/ep/1656164",
-        "relativePath": "assets/23--2762417832.webp"
+        "relativePath": "assets/13--2762417832.webp"
+      },
+      {
+        "foodNames": [
+          "salmon",
+          "dill",
+          "sauce"
+        ],
+        "saved": true,
+        "title": "想结束这场“我爱你”的游戏",
+        "score": 6.5,
+        "timestamp": "00:13:21.000",
+        "subjectName": "愛してるゲームを終わらせたい",
+        "episodeUrl": "https://bgm.tv/ep/1665050",
+        "relativePath": "assets/14--0bd5990224.webp"
+      },
+      {
+        "foodNames": [
+          "spaghetti",
+          "ice cream",
+          "tomato",
+          "basil"
+        ],
+        "saved": true,
+        "title": "魔法姐妹露露特莉莉",
+        "score": 6.5,
+        "timestamp": "00:08:58.000",
+        "subjectName": "魔法の姉妹ルルットリリィ",
+        "episodeUrl": "https://bgm.tv/ep/1669367",
+        "relativePath": "assets/15--5315503a22.webp"
+      },
+      {
+        "foodNames": [
+          "bacon"
+        ],
+        "saved": true,
+        "title": "尖帽子的魔法工房",
+        "score": 6.4,
+        "timestamp": "00:08:29.000",
+        "subjectName": "とんがり帽子のアトリエ",
+        "episodeUrl": "https://bgm.tv/ep/1656037",
+        "relativePath": "assets/16--01caf146b2.webp"
+      },
+      {
+        "foodNames": [
+          "strawberry",
+          "cake",
+          "chocolate"
+        ],
+        "saved": true,
+        "title": "库兹马唱歌的话家里哆啰啰",
+        "score": 6.2,
+        "timestamp": "00:14:11.000",
+        "subjectName": "クジマ歌えば家ほろろ",
+        "episodeUrl": "https://bgm.tv/ep/1657955",
+        "relativePath": "assets/17--64e96a5581.webp"
+      },
+      {
+        "foodNames": [
+          "ramen",
+          "pork",
+          "nori",
+          "egg",
+          "scallions",
+          "fish cake"
+        ],
+        "saved": true,
+        "title": "杀手青春",
+        "score": 6,
+        "timestamp": "00:07:58.000",
+        "subjectName": "キルアオ",
+        "episodeUrl": "https://bgm.tv/ep/1655889",
+        "relativePath": "assets/18--c9fa6ab1e5.webp"
+      },
+      {
+        "foodNames": [
+          "hamburger"
+        ],
+        "saved": true,
+        "title": "和班上第二可爱的女孩成为朋友",
+        "score": 5.8,
+        "timestamp": "00:09:27.000",
+        "subjectName": "クラスで2番目に可愛い女の子と友だちになった",
+        "episodeUrl": "https://bgm.tv/ep/1655973",
+        "relativePath": "assets/19-2-fd46aad4c3.webp"
+      },
+      {
+        "foodNames": [
+          "sliders",
+          "sandwiches",
+          "sliced meat",
+          "bread"
+        ],
+        "saved": true,
+        "title": "欺诈游戏",
+        "score": 5.8,
+        "timestamp": "00:03:45.000",
+        "subjectName": "LIAR GAME",
+        "episodeUrl": "https://bgm.tv/ep/1663090",
+        "relativePath": "assets/20-liar-game-6b1787a2f1.webp"
+      },
+      {
+        "foodNames": [
+          "omelet",
+          "parsley",
+          "miso soup",
+          "edamame"
+        ],
+        "saved": true,
+        "title": "关于邻家的天使大人不知不觉把我惯成了废人这档子事 第二季",
+        "score": 5.3,
+        "timestamp": "00:04:52.000",
+        "subjectName": "お隣の天使様にいつの間にか駄目人間にされていた件2",
+        "episodeUrl": "https://bgm.tv/ep/1617416",
+        "relativePath": "assets/21-2-79ae49db33.webp"
+      },
+      {
+        "foodNames": [
+          "toast",
+          "butter"
+        ],
+        "saved": true,
+        "title": "当前、正被打扰中！",
+        "score": 5.3,
+        "timestamp": "00:04:02.000",
+        "subjectName": "ただいま、おじゃまされます！",
+        "episodeUrl": "https://bgm.tv/ep/1656021",
+        "relativePath": "assets/22--30b0fa618d.webp"
+      },
+      {
+        "foodNames": [
+          "tofu",
+          "shiitake mushroom",
+          "beef",
+          "enoki mushroom",
+          "greens"
+        ],
+        "saved": true,
+        "title": "上伊那牡丹，酒醉身姿似百合花般",
+        "score": 7.2,
+        "timestamp": "00:08:04.000",
+        "subjectName": "上伊那ぼたん、酔へる姿は百合の花",
+        "episodeUrl": "https://bgm.tv/ep/1655877",
+        "relativePath": "assets/23--93272418c1.webp"
+      },
+      {
+        "foodNames": [
+          "lettuce",
+          "tomato",
+          "cucumber",
+          "mayonnaise"
+        ],
+        "saved": true,
+        "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
+        "score": 7.1,
+        "timestamp": "00:19:30.000",
+        "subjectName": "女神『異世界転生何になりたいですか』俺「勇者の肋骨で」",
+        "episodeUrl": "https://bgm.tv/ep/1670641",
+        "relativePath": "assets/24--df26160733.webp"
       },
       {
         "foodNames": [
@@ -1689,7 +1876,7 @@
         "timestamp": "00:05:58.000",
         "subjectName": "黄泉のツガイ",
         "episodeUrl": "https://bgm.tv/ep/1575778",
-        "relativePath": "assets/24--5635322918.webp"
+        "relativePath": "assets/25--5635322918.webp"
       },
       {
         "foodNames": [
@@ -1707,7 +1894,7 @@
         "timestamp": "00:08:55.000",
         "subjectName": "左ききのエレン",
         "episodeUrl": "https://bgm.tv/ep/1655964",
-        "relativePath": "assets/25--633560721e.webp"
+        "relativePath": "assets/26--633560721e.webp"
       },
       {
         "foodNames": [
@@ -1719,7 +1906,7 @@
         "timestamp": "00:10:12.000",
         "subjectName": "自称悪役令嬢な婚約者の観察記録。",
         "episodeUrl": "https://bgm.tv/ep/1656056",
-        "relativePath": "assets/26--11b14e2c1b.webp"
+        "relativePath": "assets/27--11b14e2c1b.webp"
       },
       {
         "foodNames": [
@@ -1736,7 +1923,7 @@
         "timestamp": "00:19:52.000",
         "subjectName": "マリッジトキシン",
         "episodeUrl": "https://bgm.tv/ep/1656010",
-        "relativePath": "assets/27--e44127ccca.webp"
+        "relativePath": "assets/28--e44127ccca.webp"
       },
       {
         "foodNames": [
@@ -1748,7 +1935,7 @@
         "timestamp": "00:21:38.000",
         "subjectName": "カナン様はあくまでチョロい",
         "episodeUrl": "https://bgm.tv/ep/1632732",
-        "relativePath": "assets/28--b8ee1321bb.webp"
+        "relativePath": "assets/29--b8ee1321bb.webp"
       },
       {
         "foodNames": [
@@ -1764,7 +1951,21 @@
         "timestamp": "00:13:55.000",
         "subjectName": "ようこそ実力至上主義の教室へ 4th Season",
         "episodeUrl": "https://bgm.tv/ep/1650963",
-        "relativePath": "assets/29-4th-season-b81a27fd78.webp"
+        "relativePath": "assets/30-4th-season-b81a27fd78.webp"
+      },
+      {
+        "foodNames": [
+          "kiwi",
+          "raspberry",
+          "lettuce"
+        ],
+        "saved": true,
+        "title": "无自觉圣女今天也无意识地释放力量",
+        "score": 5.4,
+        "timestamp": "00:15:05.000",
+        "subjectName": "無自覚聖女は今日も無意識に力を垂れ流す",
+        "episodeUrl": "https://bgm.tv/ep/1699957",
+        "relativePath": "assets/31--3e8644e5a5.webp"
       },
       {
         "foodNames": [
@@ -1778,7 +1979,7 @@
         "timestamp": "00:12:25.000",
         "subjectName": "NEEDY GIRL OVERDOSE",
         "episodeUrl": "https://bgm.tv/ep/1590702",
-        "relativePath": "assets/30-needy-girl-overdose-5ddc7af3d1.webp"
+        "relativePath": "assets/32-needy-girl-overdose-5ddc7af3d1.webp"
       },
       {
         "foodNames": [
@@ -1792,7 +1993,7 @@
         "timestamp": "00:10:00.000",
         "subjectName": "最強の職業は勇者でも賢者でもなく鑑定士（仮）らしいですよ？",
         "episodeUrl": "https://bgm.tv/ep/1656180",
-        "relativePath": "assets/31--6cf1570a9b.webp"
+        "relativePath": "assets/33--6cf1570a9b.webp"
       },
       {
         "foodNames": [
@@ -1808,7 +2009,7 @@
         "timestamp": "00:25:57.000",
         "subjectName": "異世界でチート能力を手にした俺は、現実世界をも無双する～レベルアップは人生を変えた～ スペシャル",
         "episodeUrl": null,
-        "relativePath": "assets/32--2652be4cea.webp"
+        "relativePath": "assets/34--2652be4cea.webp"
       },
       {
         "foodNames": [
@@ -1820,7 +2021,7 @@
         "timestamp": "00:16:22.000",
         "subjectName": "春夏秋冬代行者 春の舞",
         "episodeUrl": "https://bgm.tv/ep/1661194",
-        "relativePath": "assets/33--9413be858f.webp"
+        "relativePath": "assets/35--9413be858f.webp"
       },
       {
         "foodNames": [
@@ -1832,40 +2033,14 @@
         "timestamp": "00:18:46.000",
         "subjectName": "また殺されてしまったのですね、探偵様",
         "episodeUrl": "https://bgm.tv/ep/1663125",
-        "relativePath": "assets/34--8e83d87f30.webp"
-      },
-      {
-        "foodNames": [
-          "pork belly",
-          "meat"
-        ],
-        "saved": true,
-        "title": "吞噬魔物的冒险者",
-        "score": 4,
-        "timestamp": "00:03:02.000",
-        "subjectName": "魔物喰らいの冒険者～俺だけ魔物を喰らって強くなる～",
-        "episodeUrl": "https://bgm.tv/ep/1669332",
-        "relativePath": "assets/35--674da6859a.webp"
-      },
-      {
-        "foodNames": [
-          "cookie",
-          "tea"
-        ],
-        "saved": true,
-        "title": "女仆小姐的贪吃日常",
-        "score": 5.8,
-        "timestamp": "00:04:21.000",
-        "subjectName": "メイドさんは食べるだけ",
-        "episodeUrl": "https://bgm.tv/ep/1663102",
-        "relativePath": "assets/36--30d4cd5786.webp"
+        "relativePath": "assets/36--8e83d87f30.webp"
       }
     ],
     "taxonomyGroups": [
       {
         "name": "Produce",
         "displayName": "蔬果",
-        "count": 633,
+        "count": 638,
         "images": [
           {
             "foodNames": [
@@ -2061,6 +2236,26 @@
         "images": [
           {
             "foodNames": [
+              "omelet",
+              "bacon",
+              "ketchup"
+            ],
+            "groupFoodNames": [
+              "omelet",
+              "bacon"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "神之水滴",
+            "score": 5.1,
+            "timestamp": "00:18:23.000",
+            "subjectName": "神の雫",
+            "episodeUrl": "https://bgm.tv/ep/1653396",
+            "relativePath": "assets/taxonomy-meat-01-24d12aebb4.webp"
+          },
+          {
+            "foodNames": [
               "pork belly",
               "meat"
             ],
@@ -2076,7 +2271,7 @@
             "timestamp": "00:03:02.000",
             "subjectName": "魔物喰らいの冒険者～俺だけ魔物を喰らって強くなる～",
             "episodeUrl": "https://bgm.tv/ep/1669332",
-            "relativePath": "assets/taxonomy-meat-01-674da6859a.webp"
+            "relativePath": "assets/taxonomy-meat-02-674da6859a.webp"
           },
           {
             "foodNames": [
@@ -2099,53 +2294,35 @@
             "timestamp": "00:15:41.000",
             "subjectName": "彼女、お借りします 第5期",
             "episodeUrl": "https://bgm.tv/ep/1663064",
-            "relativePath": "assets/taxonomy-meat-02-03e781ed84.webp"
+            "relativePath": "assets/taxonomy-meat-03-03e781ed84.webp"
           },
           {
             "foodNames": [
-              "bacon"
-            ],
-            "groupFoodNames": [
-              "bacon"
-            ],
-            "group": "Meat",
-            "firstGroupFoodIndex": 0,
-            "saved": true,
-            "title": "尖帽子的魔法工房",
-            "score": 6.4,
-            "timestamp": "00:08:29.000",
-            "subjectName": "とんがり帽子のアトリエ",
-            "episodeUrl": "https://bgm.tv/ep/1656037",
-            "relativePath": "assets/taxonomy-meat-03-01caf146b2.webp"
-          },
-          {
-            "foodNames": [
-              "steak",
-              "lettuce",
+              "omelet",
+              "cucumber",
               "tomato",
-              "cheese",
-              "potato",
-              "carrot"
+              "eggplant",
+              "lettuce"
             ],
             "groupFoodNames": [
-              "steak"
+              "omelet"
             ],
             "group": "Meat",
             "firstGroupFoodIndex": 0,
             "saved": true,
-            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
-            "score": 5.9,
-            "timestamp": "00:12:55.000",
-            "subjectName": "逃がした魚は大きかったが釣りあげた魚が大きすぎた件",
-            "episodeUrl": "https://bgm.tv/ep/1656224",
-            "relativePath": "assets/taxonomy-meat-04-7020d61cce.webp"
+            "title": "异世界悠闲农家 第二季",
+            "score": 6.5,
+            "timestamp": "00:04:49.000",
+            "subjectName": "異世界のんびり農家２",
+            "episodeUrl": "https://bgm.tv/ep/1663075",
+            "relativePath": "assets/taxonomy-meat-04-a52e97a33e.webp"
           }
         ]
       },
       {
         "name": "Sweets",
         "displayName": "甜点",
-        "count": 338,
+        "count": 340,
         "images": [
           {
             "foodNames": [
@@ -2363,6 +2540,29 @@
           },
           {
             "foodNames": [
+              "shrimp",
+              "salmon roe",
+              "lotus root",
+              "peas",
+              "rice",
+              "pork"
+            ],
+            "groupFoodNames": [
+              "shrimp",
+              "salmon roe"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "一叠间漫画咖啡屋生活！",
+            "score": 6.1,
+            "timestamp": "00:05:17.000",
+            "subjectName": "一畳間まんきつ暮らし！",
+            "episodeUrl": "https://bgm.tv/ep/1658262",
+            "relativePath": "assets/taxonomy-seafood-03-5b4d9fa1f6.webp"
+          },
+          {
+            "foodNames": [
               "salmon",
               "dill",
               "sauce"
@@ -2378,28 +2578,7 @@
             "timestamp": "00:13:21.000",
             "subjectName": "愛してるゲームを終わらせたい",
             "episodeUrl": "https://bgm.tv/ep/1665050",
-            "relativePath": "assets/taxonomy-seafood-03-0bd5990224.webp"
-          },
-          {
-            "foodNames": [
-              "shrimp",
-              "tomato",
-              "parsley",
-              "apple",
-              "mushroom"
-            ],
-            "groupFoodNames": [
-              "shrimp"
-            ],
-            "group": "Seafood",
-            "firstGroupFoodIndex": 0,
-            "saved": true,
-            "title": "欢迎来到实力至上主义的教室 第四季",
-            "score": 6,
-            "timestamp": "00:13:55.000",
-            "subjectName": "ようこそ実力至上主義の教室へ 4th Season",
-            "episodeUrl": "https://bgm.tv/ep/1650963",
-            "relativePath": "assets/taxonomy-seafood-04-b81a27fd78.webp"
+            "relativePath": "assets/taxonomy-seafood-04-0bd5990224.webp"
           }
         ]
       },
@@ -2600,6 +2779,20 @@
           },
           {
             "foodNames": [
+              "fig",
+              "rice"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "关于我转生变成史莱姆这档事 第四季",
+            "score": 6.3,
+            "timestamp": "00:03:47.000",
+            "subjectName": "転生したらスライムだった件 第4期",
+            "episodeUrl": "https://bgm.tv/ep/1654619",
+            "relativePath": "assets/top-food-rice-02-321f8d1ea2.webp"
+          },
+          {
+            "foodNames": [
               "curry",
               "rice"
             ],
@@ -2610,7 +2803,7 @@
             "timestamp": "00:08:25.000",
             "subjectName": "メイドさんは食べるだけ",
             "episodeUrl": "https://bgm.tv/ep/1663101",
-            "relativePath": "assets/top-food-rice-02-10afc8504b.webp"
+            "relativePath": "assets/top-food-rice-03-10afc8504b.webp"
           },
           {
             "foodNames": [
@@ -2627,7 +2820,7 @@
             "timestamp": "00:17:30.000",
             "subjectName": "神の庭付き楠木邸",
             "episodeUrl": "https://bgm.tv/ep/1656161",
-            "relativePath": "assets/top-food-rice-03-2287e08ce4.webp"
+            "relativePath": "assets/top-food-rice-04-2287e08ce4.webp"
           },
           {
             "foodNames": [
@@ -2644,7 +2837,7 @@
             "timestamp": "00:25:57.000",
             "subjectName": "異世界でチート能力を手にした俺は、現実世界をも無双する～レベルアップは人生を変えた～ スペシャル",
             "episodeUrl": null,
-            "relativePath": "assets/top-food-rice-04-2652be4cea.webp"
+            "relativePath": "assets/top-food-rice-05-2652be4cea.webp"
           },
           {
             "foodNames": [
@@ -2658,25 +2851,7 @@
             "timestamp": "00:15:40.000",
             "subjectName": "ドロヘドロ Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288943",
-            "relativePath": "assets/top-food-rice-05-9b28c9b2a3.webp"
-          },
-          {
-            "foodNames": [
-              "rice",
-              "fried chicken",
-              "cabbage",
-              "tomato",
-              "miso soup",
-              "tofu"
-            ],
-            "foodName": "rice",
-            "saved": false,
-            "title": "加油吧！中村君！！",
-            "score": 7.3,
-            "timestamp": "00:16:01.000",
-            "subjectName": "ガンバレ！中村くん！！",
-            "episodeUrl": "https://bgm.tv/ep/1656216",
-            "relativePath": "assets/top-food-rice-06-25a9025678.webp"
+            "relativePath": "assets/top-food-rice-06-9b28c9b2a3.webp"
           }
         ]
       },
@@ -2969,6 +3144,21 @@
         "images": [
           {
             "foodNames": [
+              "scallop",
+              "sausage",
+              "fish"
+            ],
+            "foodName": "sausage",
+            "saved": true,
+            "title": "异世界悠闲农家 第二季",
+            "score": 6.5,
+            "timestamp": "00:03:40.000",
+            "subjectName": "異世界のんびり農家２",
+            "episodeUrl": "https://bgm.tv/ep/1663084",
+            "relativePath": "assets/top-food-sausage-01-4d76d91908.webp"
+          },
+          {
+            "foodNames": [
               "bell pepper",
               "sausage"
             ],
@@ -2979,7 +3169,7 @@
             "timestamp": "00:15:11.000",
             "subjectName": "ニワトリ・ファイター",
             "episodeUrl": "https://bgm.tv/ep/1656086",
-            "relativePath": "assets/top-food-sausage-01-976ed8bf63.webp"
+            "relativePath": "assets/top-food-sausage-02-976ed8bf63.webp"
           },
           {
             "foodNames": [
@@ -2992,7 +3182,7 @@
             "timestamp": "00:13:28.000",
             "subjectName": "ガンバレ！中村くん！！",
             "episodeUrl": "https://bgm.tv/ep/1656213",
-            "relativePath": "assets/top-food-sausage-02-303bca1b62.webp"
+            "relativePath": "assets/top-food-sausage-03-303bca1b62.webp"
           },
           {
             "foodNames": [
@@ -3006,7 +3196,7 @@
             "timestamp": "00:04:08.000",
             "subjectName": "上伊那ぼたん、酔へる姿は百合の花",
             "episodeUrl": "https://bgm.tv/ep/1682470",
-            "relativePath": "assets/top-food-sausage-03-24118e2ed8.webp"
+            "relativePath": "assets/top-food-sausage-04-24118e2ed8.webp"
           },
           {
             "foodNames": [
@@ -3019,7 +3209,7 @@
             "timestamp": "00:06:02.000",
             "subjectName": "Dr.STONE SCIENCE FUTURE 第3クール",
             "episodeUrl": "https://bgm.tv/ep/1656189",
-            "relativePath": "assets/top-food-sausage-04-0564e4dff0.webp"
+            "relativePath": "assets/top-food-sausage-05-0564e4dff0.webp"
           },
           {
             "foodNames": [
@@ -3033,22 +3223,7 @@
             "timestamp": "00:01:25.000",
             "subjectName": "女神『異世界転生何になりたいですか』俺「勇者の肋骨で」",
             "episodeUrl": "https://bgm.tv/ep/1670642",
-            "relativePath": "assets/top-food-sausage-05-5d044710ea.webp"
-          },
-          {
-            "foodNames": [
-              "sausage",
-              "corn",
-              "tofu"
-            ],
-            "foodName": "sausage",
-            "saved": false,
-            "title": "木头风纪委员和迷你裙JK的故事",
-            "score": 7.1,
-            "timestamp": "00:06:01.000",
-            "subjectName": "ポンコツ風紀委員とスカート丈が不適切なJKの話",
-            "episodeUrl": "https://bgm.tv/ep/1656050",
-            "relativePath": "assets/top-food-sausage-06-e8503b4f3a.webp"
+            "relativePath": "assets/top-food-sausage-06-5d044710ea.webp"
           }
         ]
       },
@@ -3172,6 +3347,60 @@
           },
           {
             "foodNames": [
+              "roasted chicken",
+              "french fries",
+              "pizza",
+              "tomato",
+              "lettuce",
+              "ketchup",
+              "mayonnaise"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "一叠间漫画咖啡屋生活！",
+            "score": 6.1,
+            "timestamp": "00:00:44.000",
+            "subjectName": "一畳間まんきつ暮らし！",
+            "episodeUrl": "https://bgm.tv/ep/1658262",
+            "relativePath": "assets/top-food-tomato-02-daca1a5f68.webp"
+          },
+          {
+            "foodNames": [
+              "shrimp",
+              "tomato",
+              "parsley",
+              "apple",
+              "mushroom"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "欢迎来到实力至上主义的教室 第四季",
+            "score": 6,
+            "timestamp": "00:13:55.000",
+            "subjectName": "ようこそ実力至上主義の教室へ 4th Season",
+            "episodeUrl": "https://bgm.tv/ep/1650963",
+            "relativePath": "assets/top-food-tomato-03-b81a27fd78.webp"
+          },
+          {
+            "foodNames": [
+              "steak",
+              "lettuce",
+              "tomato",
+              "cheese",
+              "potato",
+              "carrot"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
+            "score": 5.9,
+            "timestamp": "00:12:55.000",
+            "subjectName": "逃がした魚は大きかったが釣りあげた魚が大きすぎた件",
+            "episodeUrl": "https://bgm.tv/ep/1656224",
+            "relativePath": "assets/top-food-tomato-04-7020d61cce.webp"
+          },
+          {
+            "foodNames": [
               "steak",
               "lettuce",
               "tomato",
@@ -3187,7 +3416,7 @@
             "timestamp": "00:04:01.000",
             "subjectName": "LIAR GAME",
             "episodeUrl": "https://bgm.tv/ep/1663090",
-            "relativePath": "assets/top-food-tomato-02-fda856bef1.webp"
+            "relativePath": "assets/top-food-tomato-05-fda856bef1.webp"
           },
           {
             "foodNames": [
@@ -3206,60 +3435,7 @@
             "timestamp": "00:15:48.000",
             "subjectName": "ドロヘドロ Season 2",
             "episodeUrl": "https://bgm.tv/ep/1288943",
-            "relativePath": "assets/top-food-tomato-03-d6fcb0b2f5.webp"
-          },
-          {
-            "foodNames": [
-              "rice",
-              "sausage",
-              "tomato",
-              "omelet",
-              "vegetables"
-            ],
-            "foodName": "tomato",
-            "saved": false,
-            "title": "加油吧！中村君！！",
-            "score": 7.3,
-            "timestamp": "00:03:26.000",
-            "subjectName": "ガンバレ！中村くん！！",
-            "episodeUrl": "https://bgm.tv/ep/1667950",
-            "relativePath": "assets/top-food-tomato-04-e0a5e190e3.webp"
-          },
-          {
-            "foodNames": [
-              "rice",
-              "lemon",
-              "tomato",
-              "broccoli",
-              "sausage",
-              "egg"
-            ],
-            "foodName": "tomato",
-            "saved": false,
-            "title": "女神“异世界转生想成为什么”我“勇者的肋骨”",
-            "score": 7.1,
-            "timestamp": "00:14:33.000",
-            "subjectName": "女神『異世界転生何になりたいですか』俺「勇者の肋骨で」",
-            "episodeUrl": "https://bgm.tv/ep/1670644",
-            "relativePath": "assets/top-food-tomato-05-02f8463ed3.webp"
-          },
-          {
-            "foodNames": [
-              "rice",
-              "fried chicken",
-              "broccoli",
-              "hamburger steak",
-              "lettuce",
-              "tomato"
-            ],
-            "foodName": "tomato",
-            "saved": false,
-            "title": "木头风纪委员和迷你裙JK的故事",
-            "score": 7.1,
-            "timestamp": "00:20:38.000",
-            "subjectName": "ポンコツ風紀委員とスカート丈が不適切なJKの話",
-            "episodeUrl": "https://bgm.tv/ep/1656045",
-            "relativePath": "assets/top-food-tomato-06-0d86093b60.webp"
+            "relativePath": "assets/top-food-tomato-06-d6fcb0b2f5.webp"
           }
         ]
       },
@@ -3449,6 +3625,7 @@
               "asparagus",
               "potato",
               "greens",
+              "mushrooms",
               "red wine",
               "wine",
               "coffee",
@@ -3464,12 +3641,11 @@
               "jam",
               "blackcurrant",
               "toast",
-              "yogurt",
-              "blackcurrants"
+              "yogurt"
             ],
             "foodName": "collage",
             "saved": true,
-            "relativePath": "assets/most-collage--3db5deae07.webp",
+            "relativePath": "assets/most-collage--6a0ae15ad9.webp",
             "episodeUrl": "https://bgm.tv/ep/1653385",
             "collage": true
           }
@@ -3493,6 +3669,19 @@
             "episodeUrl": "https://bgm.tv/ep/1663099"
           },
           {
+            "title": "异世界悠闲农家 第二季",
+            "subjectName": "異世界のんびり農家２",
+            "meta": "高质量图",
+            "value": 8,
+            "foodNames": [
+              "cheese",
+              "bread"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--02--c900bf9cef.webp",
+            "episodeUrl": "https://bgm.tv/ep/1663077"
+          },
+          {
             "title": "关于虽然逃走的鱼很大、但钓上来的鱼却太大了这件事",
             "subjectName": "逃がした魚は大きかったが釣りあげた魚が大きすぎた件",
             "meta": "高质量图",
@@ -3503,20 +3692,8 @@
               "sauce"
             ],
             "saved": true,
-            "relativePath": "assets/most--02--8f9a1f4d04.webp",
+            "relativePath": "assets/most--03--8f9a1f4d04.webp",
             "episodeUrl": "https://bgm.tv/ep/1656225"
-          },
-          {
-            "title": "石纪元 科学与未来 第3部分",
-            "subjectName": "Dr.STONE SCIENCE FUTURE 第3クール",
-            "meta": "高质量图",
-            "value": 3,
-            "foodNames": [
-              "churros"
-            ],
-            "saved": true,
-            "relativePath": "assets/most--03-dr-stone-science-future-3-1f96050dcf.webp",
-            "episodeUrl": "https://bgm.tv/ep/1656188"
           }
         ]
       },

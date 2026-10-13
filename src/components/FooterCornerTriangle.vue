@@ -21,7 +21,7 @@ import { RouterLink } from 'vue-router';
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('@/assets/footer-corner-maid-san-01.webp');
+  background-image: url('@/assets/footer-corner-summer-2026.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;

@@ -1,20 +1,43 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { computed, ref, watch } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import FoodScoreChart from '@/components/charts/FoodScoreChart.vue';
 import { GOLD, RED, TEAL } from '@/constants/colors.js';
 
-const DATA_PATH = `${import.meta.env.BASE_URL}assets/anime-food-spring-2026/data.json`;
-const ASSET_BASE_PATH = `${import.meta.env.BASE_URL}assets/anime-food-spring-2026/`;
+const props = defineProps({
+  reportSeason: { type: String, required: true }
+});
+const assetBasePath = computed(
+  () => `${import.meta.env.BASE_URL}assets/anime-food-${props.reportSeason}/`
+);
+const router = useRouter();
+const reportSeasons = [
+  { value: 'summer-2026', label: '2026 夏季动画', routeName: 'tabemono' },
+  { value: 'spring-2026', label: '2026 春季动画', routeName: 'tabemono-spring-2026' }
+];
+const seasonCountLabel = computed(
+  () => reportSeasons.find((season) => season.value === props.reportSeason)?.label || ''
+);
+const changeReportSeason = (event) => {
+  const season = reportSeasons.find((season) => season.value === event.target.value);
+  if (season && season.value !== props.reportSeason) router.push({ name: season.routeName });
+};
 
 const report = ref(null);
 const loading = ref(true);
 const error = ref('');
+const showAllSubjects = ref(false);
+const scoreView = ref('grouped');
+const scoreViews = [
+  { value: 'grouped', label: '分组对比' },
+  { value: 'scatter', label: '散点图' }
+];
 
 const formatter = new Intl.NumberFormat('zh-CN');
 
 const formatNumber = (value) => formatter.format(Number(value) || 0);
 const formatScore = (value) => (Number.isFinite(Number(value)) ? Number(value).toFixed(2) : '0.00');
-const imageUrl = (relativePath) => `${ASSET_BASE_PATH}${relativePath || ''}`.replace(/\/+/g, '/');
+const imageUrl = (relativePath) => `${assetBasePath.value}${relativePath || ''}`;
 
 const subjects = computed(() => report.value?.subjects || []);
 const stats = computed(() => report.value?.stats || {});
@@ -32,6 +55,12 @@ const mostLists = computed(() =>
 );
 const leaderboard = computed(() => subjects.value.slice(0, 10));
 const bottomLeaderboard = computed(() => subjects.value.slice(-5));
+const middleLeaderboard = computed(() =>
+  subjects.value.slice(
+    leaderboard.value.length,
+    subjects.value.length - bottomLeaderboard.value.length
+  )
+);
 const topFoods = computed(() => topFoodImages.value.slice(0, 8));
 const subjectByName = computed(
   () => new Map(subjects.value.map((subject) => [subject.subjectName, subject]))
@@ -123,21 +152,36 @@ const scoreDensity = computed(() => {
   }));
 });
 
-const fetchReport = async () => {
+const fetchReport = async (season, onCleanup) => {
+  const controller = new AbortController();
+  onCleanup(() => controller.abort());
+  showAllSubjects.value = false;
   loading.value = true;
   error.value = '';
+  report.value = null;
   try {
-    const response = await fetch(`${DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
+    const response = await fetch(
+      `${import.meta.env.BASE_URL}assets/anime-food-${season}/data.json?v=${Date.now()}`,
+      {
+        cache: 'no-store',
+        signal: controller.signal
+      }
+    );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    report.value = await response.json();
+    const data = await response.json();
+    if (!controller.signal.aborted) report.value = data;
   } catch (fetchError) {
-    error.value = `食物报告读取失败：${fetchError.message}`;
+    if (!controller.signal.aborted) error.value = `食物报告读取失败：${fetchError.message}`;
   } finally {
-    loading.value = false;
+    if (!controller.signal.aborted) loading.value = false;
   }
 };
 
-onMounted(fetchReport);
+watch(
+  () => props.reportSeason,
+  (season, _previousSeason, onCleanup) => fetchReport(season, onCleanup),
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -155,11 +199,31 @@ onMounted(fetchReport);
 
       <div class="relative z-[2] mx-auto w-[min(1180px,calc(100%-2rem))]">
         <div class="relative z-[2] max-w-[47rem] md:ml-[clamp(0rem,16vw,13rem)]">
-          <p
-            class="mb-4 w-fit border border-[#241c18]/15 bg-white/60 px-3.5 py-2 text-[clamp(0.78rem,1.7vw,0.98rem)] font-extrabold"
-          >
-            2026年春季动画
-          </p>
+          <div class="relative mb-5 w-fit">
+            <select
+              class="cursor-pointer appearance-none border-0 bg-gold py-2 pr-9 pl-3.5 text-[clamp(0.95rem,1.7vw,1.15rem)] font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#241c18]"
+              :value="reportSeason"
+              aria-label="选择美食报告季度"
+              @change="changeReportSeason"
+            >
+              <option
+                v-for="season in reportSeasons"
+                :key="season.value"
+                :value="season.value"
+                class="bg-background text-foreground"
+              >
+                {{ season.label }}
+              </option>
+            </select>
+            <svg
+              class="pointer-events-none absolute top-1/2 right-3 size-3 -translate-y-1/2"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="m2 4 4 4 4-4" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
           <h1
             class="mb-5 max-w-[48.75rem] text-[clamp(3rem,8vw,7.25rem)] leading-[0.88] font-black"
           >
@@ -182,9 +246,9 @@ onMounted(fetchReport);
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
                 formatNumber(stats.subjectCount)
               }}</strong>
-              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80"
-                >2026 春季动画</span
-              >
+              <span class="mt-2 block text-sm leading-snug font-extrabold text-[#47372e]/80">{{
+                seasonCountLabel
+              }}</span>
             </div>
             <div class="border border-[#241c18]/15 bg-white/60 p-4">
               <strong class="block text-[clamp(1.8rem,4vw,2.8rem)] leading-none font-black">{{
@@ -250,6 +314,11 @@ onMounted(fetchReport);
                 <th
                   class="px-5 py-3.5 text-right text-xs font-extrabold tracking-[0.18em] whitespace-nowrap text-muted-foreground uppercase"
                 >
+                  含食物集数
+                </th>
+                <th
+                  class="px-5 py-3.5 text-right text-xs font-extrabold tracking-[0.18em] whitespace-nowrap text-muted-foreground uppercase"
+                >
                   评分
                 </th>
               </tr>
@@ -273,17 +342,60 @@ onMounted(fetchReport);
                   {{ formatNumber(subject.frames) }}
                 </td>
                 <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap"
+                >
+                  {{ subject.episodeCount }}/{{ subject.totalEpisodeCount }}
+                </td>
+                <td
                   class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-pink"
                 >
                   {{ formatScore(subject.score) }}
                 </td>
               </tr>
-              <tr v-if="bottomLeaderboard.length">
+              <tr v-if="subjects.length > leaderboard.length">
                 <td
-                  colspan="4"
-                  class="border-t border-foreground/15 px-5 py-4 text-center text-xl tracking-[0.5em] text-muted-foreground"
+                  colspan="5"
+                  class="border-t border-foreground/15 px-5 py-4 text-center text-xl text-muted-foreground"
                 >
-                  ......
+                  <button
+                    type="button"
+                    class="cursor-pointer font-bold tracking-[0.5em] hover:text-foreground focus-visible:text-foreground"
+                    :aria-expanded="showAllSubjects"
+                    @click="showAllSubjects = !showAllSubjects"
+                  >
+                    {{ showAllSubjects ? '收起' : '......' }}
+                  </button>
+                </td>
+              </tr>
+              <tr
+                v-for="(subject, index) in showAllSubjects ? middleLeaderboard : []"
+                :key="`middle-${subject.bgmId}`"
+              >
+                <td
+                  class="w-18 border-t border-foreground/15 px-5 py-4 align-middle text-xl text-muted-foreground"
+                >
+                  {{ leaderboard.length + index + 1 }}
+                </td>
+                <td class="border-t border-foreground/15 px-5 py-4 align-middle">
+                  <RouterLink class="grid hover:text-teal" :to="`/subject/${subject.bgmId}`">
+                    <strong class="text-xl">{{ subject.title }}</strong>
+                    <small class="text-muted-foreground">{{ subject.originalTitle }}</small>
+                  </RouterLink>
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-teal"
+                >
+                  {{ formatNumber(subject.frames) }}
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap"
+                >
+                  {{ subject.episodeCount }}/{{ subject.totalEpisodeCount }}
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-pink"
+                >
+                  {{ formatScore(subject.score) }}
                 </td>
               </tr>
               <tr v-for="(subject, index) in bottomLeaderboard" :key="`bottom-${subject.bgmId}`">
@@ -302,6 +414,11 @@ onMounted(fetchReport);
                   class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-teal"
                 >
                   {{ formatNumber(subject.frames) }}
+                </td>
+                <td
+                  class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap"
+                >
+                  {{ subject.episodeCount }}/{{ subject.totalEpisodeCount }}
                 </td>
                 <td
                   class="border-t border-foreground/15 px-5 py-4 text-right align-middle text-xl font-extrabold whitespace-nowrap text-pink"
@@ -540,11 +657,39 @@ onMounted(fetchReport);
           <p
             class="mt-5 max-w-5xl text-[clamp(0.95rem,1.2vw,1.1rem)] leading-8 text-muted-foreground"
           >
-            按单集平均食物数量分组，比较各组平均评分。
+            <template v-if="scoreView === 'grouped'">
+              按单集平均食物数量分组，比较各组平均评分。
+            </template>
+            <template v-else>
+              每个点代表一部动画，横轴为每个含食物集的平均入选画面数，纵轴为作品评分。悬停查看详情，点击查看作品。
+            </template>
           </p>
         </div>
 
-        <div class="border border-foreground/25 bg-background p-5 sm:p-7">
+        <div
+          class="flex w-fit border border-foreground/25"
+          role="group"
+          aria-label="评分关系展示方式"
+        >
+          <button
+            v-for="view in scoreViews"
+            :key="view.value"
+            type="button"
+            :aria-pressed="scoreView === view.value"
+            :class="[
+              'cursor-pointer px-4 py-2 text-sm font-bold transition-colors focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground',
+              scoreView === view.value
+                ? 'bg-gold text-neutral-900'
+                : 'bg-background text-muted-foreground hover:text-foreground'
+            ]"
+            @click="scoreView = view.value"
+          >
+            {{ view.label }}
+          </button>
+        </div>
+
+        <FoodScoreChart v-if="scoreView === 'scatter'" :subjects="subjects" />
+        <div v-else class="border border-foreground/25 bg-background p-5 sm:p-7">
           <div class="grid gap-3">
             <div
               class="grid grid-cols-[6.5rem_1fr_4rem] items-end gap-4 text-sm text-muted-foreground"

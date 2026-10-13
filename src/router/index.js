@@ -119,6 +119,15 @@ const router = createRouter({
       name: 'tabemono',
       alias: '/food',
       component: () => import('../views/FoodView.vue'),
+      props: { reportSeason: 'summer-2026' },
+      meta: { title: '动画 x 食物 | netaba.re' }
+    },
+    {
+      path: '/tabemono/2026-spring',
+      name: 'tabemono-spring-2026',
+      alias: '/food/2026-spring',
+      component: () => import('../views/FoodView.vue'),
+      props: { reportSeason: 'spring-2026' },
       meta: { title: '动画 x 食物 | netaba.re' }
     },
     // Debug route - only available in development mode

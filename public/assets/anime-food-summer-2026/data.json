@@ -1,0 +1,3914 @@
+{
+  "generatedAt": "2026-10-13T08:03:03.202Z",
+  "startDate": "2026-07-01",
+  "endDate": "2026-09-30",
+  "subjects": [
+    {
+      "bgmId": "615835",
+      "title": "炒翻天",
+      "originalTitle": "鉄鍋のジャン！",
+      "subjectName": "鉄鍋のジャン",
+      "airDate": "2026-07-05",
+      "score": 7.4,
+      "rank": 1187,
+      "votes": 3280,
+      "frames": 160,
+      "savedFrames": 12,
+      "uniqueFoodCount": 156,
+      "groupMentionCounts": {
+        "Noodles": 14,
+        "Seafood": 15,
+        "Rice": 13,
+        "Produce": 56,
+        "Meat": 66,
+        "Drinks": 5,
+        "Sweets": 8,
+        "Bread": 4
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
+    },
+    {
+      "bgmId": "636067",
+      "title": "无用圣女的异世界美食之旅 凭借隐藏技能召唤露营车",
+      "originalTitle": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+      "subjectName": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+      "airDate": "2026-07-06",
+      "score": 4.9,
+      "rank": 9771,
+      "votes": 273,
+      "frames": 118,
+      "savedFrames": 2,
+      "uniqueFoodCount": 109,
+      "groupMentionCounts": {
+        "Produce": 61,
+        "Drinks": 4,
+        "Meat": 56,
+        "Seafood": 24,
+        "Rice": 19,
+        "Noodles": 2,
+        "Bread": 3,
+        "Sweets": 2
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
+    },
+    {
+      "bgmId": "613438",
+      "title": "我家的弟弟们真是让您费心了",
+      "originalTitle": "うちの弟どもがすみません",
+      "subjectName": "うちの弟どもがすみません",
+      "airDate": "2026-07-03",
+      "score": 5.5,
+      "rank": 8195,
+      "votes": 135,
+      "frames": 48,
+      "savedFrames": 4,
+      "uniqueFoodCount": 86,
+      "groupMentionCounts": {
+        "Seafood": 5,
+        "Rice": 8,
+        "Produce": 20,
+        "Meat": 21,
+        "Drinks": 9,
+        "Sweets": 13,
+        "Noodles": 2,
+        "Bread": 1
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 50
+    },
+    {
+      "bgmId": "569116",
+      "title": "碧蓝之海 第三季",
+      "originalTitle": "ぐらんぶる Season 3",
+      "subjectName": "ぐらんぶる Season 3",
+      "airDate": "2026-07-06",
+      "score": 7,
+      "rank": 2819,
+      "votes": 4006,
+      "frames": 47,
+      "savedFrames": 1,
+      "uniqueFoodCount": 62,
+      "groupMentionCounts": {
+        "Drinks": 17,
+        "Meat": 11,
+        "Rice": 6,
+        "Seafood": 6,
+        "Produce": 11,
+        "Bread": 1,
+        "Sweets": 1,
+        "Noodles": 1
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
+    },
+    {
+      "bgmId": "583729",
+      "title": "BanG Dream! YUME∞MITA",
+      "originalTitle": "BanG Dream! ゆめ∞みた",
+      "subjectName": "BanG Dream! ゆめ∞みた",
+      "airDate": "2026-07-02",
+      "score": 4.7,
+      "rank": 10144,
+      "votes": 5434,
+      "frames": 44,
+      "savedFrames": 3,
+      "uniqueFoodCount": 46,
+      "groupMentionCounts": {
+        "Meat": 16,
+        "Sweets": 13,
+        "Drinks": 5,
+        "Rice": 2,
+        "Bread": 2,
+        "Noodles": 2,
+        "Produce": 4
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 92.31
+    },
+    {
+      "bgmId": "631018",
+      "title": "说了不打算爱我的公爵继承人，不知为何对我宠爱有加",
+      "originalTitle": "「きみを愛する気はない」と言った次期公爵様がなぜか溺愛してきます",
+      "subjectName": "「きみを愛する気はない」と言った次期公爵様がなぜか溺愛してきます",
+      "airDate": "2026-07-04",
+      "score": 5.5,
+      "rank": 8616,
+      "votes": 170,
+      "frames": 44,
+      "savedFrames": 0,
+      "uniqueFoodCount": 49,
+      "groupMentionCounts": {
+        "Produce": 19,
+        "Bread": 12,
+        "Sweets": 20,
+        "Meat": 7,
+        "Drinks": 6,
+        "Rice": 1
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "622206",
+      "title": "尼古喵喵",
+      "originalTitle": "ヤニねこ",
+      "subjectName": "ヤニねこ",
+      "airDate": "2026-07-02",
+      "score": 7.5,
+      "rank": 867,
+      "votes": 8679,
+      "frames": 44,
+      "savedFrames": 1,
+      "uniqueFoodCount": 47,
+      "groupMentionCounts": {
+        "Drinks": 17,
+        "Noodles": 2,
+        "Bread": 2,
+        "Rice": 5,
+        "Meat": 8,
+        "Produce": 3,
+        "Sweets": 7,
+        "Seafood": 2
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 100
+    },
+    {
+      "bgmId": "572613",
+      "title": "不虐待我的继母与继姐",
+      "originalTitle": "いびってこない義母と義姉",
+      "subjectName": "いびってこない義母と義姉",
+      "airDate": "2026-07-08",
+      "score": 6,
+      "rank": 7647,
+      "votes": 621,
+      "frames": 39,
+      "savedFrames": 3,
+      "uniqueFoodCount": 58,
+      "groupMentionCounts": {
+        "Rice": 3,
+        "Produce": 13,
+        "Meat": 9,
+        "Drinks": 9,
+        "Bread": 1,
+        "Sweets": 22,
+        "Seafood": 1
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
+    },
+    {
+      "bgmId": "456080",
+      "title": "转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥们儿",
+      "originalTitle": "転校先の清楚可憐な美少女が、昔男子と思って一緒に遊んだ幼馴染だった件",
+      "subjectName": "転校先の清楚可憐な美少女が、昔男子と思って一緒に遊んだ幼馴染だった件",
+      "airDate": "2026-07-06",
+      "score": 4.9,
+      "rank": 10027,
+      "votes": 1255,
+      "frames": 38,
+      "savedFrames": 2,
+      "uniqueFoodCount": 59,
+      "groupMentionCounts": {
+        "Bread": 2,
+        "Produce": 30,
+        "Meat": 17,
+        "Rice": 8,
+        "Noodles": 5,
+        "Sweets": 7,
+        "Drinks": 2
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "638497",
+      "title": "相反的你和我 第二季",
+      "originalTitle": "正反対な君と僕 第2期",
+      "subjectName": "正反対な君と僕 第2期",
+      "airDate": "2026-07-05",
+      "score": 8,
+      "rank": 215,
+      "votes": 4181,
+      "frames": 37,
+      "savedFrames": 1,
+      "uniqueFoodCount": 47,
+      "groupMentionCounts": {
+        "Sweets": 21,
+        "Bread": 5,
+        "Meat": 4,
+        "Drinks": 6,
+        "Produce": 3,
+        "Seafood": 2,
+        "Rice": 3,
+        "Noodles": 1
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 92.31
+    },
+    {
+      "bgmId": "541285",
+      "title": "与你相恋到生命尽头",
+      "originalTitle": "きみが死ぬまで恋をしたい",
+      "subjectName": "きみが死ぬまで恋をしたい",
+      "airDate": "2026-07-07",
+      "score": 6.6,
+      "rank": 4604,
+      "votes": 3838,
+      "frames": 33,
+      "savedFrames": 2,
+      "uniqueFoodCount": 36,
+      "groupMentionCounts": {
+        "Bread": 11,
+        "Rice": 4,
+        "Sweets": 9,
+        "Meat": 5,
+        "Produce": 11,
+        "Drinks": 2,
+        "Seafood": 1
+      },
+      "episodeCount": 10,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 76.92
+    },
+    {
+      "bgmId": "584641",
+      "title": "奇招百出的维多利亚",
+      "originalTitle": "手札が多めのビクトリア",
+      "subjectName": "手札が多めのビクトリア",
+      "airDate": "2026-07-07",
+      "score": 5.9,
+      "rank": 7834,
+      "votes": 526,
+      "frames": 33,
+      "savedFrames": 0,
+      "uniqueFoodCount": 56,
+      "groupMentionCounts": {
+        "Bread": 9,
+        "Produce": 23,
+        "Drinks": 8,
+        "Sweets": 3,
+        "Meat": 6,
+        "Noodles": 1,
+        "Seafood": 4
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 9,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 100
+    },
+    {
+      "bgmId": "617123",
+      "title": "少女怪兽焦糖味",
+      "originalTitle": "乙女怪獣キャラメリゼ",
+      "subjectName": "乙女怪獣キャラメリゼ",
+      "airDate": "2026-07-02",
+      "score": 6.2,
+      "rank": 6793,
+      "votes": 1752,
+      "frames": 31,
+      "savedFrames": 3,
+      "uniqueFoodCount": 42,
+      "groupMentionCounts": {
+        "Sweets": 22,
+        "Drinks": 4,
+        "Bread": 3,
+        "Produce": 8,
+        "Meat": 2,
+        "Rice": 1
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "598058",
+      "title": "超超超超超喜欢你的100个女朋友 第三季",
+      "originalTitle": "君のことが大大大大大好きな100人の彼女 第3期",
+      "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+      "airDate": "2026-07-05",
+      "score": 7.5,
+      "rank": 1004,
+      "votes": 3023,
+      "frames": 31,
+      "savedFrames": 2,
+      "uniqueFoodCount": 39,
+      "groupMentionCounts": {
+        "Meat": 17,
+        "Drinks": 4,
+        "Produce": 6,
+        "Bread": 2,
+        "Noodles": 7,
+        "Sweets": 2,
+        "Rice": 3,
+        "Seafood": 2
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "570583",
+      "title": "Grow Up Show ～向日葵马戏团～",
+      "originalTitle": "グロウアップショウ ～ひまわりのサーカス団～",
+      "subjectName": "グロウアップショウ ～ひまわりのサーカス団～",
+      "airDate": "2026-07-04",
+      "score": 7.2,
+      "rank": 1700,
+      "votes": 4157,
+      "frames": 30,
+      "savedFrames": 3,
+      "uniqueFoodCount": 49,
+      "groupMentionCounts": {
+        "Produce": 14,
+        "Sweets": 7,
+        "Rice": 2,
+        "Drinks": 11,
+        "Meat": 3,
+        "Bread": 1,
+        "Seafood": 2,
+        "Noodles": 1
+      },
+      "episodeCount": 10,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 76.92
+    },
+    {
+      "bgmId": "552533",
+      "title": "穹庐下的魔女",
+      "originalTitle": "天幕のジャードゥーガル",
+      "subjectName": "天幕のジャードゥーガル",
+      "airDate": "2026-07-04",
+      "score": 8,
+      "rank": 267,
+      "votes": 6500,
+      "frames": 29,
+      "savedFrames": 0,
+      "uniqueFoodCount": 21,
+      "groupMentionCounts": {
+        "Bread": 2,
+        "Drinks": 4,
+        "Sweets": 5,
+        "Produce": 2,
+        "Meat": 6,
+        "Rice": 1,
+        "Noodles": 1
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "587109",
+      "title": "花织即使是转生也想打架",
+      "originalTitle": "花織さんは転生しても喧嘩がしたい",
+      "subjectName": "花織さんは転生しても喧嘩がしたい",
+      "airDate": "2026-07-11",
+      "score": 6.8,
+      "rank": 3343,
+      "votes": 2826,
+      "frames": 28,
+      "savedFrames": 2,
+      "uniqueFoodCount": 52,
+      "groupMentionCounts": {
+        "Rice": 4,
+        "Produce": 18,
+        "Noodles": 1,
+        "Meat": 9,
+        "Sweets": 7,
+        "Bread": 3,
+        "Drinks": 1,
+        "Seafood": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "530729",
+      "title": "魔法少女奈叶 EXCEEDS Gun Blaze Vengeance",
+      "originalTitle": "魔法少女リリカルなのは EXCEEDS Gun Blaze Vengeance",
+      "subjectName": "魔法少女リリカルなのは EXCEEDS Gun Blaze Vengeance",
+      "airDate": "2026-07-04",
+      "score": 5.1,
+      "rank": 9821,
+      "votes": 698,
+      "frames": 28,
+      "savedFrames": 3,
+      "uniqueFoodCount": 69,
+      "groupMentionCounts": {
+        "Sweets": 15,
+        "Meat": 17,
+        "Produce": 23,
+        "Rice": 9,
+        "Seafood": 2,
+        "Bread": 4,
+        "Noodles": 3
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "602733",
+      "title": "才女的侍从 在满是高岭之花的贵族学校暗中照顾（毫无生活自理能力的）学院第一大小姐",
+      "originalTitle": "才女のお世話 高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました",
+      "subjectName": "才女のお世話 高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました",
+      "airDate": "2026-07-04",
+      "score": 5.6,
+      "rank": 9038,
+      "votes": 1113,
+      "frames": 27,
+      "savedFrames": 1,
+      "uniqueFoodCount": 46,
+      "groupMentionCounts": {
+        "Produce": 13,
+        "Rice": 2,
+        "Seafood": 3,
+        "Meat": 5,
+        "Sweets": 10,
+        "Bread": 2,
+        "Drinks": 9
+      },
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
+    },
+    {
+      "bgmId": "339515",
+      "title": "幼女战记 第二季",
+      "originalTitle": "幼女戦記Ⅱ",
+      "subjectName": "幼女戦記Ⅱ",
+      "airDate": "2026-07-08",
+      "score": 7.1,
+      "rank": 2086,
+      "votes": 1825,
+      "frames": 26,
+      "savedFrames": 2,
+      "uniqueFoodCount": 19,
+      "groupMentionCounts": {
+        "Drinks": 14,
+        "Bread": 9,
+        "Produce": 4,
+        "Meat": 2,
+        "Sweets": 1,
+        "Seafood": 1
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "538760",
+      "title": "猫与龙",
+      "originalTitle": "猫と竜",
+      "subjectName": "猫と竜",
+      "airDate": "2026-07-04",
+      "score": 6.8,
+      "rank": 3398,
+      "votes": 1543,
+      "frames": 26,
+      "savedFrames": 0,
+      "uniqueFoodCount": 37,
+      "groupMentionCounts": {
+        "Bread": 10,
+        "Produce": 18,
+        "Meat": 12,
+        "Drinks": 3,
+        "Seafood": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "637124",
+      "title": "花样少年少女 第二季",
+      "originalTitle": "花ざかりの君たちへ 第2期",
+      "subjectName": "花ざかりの君たちへ 第2期",
+      "airDate": "2026-07-01",
+      "score": 5.7,
+      "rank": 7589,
+      "votes": 126,
+      "frames": 26,
+      "savedFrames": 5,
+      "uniqueFoodCount": 48,
+      "groupMentionCounts": {
+        "Bread": 3,
+        "Noodles": 5,
+        "Produce": 7,
+        "Sweets": 8,
+        "Meat": 3,
+        "Drinks": 5,
+        "Seafood": 4,
+        "Rice": 2
+      },
+      "episodeCount": 12,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 92.31
+    },
+    {
+      "bgmId": "528828",
+      "title": "骸骨骑士大人异世界冒险中 第二季",
+      "originalTitle": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+      "subjectName": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+      "airDate": "2026-07-06",
+      "score": 5.1,
+      "rank": 9723,
+      "votes": 530,
+      "frames": 26,
+      "savedFrames": 4,
+      "uniqueFoodCount": 40,
+      "groupMentionCounts": {
+        "Rice": 2,
+        "Seafood": 6,
+        "Bread": 4,
+        "Meat": 17,
+        "Produce": 15,
+        "Drinks": 2,
+        "Sweets": 3,
+        "Noodles": 2
+      },
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
+    },
+    {
+      "bgmId": "495291",
+      "title": "再见菈菈",
+      "originalTitle": "さよならララ",
+      "subjectName": "さよならララ",
+      "airDate": "2026-07-05",
+      "score": 6.5,
+      "rank": 5427,
+      "votes": 5198,
+      "frames": 25,
+      "savedFrames": 8,
+      "uniqueFoodCount": 39,
+      "groupMentionCounts": {
+        "Meat": 4,
+        "Produce": 10,
+        "Rice": 6,
+        "Seafood": 5,
+        "Bread": 2,
+        "Sweets": 6,
+        "Drinks": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 11,
+      "verifiedEpisodePercent": 91.67
+    },
+    {
+      "bgmId": "614594",
+      "title": "令和妖神斑小姐",
+      "originalTitle": "令和のダラさん",
+      "subjectName": "令和のダラさん",
+      "airDate": "2026-07-02",
+      "score": 6.4,
+      "rank": 5740,
+      "votes": 639,
+      "frames": 25,
+      "savedFrames": 0,
+      "uniqueFoodCount": 31,
+      "groupMentionCounts": {
+        "Noodles": 7,
+        "Sweets": 4,
+        "Drinks": 8,
+        "Produce": 5,
+        "Seafood": 3,
+        "Rice": 4
+      },
+      "episodeCount": 11,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 12,
+      "verifiedEpisodePercent": 92.31
+    },
+    {
+      "bgmId": "603352",
+      "title": "文豪野犬 汪！第二季",
+      "originalTitle": "文豪ストレイドッグス わん！２",
+      "subjectName": "文豪ストレイドッグス わん！２",
+      "airDate": "2026-07-02",
+      "score": 6,
+      "rank": 6073,
+      "votes": 91,
+      "frames": 24,
+      "savedFrames": 0,
+      "uniqueFoodCount": 36,
+      "groupMentionCounts": {
+        "Sweets": 4,
+        "Rice": 3,
+        "Meat": 5,
+        "Produce": 9,
+        "Seafood": 2,
+        "Noodles": 1,
+        "Bread": 2,
+        "Drinks": 2
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "563745",
+      "title": "鬼的新娘",
+      "originalTitle": "鬼の花嫁",
+      "subjectName": "鬼の花嫁",
+      "airDate": "2026-07-04",
+      "score": 4.1,
+      "rank": 10236,
+      "votes": 323,
+      "frames": 23,
+      "savedFrames": 1,
+      "uniqueFoodCount": 45,
+      "groupMentionCounts": {
+        "Drinks": 7,
+        "Meat": 4,
+        "Produce": 10,
+        "Bread": 4,
+        "Sweets": 14,
+        "Rice": 4,
+        "Seafood": 8
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "571784",
+      "title": "在超市后门吸烟的二人",
+      "originalTitle": "スーパーの裏でヤニ吸うふたり",
+      "subjectName": "スーパーの裏でヤニ吸うふたり",
+      "airDate": "2026-07-09",
+      "score": 6.8,
+      "rank": 3446,
+      "votes": 5685,
+      "frames": 20,
+      "savedFrames": 1,
+      "uniqueFoodCount": 31,
+      "groupMentionCounts": {
+        "Sweets": 3,
+        "Produce": 7,
+        "Rice": 3,
+        "Drinks": 3,
+        "Noodles": 2,
+        "Meat": 1,
+        "Seafood": 2
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "501963",
+      "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+      "originalTitle": "無職転生Ⅲ ～異世界行ったら本気だす～",
+      "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+      "airDate": "2026-07-04",
+      "score": 8,
+      "rank": 270,
+      "votes": 8999,
+      "frames": 19,
+      "savedFrames": 2,
+      "uniqueFoodCount": 24,
+      "groupMentionCounts": {
+        "Bread": 7,
+        "Drinks": 7,
+        "Produce": 7,
+        "Meat": 4,
+        "Seafood": 2,
+        "Rice": 2
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 14,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 57.14
+    },
+    {
+      "bgmId": "579246",
+      "title": "暴怒千金发誓复仇。～凭借魔导书之力打垮祖国～",
+      "originalTitle": "ブチ切れ令嬢は報復を誓いました。～魔導書の力で祖国を叩き潰します～",
+      "subjectName": "ブチ切れ令嬢は報復を誓いました。～魔導書の力で祖国を叩き潰します～",
+      "airDate": "2026-07-06",
+      "score": 4.7,
+      "rank": 10077,
+      "votes": 534,
+      "frames": 18,
+      "savedFrames": 0,
+      "uniqueFoodCount": 24,
+      "groupMentionCounts": {
+        "Drinks": 13,
+        "Meat": 4,
+        "Produce": 6,
+        "Sweets": 3,
+        "Bread": 3,
+        "Seafood": 2,
+        "Rice": 1
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "622633",
+      "title": "THE WORLD IS DANCING 世界在起舞",
+      "originalTitle": "ワールド イズ ダンシング",
+      "subjectName": "ワールド イズ ダンシング",
+      "airDate": "2026-07-02",
+      "score": 5.3,
+      "rank": 9643,
+      "votes": 1170,
+      "frames": 18,
+      "savedFrames": 1,
+      "uniqueFoodCount": 20,
+      "groupMentionCounts": {
+        "Meat": 1,
+        "Produce": 1,
+        "Rice": 2,
+        "Sweets": 4,
+        "Seafood": 2
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 61.54
+    },
+    {
+      "bgmId": "607340",
+      "title": "与奔驰于透明之夜的你，谈一场看不见的恋爱。",
+      "originalTitle": "透明な夜に駆ける君と、目に見えない恋をした。",
+      "subjectName": "透明な夜に駆ける君と、目に見えない恋をした。",
+      "airDate": "2026-07-06",
+      "score": 7.3,
+      "rank": 1574,
+      "votes": 2394,
+      "frames": 18,
+      "savedFrames": 0,
+      "uniqueFoodCount": 23,
+      "groupMentionCounts": {
+        "Drinks": 6,
+        "Bread": 2,
+        "Meat": 2,
+        "Noodles": 2,
+        "Seafood": 1,
+        "Rice": 1
+      },
+      "episodeCount": 10,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 10,
+      "verifiedEpisodePercent": 83.33
+    },
+    {
+      "bgmId": "545917",
+      "title": "画完这个再去死",
+      "originalTitle": "これ描いて死ね",
+      "subjectName": "これ描いて死ね",
+      "airDate": "2026-07-03",
+      "score": 8,
+      "rank": 222,
+      "votes": 4356,
+      "frames": 17,
+      "savedFrames": 0,
+      "uniqueFoodCount": 32,
+      "groupMentionCounts": {
+        "Drinks": 5,
+        "Meat": 4,
+        "Produce": 9,
+        "Seafood": 3,
+        "Noodles": 3,
+        "Rice": 2,
+        "Bread": 2
+      },
+      "episodeCount": 6,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 50
+    },
+    {
+      "bgmId": "545008",
+      "title": "恶女不才，请多关照 ～雏宫蝶鼠换身传～",
+      "originalTitle": "ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～",
+      "subjectName": "ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～",
+      "airDate": "2026-07-12",
+      "score": 7,
+      "rank": 2592,
+      "votes": 4529,
+      "frames": 17,
+      "savedFrames": 2,
+      "uniqueFoodCount": 21,
+      "groupMentionCounts": {
+        "Produce": 8,
+        "Rice": 2,
+        "Sweets": 11,
+        "Drinks": 1,
+        "Bread": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 11,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 81.82
+    },
+    {
+      "bgmId": "627648",
+      "title": "天是红河岸",
+      "originalTitle": "天は赤い河のほとり",
+      "subjectName": "天は赤い河のほとり",
+      "airDate": "2026-07-07",
+      "score": 4,
+      "rank": 10014,
+      "votes": 105,
+      "frames": 17,
+      "savedFrames": 1,
+      "uniqueFoodCount": 33,
+      "groupMentionCounts": {
+        "Produce": 16,
+        "Meat": 3,
+        "Bread": 4,
+        "Seafood": 1,
+        "Drinks": 3,
+        "Sweets": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 24,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 37.5
+    },
+    {
+      "bgmId": "595106",
+      "title": "Let's Go 怪奇组",
+      "originalTitle": "レッツゴー怪奇組",
+      "subjectName": "レッツゴー怪奇組",
+      "airDate": "2026-07-05",
+      "score": 6.5,
+      "rank": 4916,
+      "votes": 293,
+      "frames": 16,
+      "savedFrames": 0,
+      "uniqueFoodCount": 17,
+      "groupMentionCounts": {
+        "Meat": 6,
+        "Produce": 3,
+        "Rice": 4,
+        "Seafood": 1,
+        "Drinks": 3,
+        "Sweets": 2,
+        "Noodles": 2
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "621843",
+      "title": "岩元前辈的推荐",
+      "originalTitle": "岩元先輩ノ推薦",
+      "subjectName": "岩元先輩ノ推薦",
+      "airDate": "2026-07-04",
+      "score": 4,
+      "rank": 9934,
+      "votes": 89,
+      "frames": 16,
+      "savedFrames": 0,
+      "uniqueFoodCount": 24,
+      "groupMentionCounts": {
+        "Drinks": 8,
+        "Meat": 3,
+        "Seafood": 3,
+        "Produce": 6,
+        "Bread": 1,
+        "Rice": 3
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "454083",
+      "title": "碧蓝航线：微速前行！第二季",
+      "originalTitle": "アズールレーン びそくぜんしんっ！にっ!!",
+      "subjectName": "アズールレーン びそくぜんしんっ！にっ!!",
+      "airDate": "2026-07-05",
+      "score": 6.3,
+      "rank": 6027,
+      "votes": 432,
+      "frames": 14,
+      "savedFrames": 1,
+      "uniqueFoodCount": 32,
+      "groupMentionCounts": {
+        "Drinks": 4,
+        "Sweets": 12,
+        "Produce": 3,
+        "Noodles": 3,
+        "Meat": 4,
+        "Bread": 1
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
+    },
+    {
+      "bgmId": "542603",
+      "title": "暗黑灯火",
+      "originalTitle": "BLACK TORCH",
+      "subjectName": "BLACK TORCH",
+      "airDate": "2026-07-04",
+      "score": 5.2,
+      "rank": 9460,
+      "votes": 346,
+      "frames": 13,
+      "savedFrames": 0,
+      "uniqueFoodCount": 17,
+      "groupMentionCounts": {
+        "Drinks": 5,
+        "Sweets": 1,
+        "Seafood": 2,
+        "Bread": 1,
+        "Noodles": 2,
+        "Produce": 1
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "558064",
+      "title": "女主角？圣女？不，我是杂役女仆（自豪）！",
+      "originalTitle": "ヒロイン？聖女？いいえ、オールワークスメイドです（誇）！",
+      "subjectName": "ヒロイン？聖女？いいえ、オールワークスメイドです（誇）！",
+      "airDate": "2026-07-01",
+      "score": 5.9,
+      "rank": 8032,
+      "votes": 939,
+      "frames": 13,
+      "savedFrames": 0,
+      "uniqueFoodCount": 9,
+      "groupMentionCounts": {
+        "Drinks": 8,
+        "Seafood": 1,
+        "Produce": 2,
+        "Bread": 1,
+        "Sweets": 1,
+        "Meat": 1,
+        "Rice": 1
+      },
+      "episodeCount": 8,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "276787",
+      "title": "梅比乌斯之尘",
+      "originalTitle": "メビウス・ダスト",
+      "subjectName": "メビウス・ダスト",
+      "airDate": "2026-07-09",
+      "score": 3.5,
+      "rank": 10316,
+      "votes": 318,
+      "frames": 13,
+      "savedFrames": 0,
+      "uniqueFoodCount": 20,
+      "groupMentionCounts": {
+        "Rice": 1,
+        "Meat": 3,
+        "Sweets": 3,
+        "Drinks": 2,
+        "Noodles": 1,
+        "Produce": 1
+      },
+      "episodeCount": 9,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 9,
+      "verifiedEpisodePercent": 75
+    },
+    {
+      "bgmId": "590786",
+      "title": "『你们先走我断后』，于是10年后我成为了传说",
+      "originalTitle": "ここは俺に任せて先に行けと言ってから10年がたったら伝説になっていた。",
+      "subjectName": "ここは俺に任せて先に行けと言ってから10年がたったら伝説になっていた。",
+      "airDate": "2026-07-06",
+      "score": 5.4,
+      "rank": 9500,
+      "votes": 1026,
+      "frames": 12,
+      "savedFrames": 0,
+      "uniqueFoodCount": 19,
+      "groupMentionCounts": {
+        "Seafood": 1,
+        "Bread": 3,
+        "Produce": 5,
+        "Meat": 4,
+        "Sweets": 2,
+        "Drinks": 2
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "325767",
+      "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+      "originalTitle": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+      "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+      "airDate": "2026-07-07",
+      "score": 7.4,
+      "rank": 1101,
+      "votes": 3874,
+      "frames": 12,
+      "savedFrames": 2,
+      "uniqueFoodCount": 20,
+      "groupMentionCounts": {
+        "Meat": 6,
+        "Rice": 1,
+        "Produce": 6,
+        "Bread": 2,
+        "Drinks": 5,
+        "Noodles": 2
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 8,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "456081",
+      "title": "最强废渣皇子暗中活跃于帝位之争",
+      "originalTitle": "最強出涸らし皇子の暗躍帝位争い",
+      "subjectName": "最強出涸らし皇子の暗躍帝位争い",
+      "airDate": "2026-07-06",
+      "score": 5.3,
+      "rank": 9480,
+      "votes": 442,
+      "frames": 12,
+      "savedFrames": 0,
+      "uniqueFoodCount": 10,
+      "groupMentionCounts": {
+        "Drinks": 6,
+        "Sweets": 4,
+        "Bread": 5,
+        "Produce": 1
+      },
+      "episodeCount": 6,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "571895",
+      "title": "从0位居民开始的边境领主大人",
+      "originalTitle": "領民0人スタートの辺境領主様",
+      "subjectName": "領民0人スタートの辺境領主様",
+      "airDate": "2026-07-10",
+      "score": 5.5,
+      "rank": 9208,
+      "votes": 676,
+      "frames": 12,
+      "savedFrames": 1,
+      "uniqueFoodCount": 17,
+      "groupMentionCounts": {
+        "Produce": 2,
+        "Meat": 5,
+        "Drinks": 4,
+        "Sweets": 1,
+        "Rice": 1
+      },
+      "episodeCount": 7,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 7,
+      "verifiedEpisodePercent": 58.33
+    },
+    {
+      "bgmId": "638151",
+      "title": "地狱模式～喜欢挑战特殊成就的玩家在废设定的异世界成为无双～第二季",
+      "originalTitle": "ヘルモード ～やり込み好きのゲーマーは廃設定の異世界で無双する～ 2nd Season",
+      "subjectName": "ヘルモード ～やり込み好きのゲーマーは廃設定の異世界で無双する～ 2nd Season",
+      "airDate": "2026-07-03",
+      "score": 5.7,
+      "rank": 8700,
+      "votes": 809,
+      "frames": 10,
+      "savedFrames": 0,
+      "uniqueFoodCount": 16,
+      "groupMentionCounts": {
+        "Meat": 5,
+        "Bread": 4,
+        "Sweets": 8,
+        "Drinks": 1,
+        "Produce": 3
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 38.46
+    },
+    {
+      "bgmId": "583862",
+      "title": "世界最强的后卫 ～迷宫国的新人探索者～",
+      "originalTitle": "世界最強の後衛 ～迷宮国の新人探索者～",
+      "subjectName": "世界最強の後衛 ～迷宮国の新人探索者～",
+      "airDate": "2026-07-05",
+      "score": 4.5,
+      "rank": 10126,
+      "votes": 397,
+      "frames": 10,
+      "savedFrames": 0,
+      "uniqueFoodCount": 17,
+      "groupMentionCounts": {
+        "Drinks": 4,
+        "Bread": 1,
+        "Produce": 5,
+        "Seafood": 3,
+        "Meat": 2
+      },
+      "episodeCount": 4,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 33.33
+    },
+    {
+      "bgmId": "569671",
+      "title": "斗球女弹子",
+      "originalTitle": "炎の闘球女 ドッジ弾子",
+      "subjectName": "炎の闘球女 ドッジ弾子",
+      "airDate": "2026-07-06",
+      "score": 5.8,
+      "rank": 7241,
+      "votes": 111,
+      "frames": 10,
+      "savedFrames": 0,
+      "uniqueFoodCount": 20,
+      "groupMentionCounts": {
+        "Drinks": 3,
+        "Meat": 4,
+        "Produce": 3,
+        "Sweets": 2,
+        "Seafood": 1,
+        "Rice": 2,
+        "Bread": 1
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
+    },
+    {
+      "bgmId": "630163",
+      "title": "落第贤者的学院无双～第二次转生的S级开外挂魔术师冒险录～",
+      "originalTitle": "落第賢者の学院無双～二度目の転生、Sランクチート魔術師冒険録～",
+      "subjectName": "落第賢者の学院無双～二度目の転生、Sランクチート魔術師冒険録～",
+      "airDate": "2026-07-01",
+      "score": 4,
+      "rank": 10289,
+      "votes": 765,
+      "frames": 10,
+      "savedFrames": 0,
+      "uniqueFoodCount": 17,
+      "groupMentionCounts": {
+        "Drinks": 2,
+        "Meat": 5,
+        "Seafood": 1,
+        "Produce": 3,
+        "Sweets": 1
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
+    },
+    {
+      "bgmId": "621835",
+      "title": "盗墓王",
+      "originalTitle": "도굴왕",
+      "subjectName": "도굴왕",
+      "airDate": "2026-07-08",
+      "score": 4.5,
+      "rank": 10113,
+      "votes": 410,
+      "frames": 8,
+      "savedFrames": 0,
+      "uniqueFoodCount": 10,
+      "groupMentionCounts": {
+        "Drinks": 3,
+        "Sweets": 2,
+        "Produce": 1
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 6,
+      "verifiedEpisodePercent": 50
+    },
+    {
+      "bgmId": "579787",
+      "title": "LV999的村民",
+      "originalTitle": "LV999の村人",
+      "subjectName": "LV999の村人",
+      "airDate": "2026-07-01",
+      "score": 4.5,
+      "rank": 10150,
+      "votes": 699,
+      "frames": 6,
+      "savedFrames": 0,
+      "uniqueFoodCount": 8,
+      "groupMentionCounts": {
+        "Sweets": 2,
+        "Produce": 5,
+        "Drinks": 1,
+        "Meat": 2
+      },
+      "episodeCount": 5,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 5,
+      "verifiedEpisodePercent": 41.67
+    },
+    {
+      "bgmId": "255209",
+      "title": "二十世纪电气目录",
+      "originalTitle": "二十世紀電氣目録-ユーレカ・エヴリカ-",
+      "subjectName": "二十世紀電氣目録-ユーレカ・エヴリカ-",
+      "airDate": "2026-07-05",
+      "score": 4.7,
+      "rank": 10130,
+      "votes": 3857,
+      "frames": 6,
+      "savedFrames": 0,
+      "uniqueFoodCount": 7,
+      "groupMentionCounts": {
+        "Drinks": 2,
+        "Bread": 1,
+        "Meat": 1
+      },
+      "episodeCount": 4,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 4,
+      "verifiedEpisodePercent": 30.77
+    },
+    {
+      "bgmId": "627136",
+      "title": "从后面来的神威先生",
+      "originalTitle": "うしろの正面カムイさん",
+      "subjectName": "うしろの正面カムイさん",
+      "airDate": "2026-07-03",
+      "score": 5.4,
+      "rank": 9475,
+      "votes": 1757,
+      "frames": 3,
+      "savedFrames": 0,
+      "uniqueFoodCount": 13,
+      "groupMentionCounts": {
+        "Sweets": 2,
+        "Rice": 1,
+        "Drinks": 2,
+        "Meat": 2
+      },
+      "episodeCount": 3,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 3,
+      "verifiedEpisodePercent": 25
+    },
+    {
+      "bgmId": "571896",
+      "title": "人造人009 涅墨西斯",
+      "originalTitle": "サイボーグ009 ネメシス",
+      "subjectName": "サイボーグ009 ネメシス",
+      "airDate": "2026-07-19",
+      "score": 3.7,
+      "rank": 9991,
+      "votes": 82,
+      "frames": 3,
+      "savedFrames": 0,
+      "uniqueFoodCount": 4,
+      "groupMentionCounts": {
+        "Seafood": 2,
+        "Produce": 2,
+        "Drinks": 1
+      },
+      "episodeCount": 2,
+      "totalEpisodeCount": 3,
+      "verifiedEpisodeCount": 2,
+      "verifiedEpisodePercent": 66.67
+    },
+    {
+      "bgmId": "585820",
+      "title": "Clevatess II-魔兽之王与虚假的勇者传承-",
+      "originalTitle": "クレバテスⅡ-魔獣の王と偽りの勇者伝承-",
+      "subjectName": "クレバテスⅡ-魔獣の王と偽りの勇者伝承-",
+      "airDate": "2026-07-08",
+      "score": 6.9,
+      "rank": 3061,
+      "votes": 1592,
+      "frames": 2,
+      "savedFrames": 0,
+      "uniqueFoodCount": 5,
+      "groupMentionCounts": {
+        "Produce": 3,
+        "Meat": 1
+      },
+      "episodeCount": 1,
+      "totalEpisodeCount": 13,
+      "verifiedEpisodeCount": 2,
+      "verifiedEpisodePercent": 15.38
+    },
+    {
+      "bgmId": "412144",
+      "title": "恋爱游戏世界对路人角色很不友好 第二季",
+      "originalTitle": "乙女ゲー世界はモブに厳しい世界です2",
+      "subjectName": "乙女ゲー世界はモブに厳しい世界です2",
+      "airDate": "2026-07-08",
+      "score": 4.9,
+      "rank": 9973,
+      "votes": 705,
+      "frames": 2,
+      "savedFrames": 0,
+      "uniqueFoodCount": 3,
+      "groupMentionCounts": {
+        "Drinks": 1
+      },
+      "episodeCount": 2,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 3,
+      "verifiedEpisodePercent": 25
+    },
+    {
+      "bgmId": "511177",
+      "title": "遭到流放的转生重骑士凭借游戏知识大开无双",
+      "originalTitle": "追放された転生重騎士はゲーム知識で無双する",
+      "subjectName": "追放された転生重騎士はゲーム知識で無双する",
+      "airDate": "2026-07-02",
+      "score": 4.9,
+      "rank": 9960,
+      "votes": 560,
+      "frames": 2,
+      "savedFrames": 1,
+      "uniqueFoodCount": 6,
+      "groupMentionCounts": {
+        "Meat": 2,
+        "Seafood": 1,
+        "Produce": 2
+      },
+      "episodeCount": 1,
+      "totalEpisodeCount": 26,
+      "verifiedEpisodeCount": 3,
+      "verifiedEpisodePercent": 11.54
+    },
+    {
+      "bgmId": "612697",
+      "title": "魔真神坛斗士 第2部分",
+      "originalTitle": "鎧真伝サムライトルーパー 第2クール",
+      "subjectName": "鎧真伝サムライトルーパー 第2クール",
+      "airDate": "2026-07-07",
+      "score": 4.9,
+      "rank": 0,
+      "votes": 45,
+      "frames": 2,
+      "savedFrames": 0,
+      "uniqueFoodCount": 4,
+      "groupMentionCounts": {
+        "Noodles": 2,
+        "Drinks": 1,
+        "Produce": 1
+      },
+      "episodeCount": 1,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 3,
+      "verifiedEpisodePercent": 25
+    },
+    {
+      "bgmId": "637339",
+      "title": "北斗神拳 拳王军杂兵们的挽歌 第二季",
+      "originalTitle": "北斗の拳 拳王軍ザコたちの挽歌 第2クール",
+      "subjectName": "北斗の拳 拳王軍ザコたちの挽歌 第2クール",
+      "airDate": "2026-07-06",
+      "score": 5.7,
+      "rank": 0,
+      "votes": 31,
+      "frames": 1,
+      "savedFrames": 0,
+      "uniqueFoodCount": 1,
+      "groupMentionCounts": {
+        "Produce": 1
+      },
+      "episodeCount": 1,
+      "totalEpisodeCount": 12,
+      "verifiedEpisodeCount": 1,
+      "verifiedEpisodePercent": 8.33
+    }
+  ],
+  "stats": {
+    "verifiedFrames": 1442,
+    "subjectCount": 59,
+    "foodMentionCount": 3072,
+    "uniqueFoodCount": 538,
+    "avgScore": 5.833898305084746,
+    "highFoodAvgScore": 6.320000000000002,
+    "lowFoodAvgScore": 5.66818181818182,
+    "highFoodCutoff": 30
+  },
+  "page": {
+    "assetBasePath": "/assets/anime-food-summer-2026/",
+    "heroImages": [
+      {
+        "foodNames": [
+          "vegetables",
+          "carrot",
+          "tofu",
+          "fish",
+          "bamboo shoots",
+          "goji berries",
+          "peas",
+          "tomato",
+          "meat",
+          "watermelon",
+          "pineapple",
+          "grape",
+          "melon",
+          "noodles",
+          "white fungus",
+          "soup",
+          "rice and beans",
+          "chicken",
+          "cabbage",
+          "pork",
+          "onion",
+          "vermicelli",
+          "mushroom",
+          "scallion",
+          "steak",
+          "broccoli",
+          "potato",
+          "pastry",
+          "lotus root",
+          "snap peas",
+          "cheesecake",
+          "strawberry cake",
+          "whipped cream",
+          "strawberries",
+          "chocolate cake",
+          "batter",
+          "sausage",
+          "fried egg",
+          "rice",
+          "pickled plum",
+          "tart",
+          "strawberry",
+          "blueberry",
+          "peach",
+          "raspberry",
+          "tamagoyaki",
+          "miso soup",
+          "vegetable stir fry",
+          "yogurt",
+          "beef",
+          "pumpkin"
+        ],
+        "saved": true,
+        "title": "炒翻天",
+        "score": 7.4,
+        "timestamp": "00:00:04.000",
+        "subjectName": "鉄鍋のジャン",
+        "episodeUrl": "https://bgm.tv/ep/1704777",
+        "foodName": "collage",
+        "relativePath": "assets/hero-collage-12754dee9b.webp",
+        "collage": true
+      },
+      {
+        "foodNames": [
+          "vegetables",
+          "carrot",
+          "tofu"
+        ],
+        "saved": true,
+        "title": "炒翻天",
+        "score": 7.4,
+        "timestamp": "00:00:04.000",
+        "subjectName": "鉄鍋のジャン",
+        "episodeUrl": "https://bgm.tv/ep/1704777",
+        "relativePath": "assets/02--75e39068ce.webp"
+      },
+      {
+        "foodNames": [
+          "cheesecake",
+          "strawberry cake",
+          "whipped cream",
+          "strawberries",
+          "chocolate cake",
+          "batter"
+        ],
+        "saved": true,
+        "title": "再见菈菈",
+        "score": 6.5,
+        "timestamp": "00:06:15.000",
+        "subjectName": "さよならララ",
+        "episodeUrl": "https://bgm.tv/ep/1691667",
+        "relativePath": "assets/03--21e615f6d1.webp"
+      },
+      {
+        "foodNames": [
+          "yakisoba pan",
+          "noodles",
+          "bread",
+          "ginger"
+        ],
+        "saved": true,
+        "title": "花样少年少女 第二季",
+        "score": 5.7,
+        "timestamp": "00:00:04.000",
+        "subjectName": "花ざかりの君たちへ 第2期",
+        "episodeUrl": "https://bgm.tv/ep/1705081",
+        "relativePath": "assets/04-2-5ba2c16435.webp"
+      },
+      {
+        "foodNames": [
+          "tamagoyaki",
+          "bacon wrapped asparagus",
+          "lettuce",
+          "ground meat",
+          "broccoli",
+          "sausage",
+          "cherry tomatoes",
+          "kinpira gobo"
+        ],
+        "saved": true,
+        "title": "我家的弟弟们真是让您费心了",
+        "score": 5.5,
+        "timestamp": "00:02:34.000",
+        "subjectName": "うちの弟どもがすみません",
+        "episodeUrl": "https://bgm.tv/ep/1688117",
+        "relativePath": "assets/05--2054af1fa6.webp"
+      },
+      {
+        "foodNames": [
+          "pizza",
+          "tempura",
+          "fish",
+          "bread",
+          "stew",
+          "burger"
+        ],
+        "saved": true,
+        "title": "骸骨骑士大人异世界冒险中 第二季",
+        "score": 5.1,
+        "timestamp": "00:04:07.000",
+        "subjectName": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+        "episodeUrl": "https://bgm.tv/ep/1704900",
+        "relativePath": "assets/06--023c5832cd.webp"
+      },
+      {
+        "foodNames": [
+          "potato strips",
+          "scallions"
+        ],
+        "saved": true,
+        "title": "Grow Up Show ～向日葵马戏团～",
+        "score": 7.2,
+        "timestamp": "00:00:16.000",
+        "subjectName": "グロウアップショウ ～ひまわりのサーカス団～",
+        "episodeUrl": "https://bgm.tv/ep/1704703",
+        "relativePath": "assets/07--b9c48cd787.webp"
+      },
+      {
+        "foodNames": [
+          "onigiri",
+          "pickled plum"
+        ],
+        "saved": true,
+        "title": "少女怪兽焦糖味",
+        "score": 6.2,
+        "timestamp": "00:07:27.000",
+        "subjectName": "乙女怪獣キャラメリゼ",
+        "episodeUrl": "https://bgm.tv/ep/1701414",
+        "relativePath": "assets/08--445a8e0d88.webp"
+      },
+      {
+        "foodNames": [
+          "fried shrimp",
+          "cucumber",
+          "tomato",
+          "lemon",
+          "lettuce",
+          "sauce"
+        ],
+        "saved": true,
+        "title": "不虐待我的继母与继姐",
+        "score": 6,
+        "timestamp": "00:08:29.000",
+        "subjectName": "いびってこない義母と義姉",
+        "episodeUrl": "https://bgm.tv/ep/1704931",
+        "relativePath": "assets/09--5b58a4d6c5.webp"
+      },
+      {
+        "foodNames": [
+          "steak",
+          "butter",
+          "egg",
+          "beef tartare",
+          "stew"
+        ],
+        "saved": true,
+        "title": "魔法少女奈叶 EXCEEDS Gun Blaze Vengeance",
+        "score": 5.1,
+        "timestamp": "00:12:32.000",
+        "subjectName": "魔法少女リリカルなのは EXCEEDS Gun Blaze Vengeance",
+        "episodeUrl": "https://bgm.tv/ep/1704737",
+        "relativePath": "assets/10-exceeds-gun-blaze-vengeance-8fde98e1a1.webp"
+      },
+      {
+        "foodNames": [
+          "chocolate cake",
+          "apple pie",
+          "strawberry shortcake"
+        ],
+        "saved": true,
+        "title": "BanG Dream! YUME∞MITA",
+        "score": 4.7,
+        "timestamp": "00:10:54.000",
+        "subjectName": "BanG Dream! ゆめ∞みた",
+        "episodeUrl": "https://bgm.tv/ep/1716518",
+        "relativePath": "assets/11-bang-dream-8ace8d35a3.webp"
+      },
+      {
+        "foodNames": [
+          "fish",
+          "lemon",
+          "rice",
+          "egg",
+          "soup"
+        ],
+        "saved": true,
+        "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+        "score": 8,
+        "timestamp": "00:15:41.000",
+        "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+        "episodeUrl": "https://bgm.tv/ep/1704823",
+        "relativePath": "assets/12--ffea6ae9f8.webp"
+      },
+      {
+        "foodNames": [
+          "tomato",
+          "cucumber"
+        ],
+        "saved": true,
+        "title": "超超超超超喜欢你的100个女朋友 第三季",
+        "score": 7.5,
+        "timestamp": "00:14:56.000",
+        "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+        "episodeUrl": "https://bgm.tv/ep/1704784",
+        "relativePath": "assets/13-100-3-c0df05059b.webp"
+      },
+      {
+        "foodNames": [
+          "yakisoba",
+          "pickled ginger",
+          "cabbage"
+        ],
+        "saved": true,
+        "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+        "score": 7.4,
+        "timestamp": "00:11:15.000",
+        "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+        "episodeUrl": "https://bgm.tv/ep/1702293",
+        "relativePath": "assets/14--141aa03319.webp"
+      },
+      {
+        "foodNames": [
+          "steak tartare",
+          "parsley"
+        ],
+        "saved": true,
+        "title": "幼女战记 第二季",
+        "score": 7.1,
+        "timestamp": "00:06:06.000",
+        "subjectName": "幼女戦記Ⅱ",
+        "episodeUrl": "https://bgm.tv/ep/1699976",
+        "relativePath": "assets/15--ea21092f07.webp"
+      },
+      {
+        "foodNames": [
+          "grapes",
+          "lychee",
+          "peach",
+          "banana"
+        ],
+        "saved": true,
+        "title": "恶女不才，请多关照 ～雏宫蝶鼠换身传～",
+        "score": 7,
+        "timestamp": "00:02:25.000",
+        "subjectName": "ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～",
+        "episodeUrl": "https://bgm.tv/ep/1704979",
+        "relativePath": "assets/16--ebdfd52960.webp"
+      },
+      {
+        "foodNames": [
+          "cake",
+          "strawberry",
+          "grape",
+          "banana",
+          "kiwi",
+          "blueberry",
+          "orange"
+        ],
+        "saved": true,
+        "title": "花织即使是转生也想打架",
+        "score": 6.8,
+        "timestamp": "00:14:41.000",
+        "subjectName": "花織さんは転生しても喧嘩がしたい",
+        "episodeUrl": "https://bgm.tv/ep/1704971",
+        "relativePath": "assets/17--5a3c092a82.webp"
+      },
+      {
+        "foodNames": [
+          "cookies"
+        ],
+        "saved": true,
+        "title": "与你相恋到生命尽头",
+        "score": 6.6,
+        "timestamp": "00:00:27.000",
+        "subjectName": "きみが死ぬまで恋をしたい",
+        "episodeUrl": "https://bgm.tv/ep/1702284",
+        "relativePath": "assets/18--0730ce51ad.webp"
+      },
+      {
+        "foodNames": [
+          "danish pastry"
+        ],
+        "saved": true,
+        "title": "无用圣女的异世界美食之旅 凭借隐藏技能召唤露营车",
+        "score": 4.9,
+        "timestamp": "00:04:19.000",
+        "subjectName": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+        "episodeUrl": "https://bgm.tv/ep/1703232",
+        "relativePath": "assets/19--00d3d2dd81.webp"
+      },
+      {
+        "foodNames": [
+          "omelet",
+          "tomato",
+          "broccoli"
+        ],
+        "saved": true,
+        "title": "转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥们儿",
+        "score": 4.9,
+        "timestamp": "00:07:30.000",
+        "subjectName": "転校先の清楚可憐な美少女が、昔男子と思って一緒に遊んだ幼馴染だった件",
+        "episodeUrl": "https://bgm.tv/ep/1707363",
+        "relativePath": "assets/20--c1636e3d86.webp"
+      },
+      {
+        "foodNames": [
+          "fried chicken"
+        ],
+        "saved": true,
+        "title": "相反的你和我 第二季",
+        "score": 8,
+        "timestamp": "00:09:25.000",
+        "subjectName": "正反対な君と僕 第2期",
+        "episodeUrl": "https://bgm.tv/ep/1704756",
+        "relativePath": "assets/21-2-288119470b.webp"
+      },
+      {
+        "foodNames": [
+          "beef bowl",
+          "rice",
+          "onion"
+        ],
+        "saved": true,
+        "title": "尼古喵喵",
+        "score": 7.5,
+        "timestamp": "00:05:31.000",
+        "subjectName": "ヤニねこ",
+        "episodeUrl": "https://bgm.tv/ep/1701431",
+        "relativePath": "assets/22--69204de020.webp"
+      },
+      {
+        "foodNames": [
+          "rice",
+          "sausage",
+          "shumai",
+          "meatballs",
+          "omelet"
+        ],
+        "saved": true,
+        "title": "碧蓝之海 第三季",
+        "score": 7,
+        "timestamp": "00:02:15.000",
+        "subjectName": "ぐらんぶる Season 3",
+        "episodeUrl": "https://bgm.tv/ep/1704890",
+        "relativePath": "assets/23-season-3-08e436c397.webp"
+      },
+      {
+        "foodNames": [
+          "bento",
+          "fish",
+          "rice",
+          "tamagoyaki",
+          "kamaboko",
+          "beverage"
+        ],
+        "saved": true,
+        "title": "在超市后门吸烟的二人",
+        "score": 6.8,
+        "timestamp": "00:01:26.000",
+        "subjectName": "スーパーの裏でヤニ吸うふたり",
+        "episodeUrl": "https://bgm.tv/ep/1699270",
+        "relativePath": "assets/24--493d6e93ad.webp"
+      },
+      {
+        "foodNames": [
+          "pancakes",
+          "strawberries",
+          "whipped cream",
+          "ice cream",
+          "tea"
+        ],
+        "saved": true,
+        "title": "碧蓝航线：微速前行！第二季",
+        "score": 6.3,
+        "timestamp": "00:02:51.000",
+        "subjectName": "アズールレーン びそくぜんしんっ！にっ!!",
+        "episodeUrl": "https://bgm.tv/ep/1704832",
+        "relativePath": "assets/25--4341a5755a.webp"
+      },
+      {
+        "foodNames": [
+          "aspic",
+          "radish",
+          "herbs"
+        ],
+        "saved": true,
+        "title": "才女的侍从 在满是高岭之花的贵族学校暗中照顾（毫无生活自理能力的）学院第一大小姐",
+        "score": 5.6,
+        "timestamp": "00:05:03.000",
+        "subjectName": "才女のお世話 高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました",
+        "episodeUrl": "https://bgm.tv/ep/1704714",
+        "relativePath": "assets/26--7df94243af.webp"
+      },
+      {
+        "foodNames": [
+          "lamb chops",
+          "potatoes",
+          "greens",
+          "soup"
+        ],
+        "saved": true,
+        "title": "从0位居民开始的边境领主大人",
+        "score": 5.5,
+        "timestamp": "00:02:10.000",
+        "subjectName": "領民0人スタートの辺境領主様",
+        "episodeUrl": "https://bgm.tv/ep/1704950",
+        "relativePath": "assets/27-0-cbc6cc1f5f.webp"
+      },
+      {
+        "foodNames": [
+          "sausage",
+          "skewer"
+        ],
+        "saved": true,
+        "title": "THE WORLD IS DANCING 世界在起舞",
+        "score": 5.3,
+        "timestamp": "00:01:05.000",
+        "subjectName": "ワールド イズ ダンシング",
+        "episodeUrl": "https://bgm.tv/ep/1701435",
+        "relativePath": "assets/28--61076bce47.webp"
+      },
+      {
+        "foodNames": [
+          "pie"
+        ],
+        "saved": true,
+        "title": "遭到流放的转生重骑士凭借游戏知识大开无双",
+        "score": 4.9,
+        "timestamp": "00:09:02.000",
+        "subjectName": "追放された転生重騎士はゲーム知識で無双する",
+        "episodeUrl": "https://bgm.tv/ep/1655711",
+        "relativePath": "assets/29--df293788dc.webp"
+      },
+      {
+        "foodNames": [
+          "rice",
+          "sashimi",
+          "shrimp",
+          "salmon",
+          "egg",
+          "soup",
+          "fish"
+        ],
+        "saved": true,
+        "title": "鬼的新娘",
+        "score": 4.1,
+        "timestamp": "00:13:37.500",
+        "subjectName": "鬼の花嫁",
+        "episodeUrl": "https://bgm.tv/ep/1705445",
+        "relativePath": "assets/30--70b59cd99a.webp"
+      },
+      {
+        "foodNames": [
+          "grapes",
+          "figs",
+          "apples",
+          "peaches",
+          "soup",
+          "quiche"
+        ],
+        "saved": true,
+        "title": "天是红河岸",
+        "score": 4,
+        "timestamp": "00:07:35.000",
+        "subjectName": "天は赤い河のほとり",
+        "episodeUrl": "https://bgm.tv/ep/1702325",
+        "relativePath": "assets/31--52904ce952.webp"
+      },
+      {
+        "foodNames": [
+          "fish",
+          "bamboo shoots",
+          "goji berries"
+        ],
+        "saved": true,
+        "title": "炒翻天",
+        "score": 7.4,
+        "timestamp": "00:00:41.000",
+        "subjectName": "鉄鍋のジャン",
+        "episodeUrl": "https://bgm.tv/ep/1704769",
+        "relativePath": "assets/32--f48d846ada.webp"
+      },
+      {
+        "foodNames": [
+          "sausage",
+          "tomato",
+          "broccoli",
+          "fried egg",
+          "rice",
+          "pickled plum"
+        ],
+        "saved": true,
+        "title": "再见菈菈",
+        "score": 6.5,
+        "timestamp": "00:06:31.000",
+        "subjectName": "さよならララ",
+        "episodeUrl": "https://bgm.tv/ep/1691664",
+        "relativePath": "assets/33--89f8966b56.webp"
+      },
+      {
+        "foodNames": [
+          "salmon roe",
+          "egg",
+          "salmon",
+          "eggplant"
+        ],
+        "saved": true,
+        "title": "花样少年少女 第二季",
+        "score": 5.7,
+        "timestamp": "00:03:26.000",
+        "subjectName": "花ざかりの君たちへ 第2期",
+        "episodeUrl": "https://bgm.tv/ep/1705081",
+        "relativePath": "assets/34-2-2b372817b0.webp"
+      },
+      {
+        "foodNames": [
+          "meat skewer"
+        ],
+        "saved": true,
+        "title": "我家的弟弟们真是让您费心了",
+        "score": 5.5,
+        "timestamp": "00:05:36.000",
+        "subjectName": "うちの弟どもがすみません",
+        "episodeUrl": "https://bgm.tv/ep/1688120",
+        "relativePath": "assets/35--69b4ecce81.webp"
+      },
+      {
+        "foodNames": [
+          "crab",
+          "fried food",
+          "salad",
+          "steak"
+        ],
+        "saved": true,
+        "title": "骸骨骑士大人异世界冒险中 第二季",
+        "score": 5.1,
+        "timestamp": "00:04:32.000",
+        "subjectName": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+        "episodeUrl": "https://bgm.tv/ep/1704900",
+        "relativePath": "assets/36--798acdd52b.webp"
+      }
+    ],
+    "taxonomyGroups": [
+      {
+        "name": "Produce",
+        "displayName": "蔬果",
+        "count": 529,
+        "images": [
+          {
+            "foodNames": [
+              "cabbage",
+              "carrot",
+              "pork",
+              "onion"
+            ],
+            "groupFoodNames": [
+              "cabbage",
+              "carrot",
+              "onion"
+            ],
+            "group": "Produce",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:14:06.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704768",
+            "relativePath": "assets/taxonomy-produce-01-027e298376.webp"
+          },
+          {
+            "foodNames": [
+              "grapes",
+              "lychee",
+              "peach",
+              "banana"
+            ],
+            "groupFoodNames": [
+              "grapes",
+              "peach",
+              "banana"
+            ],
+            "group": "Produce",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "恶女不才，请多关照 ～雏宫蝶鼠换身传～",
+            "score": 7,
+            "timestamp": "00:02:25.000",
+            "subjectName": "ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～",
+            "episodeUrl": "https://bgm.tv/ep/1704979",
+            "relativePath": "assets/taxonomy-produce-02-ebdfd52960.webp"
+          },
+          {
+            "foodNames": [
+              "pineapple",
+              "lettuce",
+              "grapes",
+              "whipped cream",
+              "sausage"
+            ],
+            "groupFoodNames": [
+              "pineapple",
+              "lettuce",
+              "grapes"
+            ],
+            "group": "Produce",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "骸骨骑士大人异世界冒险中 第二季",
+            "score": 5.1,
+            "timestamp": "00:19:03.000",
+            "subjectName": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+            "episodeUrl": "https://bgm.tv/ep/1704905",
+            "relativePath": "assets/taxonomy-produce-03-b5321844c6.webp"
+          },
+          {
+            "foodNames": [
+              "grapes",
+              "figs",
+              "apples",
+              "peaches",
+              "soup",
+              "quiche"
+            ],
+            "groupFoodNames": [
+              "grapes",
+              "apples",
+              "peaches"
+            ],
+            "group": "Produce",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "天是红河岸",
+            "score": 4,
+            "timestamp": "00:07:35.000",
+            "subjectName": "天は赤い河のほとり",
+            "episodeUrl": "https://bgm.tv/ep/1702325",
+            "relativePath": "assets/taxonomy-produce-04-52904ce952.webp"
+          }
+        ]
+      },
+      {
+        "name": "Meat",
+        "displayName": "肉类",
+        "count": 407,
+        "images": [
+          {
+            "foodNames": [
+              "omelet",
+              "peas",
+              "ham"
+            ],
+            "groupFoodNames": [
+              "omelet",
+              "ham"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "花织即使是转生也想打架",
+            "score": 6.8,
+            "timestamp": "00:22:46.000",
+            "subjectName": "花織さんは転生しても喧嘩がしたい",
+            "episodeUrl": "https://bgm.tv/ep/1704965",
+            "relativePath": "assets/taxonomy-meat-01-07a34b9aa6.webp"
+          },
+          {
+            "foodNames": [
+              "sausage",
+              "tomato",
+              "broccoli",
+              "fried egg",
+              "rice",
+              "pickled plum"
+            ],
+            "groupFoodNames": [
+              "sausage",
+              "fried egg"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "再见菈菈",
+            "score": 6.5,
+            "timestamp": "00:06:31.000",
+            "subjectName": "さよならララ",
+            "episodeUrl": "https://bgm.tv/ep/1691664",
+            "relativePath": "assets/taxonomy-meat-02-89f8966b56.webp"
+          },
+          {
+            "foodNames": [
+              "steak",
+              "butter",
+              "egg",
+              "beef tartare",
+              "stew"
+            ],
+            "groupFoodNames": [
+              "steak",
+              "egg"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "魔法少女奈叶 EXCEEDS Gun Blaze Vengeance",
+            "score": 5.1,
+            "timestamp": "00:12:32.000",
+            "subjectName": "魔法少女リリカルなのは EXCEEDS Gun Blaze Vengeance",
+            "episodeUrl": "https://bgm.tv/ep/1704737",
+            "relativePath": "assets/taxonomy-meat-03-8fde98e1a1.webp"
+          },
+          {
+            "foodNames": [
+              "fried chicken"
+            ],
+            "groupFoodNames": [
+              "fried chicken"
+            ],
+            "group": "Meat",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "相反的你和我 第二季",
+            "score": 8,
+            "timestamp": "00:09:25.000",
+            "subjectName": "正反対な君と僕 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1704756",
+            "relativePath": "assets/taxonomy-meat-04-288119470b.webp"
+          }
+        ]
+      },
+      {
+        "name": "Sweets",
+        "displayName": "甜点",
+        "count": 299,
+        "images": [
+          {
+            "foodNames": [
+              "parfait",
+              "cake",
+              "tart",
+              "pudding",
+              "ice cream"
+            ],
+            "groupFoodNames": [
+              "parfait",
+              "cake",
+              "tart",
+              "pudding",
+              "ice cream"
+            ],
+            "group": "Sweets",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "少女怪兽焦糖味",
+            "score": 6.2,
+            "timestamp": "00:20:01.000",
+            "subjectName": "乙女怪獣キャラメリゼ",
+            "episodeUrl": "https://bgm.tv/ep/1701418",
+            "relativePath": "assets/taxonomy-sweets-01-9e4913bbf1.webp"
+          },
+          {
+            "foodNames": [
+              "cheesecake",
+              "strawberry cake",
+              "whipped cream",
+              "strawberries",
+              "chocolate cake",
+              "batter"
+            ],
+            "groupFoodNames": [
+              "cheesecake",
+              "strawberry cake",
+              "chocolate cake"
+            ],
+            "group": "Sweets",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "再见菈菈",
+            "score": 6.5,
+            "timestamp": "00:06:15.000",
+            "subjectName": "さよならララ",
+            "episodeUrl": "https://bgm.tv/ep/1691667",
+            "relativePath": "assets/taxonomy-sweets-02-21e615f6d1.webp"
+          },
+          {
+            "foodNames": [
+              "pancakes",
+              "strawberries",
+              "whipped cream",
+              "ice cream",
+              "tea"
+            ],
+            "groupFoodNames": [
+              "pancakes",
+              "ice cream"
+            ],
+            "group": "Sweets",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "碧蓝航线：微速前行！第二季",
+            "score": 6.3,
+            "timestamp": "00:02:51.000",
+            "subjectName": "アズールレーン びそくぜんしんっ！にっ!!",
+            "episodeUrl": "https://bgm.tv/ep/1704832",
+            "relativePath": "assets/taxonomy-sweets-03-4341a5755a.webp"
+          },
+          {
+            "foodNames": [
+              "chocolate cake",
+              "apple pie",
+              "strawberry shortcake"
+            ],
+            "groupFoodNames": [
+              "chocolate cake",
+              "strawberry shortcake"
+            ],
+            "group": "Sweets",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "BanG Dream! YUME∞MITA",
+            "score": 4.7,
+            "timestamp": "00:10:54.000",
+            "subjectName": "BanG Dream! ゆめ∞みた",
+            "episodeUrl": "https://bgm.tv/ep/1716518",
+            "relativePath": "assets/taxonomy-sweets-04-8ace8d35a3.webp"
+          }
+        ]
+      },
+      {
+        "name": "Drinks",
+        "displayName": "饮品",
+        "count": 271,
+        "images": [
+          {
+            "foodNames": [
+              "watermelon",
+              "pineapple",
+              "tofu",
+              "grape",
+              "melon"
+            ],
+            "groupFoodNames": [
+              "watermelon"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:05:14.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704779",
+            "relativePath": "assets/taxonomy-drinks-01-bcfd54a034.webp"
+          },
+          {
+            "foodNames": [
+              "melon soda float",
+              "ice cream",
+              "cherry"
+            ],
+            "groupFoodNames": [
+              "melon soda float"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "Grow Up Show ～向日葵马戏团～",
+            "score": 7.2,
+            "timestamp": "00:14:26.000",
+            "subjectName": "グロウアップショウ ～ひまわりのサーカス団～",
+            "episodeUrl": "https://bgm.tv/ep/1704706",
+            "relativePath": "assets/taxonomy-drinks-02-bcb6ca7980.webp"
+          },
+          {
+            "foodNames": [
+              "tea",
+              "energy drink"
+            ],
+            "groupFoodNames": [
+              "tea",
+              "energy drink"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 0,
+            "saved": false,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:11:41.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702292",
+            "relativePath": "assets/taxonomy-drinks-03-4807c1683a.webp"
+          },
+          {
+            "foodNames": [
+              "beer",
+              "water"
+            ],
+            "groupFoodNames": [
+              "beer",
+              "water"
+            ],
+            "group": "Drinks",
+            "firstGroupFoodIndex": 0,
+            "saved": false,
+            "title": "碧蓝之海 第三季",
+            "score": 7,
+            "timestamp": "00:05:27.000",
+            "subjectName": "ぐらんぶる Season 3",
+            "episodeUrl": "https://bgm.tv/ep/1704890",
+            "relativePath": "assets/taxonomy-drinks-04-809ff3af44.webp"
+          }
+        ]
+      },
+      {
+        "name": "Bread",
+        "displayName": "面包与烘焙",
+        "count": 144,
+        "images": [
+          {
+            "foodNames": [
+              "pastry"
+            ],
+            "groupFoodNames": [
+              "pastry"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:18:25.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704778",
+            "relativePath": "assets/taxonomy-bread-01-be0a2eca1f.webp"
+          },
+          {
+            "foodNames": [
+              "danish pastry"
+            ],
+            "groupFoodNames": [
+              "danish pastry"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "无用圣女的异世界美食之旅 凭借隐藏技能召唤露营车",
+            "score": 4.9,
+            "timestamp": "00:04:19.000",
+            "subjectName": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+            "episodeUrl": "https://bgm.tv/ep/1703232",
+            "relativePath": "assets/taxonomy-bread-02-00d3d2dd81.webp"
+          },
+          {
+            "foodNames": [
+              "yakisoba pan",
+              "noodles",
+              "bread",
+              "ginger"
+            ],
+            "groupFoodNames": [
+              "bread"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 2,
+            "saved": true,
+            "title": "花样少年少女 第二季",
+            "score": 5.7,
+            "timestamp": "00:00:04.000",
+            "subjectName": "花ざかりの君たちへ 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1705081",
+            "relativePath": "assets/taxonomy-bread-03-5ba2c16435.webp"
+          },
+          {
+            "foodNames": [
+              "pizza",
+              "tempura",
+              "fish",
+              "bread",
+              "stew",
+              "burger"
+            ],
+            "groupFoodNames": [
+              "bread"
+            ],
+            "group": "Bread",
+            "firstGroupFoodIndex": 3,
+            "saved": true,
+            "title": "骸骨骑士大人异世界冒险中 第二季",
+            "score": 5.1,
+            "timestamp": "00:04:07.000",
+            "subjectName": "骸骨騎士様、只今異世界へお出掛け中Ⅱ",
+            "episodeUrl": "https://bgm.tv/ep/1704900",
+            "relativePath": "assets/taxonomy-bread-04-023c5832cd.webp"
+          }
+        ]
+      },
+      {
+        "name": "Rice",
+        "displayName": "米饭",
+        "count": 142,
+        "images": [
+          {
+            "foodNames": [
+              "rice and beans",
+              "chicken"
+            ],
+            "groupFoodNames": [
+              "rice and beans"
+            ],
+            "group": "Rice",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:12:49.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704770",
+            "relativePath": "assets/taxonomy-rice-01-cf82ef26dc.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "sausage",
+              "shumai",
+              "meatballs",
+              "omelet"
+            ],
+            "groupFoodNames": [
+              "rice"
+            ],
+            "group": "Rice",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "碧蓝之海 第三季",
+            "score": 7,
+            "timestamp": "00:02:15.000",
+            "subjectName": "ぐらんぶる Season 3",
+            "episodeUrl": "https://bgm.tv/ep/1704890",
+            "relativePath": "assets/taxonomy-rice-02-08e436c397.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "fish",
+              "tofu",
+              "vegetables",
+              "miso soup"
+            ],
+            "groupFoodNames": [
+              "rice"
+            ],
+            "group": "Rice",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "再见菈菈",
+            "score": 6.5,
+            "timestamp": "00:20:30.000",
+            "subjectName": "さよならララ",
+            "episodeUrl": "https://bgm.tv/ep/1691664",
+            "relativePath": "assets/taxonomy-rice-03-3abb6372b4.webp"
+          },
+          {
+            "foodNames": [
+              "onigiri",
+              "pickled plum"
+            ],
+            "groupFoodNames": [
+              "onigiri"
+            ],
+            "group": "Rice",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "少女怪兽焦糖味",
+            "score": 6.2,
+            "timestamp": "00:07:27.000",
+            "subjectName": "乙女怪獣キャラメリゼ",
+            "episodeUrl": "https://bgm.tv/ep/1701414",
+            "relativePath": "assets/taxonomy-rice-04-445a8e0d88.webp"
+          }
+        ]
+      },
+      {
+        "name": "Seafood",
+        "displayName": "海鲜",
+        "count": 129,
+        "images": [
+          {
+            "foodNames": [
+              "salmon roe",
+              "egg",
+              "salmon",
+              "eggplant"
+            ],
+            "groupFoodNames": [
+              "salmon roe",
+              "salmon"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "花样少年少女 第二季",
+            "score": 5.7,
+            "timestamp": "00:03:26.000",
+            "subjectName": "花ざかりの君たちへ 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1705081",
+            "relativePath": "assets/taxonomy-seafood-01-2b372817b0.webp"
+          },
+          {
+            "foodNames": [
+              "fish",
+              "lemon",
+              "rice",
+              "egg",
+              "soup"
+            ],
+            "groupFoodNames": [
+              "fish"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+            "score": 8,
+            "timestamp": "00:15:41.000",
+            "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+            "episodeUrl": "https://bgm.tv/ep/1704823",
+            "relativePath": "assets/taxonomy-seafood-02-ffea6ae9f8.webp"
+          },
+          {
+            "foodNames": [
+              "fish",
+              "bamboo shoots",
+              "goji berries"
+            ],
+            "groupFoodNames": [
+              "fish"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:00:41.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704769",
+            "relativePath": "assets/taxonomy-seafood-03-f48d846ada.webp"
+          },
+          {
+            "foodNames": [
+              "fish",
+              "sauce",
+              "carrot",
+              "potato"
+            ],
+            "groupFoodNames": [
+              "fish"
+            ],
+            "group": "Seafood",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "幼女战记 第二季",
+            "score": 7.1,
+            "timestamp": "00:07:40.000",
+            "subjectName": "幼女戦記Ⅱ",
+            "episodeUrl": "https://bgm.tv/ep/1699976",
+            "relativePath": "assets/taxonomy-seafood-04-d4b8d9979f.webp"
+          }
+        ]
+      },
+      {
+        "name": "Noodles",
+        "displayName": "面食",
+        "count": 77,
+        "images": [
+          {
+            "foodNames": [
+              "ramen",
+              "egg",
+              "seaweed",
+              "pork",
+              "scallion"
+            ],
+            "groupFoodNames": [
+              "ramen"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:20:07.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704789",
+            "relativePath": "assets/taxonomy-noodles-01-176944479e.webp"
+          },
+          {
+            "foodNames": [
+              "yakisoba",
+              "pickled ginger",
+              "cabbage"
+            ],
+            "groupFoodNames": [
+              "yakisoba"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:11:15.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702293",
+            "relativePath": "assets/taxonomy-noodles-02-141aa03319.webp"
+          },
+          {
+            "foodNames": [
+              "noodles",
+              "vegetables",
+              "meat"
+            ],
+            "groupFoodNames": [
+              "noodles"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 0,
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:07:43.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704777",
+            "relativePath": "assets/taxonomy-noodles-03-2f59317a13.webp"
+          },
+          {
+            "foodNames": [
+              "crab",
+              "scallop",
+              "corn",
+              "mushroom",
+              "butter",
+              "scallion",
+              "ramen"
+            ],
+            "groupFoodNames": [
+              "ramen"
+            ],
+            "group": "Noodles",
+            "firstGroupFoodIndex": 6,
+            "saved": true,
+            "title": "花样少年少女 第二季",
+            "score": 5.7,
+            "timestamp": "00:13:50.000",
+            "subjectName": "花ざかりの君たちへ 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1705081",
+            "relativePath": "assets/taxonomy-noodles-04-a01950353e.webp"
+          }
+        ]
+      }
+    ],
+    "topFoodImages": [
+      {
+        "name": "rice",
+        "displayName": "米饭",
+        "count": 100,
+        "rank": 1,
+        "images": [
+          {
+            "foodNames": [
+              "beef bowl",
+              "rice",
+              "onion"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "尼古喵喵",
+            "score": 7.5,
+            "timestamp": "00:05:31.000",
+            "subjectName": "ヤニねこ",
+            "episodeUrl": "https://bgm.tv/ep/1701431",
+            "relativePath": "assets/top-food-rice-01-69204de020.webp"
+          },
+          {
+            "foodNames": [
+              "bento",
+              "fish",
+              "rice",
+              "tamagoyaki",
+              "kamaboko",
+              "beverage"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "在超市后门吸烟的二人",
+            "score": 6.8,
+            "timestamp": "00:01:26.000",
+            "subjectName": "スーパーの裏でヤニ吸うふたり",
+            "episodeUrl": "https://bgm.tv/ep/1699270",
+            "relativePath": "assets/top-food-rice-02-493d6e93ad.webp"
+          },
+          {
+            "foodNames": [
+              "sausage",
+              "broccoli",
+              "carrot",
+              "lettuce",
+              "rice"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "与你相恋到生命尽头",
+            "score": 6.6,
+            "timestamp": "00:07:41.000",
+            "subjectName": "きみが死ぬまで恋をしたい",
+            "episodeUrl": "https://bgm.tv/ep/1702277",
+            "relativePath": "assets/top-food-rice-03-87e9fd844a.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "fish",
+              "tamagoyaki",
+              "miso soup",
+              "tofu",
+              "pickled plum",
+              "vegetable stir fry"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "再见菈菈",
+            "score": 6.5,
+            "timestamp": "00:11:09.000",
+            "subjectName": "さよならララ",
+            "episodeUrl": "https://bgm.tv/ep/1691670",
+            "relativePath": "assets/top-food-rice-04-4da9e781d1.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "pickled plum",
+              "meatballs",
+              "tamagoyaki"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "我家的弟弟们真是让您费心了",
+            "score": 5.5,
+            "timestamp": "00:08:24.000",
+            "subjectName": "うちの弟どもがすみません",
+            "episodeUrl": "https://bgm.tv/ep/1688124",
+            "relativePath": "assets/top-food-rice-05-d1b7b46087.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "sashimi",
+              "shrimp",
+              "salmon",
+              "egg",
+              "soup",
+              "fish"
+            ],
+            "foodName": "rice",
+            "saved": true,
+            "title": "鬼的新娘",
+            "score": 4.1,
+            "timestamp": "00:13:37.500",
+            "subjectName": "鬼の花嫁",
+            "episodeUrl": "https://bgm.tv/ep/1705445",
+            "relativePath": "assets/top-food-rice-06-70b59cd99a.webp"
+          }
+        ]
+      },
+      {
+        "name": "tea",
+        "displayName": "茶",
+        "count": 86,
+        "rank": 2,
+        "images": [
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+            "score": 8,
+            "timestamp": "00:12:09.000",
+            "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+            "episodeUrl": "https://bgm.tv/ep/1704823",
+            "relativePath": "assets/top-food-tea-01-c8996ec502.webp"
+          },
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "画完这个再去死",
+            "score": 8,
+            "timestamp": "00:18:26.000",
+            "subjectName": "これ描いて死ね",
+            "episodeUrl": "https://bgm.tv/ep/1705017",
+            "relativePath": "assets/top-food-tea-02-dcc548d79c.webp"
+          },
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "穹庐下的魔女",
+            "score": 8,
+            "timestamp": "00:02:53.000",
+            "subjectName": "天幕のジャードゥーガル",
+            "episodeUrl": "https://bgm.tv/ep/1696986",
+            "relativePath": "assets/top-food-tea-03-1c3161e094.webp"
+          },
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "尼古喵喵",
+            "score": 7.5,
+            "timestamp": "00:11:46.000",
+            "subjectName": "ヤニねこ",
+            "episodeUrl": "https://bgm.tv/ep/1701421",
+            "relativePath": "assets/top-food-tea-04-43d7e24311.webp"
+          },
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:15:28.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704786",
+            "relativePath": "assets/top-food-tea-05-6fd43d34c2.webp"
+          },
+          {
+            "foodNames": [
+              "tea"
+            ],
+            "foodName": "tea",
+            "saved": false,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:07:42.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702291",
+            "relativePath": "assets/top-food-tea-06-5718de2246.webp"
+          }
+        ]
+      },
+      {
+        "name": "meat",
+        "displayName": "肉",
+        "count": 82,
+        "rank": 3,
+        "images": [
+          {
+            "foodNames": [
+              "peas",
+              "tomato",
+              "meat"
+            ],
+            "foodName": "meat",
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:01:17.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704768",
+            "relativePath": "assets/top-food-meat-01-dbe6a37cf3.webp"
+          },
+          {
+            "foodNames": [
+              "soup",
+              "beans",
+              "meat",
+              "carrots",
+              "bread",
+              "chicken",
+              "corn"
+            ],
+            "foodName": "meat",
+            "saved": false,
+            "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+            "score": 8,
+            "timestamp": "00:15:39.000",
+            "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+            "episodeUrl": "https://bgm.tv/ep/1704823",
+            "relativePath": "assets/top-food-meat-02-eeb2788405.webp"
+          },
+          {
+            "foodNames": [
+              "sashimi",
+              "osechi",
+              "tempura",
+              "meat"
+            ],
+            "foodName": "meat",
+            "saved": false,
+            "title": "相反的你和我 第二季",
+            "score": 8,
+            "timestamp": "00:08:45.000",
+            "subjectName": "正反対な君と僕 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1704758",
+            "relativePath": "assets/top-food-meat-03-20b161d6c1.webp"
+          },
+          {
+            "foodNames": [
+              "meat"
+            ],
+            "foodName": "meat",
+            "saved": false,
+            "title": "穹庐下的魔女",
+            "score": 8,
+            "timestamp": "00:15:50.000",
+            "subjectName": "天幕のジャードゥーガル",
+            "episodeUrl": "https://bgm.tv/ep/1696989",
+            "relativePath": "assets/top-food-meat-04-ce7f8cf694.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "meat",
+              "egg"
+            ],
+            "foodName": "meat",
+            "saved": false,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:15:25.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704788",
+            "relativePath": "assets/top-food-meat-05-de2eb56937.webp"
+          },
+          {
+            "foodNames": [
+              "meat"
+            ],
+            "foodName": "meat",
+            "saved": false,
+            "title": "Grow Up Show ～向日葵马戏团～",
+            "score": 7.2,
+            "timestamp": "00:02:28.000",
+            "subjectName": "グロウアップショウ ～ひまわりのサーカス団～",
+            "episodeUrl": "https://bgm.tv/ep/1704701",
+            "relativePath": "assets/top-food-meat-06-32a1bbf242.webp"
+          }
+        ]
+      },
+      {
+        "name": "bread",
+        "displayName": "面包",
+        "count": 81,
+        "rank": 4,
+        "images": [
+          {
+            "foodNames": [
+              "bread",
+              "soup"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+            "score": 8,
+            "timestamp": "00:04:50.000",
+            "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+            "episodeUrl": "https://bgm.tv/ep/1704818",
+            "relativePath": "assets/top-food-bread-01-dff11b05f8.webp"
+          },
+          {
+            "foodNames": [
+              "cheese",
+              "tomato",
+              "bread",
+              "pastry"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "画完这个再去死",
+            "score": 8,
+            "timestamp": "00:17:05.000",
+            "subjectName": "これ描いて死ね",
+            "episodeUrl": "https://bgm.tv/ep/1705014",
+            "relativePath": "assets/top-food-bread-02-3efb60e886.webp"
+          },
+          {
+            "foodNames": [
+              "ramen",
+              "bread",
+              "curry",
+              "chicken rice",
+              "fried rice"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "尼古喵喵",
+            "score": 7.5,
+            "timestamp": "00:17:49.000",
+            "subjectName": "ヤニねこ",
+            "episodeUrl": "https://bgm.tv/ep/1701421",
+            "relativePath": "assets/top-food-bread-03-86a0d6dd10.webp"
+          },
+          {
+            "foodNames": [
+              "bread",
+              "water"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:13:19.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704790",
+            "relativePath": "assets/top-food-bread-04-d696f1a15d.webp"
+          },
+          {
+            "foodNames": [
+              "salad",
+              "sausage",
+              "fried egg",
+              "quiche",
+              "bread",
+              "soup"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:10:47.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702287",
+            "relativePath": "assets/top-food-bread-05-27d3cbbe35.webp"
+          },
+          {
+            "foodNames": [
+              "bread"
+            ],
+            "foodName": "bread",
+            "saved": false,
+            "title": "与奔驰于透明之夜的你，谈一场看不见的恋爱。",
+            "score": 7.3,
+            "timestamp": "00:13:18.000",
+            "subjectName": "透明な夜に駆ける君と、目に見えない恋をした。",
+            "episodeUrl": "https://bgm.tv/ep/1702096",
+            "relativePath": "assets/top-food-bread-06-11866b2fa6.webp"
+          }
+        ]
+      },
+      {
+        "name": "soup",
+        "displayName": "汤",
+        "count": 73,
+        "rank": 5,
+        "images": [
+          {
+            "foodNames": [
+              "goji berries",
+              "white fungus",
+              "soup"
+            ],
+            "foodName": "soup",
+            "saved": true,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:08:46.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704778",
+            "relativePath": "assets/top-food-soup-01-a1e7eb00a6.webp"
+          },
+          {
+            "foodNames": [
+              "lamb chops",
+              "potatoes",
+              "greens",
+              "soup"
+            ],
+            "foodName": "soup",
+            "saved": true,
+            "title": "从0位居民开始的边境领主大人",
+            "score": 5.5,
+            "timestamp": "00:02:10.000",
+            "subjectName": "領民0人スタートの辺境領主様",
+            "episodeUrl": "https://bgm.tv/ep/1704950",
+            "relativePath": "assets/top-food-soup-02-cbc6cc1f5f.webp"
+          },
+          {
+            "foodNames": [
+              "soup",
+              "bread",
+              "milk"
+            ],
+            "foodName": "soup",
+            "saved": false,
+            "title": "无职转生 第三季 ～到了异世界就拿出真本事～",
+            "score": 8,
+            "timestamp": "00:20:41.000",
+            "subjectName": "無職転生Ⅲ ～異世界行ったら本気だす～",
+            "episodeUrl": "https://bgm.tv/ep/1704818",
+            "relativePath": "assets/top-food-soup-03-3f34a0efd0.webp"
+          },
+          {
+            "foodNames": [
+              "sashimi",
+              "wasabi",
+              "soup",
+              "tofu",
+              "vegetables"
+            ],
+            "foodName": "soup",
+            "saved": false,
+            "title": "相反的你和我 第二季",
+            "score": 8,
+            "timestamp": "00:09:06.000",
+            "subjectName": "正反対な君と僕 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1704758",
+            "relativePath": "assets/top-food-soup-04-89e6cc5462.webp"
+          },
+          {
+            "foodNames": [
+              "soup"
+            ],
+            "foodName": "soup",
+            "saved": false,
+            "title": "穹庐下的魔女",
+            "score": 8,
+            "timestamp": "00:22:58.000",
+            "subjectName": "天幕のジャードゥーガル",
+            "episodeUrl": "https://bgm.tv/ep/1696986",
+            "relativePath": "assets/top-food-soup-05-76cdaa6c52.webp"
+          },
+          {
+            "foodNames": [
+              "soup",
+              "noodles"
+            ],
+            "foodName": "soup",
+            "saved": false,
+            "title": "尼古喵喵",
+            "score": 7.5,
+            "timestamp": "00:01:34.000",
+            "subjectName": "ヤニねこ",
+            "episodeUrl": "https://bgm.tv/ep/1701427",
+            "relativePath": "assets/top-food-soup-06-0bbbe7c78c.webp"
+          }
+        ]
+      },
+      {
+        "name": "tomato",
+        "displayName": "番茄",
+        "count": 55,
+        "rank": 6,
+        "images": [
+          {
+            "foodNames": [
+              "tomato",
+              "cucumber"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:14:56.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704784",
+            "relativePath": "assets/top-food-tomato-01-c0df05059b.webp"
+          },
+          {
+            "foodNames": [
+              "fried shrimp",
+              "cucumber",
+              "tomato",
+              "lemon",
+              "lettuce",
+              "sauce"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "不虐待我的继母与继姐",
+            "score": 6,
+            "timestamp": "00:08:29.000",
+            "subjectName": "いびってこない義母と義姉",
+            "episodeUrl": "https://bgm.tv/ep/1704931",
+            "relativePath": "assets/top-food-tomato-02-5b58a4d6c5.webp"
+          },
+          {
+            "foodNames": [
+              "omelet",
+              "tomato",
+              "broccoli"
+            ],
+            "foodName": "tomato",
+            "saved": true,
+            "title": "转学后班上的清纯可爱美少女，竟是小时候玩在一起的哥们儿",
+            "score": 4.9,
+            "timestamp": "00:07:30.000",
+            "subjectName": "転校先の清楚可憐な美少女が、昔男子と思って一緒に遊んだ幼馴染だった件",
+            "episodeUrl": "https://bgm.tv/ep/1707363",
+            "relativePath": "assets/top-food-tomato-03-c1636e3d86.webp"
+          },
+          {
+            "foodNames": [
+              "croissant",
+              "bacon",
+              "tomato",
+              "shrimp tempura",
+              "broccoli",
+              "sausage",
+              "noodles"
+            ],
+            "foodName": "tomato",
+            "saved": false,
+            "title": "画完这个再去死",
+            "score": 8,
+            "timestamp": "00:21:03.000",
+            "subjectName": "これ描いて死ね",
+            "episodeUrl": "https://bgm.tv/ep/1705012",
+            "relativePath": "assets/top-food-tomato-04-cdee58770a.webp"
+          },
+          {
+            "foodNames": [
+              "fried egg",
+              "rice",
+              "omelet",
+              "tomato",
+              "salad",
+              "soup"
+            ],
+            "foodName": "tomato",
+            "saved": false,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:02:44.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702287",
+            "relativePath": "assets/top-food-tomato-05-dd4f66f2fa.webp"
+          },
+          {
+            "foodNames": [
+              "tomato"
+            ],
+            "foodName": "tomato",
+            "saved": false,
+            "title": "在超市后门吸烟的二人",
+            "score": 6.8,
+            "timestamp": "00:02:35.000",
+            "subjectName": "スーパーの裏でヤニ吸うふたり",
+            "episodeUrl": "https://bgm.tv/ep/1699261",
+            "relativePath": "assets/top-food-tomato-06-088d7dbf82.webp"
+          }
+        ]
+      },
+      {
+        "name": "sausage",
+        "displayName": "香肠",
+        "count": 50,
+        "rank": 7,
+        "images": [
+          {
+            "foodNames": [
+              "tamagoyaki",
+              "bacon wrapped asparagus",
+              "lettuce",
+              "ground meat",
+              "broccoli",
+              "sausage",
+              "cherry tomatoes",
+              "kinpira gobo"
+            ],
+            "foodName": "sausage",
+            "saved": true,
+            "title": "我家的弟弟们真是让您费心了",
+            "score": 5.5,
+            "timestamp": "00:02:34.000",
+            "subjectName": "うちの弟どもがすみません",
+            "episodeUrl": "https://bgm.tv/ep/1688117",
+            "relativePath": "assets/top-food-sausage-01-2054af1fa6.webp"
+          },
+          {
+            "foodNames": [
+              "sausage",
+              "skewer"
+            ],
+            "foodName": "sausage",
+            "saved": true,
+            "title": "THE WORLD IS DANCING 世界在起舞",
+            "score": 5.3,
+            "timestamp": "00:01:05.000",
+            "subjectName": "ワールド イズ ダンシング",
+            "episodeUrl": "https://bgm.tv/ep/1701435",
+            "relativePath": "assets/top-food-sausage-02-61076bce47.webp"
+          },
+          {
+            "foodNames": [
+              "sausage"
+            ],
+            "foodName": "sausage",
+            "saved": false,
+            "title": "超超超超超喜欢你的100个女朋友 第三季",
+            "score": 7.5,
+            "timestamp": "00:04:50.000",
+            "subjectName": "君のことが大大大大大好きな100人の彼女 第3期",
+            "episodeUrl": "https://bgm.tv/ep/1704781",
+            "relativePath": "assets/top-food-sausage-03-c7616974ce.webp"
+          },
+          {
+            "foodNames": [
+              "salad",
+              "sausage",
+              "fried egg",
+              "quiche",
+              "bread",
+              "soup"
+            ],
+            "foodName": "sausage",
+            "saved": false,
+            "title": "感谢对战。 ～大小姐才不玩格斗游戏～",
+            "score": 7.4,
+            "timestamp": "00:16:02.000",
+            "subjectName": "対ありでした。 ～お嬢さまは格闘ゲームなんてしない～",
+            "episodeUrl": "https://bgm.tv/ep/1702298",
+            "relativePath": "assets/top-food-sausage-04-b744eac405.webp"
+          },
+          {
+            "foodNames": [
+              "noodles",
+              "sausage",
+              "meat",
+              "shrimp",
+              "broccoli"
+            ],
+            "foodName": "sausage",
+            "saved": false,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:13:29.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704777",
+            "relativePath": "assets/top-food-sausage-05-f1bbfb997d.webp"
+          },
+          {
+            "foodNames": [
+              "bread",
+              "sausage"
+            ],
+            "foodName": "sausage",
+            "saved": false,
+            "title": "幼女战记 第二季",
+            "score": 7.1,
+            "timestamp": "00:03:22.000",
+            "subjectName": "幼女戦記Ⅱ",
+            "episodeUrl": "https://bgm.tv/ep/1699976",
+            "relativePath": "assets/top-food-sausage-06-0df7cfdad0.webp"
+          }
+        ]
+      },
+      {
+        "name": "curry",
+        "displayName": "咖喱",
+        "count": 11,
+        "rank": 64,
+        "images": [
+          {
+            "foodNames": [
+              "curry",
+              "rice",
+              "beef",
+              "carrot",
+              "potato"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "画完这个再去死",
+            "score": 8,
+            "timestamp": "00:12:06.000",
+            "subjectName": "これ描いて死ね",
+            "episodeUrl": "https://bgm.tv/ep/1705014",
+            "relativePath": "assets/top-food-curry-01-d6f554b3e0.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "curry",
+              "bento"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "相反的你和我 第二季",
+            "score": 8,
+            "timestamp": "00:16:15.000",
+            "subjectName": "正反対な君と僕 第2期",
+            "episodeUrl": "https://bgm.tv/ep/1704763",
+            "relativePath": "assets/top-food-curry-02-8411a56a31.webp"
+          },
+          {
+            "foodNames": [
+              "curry",
+              "rice"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "尼古喵喵",
+            "score": 7.5,
+            "timestamp": "00:21:10.000",
+            "subjectName": "ヤニねこ",
+            "episodeUrl": "https://bgm.tv/ep/1701423",
+            "relativePath": "assets/top-food-curry-03-b9419abbf5.webp"
+          },
+          {
+            "foodNames": [
+              "rice",
+              "curry"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "炒翻天",
+            "score": 7.4,
+            "timestamp": "00:15:38.000",
+            "subjectName": "鉄鍋のジャン",
+            "episodeUrl": "https://bgm.tv/ep/1704773",
+            "relativePath": "assets/top-food-curry-04-800f23b4f0.webp"
+          },
+          {
+            "foodNames": [
+              "naan",
+              "samosa",
+              "curry",
+              "chutney"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "碧蓝之海 第三季",
+            "score": 7,
+            "timestamp": "00:03:46.000",
+            "subjectName": "ぐらんぶる Season 3",
+            "episodeUrl": "https://bgm.tv/ep/1704890",
+            "relativePath": "assets/top-food-curry-05-48237be67c.webp"
+          },
+          {
+            "foodNames": [
+              "curry",
+              "rice",
+              "tea"
+            ],
+            "foodName": "curry",
+            "saved": false,
+            "title": "令和妖神斑小姐",
+            "score": 6.4,
+            "timestamp": "00:04:30.000",
+            "subjectName": "令和のダラさん",
+            "episodeUrl": "https://bgm.tv/ep/1699568",
+            "relativePath": "assets/top-food-curry-06-8b13c6b8c8.webp"
+          }
+        ]
+      }
+    ],
+    "mostLists": [
+      {
+        "title": "菜单最丰富",
+        "note": "不是单纯吃得多，而是吃得杂；食物种类越多，世界越像真的在运转。",
+        "wide": true,
+        "items": [
+          {
+            "title": "炒翻天",
+            "subjectName": "鉄鍋のジャン",
+            "meta": "食物种类",
+            "value": 156,
+            "foodNames": [
+              "steak",
+              "broccoli",
+              "potato",
+              "vermicelli",
+              "mushroom",
+              "scallion",
+              "lotus root",
+              "snap peas",
+              "tofu",
+              "vegetables",
+              "carrot",
+              "noodle soup",
+              "shrimp",
+              "rice",
+              "duck",
+              "apple",
+              "fried rice",
+              "peas",
+              "meat",
+              "cabbage",
+              "scallops"
+            ],
+            "foodName": "collage",
+            "saved": true,
+            "relativePath": "assets/most-collage--59276d4c41.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704771",
+            "collage": true
+          },
+          {
+            "title": "无用圣女的异世界美食之旅 凭借隐藏技能召唤露营车",
+            "subjectName": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+            "meta": "食物种类",
+            "value": 109,
+            "foodNames": [
+              "onigiri",
+              "cheese",
+              "onion",
+              "cabbage",
+              "carrot",
+              "watermelon",
+              "grapes",
+              "pumpkin",
+              "strawberry",
+              "apple",
+              "tomato",
+              "banana",
+              "bell pepper",
+              "egg",
+              "potato",
+              "beef",
+              "tofu",
+              "skewered meat",
+              "grilled mushroom",
+              "salmon",
+              "pork belly",
+              "parsley",
+              "rice porridge",
+              "fish",
+              "noodle soup",
+              "omelet",
+              "rice",
+              "sausage"
+            ],
+            "foodName": "collage",
+            "saved": true,
+            "relativePath": "assets/most-collage--5642721f35.webp",
+            "episodeUrl": "https://bgm.tv/ep/1703239",
+            "collage": true
+          },
+          {
+            "title": "我家的弟弟们真是让您费心了",
+            "subjectName": "うちの弟どもがすみません",
+            "meta": "食物种类",
+            "value": 86,
+            "foodNames": [
+              "meat skewer",
+              "cake",
+              "strawberry",
+              "blueberry",
+              "salmon",
+              "rice",
+              "miso soup",
+              "tofu",
+              "lettuce",
+              "shrimp",
+              "meat",
+              "dumplings",
+              "melon soda",
+              "ice cream",
+              "cherry",
+              "pancakes",
+              "whipped cream",
+              "chocolate",
+              "parfait",
+              "spaghetti",
+              "stew",
+              "potato",
+              "carrot",
+              "croquette"
+            ],
+            "foodName": "collage",
+            "saved": true,
+            "relativePath": "assets/most-collage--b0197f161e.webp",
+            "episodeUrl": "https://bgm.tv/ep/1688120",
+            "collage": true
+          }
+        ]
+      },
+      {
+        "title": "最会出片",
+        "note": "高质量画面更集中：构图干净、颜色耐看，食物本身也更有记忆点。",
+        "preferredSaved": true,
+        "items": [
+          {
+            "title": "炒翻天",
+            "subjectName": "鉄鍋のジャン",
+            "meta": "高质量图",
+            "value": 12,
+            "foodNames": [
+              "fried rice",
+              "tofu",
+              "egg",
+              "soup"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01--b96e665eff.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704768"
+          },
+          {
+            "title": "再见菈菈",
+            "subjectName": "さよならララ",
+            "meta": "高质量图",
+            "value": 8,
+            "foodNames": [
+              "tart",
+              "strawberry",
+              "blueberry",
+              "peach",
+              "whipped cream"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--02--1a51717191.webp",
+            "episodeUrl": "https://bgm.tv/ep/1691667"
+          },
+          {
+            "title": "花样少年少女 第二季",
+            "subjectName": "花ざかりの君たちへ 第2期",
+            "meta": "高质量图",
+            "value": 5,
+            "foodNames": [
+              "waffle",
+              "whipped cream",
+              "raspberry",
+              "blueberry",
+              "chocolate sauce",
+              "syrup",
+              "mint"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--03-2-8e04bbfd63.webp",
+            "episodeUrl": "https://bgm.tv/ep/1705081"
+          }
+        ]
+      },
+      {
+        "title": "单集最密",
+        "note": "按已覆盖集数摊开之后，谁最舍得在一集里摆上吃喝。",
+        "items": [
+          {
+            "title": "炒翻天",
+            "subjectName": "鉄鍋のジャン",
+            "meta": "平均每集食物图",
+            "value": "13.3",
+            "foodNames": [
+              "stomach",
+              "gizzard",
+              "vegetables"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01--54acd1f92f.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704768"
+          },
+          {
+            "title": "无用圣女的异世界美食之旅 凭借隐藏技能召唤露营车",
+            "subjectName": "捨てられ聖女の異世界ごはん旅 隠れスキルでキャンピングカーを召喚しました",
+            "meta": "平均每集食物图",
+            "value": "9.8",
+            "foodNames": [
+              "skewers"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--02--0d2d842aa0.webp",
+            "episodeUrl": "https://bgm.tv/ep/1703231"
+          },
+          {
+            "title": "不虐待我的继母与继姐",
+            "subjectName": "いびってこない義母と義姉",
+            "meta": "平均每集食物图",
+            "value": "4.9",
+            "foodNames": [
+              "scone",
+              "biscuit"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--03--b0c328c0fa.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704926"
+          }
+        ]
+      },
+      {
+        "title": "最爱喝点什么",
+        "note": "茶、咖啡、果汁、酒与各种饮品，往往是气氛开始流动的地方。",
+        "preferredGroup": "Drinks",
+        "strictPreferredGroup": true,
+        "items": [
+          {
+            "title": "碧蓝之海 第三季",
+            "subjectName": "ぐらんぶる Season 3",
+            "meta": "饮品提及",
+            "value": 17,
+            "foodNames": [
+              "beer"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01-season-3-4a2081d60e.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704890"
+          },
+          {
+            "title": "尼古喵喵",
+            "subjectName": "ヤニねこ",
+            "meta": "饮品提及",
+            "value": 17,
+            "foodNames": [
+              "beer"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--02--1cbd1c2bc1.webp",
+            "episodeUrl": "https://bgm.tv/ep/1701421"
+          },
+          {
+            "title": "幼女战记 第二季",
+            "subjectName": "幼女戦記Ⅱ",
+            "meta": "饮品提及",
+            "value": 14,
+            "foodNames": [
+              "tea"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--03--671b6391f3.webp",
+            "episodeUrl": "https://bgm.tv/ep/1699968"
+          }
+        ]
+      },
+      {
+        "title": "甜党主场",
+        "note": "甜点出现得越多，作品越容易带上一点约会、奖励或小小逃避的味道。",
+        "preferredGroup": "Sweets",
+        "strictPreferredGroup": true,
+        "items": [
+          {
+            "title": "不虐待我的继母与继姐",
+            "subjectName": "いびってこない義母と義姉",
+            "meta": "甜点提及",
+            "value": 22,
+            "foodNames": [
+              "pancake",
+              "butter",
+              "syrup"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--01--54988cebe2.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704925"
+          },
+          {
+            "title": "少女怪兽焦糖味",
+            "subjectName": "乙女怪獣キャラメリゼ",
+            "meta": "甜点提及",
+            "value": 22,
+            "foodNames": [
+              "candy apple"
+            ],
+            "saved": true,
+            "relativePath": "assets/most--02--2f0c87b426.webp",
+            "episodeUrl": "https://bgm.tv/ep/1701415"
+          },
+          {
+            "title": "相反的你和我 第二季",
+            "subjectName": "正反対な君と僕 第2期",
+            "meta": "甜点提及",
+            "value": 21,
+            "foodNames": [
+              "cake",
+              "strawberry",
+              "whipped cream"
+            ],
+            "saved": false,
+            "relativePath": "assets/most--03-2-47f1e16294.webp",
+            "episodeUrl": "https://bgm.tv/ep/1704756"
+          }
+        ]
+      }
+    ]
+  }
+}
