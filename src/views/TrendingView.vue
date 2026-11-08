@@ -15,17 +15,20 @@ store.fetchTrending();
 const formatData = (history) =>
   history.map((item) => ({ x: new Date(item.recordedAt), y: item.score }));
 
+const hasRenderableHistory = (item) =>
+  item?.subject && Array.isArray(item.history) && item.history.length > 0;
+
 const sections = computed(() => [
   {
     id: 'up',
-    items: up.value,
+    items: up.value.filter(hasRenderableHistory),
     title: texts._increasingRank,
     headingClass: 'bg-pink',
     linkClass: 'hover:bg-pink'
   },
   {
     id: 'down',
-    items: down.value,
+    items: down.value.filter(hasRenderableHistory),
     title: texts._decreasingRank,
     headingClass: 'bg-blue',
     linkClass: 'hover:bg-blue'
